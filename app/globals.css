@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --font-sans: var(--font-manrope);
+  --font-display: var(--font-fraunces);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.page-shell {
+  @apply mx-auto flex max-w-6xl flex-col gap-16 px-6 py-16 md:gap-20 md:py-20;
+}
+
+.section-heading {
+  @apply font-display text-3xl leading-tight text-slate-900 md:text-4xl;
+}
+
+.eyebrow {
+  @apply text-sm font-semibold uppercase tracking-[0.2em] text-blue-600;
+}
+
+.body-copy {
+  @apply text-lg leading-8 text-slate-600;
+}
+
+.card {
+  @apply rounded-[1.75rem] border border-slate-200 bg-white p-8 shadow-[0_18px_48px_-28px_rgba(15,23,42,0.35)];
+}
+
+.article-html h2 {
+  @apply mt-12 font-display text-3xl text-slate-900;
+}
+
+.article-html h3 {
+  @apply mt-8 text-2xl font-semibold text-slate-900;
+}
+
+.article-html p,
+.article-html li {
+  @apply mt-5 text-lg leading-8 text-slate-700;
+}
+
+.article-html ul {
+  @apply ml-6 list-disc;
+}
