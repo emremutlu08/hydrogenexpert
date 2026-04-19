@@ -33,6 +33,14 @@ interface GeneratedPostPayload {
   meta_description: string;
 }
 
+const ANTHROPIC_MODELS = [
+  process.env.ANTHROPIC_MODEL?.trim(),
+  "claude-haiku-4-5-20251001",
+  "claude-sonnet-4-20250514",
+  "claude-3-haiku-20240307",
+].filter((model): model is string => Boolean(model));
+const GENERATION_ATTEMPTS = 3;
+
 function normalizeText(input: string): string {
   return input
     .toLowerCase()
@@ -77,6 +85,35 @@ function isGeneratedPostPayload(value: unknown): value is GeneratedPostPayload {
   );
 }
 
+function sanitizeJsonResponse(input: string): string {
+  const trimmed = input.trim();
+
+  if (trimmed.startsWith("```")) {
+    return trimmed.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/, "");
+  }
+
+  return trimmed;
+}
+
+function stripHtml(input: string): string {
+  return input.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+}
+
+function buildExcerpt(content: string, fallback: string): string {
+  const plainText = stripHtml(content);
+
+  if (plainText.length >= 140) {
+    return `${plainText.slice(0, 157).trimEnd()}...`;
+  }
+
+  return fallback;
+}
+
+function calculateReadingTime(content: string): number {
+  const wordCount = stripHtml(content).split(/\s+/).filter(Boolean).length;
+  return Math.max(4, Math.ceil(wordCount / 200));
+}
+
 function validatePayload(payload: GeneratedPostPayload) {
   if (payload.title.length > 60) {
     throw new Error("Generated title is too long.");
@@ -93,11 +130,55 @@ function validatePayload(payload: GeneratedPostPayload) {
     throw new Error("Generated slug is invalid.");
   }
 
-  const contentWordCount = payload.content.replace(/<[^>]+>/g, " ").trim().split(/\s+/).length;
+  const contentWordCount = stripHtml(payload.content).split(/\s+/).filter(Boolean).length;
 
   if (contentWordCount < 800 || contentWordCount > 1200) {
     throw new Error("Generated article is outside the required word count.");
   }
+}
+
+async function generateCandidate(
+  anthropic: Anthropic,
+  topic: string,
+  feedback?: string,
+): Promise<{ rawText: string; model: string }> {
+  for (const model of ANTHROPIC_MODELS) {
+    try {
+      const response = await anthropic.messages.create({
+        model,
+        max_tokens: 2400,
+        temperature: 0.7,
+        system:
+          'You are a content writer for a Shopify development agency. Write a blog post for non-technical Shopify store owners — no code, plain English, merchant perspective. Format: JSON with fields title (max 60 chars), slug (lowercase-hyphenated), content (full HTML article, 800–1200 words), meta_description (140–155 chars). Return JSON only with no markdown fences.',
+        messages: [
+          {
+            role: "user",
+            content: [
+              `Topic: ${topic}. Keep the tone direct, useful, and easy for a US Shopify store owner to follow.`,
+              feedback,
+            ]
+              .filter(Boolean)
+              .join("\n\n"),
+          },
+        ],
+      });
+
+      return {
+        model,
+        rawText: sanitizeJsonResponse(extractTextContent(response)),
+      };
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "";
+
+      if (message.includes("not_found_error") || message.includes("model:")) {
+        continue;
+      }
+
+      throw error;
+    }
+  }
+
+  throw new Error("No supported Anthropic model was available for this account.");
 }
 
 export async function POST(request: Request) {
@@ -145,39 +226,58 @@ export async function POST(request: Request) {
   }
 
   const anthropic = new Anthropic({ apiKey: anthropicKey });
-  const response = await anthropic.messages.create({
-    model: "claude-3-5-haiku-20241022",
-    max_tokens: 2400,
-    temperature: 0.7,
-    system:
-      'You are a content writer for a Shopify development agency. Write a blog post for non-technical Shopify store owners — no code, plain English, merchant perspective. Format: JSON with fields title (max 60 chars), slug (lowercase-hyphenated), content (full HTML article, 800–1200 words), meta_description (140–155 chars).',
-    messages: [
-      {
-        role: "user",
-        content: `Topic: ${topic}. Keep the tone direct, useful, and easy for a US Shopify store owner to follow.`,
-      },
-    ],
-  });
-
-  const rawText = extractTextContent(response);
-
-  let payload: GeneratedPostPayload;
+  let payload: GeneratedPostPayload | null = null;
+  let selectedModel = ANTHROPIC_MODELS[0];
+  let lastValidationError = "Unknown generation failure.";
 
   try {
-    const parsed = JSON.parse(rawText) as unknown;
+    for (let attempt = 1; attempt <= GENERATION_ATTEMPTS; attempt += 1) {
+      const feedback =
+        attempt === 1
+          ? undefined
+          : `The previous draft failed validation: ${lastValidationError}. Fix every issue exactly. Keep title at 60 chars or fewer, meta description between 140 and 155 chars, slug lowercase hyphenated, and article body between 800 and 1200 words.`;
+      const candidate = await generateCandidate(anthropic, topic, feedback);
 
-    if (!isGeneratedPostPayload(parsed)) {
-      throw new Error("Response JSON did not match the expected shape.");
+      selectedModel = candidate.model;
+
+      try {
+        const parsed = JSON.parse(candidate.rawText) as unknown;
+
+        if (!isGeneratedPostPayload(parsed)) {
+          throw new Error("Response JSON did not match the expected shape.");
+        }
+
+        validatePayload(parsed);
+        payload = parsed;
+        break;
+      } catch (error) {
+        lastValidationError =
+          error instanceof Error ? error.message : "Generated post validation failed.";
+
+        if (attempt === GENERATION_ATTEMPTS) {
+          throw error;
+        }
+      }
     }
-
-    payload = parsed;
-    validatePayload(payload);
   } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        error:
-          error instanceof Error ? error.message : "Failed to parse generated post.",
+        error: error instanceof Error ? error.message : "Failed to generate a valid post.",
+        topic,
+        model: selectedModel,
+      },
+      { status: 500 },
+    );
+  }
+
+  if (!payload) {
+    return NextResponse.json(
+      {
+        success: false,
+        error: "Failed to generate a valid post after multiple attempts.",
+        topic,
+        model: selectedModel,
       },
       { status: 500 },
     );
@@ -187,7 +287,10 @@ export async function POST(request: Request) {
     title: payload.title,
     slug: payload.slug,
     content: payload.content,
+    excerpt: buildExcerpt(payload.content, payload.meta_description),
     meta_description: payload.meta_description,
+    tags: ["Shopify Hydrogen", "Store Owner Guide"],
+    reading_time: calculateReadingTime(payload.content),
     status: "published",
   });
 
@@ -198,5 +301,5 @@ export async function POST(request: Request) {
     );
   }
 
-  return NextResponse.json({ success: true, slug: payload.slug });
+  return NextResponse.json({ success: true, slug: payload.slug, model: selectedModel });
 }
