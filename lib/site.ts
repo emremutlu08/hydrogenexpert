@@ -2,7 +2,7 @@ export const OWNER = {
   name: "Emre Mutlu",
   title: "Shopify Hydrogen Developer",
   headline: "Shopify Hydrogen Developer — Top Rated Plus, Upwork, 100% JSS",
-  linkedIn: "https://www.linkedin.com/in/emremutlu/",
+  linkedIn: "https://www.linkedin.com/in/emremutlujs/",
   upwork: "https://www.upwork.com/freelancers/emremutlu",
   course:
     "Creator of the first English Shopify Hydrogen course on Udemy.",
