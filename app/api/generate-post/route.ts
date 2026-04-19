@@ -1,7 +1,7 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { NextResponse } from "next/server";
 
-import { getSupabaseClient } from "@/lib/supabase";
+import { getSupabaseAdminClient, getSupabaseClient } from "@/lib/supabase";
 
 const TOPICS = [
   "How much does a Hydrogen storefront cost",
@@ -110,8 +110,9 @@ export async function POST(request: Request) {
 
   const anthropicKey = process.env.ANTHROPIC_API_KEY;
   const supabase = getSupabaseClient();
+  const supabaseAdmin = getSupabaseAdminClient();
 
-  if (!anthropicKey || !supabase) {
+  if (!anthropicKey || !supabase || !supabaseAdmin) {
     return NextResponse.json(
       { success: false, error: "Missing Anthropic or Supabase configuration." },
       { status: 500 },
@@ -182,7 +183,7 @@ export async function POST(request: Request) {
     );
   }
 
-  const { error: insertError } = await supabase.from("posts").insert({
+  const { error: insertError } = await supabaseAdmin.from("posts").insert({
     title: payload.title,
     slug: payload.slug,
     content: payload.content,

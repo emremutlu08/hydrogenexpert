@@ -3,6 +3,7 @@ import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import type { Database } from "@/lib/database.types";
 
 let client: SupabaseClient<Database> | null = null;
+let adminClient: SupabaseClient<Database> | null = null;
 
 function getSupabaseEnv() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -29,4 +30,21 @@ export function getSupabaseClient(): SupabaseClient<Database> | null {
   }
 
   return client;
+}
+
+export function getSupabaseAdminClient(): SupabaseClient<Database> | null {
+  const env = getSupabaseEnv();
+  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+  if (!env || !serviceRoleKey) {
+    return null;
+  }
+
+  if (!adminClient) {
+    adminClient = createClient<Database>(env.url, serviceRoleKey, {
+      auth: { persistSession: false },
+    });
+  }
+
+  return adminClient;
 }

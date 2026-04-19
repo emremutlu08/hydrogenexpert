@@ -10,6 +10,11 @@ export interface PostSummary {
   publishedAt: string | null;
 }
 
+export type PublishedPost = Pick<
+  PostRecord,
+  "id" | "title" | "slug" | "content" | "meta_description" | "published_at" | "status"
+>;
+
 function mapSummary(post: Pick<PostRecord, "slug" | "title" | "meta_description" | "published_at">): PostSummary {
   return {
     slug: post.slug,
@@ -42,7 +47,7 @@ export const getPublishedPosts = cache(async (): Promise<PostSummary[]> => {
 });
 
 export const getPublishedPostBySlug = cache(
-  async (slug: string): Promise<PostRecord | null> => {
+  async (slug: string): Promise<PublishedPost | null> => {
     const supabase = getSupabaseClient();
 
     if (!supabase) {

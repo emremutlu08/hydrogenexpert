@@ -15,8 +15,14 @@ export interface Database {
           title: string;
           slug: string;
           content: string;
-          meta_description: string | null;
-          published_at: string | null;
+          excerpt: string;
+          meta_description: string;
+          tags: string[] | null;
+          reading_time: number | null;
+          cover_image: string | null;
+          published_at: string;
+          created_at: string;
+          updated_at: string;
           status: "published" | "draft";
         };
         Insert: {
@@ -24,8 +30,14 @@ export interface Database {
           title: string;
           slug: string;
           content: string;
-          meta_description?: string | null;
-          published_at?: string | null;
+          excerpt?: string;
+          meta_description: string;
+          tags?: string[] | null;
+          reading_time?: number | null;
+          cover_image?: string | null;
+          published_at?: string;
+          created_at?: string;
+          updated_at?: string;
           status?: "published" | "draft";
         };
         Update: {
@@ -33,8 +45,14 @@ export interface Database {
           title?: string;
           slug?: string;
           content?: string;
-          meta_description?: string | null;
-          published_at?: string | null;
+          excerpt?: string;
+          meta_description?: string;
+          tags?: string[] | null;
+          reading_time?: number | null;
+          cover_image?: string | null;
+          published_at?: string;
+          created_at?: string;
+          updated_at?: string;
           status?: "published" | "draft";
         };
         Relationships: [];
