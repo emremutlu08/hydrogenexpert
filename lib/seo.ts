@@ -1,14 +1,17 @@
 import type { Metadata } from "next";
 
-import { OWNER, absoluteUrl, getSiteUrl } from "@/lib/site";
+import { OWNER, SITE_KEYWORDS, absoluteUrl, getSiteUrl } from "@/lib/site";
 
-const defaultOgImage = `${getSiteUrl()}/og-default.png`;
+const defaultOgImage = `${getSiteUrl()}/og-default.svg`;
 
 interface MetadataInput {
   title: string;
   description: string;
   path: string;
   type?: "website" | "article";
+  keywords?: string[];
+  ogImage?: string;
+  robots?: Metadata["robots"];
 }
 
 export function buildMetadata({
@@ -16,12 +19,17 @@ export function buildMetadata({
   description,
   path,
   type = "website",
+  keywords = [...SITE_KEYWORDS],
+  ogImage = defaultOgImage,
+  robots,
 }: MetadataInput): Metadata {
   const url = absoluteUrl(path);
 
   return {
     title,
     description,
+    keywords,
+    robots,
     alternates: {
       canonical: path,
     },
@@ -33,7 +41,7 @@ export function buildMetadata({
       siteName: "HydrogenExpert",
       images: [
         {
-          url: defaultOgImage,
+          url: ogImage,
           width: 1200,
           height: 630,
           alt: `${OWNER.name} Shopify Hydrogen storefront strategy`,
@@ -44,7 +52,7 @@ export function buildMetadata({
       card: "summary_large_image",
       title,
       description,
-      images: [defaultOgImage],
+      images: [ogImage],
     },
   };
 }

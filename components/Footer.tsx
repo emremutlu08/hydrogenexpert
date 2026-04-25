@@ -1,64 +1,187 @@
+import Image from "next/image";
 import Link from "next/link";
 
-import { NAV_ITEMS, OWNER } from "@/lib/site";
+import type { SiteNavItem } from "@/lib/navigation";
+import { OWNER } from "@/lib/site";
 
-function SocialIcon({
+function SocialLink({
   href,
   label,
-  children,
 }: {
-  href: string;
+  href?: string | null;
   label: string;
-  children: React.ReactNode;
 }) {
+  if (!href) {
+    return (
+      <span className="rounded-full border border-white/14 px-4 py-2 text-sm font-medium text-neutral-400">
+        {label}
+      </span>
+    );
+  }
+
   return (
     <Link
       href={href}
       target="_blank"
       rel="noreferrer"
-      aria-label={label}
-      className="rounded-full border border-slate-300 p-3 text-slate-700 transition hover:border-blue-600 hover:text-blue-600"
+      className="rounded-full border border-white/14 px-4 py-2 text-sm font-medium text-white transition hover:border-[#10b981] hover:text-[#8df1cb]"
     >
-      {children}
+      {label}
     </Link>
   );
 }
 
-export function Footer() {
-  return (
-    <footer className="border-t border-slate-200 bg-slate-50">
-      <div className="mx-auto grid max-w-6xl gap-10 px-6 py-14 md:grid-cols-[1.2fr_1fr]">
-        <div className="space-y-4">
-          <p className="text-lg font-semibold text-slate-900">HydrogenExpert</p>
-          <p className="max-w-xl text-sm leading-7 text-slate-600">
-            Merchant-first Shopify Hydrogen strategy and delivery for brands that
-            need faster storefronts, stronger UX, and a credible partner from
-            kickoff to launch.
-          </p>
-          <div className="flex items-center gap-3">
-            <SocialIcon href={OWNER.linkedIn} label="LinkedIn">
-              <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current">
-                <path d="M4.98 3.5A2.48 2.48 0 1 0 5 8.46 2.48 2.48 0 0 0 4.98 3.5ZM3 9.75h3.96V21H3Zm7.2 0h3.8v1.54h.06c.53-1 1.83-2.05 3.76-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-3.96v-5.09c0-1.22-.02-2.79-1.7-2.79-1.7 0-1.96 1.33-1.96 2.7V21H10.2Z" />
-              </svg>
-            </SocialIcon>
-            <SocialIcon href={OWNER.upwork} label="Upwork">
-              <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current">
-                <path d="M16.76 6.5c-1.64 0-3 .87-3.82 2.32-.96-1.52-1.65-3.13-2.08-4.82H7.72v8.44c0 1.43-.8 2.33-1.98 2.33-1.19 0-1.99-.9-1.99-2.33V4H0v8.6C0 15.78 2.36 18 5.74 18c3.37 0 5.72-2.22 5.72-5.4v-.72c.43.72.9 1.42 1.43 2.1l-1.18 5.52h3.3l.73-3.43c.6.18 1.26.28 2.02.28 3.6 0 6.24-2.24 6.24-5.92S20.36 6.5 16.76 6.5Zm0 6.77c-.63 0-1.2-.12-1.71-.33l.05-.23c.19-.88.31-1.77.37-2.65.35-.45.8-.76 1.47-.76 1.3 0 2.11.96 2.11 2.01 0 1.04-.81 1.96-2.29 1.96Z" />
-              </svg>
-            </SocialIcon>
-          </div>
-        </div>
+interface FooterProps {
+  navItems: readonly SiteNavItem[];
+}
 
-        <div className="grid gap-4 text-sm text-slate-600 sm:grid-cols-2">
-          {NAV_ITEMS.map((item) => (
-            <Link key={item.href} href={item.href} className="transition hover:text-blue-600">
+const SERVICE_ITEMS = [
+  "Shopify Hydrogen Development",
+  "Hydrogen Storefront Audit",
+  "Liquid to Hydrogen Migration",
+  "Performance and UX Refactor",
+] as const;
+
+const RESOURCE_ITEMS = [
+  { href: "/what-is-hydrogen", label: "What Is Shopify Hydrogen?" },
+  { href: "/should-i-use-it", label: "Should I Use Hydrogen?" },
+  { href: "/shopify-hydrogen-seo-guide", label: "Hydrogen SEO Guide" },
+  { href: "/cost", label: "Shopify Hydrogen Cost" },
+] as const;
+
+const PROOF_ITEMS = [
+  { href: "/case-studies", label: "Case Studies" },
+  { href: "/case-studies#eveshop", label: "EveShop" },
+  { href: "/case-studies#bayam", label: "Bayam Jewelry" },
+  { href: "/case-studies#rebel-bunny", label: "Rebel Bunny" },
+] as const;
+
+function FooterCard({
+  title,
+  items,
+}: {
+  title: string;
+  items: readonly (string | { href: string; label: string; external?: boolean })[];
+}) {
+  return (
+    <div>
+      <p className="dna-kicker text-[#8df1cb]">{title}</p>
+      <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm text-neutral-300">
+        {items.map((item) =>
+          typeof item === "string" ? (
+            <span key={item}>{item}</span>
+          ) : (
+            <Link
+              key={item.href}
+              href={item.href}
+              target={item.external ? "_blank" : undefined}
+              rel={item.external ? "noreferrer" : undefined}
+              className="transition hover:text-[#10b981]"
+            >
               {item.label}
             </Link>
-          ))}
+          ),
+        )}
+      </div>
+    </div>
+  );
+}
+
+export function Footer({ navItems }: FooterProps) {
+  const currentYear = new Date().getFullYear();
+  const hasBlog = navItems.some((item) => item.href === "/blog");
+
+  return (
+    <footer className="mt-20 bg-[#171717] text-white">
+      <div className="mx-auto max-w-7xl px-5 py-8 md:px-6 md:py-10">
+        <div className="overflow-hidden rounded-[1.9rem] border border-white/10 bg-[linear-gradient(180deg,rgba(16,185,129,0.12),transparent_24%),linear-gradient(135deg,#1e1f21_0%,#111111_74%)] p-6 md:p-9">
+          <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-stretch">
+            <div className="space-y-5">
+              <div className="space-y-3">
+                <div className="flex items-start gap-4">
+                  <span className="relative mt-1 block h-11 w-11 shrink-0">
+                    <Image
+                      src="/brand/hydrogenexpert-logo-icon.png"
+                      alt="HydrogenExpert icon logo"
+                      title="HydrogenExpert icon logo"
+                      fill
+                      sizes="44px"
+                      className="object-contain"
+                    />
+                  </span>
+                  <div className="min-w-0">
+                    <p className="font-display text-[1.4rem] font-semibold tracking-[-0.05em] text-white md:text-[1.65rem]">
+                      HydrogenExpert
+                    </p>
+                    <p className="mt-1 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-neutral-500">
+                      Senior Shopify Hydrogen development and advisory
+                    </p>
+                  </div>
+                </div>
+                <p className="max-w-2xl font-display text-2xl leading-[1.05] tracking-[-0.045em] text-white md:text-4xl">
+                  {"Your Shopify store works, but every new feature takes 3x longer than last year? That's when I come in."}
+                </p>
+              </div>
+              <p className="max-w-xl text-sm leading-7 text-neutral-400">
+                I help Shopify Plus and growth-stage ecommerce brands decide whether
+                Hydrogen is worth it, then scope and ship production-grade storefronts
+                without agency layers. If Liquid is still the smarter move, I will say so.
+              </p>
+              <div className="flex flex-wrap items-center gap-3">
+                <SocialLink href={OWNER.linkedIn} label="LinkedIn" />
+                <SocialLink href={OWNER.upwork} label="Upwork" />
+                <SocialLink href={OWNER.udemyUrl} label="Udemy" />
+              </div>
+            </div>
+
+            <div className="rounded-[1.45rem] border border-white/10 bg-white/[0.06] p-6 md:p-7">
+              <p className="dna-kicker text-[#8df1cb]">Start Here</p>
+              <h2 className="mt-4 max-w-xl text-3xl font-semibold leading-[1.02] tracking-[-0.045em] text-white md:text-4xl">
+                Not sure if Hydrogen is worth it?
+              </h2>
+              <p className="mt-4 max-w-2xl text-sm leading-7 text-neutral-300 md:text-base md:leading-8">
+                Send your store URL and what feels slow, limiting, or expensive
+                to change. I will give you a direct answer on whether the next
+                move is Liquid, Hydrogen, or no rebuild.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Link
+                  href="#email-form"
+                  className="rounded-full bg-[#10b981] px-5 py-3 text-sm font-semibold text-white transition hover:bg-white hover:text-[#171717]"
+                >
+                  Send Email Brief
+                </Link>
+                <Link
+                  href="/hire-me"
+                  className="rounded-full border border-white/14 px-5 py-3 text-sm font-semibold text-white transition hover:border-[#10b981] hover:text-[#8df1cb]"
+                >
+                  Hire Me
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-8 grid gap-6 border-t border-white/10 pt-7 md:grid-cols-3">
+            <FooterCard title="Services" items={SERVICE_ITEMS} />
+            <FooterCard
+              title="Resources"
+              items={[
+                ...RESOURCE_ITEMS,
+                ...(hasBlog ? [{ href: "/blog", label: "Hydrogen Blog" }] : []),
+              ]}
+            />
+            <FooterCard
+              title="Proof"
+              items={[
+                ...PROOF_ITEMS,
+                { href: OWNER.upwork, label: "Upwork Profile", external: true },
+              ]}
+            />
+          </div>
         </div>
       </div>
-      <div className="border-t border-slate-200 px-6 py-5 text-center text-sm text-slate-500">
-        © 2025 Emre Mutlu
+      <div className="border-t border-white/8 px-6 py-5 text-center text-sm text-neutral-500">
+        © {currentYear} Emre Mutlu
       </div>
     </footer>
   );

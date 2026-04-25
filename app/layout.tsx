@@ -2,22 +2,18 @@ import type { Metadata } from "next";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Fraunces, Manrope } from "next/font/google";
+import { Geist } from "next/font/google";
 
 import "./globals.css";
 
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
-import { OWNER, getSiteUrl } from "@/lib/site";
+import { getSiteNavigation } from "@/lib/navigation";
+import { OWNER, SITE_KEYWORDS, getSiteUrl } from "@/lib/site";
 
-const manrope = Manrope({
+const geist = Geist({
   subsets: ["latin"],
-  variable: "--font-manrope",
-});
-
-const fraunces = Fraunces({
-  subsets: ["latin"],
-  variable: "--font-fraunces",
+  variable: "--font-geist",
 });
 
 const verification = process.env.GOOGLE_SITE_VERIFICATION;
@@ -30,34 +26,42 @@ export const metadata: Metadata = {
     template: "%s",
   },
   description:
-    "Shopify Hydrogen strategy, cost guidance, and migration planning for growth-minded store owners who need speed and better conversion.",
+    "Shopify Hydrogen strategy, case studies, cost guidance, and custom storefront planning for Shopify Plus brands that need faster delivery and better conversion.",
+  keywords: [...SITE_KEYWORDS],
   applicationName: "HydrogenExpert",
   authors: [{ name: OWNER.name, url: OWNER.linkedIn }],
   creator: OWNER.name,
   publisher: OWNER.name,
+  icons: {
+    icon: "/brand/hydrogenexpert-logo-icon.png",
+    shortcut: "/brand/hydrogenexpert-logo-icon.png",
+    apple: "/brand/hydrogenexpert-logo-icon.png",
+  },
   robots: {
     index: true,
     follow: true,
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const navItems = await getSiteNavigation();
+
   return (
-    <html lang="en" className={`${manrope.variable} ${fraunces.variable}`}>
+    <html lang="en" className={`${geist.variable}`}>
       <head>
         {verification ? (
           <meta name="google-site-verification" content={verification} />
         ) : null}
       </head>
       <body className="bg-white text-slate-900 antialiased">
-        <div className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(37,99,235,0.10),_transparent_34%),linear-gradient(180deg,_#ffffff_0%,_#f8fafc_100%)]">
-          <Header />
+        <div className="min-h-screen overflow-x-hidden">
+          <Header navItems={navItems} />
           <main>{children}</main>
-          <Footer />
+          <Footer navItems={navItems} />
         </div>
         {gaId ? <GoogleAnalytics gaId={gaId} /> : null}
         <Analytics />

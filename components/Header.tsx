@@ -1,47 +1,84 @@
+import Image from "next/image";
 import Link from "next/link";
 
-import { NAV_ITEMS } from "@/lib/site";
 import { TrackedCTAButton } from "@/components/TrackedCTAButton";
+import type { SiteNavItem } from "@/lib/navigation";
 
-export function Header() {
+interface HeaderProps {
+  navItems: readonly SiteNavItem[];
+}
+
+export function Header({ navItems }: HeaderProps) {
   return (
-    <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-white/95 backdrop-blur">
-      <div className="mx-auto max-w-6xl px-6 py-4">
-        <div className="flex items-center justify-between gap-6">
-          <Link href="/" className="text-lg font-black tracking-[0.16em] text-slate-900">
-            HydrogenExpert
-          </Link>
+    <header className="sticky top-0 z-40 bg-white/88 backdrop-blur-xl">
+      <div className="mx-auto max-w-[92rem] px-5 py-4 md:px-6 md:py-5">
+        <div className="site-header__frame">
+          <div className="site-header__top-row">
+            <Link href="/" className="site-header__brand">
+              <span className="relative block h-10 w-10 shrink-0 md:h-11 md:w-11">
+                <Image
+                  src="/brand/hydrogenexpert-logo-icon.png"
+                  alt="HydrogenExpert icon logo"
+                  title="HydrogenExpert icon logo"
+                  fill
+                  sizes="44px"
+                  className="object-contain"
+                  priority
+                />
+              </span>
+              <span className="flex min-w-0 flex-col leading-none">
+                <span className="font-display text-base font-semibold tracking-[-0.04em] md:text-lg">
+                  HydrogenExpert
+                </span>
+                <span className="mt-1 hidden text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-neutral-500 md:block">
+                  Storefront strategy and delivery
+                </span>
+              </span>
+            </Link>
+            <div className="flex items-center gap-2">
+              <TrackedCTAButton
+                destination="upwork"
+                label="Let's Chat"
+                className="hidden w-fit rounded-full bg-[#171717] px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-[#10b981] md:inline-flex"
+              />
+              <TrackedCTAButton
+                destination="upwork"
+                label="Chat"
+                className="inline-flex rounded-full bg-[#171717] px-3 py-2 text-sm font-semibold text-white transition hover:bg-[#10b981] md:hidden"
+              />
+            </div>
+          </div>
 
-          <nav className="hidden items-center gap-6 text-sm font-medium text-slate-700 lg:flex">
-            {NAV_ITEMS.map((item) => (
+          <nav
+            aria-label="Primary navigation"
+            className="site-header__nav site-header__nav--desktop"
+          >
+            {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="transition hover:text-blue-600"
+                className="site-header__nav-link"
               >
                 {item.label}
               </Link>
             ))}
           </nav>
 
-          <TrackedCTAButton
-            destination="upwork"
-            label="Hire Me"
-            className="rounded-full bg-blue-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-blue-700"
-          />
+          <nav
+            aria-label="Mobile navigation"
+            className="site-header__nav site-header__nav--mobile nav-scroll"
+          >
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="site-header__nav-link site-header__nav-link--mobile"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
         </div>
-
-        <nav className="mt-4 flex gap-4 overflow-x-auto pb-1 text-sm font-medium text-slate-700 lg:hidden">
-          {NAV_ITEMS.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="whitespace-nowrap rounded-full border border-slate-200 px-4 py-2 transition hover:border-blue-600 hover:text-blue-600"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
       </div>
     </header>
   );

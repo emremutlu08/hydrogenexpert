@@ -3,10 +3,25 @@ export const OWNER = {
   title: "Shopify Hydrogen Developer",
   headline: "Shopify Hydrogen Developer — Top Rated Plus, Upwork, 100% JSS",
   linkedIn: "https://www.linkedin.com/in/emremutlujs/",
+  instagram: "https://www.instagram.com/shopifyemre/",
   upwork: "https://www.upwork.com/freelancers/emremutlu",
+  udemyUrl:
+    process.env.NEXT_PUBLIC_UDEMY_COURSE_URL?.trim() ||
+    "https://www.udemy.com/shopify-hydrogen",
   course:
-    "Creator of the first English Shopify Hydrogen course on Udemy.",
+    "Creator of the world's first English Shopify Hydrogen course on Udemy.",
 } as const;
+
+export const SITE_KEYWORDS = [
+  "Shopify Hydrogen developer",
+  "Shopify Hydrogen services",
+  "Shopify Hydrogen consultant",
+  "Shopify Hydrogen cost",
+  "hire Shopify Hydrogen developer",
+  "Shopify Plus Hydrogen developer",
+  "Hydrogen migration",
+  "Shopify storefront performance",
+] as const;
 
 export const CLIENTS = [
   "Rebel Bunny",
@@ -17,25 +32,17 @@ export const CLIENTS = [
 export const TRUST_ITEMS = [
   "Top Rated Plus",
   "100% JSS",
-  "Udemy Instructor",
-  "3 Production Hydrogen Stores",
+  "1,666+ hours on Upwork",
+  "32K+ LinkedIn followers",
+  "World's first in English",
+  "First in Turkey",
 ] as const;
 
-export const NAV_ITEMS = [
-  { href: "/", label: "Home" },
-  { href: "/what-is-hydrogen", label: "What Is Hydrogen" },
-  { href: "/should-i-use-it", label: "Should I Use It?" },
-  { href: "/cost", label: "Cost" },
-  { href: "/case-studies", label: "Case Studies" },
-  { href: "/blog", label: "Blog" },
-  { href: "/hire-me", label: "Hire Me" },
-] as const;
-
-export const DEFAULT_CTA_HEADLINE = "Ready to migrate to Hydrogen?";
+export const DEFAULT_CTA_HEADLINE = "Let’s scope the storefront your growth stage actually needs.";
 
 export function getSiteUrl(): string {
   return (
-    process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
+    process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(/\/$/, "") ||
     "http://localhost:3000"
   );
 }

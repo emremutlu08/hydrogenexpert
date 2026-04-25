@@ -1,3 +1,1 @@
-{
-  "crons": [{ "path": "/api/generate-post", "schedule": "0 9 */3 * *" }]
-}
+{}

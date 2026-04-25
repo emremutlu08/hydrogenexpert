@@ -18,6 +18,14 @@ export function trackCTA(destination: "linkedin" | "upwork") {
   sendEvent("cta_click", { destination });
 }
 
+export function trackLeadStart(source: string) {
+  sendEvent("lead_form_start", { source });
+}
+
+export function trackLeadSubmit(source: string, status: "success" | "error") {
+  sendEvent("lead_form_submit", { source, status });
+}
+
 export function trackBlogView(slug: string) {
   sendEvent("blog_view", { post_slug: slug });
 }

@@ -1,0 +1,16 @@
+.git
+.next
+.npm-cache
+.vercel
+node_modules
+coverage
+build
+out
+.DS_Store
+*.log
+.env*
+tmp-*.mjs
+tmp-*.js
+supabase/.temp
+playwright-report
+test-results

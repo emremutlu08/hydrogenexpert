@@ -1,0 +1,63 @@
+export const BRAND_CLIENT_ASSETS = {
+  eveshop: {
+    id: "eveshop",
+    name: "EveShop",
+    logoSrc: "/brand/case-studies/eveshop-logo.png",
+    logoAlt: "EveShop logo",
+    previewMode: "metric" as const,
+    previewMetric: "400K+",
+    previewSubLabel: "users",
+    previewTheme: "bg-[linear-gradient(180deg,#202124_0%,#111111_100%)]",
+  },
+  bayam: {
+    id: "bayam",
+    name: "Bayam Jewelry",
+    logoSrc: "/brand/case-studies/bayam-logo.svg",
+    logoAlt: "Bayam Jewelry logo",
+    previewMode: "logo-panel" as const,
+    previewMetric: "2 Worlds",
+    previewTheme: "bg-black",
+    imageSrc: "/brand/case-studies/bayam-og.png",
+    imageAlt: "Bayam Jewelry branded preview on a dark luxury backdrop.",
+  },
+  rebelBunny: {
+    id: "rebel-bunny",
+    name: "Rebel Bunny Matcha",
+    logoSrc: "/brand/case-studies/rebel-bunny-logo.png",
+    logoAlt: "Rebel Bunny Matcha logo",
+    previewMode: "image" as const,
+    previewTheme: "bg-[#d7f0de]",
+    imageSrc: "/brand/case-studies/rebel-bunny-og.jpg",
+    imageAlt: "Rebel Bunny Matcha branded preview with founder-led DTC imagery.",
+  },
+} as const;
+
+export const SELECTED_WORK_ITEMS = [
+  {
+    id: "eveshop",
+    href: "/case-studies#eveshop",
+    title: "EveShop",
+    eyebrow: "Nationwide cosmetics retailer — Turkey",
+    body: "Frontend team lead on Turkey's first production Shopify Hydrogen storefront.",
+    mediaLabel: "Nationwide retail",
+    mediaMode: "metric" as const,
+  },
+  {
+    id: "bayam",
+    href: "/case-studies#bayam",
+    title: "Bayam Jewelry",
+    eyebrow: "Fine jewelry and luxury watches — New York",
+    body: "Hydrogen storefront for a two-world luxury catalog running on a dedicated commerce subdomain.",
+    mediaLabel: "Luxury ecommerce",
+    mediaMode: "image" as const,
+  },
+  {
+    id: "rebel-bunny",
+    href: "/case-studies#rebel-bunny",
+    title: "Rebel Bunny Matcha",
+    eyebrow: "Premium matcha — DTC and wholesale",
+    body: "Dual-funnel storefront serving both direct-to-consumer buyers and wholesale partners.",
+    mediaLabel: "Social-first DTC",
+    mediaMode: "image" as const,
+  },
+] as const;

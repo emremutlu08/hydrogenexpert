@@ -1,6 +1,7 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { NextResponse } from "next/server";
 
+import { getApiHeaders, getClientIp, isRateLimitedDurable, safeCompare } from "@/lib/security";
 import { getSupabaseAdminClient, getSupabaseClient } from "@/lib/supabase";
 
 const TOPICS = [
@@ -182,21 +183,41 @@ async function generateCandidate(
 }
 
 export async function POST(request: Request) {
-  const expectedAuth = `Bearer ${process.env.CRON_SECRET}`;
+  const cronSecret = process.env.CRON_SECRET;
+  const expectedAuth = cronSecret ? `Bearer ${cronSecret}` : "";
   const authorization = request.headers.get("authorization");
+  const ip = getClientIp(request);
+  const supabase = getSupabaseClient();
+  const supabaseAdmin = getSupabaseAdminClient();
 
-  if (!process.env.CRON_SECRET || authorization !== expectedAuth) {
-    return NextResponse.json({ success: false, error: "Unauthorized" }, { status: 401 });
+  if (!cronSecret || !authorization || !safeCompare(authorization, expectedAuth)) {
+    return NextResponse.json(
+      { success: false, error: "Unauthorized" },
+      { status: 401, headers: getApiHeaders() },
+    );
+  }
+
+  if (
+    await isRateLimitedDurable({
+      supabase: supabaseAdmin,
+      scope: "generate-post",
+      identifier: ip,
+      limit: 10,
+      windowMs: 60 * 60 * 1000,
+    })
+  ) {
+    return NextResponse.json(
+      { success: false, error: "Too many generation attempts." },
+      { status: 429, headers: getApiHeaders() },
+    );
   }
 
   const anthropicKey = process.env.ANTHROPIC_API_KEY;
-  const supabase = getSupabaseClient();
-  const supabaseAdmin = getSupabaseAdminClient();
 
   if (!anthropicKey || !supabase || !supabaseAdmin) {
     return NextResponse.json(
       { success: false, error: "Missing Anthropic or Supabase configuration." },
-      { status: 500 },
+      { status: 500, headers: getApiHeaders() },
     );
   }
 
@@ -209,7 +230,7 @@ export async function POST(request: Request) {
   if (existingError) {
     return NextResponse.json(
       { success: false, error: existingError.message },
-      { status: 500 },
+      { status: 500, headers: getApiHeaders() },
     );
   }
 
@@ -222,7 +243,7 @@ export async function POST(request: Request) {
       success: true,
       skipped: true,
       reason: `Similar post already exists: ${similarPost.title}`,
-    });
+    }, { headers: getApiHeaders() });
   }
 
   const anthropic = new Anthropic({ apiKey: anthropicKey });
@@ -267,7 +288,7 @@ export async function POST(request: Request) {
         topic,
         model: selectedModel,
       },
-      { status: 500 },
+      { status: 500, headers: getApiHeaders() },
     );
   }
 
@@ -279,7 +300,7 @@ export async function POST(request: Request) {
         topic,
         model: selectedModel,
       },
-      { status: 500 },
+      { status: 500, headers: getApiHeaders() },
     );
   }
 
@@ -297,9 +318,12 @@ export async function POST(request: Request) {
   if (insertError) {
     return NextResponse.json(
       { success: false, error: insertError.message },
-      { status: 500 },
+      { status: 500, headers: getApiHeaders() },
     );
   }
 
-  return NextResponse.json({ success: true, slug: payload.slug, model: selectedModel });
+  return NextResponse.json(
+    { success: true, slug: payload.slug, model: selectedModel },
+    { headers: getApiHeaders() },
+  );
 }

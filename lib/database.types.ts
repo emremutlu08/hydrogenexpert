@@ -9,6 +9,69 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
+      request_rate_limits: {
+        Row: {
+          id: string;
+          scope: string;
+          key_hash: string;
+          window_start: string;
+          hits: number;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          scope: string;
+          key_hash: string;
+          window_start: string;
+          hits?: number;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          scope?: string;
+          key_hash?: string;
+          window_start?: string;
+          hits?: number;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
+      lead_submissions: {
+        Row: {
+          id: string;
+          name: string;
+          email: string;
+          store_url: string | null;
+          message: string;
+          source_path: string;
+          source_kind: string;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          name: string;
+          email: string;
+          store_url?: string | null;
+          message: string;
+          source_path: string;
+          source_kind: string;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          name?: string;
+          email?: string;
+          store_url?: string | null;
+          message?: string;
+          source_path?: string;
+          source_kind?: string;
+          created_at?: string;
+        };
+        Relationships: [];
+      };
       posts: {
         Row: {
           id: string;
@@ -59,7 +122,16 @@ export interface Database {
       };
     };
     Views: Record<string, never>;
-    Functions: Record<string, never>;
+    Functions: {
+      bump_rate_limit: {
+        Args: {
+          p_scope: string;
+          p_key_hash: string;
+          p_window_start: string;
+        };
+        Returns: number;
+      };
+    };
     Enums: Record<string, never>;
     CompositeTypes: Record<string, never>;
   };

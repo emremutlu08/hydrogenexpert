@@ -1,98 +1,132 @@
 import { CTASection } from "@/components/CTASection";
+import { CaseStudyHero } from "@/components/case-study/CaseStudyHero";
+import { CaseStudyMetricGrid } from "@/components/case-study/CaseStudyMetricGrid";
+import { CaseStudyScreenshots } from "@/components/case-study/CaseStudyScreenshots";
+import { CaseStudyTechStack } from "@/components/case-study/CaseStudyTechStack";
+import { CaseStudyTestimonial } from "@/components/case-study/CaseStudyTestimonial";
+import { FaqSection } from "@/components/FaqSection";
+import { JsonLd } from "@/components/JsonLd";
+import { PageIntroSection } from "@/components/PageIntroSection";
+import { SelectedWorkGrid } from "@/components/SelectedWorkGrid";
+import { SectionHeader } from "@/components/SectionHeader";
+import { CASE_STUDIES } from "@/data/caseStudies";
 import { buildMetadata } from "@/lib/seo";
+import { buildFaqPageSchema } from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
-  title: "Shopify Hydrogen Case Studies: Real Stores, Real Results",
+  title: "Shopify Hydrogen Case Studies for Shopify Plus Brands",
   description:
-    "See how Rebel Bunny, Bayam Jewelry, and EveShop used Shopify Hydrogen to solve real performance, UX, and growth challenges for scaling brands.",
+    "Production Shopify Hydrogen case studies across retail, luxury ecommerce, and premium DTC with supported proof points, screenshots, and explicit placeholders where client-approved metrics are still missing.",
   path: "/case-studies",
 });
 
-const caseStudies = [
+const faqs = [
   {
-    name: "Rebel Bunny",
-    type: "Fashion brand",
-    problem:
-      "The brand needed a storefront that felt sharper and more premium without sacrificing speed.",
-    solution:
-      "Hydrogen gave the store a custom experience with smoother browsing and stronger control over how the brand showed up online.",
-    outcome:
-      "The result was a storefront that felt more aligned with the brand and easier for shoppers to move through on mobile.",
+    question: "Why are some proof points written as placeholders or broad proof facts instead of hard performance claims?",
+    answer:
+      "Because this page only uses metrics and statements that were either provided directly, published publicly, or already supported inside the codebase. When a client-approved number or testimonial does not exist yet, I would rather show a visible placeholder than fake precision.",
   },
   {
-    name: "Bayam Jewelry",
-    type: "Jewelry and gifting",
-    problem:
-      "The catalog and visual storytelling needed more flexibility than a standard theme could comfortably deliver.",
-    solution:
-      "A Hydrogen storefront made it easier to present product detail, guide discovery, and support a more intentional buying journey.",
-    outcome:
-      "The final experience gave the brand a cleaner premium feel and a better path from inspiration to purchase.",
+    question: "Why is EveShop still an important case even if the storefront stack changed later?",
+    answer:
+      "Because the hard part of a case study is proving you have shipped at real scale. EveShop still proves production Hydrogen experience on a national retail brand, and it also reinforces the commercial truth that custom storefronts only keep paying off when the organization is ready to maintain them.",
   },
   {
-    name: "EveShop",
-    type: "Large-scale commerce experience",
-    problem:
-      "A bigger user base and more demanding UX expectations required a storefront approach built around performance.",
-    solution:
-      "Hydrogen supported a faster and more responsive shopping experience shaped for real traffic and real customer behavior.",
-    outcome:
-      "With roughly 400K users in the picture, performance and clarity mattered, and the storefront work focused on making the experience feel friction-free.",
+    question: "What makes Bayam and Rebel Bunny different from each other as Hydrogen projects?",
+    answer:
+      "Bayam is a luxury discovery problem with multiple product mindsets inside one premium catalog. Rebel Bunny is a brand, education, and partnership problem where commerce, content, and community all need to live inside one storefront system.",
+  },
+  {
+    question: "Why are there no testimonials on this page yet?",
+    answer:
+      "Because I am not going to invent quotes or attach weak attribution to something that should be precise. Once a client-approved quote and attribution are available, the testimonial block is already wired to render it.",
   },
 ] as const;
 
+const faqSchema = buildFaqPageSchema(faqs);
+
 export default function CaseStudiesPage() {
   return (
-    <div className="page-shell">
-      <section className="max-w-4xl space-y-6">
-        <p className="eyebrow">Proof</p>
-        <h1 className="font-display text-5xl leading-tight text-slate-900 md:text-6xl">
-          Real stores, real constraints, real outcomes
-        </h1>
-        <p className="text-xl leading-9 text-slate-600">
-          These projects were not built to chase a trend. Each one had a real
-          business reason to improve storefront performance and customer
-          experience.
-        </p>
-      </section>
+    <>
+      <JsonLd data={faqSchema} />
+      <div className="page-shell">
+        <PageIntroSection
+          eyebrow="Proof"
+          title="Real stores, real constraints, real engineering decisions"
+          description="One proof page, three very different storefront pressures: nationwide retail, luxury ecommerce, and social-first DTC."
+          body="Each section below stays grounded in supported facts. Where a metric, quote, or screenshot is not yet approved, it stays visibly incomplete instead of being guessed."
+        />
 
-      <section className="grid gap-6">
-        {caseStudies.map((study) => (
-          <article key={study.name} className="card grid gap-8 lg:grid-cols-[0.35fr_1fr]">
-            <div>
-              <p className="eyebrow">{study.type}</p>
-              <h2 className="mt-4 font-display text-4xl text-slate-900">
-                {study.name}
-              </h2>
-            </div>
-            <div className="grid gap-5">
-              <div>
-                <h3 className="text-lg font-semibold text-slate-900">Problem</h3>
-                <p className="mt-2 text-base leading-8 text-slate-600">
-                  {study.problem}
-                </p>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-slate-900">Solution</h3>
-                <p className="mt-2 text-base leading-8 text-slate-600">
-                  {study.solution}
-                </p>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-slate-900">Outcome</h3>
-                <p className="mt-2 text-base leading-8 text-slate-600">
-                  {study.outcome}
-                </p>
-              </div>
-            </div>
-          </article>
-        ))}
-      </section>
+        <section className="surface-card space-y-6">
+          <SectionHeader
+            eyebrow="Selected work"
+            title="Jump straight to the storefront pressure that looks most like yours."
+            description="The preview cards stay as anchor links so you can move directly into EveShop, Bayam Jewelry, or Rebel Bunny Matcha."
+          />
+          <SelectedWorkGrid />
+        </section>
 
-      <CTASection
-        primaryLink="upwork"
-        subtext="If your storefront has similar performance or UX pressure, I can help you scope the move with a merchant-friendly plan instead of a vague technical pitch."
-      />
-    </div>
+        <section className="grid gap-8">
+          {CASE_STUDIES.map((study, index) => (
+            <article id={study.id} key={study.id} className="card scroll-mt-32 space-y-8">
+              <CaseStudyHero
+                clientName={study.clientName}
+                tagline={study.tagline}
+                role={study.role}
+                industry={study.industry}
+                liveUrl={study.liveUrl}
+                logo={study.logo}
+                heroImage={study.heroImage}
+              />
+
+              <div className="grid gap-8 xl:grid-cols-[1.05fr_0.95fr]">
+                <div className="space-y-8">
+                  <div>
+                    <p className="eyebrow">Case {index + 1}</p>
+                    <h3 className="subsection-title mt-3">Problem</h3>
+                    <p className="mt-4 text-base leading-8 text-neutral-600">{study.problem}</p>
+                  </div>
+
+                  <div>
+                    <p className="eyebrow">Approach</p>
+                    <h3 className="subsection-title mt-3">What I focused on</h3>
+                    <p className="mt-4 text-base leading-8 text-neutral-600">{study.approach}</p>
+                  </div>
+
+                  <div className="rounded-[1.5rem] border border-black/8 bg-[#f6f7f7] p-6">
+                    <p className="eyebrow">Outcome</p>
+                    <h3 className="subsection-title mt-3">What changed and why it matters</h3>
+                    <p className="mt-4 text-base leading-8 text-neutral-700">{study.outcome}</p>
+                  </div>
+                </div>
+
+                <div className="space-y-8">
+                  <section className="space-y-4">
+                    <div>
+                      <p className="eyebrow">Metrics</p>
+                      <h3 className="subsection-title mt-3">Supported proof points</h3>
+                    </div>
+                    <CaseStudyMetricGrid metrics={study.metrics} />
+                  </section>
+                  <CaseStudyTechStack stack={study.techStack} />
+                </div>
+              </div>
+
+              <CaseStudyScreenshots screenshots={study.screenshots} />
+              <CaseStudyTestimonial testimonial={study.testimonial} />
+            </article>
+          ))}
+        </section>
+
+        <FaqSection title="Case study questions that usually matter after the first scroll." faqs={faqs} />
+
+        <CTASection
+          primaryLink="upwork"
+          headline="Your storefront, written honestly on a page"
+          subtext="If your store has constraints that rhyme with any of these, I can help you scope the move with a merchant-friendly plan instead of a vague technical pitch."
+          sourceKind="case_studies_cta"
+        />
+      </div>
+    </>
   );
 }
