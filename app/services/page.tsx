@@ -95,10 +95,11 @@ export default function ServicesPage() {
                     <p className="text-[0.68rem] font-bold uppercase tracking-[0.2em] text-[#10b981]">
                       Includes
                     </p>
-                    <ul className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+                    <ul className="mt-4 grid gap-x-6 gap-y-3 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
                       {servicePackage.deliverables.map((deliverable) => (
-                        <li key={deliverable}>
-                          <span className="inline-flex w-full rounded-full border border-black/8 bg-[#f6f7f7] px-4 py-2 text-sm leading-6 text-neutral-700">
+                        <li key={deliverable} className="flex gap-3 border-t border-black/8 pt-3 first:border-t-0 first:pt-0 sm:[&:nth-child(2)]:border-t-0 sm:[&:nth-child(2)]:pt-0 lg:[&:nth-child(2)]:border-t lg:[&:nth-child(2)]:pt-3 xl:[&:nth-child(2)]:border-t-0 xl:[&:nth-child(2)]:pt-0">
+                          <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#10b981]" />
+                          <span className="text-sm leading-7 text-neutral-700">
                             {deliverable}
                           </span>
                         </li>

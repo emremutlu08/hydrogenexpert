@@ -79,8 +79,8 @@ export default function CaseStudiesPage() {
                 heroImage={study.heroImage}
               />
 
-              <div className="grid gap-8 xl:grid-cols-[1.05fr_0.95fr]">
-                <div className="space-y-8">
+              <div className="space-y-8">
+                <div className="grid gap-8 xl:grid-cols-[1.05fr_0.95fr]">
                   <div>
                     <p className="eyebrow">Case {index + 1}</p>
                     <h3 className="subsection-title mt-3">Problem</h3>
@@ -92,15 +92,18 @@ export default function CaseStudiesPage() {
                     <h3 className="subsection-title mt-3">What I focused on</h3>
                     <p className="mt-4 text-base leading-8 text-neutral-600">{study.approach}</p>
                   </div>
+                </div>
 
+                <div className="grid gap-8 xl:grid-cols-[0.95fr_1.05fr] xl:items-start">
                   <div className="rounded-[1.5rem] border border-black/8 bg-[#f6f7f7] p-6">
                     <p className="eyebrow">Outcome</p>
                     <h3 className="subsection-title mt-3">What changed and why it matters</h3>
                     <p className="mt-4 text-base leading-8 text-neutral-700">{study.outcome}</p>
                   </div>
+                  <CaseStudyScreenshots screenshots={study.screenshots} />
                 </div>
 
-                <div className="space-y-8">
+                <div className="grid gap-8 xl:grid-cols-[1.05fr_0.95fr]">
                   <section className="space-y-4">
                     <div>
                       <p className="eyebrow">Metrics</p>
@@ -112,7 +115,6 @@ export default function CaseStudiesPage() {
                 </div>
               </div>
 
-              <CaseStudyScreenshots screenshots={study.screenshots} />
               <CaseStudyTestimonial testimonial={study.testimonial} />
             </article>
           ))}
