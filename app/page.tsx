@@ -432,30 +432,32 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="surface-card space-y-6">
-          <div className="max-w-3xl">
-            <p className="eyebrow">Sources</p>
-            <h2 className="section-heading mt-3">Authority should be grounded in real references.</h2>
-            <p className="body-copy mt-4">
-              These are the official sources behind the technical framing on this site. They support the plain-English guidance rather than replacing it.
-            </p>
-          </div>
-          <div className="grid gap-4">
-            {references.map((reference) => (
-              <article key={reference.href} className="agency-grid-card">
-                <h3 className="text-lg font-semibold text-[#171717]">
-                  <a
-                    href={reference.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="transition hover:text-[#10b981]"
-                  >
-                    {reference.label}
-                  </a>
-                </h3>
-                <p className="mt-3 text-sm leading-7 text-neutral-600">{reference.note}</p>
-              </article>
-            ))}
+        <section className="surface-card">
+          <div className="grid gap-8 lg:grid-cols-[0.44fr_0.56fr] lg:items-start">
+            <div className="max-w-3xl">
+              <p className="eyebrow">Sources</p>
+              <h2 className="section-heading mt-3">Authority should be grounded in real references.</h2>
+              <p className="body-copy mt-4">
+                These are the official sources behind the technical framing on this site. They support the plain-English guidance rather than replacing it.
+              </p>
+            </div>
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+              {references.map((reference) => (
+                <article key={reference.href} className="agency-grid-card">
+                  <h3 className="text-lg font-semibold text-[#171717]">
+                    <a
+                      href={reference.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="transition hover:text-[#10b981]"
+                    >
+                      {reference.label}
+                    </a>
+                  </h3>
+                  <p className="mt-3 text-sm leading-7 text-neutral-600">{reference.note}</p>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 
