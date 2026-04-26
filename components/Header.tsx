@@ -37,12 +37,12 @@ export function Header({ navItems }: HeaderProps) {
             </Link>
             <div className="flex items-center gap-2">
               <TrackedCTAButton
-                destination="upwork"
+                destination="linkedin"
                 label="Let's Chat"
                 className="hidden w-fit rounded-full bg-[#171717] px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-[#10b981] md:inline-flex"
               />
               <TrackedCTAButton
-                destination="upwork"
+                destination="linkedin"
                 label="Chat"
                 className="inline-flex rounded-full bg-[#171717] px-3 py-2 text-sm font-semibold text-white transition hover:bg-[#10b981] md:hidden"
               />
