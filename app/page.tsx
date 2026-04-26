@@ -441,7 +441,7 @@ export default function HomePage() {
                 These are the official sources behind the technical framing on this site. They support the plain-English guidance rather than replacing it.
               </p>
             </div>
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+            <div className="grid gap-4">
               {references.map((reference) => (
                 <article key={reference.href} className="agency-grid-card">
                   <h3 className="text-lg font-semibold text-[#171717]">
