@@ -186,7 +186,7 @@ a {
 }
 
 .proof-card {
-  @apply flex h-full min-h-[19rem] flex-col rounded-[1.45rem] border bg-white p-6 md:p-8;
+  @apply flex h-full min-h-[16.5rem] flex-col rounded-[1.45rem] border bg-white p-6 md:p-8;
   border-color: rgba(23, 23, 23, 0.08);
   box-shadow: 0 24px 48px -38px rgba(15, 23, 42, 0.18);
 }
@@ -200,12 +200,12 @@ a {
 }
 
 .proof-card__title {
-  @apply mt-16 max-w-[13ch] text-[1.46rem] font-semibold leading-[1.02] tracking-[-0.045em] text-[#171717] md:text-[1.65rem];
+  @apply mt-10 max-w-[13ch] text-[1.46rem] font-semibold leading-[1.02] tracking-[-0.045em] text-[#171717] md:text-[1.65rem];
   text-wrap: balance;
 }
 
 .proof-card__body {
-  @apply mt-auto max-w-[24ch] pt-10 text-sm leading-7 text-neutral-600;
+  @apply mt-auto max-w-[24ch] pt-6 text-sm leading-7 text-neutral-600;
 }
 
 .glass-panel {
