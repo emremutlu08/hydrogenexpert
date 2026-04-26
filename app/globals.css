@@ -64,8 +64,12 @@ a {
 }
 
 .section-header__description {
-  @apply max-w-xl text-sm leading-7 text-neutral-500;
+  @apply max-w-xl text-sm leading-7 text-neutral-500 md:pt-[2.05rem];
   text-wrap: pretty;
+}
+
+.section-header--center .section-header__description {
+  @apply md:pt-0;
 }
 
 .full-bleed {
