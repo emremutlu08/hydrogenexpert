@@ -359,10 +359,10 @@ export default function HomePage() {
           <SelectedWorkGrid />
         </section>
 
-        <ProofCardGrid items={proofCards} columnsClassName="grid gap-5 md:grid-cols-2 xl:grid-cols-4" />
+        <ProofCardGrid items={proofCards} columnsClassName="grid gap-5 md:grid-cols-2 xl:grid-cols-4 xl:items-stretch" />
 
         <SplitFeatureSection
-          leftClassName="rounded-[1.45rem] border border-black/8 bg-[#f6f7f7] p-6"
+          leftClassName="rounded-[1.35rem] border border-black/8 bg-[#f6f7f7] p-6 md:p-8"
           rightClassName=""
           left={
             <>
@@ -374,7 +374,7 @@ export default function HomePage() {
               </p>
             </>
           }
-          right={<StatCardGrid items={homepageMetrics} columnsClassName="grid gap-4 sm:grid-cols-2 xl:grid-cols-3" />}
+          right={<StatCardGrid items={homepageMetrics} columnsClassName="grid gap-4 sm:grid-cols-2 xl:grid-cols-3 xl:auto-rows-fr" />}
         />
 
         <section id="process" className="surface-card space-y-6">

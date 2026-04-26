@@ -2,7 +2,6 @@ import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { UpworkTopRatedBadge } from "@/components/UpworkTopRatedBadge";
 import { HAS_FOUNDER_PHOTO, FOUNDER_PHOTO_PATH } from "@/lib/public-assets";
 import { OWNER } from "@/lib/site";
 
@@ -75,12 +74,12 @@ export function FounderCard({
           </div>
 
           {showCredentials ? (
-            <div className="flex flex-wrap items-center gap-3">
+            <div className="grid gap-2.5">
               <Link
                 href={OWNER.linkedIn}
                 target="_blank"
                 rel="noreferrer"
-                className="soft-pill transition hover:border-[#10b981] hover:text-[#10b981]"
+                className="soft-pill inline-flex min-h-12 items-center justify-center text-center transition hover:border-[#10b981] hover:text-[#10b981]"
               >
                 Message on LinkedIn
               </Link>
@@ -88,15 +87,15 @@ export function FounderCard({
                 href={OWNER.upwork}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex"
+                className="soft-pill inline-flex min-h-12 items-center justify-center text-center transition hover:border-[#10b981] hover:text-[#10b981]"
               >
-                <UpworkTopRatedBadge size={isLarge ? "lg" : "sm"} />
+                <span className="text-[0.78rem] uppercase tracking-[0.16em]">Top Rated Plus</span>
               </Link>
               <Link
                 href={OWNER.upwork}
                 target="_blank"
                 rel="noreferrer"
-                className="soft-pill transition hover:border-[#10b981] hover:text-[#10b981]"
+                className="soft-pill inline-flex min-h-12 items-center justify-center text-center transition hover:border-[#10b981] hover:text-[#10b981]"
               >
                 100% JSS
               </Link>

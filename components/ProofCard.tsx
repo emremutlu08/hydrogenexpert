@@ -19,14 +19,12 @@ export function ProofCard({
 
   return (
     <article className={rootClassName}>
-      <div className="card-rail">
+      <div className="proof-card__header">
         <p className="card-label-block">{eyebrow}</p>
-        {media ? <div className="mt-4">{media}</div> : null}
-        <div className="card-rail__title card-rail__title--proof">
-          <h3 className="proof-card__title">{title}</h3>
-        </div>
-        <p className="card-rail__body">{body}</p>
+        {media ? <div className="proof-card__media">{media}</div> : null}
       </div>
+      <h3 className="proof-card__title">{title}</h3>
+      <p className="proof-card__body">{body}</p>
     </article>
   );
 }

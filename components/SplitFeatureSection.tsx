@@ -17,7 +17,7 @@ export function SplitFeatureSection({
 }: SplitFeatureSectionProps) {
   return (
     <section className={`surface-card ${className ?? ""}`.trim()}>
-      <div className="grid gap-6 lg:grid-cols-[0.42fr_0.58fr]">
+      <div className="grid gap-6 lg:grid-cols-[0.42fr_0.58fr] lg:items-start">
         <div className={leftClassName}>{left}</div>
         <div className={rightClassName}>{right}</div>
       </div>
