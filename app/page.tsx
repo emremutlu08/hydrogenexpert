@@ -13,7 +13,6 @@ import { SplitFeatureSection } from "@/components/SplitFeatureSection";
 import { StatCardGrid } from "@/components/StatCardGrid";
 import { TrustBar } from "@/components/TrustBar";
 import { UdemyCourseCard } from "@/components/UdemyCourseCard";
-import { UpworkTopRatedBadge } from "@/components/UpworkTopRatedBadge";
 import { clientLogos } from "@/data/clientLogos";
 import { FOUNDER_STORY } from "@/lib/founder";
 import { buildMetadata } from "@/lib/seo";
@@ -166,7 +165,6 @@ const proofCards = [
   {
     id: "upwork",
     eyebrow: "Upwork",
-    media: <UpworkTopRatedBadge size="lg" />,
     title: (
       <Link
         href={OWNER.upwork}
