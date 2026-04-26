@@ -4,6 +4,8 @@ import { getPublishedPosts } from "@/lib/posts";
 import { hasMeaningfulServicesContent } from "@/lib/services";
 import { getSiteUrl } from "@/lib/site";
 
+const LAST_SIGNIFICANT_UPDATE = new Date("2026-04-25T00:00:00.000Z");
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const siteUrl = getSiteUrl();
   const posts = await getPublishedPosts();
@@ -28,7 +30,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const staticEntries: MetadataRoute.Sitemap = staticRoutes.map((route) => ({
     url: `${siteUrl}${route === "/" ? "" : route}`,
-    lastModified: new Date(),
+    lastModified: LAST_SIGNIFICANT_UPDATE,
     changeFrequency: route === "/" ? "weekly" : "monthly",
     priority: route === "/" ? 1 : 0.8,
   }));

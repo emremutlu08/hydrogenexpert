@@ -1,0 +1,20 @@
+{
+  "name": "HydrogenExpert",
+  "short_name": "HydrogenExpert",
+  "description": "Shopify Hydrogen development and advisory by Emre Mutlu.",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/brand/hydrogenexpert-logo-icon.png",
+      "sizes": "2048x2048",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#101915",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}

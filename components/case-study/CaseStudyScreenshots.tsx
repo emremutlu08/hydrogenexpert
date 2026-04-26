@@ -10,6 +10,8 @@ interface CaseStudyScreenshotsProps {
 
 export function CaseStudyScreenshots({ screenshots }: CaseStudyScreenshotsProps) {
   const availableShots = screenshots.filter((shot) => shot.src && hasPublicAsset(shot.src));
+  const screenshotGridClassName =
+    availableShots.length > 1 ? "grid gap-4 sm:grid-cols-2" : "grid gap-4";
 
   if (availableShots.length === 0) {
     return (
@@ -37,7 +39,7 @@ export function CaseStudyScreenshots({ screenshots }: CaseStudyScreenshotsProps)
         <p className="eyebrow">Screenshots</p>
         <h3 className="subsection-title mt-3">Visual proof</h3>
       </div>
-      <div className="grid gap-4 lg:grid-cols-2">
+      <div className={screenshotGridClassName}>
         {availableShots.map((shot) => (
           <Link
             key={shot.src}

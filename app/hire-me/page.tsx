@@ -14,7 +14,7 @@ import { UdemyCourseCard } from "@/components/UdemyCourseCard";
 import { UpworkTopRatedBadge } from "@/components/UpworkTopRatedBadge";
 import { FOUNDER_STORY } from "@/lib/founder";
 import { buildMetadata } from "@/lib/seo";
-import { CLIENTS, OWNER } from "@/lib/site";
+import { CLIENTS, OWNER, absoluteUrl } from "@/lib/site";
 import { asSchemaArray, buildFaqPageSchema } from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
@@ -30,6 +30,7 @@ const personSchema = {
   name: OWNER.name,
   jobTitle: OWNER.title,
   description: OWNER.headline,
+  image: absoluteUrl("/emre-mutlu.webp"),
   sameAs: [OWNER.linkedIn, OWNER.upwork, OWNER.udemyUrl],
 };
 

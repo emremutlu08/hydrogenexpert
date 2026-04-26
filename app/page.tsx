@@ -36,6 +36,7 @@ const personSchema = {
   name: OWNER.name,
   jobTitle: OWNER.title,
   description: OWNER.headline,
+  image: absoluteUrl("/emre-mutlu.webp"),
   sameAs: [OWNER.linkedIn, OWNER.upwork, OWNER.udemyUrl],
   knowsAbout: ["Shopify Hydrogen", "Shopify storefront performance", "Shopify migration planning"],
 };
@@ -275,6 +276,27 @@ const references = [
   },
 ] as const;
 
+const technicalResources = [
+  {
+    title: "Shopify Hydrogen SEO Guide",
+    href: "/shopify-hydrogen-seo-guide",
+    body:
+      "A practical guide to metadata, canonical URLs, JSON-LD, variant URLs, sitemaps, robots, and crawl consistency in custom Hydrogen storefronts.",
+  },
+  {
+    title: "Variant URLs and fallback bugs",
+    href: "/blog/shopify-hydrogen-variant-selection-fallback",
+    body:
+      "A technical article on keeping clicked options locked, preserving stable variant URLs, and avoiding UX or SEO mismatch on product pages.",
+  },
+  {
+    title: "Hydrogen performance case note",
+    href: "/blog/cut-homepage-load-time-from-5s-to-2s-shopify-hydrogen",
+    body:
+      "A real-world note on restoring server-rendered product data and cutting a Shopify Hydrogen homepage from roughly 5s to 2s.",
+  },
+] as const;
+
 export default function HomePage() {
   return (
     <>
@@ -391,6 +413,26 @@ export default function HomePage() {
           title="Frequently asked questions about Shopify Hydrogen."
           faqs={faqs}
         />
+
+        <section className="surface-card space-y-6">
+          <SectionHeader
+            eyebrow="Technical resources"
+            title="Start with the pages Google and merchants should understand first."
+            description="The core commercial pages explain fit, cost, and proof. These technical resources support the same positioning with practical Hydrogen SEO, URL, and performance detail."
+          />
+          <div className="grid gap-4 md:grid-cols-3">
+            {technicalResources.map((resource) => (
+              <Link
+                key={resource.href}
+                href={resource.href}
+                className="rounded-[1.3rem] border border-black/8 bg-white p-5 transition hover:-translate-y-0.5 hover:border-[#10b981]"
+              >
+                <h3 className="text-lg font-semibold text-[#171717]">{resource.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-neutral-600">{resource.body}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
 
         <section className="surface-card space-y-6">
           <div className="max-w-3xl">

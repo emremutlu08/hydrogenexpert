@@ -142,20 +142,29 @@ export function Footer({ navItems }: FooterProps) {
               <p className="mt-4 max-w-2xl text-sm leading-7 text-neutral-300 md:text-base md:leading-8">
                 Send your store URL and what feels slow, limiting, or expensive
                 to change. I will give you a direct answer on whether the next
-                move is Liquid, Hydrogen, or no rebuild.
+                move is Liquid, Hydrogen, or no rebuild. LinkedIn is the fastest
+                place to start the conversation.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <Link
-                  href="#email-form"
+                  href={OWNER.linkedIn}
+                  target="_blank"
+                  rel="noreferrer"
                   className="rounded-full bg-[#10b981] px-5 py-3 text-sm font-semibold text-white transition hover:bg-white hover:text-[#171717]"
                 >
-                  Send Email Brief
+                  Message on LinkedIn
                 </Link>
                 <Link
                   href="/hire-me"
                   className="rounded-full border border-white/14 px-5 py-3 text-sm font-semibold text-white transition hover:border-[#10b981] hover:text-[#8df1cb]"
                 >
                   Hire Me
+                </Link>
+                <Link
+                  href="#email-form"
+                  className="rounded-full border border-white/14 px-5 py-3 text-sm font-semibold text-white transition hover:border-[#10b981] hover:text-[#8df1cb]"
+                >
+                  Email Brief
                 </Link>
               </div>
             </div>

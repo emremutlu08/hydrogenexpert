@@ -33,8 +33,8 @@ export function CaseStudyHero({
   const hasHeroImage = Boolean(heroImage?.src && hasPublicAsset(heroImage.src));
 
   return (
-    <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-      <div className="space-y-5">
+    <div className="grid gap-x-8 gap-y-8 xl:grid-cols-2 xl:items-start">
+      <div className="space-y-5 xl:pt-1">
         <div className="flex min-h-14 items-center">
           {hasLogo && logo.src ? (
             <div className="relative h-10 w-36">
@@ -82,20 +82,20 @@ export function CaseStudyHero({
         ) : null}
       </div>
 
-      <div className="overflow-hidden rounded-[1.7rem] border border-black/8 bg-[linear-gradient(180deg,#f7f8f8_0%,#ecefee_100%)] p-4">
+      <div className="w-full overflow-hidden rounded-[1.45rem] border border-black/8 bg-[linear-gradient(180deg,#f7f8f8_0%,#ecefee_100%)] p-4">
         {hasHeroImage && heroImage?.src ? (
-          <div className="relative aspect-[16/10] overflow-hidden rounded-[1.3rem]">
+          <div className="relative aspect-[16/9] overflow-hidden rounded-[1.1rem]">
             <Image
               src={heroImage.src}
               alt={heroImage.alt}
               title={heroImage.alt}
               fill
-              sizes="(min-width: 1024px) 42vw, 100vw"
-              className="object-cover"
+              sizes="(min-width: 1024px) 576px, 100vw"
+              className="object-contain"
             />
           </div>
         ) : (
-          <div className="flex aspect-[16/10] items-center justify-center rounded-[1.3rem] border border-dashed border-black/12 bg-white text-center">
+          <div className="flex aspect-[16/9] items-center justify-center rounded-[1.1rem] border border-dashed border-black/12 bg-white text-center">
             <div className="max-w-sm space-y-2 px-6">
               <p className="dna-kicker text-neutral-500">Visual pending</p>
               {/* TODO: Add a real hero screenshot for this case study when the asset is available. */}

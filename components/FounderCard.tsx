@@ -55,7 +55,6 @@ export function FounderCard({
               />
             ) : (
               <div className="flex h-full w-full items-center justify-center bg-[radial-gradient(circle_at_top,#ffffff,rgba(241,245,249,0.96)_55%,rgba(226,232,240,0.92))] text-neutral-400">
-                {/* TODO: Replace this fallback with /public/emre-mutlu.webp. */}
                 <svg viewBox="0 0 120 120" className="h-24 w-24 fill-current">
                   <path d="M60 60c13.255 0 24-10.745 24-24S73.255 12 60 12 36 22.745 36 36s10.745 24 24 24Zm0 12c-19.882 0-36 16.118-36 36h72c0-19.882-16.118-36-36-36Z" />
                 </svg>
@@ -77,6 +76,14 @@ export function FounderCard({
 
           {showCredentials ? (
             <div className="flex flex-wrap items-center gap-3">
+              <Link
+                href={OWNER.linkedIn}
+                target="_blank"
+                rel="noreferrer"
+                className="soft-pill transition hover:border-[#10b981] hover:text-[#10b981]"
+              >
+                Message on LinkedIn
+              </Link>
               <Link
                 href={OWNER.upwork}
                 target="_blank"

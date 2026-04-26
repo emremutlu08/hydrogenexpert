@@ -32,10 +32,15 @@ export const metadata: Metadata = {
   authors: [{ name: OWNER.name, url: OWNER.linkedIn }],
   creator: OWNER.name,
   publisher: OWNER.name,
+  manifest: "/site.webmanifest",
   icons: {
-    icon: "/brand/hydrogenexpert-logo-icon.png",
-    shortcut: "/brand/hydrogenexpert-logo-icon.png",
-    apple: "/brand/hydrogenexpert-logo-icon.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "2048x2048" },
+      { url: "/brand/hydrogenexpert-logo-icon.png", type: "image/png", sizes: "2048x2048" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
   },
   robots: {
     index: true,
