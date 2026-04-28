@@ -11,7 +11,6 @@ import { SectionHeader } from "@/components/SectionHeader";
 import { SplitFeatureSection } from "@/components/SplitFeatureSection";
 import { StatCard } from "@/components/StatCard";
 import { UdemyCourseCard } from "@/components/UdemyCourseCard";
-import { UpworkTopRatedBadge } from "@/components/UpworkTopRatedBadge";
 import { FOUNDER_STORY } from "@/lib/founder";
 import { buildMetadata } from "@/lib/seo";
 import { CLIENTS, OWNER, absoluteUrl } from "@/lib/site";
@@ -67,7 +66,7 @@ const proofCards = [
     ),
     title: "Top Rated Plus",
     body: "External proof that delivery discipline and client trust already exist outside this site.",
-    media: <UpworkTopRatedBadge size="lg" />,
+    media: null,
   },
   {
     titleNode: (
