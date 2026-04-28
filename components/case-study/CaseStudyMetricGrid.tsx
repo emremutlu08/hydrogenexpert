@@ -21,7 +21,9 @@ export function CaseStudyMetricGrid({ metrics }: CaseStudyMetricGridProps) {
               <p className="text-xl font-semibold text-[#171717]">After: {metric.valueAfter}</p>
             </div>
           ) : (
-            <p className="mt-4 text-xl font-semibold text-[#171717]">{metric.value ?? "[Metric TBD]"}</p>
+            <p className="mt-4 text-base font-semibold leading-7 text-[#171717]">
+              {metric.value ?? "Verified before/after metrics pending."}
+            </p>
           )}
         </article>
       ))}

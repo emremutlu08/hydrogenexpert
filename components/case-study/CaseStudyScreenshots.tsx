@@ -21,12 +21,11 @@ export function CaseStudyScreenshots({ screenshots }: CaseStudyScreenshotsProps)
           <h3 className="subsection-title mt-3">Visual proof</h3>
         </div>
         <div className="rounded-[1.5rem] border border-dashed border-black/12 bg-[#f6f7f7] p-8 text-center">
-          {/* TODO: Add real case-study screenshots here when approved assets are available. */}
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-neutral-500">
-            Visual pending
+            Project screenshot pending
           </p>
           <p className="mt-3 text-sm leading-7 text-neutral-600">
-            Approved project screenshots will be added when the assets are available.
+            Approved project asset to be added.
           </p>
         </div>
       </section>

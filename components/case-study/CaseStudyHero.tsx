@@ -97,10 +97,9 @@ export function CaseStudyHero({
         ) : (
           <div className="flex aspect-[16/9] items-center justify-center rounded-[1.1rem] border border-dashed border-black/12 bg-white text-center">
             <div className="max-w-sm space-y-2 px-6">
-              <p className="dna-kicker text-neutral-500">Visual pending</p>
-              {/* TODO: Add a real hero screenshot for this case study when the asset is available. */}
+              <p className="dna-kicker text-neutral-500">Project visual pending</p>
               <p className="text-sm leading-7 text-neutral-600">
-                Approved project visual will be added when the asset is available.
+                Approved project asset to be added.
               </p>
             </div>
           </div>
