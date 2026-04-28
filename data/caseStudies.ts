@@ -66,11 +66,7 @@ export const CASE_STUDIES: readonly CaseStudyEntry[] = [
       "As lead developer and frontend team lead at Machinarium, I worked on the Hydrogen web storefront alongside the React Native mobile apps. The implementation leaned on Shopify Hydrogen, React, Remix, GraphQL Storefront API patterns, and GTM-backed tracking from the broader stack documented in my CV. The job was not to over-design the storefront; it was to create a stable commerce surface for a large catalog, establish reusable frontend patterns, and help the team ship consistently. That included architectural decisions, mentoring, and component-level delivery standards so campaign pages, category browsing, and commerce flows could evolve without turning the codebase into a series of one-off patches.",
     outcome:
       "The live result became a useful strategic reference point for production Hydrogen work on a national retail brand. Hydrogen can work at this level, but the long-term value depends on the organization staying committed to owning and maintaining a custom storefront after launch. That is exactly why I position Hydrogen as a business decision first. EveShop is strong proof of production experience, but it is also proof that headless only pays off when the operating model is ready for it.",
-    metrics: [
-      { label: "Performance metrics", value: "Verified before/after metrics pending." },
-      { label: "Conversion impact", value: "Performance metrics to be added after verification." },
-      { label: "Client-approved scale proof", value: "Pending verification." },
-    ],
+    metrics: [],
     techStack: [
       "Shopify Hydrogen",
       "React",
@@ -87,9 +83,7 @@ export const CASE_STUDIES: readonly CaseStudyEntry[] = [
       },
     ],
     pendingProof: [
-      "Client testimonial pending approval.",
-      "Verified performance metrics pending.",
-      "Approved project screenshots pending.",
+      "Client testimonial, verified before/after metrics, and approved screenshots are pending approval.",
     ],
     testimonial: null,
   },
@@ -115,11 +109,7 @@ export const CASE_STUDIES: readonly CaseStudyEntry[] = [
       "I built and refined Bayam as a Shopify Hydrogen application with a strong emphasis on performance, responsiveness, and design cohesion. In the public updates I shared about the project, two changes capture the direction well: refreshing the homepage hero to strengthen the first impression, and adding collection intros plus sub-category pathways to make browsing clearer. That work mattered because Bayam is not a single-category brand. The storefront has to carry gold jewelry, diamond pieces, and luxury watches in one experience while preserving a premium tone. The implementation focused on cleaner navigation, clearer collection context, and a more intentional luxury feel instead of treating discovery like a flat theme menu.",
     outcome:
       "The result is a storefront that feels more aligned with Bayam's Diamond District positioning and easier to browse across very different product types. For me, the case study matters because it shows where Hydrogen becomes commercially useful in luxury ecommerce. The win is not 'headless' as a label. The win is giving a high-trust, style-sensitive catalog a storefront that can present jewelry and watches without forcing the shopper through a generic one-size-fits-all browsing pattern.",
-    metrics: [
-      { label: "Performance metrics", value: "Verified before/after metrics pending." },
-      { label: "Conversion impact", value: "Performance metrics to be added after verification." },
-      { label: "Client-approved catalog proof", value: "Pending verification." },
-    ],
+    metrics: [],
     techStack: [
       "Shopify",
       "Shopify Hydrogen",
@@ -135,8 +125,7 @@ export const CASE_STUDIES: readonly CaseStudyEntry[] = [
       },
     ],
     pendingProof: [
-      "Client testimonial pending approval.",
-      "Verified before/after metrics pending.",
+      "Client testimonial and verified before/after metrics are pending approval.",
     ],
     testimonial: null,
   },
@@ -162,11 +151,7 @@ export const CASE_STUDIES: readonly CaseStudyEntry[] = [
       "My role was storefront development for a bold, conversion-oriented Shopify build with custom product templates, promotional surfaces, and cart and checkout flows optimized for mobile and desktop. The public stack details on my CV list Shopify Hydrogen, React, Remix, GraphQL, TypeScript, and JavaScript for this project, while the live site itself shows the shape of the work: a DTC shop, a partner application path, and Matchacation content all living in one branded system. Rather than splitting those experiences across disconnected tools, the implementation keeps them inside one coherent storefront. That is the kind of setup where Hydrogen earns its complexity: when brand, education, and commerce need to move together instead of being bolted on later.",
     outcome:
       "The outcome is a storefront that supports both near-term conversion and longer-term brand building. The live store carries shopping, partner interest, and Matchacation content in one branded surface instead of splitting those journeys across disconnected landing pages. As a case study, Rebel Bunny shows Hydrogen at its most useful for social-first DTC: one system handling commerce, education, and partnership growth without turning the experience into a stack of disconnected tools.",
-    metrics: [
-      { label: "Performance metrics", value: "Verified before/after metrics pending." },
-      { label: "Conversion impact", value: "Performance metrics to be added after verification." },
-      { label: "Client-approved launch proof", value: "Pending verification." },
-    ],
+    metrics: [],
     techStack: [
       "Shopify Hydrogen",
       "React",
@@ -183,8 +168,7 @@ export const CASE_STUDIES: readonly CaseStudyEntry[] = [
       },
     ],
     pendingProof: [
-      "Client testimonial pending approval.",
-      "Verified before/after metrics pending.",
+      "Client testimonial and verified before/after metrics are pending approval.",
     ],
     testimonial: null,
   },

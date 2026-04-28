@@ -1,12 +1,18 @@
 import Link from "next/link";
 
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CTASection } from "@/components/CTASection";
 import { FaqSection } from "@/components/FaqSection";
 import { JsonLd } from "@/components/JsonLd";
 import { PageIntroSection } from "@/components/PageIntroSection";
 import { SectionHeader } from "@/components/SectionHeader";
 import { buildMetadata } from "@/lib/seo";
-import { asSchemaArray, buildFaqPageSchema } from "@/lib/structured-data";
+import { absoluteUrl } from "@/lib/site";
+import {
+  asSchemaArray,
+  buildBreadcrumbListSchema,
+  buildFaqPageSchema,
+} from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
   title: "Shopify Hydrogen SEO Guide for Custom Storefronts | Emre Mutlu",
@@ -89,6 +95,16 @@ const faqs = [
 ] as const;
 
 const faqSchema = buildFaqPageSchema(faqs);
+const breadcrumbs = [
+  { label: "Home", href: "/" },
+  { label: "Shopify Hydrogen SEO Guide", href: "/shopify-hydrogen-seo-guide" },
+] as const;
+const breadcrumbSchema = buildBreadcrumbListSchema(
+  breadcrumbs.map((item) => ({
+    name: item.label,
+    url: absoluteUrl(item.href),
+  })),
+);
 
 const articleSchema = {
   "@context": "https://schema.org",
@@ -110,8 +126,9 @@ const articleSchema = {
 export default function ShopifyHydrogenSeoGuidePage() {
   return (
     <>
-      <JsonLd data={asSchemaArray(articleSchema, faqSchema)} />
+      <JsonLd data={asSchemaArray(articleSchema, breadcrumbSchema, faqSchema)} />
       <div className="page-shell">
+        <Breadcrumbs items={breadcrumbs} />
         <PageIntroSection
           eyebrow="SEO Guide"
           title="Shopify Hydrogen SEO Guide for Custom Storefronts"

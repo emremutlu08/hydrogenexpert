@@ -1,4 +1,5 @@
 import { CTASection } from "@/components/CTASection";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CaseStudyHero } from "@/components/case-study/CaseStudyHero";
 import { CaseStudyMetricGrid } from "@/components/case-study/CaseStudyMetricGrid";
 import { CaseStudyScreenshots } from "@/components/case-study/CaseStudyScreenshots";
@@ -11,7 +12,12 @@ import { SelectedWorkGrid } from "@/components/SelectedWorkGrid";
 import { SectionHeader } from "@/components/SectionHeader";
 import { CASE_STUDIES } from "@/data/caseStudies";
 import { buildMetadata } from "@/lib/seo";
-import { buildFaqPageSchema } from "@/lib/structured-data";
+import { absoluteUrl } from "@/lib/site";
+import {
+  asSchemaArray,
+  buildBreadcrumbListSchema,
+  buildFaqPageSchema,
+} from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
   title: "Shopify Hydrogen Case Studies for Shopify Plus Brands",
@@ -43,13 +49,25 @@ const faqs = [
   },
 ] as const;
 
+const breadcrumbs = [
+  { label: "Home", href: "/" },
+  { label: "Case Studies", href: "/case-studies" },
+] as const;
+
+const breadcrumbSchema = buildBreadcrumbListSchema(
+  breadcrumbs.map((item) => ({
+    name: item.label,
+    url: absoluteUrl(item.href),
+  })),
+);
 const faqSchema = buildFaqPageSchema(faqs);
 
 export default function CaseStudiesPage() {
   return (
     <>
-      <JsonLd data={faqSchema} />
+      <JsonLd data={asSchemaArray(breadcrumbSchema, faqSchema)} />
       <div className="page-shell">
+        <Breadcrumbs items={breadcrumbs} />
         <PageIntroSection
           eyebrow="Proof"
           title="Real stores, real constraints, real engineering decisions"
@@ -100,13 +118,15 @@ export default function CaseStudiesPage() {
 
                 <CaseStudyScreenshots screenshots={study.screenshots} />
 
-                <section className="space-y-4">
-                  <div>
-                    <p className="eyebrow">Metrics</p>
-                    <h3 className="subsection-title mt-3">Supported proof points</h3>
-                  </div>
-                  <CaseStudyMetricGrid metrics={study.metrics} />
-                </section>
+                {study.metrics.length ? (
+                  <section className="space-y-4">
+                    <div>
+                      <p className="eyebrow">Metrics</p>
+                      <h3 className="subsection-title mt-3">Supported proof points</h3>
+                    </div>
+                    <CaseStudyMetricGrid metrics={study.metrics} />
+                  </section>
+                ) : null}
 
                 <CaseStudyTechStack stack={study.techStack} />
               </div>

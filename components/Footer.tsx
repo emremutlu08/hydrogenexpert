@@ -45,6 +45,7 @@ const SERVICE_ITEMS = [
 const RESOURCE_ITEMS = [
   { href: "/what-is-hydrogen", label: "What Is Shopify Hydrogen?" },
   { href: "/should-i-use-it", label: "Should I Use Hydrogen?" },
+  { href: "/when-not-to-use-hydrogen", label: "When Not to Use Hydrogen" },
   { href: "/shopify-hydrogen-seo-guide", label: "Hydrogen SEO Guide" },
   { href: "/cost", label: "Shopify Hydrogen Cost" },
 ] as const;
@@ -102,8 +103,7 @@ export function Footer({ navItems }: FooterProps) {
                   <span className="relative mt-1 block h-11 w-11 shrink-0">
                     <Image
                       src="/brand/hydrogenexpert-logo-icon.png"
-                      alt="HydrogenExpert icon logo"
-                      title="HydrogenExpert icon logo"
+                      alt=""
                       fill
                       sizes="44px"
                       className="object-contain"

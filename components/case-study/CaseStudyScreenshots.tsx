@@ -14,22 +14,7 @@ export function CaseStudyScreenshots({ screenshots }: CaseStudyScreenshotsProps)
     availableShots.length > 1 ? "grid gap-4 sm:grid-cols-2" : "grid gap-4";
 
   if (availableShots.length === 0) {
-    return (
-      <section className="space-y-4">
-        <div>
-          <p className="eyebrow">Screenshots</p>
-          <h3 className="subsection-title mt-3">Visual proof</h3>
-        </div>
-        <div className="rounded-[1.5rem] border border-dashed border-black/12 bg-[#f6f7f7] p-8 text-center">
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-neutral-500">
-            Project screenshot pending
-          </p>
-          <p className="mt-3 text-sm leading-7 text-neutral-600">
-            Approved project asset to be added.
-          </p>
-        </div>
-      </section>
-    );
+    return null;
   }
 
   return (

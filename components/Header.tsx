@@ -18,8 +18,7 @@ export function Header({ navItems }: HeaderProps) {
               <span className="relative block h-10 w-10 shrink-0 md:h-11 md:w-11">
                 <Image
                   src="/brand/hydrogenexpert-logo-icon.png"
-                  alt="HydrogenExpert icon logo"
-                  title="HydrogenExpert icon logo"
+                  alt=""
                   fill
                   sizes="44px"
                   className="object-contain"
@@ -51,28 +50,13 @@ export function Header({ navItems }: HeaderProps) {
 
           <nav
             aria-label="Primary navigation"
-            className="site-header__nav site-header__nav--desktop"
+            className="site-header__nav site-header__nav--responsive nav-scroll"
           >
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 className="site-header__nav-link"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-
-          <nav
-            aria-label="Mobile navigation"
-            className="site-header__nav site-header__nav--mobile nav-scroll"
-          >
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="site-header__nav-link site-header__nav-link--mobile"
               >
                 {item.label}
               </Link>

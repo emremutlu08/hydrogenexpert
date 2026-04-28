@@ -8,8 +8,14 @@ import "./globals.css";
 
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { JsonLd } from "@/components/JsonLd";
 import { getSiteNavigation } from "@/lib/navigation";
 import { OWNER, SITE_KEYWORDS, getSiteUrl } from "@/lib/site";
+import {
+  asSchemaArray,
+  buildPersonSchema,
+  buildProfessionalServiceSchema,
+} from "@/lib/structured-data";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -54,6 +60,25 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const navItems = await getSiteNavigation();
+  const siteUrl = getSiteUrl();
+  const proofLinks = [OWNER.linkedIn, OWNER.upwork, OWNER.udemyUrl].filter(Boolean);
+  const rootSchema = asSchemaArray(
+    buildPersonSchema({
+      name: OWNER.name,
+      title: OWNER.title,
+      url: OWNER.linkedIn,
+      image: `${siteUrl}/emre-mutlu.webp`,
+      sameAs: proofLinks,
+    }),
+    buildProfessionalServiceSchema({
+      name: "HydrogenExpert",
+      url: siteUrl,
+      description:
+        "Senior Shopify Hydrogen development and advisory for growth-stage Shopify brands.",
+      founderName: OWNER.name,
+      sameAs: proofLinks,
+    }),
+  );
 
   return (
     <html lang="en" className={`${geist.variable}`}>
@@ -63,6 +88,7 @@ export default async function RootLayout({
         ) : null}
       </head>
       <body className="bg-white text-slate-900 antialiased">
+        <JsonLd data={rootSchema} />
         <div className="min-h-screen overflow-x-hidden">
           <Header navItems={navItems} />
           <main>{children}</main>

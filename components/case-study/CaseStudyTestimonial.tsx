@@ -6,17 +6,7 @@ interface CaseStudyTestimonialProps {
 
 export function CaseStudyTestimonial({ testimonial }: CaseStudyTestimonialProps) {
   if (!testimonial?.quote) {
-    return (
-      <section className="rounded-[1.5rem] border border-dashed border-black/12 bg-[#f6f7f7] p-6 md:p-8">
-        <p className="eyebrow">Client feedback</p>
-        <p className="mt-4 text-base font-semibold leading-7 text-[#171717]">
-          Client testimonial pending approval.
-        </p>
-        <p className="mt-2 text-sm leading-7 text-neutral-600">
-          Verified client quote to be added after approval.
-        </p>
-      </section>
-    );
+    return null;
   }
 
   return (

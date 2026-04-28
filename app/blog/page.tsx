@@ -1,12 +1,16 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CTASection } from "@/components/CTASection";
+import { JsonLd } from "@/components/JsonLd";
 import { PageIntroSection } from "@/components/PageIntroSection";
 import { PostVisual } from "@/components/PostVisual";
 import { buildMetadata } from "@/lib/seo";
 import { getPostEnhancement } from "@/lib/post-enhancements";
 import { getPublishedPosts } from "@/lib/posts";
+import { absoluteUrl } from "@/lib/site";
+import { buildBreadcrumbListSchema } from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
   title: "Shopify Hydrogen Blog for Shopify Plus Brands | Emre Mutlu",
@@ -53,15 +57,28 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
   const clampedPage = Math.min(currentPage, totalPages);
   const startIndex = (clampedPage - 1) * postsPerPage;
   const pagePosts = posts.slice(startIndex, startIndex + postsPerPage);
+  const breadcrumbs = [
+    { label: "Home", href: "/" },
+    { label: "Blog", href: "/blog" },
+  ] as const;
+  const breadcrumbSchema = buildBreadcrumbListSchema(
+    breadcrumbs.map((item) => ({
+      name: item.label,
+      url: absoluteUrl(item.href),
+    })),
+  );
 
   return (
-    <div className="page-shell">
-      <PageIntroSection
-        eyebrow="Insights"
-        title="Real Hydrogen notes from production storefront work"
-        description="Bugs, decisions, audits, and tradeoffs that matter once a Shopify storefront starts outgrowing the obvious path."
-        body="Short, technical, merchant-relevant writing. No generic headless filler."
-      />
+    <>
+      <JsonLd data={breadcrumbSchema} />
+      <div className="page-shell">
+        <Breadcrumbs items={breadcrumbs} />
+        <PageIntroSection
+          eyebrow="Insights"
+          title="Real Hydrogen notes from production storefront work"
+          description="Bugs, decisions, audits, and tradeoffs that matter once a Shopify storefront starts outgrowing the obvious path."
+          body="Short, technical, merchant-relevant writing. No generic headless filler."
+        />
 
       <section className="grid gap-6">
         {pagePosts.length > 0 ? (
@@ -149,10 +166,11 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
         </div>
       </section>
 
-      <CTASection
-        subtext="If an article sounds close to your situation, send me the link and I’ll tell you what it would look like for your store specifically."
-        sourceKind="blog_index_cta"
-      />
-    </div>
+        <CTASection
+          subtext="If an article sounds close to your situation, send me the link and I’ll tell you what it would look like for your store specifically."
+          sourceKind="blog_index_cta"
+        />
+      </div>
+    </>
   );
 }
