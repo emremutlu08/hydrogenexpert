@@ -32,14 +32,15 @@ function LogoWallItem({
         <span className="absolute right-3 top-3 inline-flex h-2.5 w-2.5 rounded-full bg-[#10b981]" />
       ) : null}
       {hasLogo && logo.src ? (
-        <div className="relative h-12 w-full max-w-[148px]">
+        <div className="flex h-12 w-full max-w-[148px] items-center justify-center">
           <Image
             src={logo.src}
             alt={logo.alt}
             title={logo.alt}
-            fill
+            width={148}
+            height={48}
             sizes="148px"
-            className={imageClassName}
+            className={`h-full w-full ${imageClassName}`}
           />
         </div>
       ) : (

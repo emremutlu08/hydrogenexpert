@@ -10,7 +10,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { JsonLd } from "@/components/JsonLd";
 import { getSiteNavigation } from "@/lib/navigation";
-import { OWNER, SITE_KEYWORDS, getSiteUrl } from "@/lib/site";
+import { OWNER, getSiteUrl } from "@/lib/site";
 import {
   asSchemaArray,
   buildPersonSchema,
@@ -33,7 +33,6 @@ export const metadata: Metadata = {
   },
   description:
     "Shopify Hydrogen strategy, case studies, cost guidance, and custom storefront planning for Shopify Plus brands that need faster delivery and better conversion.",
-  keywords: [...SITE_KEYWORDS],
   applicationName: "HydrogenExpert",
   authors: [{ name: OWNER.name, url: OWNER.linkedIn }],
   creator: OWNER.name,

@@ -15,13 +15,14 @@ export function Header({ navItems }: HeaderProps) {
         <div className="site-header__frame">
           <div className="site-header__top-row">
             <Link href="/" className="site-header__brand">
-              <span className="relative block h-10 w-10 shrink-0 md:h-11 md:w-11">
+              <span className="block h-10 w-10 shrink-0 md:h-11 md:w-11">
                 <Image
                   src="/brand/hydrogenexpert-logo-icon.png"
                   alt=""
-                  fill
+                  width={44}
+                  height={44}
                   sizes="44px"
-                  className="object-contain"
+                  className="h-full w-full object-contain"
                   priority
                 />
               </span>

@@ -48,9 +48,10 @@ export function FounderCard({
                 src={FOUNDER_PHOTO_PATH}
                 alt="Emre Mutlu, Shopify Hydrogen developer"
                 title="Emre Mutlu, Shopify Hydrogen developer"
-                fill
+                width={1200}
+                height={1200}
                 sizes={isLarge ? "(max-width: 1024px) 208px, 256px" : "144px"}
-                className="object-cover"
+                className="h-full w-full object-cover"
               />
             ) : (
               <div className="flex h-full w-full items-center justify-center bg-[radial-gradient(circle_at_top,#ffffff,rgba(241,245,249,0.96)_55%,rgba(226,232,240,0.92))] text-neutral-400">

@@ -100,13 +100,14 @@ export function Footer({ navItems }: FooterProps) {
             <div className="space-y-5">
               <div className="space-y-3">
                 <div className="flex items-start gap-4">
-                  <span className="relative mt-1 block h-11 w-11 shrink-0">
+                  <span className="mt-1 block h-11 w-11 shrink-0">
                     <Image
                       src="/brand/hydrogenexpert-logo-icon.png"
                       alt=""
-                      fill
+                      width={44}
+                      height={44}
                       sizes="44px"
-                      className="object-contain"
+                      className="h-full w-full object-contain"
                     />
                   </span>
                   <div className="min-w-0">

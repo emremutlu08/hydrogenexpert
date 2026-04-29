@@ -22,7 +22,7 @@ import { asSchemaArray, buildFaqPageSchema } from "@/lib/structured-data";
 const LAST_UPDATED = "2026-04-21";
 
 export const metadata = buildMetadata({
-  title: "Hire a Shopify Hydrogen Developer for Shopify Plus Brands | Emre Mutlu",
+  title: "Shopify Hydrogen Developer | Emre Mutlu",
   description:
     "Hire Emre Mutlu for Shopify Hydrogen strategy, cost planning, case studies, and custom storefront delivery for Shopify Plus brands in the US market.",
   path: "/",
@@ -315,9 +315,11 @@ export default function HomePage() {
             <p className="eyebrow justify-center">Senior Shopify Hydrogen development and advisory</p>
             <div className="space-y-3">
               <h1 className="hero-statement">
-                Your Shopify store works, but every new feature takes 3x longer than last year?
+                Shopify Hydrogen developer for growing brands
               </h1>
-              <p className="hero-response">{"That's when I come in."}</p>
+              <p className="hero-response">
+                {"Your Shopify store works, but every new feature takes 3x longer than last year? That's when I come in."}
+              </p>
             </div>
             <p className="mx-auto max-w-3xl page-intro">
               I help growth-minded Shopify Plus brands decide when Hydrogen is worth it, scope the
@@ -351,8 +353,8 @@ export default function HomePage() {
         <section className="surface-card space-y-6">
           <SectionHeader
             eyebrow="Selected work"
-            title="Three production Shopify Plus Hydrogen storefronts, including Turkey's first (400K+ users on EveShop)."
-            description="Real stores, real constraints, and the kind of implementation detail that only shows up once a storefront is live."
+            title="Three production Shopify Hydrogen storefronts"
+            description="Including Turkey's first production Hydrogen storefront and EveShop at 400K+ users. Real stores, real constraints, and the kind of implementation detail that only shows up once a storefront is live."
           />
           <SelectedWorkGrid />
         </section>
@@ -401,8 +403,8 @@ export default function HomePage() {
         <section className="surface-card space-y-6">
           <SectionHeader
             eyebrow="Teaching"
-            title="Teaching Hydrogen because the English-language path did not exist when I started"
-            description="A visible proof layer for how the work gets communicated: direct, merchant-friendly, and grounded in real implementation."
+            title="Teaching Shopify Hydrogen in plain English"
+            description="I created the world's first English Shopify Hydrogen course on Udemy because the English-language path did not exist when I started."
           />
           <UdemyCourseCard courseUrl={OWNER.udemyUrl} />
         </section>

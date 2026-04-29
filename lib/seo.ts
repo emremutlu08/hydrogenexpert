@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { OWNER, SITE_KEYWORDS, absoluteUrl, getSiteUrl } from "@/lib/site";
+import { OWNER, absoluteUrl, getSiteUrl } from "@/lib/site";
 
 const defaultOgImage = `${getSiteUrl()}/og-default.svg`;
 
@@ -9,7 +9,6 @@ interface MetadataInput {
   description: string;
   path: string;
   type?: "website" | "article";
-  keywords?: string[];
   ogImage?: string;
   robots?: Metadata["robots"];
 }
@@ -19,7 +18,6 @@ export function buildMetadata({
   description,
   path,
   type = "website",
-  keywords = [...SITE_KEYWORDS],
   ogImage = defaultOgImage,
   robots,
 }: MetadataInput): Metadata {
@@ -28,7 +26,6 @@ export function buildMetadata({
   return {
     title,
     description,
-    keywords,
     robots,
     alternates: {
       canonical: path,
