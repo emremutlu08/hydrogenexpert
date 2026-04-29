@@ -82,7 +82,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   }
 
   const enhancement = getPostEnhancement(post.slug);
-  const hasInlineFaq = /(^|\n)##\s+FAQ\b/i.test(post.content);
+  const hasInlineFaq = /(^|\n)##\s+FAQ\b|<h2[^>]*>\s*FAQ\s*<\/h2>/i.test(post.content);
   const visibleFaq = hasInlineFaq ? undefined : enhancement.faq;
   const heroVisual =
     enhancement.heroVisual.type !== "none"

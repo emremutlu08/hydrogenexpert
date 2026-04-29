@@ -22,16 +22,11 @@ import {
 export const metadata = buildMetadata({
   title: "Shopify Hydrogen Case Studies for Shopify Plus Brands",
   description:
-    "Production Shopify Hydrogen case studies across retail, luxury ecommerce, and premium DTC with clear pending-approval notes where proof still needs verification.",
+    "Production Shopify Hydrogen case studies across retail, luxury ecommerce, and premium DTC with only approved proof shown on the page.",
   path: "/case-studies",
 });
 
 const faqs = [
-  {
-    question: "Why are some proof points marked as pending verification?",
-    answer:
-      "Because this page separates business context from proof that still needs client approval or verification. When a client-approved number or testimonial does not exist yet, I would rather label it as pending than guess at precision.",
-  },
   {
     question: "Why is EveShop still an important case even if the storefront stack changed later?",
     answer:
@@ -72,7 +67,7 @@ export default function CaseStudiesPage() {
           eyebrow="Proof"
           title="Real stores, real constraints, real engineering decisions"
           description="One proof page, three very different storefront pressures: nationwide retail, luxury ecommerce, and social-first DTC."
-          body="Each section below separates business context from proof that is still pending approval or verification. No client quote, performance number, or conversion claim is guessed."
+          body="Only approved proof is shown below. Client quotes, before/after metrics, and project visuals stay off the page until they are verified or approved."
         />
 
         <section className="surface-card space-y-6">
@@ -130,21 +125,6 @@ export default function CaseStudiesPage() {
 
                 <CaseStudyTechStack stack={study.techStack} />
               </div>
-
-              <section className="rounded-[1.5rem] border border-black/8 bg-white p-6 md:p-8">
-                <p className="eyebrow">Pending proof</p>
-                <h3 className="subsection-title mt-3">To be added after approval</h3>
-                <ul className="mt-5 grid gap-3 sm:grid-cols-3">
-                  {study.pendingProof.map((item) => (
-                    <li
-                      key={item}
-                      className="rounded-[1rem] border border-dashed border-black/12 bg-[#f6f7f7] px-4 py-3 text-sm font-medium leading-6 text-neutral-700"
-                    >
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </section>
 
               <CaseStudyTestimonial testimonial={study.testimonial} />
             </article>

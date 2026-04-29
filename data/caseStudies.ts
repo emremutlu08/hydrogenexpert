@@ -43,7 +43,6 @@ export interface CaseStudyEntry {
   metrics: CaseStudyMetric[];
   techStack: string[];
   screenshots: CaseStudyScreenshot[];
-  pendingProof: string[];
   testimonial?: CaseStudyTestimonial | null;
 }
 
@@ -81,9 +80,6 @@ export const CASE_STUDIES: readonly CaseStudyEntry[] = [
         alt: "EveShop approved project asset pending",
         caption: "Approved project asset to be added.",
       },
-    ],
-    pendingProof: [
-      "Client testimonial, verified before/after metrics, and approved screenshots are pending approval.",
     ],
     testimonial: null,
   },
@@ -124,9 +120,6 @@ export const CASE_STUDIES: readonly CaseStudyEntry[] = [
         caption: "Homepage and luxury brand presentation layer.",
       },
     ],
-    pendingProof: [
-      "Client testimonial and verified before/after metrics are pending approval.",
-    ],
     testimonial: null,
   },
   {
@@ -166,9 +159,6 @@ export const CASE_STUDIES: readonly CaseStudyEntry[] = [
         alt: "Rebel Bunny storefront preview",
         caption: "DTC storefront with brand-led editorial presentation.",
       },
-    ],
-    pendingProof: [
-      "Client testimonial and verified before/after metrics are pending approval.",
     ],
     testimonial: null,
   },

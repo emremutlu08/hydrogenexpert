@@ -5,9 +5,17 @@ interface CaseStudyMetricGridProps {
 }
 
 export function CaseStudyMetricGrid({ metrics }: CaseStudyMetricGridProps) {
+  const visibleMetrics = metrics.filter(
+    (metric) => metric.value || (metric.valueBefore && metric.valueAfter),
+  );
+
+  if (!visibleMetrics.length) {
+    return null;
+  }
+
   return (
     <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-      {metrics.map((metric) => (
+      {visibleMetrics.map((metric) => (
         <article
           key={`${metric.label}-${metric.value ?? metric.valueAfter ?? metric.valueBefore ?? "metric"}`}
           className="rounded-[1.2rem] border border-black/8 bg-white p-5"
@@ -22,7 +30,7 @@ export function CaseStudyMetricGrid({ metrics }: CaseStudyMetricGridProps) {
             </div>
           ) : (
             <p className="mt-4 text-base font-semibold leading-7 text-[#171717]">
-              {metric.value ?? "Verified before/after metrics pending."}
+              {metric.value}
             </p>
           )}
         </article>

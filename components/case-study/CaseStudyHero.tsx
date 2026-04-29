@@ -33,7 +33,12 @@ export function CaseStudyHero({
   const hasHeroImage = Boolean(heroImage?.src && hasPublicAsset(heroImage.src));
 
   return (
-    <div className="grid gap-x-8 gap-y-8 xl:grid-cols-2 xl:items-start">
+    <div
+      className={[
+        "grid gap-x-8 gap-y-8 xl:items-start",
+        hasHeroImage ? "xl:grid-cols-2" : "xl:grid-cols-[0.58fr_0.42fr]",
+      ].join(" ")}
+    >
       <div className="space-y-5 xl:pt-1">
         <div className="flex min-h-14 items-center">
           {hasLogo && logo.src ? (
@@ -82,29 +87,20 @@ export function CaseStudyHero({
         ) : null}
       </div>
 
-      <div className="w-full overflow-hidden rounded-[1.45rem] border border-black/8 bg-[linear-gradient(180deg,#f7f8f8_0%,#ecefee_100%)] p-4">
-        {hasHeroImage && heroImage?.src ? (
-          <div className="relative aspect-[16/9] overflow-hidden rounded-[1.1rem]">
-            <Image
-              src={heroImage.src}
-              alt={heroImage.alt}
-              title={heroImage.alt}
-              fill
-              sizes="(min-width: 1024px) 576px, 100vw"
-              className="object-contain"
-            />
-          </div>
-        ) : (
-          <div className="flex aspect-[16/9] items-center justify-center rounded-[1.1rem] border border-dashed border-black/12 bg-white text-center">
-            <div className="max-w-sm space-y-2 px-6">
-              <p className="dna-kicker text-neutral-500">Project visual pending</p>
-              <p className="text-sm leading-7 text-neutral-600">
-                Approved project asset to be added.
-              </p>
+      {hasHeroImage && heroImage?.src ? (
+        <div className="w-full overflow-hidden rounded-[1.45rem] border border-black/8 bg-[linear-gradient(180deg,#f7f8f8_0%,#ecefee_100%)] p-4">
+            <div className="relative aspect-[16/9] overflow-hidden rounded-[1.1rem]">
+              <Image
+                src={heroImage.src}
+                alt={heroImage.alt}
+                title={heroImage.alt}
+                fill
+                sizes="(min-width: 1024px) 576px, 100vw"
+                className="object-contain"
+              />
             </div>
-          </div>
-        )}
-      </div>
+        </div>
+      ) : null}
     </div>
   );
 }
