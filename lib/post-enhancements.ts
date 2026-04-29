@@ -77,6 +77,91 @@ const DEFAULT_INTERNAL_LINKS: PostReferenceLink[] = [
 ];
 
 export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
+  "shopify-hydrogen-metaobjects-page-specific-sections": {
+    heroVisual: {
+      type: "flow-diagram-svg",
+      caption:
+        "A reusable Shopify Hydrogen section can stay developer-owned in code while its page-specific copy and imagery stay merchant-editable in Shopify Admin.",
+      steps: [
+        {
+          label: "Model",
+          body: "Create one metaobject definition for the content section.",
+        },
+        {
+          label: "Map",
+          body: "Create entries for the page contexts that need different content.",
+        },
+        {
+          label: "Render",
+          body: "Resolve the right entry by route and fall back safely when no entry exists.",
+        },
+      ],
+    },
+    faq: [
+      {
+        question: "When should a Shopify Hydrogen section use metaobjects?",
+        answer:
+          "Use metaobjects when the section has a repeatable structure but page-specific content, such as a heading, description, and image that merchants need to edit without code changes.",
+      },
+      {
+        question: "Are metaobjects better than hardcoded page content?",
+        answer:
+          "They are better when the content will change by page or campaign. Hardcoded content is fine for stable UI copy, but metaobjects are safer when merchandising, brand, or marketing teams need ownership.",
+      },
+      {
+        question: "Should every product and collection page get its own metaobject entry?",
+        answer:
+          "Not by default. A smaller set of page-context entries is easier to maintain. Product and collection defaults can stay shared unless there is a real business reason to personalize them.",
+      },
+      {
+        question: "Can metaobject-driven sections help SEO?",
+        answer:
+          "Yes, if the content is rendered server-side as part of the initial HTML. The SEO value comes from crawlable, route-specific content, not from the metaobject itself.",
+      },
+    ],
+    closingPitch:
+      "Your Shopify store works, but every new feature takes 3x longer than last year? That's when I come in. If your Hydrogen storefront needs merchant-editable sections without turning every update into a developer ticket, I can help you model the content cleanly and keep the frontend stable.",
+    ogImage: "/og-post.svg",
+    internalLinks: [
+      {
+        href: "/shopify-hydrogen-seo-guide",
+        label: "Shopify Hydrogen SEO guide",
+        note: "Use this when page-specific content needs to stay crawlable, canonical, and structured.",
+      },
+      {
+        href: "/services",
+        label: "Shopify Hydrogen services",
+        note: "See the audit, migration, build, optimization, and support paths for Hydrogen storefronts.",
+      },
+      {
+        href: "/case-studies#bayam",
+        label: "Bayam Jewelry case study",
+        note: "The broader context for luxury catalog and showroom-led Hydrogen storefront work.",
+      },
+      {
+        href: "/hire-me",
+        label: "Work with Emre",
+        note: "The direct route if your storefront needs senior Hydrogen implementation without agency layers.",
+      },
+    ],
+    externalLinks: [
+      {
+        href: "https://shopify.dev/docs/apps/build/metaobjects",
+        label: "Shopify metaobjects overview",
+        note: "Official Shopify documentation explaining metaobject definitions, entries, fields, and storefront access.",
+      },
+      {
+        href: "https://shopify.dev/docs/api/storefront/latest/queries/metaobjects",
+        label: "Storefront API metaobjects query",
+        note: "Official Storefront API reference for querying active metaobject entries by type.",
+      },
+      {
+        href: "https://shopify.dev/docs/api/storefront/latest/objects/Metaobject",
+        label: "Storefront API Metaobject object",
+        note: "Official object reference for metaobject fields, handles, IDs, and updated timestamps.",
+      },
+    ],
+  },
   "shopify-hydrogen-variant-selection-fallback": {
     heroVisual: {
       type: "flow-diagram-svg",
