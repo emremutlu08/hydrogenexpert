@@ -194,7 +194,8 @@ export function formatPostContent(content: string) {
     return "";
   }
 
-  const looksLikeHtml = /<([a-z][a-z0-9]*)\b[^>]*>/i.test(content);
+  const contentWithoutCodeBlocks = content.replace(/```[\s\S]*?```/g, "");
+  const looksLikeHtml = /<([a-z][a-z0-9]*)\b[^>]*>/i.test(contentWithoutCodeBlocks);
   if (looksLikeHtml) {
     return sanitizeHtmlContent(content);
   }

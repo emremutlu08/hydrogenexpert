@@ -77,6 +77,91 @@ const DEFAULT_INTERNAL_LINKS: PostReferenceLink[] = [
 ];
 
 export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
+  "shopify-hydrogen-product-description-ssr-seo": {
+    heroVisual: {
+      type: "flow-diagram-svg",
+      caption:
+        "A Shopify Hydrogen product description should come from the route data and render into the initial HTML before any accordion JavaScript runs.",
+      steps: [
+        {
+          label: "Query",
+          body: "Fetch the standard Shopify product description field in the product route loader.",
+        },
+        {
+          label: "Render",
+          body: "Render the description inside the server-rendered product page markup.",
+        },
+        {
+          label: "Enhance",
+          body: "Keep the accordion interaction as progressive enhancement, not as the only source of content.",
+        },
+      ],
+    },
+    faq: [
+      {
+        question: "Should Shopify Hydrogen product descriptions be server-rendered?",
+        answer:
+          "Yes. If product descriptions matter for shoppers, SEO, or AI crawlers, they should be part of the initial product page HTML instead of appearing only after a client-side fetch.",
+      },
+      {
+        question: "Which Shopify field should power the product description?",
+        answer:
+          "Use Shopify's standard product description fields. The Storefront API exposes product description data, including descriptionHtml when formatted HTML is needed.",
+      },
+      {
+        question: "Can the description still live inside an accordion?",
+        answer:
+          "Yes. The accordion can stay. The important distinction is that the accordion content should already exist in the server-rendered HTML; JavaScript should only enhance the open and close behavior.",
+      },
+      {
+        question: "How do you verify the fix?",
+        answer:
+          "Open View Source and search for a unique sentence from the product description. Then disable JavaScript and confirm the same description remains visible or accessible on the product page.",
+      },
+    ],
+    closingPitch:
+      "Your Shopify store works, but every new feature takes 3x longer than last year? That's when I come in. If your Hydrogen product pages hide important catalog content behind client-side fetches, I can help move the right data back into SSR without breaking the storefront UX.",
+    ogImage: "/og-post.svg",
+    internalLinks: [
+      {
+        href: "/shopify-hydrogen-seo-guide",
+        label: "Shopify Hydrogen SEO guide",
+        note: "Use this for the broader crawl, metadata, canonical, sitemap, and structured-data checklist.",
+      },
+      {
+        href: "/blog/cut-homepage-load-time-from-5s-to-2s-shopify-hydrogen",
+        label: "Hydrogen homepage SSR case note",
+        note: "A related production note about moving primary homepage data out of client-side effects.",
+      },
+      {
+        href: "/services",
+        label: "Hydrogen performance, SEO, and UX optimization",
+        note: "The service path for existing Hydrogen storefronts where crawlability, speed, or UX has drifted.",
+      },
+      {
+        href: "/hire-me",
+        label: "Work with Emre",
+        note: "The direct route if your storefront needs senior Hydrogen implementation without agency layers.",
+      },
+    ],
+    externalLinks: [
+      {
+        href: "https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics",
+        label: "Google JavaScript SEO basics",
+        note: "Google explains JavaScript rendering risks and notes that server-side or pre-rendering is still useful for users and crawlers.",
+      },
+      {
+        href: "https://shopify.dev/docs/api/storefront/latest/objects/Product",
+        label: "Storefront API Product object",
+        note: "Official Shopify reference for product fields, including description and descriptionHtml.",
+      },
+      {
+        href: "https://shopify.dev/docs/storefronts/headless/hydrogen/seo",
+        label: "Hydrogen SEO documentation",
+        note: "Official Shopify guidance for Hydrogen metadata, canonical URLs, JSON-LD, sitemap, and robots.txt.",
+      },
+    ],
+  },
   "shopify-hydrogen-metaobjects-page-specific-sections": {
     heroVisual: {
       type: "flow-diagram-svg",
