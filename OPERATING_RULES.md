@@ -2,6 +2,16 @@
 
 This file defines how Codex should work inside this repository. When Emre says "operating rules'a göre yap", follow this file unless a newer direct instruction overrides it.
 
+## Local Project Address
+
+- Canonical local path: `/Users/emremutlu/Apps/Codex/hydrogenexpert`
+- If a future Codex session starts elsewhere, use this path first for HydrogenExpert work.
+- Terminal command:
+
+```bash
+cd "/Users/emremutlu/Apps/Codex/hydrogenexpert"
+```
+
 ## Default Workflow
 
 1. Inspect before editing.
@@ -65,4 +75,3 @@ This file defines how Codex should work inside this repository. When Emre says "
 4. Keep this positioning sentence unchanged wherever it appears:
    "Your Shopify store works, but every new feature takes 3x longer than last year? That's when I come in."
 5. Do not auto-merge pull requests.
-

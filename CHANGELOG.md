@@ -21,6 +21,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 - Summary:
   - Added `OPERATING_RULES.md` to define how Codex should work in this repository.
   - Added PR-first branch workflow, automatic validation/deploy expectation, and changelog requirements.
+  - Added the canonical local project path: `/Users/emremutlu/Apps/Codex/hydrogenexpert`.
   - Added this dedicated `CHANGELOG.md` for PR-linked change history.
 - Files changed:
   - `OPERATING_RULES.md`
