@@ -32,7 +32,7 @@ export function PostVisual({ visual, compact = false }: PostVisualProps) {
   if (visual.type === "flow-diagram-svg") {
     return (
       <figure className={`content-figure ${compact ? "content-figure--compact" : ""}`.trim()}>
-        <MediaFrame ratio="compact">
+        <MediaFrame ratio="compact" innerClassName="media-frame__inner--flow">
           <div className="flow-diagram">
             {visual.steps.map((step, index) => (
               <div key={step.label} className="flow-diagram__item">

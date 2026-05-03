@@ -235,6 +235,10 @@ a {
   aspect-ratio: 16 / 9;
 }
 
+.media-frame--compact .media-frame__inner--flow {
+  aspect-ratio: auto;
+}
+
 .illustration-card {
   @apply relative overflow-hidden rounded-[1.9rem] border bg-[#f4efe8];
   min-height: 360px;
@@ -584,15 +588,15 @@ a {
 }
 
 .flow-diagram {
-  @apply flex flex-col gap-4 p-6 md:flex-row md:items-center md:justify-between md:p-8;
+  @apply flex flex-col gap-4 p-5 md:flex-row md:items-stretch md:justify-between md:p-6;
 }
 
 .flow-diagram__item {
-  @apply flex flex-col gap-3 md:flex-row md:items-center;
+  @apply flex flex-col gap-3 md:flex-1 md:flex-row md:items-center;
 }
 
 .flow-diagram__box {
-  @apply rounded-[1.25rem] border bg-[#f6f7f7] px-5 py-4;
+  @apply h-full rounded-[1.25rem] border bg-[#f6f7f7] px-5 py-4;
   border-color: rgba(23, 23, 23, 0.08);
 }
 
