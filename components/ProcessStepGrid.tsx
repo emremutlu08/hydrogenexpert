@@ -1,3 +1,5 @@
+import type { CSSProperties } from "react";
+
 import { StepBadge } from "@/components/StepBadge";
 
 interface ProcessStepItem {
@@ -19,7 +21,13 @@ export function ProcessStepGrid({
   return (
     <div className={columnsClassName}>
       {items.map((item, index) => (
-        <div key={item.title} className="agency-grid-card card-rail">
+        <div
+          key={item.title}
+          className="agency-grid-card card-rail"
+          data-animate="fade-up"
+          data-tilt
+          style={{ "--motion-delay": `${index * 70}ms` } as CSSProperties}
+        >
           {useCircularBadge ? (
             <div className="feature-number">{index + 1}</div>
           ) : (

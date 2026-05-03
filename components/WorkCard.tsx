@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 interface WorkCardProps {
   href: string;
@@ -10,6 +10,7 @@ interface WorkCardProps {
   className?: string;
   mediaFooter?: ReactNode;
   eyebrowClassName?: string;
+  style?: CSSProperties;
 }
 
 export function WorkCard({
@@ -21,13 +22,14 @@ export function WorkCard({
   className,
   mediaFooter,
   eyebrowClassName,
+  style,
 }: WorkCardProps) {
   const rootClassName = ["agency-grid-card", "transition", "hover:-translate-y-0.5", "hover:border-[#10b981]", className]
     .filter(Boolean)
     .join(" ");
 
   return (
-    <Link href={href} className={rootClassName}>
+    <Link href={href} className={rootClassName} style={style} data-animate="scale-in" data-tilt>
       {media}
       <div className="work-card__brand-zone">
         {mediaFooter ? mediaFooter : <span aria-hidden="true" className="block h-7 w-28" />}

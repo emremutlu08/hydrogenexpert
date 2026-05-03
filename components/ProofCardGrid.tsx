@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 import { ProofCard } from "@/components/ProofCard";
 
@@ -30,6 +30,7 @@ export function ProofCardGrid({
           title={item.title}
           body={item.body}
           media={item.media}
+          style={{ "--motion-delay": `${index * 55}ms` } as CSSProperties}
         />
       ))}
     </div>

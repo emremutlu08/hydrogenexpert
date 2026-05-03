@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 interface ProofCardProps {
   eyebrow: string;
@@ -6,6 +6,7 @@ interface ProofCardProps {
   body: ReactNode;
   className?: string;
   media?: ReactNode;
+  style?: CSSProperties;
 }
 
 export function ProofCard({
@@ -14,11 +15,12 @@ export function ProofCard({
   body,
   className,
   media,
+  style,
 }: ProofCardProps) {
   const rootClassName = ["proof-card", className].filter(Boolean).join(" ");
 
   return (
-    <article className={rootClassName}>
+    <article className={rootClassName} style={style} data-animate="scale-in" data-tilt>
       <div className="proof-card__header">
         <p className="card-label-block">{eyebrow}</p>
         {media ? <div className="proof-card__media">{media}</div> : null}

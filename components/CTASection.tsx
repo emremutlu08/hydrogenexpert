@@ -17,7 +17,7 @@ export function CTASection({
   sourceKind = "shared_cta",
 }: CTASectionProps) {
   return (
-    <section className="hero-card fade-up">
+    <section className="hero-card" data-animate="fade-up">
       <div className="ambient-orb right-[-3rem] top-[-2rem] h-40 w-40 bg-[#10b981]/30" />
       <div className="relative grid gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-start">
         <div className="space-y-6">

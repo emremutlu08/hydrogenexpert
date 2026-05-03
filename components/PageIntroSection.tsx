@@ -22,7 +22,7 @@ export function PageIntroSection({
   headingAs = "h1",
 }: PageIntroSectionProps) {
   return (
-    <section className={`surface-card space-y-5 ${className ?? ""}`.trim()}>
+    <section className={`surface-card space-y-5 ${className ?? ""}`.trim()} data-animate="fade-up">
       <SectionHeader
         eyebrow={eyebrow}
         title={title}
