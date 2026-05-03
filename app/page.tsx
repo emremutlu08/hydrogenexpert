@@ -22,9 +22,9 @@ import { asSchemaArray, buildFaqPageSchema } from "@/lib/structured-data";
 const LAST_UPDATED = "2026-04-21";
 
 export const metadata = buildMetadata({
-  title: "Shopify Hydrogen Developer | Emre Mutlu",
+  title: "Shopify Hydrogen Developer for Shopify Plus Brands | Emre Mutlu",
   description:
-    "Hire Emre Mutlu for Shopify Hydrogen strategy, cost planning, case studies, and custom storefront delivery for Shopify Plus brands in the US market.",
+    "Hire a senior Shopify Hydrogen developer for Shopify Plus storefront audits, Liquid-to-Hydrogen migration, custom builds, performance optimization, and launch support.",
   path: "/",
   ogImage: absoluteUrl("/og-home.svg"),
 });

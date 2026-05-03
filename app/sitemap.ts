@@ -1,7 +1,8 @@
 import type { MetadataRoute } from "next";
 
+import { CASE_STUDIES } from "@/data/caseStudies";
 import { getPublishedPosts } from "@/lib/posts";
-import { hasMeaningfulServicesContent } from "@/lib/services";
+import { hasMeaningfulServicesContent, SERVICE_PACKAGES } from "@/lib/services";
 import { getSiteUrl } from "@/lib/site";
 
 const LAST_SIGNIFICANT_UPDATE = new Date("2026-04-25T00:00:00.000Z");
@@ -22,7 +23,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   if (hasMeaningfulServicesContent()) {
     staticRoutes.splice(1, 0, "/services");
+    staticRoutes.push(...SERVICE_PACKAGES.map((servicePackage) => servicePackage.pagePath));
   }
+
+  staticRoutes.push(...CASE_STUDIES.map((study) => `/case-studies/${study.slug}`));
 
   if (posts.length > 0) {
     staticRoutes.push("/blog");

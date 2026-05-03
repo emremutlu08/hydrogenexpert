@@ -19,7 +19,7 @@ import { asSchemaArray, buildFaqPageSchema } from "@/lib/structured-data";
 export const metadata = buildMetadata({
   title: "Hire a Shopify Hydrogen Developer | Emre Mutlu",
   description:
-    "Hire Emre Mutlu for Shopify Hydrogen strategy, implementation, and storefront advisory for Shopify Plus brands that need direct senior delivery.",
+    "Hire Emre Mutlu for senior Shopify Hydrogen audits, Liquid-to-Hydrogen migration, custom storefront builds, performance optimization, and direct launch support.",
   path: "/hire-me",
 });
 
@@ -106,6 +106,15 @@ const stats: Array<{ value: string; label: string; href?: string }> = [
   { value: "First", label: "production Hydrogen storefront in Turkey" },
 ];
 
+const proofSnapshot = [
+  "3 production Shopify Hydrogen storefronts",
+  "400K+ users on EveShop",
+  "Top Rated Plus on Upwork",
+  "1,666+ Upwork hours",
+  "32K+ LinkedIn followers",
+  "Creator of the first English Shopify Hydrogen course",
+] as const;
+
 const faqs = [
   {
     question: "What does working with Emre usually look like?",
@@ -143,6 +152,20 @@ export default function HireMePage() {
             <p key={paragraph}>{paragraph}</p>
           ))}
         </FounderCard>
+
+        <section className="card-soft grid gap-6 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
+          <div>
+            <p className="eyebrow">Proof snapshot</p>
+            <h2 className="subsection-title mt-3">The short version buyers usually need.</h2>
+          </div>
+          <ul className="editorial-list">
+            {proofSnapshot.map((item) => (
+              <li key={item}>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
 
         <section className="surface-card space-y-6">
           <SectionHeader

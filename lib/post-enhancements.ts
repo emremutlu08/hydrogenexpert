@@ -60,9 +60,14 @@ const DEFAULT_INTERNAL_LINKS: PostReferenceLink[] = [
     note: "Use this when the technical conversation needs a realistic budget range and timeline framing.",
   },
   {
-    href: "/case-studies",
+    href: "/case-studies/eveshop-shopify-hydrogen",
     label: "Production case studies",
-    note: "See how Hydrogen decisions played out across real storefronts with different constraints.",
+    note: "See how Hydrogen decisions played out on a production retail storefront with real operating constraints.",
+  },
+  {
+    href: "/shopify-hydrogen-audit",
+    label: "Shopify Hydrogen audit",
+    note: "Use this when the storefront needs a focused SEO, performance, and migration-risk review.",
   },
   {
     href: "/hire-me",
@@ -77,6 +82,202 @@ const DEFAULT_INTERNAL_LINKS: PostReferenceLink[] = [
 ];
 
 export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
+  "shopify-hydrogen-vs-liquid": {
+    heroVisual: { type: "none" },
+    faq: [
+      {
+        question: "Is Shopify Hydrogen better than Liquid?",
+        answer:
+          "Not automatically. Hydrogen is better when custom UX, performance architecture, and feature velocity justify the operational cost. Liquid is usually better when a theme can still solve the business problem cleanly.",
+      },
+      {
+        question: "When should a Shopify Plus brand stay on Liquid?",
+        answer:
+          "Stay on Liquid when the main issues are theme quality, app sprawl, content structure, or focused UX fixes that do not require a custom storefront application.",
+      },
+    ],
+    internalLinks: [
+      {
+        href: "/when-not-to-use-hydrogen",
+        label: "When not to use Hydrogen",
+        note: "The clearest internal page for cases where Liquid is still the better move.",
+      },
+      {
+        href: "/shopify-hydrogen-audit",
+        label: "Shopify Hydrogen audit",
+        note: "Use this before choosing between Liquid cleanup and Hydrogen migration.",
+      },
+      {
+        href: "/liquid-to-hydrogen-migration",
+        label: "Liquid to Hydrogen migration",
+        note: "The commercial service path when the comparison points toward migration.",
+      },
+    ],
+  },
+  "shopify-hydrogen-nextjs": {
+    heroVisual: { type: "none" },
+    faq: [
+      {
+        question: "Is Shopify Hydrogen the same thing as Next.js?",
+        answer:
+          "No. Hydrogen is Shopify's React framework for custom storefronts. Next.js is a general React framework. The right choice depends on Shopify integration needs, hosting, team preferences, and storefront architecture.",
+      },
+    ],
+    internalLinks: [
+      {
+        href: "/custom-shopify-hydrogen-storefront",
+        label: "Custom Shopify Hydrogen storefront",
+        note: "Use this when the comparison leads to a Hydrogen build path.",
+      },
+      {
+        href: "/shopify-hydrogen-seo-guide",
+        label: "Shopify Hydrogen SEO guide",
+        note: "Use this for crawl, metadata, canonical, and structured-data decisions in Hydrogen.",
+      },
+    ],
+    externalLinks: [
+      {
+        href: "https://shopify.dev/docs/storefronts/headless/hydrogen",
+        label: "Shopify Hydrogen documentation",
+        note: "Official Shopify documentation for Hydrogen storefront development.",
+      },
+      {
+        href: "https://nextjs.org/docs",
+        label: "Next.js documentation",
+        note: "Official Next.js documentation for the general React framework comparison point.",
+      },
+    ],
+  },
+  "liquid-to-hydrogen-migration-checklist": {
+    heroVisual: { type: "none" },
+    faq: [
+      {
+        question: "What should a Liquid to Hydrogen migration checklist include?",
+        answer:
+          "It should cover routes, redirects, canonical URLs, product and collection templates, analytics, app replacements, cart and checkout handoff, structured data, QA, and launch rollback planning.",
+      },
+    ],
+    internalLinks: [
+      {
+        href: "/liquid-to-hydrogen-migration",
+        label: "Liquid to Hydrogen migration service",
+        note: "The commercial landing page for brands ready to scope the migration.",
+      },
+      {
+        href: "/shopify-hydrogen-audit",
+        label: "Shopify Hydrogen audit",
+        note: "Use this if the migration checklist exposes too many unresolved risks.",
+      },
+      {
+        href: "/cost",
+        label: "Shopify Hydrogen cost",
+        note: "Use this to translate migration complexity into budget range.",
+      },
+    ],
+  },
+  "shopify-hydrogen-performance-checklist": {
+    heroVisual: { type: "none" },
+    faq: [
+      {
+        question: "What matters most in Shopify Hydrogen performance?",
+        answer:
+          "Start with server-rendered primary content, focused Storefront API queries, intentional caching, image loading, third-party script control, and mobile Core Web Vitals.",
+      },
+    ],
+    internalLinks: [
+      {
+        href: "/shopify-hydrogen-performance-optimization",
+        label: "Hydrogen performance optimization",
+        note: "The service page for live storefront cleanup.",
+      },
+      {
+        href: "/blog/cut-homepage-load-time-from-5s-to-2s-shopify-hydrogen",
+        label: "Homepage performance case note",
+        note: "A related production note about moving primary data back into SSR.",
+      },
+    ],
+  },
+  "shopify-hydrogen-seo-checklist": {
+    heroVisual: { type: "none" },
+    faq: [
+      {
+        question: "What belongs in a Shopify Hydrogen SEO checklist?",
+        answer:
+          "Check route metadata, canonical URLs, sitemap and robots output, JSON-LD, server-rendered content, product state consistency, no-JavaScript rendering, and internal links.",
+      },
+    ],
+    internalLinks: [
+      {
+        href: "/shopify-hydrogen-seo-guide",
+        label: "Shopify Hydrogen SEO guide",
+        note: "The main HydrogenExpert SEO pillar page.",
+      },
+      {
+        href: "/shopify-hydrogen-audit",
+        label: "Shopify Hydrogen audit",
+        note: "Use this when checklist issues need a senior review.",
+      },
+      {
+        href: "/shopify-hydrogen-performance-optimization",
+        label: "Hydrogen SEO and performance optimization",
+        note: "The service path for existing Hydrogen SEO fixes.",
+      },
+    ],
+  },
+  "shopify-plus-hydrogen": {
+    heroVisual: { type: "none" },
+    faq: [
+      {
+        question: "Does every Shopify Plus brand need Hydrogen?",
+        answer:
+          "No. Shopify Plus makes Hydrogen more plausible because brands often have bigger UX, integration, and performance needs, but the business case still has to justify the custom storefront.",
+      },
+    ],
+    internalLinks: [
+      {
+        href: "/shopify-hydrogen-audit",
+        label: "Shopify Hydrogen audit for Plus brands",
+        note: "Start here when a Plus team needs a business-first Hydrogen decision.",
+      },
+      {
+        href: "/custom-shopify-hydrogen-storefront",
+        label: "Custom Shopify Hydrogen storefront",
+        note: "Use this when Plus-level needs justify custom storefront development.",
+      },
+      {
+        href: "/case-studies/eveshop-shopify-hydrogen",
+        label: "Production retail case study",
+        note: "A retail-scale context for production Hydrogen work.",
+      },
+    ],
+  },
+  "shopify-hydrogen-developer-vs-agency": {
+    heroVisual: { type: "none" },
+    faq: [
+      {
+        question: "Should I hire a Shopify Hydrogen developer or an agency?",
+        answer:
+          "Hire a senior specialist when you need direct strategy and implementation. Hire an agency when the scope requires a larger team, broader creative services, or ongoing account management.",
+      },
+    ],
+    internalLinks: [
+      {
+        href: "/hire-me",
+        label: "Hire a Shopify Hydrogen developer",
+        note: "The direct path for senior specialist delivery.",
+      },
+      {
+        href: "/services",
+        label: "Shopify Hydrogen services",
+        note: "See audit, migration, build, optimization, and support paths.",
+      },
+      {
+        href: "/shopify-hydrogen-support-retainer",
+        label: "Hydrogen support retainer",
+        note: "Use this when the team needs ongoing senior help without a full agency layer.",
+      },
+    ],
+  },
   "shopify-hydrogen-product-description-ssr-seo": {
     heroVisual: {
       type: "flow-diagram-svg",
@@ -134,7 +335,7 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
         note: "A related production note about moving primary homepage data out of client-side effects.",
       },
       {
-        href: "/services",
+        href: "/shopify-hydrogen-performance-optimization",
         label: "Hydrogen performance, SEO, and UX optimization",
         note: "The service path for existing Hydrogen storefronts where crawlability, speed, or UX has drifted.",
       },
@@ -214,12 +415,12 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
         note: "Use this when page-specific content needs to stay crawlable, canonical, and structured.",
       },
       {
-        href: "/services",
+        href: "/custom-shopify-hydrogen-storefront",
         label: "Shopify Hydrogen services",
-        note: "See the audit, migration, build, optimization, and support paths for Hydrogen storefronts.",
+        note: "Use this when merchant-editable content is part of a broader custom storefront build.",
       },
       {
-        href: "/case-studies#bayam",
+        href: "/case-studies/bayam-jewelry-shopify-hydrogen",
         label: "Bayam Jewelry case study",
         note: "The broader context for luxury catalog and showroom-led Hydrogen storefront work.",
       },
@@ -363,7 +564,7 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
         note: "Use this when you need the commercial range behind a more serious storefront discussion.",
       },
       {
-        href: "/case-studies",
+        href: "/case-studies/eveshop-shopify-hydrogen",
         label: "Production case studies",
         note: "See where Hydrogen was used on real storefronts with different catalogs, teams, and constraints.",
       },

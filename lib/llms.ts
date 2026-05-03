@@ -1,5 +1,7 @@
 import { OWNER, absoluteUrl, getSiteUrl } from "@/lib/site";
 import { getPublishedPosts } from "@/lib/posts";
+import { CASE_STUDIES } from "@/data/caseStudies";
+import { SERVICE_PACKAGES } from "@/lib/services";
 
 function buildHeader() {
   const host = new URL(getSiteUrl()).host;
@@ -28,14 +30,24 @@ function buildSummary() {
 }
 
 function buildPageIndex() {
+  const serviceLines = SERVICE_PACKAGES.map(
+    (servicePackage) => `- ${servicePackage.name}: ${absoluteUrl(servicePackage.pagePath)}`,
+  );
+  const caseStudyLines = CASE_STUDIES.map(
+    (study) => `- ${study.clientName}: ${absoluteUrl(`/case-studies/${study.slug}`)}`,
+  );
+
   return [
     "## Core pages",
     "",
     `- Home: ${absoluteUrl("/")}`,
+    `- Services: ${absoluteUrl("/services")}`,
+    ...serviceLines,
     `- What Is Hydrogen: ${absoluteUrl("/what-is-hydrogen")}`,
     `- Should I Use It: ${absoluteUrl("/should-i-use-it")}`,
     `- Cost: ${absoluteUrl("/cost")}`,
     `- Case Studies: ${absoluteUrl("/case-studies")}`,
+    ...caseStudyLines,
     `- Hire Me: ${absoluteUrl("/hire-me")}`,
     `- Blog: ${absoluteUrl("/blog")}`,
     "",

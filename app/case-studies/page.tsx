@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { CTASection } from "@/components/CTASection";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CaseStudyHero } from "@/components/case-study/CaseStudyHero";
@@ -20,7 +22,7 @@ import {
 } from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
-  title: "Shopify Hydrogen Case Studies for Shopify Plus Brands",
+  title: "Shopify Hydrogen Case Studies: EveShop, Bayam Jewelry, Rebel Bunny",
   description:
     "Production Shopify Hydrogen case studies across retail, luxury ecommerce, and premium DTC with only approved proof shown on the page.",
   path: "/case-studies",
@@ -74,7 +76,7 @@ export default function CaseStudiesPage() {
           <SectionHeader
             eyebrow="Selected work"
             title="Jump straight to the storefront pressure that looks most like yours."
-            description="The preview cards stay as anchor links so you can move directly into EveShop, Bayam Jewelry, or Rebel Bunny Matcha."
+            description="Each case now has a dedicated URL for deeper context, technical decisions, proof slots, and launch constraints."
           />
           <SelectedWorkGrid />
         </section>
@@ -91,6 +93,12 @@ export default function CaseStudiesPage() {
                 logo={study.logo}
                 heroImage={study.heroImage}
               />
+              <Link
+                href={`/case-studies/${study.slug}`}
+                className="inline-flex rounded-full bg-[#171717] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#10b981]"
+              >
+                Read full case study
+              </Link>
 
               <div className="grid gap-x-8 gap-y-10 xl:grid-cols-2 xl:items-start">
                 <div>
