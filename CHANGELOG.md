@@ -17,7 +17,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 - PR: [#2 Add operating rules and changelog workflow](https://github.com/emremutlu08/hydrogenexpert/pull/2)
 - Branch: `codex/add-operating-rules`
-- Deployment: Pending production deploy for documentation-only workflow update.
+- Deployment: [Production deploy](https://hydrogenexpert-b8krgcqj8-emremutlu8s-projects.vercel.app) aliased to `https://hydrogenexpert.co`.
 - Summary:
   - Added `OPERATING_RULES.md` to define how Codex should work in this repository.
   - Added PR-first branch workflow, automatic validation/deploy expectation, and changelog requirements.
