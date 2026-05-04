@@ -12,6 +12,14 @@
   --dna-muted: #5f6368;
   --dna-panel: #f6f7f7;
   --dna-shadow: 0 24px 60px -42px rgba(15, 23, 42, 0.18);
+  --dna-shadow-soft: 0 20px 44px -36px rgba(15, 23, 42, 0.18);
+  --dna-shadow-strong: 0 42px 90px -54px rgba(15, 23, 42, 0.48);
+  --dna-radius-sm: 1.1rem;
+  --dna-radius-md: 1.25rem;
+  --dna-radius-lg: 1.45rem;
+  --dna-radius-xl: 1.6rem;
+  --dna-transition-duration: 180ms;
+  --dna-transition-easing: ease;
 }
 
 @theme inline {
@@ -28,8 +36,7 @@
 *,
 *::before,
 *::after {
-  animation: none !important;
-  transition: none !important;
+  box-sizing: inherit;
 }
 
 html {
@@ -48,6 +55,32 @@ body {
 
 a {
   text-decoration: none;
+}
+
+a,
+button,
+summary,
+input,
+textarea,
+select {
+  transition-duration: var(--dna-transition-duration);
+  transition-timing-function: var(--dna-transition-easing);
+}
+
+:where(a, button, summary, input, textarea, select, [role="button"]):focus-visible {
+  outline: 2px solid var(--dna-accent);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 .page-shell {
@@ -178,9 +211,9 @@ a {
 
 .card-soft {
   @apply rounded-[1.6rem] border p-7 md:p-10;
-  border-color: rgba(23, 23, 23, 0.08);
+  border-color: var(--dna-border);
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(246, 247, 247, 0.96));
-  box-shadow: 0 20px 44px -36px rgba(15, 23, 42, 0.18);
+  box-shadow: var(--dna-shadow-soft);
 }
 
 .hero-card {
@@ -189,13 +222,13 @@ a {
   background:
     linear-gradient(180deg, rgba(16, 185, 129, 0.14), transparent 24%),
     linear-gradient(135deg, #202124 0%, #111111 74%);
-  box-shadow: 0 42px 90px -54px rgba(15, 23, 42, 0.48);
+  box-shadow: var(--dna-shadow-strong);
 }
 
 .proof-card {
   @apply flex h-full min-h-[16.5rem] flex-col rounded-[1.45rem] border bg-white p-6 md:p-8;
-  border-color: rgba(23, 23, 23, 0.08);
-  box-shadow: 0 24px 48px -38px rgba(15, 23, 42, 0.18);
+  border-color: var(--dna-border);
+  box-shadow: var(--dna-shadow-soft);
 }
 
 .proof-card__header {
@@ -363,7 +396,7 @@ a {
 
 .surface-card {
   @apply rounded-[1.7rem] border bg-white p-7 md:p-11;
-  border-color: rgba(23, 23, 23, 0.08);
+  border-color: var(--dna-border);
   box-shadow: 0 30px 60px -42px rgba(15, 23, 42, 0.18);
 }
 
@@ -419,7 +452,7 @@ a {
 }
 
 .site-header__brand {
-  @apply flex min-w-0 items-center gap-3 text-[#171717];
+  @apply flex min-h-11 min-w-0 items-center gap-3 text-[#171717];
 }
 
 .site-header__nav {
@@ -441,7 +474,7 @@ a {
 }
 
 .site-header__nav-link {
-  @apply flex shrink-0 items-center justify-center whitespace-nowrap rounded-full border border-black/8 bg-[#f6f7f7] px-3 py-2 text-center text-[0.69rem] font-semibold uppercase tracking-[0.12em] text-neutral-600 transition hover:border-[#10b981] hover:text-[#10b981] lg:px-5 lg:py-3 lg:text-[0.72rem] lg:tracking-[0.14em];
+  @apply flex min-h-11 shrink-0 items-center justify-center whitespace-nowrap rounded-full border border-black/8 bg-[#f6f7f7] px-4 py-2.5 text-center text-[0.69rem] font-semibold uppercase tracking-[0.12em] text-neutral-600 transition-colors hover:border-[#10b981] hover:text-[#10b981] lg:px-5 lg:py-3 lg:text-[0.72rem] lg:tracking-[0.14em];
 }
 
 .work-card__brand-zone {
@@ -620,7 +653,10 @@ a {
 }
 
 .lead-form-card {
-  @apply min-w-0 rounded-[1.45rem] border border-white/12 bg-white/5 p-5 md:p-8;
+  @apply min-w-0 rounded-[1.45rem] border border-white/12 bg-[#171717] p-5 text-white shadow-[0_30px_70px_-48px_rgba(15,23,42,0.55)] md:p-8;
+  background:
+    linear-gradient(180deg, rgba(16, 185, 129, 0.12), transparent 28%),
+    linear-gradient(135deg, #1f2022 0%, #111111 74%);
 }
 
 .lead-form-layout {
@@ -644,12 +680,13 @@ a {
 }
 
 .lead-form-field span {
-  @apply text-[0.72rem] font-bold uppercase tracking-[0.16em] text-neutral-400;
+  @apply text-[0.72rem] font-bold uppercase tracking-[0.16em] text-neutral-300;
 }
 
 .lead-form-field input,
 .lead-form-field textarea {
-  @apply w-full rounded-[1.15rem] border border-white/12 bg-black/20 px-4 py-4 text-sm text-white outline-none transition placeholder:text-neutral-500 focus:border-[#10b981] focus:bg-black/28;
+  @apply w-full rounded-[1.15rem] border border-white/18 bg-white/[0.08] px-4 py-4 text-sm text-white outline-none transition-colors placeholder:text-neutral-400 focus:border-[#10b981] focus:bg-white/[0.12];
+  min-height: 44px;
 }
 
 .lead-form-actions {
@@ -677,7 +714,7 @@ a {
 }
 
 .authority-link-card {
-  @apply rounded-[1.2rem] border border-black/8 bg-white p-5 transition hover:border-[#10b981];
+  @apply rounded-[1.2rem] border border-black/8 bg-white p-5 transition-colors hover:border-[#10b981];
 }
 
 .authority-link-card__label {

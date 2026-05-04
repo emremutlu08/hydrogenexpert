@@ -122,7 +122,7 @@ export function LeadCaptureForm({
         <button
           type="submit"
           disabled={status === "submitting"}
-          className="inline-flex items-center rounded-full bg-[#10b981] px-5 py-3 text-sm font-semibold text-white transition hover:bg-white hover:text-[#171717] disabled:cursor-not-allowed disabled:opacity-70"
+          className="inline-flex min-h-11 items-center rounded-full bg-[#10b981] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-[#171717] disabled:cursor-not-allowed disabled:opacity-70"
         >
           {status === "submitting" ? "Sending..." : "Send project note"}
         </button>

@@ -13,7 +13,7 @@ function SocialLink({
 }) {
   if (!href) {
     return (
-      <span className="rounded-full border border-white/14 px-4 py-2 text-sm font-medium text-neutral-400">
+      <span className="inline-flex min-h-11 items-center rounded-full border border-white/14 px-4 py-2 text-sm font-medium text-neutral-400">
         {label}
       </span>
     );
@@ -24,7 +24,7 @@ function SocialLink({
       href={href}
       target="_blank"
       rel="noreferrer"
-      className="rounded-full border border-white/14 px-4 py-2 text-sm font-medium text-white transition hover:border-[#10b981] hover:text-[#8df1cb]"
+      className="inline-flex min-h-11 items-center rounded-full border border-white/14 px-4 py-2 text-sm font-medium text-white transition-colors hover:border-[#10b981] hover:text-[#8df1cb]"
     >
       {label}
     </Link>
@@ -77,7 +77,7 @@ function FooterCard({
               href={item.href}
               target={item.external ? "_blank" : undefined}
               rel={item.external ? "noreferrer" : undefined}
-              className="transition hover:text-[#10b981]"
+              className="inline-flex min-h-8 items-center transition-colors hover:text-[#10b981]"
             >
               {item.label}
             </Link>
@@ -153,19 +153,19 @@ export function Footer({ navItems }: FooterProps) {
                   href={OWNER.linkedIn}
                   target="_blank"
                   rel="noreferrer"
-                  className="rounded-full bg-[#10b981] px-5 py-3 text-sm font-semibold text-white transition hover:bg-white hover:text-[#171717]"
+                  className="inline-flex min-h-11 items-center rounded-full bg-[#10b981] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-[#171717]"
                 >
                   Message on LinkedIn
                 </Link>
                 <Link
                   href="/hire-me"
-                  className="rounded-full border border-white/14 px-5 py-3 text-sm font-semibold text-white transition hover:border-[#10b981] hover:text-[#8df1cb]"
+                  className="inline-flex min-h-11 items-center rounded-full border border-white/14 px-5 py-3 text-sm font-semibold text-white transition-colors hover:border-[#10b981] hover:text-[#8df1cb]"
                 >
                   Hire Me
                 </Link>
                 <Link
                   href="#email-form"
-                  className="rounded-full border border-white/14 px-5 py-3 text-sm font-semibold text-white transition hover:border-[#10b981] hover:text-[#8df1cb]"
+                  className="inline-flex min-h-11 items-center rounded-full border border-white/14 px-5 py-3 text-sm font-semibold text-white transition-colors hover:border-[#10b981] hover:text-[#8df1cb]"
                 >
                   Email Brief
                 </Link>
