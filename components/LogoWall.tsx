@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { CSSProperties } from "react";
 
 import type { ClientLogo } from "@/data/clientLogos";
 import { hasPublicAsset } from "@/lib/public-assets";
@@ -15,11 +14,9 @@ interface LogoWallProps {
 function LogoWallItem({
   logo,
   variant,
-  index,
 }: {
   logo: ClientLogo;
   variant: NonNullable<LogoWallProps["variant"]>;
-  index: number;
 }) {
   const hasLogo = Boolean(logo.src && hasPublicAsset(logo.src));
   const imageClassName =
@@ -30,12 +27,7 @@ function LogoWallItem({
         : "object-contain";
 
   const content = (
-    <div
-      className="group relative flex h-[112px] items-center justify-center rounded-[1.3rem] border border-black/8 bg-white px-5 py-6 text-center transition hover:-translate-y-0.5 hover:border-[#10b981]"
-      data-animate="fade-up"
-      data-tilt
-      style={{ "--motion-delay": `${index * 40}ms` } as CSSProperties}
-    >
+    <div className="group relative flex h-[112px] items-center justify-center rounded-[1.3rem] border border-black/8 bg-white px-5 py-6 text-center hover:border-[#10b981]">
       {logo.isCurrent ? (
         <span className="absolute right-3 top-3 inline-flex h-2.5 w-2.5 rounded-full bg-[#10b981]" />
       ) : null}
@@ -79,15 +71,15 @@ export function LogoWall({
   subtitle,
 }: LogoWallProps) {
   return (
-    <section className="surface-card space-y-6" data-animate="fade-up">
+    <section className="surface-card space-y-6">
       <div className="max-w-3xl space-y-3">
         <p className="eyebrow">Client roster</p>
         <h2 className="section-heading">{title}</h2>
         {subtitle ? <p className="body-copy">{subtitle}</p> : null}
       </div>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-7">
-        {logos.map((logo, index) => (
-          <LogoWallItem key={logo.label} logo={logo} variant={variant} index={index} />
+        {logos.map((logo) => (
+          <LogoWallItem key={logo.label} logo={logo} variant={variant} />
         ))}
       </div>
     </section>

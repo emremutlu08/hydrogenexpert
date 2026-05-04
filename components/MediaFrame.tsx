@@ -24,7 +24,7 @@ export function MediaFrame({
   const bodyClassName = ["media-frame__inner", innerClassName].filter(Boolean).join(" ");
 
   return (
-    <div className={frameClassName} data-animate="scale-in">
+    <div className={frameClassName}>
       <div className={bodyClassName}>{children}</div>
     </div>
   );

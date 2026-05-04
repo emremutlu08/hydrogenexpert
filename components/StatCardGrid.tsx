@@ -1,4 +1,4 @@
-import type { CSSProperties, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 import { StatCard } from "@/components/StatCard";
 
@@ -30,7 +30,6 @@ export function StatCardGrid({
           label={item.label}
           href={item.href}
           external={item.external}
-          style={{ "--motion-delay": `${index * 55}ms` } as CSSProperties}
         />
       ))}
     </div>

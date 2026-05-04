@@ -9,7 +9,6 @@ import "./globals.css";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { JsonLd } from "@/components/JsonLd";
-import { MotionProvider } from "@/components/MotionProvider";
 import { getSiteNavigation } from "@/lib/navigation";
 import { OWNER, getSiteUrl } from "@/lib/site";
 import {
@@ -89,7 +88,6 @@ export default async function RootLayout({
       </head>
       <body className="bg-white text-slate-900 antialiased">
         <JsonLd data={rootSchema} />
-        <MotionProvider />
         <div className="min-h-screen overflow-x-hidden">
           <Header navItems={navItems} />
           <main>{children}</main>

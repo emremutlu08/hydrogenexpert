@@ -1,5 +1,4 @@
 import Link from "next/link";
-import type { CSSProperties } from "react";
 
 import { CTASection } from "@/components/CTASection";
 import { FaqSection } from "@/components/FaqSection";
@@ -313,20 +312,20 @@ export default function HomePage() {
       <div className="page-shell">
         <section className="space-y-8">
           <div className="mx-auto max-w-5xl space-y-7 text-center">
-            <p className="eyebrow justify-center" data-animate="fade-up">Senior Shopify Hydrogen development and advisory</p>
+            <p className="eyebrow justify-center">Senior Shopify Hydrogen development and advisory</p>
             <div className="space-y-3">
-              <h1 className="hero-statement" data-animate="fade-up" style={{ "--motion-delay": "70ms" } as CSSProperties}>
+              <h1 className="hero-statement">
                 Shopify Hydrogen developer for growing brands
               </h1>
-              <p className="hero-response" data-animate="fade-up" style={{ "--motion-delay": "140ms" } as CSSProperties}>
+              <p className="hero-response">
                 {"Your Shopify store works, but every new feature takes 3x longer than last year? That's when I come in."}
               </p>
             </div>
-            <p className="mx-auto max-w-3xl page-intro" data-animate="fade-up" style={{ "--motion-delay": "210ms" } as CSSProperties}>
+            <p className="mx-auto max-w-3xl page-intro">
               I help growth-minded Shopify Plus brands decide when Hydrogen is worth it, scope the
               right move, and ship production-grade storefronts without agency noise.
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-3" data-animate="fade-up" style={{ "--motion-delay": "280ms" } as CSSProperties}>
+            <div className="flex flex-wrap items-center justify-center gap-3">
               <Link
                 href="/hire-me"
                 className="rounded-full bg-[#171717] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#10b981]"
@@ -351,7 +350,7 @@ export default function HomePage() {
           subtitle="Current Shopify Plus Hydrogen clients highlighted."
         />
 
-        <section className="surface-card space-y-6" data-animate="fade-up">
+        <section className="surface-card space-y-6">
           <SectionHeader
             eyebrow="Selected work"
             title="Three production Shopify Hydrogen storefronts"
@@ -378,7 +377,7 @@ export default function HomePage() {
           right={<StatCardGrid items={homepageMetrics} columnsClassName="grid gap-4 sm:grid-cols-2 xl:grid-cols-3 xl:auto-rows-fr" />}
         />
 
-        <section id="process" className="surface-card space-y-6" data-animate="fade-up">
+        <section id="process" className="surface-card space-y-6">
           <SectionHeader
             eyebrow="Process"
             title="How working together usually goes"
@@ -388,7 +387,7 @@ export default function HomePage() {
           <ProcessStepGrid items={processSteps} />
         </section>
 
-        <section className="surface-card space-y-6" data-animate="fade-up">
+        <section className="surface-card space-y-6">
           <SectionHeader
             eyebrow="About Emre"
             title="Direct operator, direct context, direct accountability"
@@ -401,7 +400,7 @@ export default function HomePage() {
           </FounderCard>
         </section>
 
-        <section className="surface-card space-y-6" data-animate="fade-up">
+        <section className="surface-card space-y-6">
           <SectionHeader
             eyebrow="Teaching"
             title="Teaching Shopify Hydrogen in plain English"
@@ -415,7 +414,7 @@ export default function HomePage() {
           faqs={faqs}
         />
 
-        <section className="surface-card space-y-6" data-animate="fade-up">
+        <section className="surface-card space-y-6">
           <SectionHeader
             eyebrow="Technical resources"
             title="Start with the pages Google and merchants should understand first."
@@ -426,8 +425,7 @@ export default function HomePage() {
               <Link
                 key={resource.href}
                 href={resource.href}
-                className="rounded-[1.3rem] border border-black/8 bg-white p-5 transition hover:-translate-y-0.5 hover:border-[#10b981]"
-                data-animate="fade-up"
+                className="rounded-[1.3rem] border border-black/8 bg-white p-5 hover:border-[#10b981]"
               >
                 <h3 className="text-lg font-semibold text-[#171717]">{resource.title}</h3>
                 <p className="mt-3 text-sm leading-7 text-neutral-600">{resource.body}</p>
@@ -436,7 +434,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="surface-card" data-animate="fade-up">
+        <section className="surface-card">
           <div className="grid gap-8 lg:grid-cols-[0.44fr_0.56fr] lg:items-start">
             <div className="max-w-3xl">
               <p className="eyebrow">Sources</p>

@@ -30,7 +30,7 @@ export function SectionHeader({
   const HeadingTag = headingAs;
 
   return (
-    <div className={rootClassName} data-animate="fade-up">
+    <div className={rootClassName}>
       <div className="section-header__content">
         <p className={`eyebrow ${align === "center" ? "justify-center" : ""}`}>{eyebrow}</p>
         <HeadingTag className={titleClassName ?? "section-heading mt-3"}>{title}</HeadingTag>

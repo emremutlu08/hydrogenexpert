@@ -30,7 +30,7 @@ export function CaseStudyScreenshots({ screenshots }: CaseStudyScreenshotsProps)
             href={shot.src!}
             target="_blank"
             rel="noreferrer"
-            className="group overflow-hidden rounded-[1.4rem] border border-black/8 bg-white transition hover:-translate-y-0.5 hover:border-[#10b981]"
+            className="group overflow-hidden rounded-[1.4rem] border border-black/8 bg-white hover:border-[#10b981]"
           >
             <div className="relative aspect-[16/10] overflow-hidden">
               <Image
@@ -39,7 +39,7 @@ export function CaseStudyScreenshots({ screenshots }: CaseStudyScreenshotsProps)
                 title={shot.alt}
                 fill
                 sizes="(min-width: 1024px) 42vw, 100vw"
-                className="object-cover transition duration-300 group-hover:scale-[1.01]"
+                className="object-cover"
               />
             </div>
             {shot.caption ? (
