@@ -29,7 +29,7 @@ const personSchema = {
   name: OWNER.name,
   jobTitle: OWNER.title,
   description: OWNER.headline,
-  image: absoluteUrl("/emre-mutlu.webp"),
+  image: absoluteUrl("/emre-city-16x9.png"),
   sameAs: [OWNER.linkedIn, OWNER.upwork, OWNER.udemyUrl],
 };
 

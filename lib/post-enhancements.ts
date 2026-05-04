@@ -12,6 +12,8 @@ export type PostHeroVisual =
       src: string;
       alt: string;
       title: string;
+      width?: number;
+      height?: number;
       caption?: string;
     }
   | {
@@ -83,7 +85,14 @@ const DEFAULT_INTERNAL_LINKS: PostReferenceLink[] = [
 
 export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
   "shopify-hydrogen-vs-liquid": {
-    heroVisual: { type: "none" },
+    heroVisual: {
+      type: "code-card",
+      src: "/generated/blog/hydrogen-vs-liquid-cover.jpg",
+      alt: "Technical comparison visual showing classic Shopify theme architecture beside a custom Hydrogen storefront system.",
+      title: "Shopify Hydrogen vs Liquid technical comparison",
+      width: 1672,
+      height: 941,
+    },
     faq: [
       {
         question: "Is Shopify Hydrogen better than Liquid?",
@@ -115,7 +124,14 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
     ],
   },
   "shopify-hydrogen-nextjs": {
-    heroVisual: { type: "none" },
+    heroVisual: {
+      type: "code-card",
+      src: "/generated/blog/hydrogen-nextjs-cover.jpg",
+      alt: "Technical storefront architecture visual comparing Hydrogen commerce modules with a general Next.js application structure.",
+      title: "Shopify Hydrogen and Next.js architecture comparison",
+      width: 1672,
+      height: 941,
+    },
     faq: [
       {
         question: "Is Shopify Hydrogen the same thing as Next.js?",
@@ -149,7 +165,14 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
     ],
   },
   "liquid-to-hydrogen-migration-checklist": {
-    heroVisual: { type: "none" },
+    heroVisual: {
+      type: "code-card",
+      src: "/generated/blog/liquid-to-hydrogen-migration-checklist-cover.jpg",
+      alt: "Ecommerce migration control visual with storefront routes, redirects, QA checkpoints, and Hydrogen module planning.",
+      title: "Liquid to Hydrogen migration checklist visual",
+      width: 1672,
+      height: 941,
+    },
     faq: [
       {
         question: "What should a Liquid to Hydrogen migration checklist include?",
@@ -176,7 +199,14 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
     ],
   },
   "shopify-hydrogen-performance-checklist": {
-    heroVisual: { type: "none" },
+    heroVisual: {
+      type: "code-card",
+      src: "/generated/blog/hydrogen-performance-checklist-cover.jpg",
+      alt: "Hydrogen performance diagnostics visual with product grids, cache layers, optimized media tiles, and request timing panels.",
+      title: "Shopify Hydrogen performance checklist visual",
+      width: 1672,
+      height: 941,
+    },
     faq: [
       {
         question: "What matters most in Shopify Hydrogen performance?",
@@ -198,7 +228,14 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
     ],
   },
   "shopify-hydrogen-seo-checklist": {
-    heroVisual: { type: "none" },
+    heroVisual: {
+      type: "code-card",
+      src: "/generated/blog/hydrogen-seo-checklist-cover.jpg",
+      alt: "Hydrogen SEO architecture visual with crawl paths, canonical route cards, sitemap nodes, and structured data blocks.",
+      title: "Shopify Hydrogen SEO checklist visual",
+      width: 1672,
+      height: 941,
+    },
     faq: [
       {
         question: "What belongs in a Shopify Hydrogen SEO checklist?",
@@ -225,7 +262,14 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
     ],
   },
   "shopify-plus-hydrogen": {
-    heroVisual: { type: "none" },
+    heroVisual: {
+      type: "code-card",
+      src: "/generated/blog/shopify-plus-hydrogen-cover.jpg",
+      alt: "Enterprise ecommerce architecture visual for Shopify Plus Hydrogen with storefront modules and integration panels.",
+      title: "Shopify Plus Hydrogen architecture visual",
+      width: 1672,
+      height: 941,
+    },
     faq: [
       {
         question: "Does every Shopify Plus brand need Hydrogen?",
@@ -252,7 +296,14 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
     ],
   },
   "shopify-hydrogen-developer-vs-agency": {
-    heroVisual: { type: "none" },
+    heroVisual: {
+      type: "code-card",
+      src: "/generated/blog/hydrogen-developer-vs-agency-cover.jpg",
+      alt: "Shopify Hydrogen delivery model visual comparing direct senior engineering ownership with layered agency handoffs.",
+      title: "Shopify Hydrogen developer vs agency comparison visual",
+      width: 1672,
+      height: 941,
+    },
     faq: [
       {
         question: "Should I hire a Shopify Hydrogen developer or an agency?",

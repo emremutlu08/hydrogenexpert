@@ -29,25 +29,21 @@ export const clientLogos: readonly ClientLogo[] = [
     link: "/case-studies#rebel-bunny",
   },
   {
-    src: "/logos/atolye-stone.svg",
     alt: "Atolye Stone",
     label: "Atolye Stone",
     isCurrent: false,
   },
   {
-    src: "/logos/clohi.svg",
     alt: "Clohi",
     label: "Clohi",
     isCurrent: false,
   },
   {
-    src: "/logos/kiraz-ev.svg",
     alt: "Kiraz Ev",
     label: "Kiraz Ev",
     isCurrent: false,
   },
   {
-    src: "/logos/petkonak.svg",
     alt: "Petkonak",
     label: "Petkonak",
     isCurrent: false,
