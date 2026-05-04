@@ -17,7 +17,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 - PR: [#4 Update founder image and generated blog covers](https://github.com/emremutlu08/hydrogenexpert/pull/4)
 - Branch: `codex/update-emre-city-image`
-- Deployment: [Production deploy](https://hydrogenexpert-ogosnlxwo-emremutlu8s-projects.vercel.app) aliased to `https://hydrogenexpert.co`.
+- Deployment: [Production deploy](https://hydrogenexpert-qx2q2ycis-emremutlu8s-projects.vercel.app) aliased to `https://hydrogenexpert.co`.
 - Summary:
   - Added the new 16:9 founder portrait at `public/emre-city-16x9.png`.
   - Updated visible founder-card image usage on Home and Hire Me through the shared founder asset path.
@@ -54,6 +54,8 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - Local placeholder sweep over blog and case-study routes: `VISIBLE IMAGE AND PLACEHOLDER ISSUES none`
   - Live production crawl over known public routes: `LIVE SEO HTML ISSUES none`
   - Live generated image URL check: all seven `/generated/blog/*.jpg` assets returned `200`
+  - Live visible generated image check: 8 generated image instances rendered across `/blog` and the 4 published blog detail pages
+  - Live placeholder sweep over blog and case-study routes: `LIVE VISIBLE IMAGE AND PLACEHOLDER ISSUES none`
   - Playwright desktop/mobile checks for `/` and `/hire-me`: `VISUAL ISSUES none`
 - Manual follow-up:
   - Do not merge the PR unless Emre approves it.
