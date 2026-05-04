@@ -13,6 +13,40 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 - Verification:
 - Manual follow-up:
 
+## 2026-05-04
+
+- PR: [#3 Fix sitewide SEO audit issues](https://github.com/emremutlu08/hydrogenexpert/pull/3)
+- Branch: `codex/fix-sitewide-seo-audit`
+- Deployment: Pending production deployment.
+- Summary:
+  - Fixed missing image `title`, `loading`, `width`, and `height` attributes across shared image components and affected content pages.
+  - Shortened over-limit SEO titles and descriptions across public routes and generated blog metadata.
+  - Added a sitewide crawl verification pass covering known public routes, canonical tags, H1 count, and image attributes.
+- Files changed:
+  - `app/blog/[slug]/page.tsx`
+  - `app/case-studies/page.tsx`
+  - `app/cost/page.tsx`
+  - `app/page.tsx`
+  - `app/services/page.tsx`
+  - `app/what-is-hydrogen/page.tsx`
+  - `app/when-not-to-use-hydrogen/page.tsx`
+  - `components/Header.tsx`
+  - `components/Footer.tsx`
+  - `components/TechnicalFigure.tsx`
+  - `components/PostVisual.tsx`
+  - `components/IllustrationCard.tsx`
+  - `components/UdemyCourseCard.tsx`
+  - `components/case-study/CaseStudyHero.tsx`
+  - `components/case-study/CaseStudyScreenshots.tsx`
+  - `lib/curated-images.ts`
+- Verification:
+  - `npm run lint`
+  - `npm run build`
+  - Local production crawl over all known public routes: `ISSUES none`
+  - Playwright desktop/mobile checks on key pages: `VISUAL ISSUES none`
+- Manual follow-up:
+  - Do not merge the PR unless Emre approves it.
+
 ## 2026-05-03
 
 - PR: [#2 Add operating rules and changelog workflow](https://github.com/emremutlu08/hydrogenexpert/pull/2)
