@@ -12,8 +12,12 @@ import { formatPostContent } from "@/lib/post-content";
 import { buildPostMarkdown } from "@/lib/post-markdown";
 import { getPublishedPostBySlug, getPublishedPostSlugs } from "@/lib/posts";
 import { buildMetadata } from "@/lib/seo";
-import { OWNER, absoluteUrl } from "@/lib/site";
-import { asSchemaArray, buildBreadcrumbListSchema } from "@/lib/structured-data";
+import { OWNER, SITE_LOGO_PATH, SITE_NAME, absoluteUrl } from "@/lib/site";
+import {
+  asSchemaArray,
+  buildBreadcrumbListSchema,
+  buildPublisherSchema,
+} from "@/lib/structured-data";
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
@@ -109,6 +113,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     },
     url: absoluteUrl(`/blog/${post.slug}`),
     description: post.meta_description,
+    mainEntityOfPage: absoluteUrl(`/blog/${post.slug}`),
+    publisher: buildPublisherSchema({
+      name: SITE_NAME,
+      url: absoluteUrl("/"),
+      logo: absoluteUrl(SITE_LOGO_PATH),
+    }),
     image: enhancement.ogImage ? absoluteUrl(enhancement.ogImage) : undefined,
   };
 

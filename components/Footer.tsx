@@ -43,6 +43,7 @@ const SERVICE_ITEMS = [
 ] as const;
 
 const RESOURCE_ITEMS = [
+  { href: "/about", label: "About" },
   { href: "/what-is-hydrogen", label: "What Is Shopify Hydrogen?" },
   { href: "/should-i-use-it", label: "Should I Use Hydrogen?" },
   { href: "/when-not-to-use-hydrogen", label: "When Not to Use Hydrogen" },
@@ -55,6 +56,13 @@ const PROOF_ITEMS = [
   { href: "/case-studies/eveshop-shopify-hydrogen", label: "EveShop" },
   { href: "/case-studies/bayam-jewelry-shopify-hydrogen", label: "Bayam Jewelry" },
   { href: "/case-studies/rebel-bunny-shopify-hydrogen", label: "Rebel Bunny" },
+] as const;
+
+const TRUST_ITEMS = [
+  { href: "/contact", label: "Contact" },
+  { href: "/privacy", label: "Privacy" },
+  { href: "/cookies", label: "Cookies" },
+  { href: "/terms", label: "Terms" },
 ] as const;
 
 function FooterCard({
@@ -173,7 +181,7 @@ export function Footer({ navItems }: FooterProps) {
             </div>
           </div>
 
-          <div className="mt-8 grid gap-6 border-t border-white/10 pt-7 md:grid-cols-3">
+          <div className="mt-8 grid gap-6 border-t border-white/10 pt-7 md:grid-cols-4">
             <FooterCard title="Services" items={SERVICE_ITEMS} />
             <FooterCard
               title="Resources"
@@ -189,6 +197,7 @@ export function Footer({ navItems }: FooterProps) {
                 { href: OWNER.upwork, label: "Upwork Profile", external: true },
               ]}
             />
+            <FooterCard title="Trust" items={TRUST_ITEMS} />
           </div>
         </div>
       </div>

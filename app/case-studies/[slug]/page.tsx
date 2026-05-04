@@ -15,7 +15,7 @@ import {
   getCaseStudyBySlug,
 } from "@/data/caseStudies";
 import { buildMetadata } from "@/lib/seo";
-import { absoluteUrl, OWNER } from "@/lib/site";
+import { absoluteUrl, OWNER, SITE_LOGO_PATH } from "@/lib/site";
 import {
   asSchemaArray,
   buildBreadcrumbListSchema,
@@ -86,6 +86,12 @@ export default async function CaseStudyDetailPage({
     authorName: OWNER.name,
     datePublished: LAST_UPDATED,
     dateModified: LAST_UPDATED,
+    image: study.heroImage?.src
+      ? absoluteUrl(study.heroImage.src)
+      : study.logo.src
+        ? absoluteUrl(study.logo.src)
+        : undefined,
+    publisherLogo: absoluteUrl(SITE_LOGO_PATH),
   });
   const creativeWorkSchema = buildCreativeWorkSchema({
     name: `${study.clientName} Shopify Hydrogen case study`,

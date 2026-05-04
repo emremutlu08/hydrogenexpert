@@ -12,6 +12,10 @@ export const OWNER = {
     "Creator of the world's first English Shopify Hydrogen course on Udemy.",
 } as const;
 
+export const SITE_NAME = "HydrogenExpert";
+export const SITE_LOGO_PATH = "/brand/hydrogenexpert-logo-icon.png";
+export const FOUNDER_IMAGE_PATH = "/emre-mutlu.webp";
+
 export const UPWORK_PROFILE = {
   title: "Shopify Hydrogen & Liquid Expert | Plus Stores | Headless Dev",
   hourlyRate: "$32/hr",
@@ -22,6 +26,12 @@ export const UPWORK_PROFILE = {
   totalJobs: "6",
   lastVerified: "2026-05-03",
 } as const;
+
+export const VERIFIED_PROFILE_URLS = [
+  OWNER.linkedIn,
+  OWNER.upwork,
+  OWNER.udemyUrl,
+] as const;
 
 export const SITE_KEYWORDS = [
   "Shopify Hydrogen developer",
