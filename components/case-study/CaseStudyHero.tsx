@@ -47,9 +47,11 @@ export function CaseStudyHero({
                 src={logo.src}
                 alt={logo.alt}
                 title={logo.alt}
-                fill
+                width={144}
+                height={40}
+                loading="lazy"
                 sizes="144px"
-                className="object-contain object-left"
+                className="h-full w-full object-contain object-left"
               />
             </div>
           ) : (
@@ -94,9 +96,11 @@ export function CaseStudyHero({
                 src={heroImage.src}
                 alt={heroImage.alt}
                 title={heroImage.alt}
-                fill
+                width={1200}
+                height={heroImage.src.endsWith(".jpg") ? 1137 : 638}
+                loading="lazy"
                 sizes="(min-width: 1024px) 576px, 100vw"
-                className="object-contain"
+                className="h-full w-full object-contain"
               />
             </div>
         </div>

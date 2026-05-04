@@ -66,6 +66,8 @@ export default function WhatIsHydrogenPage() {
           src={heroVisual.src}
           alt={heroVisual.alt}
           title={heroVisual.title}
+          width={heroVisual.width}
+          height={heroVisual.height}
           priority
         />
 
@@ -81,9 +83,11 @@ export default function WhatIsHydrogenPage() {
                   src="/brand/shopify/logo-mono-black.svg"
                   alt="Shopify wordmark logo"
                   title="Shopify wordmark logo"
-                  fill
+                  width={300}
+                  height={86}
+                  loading="lazy"
                   sizes="112px"
-                  className="object-contain object-left"
+                  className="h-full w-full object-contain object-left"
                 />
               </div>
               <span className="text-sm font-semibold uppercase tracking-[0.18em] text-neutral-400">+</span>
@@ -92,9 +96,11 @@ export default function WhatIsHydrogenPage() {
                   src="/brand/hydrogen/hydrogen-favicon-official.svg"
                   alt="Official Hydrogen icon"
                   title="Official Hydrogen icon"
-                  fill
+                  width={76}
+                  height={81}
+                  loading="lazy"
                   sizes="28px"
-                  className="object-contain"
+                  className="h-full w-full object-contain"
                 />
               </div>
               <span className="text-sm font-semibold uppercase tracking-[0.18em] text-neutral-700">

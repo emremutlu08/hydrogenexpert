@@ -44,9 +44,11 @@ export function UdemyCourseCard({
                 src={thumbnail}
                 alt={`${title} thumbnail`}
                 title={`${title} thumbnail`}
-                fill
+                width={640}
+                height={480}
+                loading="lazy"
                 sizes="(max-width: 768px) 100vw, 320px"
-                className="object-cover"
+                className="h-full w-full object-cover"
               />
             </div>
           ) : (

@@ -24,7 +24,7 @@ const LAST_UPDATED = "2026-04-21";
 export const metadata = buildMetadata({
   title: "Shopify Hydrogen Developer for Shopify Plus Brands | Emre Mutlu",
   description:
-    "Hire a senior Shopify Hydrogen developer for Shopify Plus storefront audits, Liquid-to-Hydrogen migration, custom builds, performance optimization, and launch support.",
+    "Senior Shopify Hydrogen developer for Plus storefront audits, Liquid-to-Hydrogen migrations, custom builds, performance work, and launch support.",
   path: "/",
   ogImage: absoluteUrl("/og-home.svg"),
 });
@@ -176,7 +176,7 @@ const proofCards = [
       </Link>
     ),
     body:
-      "A practical trust signal when you want a specialist who can deliver without turning the project into agency theatre.",
+      "A practical trust signal backed by 1,900+ Upwork hours and public client feedback.",
   },
   {
     id: "jss",
@@ -193,6 +193,20 @@ const proofCards = [
     ),
     body:
       "Proof of follow-through for merchants making a more serious storefront investment.",
+  },
+  {
+    id: "rebel-bunny-feedback",
+    eyebrow: "Client feedback",
+    title: (
+      <Link
+        href="/case-studies/rebel-bunny-shopify-hydrogen"
+        className="transition hover:text-[#10b981]"
+      >
+        5.0 Rebel Bunny feedback
+      </Link>
+    ),
+    body:
+      "The ongoing custom Hydrogen storefront contract now has public Upwork feedback attached to the case study.",
   },
   {
     id: "teaching",
@@ -224,7 +238,7 @@ const homepageMetrics = [
   { id: "scale", value: "400K+", label: "users on EveShop at production scale" },
   {
     id: "hours",
-    value: "1,666+",
+    value: "1,900+",
     label: "hours of Upwork production delivery",
     href: OWNER.upwork,
     external: true,

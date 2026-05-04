@@ -12,6 +12,17 @@ export const OWNER = {
     "Creator of the world's first English Shopify Hydrogen course on Udemy.",
 } as const;
 
+export const UPWORK_PROFILE = {
+  title: "Shopify Hydrogen & Liquid Expert | Plus Stores | Headless Dev",
+  hourlyRate: "$32/hr",
+  jobSuccessScore: "100%",
+  badge: "Top Rated Plus",
+  totalHoursLabel: "1,900+",
+  totalHoursExact: "1,916",
+  totalJobs: "6",
+  lastVerified: "2026-05-03",
+} as const;
+
 export const SITE_KEYWORDS = [
   "Shopify Hydrogen developer",
   "Shopify Hydrogen services",
@@ -32,7 +43,7 @@ export const CLIENTS = [
 export const TRUST_ITEMS = [
   "Top Rated Plus",
   "100% JSS",
-  "1,666+ hours on Upwork",
+  "1,900+ hours on Upwork",
   "32K+ LinkedIn followers",
   "World's first in English",
   "First in Turkey",

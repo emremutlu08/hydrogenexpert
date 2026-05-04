@@ -4,7 +4,7 @@ import { PageIntroSection } from "@/components/PageIntroSection";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "When Not to Use Shopify Hydrogen - An Honest Framework | Emre Mutlu",
+  title: "When Not to Use Shopify Hydrogen | Emre Mutlu",
   description:
     "Six scenarios where Shopify Hydrogen is not worth the cost, even for growing brands. An honest framework from an independent Hydrogen developer.",
   path: "/when-not-to-use-hydrogen",

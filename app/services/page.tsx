@@ -15,9 +15,9 @@ import {
 } from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
-  title: "Shopify Hydrogen Services: Audit, Migration, Build & Optimization",
+  title: "Shopify Hydrogen Services for Plus Brands | Emre Mutlu",
   description:
-    "Hydrogen-first Shopify services for audits, Liquid to Hydrogen migrations, custom storefront development, performance, SEO, UX optimization, and support retainers.",
+    "Hydrogen-first Shopify services for audits, Liquid to Hydrogen migrations, custom storefront development, performance, SEO, UX, and support retainers.",
   path: "/services",
 });
 

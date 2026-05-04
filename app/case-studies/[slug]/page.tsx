@@ -177,8 +177,8 @@ export default async function CaseStudyDetailPage({
           <section className="surface-card space-y-6">
             <SectionHeader
               eyebrow="Proof slots"
-              title="Reserved for approved proof only."
-              description="These slots show exactly what can strengthen the case later without publishing unsupported metrics, screenshots, or quotes today."
+              title="Reserved for remaining approved proof."
+              description="These slots show what can still strengthen the case later without publishing unsupported metrics, screenshots, or claims."
               className="max-w-5xl"
             />
             <div className="grid gap-4 md:grid-cols-3">

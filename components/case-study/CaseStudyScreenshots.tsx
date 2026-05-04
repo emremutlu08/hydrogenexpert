@@ -37,9 +37,11 @@ export function CaseStudyScreenshots({ screenshots }: CaseStudyScreenshotsProps)
                 src={shot.src!}
                 alt={shot.alt}
                 title={shot.alt}
-                fill
+                width={1200}
+                height={shot.src!.endsWith(".jpg") ? 1137 : 638}
+                loading="lazy"
                 sizes="(min-width: 1024px) 42vw, 100vw"
-                className="object-cover"
+                className="h-full w-full object-cover"
               />
             </div>
             {shot.caption ? (

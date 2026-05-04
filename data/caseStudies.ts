@@ -19,6 +19,9 @@ export interface CaseStudyTestimonial {
   authorRole: string;
   authorCompany: string;
   authorPhoto?: string;
+  sourceLabel?: string;
+  sourceUrl?: string;
+  date?: string;
 }
 
 export interface CaseStudyEntry {
@@ -227,7 +230,7 @@ export const CASE_STUDIES: readonly CaseStudyEntry[] = [
     clientName: "Rebel Bunny Matcha",
     metaTitle: "Rebel Bunny Shopify Hydrogen Case Study | Emre Mutlu",
     metaDescription:
-      "Rebel Bunny Shopify Hydrogen case study for a social-first DTC matcha storefront combining commerce, partner acquisition, education, and brand storytelling.",
+      "Rebel Bunny Shopify Hydrogen case study for a social-first DTC matcha storefront combining commerce, partner acquisition, education, and 5.0 Upwork feedback.",
     tagline: "A social-first Shopify Hydrogen storefront spanning DTC, wholesale, and education.",
     role: "Shopify Developer",
     industry: "Premium matcha, DTC, and wholesale",
@@ -250,6 +253,7 @@ export const CASE_STUDIES: readonly CaseStudyEntry[] = [
       "Commerce, education, and partner acquisition had to live together coherently.",
       "Custom product templates and promotional surfaces needed to support conversion without flattening the brand.",
       "The case study could show approved storefront context, but not invented metrics or quotes.",
+      "Public Upwork feedback is available for the ongoing Shopify Hydrogen storefront contract.",
     ],
     technicalDecisions: [
       "Use Shopify Hydrogen, React, Remix, TypeScript, GraphQL, and JavaScript for a custom storefront system.",
@@ -271,6 +275,7 @@ export const CASE_STUDIES: readonly CaseStudyEntry[] = [
       "One branded storefront surface for DTC shopping, partner interest, and education.",
       "Custom product and promotional surfaces shaped around social-first discovery.",
       "A strong example of Hydrogen supporting commerce and brand storytelling together.",
+      "5.0 Upwork feedback for the ongoing custom Hydrogen storefront work.",
     ],
     placeholderProofSlots: [
       {
@@ -278,15 +283,20 @@ export const CASE_STUDIES: readonly CaseStudyEntry[] = [
         note: "Reserved for approved analytics if the brand chooses to share them.",
       },
       {
-        label: "Client-approved quote",
-        note: "No quote will be fabricated or published without attribution approval.",
+        label: "Full public feedback",
+        note: "Upwork shows a verified 5.0 review excerpt; the full logged-in expansion is not repeated here unless it is visible and approved.",
       },
       {
         label: "Additional mobile screenshots",
         note: "Approved preview asset is shown; deeper visual proof remains pending.",
       },
     ],
-    metrics: [],
+    metrics: [
+      {
+        label: "Upwork feedback",
+        value: "5.0",
+      },
+    ],
     techStack: [
       "Shopify Hydrogen",
       "React",
@@ -302,7 +312,15 @@ export const CASE_STUDIES: readonly CaseStudyEntry[] = [
         caption: "DTC storefront with brand-led editorial presentation.",
       },
     ],
-    testimonial: null,
+    testimonial: {
+      quote: "Emre is a fantastic developer and an even better human.",
+      authorName: "Rebel Bunny client",
+      authorRole: "Shopify Hydrogen storefront client",
+      authorCompany: "Rebel Bunny Matcha",
+      sourceLabel: "Upwork feedback",
+      sourceUrl: "https://www.upwork.com/freelancers/emremutlu",
+      date: "May 3, 2026",
+    },
   },
 ] as const;
 

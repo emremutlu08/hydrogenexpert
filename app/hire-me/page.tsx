@@ -13,7 +13,7 @@ import { StatCard } from "@/components/StatCard";
 import { UdemyCourseCard } from "@/components/UdemyCourseCard";
 import { FOUNDER_STORY } from "@/lib/founder";
 import { buildMetadata } from "@/lib/seo";
-import { CLIENTS, OWNER, absoluteUrl } from "@/lib/site";
+import { CLIENTS, OWNER, UPWORK_PROFILE, absoluteUrl } from "@/lib/site";
 import { asSchemaArray, buildFaqPageSchema } from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
@@ -98,10 +98,23 @@ const proofCards = [
     body: "Creator of the world's first English Shopify Hydrogen course on Udemy.",
     media: null,
   },
+  {
+    titleNode: (
+      <Link
+        href="/case-studies/rebel-bunny-shopify-hydrogen"
+        className="transition hover:text-[#10b981]"
+      >
+        5.0 Rebel Bunny Feedback
+      </Link>
+    ),
+    title: "5.0 Rebel Bunny Feedback",
+    body: "Public Upwork feedback now supports the Rebel Bunny Shopify Hydrogen case study.",
+    media: null,
+  },
 ] as const;
 
 const stats: Array<{ value: string; label: string; href?: string }> = [
-  { value: "1,666+", label: "hours of Upwork delivery", href: OWNER.upwork },
+  { value: UPWORK_PROFILE.totalHoursLabel, label: "hours of Upwork delivery", href: OWNER.upwork },
   { value: "32K+", label: "LinkedIn followers", href: OWNER.linkedIn },
   { value: "First", label: "production Hydrogen storefront in Turkey" },
 ];
@@ -110,7 +123,8 @@ const proofSnapshot = [
   "3 production Shopify Hydrogen storefronts",
   "400K+ users on EveShop",
   "Top Rated Plus on Upwork",
-  "1,666+ Upwork hours",
+  "1,900+ Upwork hours",
+  "5.0 Rebel Bunny feedback on Upwork",
   "32K+ LinkedIn followers",
   "Creator of the first English Shopify Hydrogen course",
 ] as const;
@@ -173,7 +187,7 @@ export default function HireMePage() {
             title="Clear credentials, direct contact, less agency noise."
             description="The point is not to sell complexity. It is to help brands understand what they need and launch with fewer surprises."
           />
-          <div className="grid gap-5 md:grid-cols-3">
+          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
             {proofCards.map((card) => (
               <ProofCard
                 key={card.title}

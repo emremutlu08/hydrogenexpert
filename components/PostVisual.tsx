@@ -57,9 +57,11 @@ export function PostVisual({ visual, compact = false }: PostVisualProps) {
           src={visual.src}
           alt={visual.alt}
           title={visual.title}
-          fill
+          width={1200}
+          height={800}
+          loading="lazy"
           sizes="(min-width: 1024px) 896px, 100vw"
-          className="object-cover"
+          className="h-full w-full object-cover"
         />
       </MediaFrame>
       {visual.caption ? <figcaption className="content-figure__caption">{visual.caption}</figcaption> : null}

@@ -6,7 +6,7 @@ import { OWNER } from "@/lib/site";
 const TRUST_LINKS: Partial<Record<(typeof TRUST_ITEMS)[number], string | null>> = {
   "Top Rated Plus": OWNER.upwork,
   "100% JSS": OWNER.upwork,
-  "1,666+ hours on Upwork": OWNER.upwork,
+  "1,900+ hours on Upwork": OWNER.upwork,
   "32K+ LinkedIn followers": OWNER.linkedIn,
   "World's first in English": OWNER.udemyUrl,
 };

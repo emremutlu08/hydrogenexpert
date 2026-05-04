@@ -103,9 +103,11 @@ export function Footer({ navItems }: FooterProps) {
                   <span className="mt-1 block h-11 w-11 shrink-0">
                     <Image
                       src="/brand/hydrogenexpert-logo-icon.png"
-                      alt=""
+                      alt="HydrogenExpert logo"
+                      title="HydrogenExpert logo"
                       width={44}
                       height={44}
+                      loading="lazy"
                       sizes="44px"
                       className="h-full w-full object-contain"
                     />

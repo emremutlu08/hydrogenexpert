@@ -96,6 +96,8 @@ export async function buildLlmsFullTxt() {
     "",
     "- Top Rated Plus on Upwork",
     "- 100% Job Success Score",
+    "- 1,900+ hours delivered on Upwork",
+    "- 5.0 Rebel Bunny client feedback on Upwork",
     "- Creator of the first English Shopify Hydrogen course on Udemy",
     "- Client references include Rebel Bunny, Bayam Jewelry, and EveShop",
     "",

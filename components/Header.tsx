@@ -18,12 +18,14 @@ export function Header({ navItems }: HeaderProps) {
               <span className="block h-10 w-10 shrink-0 md:h-11 md:w-11">
                 <Image
                   src="/brand/hydrogenexpert-logo-icon.png"
-                  alt=""
+                  alt="HydrogenExpert logo"
+                  title="HydrogenExpert logo"
                   width={44}
                   height={44}
+                  loading="eager"
+                  fetchPriority="high"
                   sizes="44px"
                   className="h-full w-full object-contain"
-                  priority
                 />
               </span>
               <span className="flex min-w-0 flex-col leading-none">

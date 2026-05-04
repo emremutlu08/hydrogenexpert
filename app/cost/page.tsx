@@ -110,6 +110,8 @@ export default function CostPage() {
           src={heroVisual.src}
           alt={heroVisual.alt}
           title={heroVisual.title}
+          width={heroVisual.width}
+          height={heroVisual.height}
           priority
         />
 
