@@ -15,6 +15,36 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-04
 
+- PR: [#1 ImgBot Optimize images](https://github.com/emremutlu08/hydrogenexpert/pull/1), [#4 Update founder image and generated blog covers](https://github.com/emremutlu08/hydrogenexpert/pull/4), [#5 Update blog sitemap frequency](https://github.com/emremutlu08/hydrogenexpert/pull/5), [#6 Add site trust and measurement fixes](https://github.com/emremutlu08/hydrogenexpert/pull/6), [#7 Standardize HydrogenExpert design DNA, font, and spacing](https://github.com/emremutlu08/hydrogenexpert/pull/7)
+- Branch: `main`
+- Deployment: [Production deploy](https://hydrogenexpert-35tjyjf8i-emremutlu8s-projects.vercel.app) aliased to `https://hydrogenexpert.co`.
+- Summary:
+  - Updated and merged all open pull requests in order: #4, #5, #6, #7, then #1.
+  - Restored the canonical founder image at `public/emre-city-16x9.png` and generated blog covers at `public/generated/blog/*.jpg`.
+  - Preserved generated blog cover visibility after the trust, sitemap, breadcrumb, design-system, and image-optimization merges.
+  - Added breadcrumb UI and `BreadcrumbList` JSON-LD to the new #6 public pages before #7's design guard reached main.
+  - Confirmed GitHub has no remaining open pull requests for this repository.
+- Files changed:
+  - `CHANGELOG.md`
+  - `public/emre-city-16x9.png`
+  - `public/generated/blog/*.jpg`
+  - `app/about/page.tsx`
+  - `app/contact/page.tsx`
+  - `app/privacy/page.tsx`
+  - `app/terms/page.tsx`
+  - `app/cookies/page.tsx`
+  - `tests/design-standardization.test.ts`
+- Verification:
+  - `npm run test`
+  - `npm run lint`
+  - `npm run build`
+  - Local production smoke: 8 restored/generated asset URLs returned `200`; 44 route/viewport checks passed at 375, 768, 1024, and 1440 widths.
+  - Live production smoke on `https://hydrogenexpert.co`: 8 restored/generated asset URLs returned `200`; 44 route/viewport checks passed at 375, 768, 1024, and 1440 widths.
+- Manual follow-up:
+  - None.
+
+## 2026-05-04
+
 - PR: [#7 Standardize HydrogenExpert design DNA, font, and spacing](https://github.com/emremutlu08/hydrogenexpert/pull/7)
 - Branch: `codex/design-dna-standardization`
 - Deployment: [Production deploy](https://hydrogenexpert-3jpw5hilq-emremutlu8s-projects.vercel.app) aliased to `https://hydrogenexpert.co`.
