@@ -1,16 +1,24 @@
+import Link from "next/link";
+
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CTASection } from "@/components/CTASection";
 import { FaqSection } from "@/components/FaqSection";
 import { JsonLd } from "@/components/JsonLd";
 import { PageIntroSection } from "@/components/PageIntroSection";
 import { TechnicalFigure } from "@/components/TechnicalFigure";
 import { buildMetadata } from "@/lib/seo";
-import { buildFaqPageSchema } from "@/lib/structured-data";
+import { absoluteUrl } from "@/lib/site";
+import {
+  asSchemaArray,
+  buildBreadcrumbListSchema,
+  buildFaqPageSchema,
+} from "@/lib/structured-data";
 import { STATIC_PAGE_VISUALS } from "@/lib/curated-images";
 
 export const metadata = buildMetadata({
   title: "Shopify Hydrogen Cost for Shopify Plus Brands | Emre Mutlu",
   description:
-    "An honest Shopify Hydrogen cost breakdown for Shopify Plus brands, including pricing ranges, timelines, and what pushes a custom storefront budget higher.",
+    "Shopify Hydrogen cost breakdown for Shopify Plus brands, including $15K-$80K pricing ranges, timelines, migration risk, integrations, and optimization scope.",
   path: "/cost",
 });
 
@@ -43,6 +51,24 @@ const pricingBands = [
   },
 ] as const;
 
+const costNextSteps = [
+  {
+    href: "/shopify-hydrogen-audit",
+    label: "Start with a Hydrogen audit",
+    note: "Best when the budget range is still unclear or the rebuild may not be justified.",
+  },
+  {
+    href: "/liquid-to-hydrogen-migration",
+    label: "Scope a Liquid to Hydrogen migration",
+    note: "Best when the current theme is the constraint and route, SEO, analytics, and launch risk matter.",
+  },
+  {
+    href: "/custom-shopify-hydrogen-storefront",
+    label: "Plan a custom Hydrogen storefront",
+    note: "Best when bespoke PDPs, collections, content, or mobile journeys justify custom development.",
+  },
+] as const;
+
 const faqs = [
   {
     question: "Is Hydrogen always more expensive than Liquid?",
@@ -67,14 +93,25 @@ const faqs = [
 ] as const;
 
 const faqSchema = buildFaqPageSchema(faqs);
+const breadcrumbs = [
+  { label: "Home", href: "/" },
+  { label: "Cost", href: "/cost" },
+] as const;
+const breadcrumbSchema = buildBreadcrumbListSchema(
+  breadcrumbs.map((item) => ({
+    name: item.label,
+    url: absoluteUrl(item.href),
+  })),
+);
 
 export default function CostPage() {
   const heroVisual = STATIC_PAGE_VISUALS.cost;
 
   return (
     <>
-      <JsonLd data={faqSchema} />
+      <JsonLd data={asSchemaArray(breadcrumbSchema, faqSchema)} />
       <div className="page-shell">
+        <Breadcrumbs items={breadcrumbs} />
         <PageIntroSection
           eyebrow="Pricing Reality"
           title="Shopify Hydrogen Cost"
@@ -90,6 +127,8 @@ export default function CostPage() {
           src={heroVisual.src}
           alt={heroVisual.alt}
           title={heroVisual.title}
+          width={heroVisual.width}
+          height={heroVisual.height}
           priority
         />
 
@@ -101,6 +140,22 @@ export default function CostPage() {
               <p className="mt-4 text-base leading-8 text-neutral-600">{band.description}</p>
             </div>
           ))}
+        </section>
+
+        <section className="card-soft space-y-5">
+          <div className="max-w-3xl">
+            <p className="eyebrow">Cost next steps</p>
+            <h2 className="subsection-title mt-3">Match the budget question to the right service path.</h2>
+          </div>
+          <div className="authority-links">
+            {costNextSteps.map((item) => (
+              <Link key={item.href} href={item.href} className="authority-link-card">
+                <p className="authority-link-card__label">HydrogenExpert</p>
+                <h3 className="authority-link-card__title">{item.label}</h3>
+                <p className="authority-link-card__body">{item.note}</p>
+              </Link>
+            ))}
+          </div>
         </section>
 
         <section className="space-y-8">

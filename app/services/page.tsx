@@ -1,25 +1,58 @@
+import Link from "next/link";
+
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CTASection } from "@/components/CTASection";
+import { JsonLd } from "@/components/JsonLd";
 import { PageIntroSection } from "@/components/PageIntroSection";
 import { SectionHeader } from "@/components/SectionHeader";
 import { buildMetadata } from "@/lib/seo";
 import { SECONDARY_SERVICE, SERVICE_PACKAGES } from "@/lib/services";
+import { absoluteUrl } from "@/lib/site";
+import {
+  asSchemaArray,
+  buildBreadcrumbListSchema,
+  buildServiceSchema,
+} from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
-  title: "Shopify Hydrogen Services for Growth-Minded Brands | Emre Mutlu",
+  title: "Shopify Hydrogen Services for Plus Brands | Emre Mutlu",
   description:
-    "Hydrogen-first Shopify services for audits, Liquid to Hydrogen migrations, custom storefront development, performance, SEO, UX optimization, and support retainers.",
+    "Hydrogen-first Shopify services for audits, Liquid to Hydrogen migrations, custom storefront development, performance, SEO, UX, and support retainers.",
   path: "/services",
 });
 
 export default function ServicesPage() {
+  const breadcrumbs = [
+    { label: "Home", href: "/" },
+    { label: "Services", href: "/services" },
+  ] as const;
+  const breadcrumbSchema = buildBreadcrumbListSchema(
+    breadcrumbs.map((item) => ({
+      name: item.label,
+      url: absoluteUrl(item.href),
+    })),
+  );
+  const serviceSchemas = SERVICE_PACKAGES.map((servicePackage) =>
+    buildServiceSchema({
+      name: servicePackage.name,
+      url: absoluteUrl(servicePackage.pagePath),
+      description: servicePackage.metaDescription,
+      providerName: "HydrogenExpert",
+      serviceType: servicePackage.name,
+    }),
+  );
+
   return (
-    <div className="page-shell">
-      <PageIntroSection
-        eyebrow="Hydrogen-first services"
-        title="Shopify Hydrogen services without the agency maze"
-        description="Audit, migrate, build, optimize, or support a custom Shopify storefront with one senior operator."
-        body="This is not a broad Shopify agency service list. The work is centered on Shopify Hydrogen, custom storefront decisions, and the honest question behind every serious rebuild: should this be Hydrogen, Liquid, or no rebuild at all?"
-      />
+    <>
+      <JsonLd data={asSchemaArray(breadcrumbSchema, ...serviceSchemas)} />
+      <div className="page-shell">
+        <Breadcrumbs items={breadcrumbs} />
+        <PageIntroSection
+          eyebrow="Hydrogen-first services"
+          title="Shopify Hydrogen services without the agency maze"
+          description="Audit, migrate, build, optimize, or support a custom Shopify storefront with one senior operator."
+          body="This is not a broad Shopify agency service list. The work is centered on Shopify Hydrogen, custom storefront decisions, and the honest question behind every serious rebuild: should this be Hydrogen, Liquid, or no rebuild at all?"
+        />
 
       <section className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
         <div className="hero-card space-y-5">
@@ -74,11 +107,19 @@ export default function ServicesPage() {
                     </p>
                   </div>
                   <h2 className="mt-4 font-display text-[1.75rem] leading-[1] tracking-[-0.045em] text-black md:text-[2.2rem]">
-                    {servicePackage.title}
+                    <Link href={servicePackage.pagePath} className="transition hover:text-[#10b981]">
+                      {servicePackage.title}
+                    </Link>
                   </h2>
                   <p className="mt-4 max-w-2xl text-[0.98rem] leading-8 text-neutral-600">
                     {servicePackage.summary}
                   </p>
+                  <Link
+                    href={servicePackage.pagePath}
+                    className="mt-5 inline-flex rounded-full border border-black/10 px-5 py-3 text-sm font-semibold text-[#171717] transition hover:border-[#10b981] hover:text-[#10b981]"
+                  >
+                    View service page
+                  </Link>
                 </div>
 
                 <div className="grid gap-5 lg:grid-cols-[0.8fr_1.2fr] xl:gap-7">
@@ -95,10 +136,11 @@ export default function ServicesPage() {
                     <p className="text-[0.68rem] font-bold uppercase tracking-[0.2em] text-[#10b981]">
                       Includes
                     </p>
-                    <ul className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+                    <ul className="mt-4 grid gap-x-6 gap-y-3 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
                       {servicePackage.deliverables.map((deliverable) => (
-                        <li key={deliverable}>
-                          <span className="inline-flex w-full rounded-full border border-black/8 bg-[#f6f7f7] px-4 py-2 text-sm leading-6 text-neutral-700">
+                        <li key={deliverable} className="flex gap-3 border-t border-black/8 pt-3 first:border-t-0 first:pt-0 sm:[&:nth-child(2)]:border-t-0 sm:[&:nth-child(2)]:pt-0 lg:[&:nth-child(2)]:border-t lg:[&:nth-child(2)]:pt-3 xl:[&:nth-child(2)]:border-t-0 xl:[&:nth-child(2)]:pt-0">
+                          <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#10b981]" />
+                          <span className="text-sm leading-7 text-neutral-700">
                             {deliverable}
                           </span>
                         </li>
@@ -135,6 +177,7 @@ export default function ServicesPage() {
         subtext="Send the current store URL and what feels slow, limiting, or expensive to change. I will tell you whether the next move is an audit, a Liquid refactor, Hydrogen migration, custom build, optimization pass, or no rebuild."
         sourceKind="services_cta"
       />
-    </div>
+      </div>
+    </>
   );
 }

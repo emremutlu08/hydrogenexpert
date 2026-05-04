@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CTASection } from "@/components/CTASection";
 import { FaqSection } from "@/components/FaqSection";
 import { JsonLd } from "@/components/JsonLd";
@@ -7,7 +8,12 @@ import { PageIntroSection } from "@/components/PageIntroSection";
 import { TechnicalFigure } from "@/components/TechnicalFigure";
 import { STATIC_PAGE_VISUALS } from "@/lib/curated-images";
 import { buildMetadata } from "@/lib/seo";
-import { buildFaqPageSchema } from "@/lib/structured-data";
+import { absoluteUrl } from "@/lib/site";
+import {
+  asSchemaArray,
+  buildBreadcrumbListSchema,
+  buildFaqPageSchema,
+} from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
   title: "What Is Shopify Hydrogen for Shopify Plus Brands?",
@@ -47,14 +53,25 @@ const faqs = [
 ] as const;
 
 const faqSchema = buildFaqPageSchema(faqs);
+const breadcrumbs = [
+  { label: "Home", href: "/" },
+  { label: "What Is Hydrogen", href: "/what-is-hydrogen" },
+] as const;
+const breadcrumbSchema = buildBreadcrumbListSchema(
+  breadcrumbs.map((item) => ({
+    name: item.label,
+    url: absoluteUrl(item.href),
+  })),
+);
 
 export default function WhatIsHydrogenPage() {
   const heroVisual = STATIC_PAGE_VISUALS["what-is-hydrogen"];
 
   return (
     <>
-      <JsonLd data={faqSchema} />
+      <JsonLd data={asSchemaArray(breadcrumbSchema, faqSchema)} />
       <div className="page-shell">
+        <Breadcrumbs items={breadcrumbs} />
         <PageIntroSection
           eyebrow="Plain-English Guide"
           title="What Is Shopify Hydrogen?"
@@ -66,6 +83,8 @@ export default function WhatIsHydrogenPage() {
           src={heroVisual.src}
           alt={heroVisual.alt}
           title={heroVisual.title}
+          width={heroVisual.width}
+          height={heroVisual.height}
           priority
         />
 
@@ -81,9 +100,11 @@ export default function WhatIsHydrogenPage() {
                   src="/brand/shopify/logo-mono-black.svg"
                   alt="Shopify wordmark logo"
                   title="Shopify wordmark logo"
-                  fill
+                  width={300}
+                  height={86}
+                  loading="lazy"
                   sizes="112px"
-                  className="object-contain object-left"
+                  className="h-full w-full object-contain object-left"
                 />
               </div>
               <span className="text-sm font-semibold uppercase tracking-[0.18em] text-neutral-400">+</span>
@@ -92,9 +113,11 @@ export default function WhatIsHydrogenPage() {
                   src="/brand/hydrogen/hydrogen-favicon-official.svg"
                   alt="Official Hydrogen icon"
                   title="Official Hydrogen icon"
-                  fill
+                  width={76}
+                  height={81}
+                  loading="lazy"
                   sizes="28px"
-                  className="object-contain"
+                  className="h-full w-full object-contain"
                 />
               </div>
               <span className="text-sm font-semibold uppercase tracking-[0.18em] text-neutral-700">

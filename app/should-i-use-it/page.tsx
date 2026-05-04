@@ -1,10 +1,16 @@
 import Link from "next/link";
 
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { HydrogenFitQuiz } from "@/components/quiz/HydrogenFitQuiz";
 import { JsonLd } from "@/components/JsonLd";
 import { PageIntroSection } from "@/components/PageIntroSection";
 import { buildMetadata } from "@/lib/seo";
-import { buildFaqPageSchema } from "@/lib/structured-data";
+import { absoluteUrl } from "@/lib/site";
+import {
+  asSchemaArray,
+  buildBreadcrumbListSchema,
+  buildFaqPageSchema,
+} from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
   title: "Should I Use Shopify Hydrogen? A Merchant Decision Guide",
@@ -65,12 +71,23 @@ const schemaFaqs = [
 ] as const;
 
 const faqSchema = buildFaqPageSchema(schemaFaqs);
+const breadcrumbs = [
+  { label: "Home", href: "/" },
+  { label: "Should I Use It?", href: "/should-i-use-it" },
+] as const;
+const breadcrumbSchema = buildBreadcrumbListSchema(
+  breadcrumbs.map((item) => ({
+    name: item.label,
+    url: absoluteUrl(item.href),
+  })),
+);
 
 export default function ShouldIUseItPage() {
   return (
     <>
-      <JsonLd data={faqSchema} />
+      <JsonLd data={asSchemaArray(breadcrumbSchema, faqSchema)} />
       <div className="page-shell">
+        <Breadcrumbs items={breadcrumbs} />
         <PageIntroSection
           eyebrow="Decision Guide"
           title="Should you use Shopify Hydrogen?"

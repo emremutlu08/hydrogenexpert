@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { BlogAnalytics } from "@/components/BlogAnalytics";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CopyMarkdownButton } from "@/components/CopyMarkdownButton";
 import { CTASection } from "@/components/CTASection";
 import { JsonLd } from "@/components/JsonLd";
@@ -11,11 +12,23 @@ import { formatPostContent } from "@/lib/post-content";
 import { buildPostMarkdown } from "@/lib/post-markdown";
 import { getPublishedPostBySlug, getPublishedPostSlugs } from "@/lib/posts";
 import { buildMetadata } from "@/lib/seo";
-import { OWNER, absoluteUrl } from "@/lib/site";
+import { OWNER, SITE_LOGO_PATH, SITE_NAME, absoluteUrl } from "@/lib/site";
+import {
+  asSchemaArray,
+  buildBreadcrumbListSchema,
+  buildPublisherSchema,
+} from "@/lib/structured-data";
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
 }
+
+const BLOG_METADATA_TITLE_OVERRIDES: Record<string, string> = {
+  "shopify-hydrogen-product-description-ssr-seo":
+    "Shopify Hydrogen Product Descriptions: SSR SEO",
+  "shopify-hydrogen-variant-selection-fallback":
+    "Shopify Hydrogen Variant URLs and SEO Fallbacks",
+};
 
 export async function generateStaticParams() {
   const slugs = await getPublishedPostSlugs();
@@ -61,7 +74,7 @@ export async function generateMetadata({
   const enhancement = getPostEnhancement(post.slug);
 
   return buildMetadata({
-    title: post.title,
+    title: BLOG_METADATA_TITLE_OVERRIDES[post.slug] ?? post.title,
     description:
       post.meta_description ||
       "Merchant-focused Shopify Hydrogen advice covering speed, migration planning, and storefront growth.",
@@ -80,6 +93,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   }
 
   const enhancement = getPostEnhancement(post.slug);
+  const hasInlineFaq = /(^|\n)##\s+FAQ\b|<h2[^>]*>\s*FAQ\s*<\/h2>/i.test(post.content);
+  const visibleFaq = hasInlineFaq ? undefined : enhancement.faq;
   const heroVisual =
     enhancement.heroVisual.type !== "none"
       ? enhancement.heroVisual
@@ -98,14 +113,20 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     },
     url: absoluteUrl(`/blog/${post.slug}`),
     description: post.meta_description,
+    mainEntityOfPage: absoluteUrl(`/blog/${post.slug}`),
+    publisher: buildPublisherSchema({
+      name: SITE_NAME,
+      url: absoluteUrl("/"),
+      logo: absoluteUrl(SITE_LOGO_PATH),
+    }),
     image: enhancement.ogImage ? absoluteUrl(enhancement.ogImage) : undefined,
   };
 
-  const faqSchema = enhancement.faq
+  const faqSchema = visibleFaq
     ? {
         "@context": "https://schema.org",
         "@type": "FAQPage",
-        mainEntity: enhancement.faq.map((item) => ({
+        mainEntity: visibleFaq.map((item) => ({
           "@type": "Question",
           name: item.question,
           acceptedAnswer: {
@@ -116,9 +137,21 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       }
     : null;
 
+  const breadcrumbs = [
+    { label: "Home", href: "/" },
+    { label: "Blog", href: "/blog" },
+    { label: post.title, href: `/blog/${post.slug}` },
+  ] as const;
+  const breadcrumbSchema = buildBreadcrumbListSchema(
+    breadcrumbs.map((item) => ({
+      name: item.label,
+      url: absoluteUrl(item.href),
+    })),
+  );
+
   const formattedContent = formatPostContent(post.content);
   const markdownVersion = buildPostMarkdown(post, {
-    faq: enhancement.faq,
+    faq: visibleFaq,
     internalLinks: enhancement.internalLinks,
     externalLinks: enhancement.externalLinks,
     closingPitch: enhancement.closingPitch,
@@ -126,11 +159,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <>
-      <JsonLd data={faqSchema ? [articleSchema, faqSchema] : articleSchema} />
+      <JsonLd data={asSchemaArray(articleSchema, breadcrumbSchema, faqSchema)} />
       <div className="page-shell">
         <article className="mx-auto max-w-4xl">
+          <Breadcrumbs items={breadcrumbs} />
           <BlogAnalytics slug={post.slug} />
-          <p className="eyebrow editorial-kicker">Shopify Hydrogen Journal</p>
+          <p className="eyebrow editorial-kicker mt-8">Shopify Hydrogen Journal</p>
           <h1 className="page-title mt-6">
             {post.title}
           </h1>
@@ -182,14 +216,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             className="article-html mt-10"
             dangerouslySetInnerHTML={{ __html: formattedContent }}
           />
-          {enhancement.faq?.length ? (
+          {visibleFaq?.length ? (
             <section className="surface-card mt-10 space-y-6">
               <div className="max-w-3xl">
                 <p className="eyebrow">FAQ</p>
                 <h2 className="section-heading mt-3">Short answers AI engines and merchants can lift quickly.</h2>
               </div>
               <div className="grid gap-4">
-                {enhancement.faq.map((item) => (
+                {visibleFaq.map((item) => (
                   <details
                     key={item.question}
                     className="agency-accordion rounded-[1.2rem] border border-black/8 bg-white px-5 py-4"

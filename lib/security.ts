@@ -10,25 +10,10 @@ const TRUSTED_ORIGINS = new Set([
   "https://hydrogenexpert.co",
   "https://www.hydrogenexpert.co",
   "http://localhost:3000",
+  "http://localhost:3100",
   "http://127.0.0.1:3000",
+  "http://127.0.0.1:3100",
 ]);
-
-export function buildContentSecurityPolicy() {
-  return [
-    "default-src 'self'",
-    "base-uri 'self'",
-    "form-action 'self'",
-    "frame-ancestors 'none'",
-    "object-src 'none'",
-    "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com",
-    "style-src 'self' 'unsafe-inline'",
-    "img-src 'self' data: blob: https:",
-    "font-src 'self' data:",
-    "connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://*.supabase.co",
-    "frame-src https://www.googletagmanager.com",
-    "upgrade-insecure-requests",
-  ].join("; ");
-}
 
 export function getClientIp(request: Request) {
   const forwarded = request.headers.get("x-forwarded-for");
@@ -44,7 +29,7 @@ export function isTrustedOrigin(request: Request) {
   const origin = request.headers.get("origin");
 
   if (!origin) {
-    return true;
+    return process.env.NODE_ENV !== "production";
   }
 
   return TRUSTED_ORIGINS.has(origin);

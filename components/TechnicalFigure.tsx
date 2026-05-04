@@ -6,6 +6,8 @@ interface TechnicalFigureProps {
   src: string;
   alt: string;
   title: string;
+  width: number;
+  height: number;
   caption?: string;
   priority?: boolean;
   sizes?: string;
@@ -16,6 +18,8 @@ export function TechnicalFigure({
   src,
   alt,
   title,
+  width,
+  height,
   caption,
   priority = false,
   sizes = "(min-width: 1024px) 896px, 100vw",
@@ -28,10 +32,12 @@ export function TechnicalFigure({
           src={src}
           alt={alt}
           title={title}
-          fill
-          priority={priority}
+          width={width}
+          height={height}
+          loading={priority ? "eager" : "lazy"}
+          fetchPriority={priority ? "high" : "auto"}
           sizes={sizes}
-          className="object-cover"
+          className="h-full w-full object-cover"
         />
       </MediaFrame>
       {caption ? <figcaption className="content-figure__caption">{caption}</figcaption> : null}

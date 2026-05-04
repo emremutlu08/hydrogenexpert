@@ -32,7 +32,7 @@ export function PostVisual({ visual, compact = false }: PostVisualProps) {
   if (visual.type === "flow-diagram-svg") {
     return (
       <figure className={`content-figure ${compact ? "content-figure--compact" : ""}`.trim()}>
-        <MediaFrame ratio="compact">
+        <MediaFrame ratio="compact" innerClassName="media-frame__inner--flow">
           <div className="flow-diagram">
             {visual.steps.map((step, index) => (
               <div key={step.label} className="flow-diagram__item">
@@ -57,9 +57,11 @@ export function PostVisual({ visual, compact = false }: PostVisualProps) {
           src={visual.src}
           alt={visual.alt}
           title={visual.title}
-          fill
+          width={visual.width ?? 1200}
+          height={visual.height ?? 800}
+          loading="lazy"
           sizes="(min-width: 1024px) 896px, 100vw"
-          className="object-cover"
+          className="h-full w-full object-cover"
         />
       </MediaFrame>
       {visual.caption ? <figcaption className="content-figure__caption">{visual.caption}</figcaption> : null}

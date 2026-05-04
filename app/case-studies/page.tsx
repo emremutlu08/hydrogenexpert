@@ -1,4 +1,7 @@
+import Link from "next/link";
+
 import { CTASection } from "@/components/CTASection";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CaseStudyHero } from "@/components/case-study/CaseStudyHero";
 import { CaseStudyMetricGrid } from "@/components/case-study/CaseStudyMetricGrid";
 import { CaseStudyScreenshots } from "@/components/case-study/CaseStudyScreenshots";
@@ -11,21 +14,21 @@ import { SelectedWorkGrid } from "@/components/SelectedWorkGrid";
 import { SectionHeader } from "@/components/SectionHeader";
 import { CASE_STUDIES } from "@/data/caseStudies";
 import { buildMetadata } from "@/lib/seo";
-import { buildFaqPageSchema } from "@/lib/structured-data";
+import { absoluteUrl } from "@/lib/site";
+import {
+  asSchemaArray,
+  buildBreadcrumbListSchema,
+  buildFaqPageSchema,
+} from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
-  title: "Shopify Hydrogen Case Studies for Shopify Plus Brands",
+  title: "Shopify Hydrogen Case Studies: EveShop, Bayam, Rebel Bunny",
   description:
-    "Production Shopify Hydrogen case studies across retail, luxury ecommerce, and premium DTC with supported proof points, screenshots, and explicit placeholders where client-approved metrics are still missing.",
+    "Production Shopify Hydrogen case studies across retail, luxury ecommerce, and premium DTC with only approved proof shown on the page.",
   path: "/case-studies",
 });
 
 const faqs = [
-  {
-    question: "Why are some proof points written as placeholders or broad proof facts instead of hard performance claims?",
-    answer:
-      "Because this page only uses metrics and statements that were either provided directly, published publicly, or already supported inside the codebase. When a client-approved number or testimonial does not exist yet, I would rather show a visible placeholder than fake precision.",
-  },
   {
     question: "Why is EveShop still an important case even if the storefront stack changed later?",
     answer:
@@ -37,31 +40,43 @@ const faqs = [
       "Bayam is a luxury discovery problem with multiple product mindsets inside one premium catalog. Rebel Bunny is a brand, education, and partnership problem where commerce, content, and community all need to live inside one storefront system.",
   },
   {
-    question: "Why are there no testimonials on this page yet?",
+    question: "Why do some cases have testimonials and others do not?",
     answer:
-      "Because I am not going to invent quotes or attach weak attribution to something that should be precise. Once a client-approved quote and attribution are available, the testimonial block is already wired to render it.",
+      "Because only verified or approved feedback belongs on the page. Rebel Bunny now has public Upwork feedback, while the other cases still wait for approved quotes or measurable proof before a testimonial is shown.",
   },
 ] as const;
 
+const breadcrumbs = [
+  { label: "Home", href: "/" },
+  { label: "Case Studies", href: "/case-studies" },
+] as const;
+
+const breadcrumbSchema = buildBreadcrumbListSchema(
+  breadcrumbs.map((item) => ({
+    name: item.label,
+    url: absoluteUrl(item.href),
+  })),
+);
 const faqSchema = buildFaqPageSchema(faqs);
 
 export default function CaseStudiesPage() {
   return (
     <>
-      <JsonLd data={faqSchema} />
+      <JsonLd data={asSchemaArray(breadcrumbSchema, faqSchema)} />
       <div className="page-shell">
+        <Breadcrumbs items={breadcrumbs} />
         <PageIntroSection
           eyebrow="Proof"
           title="Real stores, real constraints, real engineering decisions"
           description="One proof page, three very different storefront pressures: nationwide retail, luxury ecommerce, and social-first DTC."
-          body="Each section below stays grounded in supported facts. Where a metric, quote, or screenshot is not yet approved, it stays visibly incomplete instead of being guessed."
+          body="Only verified or approved proof is shown below. Rebel Bunny now includes public Upwork feedback; other quotes, before/after metrics, and deeper visuals stay off the page until they are verified or approved."
         />
 
         <section className="surface-card space-y-6">
           <SectionHeader
             eyebrow="Selected work"
-            title="Jump straight to the storefront pressure that looks most like yours."
-            description="The preview cards stay as anchor links so you can move directly into EveShop, Bayam Jewelry, or Rebel Bunny Matcha."
+            title="Find the storefront pressure closest to yours."
+            description="Each case now has a dedicated URL for deeper context, technical decisions, approved visuals, and launch constraints."
           />
           <SelectedWorkGrid />
         </section>
@@ -78,29 +93,35 @@ export default function CaseStudiesPage() {
                 logo={study.logo}
                 heroImage={study.heroImage}
               />
+              <Link
+                href={`/case-studies/${study.slug}`}
+                className="inline-flex rounded-full bg-[#171717] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#10b981]"
+              >
+                Read full case study
+              </Link>
 
-              <div className="grid gap-8 xl:grid-cols-[1.05fr_0.95fr]">
-                <div className="space-y-8">
-                  <div>
-                    <p className="eyebrow">Case {index + 1}</p>
-                    <h3 className="subsection-title mt-3">Problem</h3>
-                    <p className="mt-4 text-base leading-8 text-neutral-600">{study.problem}</p>
-                  </div>
-
-                  <div>
-                    <p className="eyebrow">Approach</p>
-                    <h3 className="subsection-title mt-3">What I focused on</h3>
-                    <p className="mt-4 text-base leading-8 text-neutral-600">{study.approach}</p>
-                  </div>
-
-                  <div className="rounded-[1.5rem] border border-black/8 bg-[#f6f7f7] p-6">
-                    <p className="eyebrow">Outcome</p>
-                    <h3 className="subsection-title mt-3">What changed and why it matters</h3>
-                    <p className="mt-4 text-base leading-8 text-neutral-700">{study.outcome}</p>
-                  </div>
+              <div className="grid gap-x-8 gap-y-10 xl:grid-cols-2 xl:items-start">
+                <div>
+                  <p className="eyebrow">Case {index + 1}</p>
+                  <h3 className="subsection-title mt-3">Problem</h3>
+                  <p className="mt-4 text-base leading-8 text-neutral-600">{study.problem}</p>
                 </div>
 
-                <div className="space-y-8">
+                <div>
+                  <p className="eyebrow">Approach</p>
+                  <h3 className="subsection-title mt-3">What I focused on</h3>
+                  <p className="mt-4 text-base leading-8 text-neutral-600">{study.approach}</p>
+                </div>
+
+                <div className="rounded-[1.5rem] border border-black/8 bg-[#f6f7f7] p-6 md:p-8">
+                  <p className="eyebrow">Outcome</p>
+                  <h3 className="subsection-title mt-3">What changed and why it matters</h3>
+                  <p className="mt-4 text-base leading-8 text-neutral-700">{study.outcome}</p>
+                </div>
+
+                <CaseStudyScreenshots screenshots={study.screenshots} />
+
+                {study.metrics.length ? (
                   <section className="space-y-4">
                     <div>
                       <p className="eyebrow">Metrics</p>
@@ -108,11 +129,11 @@ export default function CaseStudiesPage() {
                     </div>
                     <CaseStudyMetricGrid metrics={study.metrics} />
                   </section>
-                  <CaseStudyTechStack stack={study.techStack} />
-                </div>
+                ) : null}
+
+                <CaseStudyTechStack stack={study.techStack} />
               </div>
 
-              <CaseStudyScreenshots screenshots={study.screenshots} />
               <CaseStudyTestimonial testimonial={study.testimonial} />
             </article>
           ))}

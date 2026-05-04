@@ -1,12 +1,18 @@
 import Link from "next/link";
 
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CTASection } from "@/components/CTASection";
 import { FaqSection } from "@/components/FaqSection";
 import { JsonLd } from "@/components/JsonLd";
 import { PageIntroSection } from "@/components/PageIntroSection";
 import { SectionHeader } from "@/components/SectionHeader";
 import { buildMetadata } from "@/lib/seo";
-import { asSchemaArray, buildFaqPageSchema } from "@/lib/structured-data";
+import { absoluteUrl } from "@/lib/site";
+import {
+  asSchemaArray,
+  buildBreadcrumbListSchema,
+  buildFaqPageSchema,
+} from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
   title: "Shopify Hydrogen SEO Guide for Custom Storefronts | Emre Mutlu",
@@ -65,6 +71,24 @@ const references = [
   },
 ] as const;
 
+const seoServiceLinks = [
+  {
+    href: "/shopify-hydrogen-audit",
+    label: "Shopify Hydrogen audit",
+    note: "Use this when the SEO problem needs a route, canonical, structured-data, and migration-risk review.",
+  },
+  {
+    href: "/shopify-hydrogen-performance-optimization",
+    label: "Hydrogen performance optimization",
+    note: "Use this when SEO issues are tied to speed, server rendering, product UX, or technical debt.",
+  },
+  {
+    href: "/liquid-to-hydrogen-migration",
+    label: "Liquid to Hydrogen migration",
+    note: "Use this when SEO preservation is part of moving from a Shopify theme to Hydrogen.",
+  },
+] as const;
+
 const faqs = [
   {
     question: "Is Shopify Hydrogen good for SEO?",
@@ -89,6 +113,16 @@ const faqs = [
 ] as const;
 
 const faqSchema = buildFaqPageSchema(faqs);
+const breadcrumbs = [
+  { label: "Home", href: "/" },
+  { label: "Shopify Hydrogen SEO Guide", href: "/shopify-hydrogen-seo-guide" },
+] as const;
+const breadcrumbSchema = buildBreadcrumbListSchema(
+  breadcrumbs.map((item) => ({
+    name: item.label,
+    url: absoluteUrl(item.href),
+  })),
+);
 
 const articleSchema = {
   "@context": "https://schema.org",
@@ -110,8 +144,9 @@ const articleSchema = {
 export default function ShopifyHydrogenSeoGuidePage() {
   return (
     <>
-      <JsonLd data={asSchemaArray(articleSchema, faqSchema)} />
+      <JsonLd data={asSchemaArray(articleSchema, breadcrumbSchema, faqSchema)} />
       <div className="page-shell">
+        <Breadcrumbs items={breadcrumbs} />
         <PageIntroSection
           eyebrow="SEO Guide"
           title="Shopify Hydrogen SEO Guide for Custom Storefronts"
@@ -245,6 +280,22 @@ export default function ShopifyHydrogenSeoGuidePage() {
                 className="rounded-[1.1rem] border border-black/8 bg-white p-4 text-sm font-medium text-[#171717] transition hover:border-[#10b981] hover:text-[#10b981]"
               >
                 {reference.label}
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <section className="card-soft space-y-5">
+          <div className="max-w-3xl">
+            <p className="eyebrow">Service paths</p>
+            <h2 className="subsection-title mt-3">Turn the checklist into a focused engagement.</h2>
+          </div>
+          <div className="authority-links">
+            {seoServiceLinks.map((item) => (
+              <Link key={item.href} href={item.href} className="authority-link-card">
+                <p className="authority-link-card__label">HydrogenExpert</p>
+                <h3 className="authority-link-card__title">{item.label}</h3>
+                <p className="authority-link-card__body">{item.note}</p>
               </Link>
             ))}
           </div>

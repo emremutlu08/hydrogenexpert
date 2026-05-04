@@ -2,6 +2,68 @@
 
 This file tracks dated changes by approved phase.
 
+## 2026-04-26 — SEO, founder photo, and case-study layout cleanup
+
+### Files created
+
+- `public/apple-touch-icon.png`
+- `public/emre-mutlu.webp`
+- `public/favicon.ico`
+- `public/icon-192.png`
+- `public/site.webmanifest`
+
+### Files modified
+
+- `app/case-studies/page.tsx`
+- `app/hire-me/page.tsx`
+- `app/layout.tsx`
+- `app/page.tsx`
+- `app/sitemap.ts`
+- `components/Footer.tsx`
+- `components/FounderCard.tsx`
+- `components/case-study/CaseStudyHero.tsx`
+- `components/case-study/CaseStudyScreenshots.tsx`
+
+### Before and after
+
+- Founder photo:
+  - Before: `FounderCard` could fall back to a neutral silhouette because `/public/emre-mutlu.webp` was missing.
+  - After: Emre's approved portrait is optimized to WebP and used on Home and Hire Me, with Person schema pointing to the same image.
+- LinkedIn contact path:
+  - Before: LinkedIn was available, but the footer Start Here CTA still prioritized the email brief.
+  - After: Founder proof and footer Start Here now make `Message on LinkedIn` a primary contact path while keeping Upwork and email as alternatives.
+- Google SERP hygiene:
+  - Before: Google could show a generic globe icon because the site had no root `favicon.ico` package.
+  - After: the site includes `favicon.ico`, Apple touch icon, 192px icon, and `site.webmanifest`, with metadata pointing to those assets.
+- Sitemap stability:
+  - Before: static sitemap entries used `new Date()`, so every deploy made every static page look freshly modified.
+  - After: static route `lastmod` values use a stable significant update date, while blog posts still use their published dates.
+- Internal SEO links:
+  - Before: the Shopify Hydrogen SEO guide and technical blog posts were linked, but not strongly surfaced from the homepage.
+  - After: Home includes a Technical Resources block linking to the SEO guide, variant URL article, and Hydrogen performance article.
+- Case-study alignment:
+  - Before: case-study hero, outcome/screenshots, and metric/tech-stack rows used different desktop grid ratios, which made the layout feel visually misaligned.
+  - After: case-study hero and body rows share the same two-column grid on desktop; single screenshot cards now fill their grid column.
+
+### Skipped or not applicable
+
+- No new testimonial, performance metric, or client quote was invented.
+- No fake logo or unsupported client proof was added.
+- Search Console sitemap submission and manual Request Indexing still require access to Emre's Google account.
+
+### TODO and placeholder items
+
+- Add a real EveShop screenshot asset if/when approved.
+- Add `/public/badges/upwork-top-rated-plus.svg` if the official badge asset becomes available.
+- Add client-approved testimonial copy and attribution only when real quotes are available.
+
+### Verification
+
+- `npm run lint` passed.
+- `npm run build` passed.
+- Production deploy passed and `https://hydrogenexpert.co` was aliased to the latest deployment.
+- Live checks confirmed `/emre-mutlu.webp`, `/favicon.ico`, sitemap, manifest, and LinkedIn CTA references are reachable.
+
 ## 2026-04-25 — Services content upgrade
 
 ### Files modified

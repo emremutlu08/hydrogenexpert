@@ -5,8 +5,7 @@ interface CaseStudyTestimonialProps {
 }
 
 export function CaseStudyTestimonial({ testimonial }: CaseStudyTestimonialProps) {
-  if (!testimonial || !testimonial.quote || testimonial.quote === "TODO") {
-    // No testimonial yet - pending client response
+  if (!testimonial?.quote) {
     return null;
   }
 
@@ -21,6 +20,17 @@ export function CaseStudyTestimonial({ testimonial }: CaseStudyTestimonialProps)
       <p className="mt-5 text-sm leading-7 text-neutral-300">
         {testimonial.authorName} - {testimonial.authorRole}, {testimonial.authorCompany}
       </p>
+      {testimonial.sourceUrl && testimonial.sourceLabel ? (
+        <a
+          href={testimonial.sourceUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="mt-4 inline-flex text-sm font-semibold text-[#8df1cb] transition hover:text-white"
+        >
+          {testimonial.sourceLabel}
+          {testimonial.date ? `, ${testimonial.date}` : ""}
+        </a>
+      ) : null}
     </section>
   );
 }

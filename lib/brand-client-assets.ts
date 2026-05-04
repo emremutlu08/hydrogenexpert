@@ -35,7 +35,7 @@ export const BRAND_CLIENT_ASSETS = {
 export const SELECTED_WORK_ITEMS = [
   {
     id: "eveshop",
-    href: "/case-studies#eveshop",
+    href: "/case-studies/eveshop-shopify-hydrogen",
     title: "EveShop",
     eyebrow: "Nationwide cosmetics retailer — Turkey",
     body: "Frontend team lead on Turkey's first production Shopify Hydrogen storefront.",
@@ -44,7 +44,7 @@ export const SELECTED_WORK_ITEMS = [
   },
   {
     id: "bayam",
-    href: "/case-studies#bayam",
+    href: "/case-studies/bayam-jewelry-shopify-hydrogen",
     title: "Bayam Jewelry",
     eyebrow: "Fine jewelry and luxury watches — New York",
     body: "Hydrogen storefront for a two-world luxury catalog running on a dedicated commerce subdomain.",
@@ -53,7 +53,7 @@ export const SELECTED_WORK_ITEMS = [
   },
   {
     id: "rebel-bunny",
-    href: "/case-studies#rebel-bunny",
+    href: "/case-studies/rebel-bunny-shopify-hydrogen",
     title: "Rebel Bunny Matcha",
     eyebrow: "Premium matcha — DTC and wholesale",
     body: "Dual-funnel storefront serving both direct-to-consumer buyers and wholesale partners.",

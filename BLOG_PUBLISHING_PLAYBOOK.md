@@ -26,6 +26,20 @@ This playbook defines how raw notes become public HydrogenExpert blog posts. It 
 - Confirm canonical URL, sitemap inclusion, blog index visibility, metadata, OG image, and readable published/updated dates.
 - Do not expect one post to rank for broad "Shopify Hydrogen" terms alone. Build topical clusters around variants, SEO, performance, B2B, caching, migration, and production gotchas.
 
+## Priority Cluster Queue
+
+These are the next Supabase-backed posts to publish. They should be inserted or updated in `posts`, then paired with `lib/post-enhancements.ts` entries when a public article exists.
+
+| Slug | Primary query | Role |
+| --- | --- | --- |
+| `shopify-hydrogen-vs-liquid` | `shopify hydrogen vs liquid` | Decision-stage comparison |
+| `shopify-hydrogen-nextjs` | `shopify hydrogen nextjs` | Technical comparison |
+| `liquid-to-hydrogen-migration-checklist` | `liquid to hydrogen migration` | Migration support article |
+| `shopify-hydrogen-performance-checklist` | `shopify hydrogen performance` | Optimization support article |
+| `shopify-hydrogen-seo-checklist` | `shopify hydrogen seo checklist` | SEO support article |
+| `shopify-plus-hydrogen` | `shopify plus hydrogen` | Plus-brand commercial article |
+| `shopify-hydrogen-developer-vs-agency` | `shopify hydrogen agency` | Buyer-intent comparison |
+
 ## Hydrogen Freshness Checklist
 
 - Check current Shopify Hydrogen docs before publishing technical guidance.

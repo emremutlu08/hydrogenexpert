@@ -15,15 +15,17 @@ export function Header({ navItems }: HeaderProps) {
         <div className="site-header__frame">
           <div className="site-header__top-row">
             <Link href="/" className="site-header__brand">
-              <span className="relative block h-10 w-10 shrink-0 md:h-11 md:w-11">
+              <span className="block h-10 w-10 shrink-0 md:h-11 md:w-11">
                 <Image
                   src="/brand/hydrogenexpert-logo-icon.png"
-                  alt="HydrogenExpert icon logo"
-                  title="HydrogenExpert icon logo"
-                  fill
+                  alt="HydrogenExpert logo"
+                  title="HydrogenExpert logo"
+                  width={44}
+                  height={44}
+                  loading="eager"
+                  fetchPriority="high"
                   sizes="44px"
-                  className="object-contain"
-                  priority
+                  className="h-full w-full object-contain"
                 />
               </span>
               <span className="flex min-w-0 flex-col leading-none">
@@ -37,42 +39,27 @@ export function Header({ navItems }: HeaderProps) {
             </Link>
             <div className="flex items-center gap-2">
               <TrackedCTAButton
-                destination="upwork"
+                destination="linkedin"
                 label="Let's Chat"
-                className="hidden w-fit rounded-full bg-[#171717] px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-[#10b981] md:inline-flex"
+                className="hidden min-h-11 w-fit items-center rounded-full bg-[#171717] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#10b981] md:inline-flex"
               />
               <TrackedCTAButton
-                destination="upwork"
+                destination="linkedin"
                 label="Chat"
-                className="inline-flex rounded-full bg-[#171717] px-3 py-2 text-sm font-semibold text-white transition hover:bg-[#10b981] md:hidden"
+                className="inline-flex min-h-11 items-center rounded-full bg-[#171717] px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#10b981] md:hidden"
               />
             </div>
           </div>
 
           <nav
             aria-label="Primary navigation"
-            className="site-header__nav site-header__nav--desktop"
+            className="site-header__nav site-header__nav--responsive nav-scroll"
           >
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 className="site-header__nav-link"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-
-          <nav
-            aria-label="Mobile navigation"
-            className="site-header__nav site-header__nav--mobile nav-scroll"
-          >
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="site-header__nav-link site-header__nav-link--mobile"
               >
                 {item.label}
               </Link>

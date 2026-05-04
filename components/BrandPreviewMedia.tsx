@@ -28,6 +28,10 @@ export function BrandPreviewMedia({ brandId }: BrandPreviewMediaProps) {
   }
 
   const asset = brandId === "bayam" ? BRAND_CLIENT_ASSETS.bayam : BRAND_CLIENT_ASSETS.rebelBunny;
+  const dimensions =
+    brandId === "bayam"
+      ? { width: 1200, height: 638 }
+      : { width: 1200, height: 1137 };
 
   return (
     <MediaFrame ratio="preview">
@@ -35,9 +39,10 @@ export function BrandPreviewMedia({ brandId }: BrandPreviewMediaProps) {
         src={asset.imageSrc}
         alt={asset.imageAlt}
         title={asset.imageAlt}
-        fill
+        width={dimensions.width}
+        height={dimensions.height}
         sizes="(min-width: 1024px) 33vw, 100vw"
-        className="object-cover"
+        className="h-full w-full object-cover"
       />
     </MediaFrame>
   );

@@ -18,7 +18,7 @@ export function StatCard({
 }: StatCardProps) {
   const rootClassName = [
     "stat-card",
-    href ? "transition hover:-translate-y-0.5 hover:border-[#10b981]" : "",
+    href ? "hover:border-[#10b981]" : "",
     className,
   ]
     .filter(Boolean)

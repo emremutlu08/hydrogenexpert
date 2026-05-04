@@ -21,10 +21,12 @@ export function IllustrationCard({
         src={src}
         alt={alt}
         title={title ?? alt}
-        fill
-        priority={priority}
+        width={1200}
+        height={800}
+        loading={priority ? "eager" : "lazy"}
+        fetchPriority={priority ? "high" : "auto"}
         sizes="(min-width: 1024px) 560px, (min-width: 768px) 80vw, 100vw"
-        className="object-cover"
+        className="h-full w-full object-cover"
       />
     </div>
   );

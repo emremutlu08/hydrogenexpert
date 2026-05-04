@@ -13,7 +13,7 @@ function SocialLink({
 }) {
   if (!href) {
     return (
-      <span className="rounded-full border border-white/14 px-4 py-2 text-sm font-medium text-neutral-400">
+      <span className="inline-flex min-h-11 items-center rounded-full border border-white/14 px-4 py-2 text-sm font-medium text-neutral-400">
         {label}
       </span>
     );
@@ -24,7 +24,7 @@ function SocialLink({
       href={href}
       target="_blank"
       rel="noreferrer"
-      className="rounded-full border border-white/14 px-4 py-2 text-sm font-medium text-white transition hover:border-[#10b981] hover:text-[#8df1cb]"
+      className="inline-flex min-h-11 items-center rounded-full border border-white/14 px-4 py-2 text-sm font-medium text-white transition-colors hover:border-[#10b981] hover:text-[#8df1cb]"
     >
       {label}
     </Link>
@@ -36,24 +36,33 @@ interface FooterProps {
 }
 
 const SERVICE_ITEMS = [
-  "Shopify Hydrogen Development",
-  "Hydrogen Storefront Audit",
-  "Liquid to Hydrogen Migration",
-  "Performance and UX Refactor",
+  { href: "/custom-shopify-hydrogen-storefront", label: "Shopify Hydrogen Development" },
+  { href: "/shopify-hydrogen-audit", label: "Hydrogen Storefront Audit" },
+  { href: "/liquid-to-hydrogen-migration", label: "Liquid to Hydrogen Migration" },
+  { href: "/shopify-hydrogen-performance-optimization", label: "Performance and UX Refactor" },
 ] as const;
 
 const RESOURCE_ITEMS = [
+  { href: "/about", label: "About" },
   { href: "/what-is-hydrogen", label: "What Is Shopify Hydrogen?" },
   { href: "/should-i-use-it", label: "Should I Use Hydrogen?" },
+  { href: "/when-not-to-use-hydrogen", label: "When Not to Use Hydrogen" },
   { href: "/shopify-hydrogen-seo-guide", label: "Hydrogen SEO Guide" },
   { href: "/cost", label: "Shopify Hydrogen Cost" },
 ] as const;
 
 const PROOF_ITEMS = [
   { href: "/case-studies", label: "Case Studies" },
-  { href: "/case-studies#eveshop", label: "EveShop" },
-  { href: "/case-studies#bayam", label: "Bayam Jewelry" },
-  { href: "/case-studies#rebel-bunny", label: "Rebel Bunny" },
+  { href: "/case-studies/eveshop-shopify-hydrogen", label: "EveShop" },
+  { href: "/case-studies/bayam-jewelry-shopify-hydrogen", label: "Bayam Jewelry" },
+  { href: "/case-studies/rebel-bunny-shopify-hydrogen", label: "Rebel Bunny" },
+] as const;
+
+const TRUST_ITEMS = [
+  { href: "/contact", label: "Contact" },
+  { href: "/privacy", label: "Privacy" },
+  { href: "/cookies", label: "Cookies" },
+  { href: "/terms", label: "Terms" },
 ] as const;
 
 function FooterCard({
@@ -76,7 +85,7 @@ function FooterCard({
               href={item.href}
               target={item.external ? "_blank" : undefined}
               rel={item.external ? "noreferrer" : undefined}
-              className="transition hover:text-[#10b981]"
+              className="inline-flex min-h-8 items-center transition-colors hover:text-[#10b981]"
             >
               {item.label}
             </Link>
@@ -99,14 +108,16 @@ export function Footer({ navItems }: FooterProps) {
             <div className="space-y-5">
               <div className="space-y-3">
                 <div className="flex items-start gap-4">
-                  <span className="relative mt-1 block h-11 w-11 shrink-0">
+                  <span className="mt-1 block h-11 w-11 shrink-0">
                     <Image
                       src="/brand/hydrogenexpert-logo-icon.png"
-                      alt="HydrogenExpert icon logo"
-                      title="HydrogenExpert icon logo"
-                      fill
+                      alt="HydrogenExpert logo"
+                      title="HydrogenExpert logo"
+                      width={44}
+                      height={44}
+                      loading="lazy"
                       sizes="44px"
-                      className="object-contain"
+                      className="h-full w-full object-contain"
                     />
                   </span>
                   <div className="min-w-0">
@@ -142,26 +153,35 @@ export function Footer({ navItems }: FooterProps) {
               <p className="mt-4 max-w-2xl text-sm leading-7 text-neutral-300 md:text-base md:leading-8">
                 Send your store URL and what feels slow, limiting, or expensive
                 to change. I will give you a direct answer on whether the next
-                move is Liquid, Hydrogen, or no rebuild.
+                move is Liquid, Hydrogen, or no rebuild. LinkedIn is the fastest
+                place to start the conversation.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <Link
-                  href="#email-form"
-                  className="rounded-full bg-[#10b981] px-5 py-3 text-sm font-semibold text-white transition hover:bg-white hover:text-[#171717]"
+                  href={OWNER.linkedIn}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex min-h-11 items-center rounded-full bg-[#10b981] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-[#171717]"
                 >
-                  Send Email Brief
+                  Message on LinkedIn
                 </Link>
                 <Link
                   href="/hire-me"
-                  className="rounded-full border border-white/14 px-5 py-3 text-sm font-semibold text-white transition hover:border-[#10b981] hover:text-[#8df1cb]"
+                  className="inline-flex min-h-11 items-center rounded-full border border-white/14 px-5 py-3 text-sm font-semibold text-white transition-colors hover:border-[#10b981] hover:text-[#8df1cb]"
                 >
                   Hire Me
+                </Link>
+                <Link
+                  href="#email-form"
+                  className="inline-flex min-h-11 items-center rounded-full border border-white/14 px-5 py-3 text-sm font-semibold text-white transition-colors hover:border-[#10b981] hover:text-[#8df1cb]"
+                >
+                  Email Brief
                 </Link>
               </div>
             </div>
           </div>
 
-          <div className="mt-8 grid gap-6 border-t border-white/10 pt-7 md:grid-cols-3">
+          <div className="mt-8 grid gap-6 border-t border-white/10 pt-7 md:grid-cols-4">
             <FooterCard title="Services" items={SERVICE_ITEMS} />
             <FooterCard
               title="Resources"
@@ -177,6 +197,7 @@ export function Footer({ navItems }: FooterProps) {
                 { href: OWNER.upwork, label: "Upwork Profile", external: true },
               ]}
             />
+            <FooterCard title="Trust" items={TRUST_ITEMS} />
           </div>
         </div>
       </div>

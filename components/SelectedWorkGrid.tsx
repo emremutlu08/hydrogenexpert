@@ -24,14 +24,15 @@ export function SelectedWorkGrid() {
             body={item.body}
             media={<BrandPreviewMedia brandId={item.id} />}
             mediaFooter={
-              <div className="relative h-7 w-28">
+              <div className="flex h-7 w-28 items-center">
                 <Image
                   src={logoAsset.logoSrc}
                   alt={logoAsset.logoAlt}
                   title={logoAsset.logoAlt}
-                  fill
+                  width={112}
+                  height={28}
                   sizes="112px"
-                  className="object-contain object-left"
+                  className="h-full w-full object-contain object-left"
                 />
               </div>
             }

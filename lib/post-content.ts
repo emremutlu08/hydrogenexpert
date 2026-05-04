@@ -1,3 +1,34 @@
+import sanitizeHtml from "sanitize-html";
+
+const ALLOWED_ARTICLE_TAGS = [
+  "a",
+  "blockquote",
+  "br",
+  "code",
+  "div",
+  "em",
+  "h2",
+  "h3",
+  "h4",
+  "li",
+  "ol",
+  "p",
+  "pre",
+  "strong",
+  "table",
+  "tbody",
+  "td",
+  "th",
+  "thead",
+  "tr",
+  "ul",
+] as const;
+
+const ALLOWED_ARTICLE_CLASSES = {
+  div: ["article-table-wrap"],
+  code: [/^language-[a-z0-9-]+$/],
+};
+
 function escapeHtml(value: string) {
   return value
     .replaceAll("&", "&amp;")
@@ -179,14 +210,35 @@ function formatMarkdownLike(content: string) {
   return html.join("");
 }
 
-function sanitizeHtmlContent(content: string) {
-  return content
-    .replace(/<\s*(script|style|iframe|object|embed|form|input|button|textarea|select|meta|link|base)[^>]*>[\s\S]*?<\s*\/\s*\1>/gi, "")
-    .replace(/<\s*(script|style|iframe|object|embed|form|input|button|textarea|select|meta|link|base)[^>]*\/?\s*>/gi, "")
-    .replace(/\s+on[a-z]+\s*=\s*(['"]).*?\1/gi, "")
-    .replace(/\s+on[a-z]+\s*=\s*[^\s>]+/gi, "")
-    .replace(/\s(href|src)\s*=\s*(['"])\s*javascript:[^'"]*\2/gi, ' $1="#"')
-    .replace(/\s(href|src)\s*=\s*(['"])\s*data:text\/html[^'"]*\2/gi, ' $1="#"');
+export function sanitizeHtmlContent(content: string) {
+  return sanitizeHtml(content, {
+    allowedTags: [...ALLOWED_ARTICLE_TAGS],
+    allowedAttributes: {
+      a: ["href", "rel", "title"],
+      code: ["class"],
+      div: ["class"],
+    },
+    allowedClasses: ALLOWED_ARTICLE_CLASSES,
+    allowedSchemes: ["http", "https", "mailto"],
+    allowedSchemesByTag: {
+      a: ["http", "https", "mailto"],
+    },
+    allowProtocolRelative: false,
+    disallowedTagsMode: "discard",
+    enforceHtmlBoundary: true,
+    parser: {
+      lowerCaseTags: true,
+    },
+    transformTags: {
+      a: (_tagName, attribs) => ({
+        tagName: "a",
+        attribs: {
+          ...attribs,
+          rel: "nofollow noopener noreferrer",
+        },
+      }),
+    },
+  });
 }
 
 export function formatPostContent(content: string) {
@@ -194,7 +246,8 @@ export function formatPostContent(content: string) {
     return "";
   }
 
-  const looksLikeHtml = /<([a-z][a-z0-9]*)\b[^>]*>/i.test(content);
+  const contentWithoutCodeBlocks = content.replace(/```[\s\S]*?```/g, "");
+  const looksLikeHtml = /<([a-z][a-z0-9]*)\b[^>]*>/i.test(contentWithoutCodeBlocks);
   if (looksLikeHtml) {
     return sanitizeHtmlContent(content);
   }

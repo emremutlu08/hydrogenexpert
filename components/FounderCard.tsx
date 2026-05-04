@@ -2,7 +2,6 @@ import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { UpworkTopRatedBadge } from "@/components/UpworkTopRatedBadge";
 import { HAS_FOUNDER_PHOTO, FOUNDER_PHOTO_PATH } from "@/lib/public-assets";
 import { OWNER } from "@/lib/site";
 
@@ -16,7 +15,7 @@ interface FounderCardProps {
 const PHOTO_SIZE = {
   sm: "h-28 w-28",
   md: "h-36 w-36",
-  lg: "h-52 w-52 md:h-64 md:w-64",
+  lg: "aspect-[16/9] w-full",
 } as const;
 
 const PHOTO_RADIUS = {
@@ -47,15 +46,16 @@ export function FounderCard({
             {HAS_FOUNDER_PHOTO ? (
               <Image
                 src={FOUNDER_PHOTO_PATH}
-                alt="Emre Mutlu, Shopify Hydrogen developer"
+                alt="Emre Mutlu, Shopify Hydrogen developer, in a city setting"
                 title="Emre Mutlu, Shopify Hydrogen developer"
-                fill
-                sizes={isLarge ? "(max-width: 1024px) 208px, 256px" : "144px"}
-                className="object-cover"
+                width={1672}
+                height={941}
+                loading="lazy"
+                sizes={isLarge ? "(max-width: 1024px) 100vw, 34vw" : "144px"}
+                className="h-full w-full object-cover"
               />
             ) : (
               <div className="flex h-full w-full items-center justify-center bg-[radial-gradient(circle_at_top,#ffffff,rgba(241,245,249,0.96)_55%,rgba(226,232,240,0.92))] text-neutral-400">
-                {/* TODO: Replace this fallback with /public/emre-mutlu.webp. */}
                 <svg viewBox="0 0 120 120" className="h-24 w-24 fill-current">
                   <path d="M60 60c13.255 0 24-10.745 24-24S73.255 12 60 12 36 22.745 36 36s10.745 24 24 24Zm0 12c-19.882 0-36 16.118-36 36h72c0-19.882-16.118-36-36-36Z" />
                 </svg>
@@ -76,20 +76,28 @@ export function FounderCard({
           </div>
 
           {showCredentials ? (
-            <div className="flex flex-wrap items-center gap-3">
+            <div className="grid gap-2.5">
               <Link
-                href={OWNER.upwork}
+                href={OWNER.linkedIn}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex"
+                className="soft-pill inline-flex min-h-12 items-center justify-center text-center transition hover:border-[#10b981] hover:text-[#10b981]"
               >
-                <UpworkTopRatedBadge size={isLarge ? "lg" : "sm"} />
+                Message on LinkedIn
               </Link>
               <Link
                 href={OWNER.upwork}
                 target="_blank"
                 rel="noreferrer"
-                className="soft-pill transition hover:border-[#10b981] hover:text-[#10b981]"
+                className="soft-pill inline-flex min-h-12 items-center justify-center text-center transition hover:border-[#10b981] hover:text-[#10b981]"
+              >
+                <span className="text-[0.78rem] uppercase tracking-[0.16em]">Top Rated Plus</span>
+              </Link>
+              <Link
+                href={OWNER.upwork}
+                target="_blank"
+                rel="noreferrer"
+                className="soft-pill inline-flex min-h-12 items-center justify-center text-center transition hover:border-[#10b981] hover:text-[#10b981]"
               >
                 100% JSS
               </Link>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CTASection } from "@/components/CTASection";
 import { FaqSection } from "@/components/FaqSection";
 import { FounderCard } from "@/components/FounderCard";
@@ -11,16 +12,19 @@ import { SectionHeader } from "@/components/SectionHeader";
 import { SplitFeatureSection } from "@/components/SplitFeatureSection";
 import { StatCard } from "@/components/StatCard";
 import { UdemyCourseCard } from "@/components/UdemyCourseCard";
-import { UpworkTopRatedBadge } from "@/components/UpworkTopRatedBadge";
 import { FOUNDER_STORY } from "@/lib/founder";
 import { buildMetadata } from "@/lib/seo";
-import { CLIENTS, OWNER } from "@/lib/site";
-import { asSchemaArray, buildFaqPageSchema } from "@/lib/structured-data";
+import { CLIENTS, FOUNDER_IMAGE_PATH, OWNER, UPWORK_PROFILE, absoluteUrl } from "@/lib/site";
+import {
+  asSchemaArray,
+  buildBreadcrumbListSchema,
+  buildFaqPageSchema,
+} from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
   title: "Hire a Shopify Hydrogen Developer | Emre Mutlu",
   description:
-    "Hire Emre Mutlu for Shopify Hydrogen strategy, implementation, and storefront advisory for Shopify Plus brands that need direct senior delivery.",
+    "Hire Emre Mutlu for senior Shopify Hydrogen audits, Liquid-to-Hydrogen migration, custom storefront builds, performance optimization, and direct launch support.",
   path: "/hire-me",
 });
 
@@ -30,6 +34,7 @@ const personSchema = {
   name: OWNER.name,
   jobTitle: OWNER.title,
   description: OWNER.headline,
+  image: absoluteUrl(FOUNDER_IMAGE_PATH),
   sameAs: [OWNER.linkedIn, OWNER.upwork, OWNER.udemyUrl],
 };
 
@@ -66,7 +71,7 @@ const proofCards = [
     ),
     title: "Top Rated Plus",
     body: "External proof that delivery discipline and client trust already exist outside this site.",
-    media: <UpworkTopRatedBadge size="lg" />,
+    media: null,
   },
   {
     titleNode: (
@@ -98,13 +103,36 @@ const proofCards = [
     body: "Creator of the world's first English Shopify Hydrogen course on Udemy.",
     media: null,
   },
+  {
+    titleNode: (
+      <Link
+        href="/case-studies/rebel-bunny-shopify-hydrogen"
+        className="transition hover:text-[#10b981]"
+      >
+        5.0 Rebel Bunny Feedback
+      </Link>
+    ),
+    title: "5.0 Rebel Bunny Feedback",
+    body: "Public Upwork feedback now supports the Rebel Bunny Shopify Hydrogen case study.",
+    media: null,
+  },
 ] as const;
 
 const stats: Array<{ value: string; label: string; href?: string }> = [
-  { value: "1,666+", label: "hours of Upwork delivery", href: OWNER.upwork },
+  { value: UPWORK_PROFILE.totalHoursLabel, label: "hours of Upwork delivery", href: OWNER.upwork },
   { value: "32K+", label: "LinkedIn followers", href: OWNER.linkedIn },
   { value: "First", label: "production Hydrogen storefront in Turkey" },
 ];
+
+const proofSnapshot = [
+  "3 production Shopify Hydrogen storefronts",
+  "400K+ users on EveShop",
+  "Top Rated Plus on Upwork",
+  "1,900+ Upwork hours",
+  "5.0 Rebel Bunny feedback on Upwork",
+  "32K+ LinkedIn followers",
+  "Creator of the first English Shopify Hydrogen course",
+] as const;
 
 const faqs = [
   {
@@ -125,12 +153,23 @@ const faqs = [
 ] as const;
 
 const faqSchema = buildFaqPageSchema(faqs);
+const breadcrumbs = [
+  { label: "Home", href: "/" },
+  { label: "Hire Me", href: "/hire-me" },
+] as const;
+const breadcrumbSchema = buildBreadcrumbListSchema(
+  breadcrumbs.map((item) => ({
+    name: item.label,
+    url: absoluteUrl(item.href),
+  })),
+);
 
 export default function HireMePage() {
   return (
     <>
-      <JsonLd data={asSchemaArray(personSchema, faqSchema)} />
+      <JsonLd data={asSchemaArray(personSchema, breadcrumbSchema, faqSchema)} />
       <div className="page-shell">
+        <Breadcrumbs items={breadcrumbs} />
         <PageIntroSection
           eyebrow="Why Emre"
           title="Hire a Shopify Hydrogen developer with real delivery history"
@@ -144,13 +183,27 @@ export default function HireMePage() {
           ))}
         </FounderCard>
 
+        <section className="card-soft grid gap-6 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
+          <div>
+            <p className="eyebrow">Proof snapshot</p>
+            <h2 className="subsection-title mt-3">The short version buyers usually need.</h2>
+          </div>
+          <ul className="editorial-list">
+            {proofSnapshot.map((item) => (
+              <li key={item}>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
         <section className="surface-card space-y-6">
           <SectionHeader
             eyebrow="Client proof"
             title="Clear credentials, direct contact, less agency noise."
             description="The point is not to sell complexity. It is to help brands understand what they need and launch with fewer surprises."
           />
-          <div className="grid gap-5 md:grid-cols-3">
+          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
             {proofCards.map((card) => (
               <ProofCard
                 key={card.title}

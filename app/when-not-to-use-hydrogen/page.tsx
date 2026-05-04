@@ -1,10 +1,14 @@
 import Link from "next/link";
 
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { JsonLd } from "@/components/JsonLd";
 import { PageIntroSection } from "@/components/PageIntroSection";
 import { buildMetadata } from "@/lib/seo";
+import { absoluteUrl } from "@/lib/site";
+import { buildBreadcrumbListSchema } from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
-  title: "When Not to Use Shopify Hydrogen - An Honest Framework | Emre Mutlu",
+  title: "When Not to Use Shopify Hydrogen | Emre Mutlu",
   description:
     "Six scenarios where Shopify Hydrogen is not worth the cost, even for growing brands. An honest framework from an independent Hydrogen developer.",
   path: "/when-not-to-use-hydrogen",
@@ -72,56 +76,75 @@ const scenarios = [
     ],
   },
 ] as const;
+const breadcrumbs = [
+  { label: "Home", href: "/" },
+  { label: "When Not to Use Hydrogen", href: "/when-not-to-use-hydrogen" },
+] as const;
+const breadcrumbSchema = buildBreadcrumbListSchema(
+  breadcrumbs.map((item) => ({
+    name: item.label,
+    url: absoluteUrl(item.href),
+  })),
+);
 
 export default function WhenNotToUseHydrogenPage() {
   return (
-    <div className="page-shell">
-      <PageIntroSection
-        eyebrow="Honest framework"
-        title="When Hydrogen is the wrong move"
-        description="Six scenarios where a stronger theme, a cleaner app stack, or a narrower UX intervention is the smarter commercial choice."
-        body="Most Hydrogen advice is sales material dressed up as education. The framework on this page is the opposite. These are the six situations where I would tell a store owner to walk away from a Hydrogen rebuild, even when they are asking for one. The reasoning is commercial, not ideological. Hydrogen is a powerful framework, but power has cost, and the cost does not always earn its place. If you see your own store in two or more of these scenarios, the honest next step is not a rebuild. It is a stronger theme, a cleaner app stack, or a narrow UX intervention. Save the rebuild budget for a stage where it actually moves revenue."
-      />
+    <>
+      <JsonLd data={breadcrumbSchema} />
+      <div className="page-shell">
+        <Breadcrumbs items={breadcrumbs} />
+        <PageIntroSection
+          eyebrow="Honest framework"
+          title="When Hydrogen is the wrong move"
+          description="Six scenarios where a stronger theme, a cleaner app stack, or a narrower UX intervention is the smarter commercial choice."
+          body="Most Hydrogen advice is sales material dressed up as education. The framework on this page is the opposite. These are the six situations where I would tell a store owner to walk away from a Hydrogen rebuild, even when they are asking for one. The reasoning is commercial, not ideological. Hydrogen is a powerful framework, but power has cost, and the cost does not always earn its place. If you see your own store in two or more of these scenarios, the honest next step is not a rebuild. It is a stronger theme, a cleaner app stack, or a narrow UX intervention. Save the rebuild budget for a stage where it actually moves revenue."
+        />
 
-      <section className="grid gap-8">
-        {scenarios.map((scenario, index) => (
-          <article key={scenario.title} className="card space-y-6">
-            <div className="space-y-3">
-              <p className="eyebrow">Scenario {index + 1}</p>
-              <h2 className="section-heading text-[2rem] md:text-[2.6rem]">{scenario.title}</h2>
-              <p className="text-base leading-8 text-neutral-600">{scenario.explanation}</p>
-            </div>
+        <section className="grid gap-8">
+          {scenarios.map((scenario, index) => (
+            <article key={scenario.title} className="card space-y-6">
+              <div className="space-y-3">
+                <p className="eyebrow">Scenario {index + 1}</p>
+                <h2 className="section-heading text-[2rem] md:text-[2.6rem]">
+                  {scenario.title}
+                </h2>
+                <p className="text-base leading-8 text-neutral-600">
+                  {scenario.explanation}
+                </p>
+              </div>
 
-            <div className="rounded-[1.4rem] border border-black/8 bg-[#f6f7f7] p-6">
-              <p className="dna-kicker text-[#10b981]">What to do instead</p>
-              <ul className="editorial-list mt-4">
-                {scenario.alternatives.map((item) => (
-                  <li key={item}>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </article>
-        ))}
-      </section>
+              <div className="rounded-[1.4rem] border border-black/8 bg-[#f6f7f7] p-6">
+                <p className="dna-kicker text-[#10b981]">What to do instead</p>
+                <ul className="editorial-list mt-4">
+                  {scenario.alternatives.map((item) => (
+                    <li key={item}>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </article>
+          ))}
+        </section>
 
-      <section className="hero-card space-y-5">
-        <p className="dna-kicker text-[#8df1cb]">Still think Hydrogen might fit?</p>
-        <h2 className="font-display text-[2.4rem] leading-[0.98] tracking-[-0.05em] text-white md:text-[3.2rem]">
-          Still think Hydrogen might fit?
-        </h2>
-        <p className="max-w-3xl text-base leading-8 text-neutral-300">
-          If your store does not match any of these scenarios, or only matches one weakly,
-          Hydrogen might still be the right move. The 5-question test is the simplest next step.
-        </p>
-        <Link
-          href="/should-i-use-it"
-          className="inline-flex items-center rounded-full bg-[#10b981] px-6 py-3 text-sm font-semibold text-white transition hover:bg-white hover:text-[#171717]"
-        >
-          Take the 5-question test
-        </Link>
-      </section>
-    </div>
+        <section className="hero-card space-y-5">
+          <p className="dna-kicker text-[#8df1cb]">Still think Hydrogen might fit?</p>
+          <h2 className="font-display text-[2.4rem] leading-[0.98] tracking-[-0.05em] text-white md:text-[3.2rem]">
+            Still think Hydrogen might fit?
+          </h2>
+          <p className="max-w-3xl text-base leading-8 text-neutral-300">
+            If your store does not match any of these scenarios, or only matches one
+            weakly, Hydrogen might still be the right move. The 5-question test is
+            the simplest next step.
+          </p>
+          <Link
+            href="/should-i-use-it"
+            className="inline-flex items-center rounded-full bg-[#10b981] px-6 py-3 text-sm font-semibold text-white transition hover:bg-white hover:text-[#171717]"
+          >
+            Take the 5-question test
+          </Link>
+        </section>
+      </div>
+    </>
   );
 }

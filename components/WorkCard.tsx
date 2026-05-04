@@ -22,7 +22,7 @@ export function WorkCard({
   mediaFooter,
   eyebrowClassName,
 }: WorkCardProps) {
-  const rootClassName = ["agency-grid-card", "transition", "hover:-translate-y-0.5", "hover:border-[#10b981]", className]
+  const rootClassName = ["agency-grid-card", "hover:border-[#10b981]", className]
     .filter(Boolean)
     .join(" ");
 

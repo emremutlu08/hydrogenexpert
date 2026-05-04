@@ -13,19 +13,29 @@ import { SplitFeatureSection } from "@/components/SplitFeatureSection";
 import { StatCardGrid } from "@/components/StatCardGrid";
 import { TrustBar } from "@/components/TrustBar";
 import { UdemyCourseCard } from "@/components/UdemyCourseCard";
-import { UpworkTopRatedBadge } from "@/components/UpworkTopRatedBadge";
 import { clientLogos } from "@/data/clientLogos";
 import { FOUNDER_STORY } from "@/lib/founder";
 import { buildMetadata } from "@/lib/seo";
-import { OWNER, absoluteUrl } from "@/lib/site";
-import { asSchemaArray, buildFaqPageSchema } from "@/lib/structured-data";
+import {
+  FOUNDER_IMAGE_PATH,
+  OWNER,
+  SITE_LOGO_PATH,
+  SITE_NAME,
+  VERIFIED_PROFILE_URLS,
+  absoluteUrl,
+} from "@/lib/site";
+import {
+  asSchemaArray,
+  buildFaqPageSchema,
+  buildPublisherSchema,
+} from "@/lib/structured-data";
 
 const LAST_UPDATED = "2026-04-21";
 
 export const metadata = buildMetadata({
-  title: "Hire a Shopify Hydrogen Developer for Shopify Plus Brands | Emre Mutlu",
+  title: "Shopify Hydrogen Developer for Shopify Plus Brands | Emre Mutlu",
   description:
-    "Hire Emre Mutlu for Shopify Hydrogen strategy, cost planning, case studies, and custom storefront delivery for Shopify Plus brands in the US market.",
+    "Senior Shopify Hydrogen developer for Plus storefront audits, Liquid-to-Hydrogen migrations, custom builds, performance work, and launch support.",
   path: "/",
   ogImage: absoluteUrl("/og-home.svg"),
 });
@@ -36,26 +46,35 @@ const personSchema = {
   name: OWNER.name,
   jobTitle: OWNER.title,
   description: OWNER.headline,
-  sameAs: [OWNER.linkedIn, OWNER.upwork, OWNER.udemyUrl],
+  image: absoluteUrl(FOUNDER_IMAGE_PATH),
+  sameAs: VERIFIED_PROFILE_URLS,
   knowsAbout: ["Shopify Hydrogen", "Shopify storefront performance", "Shopify migration planning"],
 };
+
+const publisherSchema = buildPublisherSchema({
+  name: SITE_NAME,
+  url: absoluteUrl("/"),
+  logo: absoluteUrl(SITE_LOGO_PATH),
+});
 
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "HydrogenExpert",
+  name: SITE_NAME,
   url: absoluteUrl("/"),
+  logo: absoluteUrl(SITE_LOGO_PATH),
+  image: absoluteUrl(SITE_LOGO_PATH),
   founder: {
     "@type": "Person",
     name: OWNER.name,
   },
-  sameAs: [OWNER.linkedIn, OWNER.upwork, OWNER.udemyUrl],
+  sameAs: VERIFIED_PROFILE_URLS,
 };
 
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "HydrogenExpert",
+  name: SITE_NAME,
   url: absoluteUrl("/"),
   description:
     "Lead generation site for Shopify store owners researching Hydrogen strategy, migration fit, pricing, and case studies.",
@@ -74,12 +93,9 @@ const articleSchema = {
   author: {
     "@type": "Person",
     name: OWNER.name,
-    sameAs: [OWNER.linkedIn, OWNER.upwork, OWNER.udemyUrl],
+    sameAs: VERIFIED_PROFILE_URLS,
   },
-  publisher: {
-    "@type": "Organization",
-    name: "HydrogenExpert",
-  },
+  publisher: publisherSchema,
   mainEntityOfPage: absoluteUrl("/"),
   dateModified: LAST_UPDATED,
   datePublished: LAST_UPDATED,
@@ -165,7 +181,6 @@ const proofCards = [
   {
     id: "upwork",
     eyebrow: "Upwork",
-    media: <UpworkTopRatedBadge size="lg" />,
     title: (
       <Link
         href={OWNER.upwork}
@@ -177,7 +192,7 @@ const proofCards = [
       </Link>
     ),
     body:
-      "A practical trust signal when you want a specialist who can deliver without turning the project into agency theatre.",
+      "A practical trust signal backed by 1,900+ Upwork hours and public client feedback.",
   },
   {
     id: "jss",
@@ -194,6 +209,20 @@ const proofCards = [
     ),
     body:
       "Proof of follow-through for merchants making a more serious storefront investment.",
+  },
+  {
+    id: "rebel-bunny-feedback",
+    eyebrow: "Client feedback",
+    title: (
+      <Link
+        href="/case-studies/rebel-bunny-shopify-hydrogen"
+        className="transition hover:text-[#10b981]"
+      >
+        5.0 Rebel Bunny feedback
+      </Link>
+    ),
+    body:
+      "The ongoing custom Hydrogen storefront contract now has public Upwork feedback attached to the case study.",
   },
   {
     id: "teaching",
@@ -225,7 +254,7 @@ const homepageMetrics = [
   { id: "scale", value: "400K+", label: "users on EveShop at production scale" },
   {
     id: "hours",
-    value: "1,666+",
+    value: "1,900+",
     label: "hours of Upwork production delivery",
     href: OWNER.upwork,
     external: true,
@@ -275,6 +304,27 @@ const references = [
   },
 ] as const;
 
+const technicalResources = [
+  {
+    title: "Shopify Hydrogen SEO Guide",
+    href: "/shopify-hydrogen-seo-guide",
+    body:
+      "A practical guide to metadata, canonical URLs, JSON-LD, variant URLs, sitemaps, robots, and crawl consistency in custom Hydrogen storefronts.",
+  },
+  {
+    title: "Variant URLs and fallback bugs",
+    href: "/blog/shopify-hydrogen-variant-selection-fallback",
+    body:
+      "A technical article on keeping clicked options locked, preserving stable variant URLs, and avoiding UX or SEO mismatch on product pages.",
+  },
+  {
+    title: "Hydrogen performance case note",
+    href: "/blog/cut-homepage-load-time-from-5s-to-2s-shopify-hydrogen",
+    body:
+      "A real-world note on restoring server-rendered product data and cutting a Shopify Hydrogen homepage from roughly 5s to 2s.",
+  },
+] as const;
+
 export default function HomePage() {
   return (
     <>
@@ -295,9 +345,11 @@ export default function HomePage() {
             <p className="eyebrow justify-center">Senior Shopify Hydrogen development and advisory</p>
             <div className="space-y-3">
               <h1 className="hero-statement">
-                Your Shopify store works, but every new feature takes 3x longer than last year?
+                Shopify Hydrogen developer for growing brands
               </h1>
-              <p className="hero-response">{"That's when I come in."}</p>
+              <p className="hero-response">
+                {"Your Shopify store works, but every new feature takes 3x longer than last year? That's when I come in."}
+              </p>
             </div>
             <p className="mx-auto max-w-3xl page-intro">
               I help growth-minded Shopify Plus brands decide when Hydrogen is worth it, scope the
@@ -331,16 +383,16 @@ export default function HomePage() {
         <section className="surface-card space-y-6">
           <SectionHeader
             eyebrow="Selected work"
-            title="Three production Shopify Plus Hydrogen storefronts, including Turkey's first (400K+ users on EveShop)."
-            description="Real stores, real constraints, and the kind of implementation detail that only shows up once a storefront is live."
+            title="Three production Shopify Hydrogen storefronts"
+            description="Including Turkey's first production Hydrogen storefront and EveShop at 400K+ users. Real stores, real constraints, and the kind of implementation detail that only shows up once a storefront is live."
           />
           <SelectedWorkGrid />
         </section>
 
-        <ProofCardGrid items={proofCards} columnsClassName="grid gap-5 md:grid-cols-2 xl:grid-cols-4" />
+        <ProofCardGrid items={proofCards} columnsClassName="grid gap-5 md:grid-cols-2 xl:grid-cols-4 xl:items-stretch" />
 
         <SplitFeatureSection
-          leftClassName="rounded-[1.45rem] border border-black/8 bg-[#f6f7f7] p-6"
+          leftClassName="rounded-[1.35rem] border border-black/8 bg-[#f6f7f7] p-6 md:p-8"
           rightClassName=""
           left={
             <>
@@ -352,7 +404,7 @@ export default function HomePage() {
               </p>
             </>
           }
-          right={<StatCardGrid items={homepageMetrics} columnsClassName="grid gap-4 sm:grid-cols-2 xl:grid-cols-3" />}
+          right={<StatCardGrid items={homepageMetrics} columnsClassName="grid gap-4 sm:grid-cols-2 xl:grid-cols-3 xl:auto-rows-fr" />}
         />
 
         <section id="process" className="surface-card space-y-6">
@@ -381,8 +433,8 @@ export default function HomePage() {
         <section className="surface-card space-y-6">
           <SectionHeader
             eyebrow="Teaching"
-            title="Teaching Hydrogen because the English-language path did not exist when I started"
-            description="A visible proof layer for how the work gets communicated: direct, merchant-friendly, and grounded in real implementation."
+            title="Teaching Shopify Hydrogen in plain English"
+            description="I created the world's first English Shopify Hydrogen course on Udemy because the English-language path did not exist when I started."
           />
           <UdemyCourseCard courseUrl={OWNER.udemyUrl} />
         </section>
@@ -393,29 +445,51 @@ export default function HomePage() {
         />
 
         <section className="surface-card space-y-6">
-          <div className="max-w-3xl">
-            <p className="eyebrow">Sources</p>
-            <h2 className="section-heading mt-3">Authority should be grounded in real references.</h2>
-            <p className="body-copy mt-4">
-              These are the official sources behind the technical framing on this site. They support the plain-English guidance rather than replacing it.
-            </p>
-          </div>
-          <div className="grid gap-4">
-            {references.map((reference) => (
-              <article key={reference.href} className="agency-grid-card">
-                <h3 className="text-lg font-semibold text-[#171717]">
-                  <a
-                    href={reference.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="transition hover:text-[#10b981]"
-                  >
-                    {reference.label}
-                  </a>
-                </h3>
-                <p className="mt-3 text-sm leading-7 text-neutral-600">{reference.note}</p>
-              </article>
+          <SectionHeader
+            eyebrow="Technical resources"
+            title="Start with the pages Google and merchants should understand first."
+            description="The core commercial pages explain fit, cost, and proof. These technical resources support the same positioning with practical Hydrogen SEO, URL, and performance detail."
+          />
+          <div className="grid gap-4 md:grid-cols-3">
+            {technicalResources.map((resource) => (
+              <Link
+                key={resource.href}
+                href={resource.href}
+                className="rounded-[1.3rem] border border-black/8 bg-white p-5 hover:border-[#10b981]"
+              >
+                <h3 className="text-lg font-semibold text-[#171717]">{resource.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-neutral-600">{resource.body}</p>
+              </Link>
             ))}
+          </div>
+        </section>
+
+        <section className="surface-card">
+          <div className="grid gap-8 lg:grid-cols-[0.44fr_0.56fr] lg:items-start">
+            <div className="max-w-3xl">
+              <p className="eyebrow">Sources</p>
+              <h2 className="section-heading mt-3">Authority should be grounded in real references.</h2>
+              <p className="body-copy mt-4">
+                These are the official sources behind the technical framing on this site. They support the plain-English guidance rather than replacing it.
+              </p>
+            </div>
+            <div className="grid gap-4">
+              {references.map((reference) => (
+                <article key={reference.href} className="agency-grid-card">
+                  <h3 className="text-lg font-semibold text-[#171717]">
+                    <a
+                      href={reference.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="transition hover:text-[#10b981]"
+                    >
+                      {reference.label}
+                    </a>
+                  </h3>
+                  <p className="mt-3 text-sm leading-7 text-neutral-600">{reference.note}</p>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 

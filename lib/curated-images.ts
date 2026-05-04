@@ -2,6 +2,8 @@ export interface CuratedImage {
   src: string;
   title: string;
   alt: string;
+  width: number;
+  height: number;
 }
 
 export const STATIC_PAGE_VISUALS: Record<
@@ -12,10 +14,14 @@ export const STATIC_PAGE_VISUALS: Record<
     src: "/curated-images/interface-abstract/ia-control-panel-1.jpg",
     title: "Abstract interface panel",
     alt: "Abstract interface panel with graph elements, sliders, and control regions.",
+    width: 6240,
+    height: 4160,
   },
   cost: {
     src: "/curated-images/data-viz/dv-monitoring-screen-1.jpg",
     title: "Monitoring display",
     alt: "Dark monitoring display with graph modules and green system metrics.",
+    width: 6000,
+    height: 4000,
   },
 } as const;

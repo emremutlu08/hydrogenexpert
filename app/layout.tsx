@@ -8,8 +8,22 @@ import "./globals.css";
 
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { JsonLd } from "@/components/JsonLd";
+import { getValidGaMeasurementId } from "@/lib/analytics-config";
 import { getSiteNavigation } from "@/lib/navigation";
-import { OWNER, SITE_KEYWORDS, getSiteUrl } from "@/lib/site";
+import {
+  FOUNDER_IMAGE_PATH,
+  OWNER,
+  SITE_LOGO_PATH,
+  SITE_NAME,
+  VERIFIED_PROFILE_URLS,
+  getSiteUrl,
+} from "@/lib/site";
+import {
+  asSchemaArray,
+  buildPersonSchema,
+  buildProfessionalServiceSchema,
+} from "@/lib/structured-data";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -17,7 +31,7 @@ const geist = Geist({
 });
 
 const verification = process.env.GOOGLE_SITE_VERIFICATION;
-const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+const gaId = getValidGaMeasurementId();
 
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
@@ -27,19 +41,28 @@ export const metadata: Metadata = {
   },
   description:
     "Shopify Hydrogen strategy, case studies, cost guidance, and custom storefront planning for Shopify Plus brands that need faster delivery and better conversion.",
-  keywords: [...SITE_KEYWORDS],
   applicationName: "HydrogenExpert",
   authors: [{ name: OWNER.name, url: OWNER.linkedIn }],
   creator: OWNER.name,
   publisher: OWNER.name,
+  manifest: "/site.webmanifest",
   icons: {
-    icon: "/brand/hydrogenexpert-logo-icon.png",
-    shortcut: "/brand/hydrogenexpert-logo-icon.png",
-    apple: "/brand/hydrogenexpert-logo-icon.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "2048x2048" },
+      { url: "/brand/hydrogenexpert-logo-icon.png", type: "image/png", sizes: "2048x2048" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
   },
   robots: {
     index: true,
     follow: true,
+  },
+  alternates: {
+    types: {
+      "application/rss+xml": "/feed.xml",
+    },
   },
 };
 
@@ -49,6 +72,30 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const navItems = await getSiteNavigation();
+  const siteUrl = getSiteUrl();
+  const proofLinks = VERIFIED_PROFILE_URLS.filter(Boolean);
+  const logoUrl = `${siteUrl}${SITE_LOGO_PATH}`;
+  const rootSchema = asSchemaArray(
+    buildPersonSchema({
+      name: OWNER.name,
+      title: OWNER.title,
+      url: OWNER.linkedIn,
+      image: `${siteUrl}${FOUNDER_IMAGE_PATH}`,
+      sameAs: proofLinks,
+      id: `${siteUrl}/about#emre-mutlu`,
+    }),
+    buildProfessionalServiceSchema({
+      name: SITE_NAME,
+      url: siteUrl,
+      description:
+        "Senior Shopify Hydrogen development and advisory for growth-stage Shopify brands.",
+      founderName: OWNER.name,
+      sameAs: proofLinks,
+      logo: logoUrl,
+      image: logoUrl,
+      founderUrl: OWNER.linkedIn,
+    }),
+  );
 
   return (
     <html lang="en" className={`${geist.variable}`}>
@@ -58,6 +105,7 @@ export default async function RootLayout({
         ) : null}
       </head>
       <body className="bg-white text-slate-900 antialiased">
+        <JsonLd data={rootSchema} />
         <div className="min-h-screen overflow-x-hidden">
           <Header navItems={navItems} />
           <main>{children}</main>
