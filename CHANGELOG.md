@@ -25,20 +25,30 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - Restored subtle interaction motion through reduced-motion-aware CSS and improved focus behavior.
   - Standardized mobile tap targets across header, footer, CTA, blog pagination, and lead-form primary controls.
   - Made the shared lead form readable as a standalone dark panel, not only inside dark CTA sections.
+  - Completed the breadcrumb standard across every non-home public page, with `/`, `/agency`, and `not-found` as the only documented exemptions.
+  - Added matching `BreadcrumbList` JSON-LD to the newly standardized direct pages.
+  - Added a static Vitest guard so future public pages cannot drift from the breadcrumb and page-intro rhythm.
 - Files changed:
   - `design.md`
   - `tasks/prd-design-system-standardization.md`
   - `app/globals.css`
   - `app/blog/page.tsx`
+  - `app/cost/page.tsx`
+  - `app/hire-me/page.tsx`
+  - `app/should-i-use-it/page.tsx`
+  - `app/what-is-hydrogen/page.tsx`
+  - `app/when-not-to-use-hydrogen/page.tsx`
   - `components/CTASection.tsx`
   - `components/Footer.tsx`
   - `components/Header.tsx`
   - `components/LeadCaptureForm.tsx`
+  - `tests/design-standardization.test.ts`
 - Verification:
   - `npm run lint`
   - `npm run test`
   - `npm run build`
   - Local production browser sweep at 375, 768, 1024, and 1440 widths for `/`, `/blog`, `/blog/shopify-hydrogen-product-description-ssr-seo`, `/services`, `/case-studies`, and `/hire-me`: no horizontal overflow, Geist computed font family, 0.18s interaction motion, and primary mobile targets passing.
+  - Local production browser sweep at 375, 768, 1024, and 1440 widths for `/`, `/blog`, `/blog/shopify-hydrogen-product-description-ssr-seo`, `/services`, `/shopify-hydrogen-audit`, `/cost`, `/case-studies`, `/case-studies/eveshop-shopify-hydrogen`, `/hire-me`, `/should-i-use-it`, `/what-is-hydrogen`, and `/when-not-to-use-hydrogen`: visible breadcrumb on every non-home page, `BreadcrumbList` JSON-LD present, breadcrumb appears before the page heading, Geist computed font family, and no horizontal overflow.
   - Live smoke check on `https://hydrogenexpert.co` for `/`, `/blog`, `/services`, `/case-studies`, and `/hire-me`: HTTP 200, Geist computed font family, and no mobile horizontal overflow.
   - `/contact` returned 404 on the current `main` base; this PR does not add routes.
 - Manual follow-up:

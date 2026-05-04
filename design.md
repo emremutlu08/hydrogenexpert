@@ -80,12 +80,24 @@ Spacing scale:
 - Section internals: `gap-6`, `space-y-6`, `space-y-8`.
 - Page-level separation: handled by `page-shell`, not repeated custom margins.
 
+## Navigation and Breadcrumb Standard
+
+Every public page except the homepage, redirect-only pages, and `not-found` must start with a breadcrumb inside `page-shell`.
+
+- Breadcrumbs appear before `PageIntroSection` or the first page-specific content block.
+- Breadcrumbs must be both visible UI and `BreadcrumbList` JSON-LD.
+- Directly composed pages define a local `breadcrumbs` array and `breadcrumbSchema`.
+- Service detail pages use the shared `ServiceLandingPage` breadcrumb implementation.
+- Do not add breadcrumb markup to `/` or redirect-only routes such as `/agency`.
+
 When a page feels inconsistent, compare it to `/blog` first:
 
 1. Is the intro using `PageIntroSection`?
-2. Are sections inside `page-shell` rather than setting their own outer rhythm?
-3. Are cards using the standard surfaces?
-4. Are text blocks constrained instead of running wide?
+2. Is there a visible breadcrumb before the intro?
+3. Does the page emit matching `BreadcrumbList` schema?
+4. Are sections inside `page-shell` rather than setting their own outer rhythm?
+5. Are cards using the standard surfaces?
+6. Are text blocks constrained instead of running wide?
 
 ## Component Styles
 

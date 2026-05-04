@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CTASection } from "@/components/CTASection";
 import { FaqSection } from "@/components/FaqSection";
 import { FounderCard } from "@/components/FounderCard";
@@ -14,7 +15,11 @@ import { UdemyCourseCard } from "@/components/UdemyCourseCard";
 import { FOUNDER_STORY } from "@/lib/founder";
 import { buildMetadata } from "@/lib/seo";
 import { CLIENTS, OWNER, UPWORK_PROFILE, absoluteUrl } from "@/lib/site";
-import { asSchemaArray, buildFaqPageSchema } from "@/lib/structured-data";
+import {
+  asSchemaArray,
+  buildBreadcrumbListSchema,
+  buildFaqPageSchema,
+} from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
   title: "Hire a Shopify Hydrogen Developer | Emre Mutlu",
@@ -148,12 +153,23 @@ const faqs = [
 ] as const;
 
 const faqSchema = buildFaqPageSchema(faqs);
+const breadcrumbs = [
+  { label: "Home", href: "/" },
+  { label: "Hire Me", href: "/hire-me" },
+] as const;
+const breadcrumbSchema = buildBreadcrumbListSchema(
+  breadcrumbs.map((item) => ({
+    name: item.label,
+    url: absoluteUrl(item.href),
+  })),
+);
 
 export default function HireMePage() {
   return (
     <>
-      <JsonLd data={asSchemaArray(personSchema, faqSchema)} />
+      <JsonLd data={asSchemaArray(personSchema, breadcrumbSchema, faqSchema)} />
       <div className="page-shell">
+        <Breadcrumbs items={breadcrumbs} />
         <PageIntroSection
           eyebrow="Why Emre"
           title="Hire a Shopify Hydrogen developer with real delivery history"

@@ -47,7 +47,18 @@ This work creates a durable design brain for the site and then aligns the fronte
 - [ ] Blog index, one blog post, homepage, services, case studies, hire-me, and contact preserve responsive layouts without horizontal overflow.
 - [ ] Page-specific spacing exceptions are either removed or aligned with `design.md`.
 
-### US-004: Restore Interaction Polish
+### US-004: Standardize Breadcrumb Navigation
+
+**Description:** As a visitor and crawler, I want every non-home public page to expose the same page hierarchy so that navigation and structured data stay consistent.
+
+**Acceptance Criteria:**
+- [ ] Every non-home public page except redirect-only and not-found pages has a visible breadcrumb.
+- [ ] Breadcrumbs appear before `PageIntroSection` or the first page-specific content block.
+- [ ] Every breadcrumbed page emits matching `BreadcrumbList` JSON-LD.
+- [ ] Service detail pages keep breadcrumb logic centralized in `ServiceLandingPage`.
+- [ ] A static Vitest guard fails when future public pages drift from this standard.
+
+### US-005: Restore Interaction Polish
 
 **Description:** As a keyboard, mouse, or touch user, I want controls to clearly respond to interaction.
 
@@ -57,7 +68,7 @@ This work creates a durable design brain for the site and then aligns the fronte
 - [ ] Hover/focus transitions are subtle, fast, and consistent.
 - [ ] Primary mobile controls meet practical 44px tap-target expectations.
 
-### US-005: Preserve Brand and Scope
+### US-006: Preserve Brand and Scope
 
 **Description:** As the site owner, I want consistency improvements without changing commercial claims or positioning.
 
@@ -74,6 +85,7 @@ This work creates a durable design brain for the site and then aligns the fronte
 - FR-4: Align high-use components and pages to the documented token language without broad redesign.
 - FR-5: Preserve all existing content, routing, metadata, schema, and data-fetching behavior.
 - FR-6: Verify the implementation with lint, tests, build, and browser viewport checks.
+- FR-7: Enforce visible breadcrumb and `BreadcrumbList` schema coverage for all non-home public pages.
 
 ## Non-Goals
 
