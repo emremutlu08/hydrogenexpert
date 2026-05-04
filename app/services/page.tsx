@@ -50,7 +50,7 @@ export default function ServicesPage() {
         <PageIntroSection
           eyebrow="Hydrogen-first services"
           title="Shopify Hydrogen services without the agency maze"
-          description="Audit, migrate, build, optimize, or support a custom Shopify storefront with one senior operator."
+          description="Choose the commercial path that matches the search: agency alternative, developer, audit, migration, SEO, cost, build, optimization, or support."
           body="This is not a broad Shopify agency service list. The work is centered on Shopify Hydrogen, custom storefront decisions, and the honest question behind every serious rebuild: should this be Hydrogen, Liquid, or no rebuild at all?"
         />
 
@@ -83,8 +83,8 @@ export default function ServicesPage() {
       <section className="surface-card space-y-7">
         <SectionHeader
           eyebrow="Core services"
-          title="Five ways to work together"
-          description="Start with the pressure point: uncertainty, migration, custom build, optimization, or ongoing support."
+          title="Commercial paths for serious Hydrogen decisions"
+          description="Start with the buyer intent: agency comparison, developer help, audit, migration, SEO, cost, custom build, optimization, or ongoing support."
           className="max-w-4xl"
         />
 

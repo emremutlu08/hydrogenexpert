@@ -19,7 +19,7 @@ export const getSiteNavigation = cache(async (): Promise<readonly SiteNavItem[]>
   items.push(
     { href: "/what-is-hydrogen", label: "What Is Hydrogen" },
     { href: "/should-i-use-it", label: "Should I Use It?" },
-    { href: "/cost", label: "Cost" },
+    { href: "/shopify-hydrogen-cost", label: "Cost" },
     { href: "/case-studies", label: "Case Studies" },
   );
 

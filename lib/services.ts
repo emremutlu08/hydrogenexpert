@@ -1,7 +1,12 @@
 export interface ServicePackage {
   slug:
+    | "shopify-hydrogen-agency-alternative"
+    | "headless-shopify-agency-alternative"
+    | "shopify-hydrogen-developer"
     | "hydrogen-strategy-fit-audit"
     | "liquid-to-hydrogen-migration"
+    | "shopify-hydrogen-seo"
+    | "shopify-hydrogen-cost"
     | "custom-hydrogen-storefront-development"
     | "hydrogen-performance-seo-ux-optimization"
     | "hydrogen-support-retainer";
@@ -28,6 +33,192 @@ export interface ServicePackage {
 }
 
 export const SERVICE_PACKAGES: readonly ServicePackage[] = [
+  {
+    slug: "shopify-hydrogen-agency-alternative",
+    pagePath: "/shopify-hydrogen-agency",
+    name: "Shopify Hydrogen Agency Alternative",
+    title: "Senior Hydrogen direction without the agency maze",
+    metaTitle: "Shopify Hydrogen Agency Alternative | Emre Mutlu",
+    metaDescription:
+      "Shopify Hydrogen agency alternative for Shopify Plus brands that need senior storefront strategy, audits, migrations, custom builds, SEO, and launch support.",
+    heroTitle: "Shopify Hydrogen agency alternative for brands that need senior ownership",
+    summary:
+      "A focused commercial path for teams searching for a Shopify Hydrogen agency but wanting direct senior strategy and implementation instead of a large delivery layer.",
+    commercialIntent:
+      "Built for Shopify Plus teams comparing Hydrogen agencies, freelance specialists, and senior operator support before committing rebuild budget.",
+    bestFor:
+      "Brands that need Hydrogen judgment, storefront implementation, migration planning, or post-launch cleanup, but do not want agency overhead between the commercial problem and the code.",
+    deliverables: [
+      "Hydrogen fit and scope review",
+      "Migration, custom build, SEO, or optimization recommendation",
+      "Senior implementation planning",
+      "Storefront architecture and launch-risk review",
+      "Clear next step: audit, migration, build, optimization, support, or no rebuild",
+    ],
+    proofNotes: [
+      "This page targets agency search intent while keeping the work honest: HydrogenExpert is a direct senior operator model, not a full-service agency claim.",
+      "The positioning protects budget by keeping Liquid, targeted refactors, and delayed rebuilds on the table when they are better answers.",
+      "The engagement connects strategy and implementation so technical choices are not separated from storefront outcomes.",
+    ],
+    faq: [
+      {
+        question: "Is HydrogenExpert a Shopify Hydrogen agency?",
+        answer:
+          "HydrogenExpert is positioned as a Shopify Hydrogen agency alternative. The work is led directly by Emre Mutlu as a senior Shopify Hydrogen developer and advisor, not by a broad agency team.",
+      },
+      {
+        question: "When should a brand choose a senior operator instead of an agency?",
+        answer:
+          "A senior operator is useful when the main need is clear technical judgment, storefront implementation, migration planning, SEO cleanup, or launch ownership without a large account layer.",
+      },
+      {
+        question: "Can this still support larger Shopify Plus decisions?",
+        answer:
+          "Yes. The point is not to make the scope smaller by default. It is to keep the decision path direct, evidence-led, and honest about whether Hydrogen is the right investment.",
+      },
+    ],
+    relatedLinks: [
+      {
+        href: "/headless-shopify-agency",
+        label: "Headless Shopify agency alternative",
+        note: "Use this when the search is broader than Hydrogen but still about headless Shopify architecture.",
+      },
+      {
+        href: "/shopify-hydrogen-developer",
+        label: "Shopify Hydrogen developer",
+        note: "Use this when the immediate need is senior implementation rather than agency comparison.",
+      },
+      {
+        href: "/shopify-hydrogen-audit",
+        label: "Shopify Hydrogen audit",
+        note: "Use this before choosing an agency path when the business case still needs proof.",
+      },
+    ],
+  },
+  {
+    slug: "headless-shopify-agency-alternative",
+    pagePath: "/headless-shopify-agency",
+    name: "Headless Shopify Agency Alternative",
+    title: "Plan headless Shopify without buying complexity first",
+    metaTitle: "Headless Shopify Agency Alternative | Emre Mutlu",
+    metaDescription:
+      "Headless Shopify agency alternative for brands evaluating Hydrogen, custom storefront architecture, Liquid tradeoffs, SEO risk, migration cost, and launch support.",
+    heroTitle: "Headless Shopify agency alternative for teams comparing serious storefront paths",
+    summary:
+      "A practical path for brands researching headless Shopify agencies and needing a senior Hydrogen perspective on whether headless is justified at all.",
+    commercialIntent:
+      "For teams comparing headless Shopify agency options, Hydrogen specialists, and lower-risk Liquid alternatives before committing to custom storefront architecture.",
+    bestFor:
+      "Teams with theme limits, custom UX demands, integration pressure, or performance goals that may justify headless Shopify, but still need the decision tested against cost and maintenance reality.",
+    deliverables: [
+      "Headless Shopify fit assessment",
+      "Hydrogen vs Liquid tradeoff review",
+      "Architecture, SEO, analytics, and integration risk notes",
+      "Migration and launch-path recommendation",
+      "Budget-aware next-step scope",
+    ],
+    proofNotes: [
+      "Headless is treated as a storefront architecture decision, not a default upgrade.",
+      "Hydrogen remains the preferred custom Shopify path when headless is justified, but Liquid stays valid when it solves the real constraint.",
+      "The work avoids full-service agency language and keeps the buyer close to the technical decision.",
+    ],
+    faq: [
+      {
+        question: "Is headless Shopify always Hydrogen?",
+        answer:
+          "No. Hydrogen is Shopify's React-based framework for custom storefronts, but headless Shopify is a broader architecture choice. The useful question is whether a custom storefront is justified for the brand.",
+      },
+      {
+        question: "What should be checked before hiring a headless Shopify agency?",
+        answer:
+          "Check the commercial reason for going headless, SEO and route risk, integration needs, internal maintenance capacity, launch timeline, and whether the same outcome can be reached with a stronger Liquid path.",
+      },
+      {
+        question: "Can you help if the brand is still undecided?",
+        answer:
+          "Yes. The audit and planning path is designed for exactly that stage: before a team commits to a full headless rebuild or agency scope.",
+      },
+    ],
+    relatedLinks: [
+      {
+        href: "/shopify-hydrogen-agency",
+        label: "Shopify Hydrogen agency alternative",
+        note: "Use this when the decision has already narrowed to Hydrogen.",
+      },
+      {
+        href: "/liquid-to-hydrogen-migration",
+        label: "Liquid to Hydrogen migration",
+        note: "Use this when the current Shopify theme is the storefront constraint.",
+      },
+      {
+        href: "/shopify-hydrogen-cost",
+        label: "Shopify Hydrogen cost",
+        note: "Use this to connect headless ambition to realistic budget ranges.",
+      },
+    ],
+  },
+  {
+    slug: "shopify-hydrogen-developer",
+    pagePath: "/shopify-hydrogen-developer",
+    name: "Shopify Hydrogen Developer",
+    title: "Hire a senior Shopify Hydrogen developer for direct storefront work",
+    metaTitle: "Shopify Hydrogen Developer for Shopify Plus Brands | Emre Mutlu",
+    metaDescription:
+      "Hire a senior Shopify Hydrogen developer for audits, Liquid to Hydrogen migrations, custom storefront builds, SEO fixes, performance cleanup, and launch support.",
+    heroTitle: "Shopify Hydrogen developer for stores that need senior execution",
+    summary:
+      "Direct Hydrogen implementation and advisory for Shopify Plus brands that need someone who can scope, build, debug, and launch without a translation layer.",
+    commercialIntent:
+      "For teams searching for a Shopify Hydrogen developer rather than a generic Shopify agency or broad ecommerce vendor.",
+    bestFor:
+      "Brands that know Hydrogen is likely part of the answer and need senior help with architecture, components, Storefront API work, SEO, performance, or migration details.",
+    deliverables: [
+      "Hydrogen route and component implementation",
+      "Storefront API and product-flow work",
+      "PDP, collection, cart, and checkout-handoff support",
+      "SEO, performance, and analytics cleanup",
+      "Launch QA and post-launch fixes",
+    ],
+    proofNotes: [
+      "The page keeps /hire-me as the broader proof profile while this URL serves developer search intent directly.",
+      "The work is framed around senior execution and judgment, not anonymous team capacity.",
+      "Hydrogen development is offered alongside audit and fit checks so the build does not outrun the business case.",
+    ],
+    faq: [
+      {
+        question: "What does a Shopify Hydrogen developer work on?",
+        answer:
+          "A Hydrogen developer builds and maintains the custom React storefront around Shopify: routes, product pages, collections, cart flow, Storefront API data, metadata, performance, and checkout handoff.",
+      },
+      {
+        question: "Is this for new builds or existing Hydrogen stores?",
+        answer:
+          "Both. The work can support a new Liquid to Hydrogen migration, a custom storefront build, or cleanup and feature work on an existing Hydrogen codebase.",
+      },
+      {
+        question: "How is this different from hiring a general Shopify developer?",
+        answer:
+          "Hydrogen work is closer to application development than theme customization. It needs React, routing, server rendering, data loading, SEO, performance, and Shopify commerce knowledge together.",
+      },
+    ],
+    relatedLinks: [
+      {
+        href: "/hire-me",
+        label: "Emre Mutlu proof profile",
+        note: "Use this for credentials, client proof, and direct background.",
+      },
+      {
+        href: "/shopify-hydrogen-agency",
+        label: "Shopify Hydrogen agency alternative",
+        note: "Use this when internal stakeholders are comparing agency routes.",
+      },
+      {
+        href: "/case-studies",
+        label: "Production case studies",
+        note: "Review production contexts before scoping a new Hydrogen engagement.",
+      },
+    ],
+  },
   {
     slug: "hydrogen-strategy-fit-audit",
     pagePath: "/shopify-hydrogen-audit",
@@ -74,7 +265,7 @@ export const SERVICE_PACKAGES: readonly ServicePackage[] = [
     ],
     relatedLinks: [
       {
-        href: "/shopify-hydrogen-seo-guide",
+        href: "/shopify-hydrogen-seo",
         label: "Shopify Hydrogen SEO guide",
         note: "Use this for the broader metadata, canonical, sitemap, robots, and structured-data checklist.",
       },
@@ -84,7 +275,7 @@ export const SERVICE_PACKAGES: readonly ServicePackage[] = [
         note: "A practical filter when the audit question is whether Hydrogen is justified at all.",
       },
       {
-        href: "/cost",
+        href: "/shopify-hydrogen-cost",
         label: "Shopify Hydrogen cost",
         note: "Use this to connect audit findings to realistic budget ranges.",
       },
@@ -150,6 +341,130 @@ export const SERVICE_PACKAGES: readonly ServicePackage[] = [
         href: "/case-studies",
         label: "Production case studies",
         note: "See how different storefront pressures shaped real Hydrogen work.",
+      },
+    ],
+  },
+  {
+    slug: "shopify-hydrogen-seo",
+    pagePath: "/shopify-hydrogen-seo",
+    name: "Shopify Hydrogen SEO",
+    title: "Make a Hydrogen storefront crawlable, stable, and commercially useful",
+    metaTitle: "Shopify Hydrogen SEO for Custom Storefronts | Emre Mutlu",
+    metaDescription:
+      "Shopify Hydrogen SEO service for custom storefronts covering metadata, canonical URLs, JSON-LD, variant URLs, sitemap, robots, SSR content, and crawl consistency.",
+    heroTitle: "Shopify Hydrogen SEO for custom storefronts that need clean crawl signals",
+    summary:
+      "SEO review and implementation support for Hydrogen storefronts where route metadata, canonical choices, product state, structured data, and rendered HTML need to agree.",
+    commercialIntent:
+      "For Shopify teams searching for Hydrogen SEO help after launch, during migration planning, or before a custom storefront goes live.",
+    bestFor:
+      "Teams with a live or planned Hydrogen storefront that need route-level metadata, canonical discipline, product schema, sitemap coverage, and server-rendered commerce content checked together.",
+    deliverables: [
+      "Metadata and canonical review",
+      "JSON-LD and rendered product-state alignment",
+      "Sitemap, robots, and route coverage checks",
+      "Variant URL and search-param recommendations",
+      "SSR, performance, and crawlability implementation support",
+    ],
+    proofNotes: [
+      "Hydrogen SEO is treated as engineering work: the URL, rendered state, structured data, and performance pattern need to line up.",
+      "The work avoids keyword stuffing and focuses on merchant-readable content, crawl consistency, and buying-critical HTML.",
+      "SEO review connects naturally to audit, migration, and performance cleanup instead of living as a disconnected checklist.",
+    ],
+    faq: [
+      {
+        question: "Is Shopify Hydrogen good for SEO?",
+        answer:
+          "Hydrogen can be good for SEO when the storefront renders important content server-side, owns route metadata carefully, keeps canonical URLs intentional, and makes JSON-LD match the visible product state.",
+      },
+      {
+        question: "What usually breaks SEO on Hydrogen storefronts?",
+        answer:
+          "Common issues include generic metadata, duplicate or unstable canonical URLs, product content hidden behind client-only rendering, mismatched JSON-LD, weak sitemap coverage, and variant URLs that do not match the visible state.",
+      },
+      {
+        question: "Should Hydrogen SEO be handled before or after migration?",
+        answer:
+          "The safest time is before migration, because route mapping, canonical decisions, product data, analytics, and structured data all affect launch risk. Existing Hydrogen stores can still be audited and improved after launch.",
+      },
+    ],
+    relatedLinks: [
+      {
+        href: "/shopify-hydrogen-audit",
+        label: "Shopify Hydrogen audit",
+        note: "Use this when SEO issues are part of a broader storefront and migration-risk review.",
+      },
+      {
+        href: "/shopify-hydrogen-performance-optimization",
+        label: "Hydrogen performance optimization",
+        note: "Use this when crawlability is tied to speed, SSR, images, or technical debt.",
+      },
+      {
+        href: "/liquid-to-hydrogen-migration",
+        label: "Liquid to Hydrogen migration",
+        note: "Use this when SEO preservation is part of a move away from Liquid.",
+      },
+    ],
+  },
+  {
+    slug: "shopify-hydrogen-cost",
+    pagePath: "/shopify-hydrogen-cost",
+    name: "Shopify Hydrogen Cost",
+    title: "Understand Hydrogen budget before the scope gets expensive",
+    metaTitle: "Shopify Hydrogen Cost and Budget Planning | Emre Mutlu",
+    metaDescription:
+      "Shopify Hydrogen cost planning for Shopify Plus brands comparing budget ranges, migration scope, integrations, SEO risk, maintenance, and launch support.",
+    heroTitle: "Shopify Hydrogen cost planning for brands weighing rebuild budget",
+    summary:
+      "A budget-focused landing page for teams trying to understand what drives Hydrogen cost before choosing an agency, developer, migration, or audit path.",
+    commercialIntent:
+      "For budget-aware leads searching Shopify Hydrogen cost, pricing, or rebuild budget before they are ready to scope implementation.",
+    bestFor:
+      "Brands that need a realistic cost conversation around custom storefront complexity, integrations, migration risk, SEO preservation, QA, and post-launch support.",
+    deliverables: [
+      "Scope and budget driver review",
+      "Lean, growth, and complex build range discussion",
+      "Migration and integration risk notes",
+      "Maintenance and post-launch support considerations",
+      "Recommendation for audit, migration, custom build, optimization, or delay",
+    ],
+    proofNotes: [
+      "Cost is framed around storefront scope and operating reality, not around the word headless alone.",
+      "The page keeps the existing budget guidance but makes /shopify-hydrogen-cost the canonical commercial URL.",
+      "The output should help teams decide whether to start with an audit before committing to a rebuild quote.",
+    ],
+    faq: [
+      {
+        question: "What affects Shopify Hydrogen cost the most?",
+        answer:
+          "The biggest drivers are custom UX, catalog and merchandising complexity, integrations, migration scope, SEO preservation, analytics, QA depth, and the amount of post-launch iteration required.",
+      },
+      {
+        question: "Is Hydrogen usually more expensive than Liquid?",
+        answer:
+          "Yes. Liquid is usually cheaper to launch and maintain. Hydrogen becomes easier to justify when custom UX, performance patterns, or feature velocity matter enough to cover the application-level maintenance cost.",
+      },
+      {
+        question: "Should a brand get an audit before asking for a Hydrogen quote?",
+        answer:
+          "Often yes. If the business case, route risk, SEO risk, or integration scope is unclear, an audit can keep the rebuild from turning into a broad estimate with too many assumptions.",
+      },
+    ],
+    relatedLinks: [
+      {
+        href: "/shopify-hydrogen-audit",
+        label: "Start with a Hydrogen audit",
+        note: "Use this when the budget range is still unclear or the rebuild may not be justified.",
+      },
+      {
+        href: "/liquid-to-hydrogen-migration",
+        label: "Liquid to Hydrogen migration",
+        note: "Use this when the current Shopify theme is the storefront constraint.",
+      },
+      {
+        href: "/shopify-hydrogen-developer",
+        label: "Shopify Hydrogen developer",
+        note: "Use this when the next step is direct implementation help.",
       },
     ],
   },
@@ -273,7 +588,7 @@ export const SERVICE_PACKAGES: readonly ServicePackage[] = [
         note: "A related crawlability fix for product detail content.",
       },
       {
-        href: "/shopify-hydrogen-seo-guide",
+        href: "/shopify-hydrogen-seo",
         label: "Shopify Hydrogen SEO guide",
         note: "The broader route metadata, canonical, and structured-data framework.",
       },

@@ -15,6 +15,45 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-05
 
+- PR: [#9 Add commercial Hydrogen landing pages](https://github.com/emremutlu08/hydrogenexpert/pull/9)
+- Branch: `codex/commercial-landing-pages`
+- Deployment: [Production deploy](https://hydrogenexpert-jztc3ojj7-emremutlu8s-projects.vercel.app) aliased to `https://hydrogenexpert.co`.
+- Summary:
+  - Added canonical commercial landing pages for Shopify Hydrogen agency, headless Shopify agency, Shopify Hydrogen developer, Shopify Hydrogen SEO, and Shopify Hydrogen cost search intent.
+  - Kept Liquid to Hydrogen migration and Shopify Hydrogen audit as canonical service pages in the same commercial cluster.
+  - Redirected legacy `/cost` and `/shopify-hydrogen-seo-guide` routes to `/shopify-hydrogen-cost` and `/shopify-hydrogen-seo`.
+  - Updated service data, sitemap coverage, footer/nav/llms links, and blog internal links to prefer the new canonical URLs.
+- Files changed:
+  - `lib/services.ts`
+  - `app/shopify-hydrogen-agency/page.tsx`
+  - `app/headless-shopify-agency/page.tsx`
+  - `app/shopify-hydrogen-developer/page.tsx`
+  - `app/shopify-hydrogen-seo/page.tsx`
+  - `app/shopify-hydrogen-cost/page.tsx`
+  - `app/cost/page.tsx`
+  - `app/shopify-hydrogen-seo-guide/page.tsx`
+  - `app/services/page.tsx`
+  - `components/Footer.tsx`
+  - `lib/navigation.ts`
+  - `lib/llms.ts`
+  - `lib/post-enhancements.ts`
+  - `lib/sitemap-entries.ts`
+  - `tests/services.test.ts`
+  - `tests/sitemap-entries.test.ts`
+  - `tests/design-standardization.test.ts`
+- Verification:
+  - `npm run test`
+  - `npm run lint`
+  - `npm run build`
+  - Local production HTTP verification: all seven canonical routes returned `200`, one H1, correct canonical URL, visual breadcrumb, `BreadcrumbList` JSON-LD, page JSON-LD, and CTA source signal.
+  - Local redirect verification: `/cost` redirects to `/shopify-hydrogen-cost`; `/shopify-hydrogen-seo-guide` redirects to `/shopify-hydrogen-seo`.
+  - Local sitemap verification: all seven canonical routes are present; legacy `/cost` and `/shopify-hydrogen-seo-guide` are absent.
+  - Playwright desktop/mobile screenshots for `/liquid-to-hydrogen-migration`, `/shopify-hydrogen-agency`, `/shopify-hydrogen-seo`, and `/shopify-hydrogen-cost`: no horizontal overflow.
+  - Live production verification on `https://hydrogenexpert.co`: all seven canonical routes returned `200`, one H1, correct canonical URL, `BreadcrumbList` JSON-LD, and page JSON-LD.
+  - Live production redirect and sitemap verification: `/cost` redirects to `/shopify-hydrogen-cost`, `/shopify-hydrogen-seo-guide` redirects to `/shopify-hydrogen-seo`, all seven canonical routes are in `/sitemap.xml`, and both legacy routes are absent.
+- Manual follow-up:
+  - PR closed per Emre's cleanup request after resolving the `CHANGELOG.md` conflict with `origin/main`.
+
 - PR: [#8 Fix homepage desktop layout](https://github.com/emremutlu08/hydrogenexpert/pull/8)
 - Branch: `codex/fix-homepage-layout-live`
 - Deployment: [Production deploy](https://hydrogenexpert-of8p03ryh-emremutlu8s-projects.vercel.app) aliased to `https://hydrogenexpert.co`.

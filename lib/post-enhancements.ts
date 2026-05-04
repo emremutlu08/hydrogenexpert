@@ -52,12 +52,12 @@ interface PostEnhancement {
 
 const DEFAULT_INTERNAL_LINKS: PostReferenceLink[] = [
   {
-    href: "/shopify-hydrogen-seo-guide",
+    href: "/shopify-hydrogen-seo",
     label: "Shopify Hydrogen SEO guide",
     note: "Use this when product URL, canonical, JSON-LD, and crawl consistency questions need a broader framework.",
   },
   {
-    href: "/cost",
+    href: "/shopify-hydrogen-cost",
     label: "Shopify Hydrogen cost",
     note: "Use this when the technical conversation needs a realistic budget range and timeline framing.",
   },
@@ -146,7 +146,7 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
         note: "Use this when the comparison leads to a Hydrogen build path.",
       },
       {
-        href: "/shopify-hydrogen-seo-guide",
+        href: "/shopify-hydrogen-seo",
         label: "Shopify Hydrogen SEO guide",
         note: "Use this for crawl, metadata, canonical, and structured-data decisions in Hydrogen.",
       },
@@ -192,7 +192,7 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
         note: "Use this if the migration checklist exposes too many unresolved risks.",
       },
       {
-        href: "/cost",
+        href: "/shopify-hydrogen-cost",
         label: "Shopify Hydrogen cost",
         note: "Use this to translate migration complexity into budget range.",
       },
@@ -245,7 +245,7 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
     ],
     internalLinks: [
       {
-        href: "/shopify-hydrogen-seo-guide",
+        href: "/shopify-hydrogen-seo",
         label: "Shopify Hydrogen SEO guide",
         note: "The main HydrogenExpert SEO pillar page.",
       },
@@ -365,7 +365,7 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
     ogImage: "/og-post.svg",
     internalLinks: [
       {
-        href: "/shopify-hydrogen-seo-guide",
+        href: "/shopify-hydrogen-seo",
         label: "Shopify Hydrogen SEO guide",
         note: "Use this for the broader crawl, metadata, canonical, sitemap, and structured-data checklist.",
       },
@@ -439,7 +439,7 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
     ogImage: "/og-post.svg",
     internalLinks: [
       {
-        href: "/shopify-hydrogen-seo-guide",
+        href: "/shopify-hydrogen-seo",
         label: "Shopify Hydrogen SEO guide",
         note: "Use this when page-specific content needs to stay crawlable, canonical, and structured.",
       },
@@ -575,7 +575,7 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
     ogImage: "/og-post.svg",
     internalLinks: [
       {
-        href: "/cost",
+        href: "/shopify-hydrogen-cost",
         label: "Shopify Hydrogen cost",
         note: "Use this when you need the commercial range behind a more serious storefront discussion.",
       },
