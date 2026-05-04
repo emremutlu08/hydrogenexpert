@@ -1,4 +1,4 @@
-import { BRAND_CLIENT_ASSETS } from "@/lib/brand-client-assets";
+import { BRAND_CLIENT_ASSETS } from "../lib/brand-client-assets";
 
 export interface CaseStudyMetric {
   label: string;

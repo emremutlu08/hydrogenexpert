@@ -48,16 +48,19 @@ export function buildPersonSchema({
   url,
   image,
   sameAs,
+  id,
 }: {
   name: string;
   title: string;
   url: string;
   image: string;
   sameAs: readonly string[];
+  id?: string;
 }) {
   return {
     "@context": "https://schema.org",
     "@type": "Person",
+    ...(id ? { "@id": id } : {}),
     name,
     jobTitle: title,
     url,
@@ -79,12 +82,18 @@ export function buildProfessionalServiceSchema({
   description,
   founderName,
   sameAs,
+  logo,
+  image,
+  founderUrl,
 }: {
   name: string;
   url: string;
   description: string;
   founderName: string;
   sameAs: readonly string[];
+  logo?: string;
+  image?: string;
+  founderUrl?: string;
 }) {
   return {
     "@context": "https://schema.org",
@@ -92,9 +101,12 @@ export function buildProfessionalServiceSchema({
     name,
     url,
     description,
+    ...(logo ? { logo } : {}),
+    ...(image ? { image } : {}),
     founder: {
       "@type": "Person",
       name: founderName,
+      ...(founderUrl ? { url: founderUrl } : {}),
     },
     areaServed: "Worldwide",
     sameAs,
@@ -172,6 +184,8 @@ export function buildCaseStudyArticleSchema({
   authorName,
   datePublished,
   dateModified,
+  image,
+  publisherLogo,
 }: {
   headline: string;
   url: string;
@@ -179,6 +193,8 @@ export function buildCaseStudyArticleSchema({
   authorName: string;
   datePublished: string;
   dateModified: string;
+  image?: string;
+  publisherLogo?: string;
 }) {
   return {
     "@context": "https://schema.org",
@@ -193,9 +209,59 @@ export function buildCaseStudyArticleSchema({
     publisher: {
       "@type": "Organization",
       name: "HydrogenExpert",
+      ...(publisherLogo
+        ? {
+            logo: {
+              "@type": "ImageObject",
+              url: publisherLogo,
+            },
+          }
+        : {}),
     },
+    ...(image ? { image } : {}),
     datePublished,
     dateModified,
     mainEntityOfPage: url,
+  };
+}
+
+export function buildPublisherSchema({
+  name,
+  url,
+  logo,
+}: {
+  name: string;
+  url: string;
+  logo: string;
+}) {
+  return {
+    "@type": "Organization",
+    name,
+    url,
+    logo: {
+      "@type": "ImageObject",
+      url: logo,
+    },
+  };
+}
+
+export function buildProfilePageSchema({
+  url,
+  name,
+  description,
+  person,
+}: {
+  url: string;
+  name: string;
+  description: string;
+  person: Record<string, unknown>;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    url,
+    name,
+    description,
+    mainEntity: person,
   };
 }

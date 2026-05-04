@@ -9,8 +9,16 @@ import "./globals.css";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { JsonLd } from "@/components/JsonLd";
+import { getValidGaMeasurementId } from "@/lib/analytics-config";
 import { getSiteNavigation } from "@/lib/navigation";
-import { OWNER, getSiteUrl } from "@/lib/site";
+import {
+  FOUNDER_IMAGE_PATH,
+  OWNER,
+  SITE_LOGO_PATH,
+  SITE_NAME,
+  VERIFIED_PROFILE_URLS,
+  getSiteUrl,
+} from "@/lib/site";
 import {
   asSchemaArray,
   buildPersonSchema,
@@ -23,7 +31,7 @@ const geist = Geist({
 });
 
 const verification = process.env.GOOGLE_SITE_VERIFICATION;
-const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+const gaId = getValidGaMeasurementId();
 
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
@@ -51,6 +59,11 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  alternates: {
+    types: {
+      "application/rss+xml": "/feed.xml",
+    },
+  },
 };
 
 export default async function RootLayout({
@@ -60,22 +73,27 @@ export default async function RootLayout({
 }>) {
   const navItems = await getSiteNavigation();
   const siteUrl = getSiteUrl();
-  const proofLinks = [OWNER.linkedIn, OWNER.upwork, OWNER.udemyUrl].filter(Boolean);
+  const proofLinks = VERIFIED_PROFILE_URLS.filter(Boolean);
+  const logoUrl = `${siteUrl}${SITE_LOGO_PATH}`;
   const rootSchema = asSchemaArray(
     buildPersonSchema({
       name: OWNER.name,
       title: OWNER.title,
       url: OWNER.linkedIn,
-      image: `${siteUrl}/emre-city-16x9.png`,
+      image: `${siteUrl}${FOUNDER_IMAGE_PATH}`,
       sameAs: proofLinks,
+      id: `${siteUrl}/about#emre-mutlu`,
     }),
     buildProfessionalServiceSchema({
-      name: "HydrogenExpert",
+      name: SITE_NAME,
       url: siteUrl,
       description:
         "Senior Shopify Hydrogen development and advisory for growth-stage Shopify brands.",
       founderName: OWNER.name,
       sameAs: proofLinks,
+      logo: logoUrl,
+      image: logoUrl,
+      founderUrl: OWNER.linkedIn,
     }),
   );
 
