@@ -17,7 +17,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 - PR: [#4 Update founder image to city portrait](https://github.com/emremutlu08/hydrogenexpert/pull/4)
 - Branch: `codex/update-emre-city-image`
-- Deployment: Pending production deployment.
+- Deployment: [Production deploy](https://hydrogenexpert-gumta8prh-emremutlu8s-projects.vercel.app) aliased to `https://hydrogenexpert.co`.
 - Summary:
   - Added the new 16:9 founder portrait at `public/emre-city-16x9.png`.
   - Updated visible founder-card image usage on Home and Hire Me through the shared founder asset path.
