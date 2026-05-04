@@ -15,6 +15,25 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-04
 
+- PR: [#5 Update blog sitemap frequency](https://github.com/emremutlu08/hydrogenexpert/pull/5)
+- Branch: `codex/update-blog-sitemap-frequency`
+- Deployment: [Production deploy](https://hydrogenexpert-56mmtxz1t-emremutlu8s-projects.vercel.app) aliased to `https://hydrogenexpert.co`.
+- Summary:
+  - Updated the sitemap entry for `/blog` to use `daily` change frequency because new posts are added multiple times per week.
+  - Raised the `/blog` sitemap priority to `0.9` while leaving individual blog post URLs at `monthly`.
+- Files changed:
+  - `app/sitemap.ts`
+- Verification:
+  - `npm run lint`
+  - `npm run build`
+  - Confirmed generated `.next/server/app/sitemap.xml.body` contains `/blog` with `<changefreq>daily</changefreq>` and `<priority>0.9</priority>`.
+  - Verified live `https://hydrogenexpert.co/sitemap.xml` contains `/blog` with `<changefreq>daily</changefreq>` and `<priority>0.9</priority>`.
+  - Verified live PR #4 asset preservation: `https://hydrogenexpert.co/emre-city-16x9.png` and `https://hydrogenexpert.co/generated/blog/shopify-plus-hydrogen-cover.jpg` return `200`.
+- Manual follow-up:
+  - Do not merge the PR unless Emre approves it.
+
+## 2026-05-04
+
 - PR: [#4 Update founder image and generated blog covers](https://github.com/emremutlu08/hydrogenexpert/pull/4)
 - Branch: `codex/update-emre-city-image`
 - Deployment: [Production deploy](https://hydrogenexpert-qx2q2ycis-emremutlu8s-projects.vercel.app) aliased to `https://hydrogenexpert.co`.
