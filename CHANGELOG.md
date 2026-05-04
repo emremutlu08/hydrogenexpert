@@ -15,6 +15,33 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-04
 
+- PR: [#4 Update founder image to city portrait](https://github.com/emremutlu08/hydrogenexpert/pull/4)
+- Branch: `codex/update-emre-city-image`
+- Deployment: Pending production deployment.
+- Summary:
+  - Added the new 16:9 founder portrait at `public/emre-city-16x9.png`.
+  - Updated visible founder-card image usage on Home and Hire Me through the shared founder asset path.
+  - Updated Person schema image URLs to use the new founder image.
+  - Removed the old `public/emre-mutlu.webp` asset so the site does not keep a stale founder image.
+- Files changed:
+  - `app/page.tsx`
+  - `app/hire-me/page.tsx`
+  - `app/layout.tsx`
+  - `components/FounderCard.tsx`
+  - `lib/public-assets.ts`
+  - `public/emre-city-16x9.png`
+  - `public/emre-mutlu.webp`
+- Verification:
+  - `npm run lint`
+  - `npm run build`
+  - Local HTML image SEO check for `/` and `/hire-me`: `HTML SEO ISSUES none`
+  - Local production crawl over known public routes: `LOCAL SEO ISSUES none`
+  - Playwright desktop/mobile checks for `/` and `/hire-me`: `VISUAL ISSUES none`
+- Manual follow-up:
+  - Do not merge the PR unless Emre approves it.
+
+## 2026-05-04
+
 - PR: [#3 Fix sitewide SEO audit issues](https://github.com/emremutlu08/hydrogenexpert/pull/3)
 - Branch: `codex/fix-sitewide-seo-audit`
 - Deployment: [Production deploy](https://hydrogenexpert-78u9rh2u3-emremutlu8s-projects.vercel.app) aliased to `https://hydrogenexpert.co`.
