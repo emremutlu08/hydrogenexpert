@@ -13,6 +13,28 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 - Verification:
 - Manual follow-up:
 
+## 2026-05-05
+
+- PR: [#8 Fix homepage desktop layout](https://github.com/emremutlu08/hydrogenexpert/pull/8)
+- Branch: `codex/fix-homepage-layout-live`
+- Deployment: [Production deploy](https://hydrogenexpert-of8p03ryh-emremutlu8s-projects.vercel.app) aliased to `https://hydrogenexpert.co`.
+- Summary:
+  - Reworked the homepage proof and results areas into separate `surface-card` sections so desktop cards no longer visually collide.
+  - Changed the proof grid to five balanced desktop columns and the results grid to six desktop metric cards.
+  - Fixed the global box-sizing inheritance bug that made form fields render as content-box and overflow their dark lead-form cards.
+  - Tightened desktop header navigation and darkened the text-only emerald accent for small labels.
+- Files changed:
+  - `app/page.tsx`
+  - `app/globals.css`
+- Verification:
+  - `npm run lint`
+  - `npm run build`
+  - Local Playwright homepage checks at 1440, 390, and 320px: no horizontal overflow, no negative section gaps, and no lead-form overflow.
+  - Live production Playwright homepage checks on `https://hydrogenexpert.co` at 1440, 390, and 320px: no horizontal overflow, no negative section gaps, and no lead-form overflow.
+  - Clean production deploy from `/tmp/hydrogenexpert-pr8` generated the expected 38 routes.
+- Manual follow-up:
+  - Do not merge the PR unless Emre approves it.
+
 ## 2026-05-04
 
 - PR: [#1 ImgBot Optimize images](https://github.com/emremutlu08/hydrogenexpert/pull/1), [#4 Update founder image and generated blog covers](https://github.com/emremutlu08/hydrogenexpert/pull/4), [#5 Update blog sitemap frequency](https://github.com/emremutlu08/hydrogenexpert/pull/5), [#6 Add site trust and measurement fixes](https://github.com/emremutlu08/hydrogenexpert/pull/6), [#7 Standardize HydrogenExpert design DNA, font, and spacing](https://github.com/emremutlu08/hydrogenexpert/pull/7)
