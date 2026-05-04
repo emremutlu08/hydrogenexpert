@@ -15,6 +15,51 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-04
 
+- PR: [#6 Add site trust and measurement fixes](https://github.com/emremutlu08/hydrogenexpert/pull/6)
+- Branch: `codex/site-trust-measurement-fixes`
+- Deployment: Pending production deployment.
+- Summary:
+  - Added PRD coverage for the trust, measurement, discovery, legal, and performance cleanup pass.
+  - Added `/about`, `/contact`, `/privacy`, `/cookies`, `/terms`, and `/feed.xml`.
+  - Added footer trust links without changing primary navigation.
+  - Guarded Google Analytics so placeholder measurement IDs do not load.
+  - Deferred Cloudflare Turnstile script loading until lead forms are near use.
+  - Enriched root, article, profile, and case-study schema with logo, publisher, and entity details.
+  - Made sitemap generation dynamic and added automated coverage for sitemap, RSS, and GA guard behavior.
+- Files changed:
+  - `tasks/prd-site-trust-measurement-fixes.md`
+  - `app/about/page.tsx`
+  - `app/contact/page.tsx`
+  - `app/privacy/page.tsx`
+  - `app/cookies/page.tsx`
+  - `app/terms/page.tsx`
+  - `app/feed.xml/route.ts`
+  - `app/sitemap.ts`
+  - `app/layout.tsx`
+  - `components/Footer.tsx`
+  - `components/TurnstileField.tsx`
+  - `lib/analytics-config.ts`
+  - `lib/rss.ts`
+  - `lib/sitemap-entries.ts`
+  - `lib/structured-data.ts`
+  - `tests/analytics-config.test.ts`
+  - `tests/rss.test.ts`
+  - `tests/sitemap-entries.test.ts`
+- Verification:
+  - `npm run test`
+  - `npm run lint`
+  - `npm run build`
+  - Local route checks: `/`, `/about`, `/contact`, `/privacy`, `/cookies`, `/terms`, `/feed.xml`, `/sitemap.xml` returned 200.
+  - Local sitemap check: 24 URLs including `/about`, `/contact`, and all 4 blog posts; no noindex legal routes.
+  - Local homepage source check: no `G-XXXXXXXXXX`, no `googletagmanager`, no Turnstile script before form proximity.
+  - Playwright desktop/mobile checks for `/`, `/about`, `/contact`, `/privacy`, and `/hire-me`: one H1, canonical present, no horizontal overflow.
+  - Lighthouse local homepage: Performance 97, Accessibility 96, Best Practices 96, SEO 100; LCP 2.6s, CLS 0.
+- Manual follow-up:
+  - Configure the real GA measurement ID in Vercel only if Google Analytics should be active.
+  - Do not merge the PR unless Emre approves it.
+
+## 2026-05-04
+
 - PR: [#3 Fix sitewide SEO audit issues](https://github.com/emremutlu08/hydrogenexpert/pull/3)
 - Branch: `codex/fix-sitewide-seo-audit`
 - Deployment: [Production deploy](https://hydrogenexpert-78u9rh2u3-emremutlu8s-projects.vercel.app) aliased to `https://hydrogenexpert.co`.
