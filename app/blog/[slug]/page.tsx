@@ -22,6 +22,8 @@ interface BlogPostPageProps {
 const BLOG_METADATA_TITLE_OVERRIDES: Record<string, string> = {
   "shopify-hydrogen-product-description-ssr-seo":
     "Shopify Hydrogen Product Descriptions: SSR SEO",
+  "shopify-hydrogen-variant-selection-fallback":
+    "Shopify Hydrogen Variant URLs and SEO Fallbacks",
 };
 
 export async function generateStaticParams() {
