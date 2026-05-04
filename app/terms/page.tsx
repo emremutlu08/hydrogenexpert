@@ -1,8 +1,12 @@
 import Link from "next/link";
 
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { JsonLd } from "@/components/JsonLd";
 import { PageIntroSection } from "@/components/PageIntroSection";
 import { SectionHeader } from "@/components/SectionHeader";
 import { buildMetadata } from "@/lib/seo";
+import { absoluteUrl } from "@/lib/site";
+import { buildBreadcrumbListSchema } from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
   title: "Terms | HydrogenExpert",
@@ -33,16 +37,29 @@ const terms = [
     body: "The site links to external profiles and references such as LinkedIn, Upwork, Udemy, Shopify, and client sites. Those services are governed by their own terms and policies.",
   },
 ] as const;
+const breadcrumbs = [
+  { label: "Home", href: "/" },
+  { label: "Terms", href: "/terms" },
+] as const;
+const breadcrumbSchema = buildBreadcrumbListSchema(
+  breadcrumbs.map((item) => ({
+    name: item.label,
+    url: absoluteUrl(item.href),
+  })),
+);
 
 export default function TermsPage() {
   return (
-    <div className="page-shell">
-      <PageIntroSection
-        eyebrow="Terms"
-        title="Website terms"
-        description="Basic terms for using the HydrogenExpert website and reading its service content."
-        body="Project terms, payment terms, and delivery responsibilities are handled separately inside the actual client engagement."
-      />
+    <>
+      <JsonLd data={breadcrumbSchema} />
+      <div className="page-shell">
+        <Breadcrumbs items={breadcrumbs} />
+        <PageIntroSection
+          eyebrow="Terms"
+          title="Website terms"
+          description="Basic terms for using the HydrogenExpert website and reading its service content."
+          body="Project terms, payment terms, and delivery responsibilities are handled separately inside the actual client engagement."
+        />
 
       <section className="surface-card space-y-6">
         <SectionHeader
@@ -71,6 +88,7 @@ export default function TermsPage() {
           with the current store URL and the commercial pressure behind the work.
         </p>
       </section>
-    </div>
+      </div>
+    </>
   );
 }

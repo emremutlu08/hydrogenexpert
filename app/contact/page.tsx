@@ -1,11 +1,14 @@
 import Link from "next/link";
 
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { JsonLd } from "@/components/JsonLd";
 import { LeadCaptureForm } from "@/components/LeadCaptureForm";
 import { PageIntroSection } from "@/components/PageIntroSection";
 import { SectionHeader } from "@/components/SectionHeader";
 import { TrackedCTAButton } from "@/components/TrackedCTAButton";
 import { buildMetadata } from "@/lib/seo";
-import { OWNER } from "@/lib/site";
+import { OWNER, absoluteUrl } from "@/lib/site";
+import { buildBreadcrumbListSchema } from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
   title: "Contact Emre Mutlu | HydrogenExpert",
@@ -31,16 +34,29 @@ const contactOptions = [
     href: "/case-studies",
   },
 ] as const;
+const breadcrumbs = [
+  { label: "Home", href: "/" },
+  { label: "Contact", href: "/contact" },
+] as const;
+const breadcrumbSchema = buildBreadcrumbListSchema(
+  breadcrumbs.map((item) => ({
+    name: item.label,
+    url: absoluteUrl(item.href),
+  })),
+);
 
 export default function ContactPage() {
   return (
-    <div className="page-shell">
-      <PageIntroSection
-        eyebrow="Contact"
-        title="Send the storefront context first."
-        description="A useful first message is short: current store URL, what feels slow or limiting, and why Hydrogen is being discussed."
-        body="I will tell you whether the next move looks like Liquid cleanup, a Hydrogen audit, migration scope, custom build, performance work, or no rebuild."
-      />
+    <>
+      <JsonLd data={breadcrumbSchema} />
+      <div className="page-shell">
+        <Breadcrumbs items={breadcrumbs} />
+        <PageIntroSection
+          eyebrow="Contact"
+          title="Send the storefront context first."
+          description="A useful first message is short: current store URL, what feels slow or limiting, and why Hydrogen is being discussed."
+          body="I will tell you whether the next move looks like Liquid cleanup, a Hydrogen audit, migration scope, custom build, performance work, or no rebuild."
+        />
 
       <section className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
         <div className="surface-card space-y-6">
@@ -84,6 +100,7 @@ export default function ContactPage() {
 
         <LeadCaptureForm sourceKind="contact_page" />
       </section>
-    </div>
+      </div>
+    </>
   );
 }

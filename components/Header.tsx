@@ -41,12 +41,12 @@ export function Header({ navItems }: HeaderProps) {
               <TrackedCTAButton
                 destination="linkedin"
                 label="Let's Chat"
-                className="hidden w-fit rounded-full bg-[#171717] px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-[#10b981] md:inline-flex"
+                className="hidden min-h-11 w-fit items-center rounded-full bg-[#171717] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#10b981] md:inline-flex"
               />
               <TrackedCTAButton
                 destination="linkedin"
                 label="Chat"
-                className="inline-flex rounded-full bg-[#171717] px-3 py-2 text-sm font-semibold text-white transition hover:bg-[#10b981] md:hidden"
+                className="inline-flex min-h-11 items-center rounded-full bg-[#171717] px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#10b981] md:hidden"
               />
             </div>
           </div>

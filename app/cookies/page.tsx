@@ -1,6 +1,10 @@
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { JsonLd } from "@/components/JsonLd";
 import { PageIntroSection } from "@/components/PageIntroSection";
 import { SectionHeader } from "@/components/SectionHeader";
 import { buildMetadata } from "@/lib/seo";
+import { absoluteUrl } from "@/lib/site";
+import { buildBreadcrumbListSchema } from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
   title: "Cookie Notice | HydrogenExpert",
@@ -27,16 +31,29 @@ const cookieGroups = [
     body: "You can block or delete cookies and tracking storage through your browser settings. Blocking some services may affect analytics or form verification.",
   },
 ] as const;
+const breadcrumbs = [
+  { label: "Home", href: "/" },
+  { label: "Cookies", href: "/cookies" },
+] as const;
+const breadcrumbSchema = buildBreadcrumbListSchema(
+  breadcrumbs.map((item) => ({
+    name: item.label,
+    url: absoluteUrl(item.href),
+  })),
+);
 
 export default function CookiesPage() {
   return (
-    <div className="page-shell">
-      <PageIntroSection
-        eyebrow="Cookies"
-        title="Cookie notice"
-        description="HydrogenExpert uses a small set of services for security, form protection, analytics, and performance measurement."
-        body="There is no advertising retargeting setup described here. The current intent is site measurement and inquiry protection."
-      />
+    <>
+      <JsonLd data={breadcrumbSchema} />
+      <div className="page-shell">
+        <Breadcrumbs items={breadcrumbs} />
+        <PageIntroSection
+          eyebrow="Cookies"
+          title="Cookie notice"
+          description="HydrogenExpert uses a small set of services for security, form protection, analytics, and performance measurement."
+          body="There is no advertising retargeting setup described here. The current intent is site measurement and inquiry protection."
+        />
 
       <section className="surface-card space-y-6">
         <SectionHeader
@@ -53,6 +70,7 @@ export default function CookiesPage() {
           ))}
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 }

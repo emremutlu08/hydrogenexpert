@@ -1,8 +1,12 @@
 import Link from "next/link";
 
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { JsonLd } from "@/components/JsonLd";
 import { PageIntroSection } from "@/components/PageIntroSection";
 import { SectionHeader } from "@/components/SectionHeader";
 import { buildMetadata } from "@/lib/seo";
+import { absoluteUrl } from "@/lib/site";
+import { buildBreadcrumbListSchema } from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
   title: "Privacy Notice | HydrogenExpert",
@@ -41,16 +45,29 @@ const sections = [
     body: "You can avoid the form and contact through LinkedIn or Upwork instead. You can also manage browser-level cookie and tracking settings from your browser.",
   },
 ] as const;
+const breadcrumbs = [
+  { label: "Home", href: "/" },
+  { label: "Privacy", href: "/privacy" },
+] as const;
+const breadcrumbSchema = buildBreadcrumbListSchema(
+  breadcrumbs.map((item) => ({
+    name: item.label,
+    url: absoluteUrl(item.href),
+  })),
+);
 
 export default function PrivacyPage() {
   return (
-    <div className="page-shell">
-      <PageIntroSection
-        eyebrow="Privacy"
-        title="Privacy notice"
-        description="A practical explanation of how this site handles project inquiry data, analytics, and security services."
-        body="This notice is written for a small professional services site. It is not a formal legal opinion, but it explains the data handling choices built into HydrogenExpert."
-      />
+    <>
+      <JsonLd data={breadcrumbSchema} />
+      <div className="page-shell">
+        <Breadcrumbs items={breadcrumbs} />
+        <PageIntroSection
+          eyebrow="Privacy"
+          title="Privacy notice"
+          description="A practical explanation of how this site handles project inquiry data, analytics, and security services."
+          body="This notice is written for a small professional services site. It is not a formal legal opinion, but it explains the data handling choices built into HydrogenExpert."
+        />
 
       <section className="surface-card space-y-6">
         <SectionHeader
@@ -83,6 +100,7 @@ export default function PrivacyPage() {
           instead.
         </p>
       </section>
-    </div>
+      </div>
+    </>
   );
 }

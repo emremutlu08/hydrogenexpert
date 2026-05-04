@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CTASection } from "@/components/CTASection";
 import { FounderCard } from "@/components/FounderCard";
 import { JsonLd } from "@/components/JsonLd";
@@ -19,6 +20,7 @@ import {
 } from "@/lib/site";
 import {
   asSchemaArray,
+  buildBreadcrumbListSchema,
   buildPersonSchema,
   buildProfilePageSchema,
 } from "@/lib/structured-data";
@@ -46,6 +48,16 @@ const profilePageSchema = buildProfilePageSchema({
     "Profile page for Emre Mutlu, independent Shopify Hydrogen developer and founder of HydrogenExpert.",
   person: personSchema,
 });
+const breadcrumbs = [
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+] as const;
+const breadcrumbSchema = buildBreadcrumbListSchema(
+  breadcrumbs.map((item) => ({
+    name: item.label,
+    url: absoluteUrl(item.href),
+  })),
+);
 
 const proofStats = [
   { id: "upwork-hours", value: UPWORK_PROFILE.totalHoursLabel, label: "hours delivered on Upwork", href: OWNER.upwork, external: true },
@@ -97,8 +109,9 @@ const standards = [
 export default function AboutPage() {
   return (
     <>
-      <JsonLd data={asSchemaArray(profilePageSchema)} />
+      <JsonLd data={asSchemaArray(profilePageSchema, breadcrumbSchema)} />
       <div className="page-shell">
+        <Breadcrumbs items={breadcrumbs} />
         <PageIntroSection
           eyebrow={SITE_NAME}
           title="About Emre Mutlu"

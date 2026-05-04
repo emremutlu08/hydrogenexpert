@@ -32,12 +32,12 @@ export function CTASection({
             <TrackedCTAButton
               destination="upwork"
               label="Hire Emre on Upwork"
-              className="inline-flex items-center rounded-full bg-[#10b981] px-6 py-3 text-sm font-semibold text-white transition hover:bg-white hover:text-[#171717]"
+              className="inline-flex min-h-11 items-center rounded-full bg-[#10b981] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-[#171717]"
             />
             <TrackedCTAButton
               destination="linkedin"
               label="Message on LinkedIn"
-              className="inline-flex items-center rounded-full border border-white/16 px-6 py-3 text-sm font-semibold text-white transition hover:border-[#8df1cb] hover:text-[#8df1cb]"
+              className="inline-flex min-h-11 items-center rounded-full border border-white/16 px-6 py-3 text-sm font-semibold text-white transition-colors hover:border-[#8df1cb] hover:text-[#8df1cb]"
             />
           </div>
           <div className="flex flex-wrap items-center gap-4">

@@ -121,7 +121,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                   <div className="card-rail__footer">
                     <Link
                       href={`/blog/${post.slug}`}
-                      className="inline-flex rounded-full bg-[#171717] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#10b981]"
+                      className="inline-flex min-h-11 items-center rounded-full bg-[#171717] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#10b981]"
                     >
                       Read article
                     </Link>
@@ -150,7 +150,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
           {clampedPage > 1 ? (
             <Link
               href={`/blog?page=${clampedPage - 1}`}
-              className="rounded-full border border-black/12 px-4 py-2 text-sm font-semibold text-black transition hover:border-[#10b981] hover:text-[#10b981]"
+              className="inline-flex min-h-11 items-center rounded-full border border-black/12 px-4 py-2 text-sm font-semibold text-black transition-colors hover:border-[#10b981] hover:text-[#10b981]"
             >
               Previous
             </Link>
@@ -158,7 +158,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
           {clampedPage < totalPages ? (
             <Link
               href={`/blog?page=${clampedPage + 1}`}
-              className="rounded-full bg-[#10b981] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#171717]"
+              className="inline-flex min-h-11 items-center rounded-full bg-[#10b981] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#171717]"
             >
               Next
             </Link>
