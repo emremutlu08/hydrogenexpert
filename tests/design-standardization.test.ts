@@ -8,7 +8,7 @@ interface PageFile {
   source: string;
 }
 
-const PUBLIC_PAGE_EXEMPTIONS = new Set(["/", "/agency"]);
+const PUBLIC_PAGE_EXEMPTIONS = new Set(["/", "/agency", "/cost", "/shopify-hydrogen-seo-guide"]);
 const APPROVED_SHARED_TEMPLATE = "<ServiceLandingPage";
 
 function collectPageFiles(dir = "app"): PageFile[] {

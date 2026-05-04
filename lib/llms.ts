@@ -45,7 +45,7 @@ function buildPageIndex() {
     ...serviceLines,
     `- What Is Hydrogen: ${absoluteUrl("/what-is-hydrogen")}`,
     `- Should I Use It: ${absoluteUrl("/should-i-use-it")}`,
-    `- Cost: ${absoluteUrl("/cost")}`,
+    `- Cost: ${absoluteUrl("/shopify-hydrogen-cost")}`,
     `- Case Studies: ${absoluteUrl("/case-studies")}`,
     ...caseStudyLines,
     `- Hire Me: ${absoluteUrl("/hire-me")}`,

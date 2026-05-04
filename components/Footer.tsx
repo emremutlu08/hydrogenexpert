@@ -36,10 +36,13 @@ interface FooterProps {
 }
 
 const SERVICE_ITEMS = [
-  { href: "/custom-shopify-hydrogen-storefront", label: "Shopify Hydrogen Development" },
+  { href: "/shopify-hydrogen-agency", label: "Hydrogen Agency Alternative" },
+  { href: "/headless-shopify-agency", label: "Headless Shopify Agency" },
+  { href: "/shopify-hydrogen-developer", label: "Hydrogen Developer" },
   { href: "/shopify-hydrogen-audit", label: "Hydrogen Storefront Audit" },
   { href: "/liquid-to-hydrogen-migration", label: "Liquid to Hydrogen Migration" },
-  { href: "/shopify-hydrogen-performance-optimization", label: "Performance and UX Refactor" },
+  { href: "/shopify-hydrogen-seo", label: "Hydrogen SEO" },
+  { href: "/shopify-hydrogen-cost", label: "Hydrogen Cost" },
 ] as const;
 
 const RESOURCE_ITEMS = [
@@ -47,8 +50,8 @@ const RESOURCE_ITEMS = [
   { href: "/what-is-hydrogen", label: "What Is Shopify Hydrogen?" },
   { href: "/should-i-use-it", label: "Should I Use Hydrogen?" },
   { href: "/when-not-to-use-hydrogen", label: "When Not to Use Hydrogen" },
-  { href: "/shopify-hydrogen-seo-guide", label: "Hydrogen SEO Guide" },
-  { href: "/cost", label: "Shopify Hydrogen Cost" },
+  { href: "/shopify-hydrogen-seo", label: "Hydrogen SEO Guide" },
+  { href: "/shopify-hydrogen-cost", label: "Shopify Hydrogen Cost" },
 ] as const;
 
 const PROOF_ITEMS = [

@@ -33,7 +33,13 @@ describe("buildSitemapEntries", () => {
     expect(paths).toContain("/about");
     expect(paths).toContain("/contact");
     expect(paths).toContain("/services");
+    expect(paths).toContain("/shopify-hydrogen-agency");
+    expect(paths).toContain("/headless-shopify-agency");
+    expect(paths).toContain("/shopify-hydrogen-developer");
     expect(paths).toContain("/shopify-hydrogen-audit");
+    expect(paths).toContain("/liquid-to-hydrogen-migration");
+    expect(paths).toContain("/shopify-hydrogen-seo");
+    expect(paths).toContain("/shopify-hydrogen-cost");
     expect(paths).toContain("/case-studies/eveshop-shopify-hydrogen");
     expect(paths).toContain("/case-studies/bayam-jewelry-shopify-hydrogen");
     expect(paths).toContain("/case-studies/rebel-bunny-shopify-hydrogen");
@@ -47,6 +53,13 @@ describe("buildSitemapEntries", () => {
     for (const route of NOINDEX_STATIC_ROUTES) {
       expect(paths).not.toContain(route);
     }
+  });
+
+  it("excludes legacy commercial routes that now redirect", () => {
+    const paths = pathsFromSitemap(posts);
+
+    expect(paths).not.toContain("/cost");
+    expect(paths).not.toContain("/shopify-hydrogen-seo-guide");
   });
 
   it("omits the blog index when no published posts exist", () => {
