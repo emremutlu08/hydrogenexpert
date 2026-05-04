@@ -28,24 +28,4 @@ export const clientLogos: readonly ClientLogo[] = [
     isCurrent: true,
     link: "/case-studies#rebel-bunny",
   },
-  {
-    alt: "Atolye Stone",
-    label: "Atolye Stone",
-    isCurrent: false,
-  },
-  {
-    alt: "Clohi",
-    label: "Clohi",
-    isCurrent: false,
-  },
-  {
-    alt: "Kiraz Ev",
-    label: "Kiraz Ev",
-    isCurrent: false,
-  },
-  {
-    alt: "Petkonak",
-    label: "Petkonak",
-    isCurrent: false,
-  },
 ] as const;
