@@ -15,27 +15,38 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-04
 
-- PR: [#4 Update founder image to city portrait](https://github.com/emremutlu08/hydrogenexpert/pull/4)
+- PR: [#4 Update founder image and generated blog covers](https://github.com/emremutlu08/hydrogenexpert/pull/4)
 - Branch: `codex/update-emre-city-image`
-- Deployment: [Production deploy](https://hydrogenexpert-gumta8prh-emremutlu8s-projects.vercel.app) aliased to `https://hydrogenexpert.co`.
+- Deployment: [Production deploy](https://hydrogenexpert-ogosnlxwo-emremutlu8s-projects.vercel.app) aliased to `https://hydrogenexpert.co`.
 - Summary:
   - Added the new 16:9 founder portrait at `public/emre-city-16x9.png`.
   - Updated visible founder-card image usage on Home and Hire Me through the shared founder asset path.
   - Updated Person schema image URLs to use the new founder image.
   - Removed the old `public/emre-mutlu.webp` asset so the site does not keep a stale founder image.
+  - Generated seven technical blog cover images for previously image-less Hydrogen article enhancements.
+  - Wired generated blog covers with explicit `alt`, `title`, `width`, `height`, and lazy loading support.
+  - Removed stale missing-logo source paths and the placeholder Upwork badge path instead of inventing fake logos or fake proof assets.
 - Files changed:
   - `app/page.tsx`
   - `app/hire-me/page.tsx`
   - `app/layout.tsx`
   - `components/FounderCard.tsx`
+  - `components/PostVisual.tsx`
+  - `components/UpworkTopRatedBadge.tsx`
+  - `data/clientLogos.ts`
+  - `lib/post-enhancements.ts`
   - `lib/public-assets.ts`
   - `public/emre-city-16x9.png`
+  - `public/generated/blog/*.jpg`
   - `public/emre-mutlu.webp`
 - Verification:
   - `npm run lint`
   - `npm run build`
   - Local HTML image SEO check for `/` and `/hire-me`: `HTML SEO ISSUES none`
   - Local production crawl over known public routes: `LOCAL SEO ISSUES none`
+  - Local generated image URL check: all seven `/generated/blog/*.jpg` assets returned `200`
+  - Live production crawl over known public routes: `LIVE SEO HTML ISSUES none`
+  - Live generated image URL check: all seven `/generated/blog/*.jpg` assets returned `200`
   - Playwright desktop/mobile checks for `/` and `/hire-me`: `VISUAL ISSUES none`
 - Manual follow-up:
   - Do not merge the PR unless Emre approves it.

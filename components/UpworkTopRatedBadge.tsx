@@ -21,7 +21,7 @@ const IMAGE_SIZE = {
 export function UpworkTopRatedBadge({
   size = "md",
 }: UpworkTopRatedBadgeProps) {
-  if (HAS_UPWORK_BADGE) {
+  if (HAS_UPWORK_BADGE && UPWORK_BADGE_PATH) {
     const imageSize = IMAGE_SIZE[size];
 
     return (
@@ -45,7 +45,6 @@ export function UpworkTopRatedBadge({
         SIZE_CLASSES[size],
       ].join(" ")}
     >
-      {/* TODO: Replace this neutral fallback with /public/badges/upwork-top-rated-plus.svg. */}
       <span className="max-w-[7ch] leading-4">Top Rated Plus</span>
     </div>
   );
