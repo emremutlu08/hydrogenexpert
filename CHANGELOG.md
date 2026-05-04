@@ -15,6 +15,34 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-04
 
+- PR: [#7 Standardize HydrogenExpert design DNA, font, and spacing](https://github.com/emremutlu08/hydrogenexpert/pull/7)
+- Branch: `codex/design-dna-standardization`
+- Deployment: Pending production deploy after PR validation.
+- Summary:
+  - Added root-level `design.md` as the permanent HydrogenExpert design brain.
+  - Added `tasks/prd-design-system-standardization.md` to define goals, non-goals, acceptance criteria, and verification for design standardization.
+  - Kept Geist as the sitewide font standard while documenting `/blog` as the editorial rhythm reference.
+  - Restored subtle interaction motion through reduced-motion-aware CSS and improved focus behavior.
+  - Standardized mobile tap targets across header, footer, CTA, blog pagination, and lead-form primary controls.
+  - Made the shared lead form readable as a standalone dark panel, not only inside dark CTA sections.
+- Files changed:
+  - `design.md`
+  - `tasks/prd-design-system-standardization.md`
+  - `app/globals.css`
+  - `app/blog/page.tsx`
+  - `components/CTASection.tsx`
+  - `components/Footer.tsx`
+  - `components/Header.tsx`
+  - `components/LeadCaptureForm.tsx`
+- Verification:
+  - `npm run lint`
+  - `npm run test`
+  - `npm run build`
+  - Local production browser sweep at 375, 768, 1024, and 1440 widths for `/`, `/blog`, `/blog/shopify-hydrogen-product-description-ssr-seo`, `/services`, `/case-studies`, and `/hire-me`: no horizontal overflow, Geist computed font family, 0.18s interaction motion, and primary mobile targets passing.
+  - `/contact` returned 404 on the current `main` base; this PR does not add routes.
+- Manual follow-up:
+  - Do not merge the PR unless Emre approves it.
+
 - PR: [#3 Fix sitewide SEO audit issues](https://github.com/emremutlu08/hydrogenexpert/pull/3)
 - Branch: `codex/fix-sitewide-seo-audit`
 - Deployment: [Production deploy](https://hydrogenexpert-78u9rh2u3-emremutlu8s-projects.vercel.app) aliased to `https://hydrogenexpert.co`.
