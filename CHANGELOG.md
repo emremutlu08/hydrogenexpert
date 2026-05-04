@@ -17,7 +17,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 - PR: [#9 Add commercial Hydrogen landing pages](https://github.com/emremutlu08/hydrogenexpert/pull/9)
 - Branch: `codex/commercial-landing-pages`
-- Deployment: Pending branch deployment after local validation and changelog update.
+- Deployment: [Production deploy](https://hydrogenexpert-jxmnsyhn6-emremutlu8s-projects.vercel.app) aliased to `https://hydrogenexpert.co`.
 - Summary:
   - Added canonical commercial landing pages for Shopify Hydrogen agency, headless Shopify agency, Shopify Hydrogen developer, Shopify Hydrogen SEO, and Shopify Hydrogen cost search intent.
   - Kept Liquid to Hydrogen migration and Shopify Hydrogen audit as canonical service pages in the same commercial cluster.
@@ -49,6 +49,8 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - Local redirect verification: `/cost` redirects to `/shopify-hydrogen-cost`; `/shopify-hydrogen-seo-guide` redirects to `/shopify-hydrogen-seo`.
   - Local sitemap verification: all seven canonical routes are present; legacy `/cost` and `/shopify-hydrogen-seo-guide` are absent.
   - Playwright desktop/mobile screenshots for `/liquid-to-hydrogen-migration`, `/shopify-hydrogen-agency`, `/shopify-hydrogen-seo`, and `/shopify-hydrogen-cost`: no horizontal overflow.
+  - Live production verification on `https://hydrogenexpert.co`: all seven canonical routes returned `200`, one H1, correct canonical URL, `BreadcrumbList` JSON-LD, and page JSON-LD.
+  - Live production redirect and sitemap verification: `/cost` redirects to `/shopify-hydrogen-cost`, `/shopify-hydrogen-seo-guide` redirects to `/shopify-hydrogen-seo`, all seven canonical routes are in `/sitemap.xml`, and both legacy routes are absent.
 - Manual follow-up:
   - Do not merge the PR unless Emre approves it.
 
