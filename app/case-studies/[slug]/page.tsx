@@ -174,25 +174,6 @@ export default async function CaseStudyDetailPage({
             </div>
           </section>
 
-          <section className="surface-card space-y-6">
-            <SectionHeader
-              eyebrow="Proof slots"
-              title="Reserved for remaining approved proof."
-              description="These slots show what can still strengthen the case later without publishing unsupported metrics, screenshots, or claims."
-              className="max-w-5xl"
-            />
-            <div className="grid gap-4 md:grid-cols-3">
-              {study.placeholderProofSlots.map((slot) => (
-                <article key={slot.label} className="rounded-[1.2rem] border border-dashed border-black/20 bg-white p-5">
-                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#10b981]">
-                    {slot.label}
-                  </p>
-                  <p className="mt-3 text-sm leading-7 text-neutral-600">{slot.note}</p>
-                </article>
-              ))}
-            </div>
-          </section>
-
           <CaseStudyTestimonial testimonial={study.testimonial} />
         </article>
 

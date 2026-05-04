@@ -331,23 +331,12 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
   },
   "shopify-hydrogen-product-description-ssr-seo": {
     heroVisual: {
-      type: "flow-diagram-svg",
-      caption:
-        "A Shopify Hydrogen product description should come from the route data and render into the initial HTML before any accordion JavaScript runs.",
-      steps: [
-        {
-          label: "Query",
-          body: "Fetch the standard Shopify product description field in the product route loader.",
-        },
-        {
-          label: "Render",
-          body: "Render the description inside the server-rendered product page markup.",
-        },
-        {
-          label: "Enhance",
-          body: "Keep the accordion interaction as progressive enhancement, not as the only source of content.",
-        },
-      ],
+      type: "code-card",
+      src: "/generated/blog/hydrogen-seo-checklist-cover.jpg",
+      alt: "Hydrogen SEO architecture visual showing crawlable product content, structured data blocks, and route-level metadata panels.",
+      title: "Shopify Hydrogen product description SSR SEO visual",
+      width: 1672,
+      height: 941,
     },
     faq: [
       {
@@ -416,23 +405,12 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
   },
   "shopify-hydrogen-metaobjects-page-specific-sections": {
     heroVisual: {
-      type: "flow-diagram-svg",
-      caption:
-        "A reusable Shopify Hydrogen section can stay developer-owned in code while its page-specific copy and imagery stay merchant-editable in Shopify Admin.",
-      steps: [
-        {
-          label: "Model",
-          body: "Create one metaobject definition for the content section.",
-        },
-        {
-          label: "Map",
-          body: "Create entries for the page contexts that need different content.",
-        },
-        {
-          label: "Render",
-          body: "Resolve the right entry by route and fall back safely when no entry exists.",
-        },
-      ],
+      type: "code-card",
+      src: "/generated/blog/shopify-plus-hydrogen-cover.jpg",
+      alt: "Hydrogen content architecture visual with storefront sections, merchant-editable content modules, and integration panels.",
+      title: "Shopify Hydrogen metaobjects page-specific sections visual",
+      width: 1672,
+      height: 941,
     },
     faq: [
       {
@@ -501,23 +479,12 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
   },
   "shopify-hydrogen-variant-selection-fallback": {
     heroVisual: {
-      type: "flow-diagram-svg",
-      caption:
-        "A safer Shopify Hydrogen variant resolver treats the shopper's clicked option as a rule, then searches for the nearest available variant inside that scope.",
-      steps: [
-        {
-          label: "Click",
-          body: "The shopper chooses a product option such as Width=9mm.",
-        },
-        {
-          label: "Lock",
-          body: "The resolver filters variants so every candidate keeps Width=9mm.",
-        },
-        {
-          label: "Fallback",
-          body: "Only then does it choose the nearest available Length, Metal, or other option.",
-        },
-      ],
+      type: "code-card",
+      src: "/generated/blog/hydrogen-nextjs-cover.jpg",
+      alt: "Hydrogen storefront logic visual with product option modules, route state, and variant selection architecture panels.",
+      title: "Shopify Hydrogen variant selection fallback visual",
+      width: 1672,
+      height: 941,
     },
     faq: [
       {
@@ -574,14 +541,12 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
   },
   "cut-homepage-load-time-from-5s-to-2s-shopify-hydrogen": {
     heroVisual: {
-      type: "before-after-svg",
-      title: "Homepage filter tabs refactor",
-      beforeValue: "4-5s",
-      afterValue: "2s",
-      beforeLabel: "All tabs fetched on load",
-      afterLabel: "First tab SSR, rest on click",
-      beforeCaption: "96 products fetched per section through a client-side effect path.",
-      afterCaption: "8 products in the route loader, lazy-loaded tabs only after real interaction.",
+      type: "code-card",
+      src: "/generated/blog/hydrogen-performance-checklist-cover.jpg",
+      alt: "Hydrogen performance diagnostics visual with server-rendered product grids, cache layers, optimized media tiles, and timing panels.",
+      title: "Shopify Hydrogen homepage performance optimization visual",
+      width: 1672,
+      height: 941,
     },
     faq: [
       {

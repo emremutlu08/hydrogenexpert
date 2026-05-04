@@ -76,7 +76,7 @@ export default function CaseStudiesPage() {
           <SectionHeader
             eyebrow="Selected work"
             title="Find the storefront pressure closest to yours."
-            description="Each case now has a dedicated URL for deeper context, technical decisions, proof slots, and launch constraints."
+            description="Each case now has a dedicated URL for deeper context, technical decisions, approved visuals, and launch constraints."
           />
           <SelectedWorkGrid />
         </section>
