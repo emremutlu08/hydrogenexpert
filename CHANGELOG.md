@@ -17,7 +17,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 - PR: [#7 Standardize HydrogenExpert design DNA, font, and spacing](https://github.com/emremutlu08/hydrogenexpert/pull/7)
 - Branch: `codex/design-dna-standardization`
-- Deployment: [Production deploy](https://hydrogenexpert-nr0uzhk9y-emremutlu8s-projects.vercel.app) aliased to `https://hydrogenexpert.co`.
+- Deployment: [Production deploy](https://hydrogenexpert-3jpw5hilq-emremutlu8s-projects.vercel.app) aliased to `https://hydrogenexpert.co`.
 - Summary:
   - Added root-level `design.md` as the permanent HydrogenExpert design brain.
   - Added `tasks/prd-design-system-standardization.md` to define goals, non-goals, acceptance criteria, and verification for design standardization.
@@ -49,7 +49,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - `npm run build`
   - Local production browser sweep at 375, 768, 1024, and 1440 widths for `/`, `/blog`, `/blog/shopify-hydrogen-product-description-ssr-seo`, `/services`, `/case-studies`, and `/hire-me`: no horizontal overflow, Geist computed font family, 0.18s interaction motion, and primary mobile targets passing.
   - Local production browser sweep at 375, 768, 1024, and 1440 widths for `/`, `/blog`, `/blog/shopify-hydrogen-product-description-ssr-seo`, `/services`, `/shopify-hydrogen-audit`, `/cost`, `/case-studies`, `/case-studies/eveshop-shopify-hydrogen`, `/hire-me`, `/should-i-use-it`, `/what-is-hydrogen`, and `/when-not-to-use-hydrogen`: visible breadcrumb on every non-home page, `BreadcrumbList` JSON-LD present, breadcrumb appears before the page heading, Geist computed font family, and no horizontal overflow.
-  - Live smoke check on `https://hydrogenexpert.co` for `/`, `/blog`, `/services`, `/case-studies`, and `/hire-me`: HTTP 200, Geist computed font family, and no mobile horizontal overflow.
+  - Live production browser sweep on `https://hydrogenexpert.co` at 375, 768, 1024, and 1440 widths for `/`, `/blog`, `/blog/shopify-hydrogen-product-description-ssr-seo`, `/services`, `/shopify-hydrogen-audit`, `/cost`, `/case-studies`, `/case-studies/eveshop-shopify-hydrogen`, `/hire-me`, `/should-i-use-it`, `/what-is-hydrogen`, and `/when-not-to-use-hydrogen`: visible breadcrumb on every non-home page, `BreadcrumbList` JSON-LD present, breadcrumb appears before the page heading, Geist computed font family, and no horizontal overflow.
   - `/contact` returned 404 on the current `main` base; this PR does not add routes.
 - Manual follow-up:
   - Do not merge the PR unless Emre approves it.
