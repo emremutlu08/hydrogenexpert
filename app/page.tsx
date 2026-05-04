@@ -16,8 +16,19 @@ import { UdemyCourseCard } from "@/components/UdemyCourseCard";
 import { clientLogos } from "@/data/clientLogos";
 import { FOUNDER_STORY } from "@/lib/founder";
 import { buildMetadata } from "@/lib/seo";
-import { OWNER, absoluteUrl } from "@/lib/site";
-import { asSchemaArray, buildFaqPageSchema } from "@/lib/structured-data";
+import {
+  FOUNDER_IMAGE_PATH,
+  OWNER,
+  SITE_LOGO_PATH,
+  SITE_NAME,
+  VERIFIED_PROFILE_URLS,
+  absoluteUrl,
+} from "@/lib/site";
+import {
+  asSchemaArray,
+  buildFaqPageSchema,
+  buildPublisherSchema,
+} from "@/lib/structured-data";
 
 const LAST_UPDATED = "2026-04-21";
 
@@ -35,27 +46,35 @@ const personSchema = {
   name: OWNER.name,
   jobTitle: OWNER.title,
   description: OWNER.headline,
-  image: absoluteUrl("/emre-mutlu.webp"),
-  sameAs: [OWNER.linkedIn, OWNER.upwork, OWNER.udemyUrl],
+  image: absoluteUrl(FOUNDER_IMAGE_PATH),
+  sameAs: VERIFIED_PROFILE_URLS,
   knowsAbout: ["Shopify Hydrogen", "Shopify storefront performance", "Shopify migration planning"],
 };
+
+const publisherSchema = buildPublisherSchema({
+  name: SITE_NAME,
+  url: absoluteUrl("/"),
+  logo: absoluteUrl(SITE_LOGO_PATH),
+});
 
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "HydrogenExpert",
+  name: SITE_NAME,
   url: absoluteUrl("/"),
+  logo: absoluteUrl(SITE_LOGO_PATH),
+  image: absoluteUrl(SITE_LOGO_PATH),
   founder: {
     "@type": "Person",
     name: OWNER.name,
   },
-  sameAs: [OWNER.linkedIn, OWNER.upwork, OWNER.udemyUrl],
+  sameAs: VERIFIED_PROFILE_URLS,
 };
 
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "HydrogenExpert",
+  name: SITE_NAME,
   url: absoluteUrl("/"),
   description:
     "Lead generation site for Shopify store owners researching Hydrogen strategy, migration fit, pricing, and case studies.",
@@ -74,12 +93,9 @@ const articleSchema = {
   author: {
     "@type": "Person",
     name: OWNER.name,
-    sameAs: [OWNER.linkedIn, OWNER.upwork, OWNER.udemyUrl],
+    sameAs: VERIFIED_PROFILE_URLS,
   },
-  publisher: {
-    "@type": "Organization",
-    name: "HydrogenExpert",
-  },
+  publisher: publisherSchema,
   mainEntityOfPage: absoluteUrl("/"),
   dateModified: LAST_UPDATED,
   datePublished: LAST_UPDATED,

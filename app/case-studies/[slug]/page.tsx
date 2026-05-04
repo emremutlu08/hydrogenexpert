@@ -15,7 +15,7 @@ import {
   getCaseStudyBySlug,
 } from "@/data/caseStudies";
 import { buildMetadata } from "@/lib/seo";
-import { absoluteUrl, OWNER } from "@/lib/site";
+import { absoluteUrl, OWNER, SITE_LOGO_PATH } from "@/lib/site";
 import {
   asSchemaArray,
   buildBreadcrumbListSchema,
@@ -86,6 +86,12 @@ export default async function CaseStudyDetailPage({
     authorName: OWNER.name,
     datePublished: LAST_UPDATED,
     dateModified: LAST_UPDATED,
+    image: study.heroImage?.src
+      ? absoluteUrl(study.heroImage.src)
+      : study.logo.src
+        ? absoluteUrl(study.logo.src)
+        : undefined,
+    publisherLogo: absoluteUrl(SITE_LOGO_PATH),
   });
   const creativeWorkSchema = buildCreativeWorkSchema({
     name: `${study.clientName} Shopify Hydrogen case study`,
@@ -171,25 +177,6 @@ export default async function CaseStudyDetailPage({
                 </section>
               ) : null}
               <CaseStudyTechStack stack={study.techStack} />
-            </div>
-          </section>
-
-          <section className="surface-card space-y-6">
-            <SectionHeader
-              eyebrow="Proof slots"
-              title="Reserved for remaining approved proof."
-              description="These slots show what can still strengthen the case later without publishing unsupported metrics, screenshots, or claims."
-              className="max-w-5xl"
-            />
-            <div className="grid gap-4 md:grid-cols-3">
-              {study.placeholderProofSlots.map((slot) => (
-                <article key={slot.label} className="rounded-[1.2rem] border border-dashed border-black/20 bg-white p-5">
-                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#10b981]">
-                    {slot.label}
-                  </p>
-                  <p className="mt-3 text-sm leading-7 text-neutral-600">{slot.note}</p>
-                </article>
-              ))}
             </div>
           </section>
 

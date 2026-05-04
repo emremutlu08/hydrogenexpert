@@ -29,6 +29,9 @@ export function buildMetadata({
     robots,
     alternates: {
       canonical: path,
+      types: {
+        "application/rss+xml": "/feed.xml",
+      },
     },
     openGraph: {
       title,

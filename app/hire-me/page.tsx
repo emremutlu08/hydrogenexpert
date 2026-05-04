@@ -14,7 +14,7 @@ import { StatCard } from "@/components/StatCard";
 import { UdemyCourseCard } from "@/components/UdemyCourseCard";
 import { FOUNDER_STORY } from "@/lib/founder";
 import { buildMetadata } from "@/lib/seo";
-import { CLIENTS, OWNER, UPWORK_PROFILE, absoluteUrl } from "@/lib/site";
+import { CLIENTS, FOUNDER_IMAGE_PATH, OWNER, UPWORK_PROFILE, absoluteUrl } from "@/lib/site";
 import {
   asSchemaArray,
   buildBreadcrumbListSchema,
@@ -34,7 +34,7 @@ const personSchema = {
   name: OWNER.name,
   jobTitle: OWNER.title,
   description: OWNER.headline,
-  image: absoluteUrl("/emre-mutlu.webp"),
+  image: absoluteUrl(FOUNDER_IMAGE_PATH),
   sameAs: [OWNER.linkedIn, OWNER.upwork, OWNER.udemyUrl],
 };
 
