@@ -66,7 +66,7 @@ export default async function RootLayout({
       name: OWNER.name,
       title: OWNER.title,
       url: OWNER.linkedIn,
-      image: `${siteUrl}/emre-mutlu.webp`,
+      image: `${siteUrl}/emre-city-16x9.png`,
       sameAs: proofLinks,
     }),
     buildProfessionalServiceSchema({

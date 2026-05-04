@@ -52,10 +52,6 @@ export interface CaseStudyEntry {
   implementation: string;
   outcome: string;
   results: readonly string[];
-  placeholderProofSlots: readonly {
-    label: string;
-    note: string;
-  }[];
   metrics: CaseStudyMetric[];
   techStack: string[];
   screenshots: CaseStudyScreenshot[];
@@ -110,20 +106,6 @@ export const CASE_STUDIES: readonly CaseStudyEntry[] = [
       "Reusable frontend patterns for a broad cosmetics and personal care catalog.",
       "A clear proof point for the business-first framing behind Hydrogen decisions.",
     ],
-    placeholderProofSlots: [
-      {
-        label: "Before/after Core Web Vitals",
-        note: "Pending approved measurement source before publishing.",
-      },
-      {
-        label: "Client-approved quote",
-        note: "No quote will be shown until attribution is approved.",
-      },
-      {
-        label: "Approved storefront screenshots",
-        note: "Project asset slot is ready, but unapproved visuals stay off the page.",
-      },
-    ],
     metrics: [],
     techStack: [
       "Shopify Hydrogen",
@@ -134,12 +116,7 @@ export const CASE_STUDIES: readonly CaseStudyEntry[] = [
       "GraphQL",
       "GTM",
     ],
-    screenshots: [
-      {
-        alt: "EveShop approved project asset pending",
-        caption: "Approved project asset to be added.",
-      },
-    ],
+    screenshots: [],
     testimonial: null,
   },
   {
@@ -148,7 +125,7 @@ export const CASE_STUDIES: readonly CaseStudyEntry[] = [
     clientName: "Bayam Jewelry",
     metaTitle: "Bayam Jewelry Shopify Hydrogen Case Study | Emre Mutlu",
     metaDescription:
-      "Bayam Jewelry Shopify Hydrogen case study for a luxury jewelry and watch storefront with premium catalog discovery, showroom trust, and approved proof slots.",
+      "Bayam Jewelry Shopify Hydrogen case study for a luxury jewelry and watch storefront with premium catalog discovery, showroom trust, and approved visual proof.",
     tagline: "A Shopify Hydrogen storefront for luxury jewelry, watches, and showroom-led trust.",
     role: "Shopify Hydrogen Developer",
     industry: "Fine jewelry and luxury watches",
@@ -192,20 +169,6 @@ export const CASE_STUDIES: readonly CaseStudyEntry[] = [
       "Stronger premium storefront presentation for a Diamond District jewelry and watch brand.",
       "Clearer collection context and sub-category discovery paths.",
       "A practical example of Hydrogen supporting luxury catalog nuance.",
-    ],
-    placeholderProofSlots: [
-      {
-        label: "Before/after collection engagement",
-        note: "Reserved for analytics-backed proof if approved.",
-      },
-      {
-        label: "Client-approved testimonial",
-        note: "No testimonial is rendered until the quote and attribution are approved.",
-      },
-      {
-        label: "Additional project visuals",
-        note: "Approved brand preview is shown; deeper screenshots remain pending.",
-      },
     ],
     metrics: [],
     techStack: [
@@ -276,20 +239,6 @@ export const CASE_STUDIES: readonly CaseStudyEntry[] = [
       "Custom product and promotional surfaces shaped around social-first discovery.",
       "A strong example of Hydrogen supporting commerce and brand storytelling together.",
       "5.0 Upwork feedback for the ongoing custom Hydrogen storefront work.",
-    ],
-    placeholderProofSlots: [
-      {
-        label: "Conversion or partner-flow lift",
-        note: "Reserved for approved analytics if the brand chooses to share them.",
-      },
-      {
-        label: "Full public feedback",
-        note: "Upwork shows a verified 5.0 review excerpt; the full logged-in expansion is not repeated here unless it is visible and approved.",
-      },
-      {
-        label: "Additional mobile screenshots",
-        note: "Approved preview asset is shown; deeper visual proof remains pending.",
-      },
     ],
     metrics: [
       {
