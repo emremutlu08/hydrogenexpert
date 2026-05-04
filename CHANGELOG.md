@@ -17,7 +17,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 - PR: [#9 Add commercial Hydrogen landing pages](https://github.com/emremutlu08/hydrogenexpert/pull/9)
 - Branch: `codex/commercial-landing-pages`
-- Deployment: [Production deploy](https://hydrogenexpert-jxmnsyhn6-emremutlu8s-projects.vercel.app) aliased to `https://hydrogenexpert.co`.
+- Deployment: [Production deploy](https://hydrogenexpert-jztc3ojj7-emremutlu8s-projects.vercel.app) aliased to `https://hydrogenexpert.co`.
 - Summary:
   - Added canonical commercial landing pages for Shopify Hydrogen agency, headless Shopify agency, Shopify Hydrogen developer, Shopify Hydrogen SEO, and Shopify Hydrogen cost search intent.
   - Kept Liquid to Hydrogen migration and Shopify Hydrogen audit as canonical service pages in the same commercial cluster.
