@@ -17,7 +17,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 - PR: [#3 Fix sitewide SEO audit issues](https://github.com/emremutlu08/hydrogenexpert/pull/3)
 - Branch: `codex/fix-sitewide-seo-audit`
-- Deployment: Pending production deployment.
+- Deployment: [Production deploy](https://hydrogenexpert-lfbj4c04a-emremutlu8s-projects.vercel.app) aliased to `https://hydrogenexpert.co`.
 - Summary:
   - Fixed missing image `title`, `loading`, `width`, and `height` attributes across shared image components and affected content pages.
   - Shortened over-limit SEO titles and descriptions across public routes and generated blog metadata.
