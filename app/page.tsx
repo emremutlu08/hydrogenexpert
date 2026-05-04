@@ -9,7 +9,6 @@ import { ProcessStepGrid } from "@/components/ProcessStepGrid";
 import { ProofCardGrid } from "@/components/ProofCardGrid";
 import { SelectedWorkGrid } from "@/components/SelectedWorkGrid";
 import { SectionHeader } from "@/components/SectionHeader";
-import { SplitFeatureSection } from "@/components/SplitFeatureSection";
 import { StatCardGrid } from "@/components/StatCardGrid";
 import { TrustBar } from "@/components/TrustBar";
 import { UdemyCourseCard } from "@/components/UdemyCourseCard";
@@ -389,23 +388,29 @@ export default function HomePage() {
           <SelectedWorkGrid />
         </section>
 
-        <ProofCardGrid items={proofCards} columnsClassName="grid gap-5 md:grid-cols-2 xl:grid-cols-4 xl:items-stretch" />
+        <section className="surface-card space-y-6">
+          <SectionHeader
+            eyebrow="Proof"
+            title="Public trust signals without fake agency theater."
+            description="The proof layer should scan cleanly before the page asks a merchant to take the next step."
+          />
+          <ProofCardGrid
+            items={proofCards}
+            columnsClassName="grid gap-5 md:grid-cols-2 xl:grid-cols-5 xl:items-stretch"
+          />
+        </section>
 
-        <SplitFeatureSection
-          leftClassName="rounded-[1.35rem] border border-black/8 bg-[#f6f7f7] p-6 md:p-8"
-          rightClassName=""
-          left={
-            <>
-              <p className="eyebrow">Results</p>
-              <h2 className="section-heading mt-3">Results built for real business decisions.</h2>
-              <p className="mt-4 text-sm leading-7 text-neutral-600">
-                The useful outcome is not more tech. It is a storefront that is easier to scale,
-                easier to trust, and easier to improve after launch.
-              </p>
-            </>
-          }
-          right={<StatCardGrid items={homepageMetrics} columnsClassName="grid gap-4 sm:grid-cols-2 xl:grid-cols-3 xl:auto-rows-fr" />}
-        />
+        <section className="surface-card space-y-6">
+          <SectionHeader
+            eyebrow="Results"
+            title="Results built for real business decisions."
+            description="The useful outcome is not more tech. It is a storefront that is easier to scale, easier to trust, and easier to improve after launch."
+          />
+          <StatCardGrid
+            items={homepageMetrics}
+            columnsClassName="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 xl:auto-rows-fr"
+          />
+        </section>
 
         <section id="process" className="surface-card space-y-6">
           <SectionHeader

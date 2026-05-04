@@ -52,6 +52,26 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - Live production verification on `https://hydrogenexpert.co`: all seven canonical routes returned `200`, one H1, correct canonical URL, `BreadcrumbList` JSON-LD, and page JSON-LD.
   - Live production redirect and sitemap verification: `/cost` redirects to `/shopify-hydrogen-cost`, `/shopify-hydrogen-seo-guide` redirects to `/shopify-hydrogen-seo`, all seven canonical routes are in `/sitemap.xml`, and both legacy routes are absent.
 - Manual follow-up:
+  - PR closed per Emre's cleanup request after resolving the `CHANGELOG.md` conflict with `origin/main`.
+
+- PR: [#8 Fix homepage desktop layout](https://github.com/emremutlu08/hydrogenexpert/pull/8)
+- Branch: `codex/fix-homepage-layout-live`
+- Deployment: [Production deploy](https://hydrogenexpert-of8p03ryh-emremutlu8s-projects.vercel.app) aliased to `https://hydrogenexpert.co`.
+- Summary:
+  - Reworked the homepage proof and results areas into separate `surface-card` sections so desktop cards no longer visually collide.
+  - Changed the proof grid to five balanced desktop columns and the results grid to six desktop metric cards.
+  - Fixed the global box-sizing inheritance bug that made form fields render as content-box and overflow their dark lead-form cards.
+  - Tightened desktop header navigation and darkened the text-only emerald accent for small labels.
+- Files changed:
+  - `app/page.tsx`
+  - `app/globals.css`
+- Verification:
+  - `npm run lint`
+  - `npm run build`
+  - Local Playwright homepage checks at 1440, 390, and 320px: no horizontal overflow, no negative section gaps, and no lead-form overflow.
+  - Live production Playwright homepage checks on `https://hydrogenexpert.co` at 1440, 390, and 320px: no horizontal overflow, no negative section gaps, and no lead-form overflow.
+  - Clean production deploy from `/tmp/hydrogenexpert-pr8` generated the expected 38 routes.
+- Manual follow-up:
   - Do not merge the PR unless Emre approves it.
 
 ## 2026-05-04
