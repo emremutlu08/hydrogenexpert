@@ -36,10 +36,10 @@ interface FooterProps {
 }
 
 const SERVICE_ITEMS = [
-  "Shopify Hydrogen Development",
-  "Hydrogen Storefront Audit",
-  "Liquid to Hydrogen Migration",
-  "Performance and UX Refactor",
+  { href: "/custom-shopify-hydrogen-storefront", label: "Shopify Hydrogen Development" },
+  { href: "/shopify-hydrogen-audit", label: "Hydrogen Storefront Audit" },
+  { href: "/liquid-to-hydrogen-migration", label: "Liquid to Hydrogen Migration" },
+  { href: "/shopify-hydrogen-performance-optimization", label: "Performance and UX Refactor" },
 ] as const;
 
 const RESOURCE_ITEMS = [
@@ -52,9 +52,9 @@ const RESOURCE_ITEMS = [
 
 const PROOF_ITEMS = [
   { href: "/case-studies", label: "Case Studies" },
-  { href: "/case-studies#eveshop", label: "EveShop" },
-  { href: "/case-studies#bayam", label: "Bayam Jewelry" },
-  { href: "/case-studies#rebel-bunny", label: "Rebel Bunny" },
+  { href: "/case-studies/eveshop-shopify-hydrogen", label: "EveShop" },
+  { href: "/case-studies/bayam-jewelry-shopify-hydrogen", label: "Bayam Jewelry" },
+  { href: "/case-studies/rebel-bunny-shopify-hydrogen", label: "Rebel Bunny" },
 ] as const;
 
 function FooterCard({
@@ -103,9 +103,11 @@ export function Footer({ navItems }: FooterProps) {
                   <span className="mt-1 block h-11 w-11 shrink-0">
                     <Image
                       src="/brand/hydrogenexpert-logo-icon.png"
-                      alt=""
+                      alt="HydrogenExpert logo"
+                      title="HydrogenExpert logo"
                       width={44}
                       height={44}
+                      loading="lazy"
                       sizes="44px"
                       className="h-full w-full object-contain"
                     />

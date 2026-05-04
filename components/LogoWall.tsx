@@ -27,7 +27,7 @@ function LogoWallItem({
         : "object-contain";
 
   const content = (
-    <div className="group relative flex h-[112px] items-center justify-center rounded-[1.3rem] border border-black/8 bg-white px-5 py-6 text-center transition hover:-translate-y-0.5 hover:border-[#10b981]">
+    <div className="group relative flex h-[112px] items-center justify-center rounded-[1.3rem] border border-black/8 bg-white px-5 py-6 text-center hover:border-[#10b981]">
       {logo.isCurrent ? (
         <span className="absolute right-3 top-3 inline-flex h-2.5 w-2.5 rounded-full bg-[#10b981]" />
       ) : null}

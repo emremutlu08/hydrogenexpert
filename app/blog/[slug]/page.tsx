@@ -19,6 +19,13 @@ interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
 }
 
+const BLOG_METADATA_TITLE_OVERRIDES: Record<string, string> = {
+  "shopify-hydrogen-product-description-ssr-seo":
+    "Shopify Hydrogen Product Descriptions: SSR SEO",
+  "shopify-hydrogen-variant-selection-fallback":
+    "Shopify Hydrogen Variant URLs and SEO Fallbacks",
+};
+
 export async function generateStaticParams() {
   const slugs = await getPublishedPostSlugs();
 
@@ -63,7 +70,7 @@ export async function generateMetadata({
   const enhancement = getPostEnhancement(post.slug);
 
   return buildMetadata({
-    title: post.title,
+    title: BLOG_METADATA_TITLE_OVERRIDES[post.slug] ?? post.title,
     description:
       post.meta_description ||
       "Merchant-focused Shopify Hydrogen advice covering speed, migration planning, and storefront growth.",

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { CTASection } from "@/components/CTASection";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CaseStudyHero } from "@/components/case-study/CaseStudyHero";
@@ -20,7 +22,7 @@ import {
 } from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
-  title: "Shopify Hydrogen Case Studies for Shopify Plus Brands",
+  title: "Shopify Hydrogen Case Studies: EveShop, Bayam, Rebel Bunny",
   description:
     "Production Shopify Hydrogen case studies across retail, luxury ecommerce, and premium DTC with only approved proof shown on the page.",
   path: "/case-studies",
@@ -38,9 +40,9 @@ const faqs = [
       "Bayam is a luxury discovery problem with multiple product mindsets inside one premium catalog. Rebel Bunny is a brand, education, and partnership problem where commerce, content, and community all need to live inside one storefront system.",
   },
   {
-    question: "Why are there no testimonials on this page yet?",
+    question: "Why do some cases have testimonials and others do not?",
     answer:
-      "Because I am not going to invent quotes or attach weak attribution to something that should be precise. Once a client-approved quote and attribution are available, the testimonial block is already wired to render it.",
+      "Because only verified or approved feedback belongs on the page. Rebel Bunny now has public Upwork feedback, while the other cases still wait for approved quotes or measurable proof before a testimonial is shown.",
   },
 ] as const;
 
@@ -67,14 +69,14 @@ export default function CaseStudiesPage() {
           eyebrow="Proof"
           title="Real stores, real constraints, real engineering decisions"
           description="One proof page, three very different storefront pressures: nationwide retail, luxury ecommerce, and social-first DTC."
-          body="Only approved proof is shown below. Client quotes, before/after metrics, and project visuals stay off the page until they are verified or approved."
+          body="Only verified or approved proof is shown below. Rebel Bunny now includes public Upwork feedback; other quotes, before/after metrics, and deeper visuals stay off the page until they are verified or approved."
         />
 
         <section className="surface-card space-y-6">
           <SectionHeader
             eyebrow="Selected work"
-            title="Jump straight to the storefront pressure that looks most like yours."
-            description="The preview cards stay as anchor links so you can move directly into EveShop, Bayam Jewelry, or Rebel Bunny Matcha."
+            title="Find the storefront pressure closest to yours."
+            description="Each case now has a dedicated URL for deeper context, technical decisions, proof slots, and launch constraints."
           />
           <SelectedWorkGrid />
         </section>
@@ -91,6 +93,12 @@ export default function CaseStudiesPage() {
                 logo={study.logo}
                 heroImage={study.heroImage}
               />
+              <Link
+                href={`/case-studies/${study.slug}`}
+                className="inline-flex rounded-full bg-[#171717] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#10b981]"
+              >
+                Read full case study
+              </Link>
 
               <div className="grid gap-x-8 gap-y-10 xl:grid-cols-2 xl:items-start">
                 <div>

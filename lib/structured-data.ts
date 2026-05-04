@@ -106,3 +106,96 @@ export function buildProfessionalServiceSchema({
     ],
   };
 }
+
+export function buildServiceSchema({
+  name,
+  url,
+  description,
+  providerName,
+  serviceType,
+  areaServed = "Worldwide",
+}: {
+  name: string;
+  url: string;
+  description: string;
+  providerName: string;
+  serviceType: string;
+  areaServed?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name,
+    url,
+    description,
+    serviceType,
+    areaServed,
+    provider: {
+      "@type": "ProfessionalService",
+      name: providerName,
+      url,
+    },
+  };
+}
+
+export function buildCreativeWorkSchema({
+  name,
+  url,
+  description,
+  creatorName,
+  dateModified,
+}: {
+  name: string;
+  url: string;
+  description: string;
+  creatorName: string;
+  dateModified: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name,
+    url,
+    description,
+    creator: {
+      "@type": "Person",
+      name: creatorName,
+    },
+    dateModified,
+  };
+}
+
+export function buildCaseStudyArticleSchema({
+  headline,
+  url,
+  description,
+  authorName,
+  datePublished,
+  dateModified,
+}: {
+  headline: string;
+  url: string;
+  description: string;
+  authorName: string;
+  datePublished: string;
+  dateModified: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline,
+    url,
+    description,
+    author: {
+      "@type": "Person",
+      name: authorName,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "HydrogenExpert",
+    },
+    datePublished,
+    dateModified,
+    mainEntityOfPage: url,
+  };
+}
