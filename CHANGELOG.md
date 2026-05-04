@@ -17,7 +17,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 - PR: [#5 Update blog sitemap frequency](https://github.com/emremutlu08/hydrogenexpert/pull/5)
 - Branch: `codex/update-blog-sitemap-frequency`
-- Deployment: [Production deploy](https://hydrogenexpert-g1cx8ruw5-emremutlu8s-projects.vercel.app) aliased to `https://hydrogenexpert.co`.
+- Deployment: [Production deploy](https://hydrogenexpert-56mmtxz1t-emremutlu8s-projects.vercel.app) aliased to `https://hydrogenexpert.co`.
 - Summary:
   - Updated the sitemap entry for `/blog` to use `daily` change frequency because new posts are added multiple times per week.
   - Raised the `/blog` sitemap priority to `0.9` while leaving individual blog post URLs at `monthly`.
