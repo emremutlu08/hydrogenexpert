@@ -5,7 +5,8 @@
   --foreground: #171717;
   --font-sans: var(--font-geist);
   --font-display: var(--font-geist);
-  --dna-accent: #10b981;
+  --dna-accent: #0f8a5d;
+  --dna-accent-fill: #10b981;
   --dna-accent-soft: rgba(16, 185, 129, 0.1);
   --dna-border: rgba(23, 23, 23, 0.08);
   --dna-border-strong: rgba(23, 23, 23, 0.14);
@@ -40,6 +41,7 @@
 }
 
 html {
+  box-sizing: border-box;
   scroll-behavior: auto;
 }
 
@@ -313,7 +315,7 @@ select {
 
 .feature-number {
   @apply inline-flex h-14 min-w-14 flex-none items-center justify-center whitespace-nowrap rounded-full px-3 text-base leading-none font-black tabular-nums;
-  background: var(--dna-accent);
+  background: var(--dna-accent-fill);
   color: #ffffff;
 }
 
@@ -467,14 +469,22 @@ select {
 }
 
 @media (min-width: 1024px) {
+  .site-header__frame {
+    @apply flex items-center justify-between gap-4;
+  }
+
+  .site-header__top-row {
+    @apply shrink-0;
+  }
+
   .site-header__nav--responsive {
-    @apply mt-4 flex justify-center gap-2.5 overflow-visible px-0 pb-0;
+    @apply mt-0 flex justify-end gap-2 overflow-visible px-0 pb-0;
     mask-image: none;
   }
 }
 
 .site-header__nav-link {
-  @apply flex min-h-11 shrink-0 items-center justify-center whitespace-nowrap rounded-full border border-black/8 bg-[#f6f7f7] px-4 py-2.5 text-center text-[0.69rem] font-semibold uppercase tracking-[0.12em] text-neutral-600 transition-colors hover:border-[#10b981] hover:text-[#10b981] lg:px-5 lg:py-3 lg:text-[0.72rem] lg:tracking-[0.14em];
+  @apply flex min-h-11 shrink-0 items-center justify-center whitespace-nowrap rounded-full border border-black/8 bg-[#f6f7f7] px-4 py-2.5 text-center text-[0.69rem] font-semibold uppercase tracking-[0.12em] text-neutral-600 transition-colors hover:border-[#10b981] hover:text-[#10b981] lg:min-h-10 lg:px-4 lg:py-2 lg:text-[0.68rem] lg:tracking-[0.12em];
 }
 
 .work-card__brand-zone {
@@ -685,7 +695,7 @@ select {
 
 .lead-form-field input,
 .lead-form-field textarea {
-  @apply w-full rounded-[1.15rem] border border-white/18 bg-white/[0.08] px-4 py-4 text-sm text-white outline-none transition-colors placeholder:text-neutral-400 focus:border-[#10b981] focus:bg-white/[0.12];
+  @apply min-w-0 max-w-full w-full rounded-[1.15rem] border border-white/18 bg-white/[0.08] px-4 py-4 text-sm text-white outline-none transition-colors placeholder:text-neutral-400 focus:border-[#10b981] focus:bg-white/[0.12];
   min-height: 44px;
 }
 
