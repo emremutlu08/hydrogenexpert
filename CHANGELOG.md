@@ -15,6 +15,24 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-04
 
+- PR: [#5 Update blog sitemap frequency](https://github.com/emremutlu08/hydrogenexpert/pull/5)
+- Branch: `codex/update-blog-sitemap-frequency`
+- Deployment: Pending; PR opened and branch pushed, production deploy not run yet.
+- Summary:
+  - Updated the sitemap entry for `/blog` to use `daily` change frequency because new posts are added multiple times per week.
+  - Raised the `/blog` sitemap priority to `0.9` while leaving individual blog post URLs at `monthly`.
+- Files changed:
+  - `app/sitemap.ts`
+- Verification:
+  - `npm run lint`
+  - `npm run build`
+  - Confirmed generated `.next/server/app/sitemap.xml.body` contains `/blog` with `<changefreq>daily</changefreq>` and `<priority>0.9</priority>`.
+- Manual follow-up:
+  - Deploy the PR branch to production and verify the live `https://hydrogenexpert.co/sitemap.xml` after deployment.
+  - Do not merge the PR unless Emre approves it.
+
+## 2026-05-04
+
 - PR: [#3 Fix sitewide SEO audit issues](https://github.com/emremutlu08/hydrogenexpert/pull/3)
 - Branch: `codex/fix-sitewide-seo-audit`
 - Deployment: [Production deploy](https://hydrogenexpert-78u9rh2u3-emremutlu8s-projects.vercel.app) aliased to `https://hydrogenexpert.co`.
