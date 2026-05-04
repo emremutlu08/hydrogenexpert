@@ -12,6 +12,8 @@ export type PostHeroVisual =
       src: string;
       alt: string;
       title: string;
+      width?: number;
+      height?: number;
       caption?: string;
     }
   | {
@@ -83,7 +85,14 @@ const DEFAULT_INTERNAL_LINKS: PostReferenceLink[] = [
 
 export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
   "shopify-hydrogen-vs-liquid": {
-    heroVisual: { type: "none" },
+    heroVisual: {
+      type: "code-card",
+      src: "/generated/blog/hydrogen-vs-liquid-cover.jpg",
+      alt: "Technical comparison visual showing classic Shopify theme architecture beside a custom Hydrogen storefront system.",
+      title: "Shopify Hydrogen vs Liquid technical comparison",
+      width: 1672,
+      height: 941,
+    },
     faq: [
       {
         question: "Is Shopify Hydrogen better than Liquid?",
@@ -115,7 +124,14 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
     ],
   },
   "shopify-hydrogen-nextjs": {
-    heroVisual: { type: "none" },
+    heroVisual: {
+      type: "code-card",
+      src: "/generated/blog/hydrogen-nextjs-cover.jpg",
+      alt: "Technical storefront architecture visual comparing Hydrogen commerce modules with a general Next.js application structure.",
+      title: "Shopify Hydrogen and Next.js architecture comparison",
+      width: 1672,
+      height: 941,
+    },
     faq: [
       {
         question: "Is Shopify Hydrogen the same thing as Next.js?",
@@ -149,7 +165,14 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
     ],
   },
   "liquid-to-hydrogen-migration-checklist": {
-    heroVisual: { type: "none" },
+    heroVisual: {
+      type: "code-card",
+      src: "/generated/blog/liquid-to-hydrogen-migration-checklist-cover.jpg",
+      alt: "Ecommerce migration control visual with storefront routes, redirects, QA checkpoints, and Hydrogen module planning.",
+      title: "Liquid to Hydrogen migration checklist visual",
+      width: 1672,
+      height: 941,
+    },
     faq: [
       {
         question: "What should a Liquid to Hydrogen migration checklist include?",
@@ -176,7 +199,14 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
     ],
   },
   "shopify-hydrogen-performance-checklist": {
-    heroVisual: { type: "none" },
+    heroVisual: {
+      type: "code-card",
+      src: "/generated/blog/hydrogen-performance-checklist-cover.jpg",
+      alt: "Hydrogen performance diagnostics visual with product grids, cache layers, optimized media tiles, and request timing panels.",
+      title: "Shopify Hydrogen performance checklist visual",
+      width: 1672,
+      height: 941,
+    },
     faq: [
       {
         question: "What matters most in Shopify Hydrogen performance?",
@@ -198,7 +228,14 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
     ],
   },
   "shopify-hydrogen-seo-checklist": {
-    heroVisual: { type: "none" },
+    heroVisual: {
+      type: "code-card",
+      src: "/generated/blog/hydrogen-seo-checklist-cover.jpg",
+      alt: "Hydrogen SEO architecture visual with crawl paths, canonical route cards, sitemap nodes, and structured data blocks.",
+      title: "Shopify Hydrogen SEO checklist visual",
+      width: 1672,
+      height: 941,
+    },
     faq: [
       {
         question: "What belongs in a Shopify Hydrogen SEO checklist?",
@@ -225,7 +262,14 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
     ],
   },
   "shopify-plus-hydrogen": {
-    heroVisual: { type: "none" },
+    heroVisual: {
+      type: "code-card",
+      src: "/generated/blog/shopify-plus-hydrogen-cover.jpg",
+      alt: "Enterprise ecommerce architecture visual for Shopify Plus Hydrogen with storefront modules and integration panels.",
+      title: "Shopify Plus Hydrogen architecture visual",
+      width: 1672,
+      height: 941,
+    },
     faq: [
       {
         question: "Does every Shopify Plus brand need Hydrogen?",
@@ -252,7 +296,14 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
     ],
   },
   "shopify-hydrogen-developer-vs-agency": {
-    heroVisual: { type: "none" },
+    heroVisual: {
+      type: "code-card",
+      src: "/generated/blog/hydrogen-developer-vs-agency-cover.jpg",
+      alt: "Shopify Hydrogen delivery model visual comparing direct senior engineering ownership with layered agency handoffs.",
+      title: "Shopify Hydrogen developer vs agency comparison visual",
+      width: 1672,
+      height: 941,
+    },
     faq: [
       {
         question: "Should I hire a Shopify Hydrogen developer or an agency?",
@@ -280,23 +331,12 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
   },
   "shopify-hydrogen-product-description-ssr-seo": {
     heroVisual: {
-      type: "flow-diagram-svg",
-      caption:
-        "A Shopify Hydrogen product description should come from the route data and render into the initial HTML before any accordion JavaScript runs.",
-      steps: [
-        {
-          label: "Query",
-          body: "Fetch the standard Shopify product description field in the product route loader.",
-        },
-        {
-          label: "Render",
-          body: "Render the description inside the server-rendered product page markup.",
-        },
-        {
-          label: "Enhance",
-          body: "Keep the accordion interaction as progressive enhancement, not as the only source of content.",
-        },
-      ],
+      type: "code-card",
+      src: "/generated/blog/hydrogen-seo-checklist-cover.jpg",
+      alt: "Hydrogen SEO architecture visual showing crawlable product content, structured data blocks, and route-level metadata panels.",
+      title: "Shopify Hydrogen product description SSR SEO visual",
+      width: 1672,
+      height: 941,
     },
     faq: [
       {
@@ -365,23 +405,12 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
   },
   "shopify-hydrogen-metaobjects-page-specific-sections": {
     heroVisual: {
-      type: "flow-diagram-svg",
-      caption:
-        "A reusable Shopify Hydrogen section can stay developer-owned in code while its page-specific copy and imagery stay merchant-editable in Shopify Admin.",
-      steps: [
-        {
-          label: "Model",
-          body: "Create one metaobject definition for the content section.",
-        },
-        {
-          label: "Map",
-          body: "Create entries for the page contexts that need different content.",
-        },
-        {
-          label: "Render",
-          body: "Resolve the right entry by route and fall back safely when no entry exists.",
-        },
-      ],
+      type: "code-card",
+      src: "/generated/blog/shopify-plus-hydrogen-cover.jpg",
+      alt: "Hydrogen content architecture visual with storefront sections, merchant-editable content modules, and integration panels.",
+      title: "Shopify Hydrogen metaobjects page-specific sections visual",
+      width: 1672,
+      height: 941,
     },
     faq: [
       {
@@ -450,23 +479,12 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
   },
   "shopify-hydrogen-variant-selection-fallback": {
     heroVisual: {
-      type: "flow-diagram-svg",
-      caption:
-        "A safer Shopify Hydrogen variant resolver treats the shopper's clicked option as a rule, then searches for the nearest available variant inside that scope.",
-      steps: [
-        {
-          label: "Click",
-          body: "The shopper chooses a product option such as Width=9mm.",
-        },
-        {
-          label: "Lock",
-          body: "The resolver filters variants so every candidate keeps Width=9mm.",
-        },
-        {
-          label: "Fallback",
-          body: "Only then does it choose the nearest available Length, Metal, or other option.",
-        },
-      ],
+      type: "code-card",
+      src: "/generated/blog/hydrogen-nextjs-cover.jpg",
+      alt: "Hydrogen storefront logic visual with product option modules, route state, and variant selection architecture panels.",
+      title: "Shopify Hydrogen variant selection fallback visual",
+      width: 1672,
+      height: 941,
     },
     faq: [
       {
@@ -523,14 +541,12 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
   },
   "cut-homepage-load-time-from-5s-to-2s-shopify-hydrogen": {
     heroVisual: {
-      type: "before-after-svg",
-      title: "Homepage filter tabs refactor",
-      beforeValue: "4-5s",
-      afterValue: "2s",
-      beforeLabel: "All tabs fetched on load",
-      afterLabel: "First tab SSR, rest on click",
-      beforeCaption: "96 products fetched per section through a client-side effect path.",
-      afterCaption: "8 products in the route loader, lazy-loaded tabs only after real interaction.",
+      type: "code-card",
+      src: "/generated/blog/hydrogen-performance-checklist-cover.jpg",
+      alt: "Hydrogen performance diagnostics visual with server-rendered product grids, cache layers, optimized media tiles, and timing panels.",
+      title: "Shopify Hydrogen homepage performance optimization visual",
+      width: 1672,
+      height: 941,
     },
     faq: [
       {

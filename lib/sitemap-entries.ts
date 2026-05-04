@@ -49,8 +49,8 @@ export function buildSitemapEntries({
   const staticEntries: MetadataRoute.Sitemap = staticRoutes.map((route) => ({
     url: `${normalizedSiteUrl}${route === "/" ? "" : route}`,
     lastModified: LAST_SIGNIFICANT_UPDATE,
-    changeFrequency: route === "/" ? "weekly" : "monthly",
-    priority: route === "/" ? 1 : 0.8,
+    changeFrequency: route === "/" ? "weekly" : route === "/blog" ? "daily" : "monthly",
+    priority: route === "/" ? 1 : route === "/blog" ? 0.9 : 0.8,
   }));
 
   const dynamicEntries: MetadataRoute.Sitemap = posts.map((post) => ({

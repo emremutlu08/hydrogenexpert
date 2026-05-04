@@ -14,7 +14,7 @@ export const OWNER = {
 
 export const SITE_NAME = "HydrogenExpert";
 export const SITE_LOGO_PATH = "/brand/hydrogenexpert-logo-icon.png";
-export const FOUNDER_IMAGE_PATH = "/emre-mutlu.webp";
+export const FOUNDER_IMAGE_PATH = "/emre-city-16x9.png";
 
 export const UPWORK_PROFILE = {
   title: "Shopify Hydrogen & Liquid Expert | Plus Stores | Headless Dev",

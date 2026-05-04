@@ -15,7 +15,7 @@ interface FounderCardProps {
 const PHOTO_SIZE = {
   sm: "h-28 w-28",
   md: "h-36 w-36",
-  lg: "h-52 w-52 md:h-64 md:w-64",
+  lg: "aspect-[16/9] w-full",
 } as const;
 
 const PHOTO_RADIUS = {
@@ -46,11 +46,12 @@ export function FounderCard({
             {HAS_FOUNDER_PHOTO ? (
               <Image
                 src={FOUNDER_PHOTO_PATH}
-                alt="Emre Mutlu, Shopify Hydrogen developer"
+                alt="Emre Mutlu, Shopify Hydrogen developer, in a city setting"
                 title="Emre Mutlu, Shopify Hydrogen developer"
-                width={1200}
-                height={1200}
-                sizes={isLarge ? "(max-width: 1024px) 208px, 256px" : "144px"}
+                width={1672}
+                height={941}
+                loading="lazy"
+                sizes={isLarge ? "(max-width: 1024px) 100vw, 34vw" : "144px"}
                 className="h-full w-full object-cover"
               />
             ) : (
