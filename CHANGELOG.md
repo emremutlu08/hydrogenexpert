@@ -17,7 +17,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 - PR: [#6 Add site trust and measurement fixes](https://github.com/emremutlu08/hydrogenexpert/pull/6)
 - Branch: `codex/site-trust-measurement-fixes`
-- Deployment: Pending production deployment.
+- Deployment: [Production deploy](https://hydrogenexpert-ngdavrn7i-emremutlu8s-projects.vercel.app) aliased to `https://hydrogenexpert.co`.
 - Summary:
   - Added PRD coverage for the trust, measurement, discovery, legal, and performance cleanup pass.
   - Added `/about`, `/contact`, `/privacy`, `/cookies`, `/terms`, and `/feed.xml`.
@@ -54,6 +54,9 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - Local homepage source check: no `G-XXXXXXXXXX`, no `googletagmanager`, no Turnstile script before form proximity.
   - Playwright desktop/mobile checks for `/`, `/about`, `/contact`, `/privacy`, and `/hire-me`: one H1, canonical present, no horizontal overflow.
   - Lighthouse local homepage: Performance 97, Accessibility 96, Best Practices 96, SEO 100; LCP 2.6s, CLS 0.
+  - Live route checks: `/about`, `/contact`, `/privacy`, `/cookies`, `/terms`, `/feed.xml`, and `/sitemap.xml` returned 200.
+  - Live sitemap check: 24 URLs including `/about`, `/contact`, and all 4 blog posts; no noindex legal routes.
+  - Live homepage source check: no `G-XXXXXXXXXX`, no `googletagmanager`, no Turnstile script before form proximity.
 - Manual follow-up:
   - Configure the real GA measurement ID in Vercel only if Google Analytics should be active.
   - Do not merge the PR unless Emre approves it.
