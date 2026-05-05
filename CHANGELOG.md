@@ -15,38 +15,45 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-05
 
-- PR: [#10 Improve maintainability guardrails](https://github.com/emremutlu08/hydrogenexpert/pull/10)
-- Branch: `codex/maintainability-dry-kiss-cleanup`
-- Deployment: [Production deploy](https://hydrogenexpert-3fzwgfwqg-emremutlu8s-projects.vercel.app) aliased to `https://hydrogenexpert.co`.
+- PR: [#11 Add source-grounded content governance](https://github.com/emremutlu08/hydrogenexpert/pull/11)
+- Branch: `codex/source-grounded-authority-foundation`
+- Deployment: [Production deploy](https://hydrogenexpert-bufhsu7jh-emremutlu8s-projects.vercel.app) aliased to `https://hydrogenexpert.co`.
 - Summary:
-  - Added a first-class `npm run typecheck` script and fixed the security tests so direct TypeScript checking passes.
-  - Removed the always-true services feature flag from navigation and sitemap generation.
-  - Centralized repeated proof metrics through shared site constants for homepage, hire-me, about, trust bar, and llms output.
-  - Renamed the footer's local legal/contact list so it no longer collides conceptually with global trust signals.
+  - Added `CONTENT_PROTOCOL.md` with source hierarchy, claim classification, forbidden content, page standards, MCP-grounded blog workflow, AI-assisted content review, and doorway-risk review.
+  - Added Shopify Dev MCP setup notes and deployment QA checklist docs.
+  - Added internal source metadata types, source packs, static-page metadata, blog sidecar metadata, and service package `sourceMap` / `lastVerified` / claim classifications.
+  - Added Shopify claim audit and content validation scripts plus a new `typecheck` package script.
+  - Updated operating, deploy, and blog docs to require Shopify Dev MCP grounding and PR-first deployment discipline.
 - Files changed:
-  - `package.json`
-  - `tests/security.test.ts`
+  - `CONTENT_PROTOCOL.md`
+  - `docs/CODEX_SHOPIFY_MCP_SETUP.md`
+  - `docs/DEPLOYMENT_QA_CHECKLIST.md`
+  - `.github/pull_request_template.md`
+  - `lib/content-sources.ts`
   - `lib/services.ts`
-  - `lib/navigation.ts`
-  - `lib/sitemap-entries.ts`
-  - `lib/site.ts`
-  - `lib/llms.ts`
-  - `components/TrustBar.tsx`
-  - `components/Footer.tsx`
-  - `app/page.tsx`
-  - `app/hire-me/page.tsx`
-  - `app/about/page.tsx`
+  - `scripts/audit-shopify-claims.ts`
+  - `scripts/validate-content.ts`
+  - `OPERATING_RULES.md`
+  - `BLOG_PUBLISHING_PLAYBOOK.md`
+  - `DEPLOY.md`
+  - `package.json`
+  - `package-lock.json`
+  - `tests/security.test.ts`
 - Verification:
-  - `npm run typecheck`
-  - `npm run lint`
-  - `npm test`
-  - `npm run build`
-  - Vercel production build completed successfully and generated 43 routes.
-  - Live production route checks on `https://hydrogenexpert.co`: `/`, `/about`, `/hire-me`, `/services`, `/sitemap.xml`, and `/llms-full.txt` returned `200`.
-  - Live sitemap verification confirmed `/about`, `/services`, `/hire-me`, and `/shopify-hydrogen-cost` are present.
-  - Live `llms-full.txt` verification confirmed Upwork, JSS, delivery-hours, Rebel Bunny feedback, and client-reference credibility lines are present.
+  - `npm test`: 25 tests passed.
+  - `npm run audit:shopify-claims`: passed with 0 pages needing source review.
+  - `npm run validate:content`: passed with expected warning that `/shopify-hydrogen-seo-guide` has source metadata while intentionally absent from sitemap routes.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run build`: passed, 39 static pages generated.
+  - Branch freshness before deploy: local `HEAD` matched `origin/codex/source-grounded-authority-foundation` at `e5946e1`; ahead/behind was `0/0`.
+  - Live production verification: `/`, `/robots.txt`, `/sitemap.xml`, `/services`, and `/shopify-hydrogen-seo` returned HTTP 200 from `https://hydrogenexpert.co`.
+  - Live canonical verification: `/`, `/services`, and `/shopify-hydrogen-seo` returned the expected canonical URLs.
+  - Live sitemap verification: sitemap included case studies, blog posts, `/liquid-to-hydrogen-migration`, and `/shopify-hydrogen-seo`.
+  - Live robots verification: `robots.txt` allowed all crawlers and referenced `https://hydrogenexpert.co/sitemap.xml`.
 - Manual follow-up:
-  - PR merged after live verification, then the remote branch was deleted.
+  - Continue with the next roadmap PR for foundation content grounding.
+  - Merge or close the PR according to the updated workflow after deployment verification.
 
 - PR: [#9 Add commercial Hydrogen landing pages](https://github.com/emremutlu08/hydrogenexpert/pull/9)
 - Branch: `codex/commercial-landing-pages`

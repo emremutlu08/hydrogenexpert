@@ -19,13 +19,16 @@ cd "/Users/emremutlu/Apps/Codex/hydrogenexpert"
 3. Preserve unrelated worktree changes. Never revert user work unless Emre explicitly asks.
 4. Do not invent metrics, testimonials, screenshots, logos, ratings, client quotes, approvals, revenue, conversion numbers, or performance numbers.
 5. Keep the solo senior Shopify Hydrogen operator positioning. Do not turn the site into generic agency language.
-6. Run `npm run lint` and `npm run build` after code/content-rendering changes.
-7. Use a feature branch for every meaningful change.
-8. Open a pull request before treating the work as complete.
-9. Push the branch and deploy to production after validation unless Emre explicitly says not to.
-10. Update `CHANGELOG.md` with the PR number, PR link, deployment note, files changed, and verification summary.
-11. After production is live and verified, merge or close the PR and delete the corresponding remote branch unless Emre explicitly asks to keep it open.
-12. Final response should include the PR link, deployment status, commit hash, validation result, merge/close status, branch cleanup status, and remaining manual tasks.
+6. Read `CONTENT_PROTOCOL.md` before creating or materially updating Shopify, Hydrogen, Oxygen, Storefront API, Customer Account API, Storefront MCP, UCP, SEO, analytics, or migration content.
+7. Run `npm run lint`, `npm run typecheck`, and `npm run build` after code/content-rendering changes.
+8. Run `npm run audit:shopify-claims` after Shopify-related content changes.
+9. Use a feature branch for every meaningful change.
+10. Open a pull request before treating the work as complete.
+11. Push the branch and deploy to production after validation unless Emre explicitly says not to.
+12. After deployment is live and verified, merge or close the pull request unless Emre explicitly says not to.
+13. Delete the corresponding remote branch after the pull request is merged or closed.
+14. Update `CHANGELOG.md` with the PR number, PR link, deployment note, files changed, and verification summary.
+15. Final response should include the PR link, deployment status, commit hash, validation result, and remaining manual tasks.
 
 ## Branch And PR Workflow
 
@@ -36,21 +39,23 @@ cd "/Users/emremutlu/Apps/Codex/hydrogenexpert"
 5. Open a pull request into `main`.
 6. If the PR number is needed for `CHANGELOG.md`, update the changelog after the PR exists and push that follow-up commit to the same branch.
 7. Deploy the validated branch to production.
-8. Verify the live production site.
-9. Merge or close the PR after live verification unless Emre explicitly asks to keep it open.
-10. Delete the corresponding remote branch after the PR is merged or closed.
+8. Verify the live deployment.
+9. Merge or close the PR after deployment verification unless Emre explicitly asks for a different release flow.
+10. Delete the remote branch after merge/close.
 
 ## Blog Publishing Workflow
 
 1. Convert raw notes into public-safe English.
 2. Remove private task chats, admin screenshots, Slack/project-management details, internal review notes, AI scores, and draft weaknesses.
 3. Use the site structure: SEO title, slug, meta description, TL;DR, H2/H3 flow, FAQ, official references, internal links, and closing CTA.
-4. Publish through the Supabase `posts` table.
-5. Add public enhancements in `lib/post-enhancements.ts` when useful.
-6. Run `npm run lint` and `npm run build`.
-7. Deploy to production.
-8. Verify the live post, blog index, sitemap, schema-bearing source, and absence of private notes.
-9. Update `CHANGELOG.md` with the PR and live URL.
+4. Query Shopify Dev MCP before drafting or updating Shopify platform claims.
+5. Add or update internal source metadata in `lib/content-sources.ts`.
+6. Publish through the Supabase `posts` table.
+7. Add public enhancements in `lib/post-enhancements.ts` when useful.
+8. Run `npm run audit:shopify-claims`, `npm run lint`, `npm run typecheck`, and `npm run build`.
+9. Deploy to production.
+10. Verify the live post, blog index, sitemap, schema-bearing source, and absence of private notes.
+11. Update `CHANGELOG.md` with the PR and live URL.
 
 ## Design Workflow
 
@@ -66,7 +71,7 @@ cd "/Users/emremutlu/Apps/Codex/hydrogenexpert"
 1. Check title, H1, description, canonical, robots, sitemap, schema, internal links, and image attributes.
 2. Do not keyword-stuff.
 3. Prioritize merchant-readable content over SEO filler.
-4. Use official Shopify, Google, React, or platform documentation for technical claims.
+4. Use Shopify Dev MCP for Shopify platform claims and official Google docs for SEO policy claims.
 5. Validate live pages after deploy.
 6. External actions such as Google Search Console submit, Medium canonical setup, and third-party profile edits should be reported as manual tasks unless Codex has direct access.
 

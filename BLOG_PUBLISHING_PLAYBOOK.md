@@ -16,6 +16,7 @@ This playbook defines how raw notes become public HydrogenExpert blog posts. It 
 - For technical posts, include practical evidence when available: TypeScript snippets, variant matrices, before/after tables, diagrams, screenshots, or test cases.
 - Add FAQ items when they answer questions people would realistically search for.
 - Add official references for technical claims, especially Shopify docs, React docs, GitHub issues, or changelogs.
+- Add or update internal source metadata in `lib/content-sources.ts` for Shopify-related posts.
 - Add internal links to the strongest related HydrogenExpert pages and end with the standard direct CTA.
 
 ## SEO Checklist
@@ -43,6 +44,7 @@ These are the next Supabase-backed posts to publish. They should be inserted or 
 ## Hydrogen Freshness Checklist
 
 - Check current Shopify Hydrogen docs before publishing technical guidance.
+- Use Shopify Dev MCP as the primary check for Shopify platform facts.
 - Check the latest Hydrogen changelog or release notes before publishing API-specific guidance.
 - Look for deprecations, especially around `VariantSelector`, `getProductOptions`, `getAdjacentAndFirstAvailableVariants`, Storefront API fields, SEO helpers, and routing behavior.
 - Prefer "what the official docs do not explain in production" positioning over trying to outrank Shopify's official docs directly.
@@ -53,11 +55,12 @@ These are the next Supabase-backed posts to publish. They should be inserted or 
 1. Convert raw notes into public-safe English copy in the site voice.
 2. Separate private editorial comments from public article content before writing to Supabase.
 3. Insert or update the Supabase `posts` row with title, slug, content, excerpt, meta description, tags, reading time, cover image, published date, and `published` status.
-4. Add optional public enhancements in `lib/post-enhancements.ts`: hero visual, FAQ, internal links, official external links, OG image, and closing pitch.
-5. Do not add editorial scoring or review notes to `PostEnhancement`.
-6. Run `npm run lint` and `npm run build`.
-7. Deploy to production.
-8. Verify the live article, blog index, sitemap, schema-bearing source, and absence of private notes.
+4. Add internal source metadata in `lib/content-sources.ts`, including `sourceMap`, `lastVerified`, claim classification, target keyword, search intent, reviewed-by owner, and content type where available.
+5. Add optional public enhancements in `lib/post-enhancements.ts`: hero visual, FAQ, internal links, official external links, OG image, and closing pitch.
+6. Do not add editorial scoring or review notes to `PostEnhancement`.
+7. Run `npm run audit:shopify-claims`, `npm run lint`, `npm run typecheck`, and `npm run build`.
+8. Deploy to production.
+9. Verify the live article, blog index, sitemap, schema-bearing source, and absence of private notes.
 
 ## Reference Principles From Prior Reviews
 
