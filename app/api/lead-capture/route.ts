@@ -73,7 +73,12 @@ export async function POST(request: Request) {
     );
   }
 
-  if (name.length > 120 || email.length > 200 || (storeUrl && storeUrl.length > 300) || message.length > 4000) {
+  if (
+    name.length > 120 ||
+    email.length > 200 ||
+    (storeUrl && storeUrl.length > 300) ||
+    message.length > 4000
+  ) {
     return NextResponse.json(
       { ok: false, error: "One or more fields are too long." },
       { status: 400, headers: getApiHeaders({ Vary: "Origin" }) },

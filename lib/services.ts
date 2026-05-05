@@ -65,17 +65,26 @@ interface ServicePageEnrichment {
   };
 }
 
+interface ServiceOfferSnapshot {
+  entryPoint: string;
+  typicalTimeline: string;
+  expectedOutput: string;
+  qualification: string;
+}
+
 export interface ServicePackage
   extends ServicePackageBase,
     ServicePageEnrichment,
-    ContentSourceMetadata {}
+    ContentSourceMetadata {
+  offerSnapshot: ServiceOfferSnapshot;
+}
 
 const SERVICE_PACKAGE_BASES = [
   {
     slug: "shopify-hydrogen-agency-alternative",
     pagePath: "/shopify-hydrogen-agency",
     name: "Shopify Hydrogen Agency Alternative",
-    title: "Senior Hydrogen direction without the agency maze",
+    title: "Senior-led Hydrogen direction for agency-intent buyers",
     metaTitle: "Shopify Hydrogen Agency Alternative | Emre Mutlu",
     metaDescription:
       "Shopify Hydrogen agency alternative for Shopify Plus brands that need senior storefront strategy, audits, migrations, custom builds, SEO, and launch support.",
@@ -94,7 +103,7 @@ const SERVICE_PACKAGE_BASES = [
       "Clear next step: audit, migration, build, optimization, support, or no rebuild",
     ],
     proofNotes: [
-      "This page targets agency search intent while keeping the work honest: HydrogenExpert is a direct senior operator model, not a full-service agency claim.",
+      "This page targets agency search intent while keeping the work honest: HydrogenExpert is a senior-led service model, not a broad full-service agency claim.",
       "The positioning protects budget by keeping Liquid, targeted refactors, and delayed rebuilds on the table when they are better answers.",
       "The engagement connects strategy and implementation so technical choices are not separated from storefront outcomes.",
     ],
@@ -1131,6 +1140,7 @@ const SERVICE_SOURCE_METADATA = {
     claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
     sourceMap: [
       SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.headlessBuildOptions,
       SOURCE_PACKS.caseStudyEvidence,
       SOURCE_PACKS.emreProductionExperience,
     ],
@@ -1140,6 +1150,7 @@ const SERVICE_SOURCE_METADATA = {
     claimTypes: ["official_shopify_fact", "commercial_opinion"],
     sourceMap: [
       SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.headlessBuildOptions,
       SOURCE_PACKS.hydrogenSeo,
       SOURCE_PACKS.emreProductionExperience,
     ],
@@ -1149,6 +1160,7 @@ const SERVICE_SOURCE_METADATA = {
     claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
     sourceMap: [
       SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.hydrogenDataFetching,
       SOURCE_PACKS.customerAccountApi,
       SOURCE_PACKS.emreProductionExperience,
     ],
@@ -1158,6 +1170,7 @@ const SERVICE_SOURCE_METADATA = {
     claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
     sourceMap: [
       SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.hydrogenDataFetching,
       SOURCE_PACKS.hydrogenSeo,
       SOURCE_PACKS.hydrogenAnalytics,
       SOURCE_PACKS.hydrogenConsent,
@@ -1169,6 +1182,7 @@ const SERVICE_SOURCE_METADATA = {
     claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
     sourceMap: [
       SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.hydrogenGithubDeployments,
       SOURCE_PACKS.hydrogenSeo,
       SOURCE_PACKS.hydrogenAnalytics,
       SOURCE_PACKS.hydrogenConsent,
@@ -1181,6 +1195,7 @@ const SERVICE_SOURCE_METADATA = {
     claimTypes: ["official_shopify_fact", "emre_experience", "seo_hypothesis"],
     sourceMap: [
       SOURCE_PACKS.hydrogenSeo,
+      SOURCE_PACKS.hydrogenDataFetching,
       SOURCE_PACKS.googleHelpfulContent,
       SOURCE_PACKS.emreProductionExperience,
     ],
@@ -1190,6 +1205,7 @@ const SERVICE_SOURCE_METADATA = {
     claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
     sourceMap: [
       SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.headlessBuildOptions,
       SOURCE_PACKS.hydrogenSeo,
       SOURCE_PACKS.caseStudyEvidence,
       SOURCE_PACKS.emreProductionExperience,
@@ -1200,6 +1216,7 @@ const SERVICE_SOURCE_METADATA = {
     claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
     sourceMap: [
       SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.hydrogenDataFetching,
       SOURCE_PACKS.customerAccountApi,
       SOURCE_PACKS.caseStudyEvidence,
       SOURCE_PACKS.emreProductionExperience,
@@ -1210,6 +1227,7 @@ const SERVICE_SOURCE_METADATA = {
     claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
     sourceMap: [
       SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.hydrogenDataFetching,
       SOURCE_PACKS.hydrogenSeo,
       SOURCE_PACKS.hydrogenAnalytics,
       SOURCE_PACKS.hydrogenConsent,
@@ -1221,6 +1239,7 @@ const SERVICE_SOURCE_METADATA = {
     claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
     sourceMap: [
       SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.hydrogenGithubDeployments,
       SOURCE_PACKS.hydrogenAnalytics,
       SOURCE_PACKS.caseStudyEvidence,
       SOURCE_PACKS.emreProductionExperience,
@@ -1228,8 +1247,72 @@ const SERVICE_SOURCE_METADATA = {
   },
 } as const satisfies Record<ServicePackageBase["slug"], ContentSourceMetadata>;
 
+const SERVICE_OFFER_SNAPSHOTS = {
+  "shopify-hydrogen-agency-alternative": {
+    entryPoint: "Hydrogen fit audit or senior scoping sprint",
+    typicalTimeline: "5-10 business days for audit, 2-3 weeks for deeper scope",
+    expectedOutput: "A clear decision path: audit, migration, build, optimization, support, Liquid, or no rebuild",
+    qualification: "Best when stakeholders are comparing agency options but need Hydrogen-specific judgment first.",
+  },
+  "headless-shopify-agency-alternative": {
+    entryPoint: "Headless architecture decision review",
+    typicalTimeline: "1-2 weeks depending on catalog, integrations, and SEO risk",
+    expectedOutput: "Liquid vs Hydrogen vs other headless recommendation with risk notes",
+    qualification: "Best when the brand wants headless but has not proved the custom storefront case yet.",
+  },
+  "shopify-hydrogen-developer": {
+    entryPoint: "Senior development support or implementation scope",
+    typicalTimeline: "2-6 weeks for focused work, 6-16 weeks for broader builds",
+    expectedOutput: "Production-ready Hydrogen routes, components, Storefront API work, QA, and launch support",
+    qualification: "Best when Hydrogen is already likely and the team needs senior implementation ownership.",
+  },
+  "hydrogen-strategy-fit-audit": {
+    entryPoint: "Shopify Hydrogen Fit & Risk Audit",
+    typicalTimeline: "5-10 business days",
+    expectedOutput: "Written decision memo plus walkthrough with recommended next step",
+    qualification: "Best before rebuild budget moves or when an agency scope feels too broad.",
+  },
+  "liquid-to-hydrogen-migration": {
+    entryPoint: "Migration scope and route-risk planning",
+    typicalTimeline: "2-4 weeks for planning, 6-16 weeks for implementation depending on complexity",
+    expectedOutput: "Migration plan, route map, storefront implementation, analytics checks, QA, and launch support",
+    qualification: "Best when the current Liquid theme is truly blocking the buying experience or feature velocity.",
+  },
+  "shopify-hydrogen-seo": {
+    entryPoint: "Hydrogen SEO audit or implementation cleanup",
+    typicalTimeline: "1-3 weeks depending on route count and product-state complexity",
+    expectedOutput: "Metadata, canonical, JSON-LD, sitemap, robots, SSR content, and crawl-consistency fixes",
+    qualification: "Best when a Hydrogen storefront is live or close to launch and search signals need discipline.",
+  },
+  "shopify-hydrogen-cost": {
+    entryPoint: "Budget sanity review",
+    typicalTimeline: "3-5 business days for first-pass guidance, longer when technical review is required",
+    expectedOutput: "Planning range, budget drivers, risk notes, and recommended first paid step",
+    qualification: "Best when stakeholders need cost confidence before approving audit, migration, or build work.",
+  },
+  "custom-hydrogen-storefront-development": {
+    entryPoint: "Custom storefront build scope",
+    typicalTimeline: "6-16 weeks for many scoped Hydrogen builds",
+    expectedOutput: "Custom Hydrogen storefront surfaces, product flows, content model integration, performance and launch QA",
+    qualification: "Best when theme constraints block a real product, content, or mobile buying journey.",
+  },
+  "hydrogen-performance-seo-ux-optimization": {
+    entryPoint: "Performance, SEO, and UX cleanup sprint",
+    typicalTimeline: "1-4 weeks depending on diagnosis and implementation depth",
+    expectedOutput: "Prioritized fixes for SSR, data loading, Storefront API queries, media, metadata, and UX friction",
+    qualification: "Best when the Hydrogen storefront is live but slow, fragile, hard to crawl, or hard to grow.",
+  },
+  "hydrogen-support-retainer": {
+    entryPoint: "Monthly senior Hydrogen support",
+    typicalTimeline: "Monthly retainer after initial codebase review",
+    expectedOutput: "Recurring feature work, bug fixes, release support, integration help, and technical planning",
+    qualification: "Best when the storefront direction is stable and the team needs continuity after launch.",
+  },
+} as const satisfies Record<ServicePackageBase["slug"], ServiceOfferSnapshot>;
+
 export const SERVICE_PACKAGES = SERVICE_PACKAGE_BASES.map((servicePackage) => ({
   ...servicePackage,
+  offerSnapshot: SERVICE_OFFER_SNAPSHOTS[servicePackage.slug],
   ...SERVICE_PAGE_ENRICHMENTS[servicePackage.slug],
   ...SERVICE_SOURCE_METADATA[servicePackage.slug],
 })) satisfies readonly ServicePackage[];

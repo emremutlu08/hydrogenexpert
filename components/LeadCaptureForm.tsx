@@ -91,10 +91,10 @@ export function LeadCaptureForm({
       <div className="lead-form-stack">
         <p className="dna-kicker text-[#8df1cb]">Owned lead capture</p>
         <h3 className="text-xl font-semibold leading-8 text-white md:text-[1.65rem]">
-          Prefer email over platform DMs?
+          Request a Hydrogen fit review
         </h3>
         <p className="text-sm leading-7 text-neutral-300">
-          Send a short note about what is slowing your storefront down. I only need enough context to tell you whether the next move is Liquid, Hydrogen, or no rebuild at all.
+          Send enough context to qualify the right path: audit, migration, custom build, optimization, support, Liquid cleanup, or no rebuild.
         </p>
         <p className="lead-form-note">
           I do not sell Hydrogen if Liquid is the better move.
@@ -210,7 +210,7 @@ export function LeadCaptureForm({
           name="message"
           required
           rows={compact ? 4 : 5}
-          placeholder="Mobile UX, slow feature delivery, migration question, performance drag..."
+          placeholder="Mobile UX, slow feature delivery, migration question, performance drag, SEO risk, app limits..."
         />
       </label>
 
@@ -232,7 +232,7 @@ export function LeadCaptureForm({
           disabled={status === "submitting"}
           className="inline-flex min-h-11 items-center rounded-full bg-[#10b981] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-[#171717] disabled:cursor-not-allowed disabled:opacity-70"
         >
-          {status === "submitting" ? "Sending..." : "Send project note"}
+          {status === "submitting" ? "Sending..." : "Request fit review"}
         </button>
       </div>
 

@@ -11,16 +11,21 @@ import { OWNER, absoluteUrl } from "@/lib/site";
 import { buildBreadcrumbListSchema } from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
-  title: "Contact Emre Mutlu | HydrogenExpert",
+  title: "Request a Shopify Hydrogen Fit Review | HydrogenExpert",
   description:
-    "Contact Emre Mutlu for Shopify Hydrogen audits, migrations, custom storefront development, performance work, and support.",
+    "Request a Shopify Hydrogen fit review for audits, migrations, custom storefront development, performance, SEO, and support.",
   path: "/contact",
 });
 
 const contactOptions = [
   {
+    title: "Hydrogen fit review",
+    body: "Best path when you want a direct recommendation on audit, migration, build, optimization, support, Liquid, or no rebuild.",
+    href: "#email-form",
+  },
+  {
     title: "LinkedIn",
-    body: "Fastest path for a direct conversation and quick storefront context.",
+    body: "Fastest path for a direct scoping call after the storefront context is clear.",
     href: OWNER.linkedIn,
   },
   {
@@ -53,9 +58,9 @@ export default function ContactPage() {
         <Breadcrumbs items={breadcrumbs} />
         <PageIntroSection
           eyebrow="Contact"
-          title="Send the storefront context first."
-          description="A useful first message is short: current store URL, what feels slow or limiting, and why Hydrogen is being discussed."
-          body="I will tell you whether the next move looks like Liquid cleanup, a Hydrogen audit, migration scope, custom build, performance work, or no rebuild."
+          title="Request a Hydrogen fit review."
+          description="A useful first message is short: current store URL, current stack, what feels slow or limiting, and why Hydrogen is being discussed."
+          body="I will tell you whether the next move looks like Liquid cleanup, a Hydrogen audit, migration scope, custom build, performance or SEO work, support retainer, or no rebuild."
         />
 
       <section className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
@@ -63,7 +68,7 @@ export default function ContactPage() {
           <SectionHeader
             eyebrow="Start here"
             title="Use the channel that matches the buying motion."
-            description="No intake maze. Just enough context to make the next step honest."
+            description="The form is the best path for qualified project context. LinkedIn and Upwork stay available when the buying motion needs them."
           />
           <div className="grid gap-4">
             {contactOptions.map((option) => {

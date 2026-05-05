@@ -200,7 +200,6 @@ export default function WhatIsHydrogenPage() {
         />
 
         <CTASection
-          primaryLink="linkedin"
           subtext="If you want a straight answer on whether Hydrogen fits your store, send me your current theme, revenue band, and what feels slow or limiting today."
           sourceKind="what_is_hydrogen_cta"
         />

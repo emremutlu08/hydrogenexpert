@@ -15,6 +15,50 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-05
 
+- PR: [#14 Reposition HydrogenExpert as senior-led agency alternative](https://github.com/emremutlu08/hydrogenexpert/pull/14)
+- Branch: `codex/hydrogenexpert-agency-positioning`
+- Deployment: Production deployment aliased to [https://hydrogenexpert.co](https://hydrogenexpert.co).
+- Summary:
+  - Repositioned homepage, services, footer, contact, and `llms.txt` around a senior-led Shopify Hydrogen agency alternative without adding fake local-office, full-service agency, team, partner, testimonial, or unsupported metric claims.
+  - Extended the qualified Hydrogen fit review flow around current stack, main problem, budget, timeline, revenue band, Shopify Plus status, and engagement type.
+  - Added offer snapshots across service landing pages so each service has a clearer entry point, timeline, expected output, and qualification rule.
+  - Strengthened blog-to-service internal links for product-description SSR, variant fallback, and performance content.
+  - Added durable positioning, SEO keyword map, and Shopify source-grounding docs for future Codex/content work.
+  - Added Shopify source metadata for headless build options, Hydrogen data fetching, and Hydrogen GitHub/Oxygen deployment docs.
+- Files changed:
+  - `app/page.tsx`
+  - `app/services/page.tsx`
+  - `app/contact/page.tsx`
+  - `app/api/lead-capture/route.ts`
+  - `components/CTASection.tsx`
+  - `components/LeadCaptureForm.tsx`
+  - `components/ServiceLandingPage.tsx`
+  - `components/Footer.tsx`
+  - `lib/services.ts`
+  - `lib/site.ts`
+  - `lib/llms.ts`
+  - `lib/content-sources.ts`
+  - `lib/decision-pages.ts`
+  - `lib/post-enhancements.ts`
+  - `docs/positioning-rules.md`
+  - `docs/seo-keyword-map.md`
+  - `docs/shopify-source-grounding.md`
+  - `tasks/hydrogenexpert-agency-positioning-task-list.md`
+- Verification:
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed with 0 pages needing source review.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run test`: 25 tests passed.
+  - `npm run build`: passed, 51 routes generated.
+  - Local production-mode Playwright verification via `next start` on port 3001: `/`, `/services`, `/shopify-hydrogen-agency`, and `/contact` returned the expected H1s, fit-audit CTA, qualified lead fields, and no horizontal overflow at 390px and 1440px.
+  - Vercel production build passed and generated 51 routes.
+  - Live production verification: `/`, `/services`, `/shopify-hydrogen-agency`, `/contact`, `/sitemap.xml`, `/robots.txt`, and `/llms.txt` returned HTTP 200 from `https://hydrogenexpert.co`.
+  - Live mobile/desktop browser verification: `/`, `/services`, `/shopify-hydrogen-agency`, and `/contact` returned the expected H1s, fit-audit CTA, qualified form fields, and no horizontal overflow at 390px and 1440px.
+- Manual follow-up:
+  - Dev server verification hit a Turbopack/CSP development-mode reload issue, so browser verification used the successful production build instead.
+  - Future blog publishing should use `docs/seo-keyword-map.md` and `docs/shopify-source-grounding.md` before drafting new commercial-intent content.
+
 - PR: [#13 Complete product lead capture and analytics layer](https://github.com/emremutlu08/hydrogenexpert/pull/13)
 - Branch: `codex/product-completion`
 - Deployment: [Production deploy](https://hydrogenexpert-n2za67own-emremutlu8s-projects.vercel.app) aliased to `https://hydrogenexpert.co`.

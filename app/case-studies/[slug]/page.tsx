@@ -246,7 +246,6 @@ export default async function CaseStudyDetailPage({
         </article>
 
         <CTASection
-          primaryLink="upwork"
           headline="Need a Hydrogen case written into an implementation plan?"
           subtext="Send the storefront pressure, current stack, and what the business needs to prove. I can help you scope the Hydrogen path without adding fake certainty."
           sourceKind={`case_study:${study.slug}`}

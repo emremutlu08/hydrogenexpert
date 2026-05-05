@@ -142,7 +142,6 @@ export default function CaseStudiesPage() {
         <FaqSection title="Case study questions that usually matter after the first scroll." faqs={faqs} />
 
         <CTASection
-          primaryLink="upwork"
           headline="Your storefront, written honestly on a page"
           subtext="If your store has constraints that rhyme with any of these, I can help you scope the move with a merchant-friendly plan instead of a vague technical pitch."
           sourceKind="case_studies_cta"

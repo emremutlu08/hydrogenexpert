@@ -1,7 +1,7 @@
 export const OWNER = {
   name: "Emre Mutlu",
   title: "Shopify Hydrogen Developer",
-  headline: "Shopify Hydrogen Developer — Top Rated Plus, Upwork, 100% JSS",
+  headline: "Senior-led Shopify Hydrogen services — Top Rated Plus, Upwork, 100% JSS",
   linkedIn: "https://www.linkedin.com/in/emremutlujs/",
   instagram: "https://www.instagram.com/shopifyemre/",
   upwork: "https://www.upwork.com/freelancers/emremutlu",
@@ -34,9 +34,13 @@ export const VERIFIED_PROFILE_URLS = [
 ] as const;
 
 export const SITE_KEYWORDS = [
+  "Shopify Hydrogen agency",
+  "Shopify Hydrogen agency alternative",
   "Shopify Hydrogen developer",
+  "Shopify Hydrogen development",
   "Shopify Hydrogen services",
   "Shopify Hydrogen consultant",
+  "headless Shopify agency",
   "Shopify Hydrogen cost",
   "hire Shopify Hydrogen developer",
   "Shopify Plus Hydrogen developer",
