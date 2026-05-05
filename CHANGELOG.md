@@ -17,7 +17,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 - PR: [#10 Improve maintainability guardrails](https://github.com/emremutlu08/hydrogenexpert/pull/10)
 - Branch: `codex/maintainability-dry-kiss-cleanup`
-- Deployment: [Production deploy](https://hydrogenexpert-bgtvh4myu-emremutlu8s-projects.vercel.app) aliased to `https://hydrogenexpert.co`.
+- Deployment: [Production deploy](https://hydrogenexpert-3fzwgfwqg-emremutlu8s-projects.vercel.app) aliased to `https://hydrogenexpert.co`.
 - Summary:
   - Added a first-class `npm run typecheck` script and fixed the security tests so direct TypeScript checking passes.
   - Removed the always-true services feature flag from navigation and sitemap generation.
