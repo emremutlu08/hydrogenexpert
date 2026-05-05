@@ -17,7 +17,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 - PR: [#15 Fix HydrogenExpert internal link authority paths](https://github.com/emremutlu08/hydrogenexpert/pull/15)
 - Branch: `codex/link-authority-cleanup`
-- Deployment: Pending production deployment and live verification after PR validation.
+- Deployment: Production deployment [hydrogenexpert-njxsa3zsb-emremutlu8s-projects.vercel.app](https://hydrogenexpert-njxsa3zsb-emremutlu8s-projects.vercel.app) aliased to [https://hydrogenexpert.co](https://hydrogenexpert.co).
 - Summary:
   - Replaced four service-page links that pointed at unpublished blog slugs with live canonical pages or published posts.
   - Added homepage resource links for low-inlink commercial, comparison, maintenance, vertical, and supporting blog pages.
@@ -32,6 +32,10 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - `npm run audit:shopify-claims`: passed with 0 pages needing source review.
   - Local production-mode link audit via `next start` on port 3015: old broken blog hrefs were absent from sampled rendered HTML, and the new resource links rendered.
   - Local production-mode Playwright verification: homepage rendered the new resource sections with no horizontal overflow at 390px and 1440px.
+  - Vercel production build passed and generated 51 routes.
+  - Live production verification: `/`, `/sitemap.xml`, `/robots.txt`, `/shopify-hydrogen-agency-usa`, `/shopify-hydrogen-maintenance-cost`, and `/blog/shopify-hydrogen-metaobjects-page-specific-sections` returned HTTP 200 from `https://hydrogenexpert.co`.
+  - Live production link audit: old broken blog hrefs were absent from sampled rendered HTML, and expected internal authority links rendered.
+  - Live mobile/desktop browser verification: homepage had no horizontal overflow at 390px and 1440px, and the new resource links were visible in rendered text.
 - Manual follow-up:
   - Third-party profile edits for external link/mention building still require direct access to LinkedIn, Upwork, Udemy, DEV, or other platforms.
 
