@@ -15,6 +15,41 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-05
 
+- PR: [#11 Add source-grounded content governance](https://github.com/emremutlu08/hydrogenexpert/pull/11)
+- Branch: `codex/source-grounded-authority-foundation`
+- Deployment: Not deployed yet. This PR is the foundation/governance slice; use `docs/DEPLOYMENT_QA_CHECKLIST.md` before production deployment and avoid `scripts/deploy.sh` unless the current shell has verified non-empty production env vars.
+- Summary:
+  - Added `CONTENT_PROTOCOL.md` with source hierarchy, claim classification, forbidden content, page standards, MCP-grounded blog workflow, AI-assisted content review, and doorway-risk review.
+  - Added Shopify Dev MCP setup notes and deployment QA checklist docs.
+  - Added internal source metadata types, source packs, static-page metadata, blog sidecar metadata, and service package `sourceMap` / `lastVerified` / claim classifications.
+  - Added Shopify claim audit and content validation scripts plus a new `typecheck` package script.
+  - Updated operating, deploy, and blog docs to require Shopify Dev MCP grounding and PR-first deployment discipline.
+- Files changed:
+  - `CONTENT_PROTOCOL.md`
+  - `docs/CODEX_SHOPIFY_MCP_SETUP.md`
+  - `docs/DEPLOYMENT_QA_CHECKLIST.md`
+  - `.github/pull_request_template.md`
+  - `lib/content-sources.ts`
+  - `lib/services.ts`
+  - `scripts/audit-shopify-claims.ts`
+  - `scripts/validate-content.ts`
+  - `OPERATING_RULES.md`
+  - `BLOG_PUBLISHING_PLAYBOOK.md`
+  - `DEPLOY.md`
+  - `package.json`
+  - `package-lock.json`
+  - `tests/security.test.ts`
+- Verification:
+  - `npm test`: 25 tests passed.
+  - `npm run audit:shopify-claims`: passed with 0 pages needing source review.
+  - `npm run validate:content`: passed with expected warning that `/shopify-hydrogen-seo-guide` has source metadata while intentionally absent from sitemap routes.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run build`: passed, 39 static pages generated.
+- Manual follow-up:
+  - Continue with the next roadmap PR for foundation content grounding.
+  - Deploy after review using the safe Vercel path and then merge/close the PR according to the updated workflow.
+
 - PR: [#9 Add commercial Hydrogen landing pages](https://github.com/emremutlu08/hydrogenexpert/pull/9)
 - Branch: `codex/commercial-landing-pages`
 - Deployment: [Production deploy](https://hydrogenexpert-jztc3ojj7-emremutlu8s-projects.vercel.app) aliased to `https://hydrogenexpert.co`.
