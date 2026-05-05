@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 import { CASE_STUDIES } from "../data/caseStudies";
 import type { PostSummary } from "./posts";
-import { hasMeaningfulServicesContent, SERVICE_PACKAGES } from "./services";
+import { SERVICE_PACKAGES } from "./services";
 
 const LAST_SIGNIFICANT_UPDATE = new Date("2026-04-25T00:00:00.000Z");
 
@@ -13,17 +13,14 @@ export function getStaticSitemapRoutes() {
     "/",
     "/about",
     "/what-is-hydrogen",
+    "/services",
     "/should-i-use-it",
     "/when-not-to-use-hydrogen",
     "/case-studies",
     "/hire-me",
     "/contact",
+    ...SERVICE_PACKAGES.map((servicePackage) => servicePackage.pagePath),
   ];
-
-  if (hasMeaningfulServicesContent()) {
-    routes.splice(2, 0, "/services");
-    routes.push(...SERVICE_PACKAGES.map((servicePackage) => servicePackage.pagePath));
-  }
 
   routes.push(...CASE_STUDIES.map((study) => `/case-studies/${study.slug}`));
 

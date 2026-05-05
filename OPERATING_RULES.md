@@ -82,4 +82,4 @@ cd "/Users/emremutlu/Apps/Codex/hydrogenexpert"
 3. Do not publish fake testimonials, fake metrics, fake logos, fake screenshots, or unsupported claims.
 4. Keep this positioning sentence unchanged wherever it appears:
    "Your Shopify store works, but every new feature takes 3x longer than last year? That's when I come in."
-5. Do not auto-merge pull requests.
+5. Do not merge pull requests before validation and live production verification. After the deployment is live and verified, merge or close the PR and delete the corresponding remote branch unless Emre explicitly asks to keep it open.

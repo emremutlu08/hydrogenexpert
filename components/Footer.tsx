@@ -61,7 +61,7 @@ const PROOF_ITEMS = [
   { href: "/case-studies/rebel-bunny-shopify-hydrogen", label: "Rebel Bunny" },
 ] as const;
 
-const TRUST_ITEMS = [
+const LEGAL_ITEMS = [
   { href: "/contact", label: "Contact" },
   { href: "/privacy", label: "Privacy" },
   { href: "/cookies", label: "Cookies" },
@@ -200,7 +200,7 @@ export function Footer({ navItems }: FooterProps) {
                 { href: OWNER.upwork, label: "Upwork Profile", external: true },
               ]}
             />
-            <FooterCard title="Trust" items={TRUST_ITEMS} />
+            <FooterCard title="Trust" items={LEGAL_ITEMS} />
           </div>
         </div>
       </div>

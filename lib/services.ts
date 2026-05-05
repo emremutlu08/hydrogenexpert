@@ -782,10 +782,6 @@ export const SECONDARY_SERVICE = {
   ],
 } as const;
 
-export function hasMeaningfulServicesContent() {
-  return true;
-}
-
 export function getServicePackageByPagePath(path: string) {
   return SERVICE_PACKAGES.find((servicePackage) => servicePackage.pagePath === path) ?? null;
 }
