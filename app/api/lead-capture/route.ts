@@ -7,6 +7,7 @@ import {
   isTrustedOrigin,
   verifyTurnstileToken,
 } from "@/lib/security";
+import { parseLeadQualification } from "@/lib/lead-qualification";
 import { getSupabaseAdminClient } from "@/lib/supabase";
 
 function sanitize(value: FormDataEntryValue | null) {
@@ -56,6 +57,7 @@ export async function POST(request: Request) {
   const turnstileToken = sanitize(formData.get("turnstileToken"));
   const sourcePath = sanitize(formData.get("sourcePath")) || "/";
   const sourceKind = sanitize(formData.get("sourceKind")) || "site_cta";
+  const qualification = parseLeadQualification(formData);
 
   if (!name || !email || !message) {
     return NextResponse.json(
@@ -101,6 +103,13 @@ export async function POST(request: Request) {
     message,
     source_path: sourcePath,
     source_kind: sourceKind,
+    current_stack: qualification.currentStack,
+    monthly_revenue_band: qualification.monthlyRevenueBand,
+    main_problem: qualification.mainProblem,
+    budget_range: qualification.budgetRange,
+    timeline: qualification.timeline,
+    shopify_plus_status: qualification.shopifyPlusStatus,
+    engagement_type: qualification.engagementType,
   });
 
   if (error) {

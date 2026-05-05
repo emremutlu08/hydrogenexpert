@@ -2,6 +2,8 @@
 
 This playbook defines how raw notes become public HydrogenExpert blog posts. It exists to keep future posts useful, SEO-aware, and safe for production.
 
+Codex must not publish Supabase-backed public blog posts unless Emre provides the real input/source material and explicitly asks for that specific article to be published. The queue below is planning inventory, not permission to publish.
+
 ## Public Content Rules
 
 - Public pages may include reader-facing content only: article body, TL;DR, FAQ, internal links, official references, diagrams, code examples, schema, and CTA.
@@ -29,7 +31,7 @@ This playbook defines how raw notes become public HydrogenExpert blog posts. It 
 
 ## Priority Cluster Queue
 
-These are the next Supabase-backed posts to publish. They should be inserted or updated in `posts`, then paired with `lib/post-enhancements.ts` entries when a public article exists.
+These are candidate Supabase-backed posts for future publication. They should be inserted or updated in `posts` only after Emre provides the real input/source material and explicitly asks to publish the specific article.
 
 | Slug | Primary query | Role |
 | --- | --- | --- |
@@ -74,15 +76,16 @@ Keep source metadata in `lib/content-sources.ts` until the Supabase content engi
 
 ## Publishing Workflow
 
-1. Convert raw notes into public-safe English copy in the site voice.
-2. Separate private editorial comments from public article content before writing to Supabase.
-3. Insert or update the Supabase `posts` row with title, slug, content, excerpt, meta description, tags, reading time, cover image, published date, and `published` status.
-4. Add internal source metadata in `lib/content-sources.ts`, including `sourceMap`, `lastVerified`, claim classification, target keyword, search intent, reviewed-by owner, and content type where available.
-5. Add optional public enhancements in `lib/post-enhancements.ts`: hero visual, FAQ, internal links, official external links, OG image, and closing pitch.
-6. Do not add editorial scoring or review notes to `PostEnhancement`.
-7. Run `npm run audit:shopify-claims`, `npm run lint`, `npm run typecheck`, and `npm run build`.
-8. Deploy to production.
-9. Verify the live article, blog index, sitemap, schema-bearing source, and absence of private notes.
+1. Confirm Emre has explicitly requested publication for the specific article and provided the real source/input material.
+2. Convert raw notes into public-safe English copy in the site voice.
+3. Separate private editorial comments from public article content before writing to Supabase.
+4. Insert or update the Supabase `posts` row with title, slug, content, excerpt, meta description, tags, reading time, cover image, published date, and `published` status.
+5. Add internal source metadata in `lib/content-sources.ts`, including `sourceMap`, `lastVerified`, claim classification, target keyword, search intent, reviewed-by owner, and content type where available.
+6. Add optional public enhancements in `lib/post-enhancements.ts`: hero visual, FAQ, internal links, official external links, OG image, and closing pitch.
+7. Do not add editorial scoring or review notes to `PostEnhancement`.
+8. Run `npm run audit:shopify-claims`, `npm run lint`, `npm run typecheck`, and `npm run build`.
+9. Deploy to production.
+10. Verify the live article, blog index, sitemap, schema-bearing source, and absence of private notes.
 
 ## Reference Principles From Prior Reviews
 
