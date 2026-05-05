@@ -48,6 +48,8 @@ Source metadata is internal by default. It does not need to be visible unless th
 
 ## Blog Production Workflow
 
+Codex may prepare blog infrastructure, templates, source maps, and draft support material, but Codex must not publish Supabase-backed public blog posts on its own. Public blog publishing happens only when Emre provides the real input/source material and explicitly asks Codex to publish that article.
+
 For every technical blog post:
 
 1. Define target reader.
@@ -55,7 +57,7 @@ For every technical blog post:
 3. Query Shopify Dev MCP for official docs before platform claims are drafted.
 4. Pull related HydrogenExpert service, case-study, and blog links.
 5. Classify claims as official fact, Emre experience, interpretation, recommendation, or SEO hypothesis.
-6. Draft with practical operator interpretation instead of only summarizing docs.
+6. Draft with practical operator interpretation instead of only summarizing docs when Emre has asked for a draft or publish task.
 7. Add source metadata sidecar in `lib/content-sources.ts`.
 8. Add visible further reading only when it helps the reader.
 9. Run `npm run audit:shopify-claims`.

@@ -15,6 +15,42 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-05
 
+- PR: [#13 Complete product lead capture and analytics layer](https://github.com/emremutlu08/hydrogenexpert/pull/13)
+- Branch: `codex/product-completion`
+- Deployment: [Production deploy](https://hydrogenexpert-n2za67own-emremutlu8s-projects.vercel.app) aliased to `https://hydrogenexpert.co`.
+- Summary:
+  - Expanded the owned lead capture form with current stack, main problem, budget, timeline, monthly revenue band, Shopify Plus status, and engagement-type fields.
+  - Added low-cardinality, non-PII analytics events for lead form views/submits and CTA intent: `lead_form_view`, `lead_form_submit`, `audit_cta_click`, `upwork_click`, `linkedin_click`, `case_study_click`, `cost_page_cta_click`, and `service_page_cta_click`.
+  - Added an additive Supabase migration for lead qualification columns and updated database types.
+  - Strengthened content validation with noindex/sitemap route checks and matching page-file checks.
+  - Updated content governance so Codex cannot publish Supabase-backed public blog posts unless Emre provides real source input and explicitly asks for that article to be published.
+- Files changed:
+  - `components/LeadCaptureForm.tsx`
+  - `app/api/lead-capture/route.ts`
+  - `lib/lead-qualification.ts`
+  - `lib/analytics.ts`
+  - `components/TrackedCTAButton.tsx`
+  - `supabase/migrations/20260505120000_add_lead_qualification_fields.sql`
+  - `scripts/validate-content.ts`
+  - `CONTENT_PROTOCOL.md`
+  - `BLOG_PUBLISHING_PLAYBOOK.md`
+  - `tests/analytics-events.test.ts`
+  - `tests/lead-qualification.test.ts`
+- Verification:
+  - Supabase migration `add_lead_qualification_fields`: applied successfully.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm test`: 31 tests passed.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed with 0 pages needing source review.
+  - `npm run build`: passed, 47 local static pages generated before deploy.
+  - Vercel production build passed and generated 51 pages including the four current Supabase-backed blog slugs.
+  - Live production verification: `/contact` and `/sitemap.xml` returned HTTP 200 from `https://hydrogenexpert.co`; `robots.txt` allows crawlers and references the sitemap.
+  - Live form verification: `/contact` includes the new qualification fields and Liquid-fit microcopy.
+  - Live desktop/mobile browser verification: `/contact` returned no horizontal overflow at 1440px and 390px widths.
+- Manual follow-up:
+  - Supabase connector SQL verification requested reauthentication after migration success; live form/API behavior should be watched after the first real qualified submission.
+
 - PR: [#12 Expand source-grounded Hydrogen authority pages](https://github.com/emremutlu08/hydrogenexpert/pull/12)
 - Branch: `codex/source-grounded-authority-expansion`
 - Deployment: [Production deploy](https://hydrogenexpert-dgtyw8vbc-emremutlu8s-projects.vercel.app) aliased to `https://hydrogenexpert.co`.

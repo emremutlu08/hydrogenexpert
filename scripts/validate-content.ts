@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
 import { CASE_STUDIES } from "../data/caseStudies";
@@ -8,7 +8,7 @@ import {
 } from "../lib/content-sources";
 import { DECISION_PAGES } from "../lib/decision-pages";
 import { SERVICE_PACKAGES } from "../lib/services";
-import { getStaticSitemapRoutes } from "../lib/sitemap-entries";
+import { getStaticSitemapRoutes, NOINDEX_STATIC_ROUTES } from "../lib/sitemap-entries";
 
 const repoRoot = process.cwd();
 const failures: string[] = [];
@@ -53,6 +53,7 @@ const knownRoutes = new Set([
   ...Object.keys(DECISION_PAGES),
   ...Object.keys(BLOG_SOURCE_METADATA).map((slug) => `/blog/${slug}`),
 ]);
+const staticSitemapRoutes = getStaticSitemapRoutes();
 
 interface BlogClusterManifest {
   clusters: readonly {
@@ -80,6 +81,7 @@ assertUnique(
   SERVICE_PACKAGES.map((servicePackage) => servicePackage.pagePath),
   "service page path",
 );
+assertUnique(staticSitemapRoutes, "static sitemap route");
 assertUnique(
   SERVICE_PACKAGES.map((servicePackage) => servicePackage.metaTitle),
   "service meta title",
@@ -200,6 +202,25 @@ for (const [slug, metadata] of Object.entries(BLOG_SOURCE_METADATA)) {
 }
 
 const blogClusterManifest = readBlogClusterManifest();
+
+for (const route of NOINDEX_STATIC_ROUTES) {
+  if (staticSitemapRoutes.includes(route)) {
+    fail(`${route} is noindex but appears in static sitemap routes.`);
+  }
+}
+
+for (const route of staticSitemapRoutes) {
+  const pagePath =
+    route === "/"
+      ? join(repoRoot, "app/page.tsx")
+      : route.startsWith("/case-studies/")
+        ? join(repoRoot, "app/case-studies/[slug]/page.tsx")
+        : join(repoRoot, `app${route}/page.tsx`);
+
+  if (!existsSync(pagePath)) {
+    fail(`${route} is in static sitemap routes but has no matching page file.`);
+  }
+}
 
 for (const cluster of blogClusterManifest.clusters) {
   if (!knownRoutes.has(cluster.pillar) && !cluster.pillar.startsWith("/blog/")) {
