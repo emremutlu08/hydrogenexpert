@@ -37,6 +37,7 @@ export function CTASection({
             <TrackedCTAButton
               destination="linkedin"
               label="Book a Scoping Call"
+              sourceKind={sourceKind}
               className="inline-flex min-h-11 items-center rounded-full border border-white/16 px-6 py-3 text-sm font-semibold text-white transition-colors hover:border-[#8df1cb] hover:text-[#8df1cb]"
             />
           </div>

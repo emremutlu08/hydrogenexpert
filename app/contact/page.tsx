@@ -93,11 +93,13 @@ export default function ContactPage() {
             <TrackedCTAButton
               destination="linkedin"
               label="Message on LinkedIn"
+              sourceKind="contact_page"
               className="rounded-full bg-[#171717] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#10b981]"
             />
             <TrackedCTAButton
               destination="upwork"
               label="Hire on Upwork"
+              sourceKind="contact_page"
               className="rounded-full border border-black/10 bg-white px-5 py-3 text-sm font-semibold text-[#171717] transition hover:border-[#10b981] hover:text-[#10b981]"
             />
           </div>

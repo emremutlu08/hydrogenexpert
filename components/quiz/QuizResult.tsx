@@ -36,11 +36,13 @@ export function QuizResult({ score, answers, emailAnchorId }: QuizResultProps) {
             <TrackedCTAButton
               destination="upwork"
               label="Hire Emre on Upwork"
+              sourceKind="hydrogen_quiz_result"
               className="inline-flex items-center rounded-full bg-[#10b981] px-6 py-3 text-sm font-semibold text-white transition hover:bg-white hover:text-[#171717]"
             />
             <TrackedCTAButton
               destination="linkedin"
               label="Message on LinkedIn"
+              sourceKind="hydrogen_quiz_result"
               className="inline-flex items-center rounded-full border border-white/16 px-6 py-3 text-sm font-semibold text-white transition hover:border-[#8df1cb] hover:text-[#8df1cb]"
             />
           </div>

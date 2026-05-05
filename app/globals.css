@@ -694,14 +694,22 @@ select {
 }
 
 .lead-form-field input,
-.lead-form-field textarea,
-.lead-form-field select {
+.lead-form-field select,
+.lead-form-field textarea {
   @apply min-w-0 max-w-full w-full rounded-[1.15rem] border border-white/18 bg-white/[0.08] px-4 py-4 text-sm text-white outline-none transition-colors placeholder:text-neutral-400 focus:border-[#10b981] focus:bg-white/[0.12];
   min-height: 44px;
 }
 
+.lead-form-field select {
+  @apply appearance-none bg-[#202124] pr-10;
+}
+
 .lead-form-field option {
   @apply bg-[#171717] text-white;
+}
+
+.lead-form-note {
+  @apply rounded-[1rem] border border-[#10b981]/25 bg-[#10b981]/10 px-4 py-3 text-sm leading-6 text-[#8df1cb];
 }
 
 .lead-form-actions {
