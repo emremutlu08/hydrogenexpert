@@ -45,6 +45,7 @@ describe("buildSitemapEntries", () => {
     expect(paths).toContain("/case-studies/rebel-bunny-shopify-hydrogen");
     expect(paths).toContain("/blog");
     expect(paths).toContain("/blog/shopify-hydrogen-product-description-ssr-seo");
+    expect(paths).toContain("/articles");
   });
 
   it("excludes noindex legal routes", () => {
@@ -67,7 +68,38 @@ describe("buildSitemapEntries", () => {
 
     expect(paths).not.toContain("/blog");
     expect(paths.some((path) => path.startsWith("/blog/"))).toBe(false);
+    expect(paths).toContain("/articles");
     expect(paths).toContain("/about");
     expect(paths).toContain("/contact");
+  });
+
+  it("includes only public article detail routes passed by the scheduled publishing layer", () => {
+    const paths = buildSitemapEntries({
+      siteUrl,
+      posts,
+      articles: [
+        {
+          title: "Past public article",
+          slug: "past-public-article",
+          description: "Visible article",
+          category: "Hiring",
+          status: "scheduled",
+          publishAt: "2026-05-01T10:00:00+03:00",
+          updatedAt: "2026-05-01T10:00:00+03:00",
+          author: "Emre Mutlu",
+          metaTitle: "Past public article",
+          metaDescription: "Visible article",
+          h1: "Past public article",
+          intro: ["Visible."],
+          sections: [],
+          conclusion: "Visible.",
+          links: [],
+        },
+      ],
+    }).map((entry) => new URL(entry.url).pathname || "/");
+
+    expect(paths).toContain("/articles");
+    expect(paths).toContain("/articles/past-public-article");
+    expect(paths).not.toContain("/articles/future-scheduled-article");
   });
 });

@@ -52,6 +52,7 @@ const RESOURCE_ITEMS = [
   { href: "/when-not-to-use-hydrogen", label: "When Not to Use Hydrogen" },
   { href: "/shopify-hydrogen-seo", label: "Hydrogen SEO Guide" },
   { href: "/shopify-hydrogen-cost", label: "Shopify Hydrogen Cost" },
+  { href: "/articles", label: "Shopify Hydrogen Articles" },
 ] as const;
 
 const PROOF_ITEMS = [
@@ -136,7 +137,7 @@ export function Footer({ navItems }: FooterProps) {
                   {"Your Shopify store works, but every new feature takes 3x longer than last year? That's when I come in."}
                 </p>
               </div>
-              <p className="max-w-xl text-sm leading-7 text-neutral-400">
+              <p data-nosnippet className="max-w-xl text-sm leading-7 text-neutral-400">
                 I help Shopify Plus and growth-stage ecommerce brands decide whether
                 Hydrogen is worth it, then scope audits, migrations, custom builds,
                 optimization, and support with direct senior ownership.
@@ -148,7 +149,7 @@ export function Footer({ navItems }: FooterProps) {
               </div>
             </div>
 
-            <div className="rounded-[1.45rem] border border-white/10 bg-white/[0.06] p-6 md:p-7">
+            <div data-nosnippet className="rounded-[1.45rem] border border-white/10 bg-white/[0.06] p-6 md:p-7">
               <p className="dna-kicker text-[#8df1cb]">Start Here</p>
               <h2 className="mt-4 max-w-xl text-3xl font-semibold leading-[1.02] tracking-[-0.045em] text-white md:text-4xl">
                 Not sure if Hydrogen is worth it?

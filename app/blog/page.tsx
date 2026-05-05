@@ -13,9 +13,9 @@ import { absoluteUrl } from "@/lib/site";
 import { buildBreadcrumbListSchema } from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
-  title: "Shopify Hydrogen Blog for Shopify Plus Brands | Emre Mutlu",
+  title: "Shopify Hydrogen Blog | Production Notes by Emre Mutlu",
   description:
-    "First-hand Shopify Hydrogen articles for Shopify Plus brands covering performance fixes, migration decisions, case studies, and storefront tradeoffs.",
+    "Personal production notes, implementation lessons, and first-hand Shopify Hydrogen observations from real storefront work.",
   path: "/blog",
 });
 
@@ -74,10 +74,23 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
       <div className="page-shell">
         <Breadcrumbs items={breadcrumbs} />
         <PageIntroSection
-          eyebrow="Insights"
-          title="Real Hydrogen notes from production storefront work"
-          description="Bugs, decisions, audits, and tradeoffs that matter once a Shopify storefront starts outgrowing the obvious path."
-          body="Short, technical, merchant-relevant writing. No generic headless filler."
+          eyebrow="Production notes"
+          title="Shopify Hydrogen Blog"
+          description="Personal production notes, implementation lessons, and first-hand Shopify Hydrogen observations from real storefront work."
+          body={
+            <>
+              <span>
+                For evergreen merchant guides, hiring advice, cost breakdowns, and Hydrogen decision
+                frameworks, read the Articles section.
+              </span>{" "}
+              <Link
+                href="/articles"
+                className="font-medium text-[#171717] underline decoration-black/20 underline-offset-4 transition hover:text-[#10b981]"
+              >
+                Read Shopify Hydrogen Articles
+              </Link>
+            </>
+          }
         />
 
       <section className="grid gap-6">
@@ -123,7 +136,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                       href={`/blog/${post.slug}`}
                       className="inline-flex min-h-11 items-center rounded-full bg-[#171717] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#10b981]"
                     >
-                      Read article
+                      Read Production Notes
                     </Link>
                   </div>
                 </div>

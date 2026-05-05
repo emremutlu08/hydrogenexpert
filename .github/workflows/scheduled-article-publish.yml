@@ -1,0 +1,42 @@
+name: Scheduled article publish
+
+on:
+  schedule:
+    - cron: "0 7 * * *"
+  workflow_dispatch:
+
+jobs:
+  publish-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run lint
+        run: npm run lint
+
+      - name: Run typecheck
+        run: npm run typecheck
+
+      - name: Run tests
+        run: npm run test
+
+      - name: Build site
+        run: npm run build
+
+      - name: Trigger Vercel deploy hook when configured
+        if: ${{ secrets.VERCEL_DEPLOY_HOOK_URL != '' }}
+        run: curl -fsS -X POST "${{ secrets.VERCEL_DEPLOY_HOOK_URL }}"
+
+      - name: Runtime publishing note
+        if: ${{ secrets.VERCEL_DEPLOY_HOOK_URL == '' }}
+        run: echo "No VERCEL_DEPLOY_HOOK_URL secret configured. Articles are gated at runtime; add this secret if the deployment target needs a daily rebuild."

@@ -1,0 +1,120 @@
+# SEO Commercial Intent Changelog
+
+Date:
+May 2026
+
+## Baseline audit
+
+Baseline checks before changes:
+- `npm run lint`: passed.
+- `npm run typecheck`: passed.
+- `npm run build`: passed.
+
+Route/component inventory:
+- `/`: `app/page.tsx`
+- `/services`: `app/services/page.tsx`
+- `/shopify-hydrogen-developer`: `app/shopify-hydrogen-developer/page.tsx` plus `lib/services.ts` and `components/ServiceLandingPage.tsx`
+- `/shopify-hydrogen-audit`: `app/shopify-hydrogen-audit/page.tsx` plus `lib/services.ts` and `components/ServiceLandingPage.tsx`
+- `/shopify-hydrogen-cost`: `app/shopify-hydrogen-cost/page.tsx` plus `lib/services.ts` and `components/ServiceLandingPage.tsx`
+- `/liquid-to-hydrogen-migration`: `app/liquid-to-hydrogen-migration/page.tsx` plus `lib/services.ts` and `components/ServiceLandingPage.tsx`
+- `/shopify-hydrogen-seo`: `app/shopify-hydrogen-seo/page.tsx` plus `lib/services.ts` and `components/ServiceLandingPage.tsx`
+- `/should-i-use-it`: `app/should-i-use-it/page.tsx` plus `components/quiz/*`
+- `/when-not-to-use-hydrogen`: `app/when-not-to-use-hydrogen/page.tsx`
+- `/case-studies`: `app/case-studies/page.tsx` plus `data/caseStudies.ts`
+- `/blog`: `app/blog/page.tsx`, `app/blog/[slug]/page.tsx`, `lib/posts.ts`, `lib/post-content.ts`, and `lib/post-enhancements.ts`
+- `/contact`: `app/contact/page.tsx`
+- `/articles`: `app/articles/page.tsx`, `app/articles/[slug]/page.tsx`, and `lib/articles.ts`
+
+Shared component inventory:
+- Header/navigation: `components/Header.tsx`, `lib/navigation.ts`
+- Footer: `components/Footer.tsx`
+- Lead capture form: `components/LeadCaptureForm.tsx`
+- Reusable CTA section: `components/CTASection.tsx`
+- SEO metadata helper: `lib/seo.ts`
+- `sitemap.xml` generation: `app/sitemap.ts`, `lib/sitemap-entries.ts`
+- `robots.txt` generation: `app/robots.ts`
+- Blog index/listing: `app/blog/page.tsx`
+- Content renderer: `lib/post-content.ts` for Supabase-backed blog posts; `/articles` uses structured local article data in `lib/articles.ts`
+
+## Content architecture decision
+
+- `/blog` is reserved for personal production notes and first-hand implementation learnings.
+- `/articles` is used for evergreen merchant guides, hiring guides, evaluation guides, SEO, cost, and migration decision content.
+
+## Query targets
+
+Primary GSC query target:
+- hire shopify hydrogen developers
+
+Secondary query targets:
+- shopify hydrogen development experts
+- experienced shopify hydrogen developers
+- shopify hydrogen experts
+
+Primary landing page:
+- `/shopify-hydrogen-developer`
+
+Supporting pages:
+- `/`
+- `/shopify-hydrogen-audit`
+- `/case-studies`
+- `/shopify-hydrogen-cost`
+- `/should-i-use-it`
+- `/when-not-to-use-hydrogen`
+- `/articles`
+- article detail pages
+
+## Article publishing schedule
+
+- 2026-05-08 10:00 Europe/Istanbul: `/articles/how-to-hire-shopify-hydrogen-developer`
+- 2026-05-11 10:00 Europe/Istanbul: `/articles/shopify-hydrogen-developer-vs-agency`
+- 2026-05-14 10:00 Europe/Istanbul: `/articles/experienced-shopify-hydrogen-developers`
+- 2026-05-17 10:00 Europe/Istanbul: `/articles/shopify-hydrogen-experts-production-experience`
+- 2026-05-20 10:00 Europe/Istanbul: `/articles/shopify-hydrogen-development-cost-developer-agency-audit`
+
+## Changes made
+
+- Added `/articles` section.
+- Clarified `/blog` as production notes.
+- Added scheduled article publishing.
+- Added daily scheduled rebuild/deploy check with optional `VERCEL_DEPLOY_HOOK_URL`.
+- Developer page title/meta/H1/copy cleanup.
+- Homepage internal link to developer page.
+- Homepage/internal links to `/articles`.
+- Static quiz result content.
+- Oxygen/Plus accuracy correction.
+- `data-nosnippet` on form/footer boilerplate.
+- Audit productization.
+- Proof block on developer page.
+- Internal link cluster.
+- Article support cluster.
+
+## Deployment model
+
+- Deployment target: Vercel, based on `vercel.json`, `DEPLOY.md`, and `scripts/deploy.sh`.
+- Scheduled publishing is enforced at runtime by article status and `publishAt`.
+- `.github/workflows/scheduled-article-publish.yml` runs daily at 07:00 UTC and manually via `workflow_dispatch`.
+- If the deployment target needs daily static regeneration, add a repository secret named `VERCEL_DEPLOY_HOOK_URL`. The workflow will call it after lint, typecheck, tests, and build pass.
+- No deploy hook URL or token is hardcoded.
+
+## Manual Search Console follow-up
+
+- Inspect `/shopify-hydrogen-developer`.
+- Inspect `/articles`.
+- Inspect each new article on or after publish date.
+- Request indexing after deployment.
+- Submit `/sitemap.xml`.
+- Check query to page mapping after 7, 14, and 28 days.
+- Track impressions, average position, CTR, and clicks for target queries.
+- Check country and device filters.
+
+## Scheduled publishing smoke test
+
+- Future articles hidden from `/articles`.
+- Future articles hidden from sitemap.
+- Future articles return 404 or preview-only response.
+- Published articles appear in index, sitemap, related links, and Article JSON-LD.
+
+Current automated coverage:
+- `tests/articles.test.ts` verifies future article hiding, post-`publishAt` visibility, and direct future access returning no public article.
+- `tests/sitemap-entries.test.ts` verifies `/articles` sitemap coverage and that only public article detail routes passed by the publishing layer appear.

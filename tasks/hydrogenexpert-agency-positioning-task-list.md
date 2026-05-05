@@ -29,7 +29,7 @@ Separate US agency site: not necessary for the first 30 days. First, make Hydrog
 
 1. Reframe homepage and llms.txt from "developer only" to "senior-led Hydrogen Shopify studio / agency alternative".
 2. Strengthen the top 6 commercial service pages with clear offer structure, deliverables, process, qualification, and CTAs.
-3. Add a primary conversion path around "Request Hydrogen Fit Audit" and "Book a Scoping Call".
+3. Add a primary conversion path around "Request a Hydrogen Fit Review" and "Message on LinkedIn".
 4. Build a keyword map and internal linking system from blog and case studies to service pages.
 5. Run Shopify-doc-grounded technical content QA on all Hydrogen/Oxygen/Storefront API claims.
 
@@ -98,7 +98,7 @@ Objective:
 Turn homepage interest into a clear commercial next step.
 
 Description:
-Replace generic "Let's Get Started" / external-platform-first paths with two explicit primary CTAs: "Request a Hydrogen Fit Audit" and "Book a Scoping Call" or equivalent.
+Replace generic "Let's Get Started" / external-platform-first paths with two explicit primary CTAs: "Request a Hydrogen Fit Review" and "Message on LinkedIn" or equivalent.
 
 Implementation Notes:
 Keep LinkedIn and Upwork as secondary trust/contact channels. The owned form should ask for store URL, current platform/theme, revenue band or traffic band if acceptable, problem type, timeline, and whether the buyer wants audit, migration, build, optimization, or support.
@@ -301,7 +301,7 @@ Objective:
 Turn technical blog traffic into service-page traffic.
 
 Description:
-Add deterministic internal links from each blog article to the most relevant service pages and from service pages to supporting articles.
+Add deterministic internal links from each production note to the most relevant service pages and from service pages to supporting articles.
 
 Implementation Notes:
 Examples: product description SSR article links to SEO and performance pages; variant fallback article links to development, SEO, and audit pages; performance case note links to performance optimization and audit.
@@ -377,7 +377,7 @@ Objective:
 Increase E-E-A-T and reduce generic AI tone.
 
 Description:
-Add short "What I check in production" or "How I would scope this" blocks to every blog article.
+Add short "What I check in production" or "How I would scope this" blocks to every production note.
 
 Implementation Notes:
 Use Emre's real project experience: EveShop scale, Bayam luxury catalog, Rebel Bunny dual funnel, Upwork delivery, and course authority only where relevant and supportable.
@@ -541,4 +541,3 @@ Acceptance Criteria:
 
 Expected Output:
 Updated AI-readable positioning surfaces.
-

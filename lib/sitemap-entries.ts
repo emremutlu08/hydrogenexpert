@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 
 import { CASE_STUDIES } from "../data/caseStudies";
+import type { Article } from "./articles";
 import type { PostSummary } from "./posts";
 import { SERVICE_PACKAGES } from "./services";
 
@@ -38,9 +39,11 @@ export function getStaticSitemapRoutes() {
 export function buildSitemapEntries({
   siteUrl,
   posts,
+  articles = [],
 }: {
   siteUrl: string;
   posts: readonly PostSummary[];
+  articles?: readonly Article[];
 }): MetadataRoute.Sitemap {
   const normalizedSiteUrl = siteUrl.replace(/\/$/, "");
   const staticRoutes = getStaticSitemapRoutes();
@@ -48,6 +51,8 @@ export function buildSitemapEntries({
   if (posts.length > 0) {
     staticRoutes.push("/blog");
   }
+
+  staticRoutes.push("/articles");
 
   const staticEntries: MetadataRoute.Sitemap = staticRoutes.map((route) => ({
     url: `${normalizedSiteUrl}${route === "/" ? "" : route}`,
@@ -63,5 +68,12 @@ export function buildSitemapEntries({
     priority: 0.7,
   }));
 
-  return [...staticEntries, ...dynamicEntries];
+  const articleEntries: MetadataRoute.Sitemap = articles.map((article) => ({
+    url: `${normalizedSiteUrl}/articles/${article.slug}`,
+    lastModified: new Date(article.updatedAt),
+    changeFrequency: "monthly",
+    priority: 0.75,
+  }));
+
+  return [...staticEntries, ...dynamicEntries, ...articleEntries];
 }

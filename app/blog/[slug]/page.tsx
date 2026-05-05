@@ -64,7 +64,7 @@ export async function generateMetadata({
 
   if (!post) {
     return buildMetadata({
-      title: "Shopify Hydrogen Article Not Found | Emre Mutlu",
+      title: "Shopify Hydrogen Blog Post Not Found | Emre Mutlu",
       description:
         "This Shopify Hydrogen article could not be found. Explore merchant-focused guidance on pricing, performance, and migration fit.",
       path: `/blog/${slug}`,
@@ -103,7 +103,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   const articleSchema = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
     headline: post.title,
     datePublished: post.published_at,
     dateModified: post.updated_at || post.published_at,
@@ -178,7 +178,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <article className="mx-auto max-w-4xl">
           <Breadcrumbs items={breadcrumbs} />
           <BlogAnalytics slug={post.slug} />
-          <p className="eyebrow editorial-kicker mt-8">Shopify Hydrogen Journal</p>
+          <p className="eyebrow editorial-kicker mt-8">Shopify Hydrogen Blog</p>
           <h1 className="page-title mt-6">
             {post.title}
           </h1>
@@ -298,7 +298,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </article>
 
         <CTASection
-          subtext="If this article sounds like your store’s situation, I can help you turn the insight into a clear Hydrogen scope and launch plan."
+          subtext="If this production note sounds like your store's situation, I can help you turn the insight into a clear Hydrogen scope and launch plan."
           sourceKind={`blog_post:${post.slug}`}
         />
       </div>

@@ -8,9 +8,9 @@ import { absoluteUrl } from "@/lib/site";
 import { buildBreadcrumbListSchema } from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
-  title: "When Not to Use Shopify Hydrogen | Emre Mutlu",
+  title: "When Not to Use Shopify Hydrogen | Honest Merchant Guide",
   description:
-    "Six scenarios where Shopify Hydrogen is not worth the cost, even for growing brands. An honest framework from an independent Hydrogen developer.",
+    "Six scenarios where Shopify Hydrogen may be the wrong move and a stronger theme, cleaner app stack, or narrower UX cleanup is the safer business decision.",
   path: "/when-not-to-use-hydrogen",
 });
 
@@ -66,13 +66,13 @@ const scenarios = [
     ],
   },
   {
-    title: "You are on Shopify Basic or Standard, not Shopify Plus",
+    title: "You are on Shopify Basic or Standard and the business case is not mature yet",
     explanation:
-      "Hydrogen works on any Shopify plan, but the full value stack (Oxygen hosting at scale, B2B features, checkout customization, Shopify Flow for complex merchandising) is Shopify Plus. Building a Hydrogen storefront on Basic is like buying a performance car to drive in first gear. The underlying platform capabilities will constrain what the custom storefront can actually do.",
+      "Hydrogen can run on most Shopify plans, and Oxygen is available on all Shopify plans except Starter at no extra cost. The issue is not that Hydrogen technically requires Shopify Plus. The issue is whether the business is ready to maintain a custom application and whether Plus-level needs such as B2B, checkout customization, advanced automation, expansion-store strategy, or enterprise support justify the complexity.\n\nFor many Basic or Standard stores, the safer move is still to improve the current theme, simplify the app stack, and delay the custom storefront until the operating model is ready. Hydrogen becomes more attractive when the brand has the revenue, team, and roadmap to keep improving a real application after launch.",
     alternatives: [
-      "Upgrade to Shopify Plus first if the business justifies the $2,300/month",
-      "If Plus is not justified, stay on Basic and optimize the current theme",
-      "Evaluate Hydrogen after the Plus upgrade is already in place",
+      "Keep Basic or Standard and optimize the current theme if the constraints are ordinary.",
+      "Upgrade to Shopify Plus only when platform needs justify it, not because Hydrogen sounds premium.",
+      "Evaluate Hydrogen after budget, team ownership, and maintenance readiness are clear.",
     ],
   },
 ] as const;
@@ -109,7 +109,11 @@ export default function WhenNotToUseHydrogenPage() {
                   {scenario.title}
                 </h2>
                 <p className="text-base leading-8 text-neutral-600">
-                  {scenario.explanation}
+                  {scenario.explanation.split("\n\n").map((paragraph) => (
+                    <span key={paragraph} className="mb-4 block last:mb-0">
+                      {paragraph}
+                    </span>
+                  ))}
                 </p>
               </div>
 
@@ -143,6 +147,26 @@ export default function WhenNotToUseHydrogenPage() {
           >
             Take the 5-question test
           </Link>
+          <div className="flex flex-wrap gap-3">
+            <Link
+              href="/shopify-hydrogen-audit"
+              className="inline-flex items-center rounded-full border border-white/16 px-6 py-3 text-sm font-semibold text-white transition hover:border-[#8df1cb] hover:text-[#8df1cb]"
+            >
+              Start with a Fit & Risk Audit
+            </Link>
+            <Link
+              href="/shopify-hydrogen-cost"
+              className="inline-flex items-center rounded-full border border-white/16 px-6 py-3 text-sm font-semibold text-white transition hover:border-[#8df1cb] hover:text-[#8df1cb]"
+            >
+              Review Hydrogen cost ranges
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center rounded-full border border-white/16 px-6 py-3 text-sm font-semibold text-white transition hover:border-[#8df1cb] hover:text-[#8df1cb]"
+            >
+              Request a Hydrogen Fit Review
+            </Link>
+          </div>
         </section>
       </div>
     </>
