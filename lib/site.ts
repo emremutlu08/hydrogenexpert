@@ -2,9 +2,11 @@ export const OWNER = {
   name: "Emre Mutlu",
   title: "Shopify Hydrogen Developer",
   headline: "Senior-led Shopify Hydrogen services — Top Rated Plus, Upwork, 100% JSS",
+  personalSite: "https://www.emre-mutlu.com.tr/",
   linkedIn: "https://www.linkedin.com/in/emremutlujs/",
   instagram: "https://www.instagram.com/shopifyemre/",
   upwork: "https://www.upwork.com/freelancers/emremutlu",
+  youtube: "https://www.youtube.com/channel/UCIvMTov-hGKvo4p6ZPf4kWA",
   udemyUrl:
     process.env.NEXT_PUBLIC_UDEMY_COURSE_URL?.trim() ||
     "https://www.udemy.com/shopify-hydrogen",
@@ -28,10 +30,12 @@ export const UPWORK_PROFILE = {
 } as const;
 
 export const VERIFIED_PROFILE_URLS = [
+  OWNER.personalSite,
   OWNER.linkedIn,
   OWNER.upwork,
   OWNER.udemyUrl,
   OWNER.instagram,
+  OWNER.youtube,
 ] as const;
 
 export const SITE_KEYWORDS = [

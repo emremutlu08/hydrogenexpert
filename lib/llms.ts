@@ -24,9 +24,12 @@ function buildSummary() {
     "- Delivery model: Senior-led Hydrogen studio / agency alternative, not a fake local office or broad full-service agency",
     "- Audience: Shopify Plus and growth-stage ecommerce teams researching Hydrogen, headless Shopify, migrations, audits, cost, and support",
     "- Primary goal: Qualified Hydrogen fit audit, scoping, migration, build, optimization, and support inquiries",
+    llmsLink("Personal site", OWNER.personalSite, "Owned personal authority hub for Emre Mutlu."),
     llmsLink("LinkedIn", OWNER.linkedIn, "Primary professional profile for Emre Mutlu."),
     llmsLink("Upwork", OWNER.upwork, "Public marketplace profile for Hydrogen delivery proof."),
     llmsLink("Udemy", OWNER.udemyUrl, "Public Shopify Hydrogen teaching profile."),
+    llmsLink("Instagram", OWNER.instagram, "Owned social profile for entity corroboration."),
+    llmsLink("YouTube", OWNER.youtube, "Owned video profile for Shopify Hydrogen teaching and entity corroboration."),
     "",
   ].join("\n");
 }

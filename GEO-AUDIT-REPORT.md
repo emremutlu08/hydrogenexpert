@@ -5,7 +5,7 @@
 **Business Type:** Agency/Services - solo senior Shopify Hydrogen consulting
 **Pages Analyzed:** 35 sitemap URLs plus `robots.txt`, `sitemap.xml`, `llms.txt`, `llms-full.txt`, `feed.xml`, Lighthouse, desktop/mobile Playwright checks, and external entity search
 **Method:** `geo-audit` skill workflow: live discovery, page-level crawl, AI visibility analysis, platform readiness, technical GEO, content E-E-A-T, schema review, and score aggregation.
-**Remediation status:** Findings below were used as the baseline. Code-side fixes were implemented on branch `codex/fix-geo-audit-findings` after the audit; external profile, YouTube, and webmaster-account actions still require account-owner follow-up.
+**Remediation status:** Findings below were used as the baseline. Code-side fixes were implemented after the audit. Account-owner profile updates were completed on 2026-05-06 and HydrogenExpert schema now includes the owned personal site and YouTube channel; some third-party surfaces may still need public crawl/cache refresh time.
 
 ---
 
@@ -27,9 +27,9 @@ HydrogenExpert has an excellent technical SEO foundation and strong niche citabi
 | Global `X-Robots-Tag` conflict | Fixed locally: the global `index, follow` header was removed so route-level noindex metadata can stand on its own. |
 | IndexNow key support | Fixed locally: root and `.well-known` IndexNow key files were added. |
 | Bing Webmaster meta support | Fixed locally: `BING_SITE_VERIFICATION` can emit `msvalidate.01` when configured. |
-| Verified profile hub and editorial standard | Fixed locally: `/about` now includes canonical profile links and an editorial/source standard section. |
+| Verified profile hub and editorial standard | Fixed locally: `/about` now includes canonical profile links, the owned personal site, YouTube, and an editorial/source standard section. |
 
-External follow-up still needed: update real external profiles where possible, configure Bing Webmaster Tools with the verification value, ping IndexNow from the account/workflow that owns publishing, and create/maintain a YouTube or other third-party authority surface only if it will be real.
+External follow-up still needed: configure Bing Webmaster Tools with the verification value, ping IndexNow from the account/workflow that owns publishing, and let third-party profile/search caches refresh after the account-owner updates.
 
 ### Score Breakdown
 
@@ -293,12 +293,12 @@ Priority schema work:
 - [ ] Add a verified profiles section to `/about`.
 - [ ] Add an editorial/source/corrections policy section or page.
 - [ ] Add only real, controlled profiles to schema `sameAs`.
-- [ ] Update external bios where possible so HydrogenExpert appears consistently beside Emre Mutlu.
+- [x] Update external bios where possible so HydrogenExpert appears consistently beside Emre Mutlu. Account-owner update completed on 2026-05-06; public crawl visibility may lag.
 
 ### Week 4: Platform Expansion
 
 - [ ] Add IndexNow support and Bing Webmaster verification.
-- [ ] Decide whether a YouTube presence is real enough to create and maintain.
+- [x] Decide whether a YouTube presence is real enough to create and maintain. Owned YouTube channel supplied on 2026-05-06 and added to schema/profile links.
 - [ ] Add approved measurable case-study proof where available.
 - [ ] Run a follow-up GEO compare pass and update this report.
 

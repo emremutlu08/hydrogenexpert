@@ -12,7 +12,14 @@ import { formatPostContent } from "@/lib/post-content";
 import { buildPostMarkdown } from "@/lib/post-markdown";
 import { getPublishedPostBySlug, getPublishedPostSlugs } from "@/lib/posts";
 import { buildMetadata } from "@/lib/seo";
-import { OWNER, SITE_LOGO_PATH, SITE_NAME, absoluteUrl, getSchemaIds } from "@/lib/site";
+import {
+  OWNER,
+  SITE_LOGO_PATH,
+  SITE_NAME,
+  VERIFIED_PROFILE_URLS,
+  absoluteUrl,
+  getSchemaIds,
+} from "@/lib/site";
 import {
   asSchemaArray,
   buildBreadcrumbListSchema,
@@ -112,7 +119,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       "@id": schemaIds.person,
       name: OWNER.name,
       url: OWNER.linkedIn,
-      sameAs: OWNER.linkedIn ? [OWNER.linkedIn, OWNER.upwork, OWNER.udemyUrl] : undefined,
+      sameAs: VERIFIED_PROFILE_URLS,
       jobTitle: OWNER.title,
       worksFor: {
         "@type": "ProfessionalService",

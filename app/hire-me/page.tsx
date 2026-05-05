@@ -20,6 +20,7 @@ import {
   FOUNDER_IMAGE_PATH,
   OWNER,
   UPWORK_PROFILE,
+  VERIFIED_PROFILE_URLS,
   absoluteUrl,
 } from "@/lib/site";
 import {
@@ -42,7 +43,7 @@ const personSchema = {
   jobTitle: OWNER.title,
   description: OWNER.headline,
   image: absoluteUrl(FOUNDER_IMAGE_PATH),
-  sameAs: [OWNER.linkedIn, OWNER.upwork, OWNER.udemyUrl],
+  sameAs: VERIFIED_PROFILE_URLS,
 };
 
 const process = [
