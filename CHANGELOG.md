@@ -15,6 +15,39 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-05
 
+- PR: [#10 Improve maintainability guardrails](https://github.com/emremutlu08/hydrogenexpert/pull/10)
+- Branch: `codex/maintainability-dry-kiss-cleanup`
+- Deployment: [Production deploy](https://hydrogenexpert-bgtvh4myu-emremutlu8s-projects.vercel.app) aliased to `https://hydrogenexpert.co`.
+- Summary:
+  - Added a first-class `npm run typecheck` script and fixed the security tests so direct TypeScript checking passes.
+  - Removed the always-true services feature flag from navigation and sitemap generation.
+  - Centralized repeated proof metrics through shared site constants for homepage, hire-me, about, trust bar, and llms output.
+  - Renamed the footer's local legal/contact list so it no longer collides conceptually with global trust signals.
+- Files changed:
+  - `package.json`
+  - `tests/security.test.ts`
+  - `lib/services.ts`
+  - `lib/navigation.ts`
+  - `lib/sitemap-entries.ts`
+  - `lib/site.ts`
+  - `lib/llms.ts`
+  - `components/TrustBar.tsx`
+  - `components/Footer.tsx`
+  - `app/page.tsx`
+  - `app/hire-me/page.tsx`
+  - `app/about/page.tsx`
+- Verification:
+  - `npm run typecheck`
+  - `npm run lint`
+  - `npm test`
+  - `npm run build`
+  - Vercel production build completed successfully and generated 43 routes.
+  - Live production route checks on `https://hydrogenexpert.co`: `/`, `/about`, `/hire-me`, `/services`, `/sitemap.xml`, and `/llms-full.txt` returned `200`.
+  - Live sitemap verification confirmed `/about`, `/services`, `/hire-me`, and `/shopify-hydrogen-cost` are present.
+  - Live `llms-full.txt` verification confirmed Upwork, JSS, delivery-hours, Rebel Bunny feedback, and client-reference credibility lines are present.
+- Manual follow-up:
+  - PR remains open per repository operating rule: do not auto-merge pull requests unless Emre explicitly asks.
+
 - PR: [#9 Add commercial Hydrogen landing pages](https://github.com/emremutlu08/hydrogenexpert/pull/9)
 - Branch: `codex/commercial-landing-pages`
 - Deployment: [Production deploy](https://hydrogenexpert-jztc3ojj7-emremutlu8s-projects.vercel.app) aliased to `https://hydrogenexpert.co`.
