@@ -1,4 +1,4 @@
-import { afterEach, describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 
 import { isTrustedOrigin, safeCompare } from "../lib/security";
 
@@ -9,28 +9,26 @@ function requestWithOrigin(origin?: string) {
 }
 
 describe("isTrustedOrigin", () => {
-  const originalNodeEnv = process.env.NODE_ENV;
-
   afterEach(() => {
-    process.env.NODE_ENV = originalNodeEnv;
+    vi.unstubAllEnvs();
   });
 
   it("allows configured production origins", () => {
-    process.env.NODE_ENV = "production";
+    vi.stubEnv("NODE_ENV", "production");
 
     expect(isTrustedOrigin(requestWithOrigin("https://hydrogenexpert.co"))).toBe(true);
     expect(isTrustedOrigin(requestWithOrigin("https://www.hydrogenexpert.co"))).toBe(true);
   });
 
   it("rejects evil origins and missing origins in production", () => {
-    process.env.NODE_ENV = "production";
+    vi.stubEnv("NODE_ENV", "production");
 
     expect(isTrustedOrigin(requestWithOrigin("https://evil.example"))).toBe(false);
     expect(isTrustedOrigin(requestWithOrigin())).toBe(false);
   });
 
   it("preserves missing-origin local testing outside production", () => {
-    process.env.NODE_ENV = "test";
+    vi.stubEnv("NODE_ENV", "test");
 
     expect(isTrustedOrigin(requestWithOrigin())).toBe(true);
     expect(isTrustedOrigin(requestWithOrigin("http://localhost:3000"))).toBe(true);

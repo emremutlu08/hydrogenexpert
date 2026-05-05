@@ -14,7 +14,14 @@ import { StatCard } from "@/components/StatCard";
 import { UdemyCourseCard } from "@/components/UdemyCourseCard";
 import { FOUNDER_STORY } from "@/lib/founder";
 import { buildMetadata } from "@/lib/seo";
-import { CLIENTS, FOUNDER_IMAGE_PATH, OWNER, UPWORK_PROFILE, absoluteUrl } from "@/lib/site";
+import {
+  CLIENTS,
+  DELIVERY_PROOF,
+  FOUNDER_IMAGE_PATH,
+  OWNER,
+  UPWORK_PROFILE,
+  absoluteUrl,
+} from "@/lib/site";
 import {
   asSchemaArray,
   buildBreadcrumbListSchema,
@@ -66,10 +73,10 @@ const proofCards = [
         rel="noreferrer"
         className="transition hover:text-[#10b981]"
       >
-        Top Rated Plus
+        {UPWORK_PROFILE.badge}
       </Link>
     ),
-    title: "Top Rated Plus",
+    title: UPWORK_PROFILE.badge,
     body: "External proof that delivery discipline and client trust already exist outside this site.",
     media: null,
   },
@@ -81,10 +88,10 @@ const proofCards = [
         rel="noreferrer"
         className="transition hover:text-[#10b981]"
       >
-        100% Job Success Score
+        {UPWORK_PROFILE.jobSuccessScore} Job Success Score
       </Link>
     ),
-    title: "100% Job Success Score",
+    title: `${UPWORK_PROFILE.jobSuccessScore} Job Success Score`,
     body: "A cleaner signal of reliability for brands making more serious storefront decisions.",
     media: null,
   },
@@ -96,10 +103,10 @@ const proofCards = [
         rel="noreferrer"
         className="transition hover:text-[#10b981]"
       >
-        World&apos;s First in English
+        {DELIVERY_PROOF.udemyCourseClaim}
       </Link>
     ),
-    title: "World's First in English",
+    title: DELIVERY_PROOF.udemyCourseClaim,
     body: "Creator of the world's first English Shopify Hydrogen course on Udemy.",
     media: null,
   },
@@ -109,10 +116,10 @@ const proofCards = [
         href="/case-studies/rebel-bunny-shopify-hydrogen"
         className="transition hover:text-[#10b981]"
       >
-        5.0 Rebel Bunny Feedback
+        {DELIVERY_PROOF.rebelBunnyFeedback}
       </Link>
     ),
-    title: "5.0 Rebel Bunny Feedback",
+    title: DELIVERY_PROOF.rebelBunnyFeedback,
     body: "Public Upwork feedback now supports the Rebel Bunny Shopify Hydrogen case study.",
     media: null,
   },
@@ -120,17 +127,17 @@ const proofCards = [
 
 const stats: Array<{ value: string; label: string; href?: string }> = [
   { value: UPWORK_PROFILE.totalHoursLabel, label: "hours of Upwork delivery", href: OWNER.upwork },
-  { value: "32K+", label: "LinkedIn followers", href: OWNER.linkedIn },
-  { value: "First", label: "production Hydrogen storefront in Turkey" },
+  { value: DELIVERY_PROOF.linkedInFollowers, label: "LinkedIn followers", href: OWNER.linkedIn },
+  { value: DELIVERY_PROOF.firstProductionHydrogenInTurkey, label: "production Hydrogen storefront in Turkey" },
 ];
 
 const proofSnapshot = [
-  "3 production Shopify Hydrogen storefronts",
-  "400K+ users on EveShop",
-  "Top Rated Plus on Upwork",
-  "1,900+ Upwork hours",
-  "5.0 Rebel Bunny feedback on Upwork",
-  "32K+ LinkedIn followers",
+  `${DELIVERY_PROOF.productionHydrogenStorefronts} production Shopify Hydrogen storefronts`,
+  `${DELIVERY_PROOF.eveShopUsers} users on EveShop`,
+  `${UPWORK_PROFILE.badge} on Upwork`,
+  `${UPWORK_PROFILE.totalHoursLabel} Upwork hours`,
+  `${DELIVERY_PROOF.rebelBunnyFeedback} on Upwork`,
+  `${DELIVERY_PROOF.linkedInFollowers} LinkedIn followers`,
   "Creator of the first English Shopify Hydrogen course",
 ] as const;
 
