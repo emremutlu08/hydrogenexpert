@@ -46,7 +46,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - Live sitemap verification confirmed `/about`, `/services`, `/hire-me`, and `/shopify-hydrogen-cost` are present.
   - Live `llms-full.txt` verification confirmed Upwork, JSS, delivery-hours, Rebel Bunny feedback, and client-reference credibility lines are present.
 - Manual follow-up:
-  - PR remains open per repository operating rule: do not auto-merge pull requests unless Emre explicitly asks.
+  - PR merged after live verification, then the remote branch was deleted.
 
 - PR: [#9 Add commercial Hydrogen landing pages](https://github.com/emremutlu08/hydrogenexpert/pull/9)
 - Branch: `codex/commercial-landing-pages`

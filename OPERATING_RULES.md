@@ -24,7 +24,8 @@ cd "/Users/emremutlu/Apps/Codex/hydrogenexpert"
 8. Open a pull request before treating the work as complete.
 9. Push the branch and deploy to production after validation unless Emre explicitly says not to.
 10. Update `CHANGELOG.md` with the PR number, PR link, deployment note, files changed, and verification summary.
-11. Final response should include the PR link, deployment status, commit hash, validation result, and remaining manual tasks.
+11. After production is live and verified, merge or close the PR and delete the corresponding remote branch unless Emre explicitly asks to keep it open.
+12. Final response should include the PR link, deployment status, commit hash, validation result, merge/close status, branch cleanup status, and remaining manual tasks.
 
 ## Branch And PR Workflow
 
@@ -35,7 +36,9 @@ cd "/Users/emremutlu/Apps/Codex/hydrogenexpert"
 5. Open a pull request into `main`.
 6. If the PR number is needed for `CHANGELOG.md`, update the changelog after the PR exists and push that follow-up commit to the same branch.
 7. Deploy the validated branch to production.
-8. Do not merge the PR unless Emre explicitly asks.
+8. Verify the live production site.
+9. Merge or close the PR after live verification unless Emre explicitly asks to keep it open.
+10. Delete the corresponding remote branch after the PR is merged or closed.
 
 ## Blog Publishing Workflow
 
@@ -74,4 +77,4 @@ cd "/Users/emremutlu/Apps/Codex/hydrogenexpert"
 3. Do not publish fake testimonials, fake metrics, fake logos, fake screenshots, or unsupported claims.
 4. Keep this positioning sentence unchanged wherever it appears:
    "Your Shopify store works, but every new feature takes 3x longer than last year? That's when I come in."
-5. Do not auto-merge pull requests.
+5. Do not merge pull requests before validation and live production verification. After the deployment is live and verified, merge or close the PR and delete the corresponding remote branch unless Emre explicitly asks to keep it open.
