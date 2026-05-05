@@ -6,12 +6,14 @@ import {
   BLOG_SOURCE_METADATA,
   STATIC_PAGE_SOURCE_METADATA,
 } from "../lib/content-sources";
+import { DECISION_PAGES } from "../lib/decision-pages";
 import { SERVICE_PACKAGES } from "../lib/services";
 import { getStaticSitemapRoutes } from "../lib/sitemap-entries";
 
 const repoRoot = process.cwd();
 const failures: string[] = [];
 const warnings: string[] = [];
+const sourceMetadataOnlyRoutes = new Set(["/shopify-hydrogen-seo-guide"]);
 
 function fail(message: string) {
   failures.push(message);
@@ -48,8 +50,31 @@ const knownRoutes = new Set([
   "/blog",
   ...getStaticSitemapRoutes(),
   ...CASE_STUDIES.map((caseStudy) => `/case-studies/${caseStudy.slug}`),
+  ...Object.keys(DECISION_PAGES),
   ...Object.keys(BLOG_SOURCE_METADATA).map((slug) => `/blog/${slug}`),
 ]);
+
+interface BlogClusterManifest {
+  clusters: readonly {
+    name: string;
+    pillar: string;
+    articles: readonly {
+      slug: string;
+      targetKeyword: string;
+      searchIntent: string;
+      uniqueAngle: string;
+    }[];
+  }[];
+}
+
+function readBlogClusterManifest() {
+  const raw = readFileSync(
+    join(repoRoot, "content/blog-clusters/shopify-authority-clusters.json"),
+    "utf8",
+  );
+
+  return JSON.parse(raw) as BlogClusterManifest;
+}
 
 assertUnique(
   SERVICE_PACKAGES.map((servicePackage) => servicePackage.pagePath),
@@ -66,6 +91,14 @@ assertUnique(
 assertUnique(
   CASE_STUDIES.map((caseStudy) => caseStudy.slug),
   "case study slug",
+);
+assertUnique(
+  Object.values(DECISION_PAGES).map((page) => page.metaTitle),
+  "decision page meta title",
+);
+assertUnique(
+  Object.values(DECISION_PAGES).map((page) => page.metaDescription),
+  "decision page meta description",
 );
 
 for (const servicePackage of SERVICE_PACKAGES) {
@@ -104,8 +137,42 @@ for (const servicePackage of SERVICE_PACKAGES) {
   }
 }
 
+for (const decisionPage of Object.values(DECISION_PAGES)) {
+  if (!decisionPage.metaTitle.trim()) {
+    fail(`${decisionPage.path} is missing metaTitle.`);
+  }
+
+  if (!decisionPage.metaDescription.trim()) {
+    fail(`${decisionPage.path} is missing metaDescription.`);
+  }
+
+  const metadata = STATIC_PAGE_SOURCE_METADATA[
+    decisionPage.path as keyof typeof STATIC_PAGE_SOURCE_METADATA
+  ] as { lastVerified?: string; sourceMap?: readonly unknown[] } | undefined;
+
+  if (!metadata?.lastVerified || !metadata.sourceMap?.length) {
+    fail(`${decisionPage.path} is missing source metadata or lastVerified.`);
+  }
+
+  for (const row of decisionPage.decisionRows) {
+    if (!row.signal.trim() || !row.move.trim() || !row.caution.trim()) {
+      fail(`${decisionPage.path} has an empty decision table row.`);
+    }
+  }
+
+  for (const link of decisionPage.links) {
+    if (
+      !knownRoutes.has(link.href) &&
+      !link.href.startsWith("/blog/") &&
+      !link.href.startsWith("http")
+    ) {
+      fail(`${decisionPage.path} links to unknown route ${link.href}.`);
+    }
+  }
+}
+
 for (const [path, metadata] of Object.entries(STATIC_PAGE_SOURCE_METADATA)) {
-  if (!knownRoutes.has(path)) {
+  if (!knownRoutes.has(path) && !sourceMetadataOnlyRoutes.has(path)) {
     warn(`${path} has source metadata but is not in static sitemap routes.`);
   }
 
@@ -132,6 +199,24 @@ for (const [slug, metadata] of Object.entries(BLOG_SOURCE_METADATA)) {
   }
 }
 
+const blogClusterManifest = readBlogClusterManifest();
+
+for (const cluster of blogClusterManifest.clusters) {
+  if (!knownRoutes.has(cluster.pillar) && !cluster.pillar.startsWith("/blog/")) {
+    fail(`Blog cluster ${cluster.name} has unknown pillar ${cluster.pillar}.`);
+  }
+
+  for (const article of cluster.articles) {
+    if (!article.slug.trim() || !article.targetKeyword.trim() || !article.searchIntent.trim()) {
+      fail(`Blog cluster ${cluster.name} has an incomplete article entry.`);
+    }
+
+    if (!BLOG_SOURCE_METADATA[article.slug as keyof typeof BLOG_SOURCE_METADATA]) {
+      fail(`/blog/${article.slug} is in the cluster manifest but missing BLOG_SOURCE_METADATA.`);
+    }
+  }
+}
+
 [
   "CONTENT_PROTOCOL.md",
   "BLOG_PUBLISHING_PLAYBOOK.md",
@@ -139,6 +224,8 @@ for (const [slug, metadata] of Object.entries(BLOG_SOURCE_METADATA)) {
   "lib/content-sources.ts",
   "lib/services.ts",
   "data/caseStudies.ts",
+  "content/blog-clusters/shopify-authority-clusters.json",
+  "content/source-packs/shopify-hydrogen.json",
 ].forEach(assertNoPlaceholderText);
 
 for (const warning of warnings) {

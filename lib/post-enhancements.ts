@@ -261,6 +261,281 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
       },
     ],
   },
+  "hydrogen-sitemap-robots-oxygen": {
+    heroVisual: {
+      type: "code-card",
+      src: "/generated/blog/hydrogen-seo-checklist-cover.jpg",
+      alt: "Hydrogen sitemap and robots launch QA visual with Oxygen production and preview checks.",
+      title: "Hydrogen sitemap and robots on Oxygen",
+      width: 1672,
+      height: 941,
+    },
+    faq: [
+      {
+        question: "Should sitemap and robots be checked before a Hydrogen launch?",
+        answer:
+          "Yes. Treat sitemap.xml, robots.txt, canonical URLs, and production versus preview behavior as launch QA, not as an afterthought.",
+      },
+    ],
+    internalLinks: [
+      {
+        href: "/shopify-hydrogen-seo",
+        label: "Shopify Hydrogen SEO",
+        note: "The main service page for sitemap, robots, metadata, and crawl consistency.",
+      },
+      {
+        href: "/liquid-to-hydrogen-migration",
+        label: "Liquid to Hydrogen migration",
+        note: "Migration routes and sitemap behavior should be planned together.",
+      },
+    ],
+    externalLinks: [
+      {
+        href: "https://shopify.dev/docs/storefronts/headless/hydrogen/seo",
+        label: "Shopify Hydrogen SEO docs",
+        note: "Official Shopify guidance for sitemap, robots, metadata, canonical URLs, and JSON-LD.",
+      },
+    ],
+  },
+  "hydrogen-json-ld-product-state": {
+    heroVisual: {
+      type: "code-card",
+      src: "/generated/blog/hydrogen-seo-checklist-cover.jpg",
+      alt: "Hydrogen JSON-LD product state visual showing visible PDP state and structured data alignment.",
+      title: "Hydrogen JSON-LD and product state",
+      width: 1672,
+      height: 941,
+    },
+    faq: [
+      {
+        question: "Should Hydrogen JSON-LD match the visible product state?",
+        answer:
+          "Yes. Structured data should describe the product, variant, price, availability, and visible page state accurately.",
+      },
+    ],
+    internalLinks: [
+      {
+        href: "/shopify-hydrogen-seo",
+        label: "Shopify Hydrogen SEO",
+        note: "Use this when JSON-LD, metadata, and visible product state need to line up.",
+      },
+      {
+        href: "/blog/shopify-hydrogen-product-description-ssr-seo",
+        label: "Product description SSR note",
+        note: "Related page-state consistency issue for product content.",
+      },
+    ],
+    externalLinks: [
+      {
+        href: "https://shopify.dev/docs/storefronts/headless/hydrogen/seo",
+        label: "Shopify Hydrogen SEO docs",
+        note: "Official Shopify guidance for JSON-LD in Hydrogen.",
+      },
+    ],
+  },
+  "hydrogen-variant-urls-seo": {
+    heroVisual: {
+      type: "code-card",
+      src: "/generated/blog/hydrogen-nextjs-cover.jpg",
+      alt: "Hydrogen variant URL state visual with selected options, canonical rules, and fallback paths.",
+      title: "Hydrogen variant URLs and SEO",
+      width: 1672,
+      height: 941,
+    },
+    faq: [
+      {
+        question: "Are variant URLs an SEO risk in Hydrogen?",
+        answer:
+          "They can be if search params, selected options, canonical URLs, and visible variant state drift apart. Stable rules matter more than exposing every possible state.",
+      },
+    ],
+    internalLinks: [
+      {
+        href: "/shopify-hydrogen-seo",
+        label: "Shopify Hydrogen SEO",
+        note: "The service page for variant URL, canonical, and structured-data decisions.",
+      },
+      {
+        href: "/blog/shopify-hydrogen-variant-selection-fallback",
+        label: "Variant fallback note",
+        note: "Related production note about preserving shopper-selected options.",
+      },
+    ],
+    externalLinks: [
+      {
+        href: "https://shopify.dev/docs/storefronts/headless/hydrogen/seo",
+        label: "Shopify Hydrogen SEO docs",
+        note: "Official Shopify grounding for canonical and route metadata behavior.",
+      },
+    ],
+  },
+  "hydrogen-product-content-ssr": {
+    heroVisual: {
+      type: "code-card",
+      src: "/generated/blog/hydrogen-seo-checklist-cover.jpg",
+      alt: "Hydrogen server-rendered product content visual with initial HTML and crawler-visible copy.",
+      title: "Hydrogen product content SSR",
+      width: 1672,
+      height: 941,
+    },
+    faq: [
+      {
+        question: "Should important product content be in initial HTML?",
+        answer:
+          "Yes. If the content helps shoppers decide or crawlers understand the page, it should not depend only on a client-side fetch.",
+      },
+    ],
+    internalLinks: [
+      {
+        href: "/blog/shopify-hydrogen-product-description-ssr-seo",
+        label: "Product description SSR note",
+        note: "A concrete production note on this exact issue.",
+      },
+      {
+        href: "/shopify-hydrogen-performance-optimization",
+        label: "Performance optimization",
+        note: "SSR, product content, and perceived speed often overlap.",
+      },
+    ],
+    externalLinks: [
+      {
+        href: "https://shopify.dev/docs/storefronts/headless/hydrogen/seo",
+        label: "Shopify Hydrogen SEO docs",
+        note: "Official Shopify SEO grounding for Hydrogen pages.",
+      },
+    ],
+  },
+  "what-breaks-when-moving-from-liquid-to-hydrogen": {
+    heroVisual: {
+      type: "code-card",
+      src: "/generated/blog/liquid-to-hydrogen-migration-checklist-cover.jpg",
+      alt: "Liquid to Hydrogen migration risk visual with routes, apps, analytics, and checkout handoff.",
+      title: "What breaks moving from Liquid to Hydrogen",
+      width: 1672,
+      height: 941,
+    },
+    faq: [
+      {
+        question: "What usually breaks when moving from Liquid to Hydrogen?",
+        answer:
+          "Routes, canonicals, app assumptions, analytics, consent behavior, product state, and checkout handoff are the common risk surfaces.",
+      },
+    ],
+    internalLinks: [
+      {
+        href: "/liquid-to-hydrogen-migration",
+        label: "Liquid to Hydrogen migration",
+        note: "The service page for migration planning and launch QA.",
+      },
+      {
+        href: "/shopify-hydrogen-fit-audit",
+        label: "Fit & Risk Audit",
+        note: "Use this before migration scope is approved.",
+      },
+    ],
+  },
+  "shopify-storefront-mcp-explained": {
+    heroVisual: {
+      type: "flow-diagram-svg",
+      caption: "Storefront MCP is store-scoped agentic commerce, not developer documentation grounding.",
+      steps: [
+        {
+          label: "Shopper asks",
+          body: "The agent receives a product, policy, cart, or checkout question.",
+        },
+        {
+          label: "Storefront MCP calls",
+          body: "The agent queries a selected store's catalog, cart, and policies.",
+        },
+        {
+          label: "Commerce handoff",
+          body: "The shopper reviews products and completes checkout through the trusted flow.",
+        },
+      ],
+    },
+    faq: [
+      {
+        question: "Is Storefront MCP the same as Shopify Dev MCP?",
+        answer:
+          "No. Shopify Dev MCP grounds developer documentation and API work. Storefront MCP connects an agent to a specific store's catalog, cart, and policies.",
+      },
+    ],
+    internalLinks: [
+      {
+        href: "/shopify-hydrogen-seo",
+        label: "Hydrogen SEO",
+        note: "AI-readable product pages still need crawlable, consistent storefront state.",
+      },
+      {
+        href: "/shopify-hydrogen-fit-audit",
+        label: "Hydrogen Fit & Risk Audit",
+        note: "Use this before turning agentic commerce into a rebuild reason.",
+      },
+    ],
+    externalLinks: [
+      {
+        href: "https://shopify.dev/docs/apps/build/storefront-mcp/servers/storefront",
+        label: "Storefront MCP server",
+        note: "Official Shopify Storefront MCP server reference.",
+      },
+      {
+        href: "https://shopify.dev/docs/agents/catalog/mcp",
+        label: "Catalog MCP server",
+        note: "Official Shopify UCP catalog discovery reference.",
+      },
+    ],
+  },
+  "storefront-mcp-vs-shopify-dev-mcp": {
+    heroVisual: {
+      type: "flow-diagram-svg",
+      caption: "Dev MCP supports developer grounding. Storefront MCP supports store-specific shopping agents.",
+      steps: [
+        {
+          label: "Shopify Dev MCP",
+          body: "Use for docs, API schemas, implementation grounding, and code validation.",
+        },
+        {
+          label: "Storefront MCP",
+          body: "Use for selected-store catalog, cart, checkout, and policy agent tasks.",
+        },
+        {
+          label: "UCP tools",
+          body: "Use catalog and checkout capabilities for broader agentic commerce flows.",
+        },
+      ],
+    },
+    faq: [
+      {
+        question: "Which MCP should content production use first?",
+        answer:
+          "Use Shopify Dev MCP first for Hydrogen, Oxygen, API, SEO, analytics, and platform claims. Use Storefront MCP only for store/catalog/cart/policy agentic commerce topics.",
+      },
+    ],
+    internalLinks: [
+      {
+        href: "/shopify-hydrogen-seo",
+        label: "Hydrogen SEO",
+        note: "Where AI-readable commerce overlaps with technical storefront SEO.",
+      },
+      {
+        href: "/shopify-hydrogen-audit",
+        label: "Hydrogen audit",
+        note: "The commercial entry point before building agent-facing commerce work.",
+      },
+    ],
+    externalLinks: [
+      {
+        href: "https://shopify.dev/docs/apps/build/ai-toolkit",
+        label: "Shopify AI Toolkit",
+        note: "Official Shopify AI Toolkit documentation for developer tooling context.",
+      },
+      {
+        href: "https://shopify.dev/docs/apps/build/storefront-mcp",
+        label: "About Storefront MCP",
+        note: "Official Shopify overview for store-scoped shopping agents.",
+      },
+    ],
+  },
   "shopify-plus-hydrogen": {
     heroVisual: {
       type: "code-card",

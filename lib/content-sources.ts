@@ -95,6 +95,15 @@ export const SOURCE_PACKS = {
     usedFor:
       "Universal Commerce Protocol checkout capability and authenticated Checkout MCP claims.",
   },
+  ucpCatalog: {
+    label: "Shopify: Catalog MCP server",
+    sourceType: "shopify_official",
+    topic: "ucp",
+    url: "https://shopify.dev/docs/agents/catalog/mcp",
+    retrievedAt: SHOPIFY_CONTENT_LAST_VERIFIED,
+    usedFor:
+      "Universal Commerce Protocol catalog discovery, global product search, lookup, and authenticated Catalog MCP claims.",
+  },
   customerAccountApi: {
     label: "Shopify: Customer Account API",
     sourceType: "shopify_official",
@@ -211,6 +220,216 @@ export const BLOG_SOURCE_METADATA = {
       SOURCE_PACKS.emreProductionExperience,
     ],
   },
+  "hydrogen-sitemap-robots-oxygen": {
+    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    claimTypes: ["official_shopify_fact", "emre_experience", "seo_hypothesis"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenSeo,
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "hydrogen-json-ld-product-state": {
+    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    claimTypes: ["official_shopify_fact", "emre_experience", "seo_hypothesis"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenSeo,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "hydrogen-variant-urls-seo": {
+    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    claimTypes: ["official_shopify_fact", "emre_experience", "seo_hypothesis"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenSeo,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "hydrogen-product-content-ssr": {
+    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    claimTypes: ["official_shopify_fact", "emre_experience", "seo_hypothesis"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenSeo,
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "what-breaks-when-moving-from-liquid-to-hydrogen": {
+    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.hydrogenSeo,
+      SOURCE_PACKS.hydrogenAnalytics,
+      SOURCE_PACKS.hydrogenConsent,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "shopify-hydrogen-route-mapping": {
+    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    claimTypes: ["official_shopify_fact", "emre_experience", "seo_hypothesis"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenSeo,
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "shopify-hydrogen-analytics-migration": {
+    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenAnalytics,
+      SOURCE_PACKS.hydrogenConsent,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "shopify-apps-in-hydrogen-what-to-check": {
+    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.customerAccountApi,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "hydrogen-checkout-handoff-risks": {
+    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.hydrogenAnalytics,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "what-is-shopify-hydrogen-in-plain-english": {
+    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    claimTypes: ["official_shopify_fact", "commercial_opinion"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "what-is-shopify-oxygen": {
+    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    claimTypes: ["official_shopify_fact", "commercial_opinion"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "hydrogen-vs-liquid-maintenance-cost": {
+    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "hydrogen-deployment-checklist": {
+    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.hydrogenSeo,
+      SOURCE_PACKS.hydrogenAnalytics,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "oxygen-preview-production-launch-qa": {
+    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    claimTypes: ["official_shopify_fact", "emre_experience", "seo_hypothesis"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.hydrogenSeo,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "hydrogen-environment-variables-and-launch-risk": {
+    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "shopify-storefront-mcp-explained": {
+    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    claimTypes: ["official_shopify_fact", "commercial_opinion"],
+    sourceMap: [
+      SOURCE_PACKS.storefrontMcp,
+      SOURCE_PACKS.ucpCatalog,
+      SOURCE_PACKS.ucpCheckout,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "storefront-mcp-vs-shopify-dev-mcp": {
+    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    claimTypes: ["official_shopify_fact", "commercial_opinion"],
+    sourceMap: [
+      SOURCE_PACKS.storefrontMcp,
+      SOURCE_PACKS.ucpCatalog,
+      SOURCE_PACKS.ucpCheckout,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "what-ucp-means-for-shopify-merchants": {
+    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    claimTypes: ["official_shopify_fact", "commercial_opinion"],
+    sourceMap: [
+      SOURCE_PACKS.ucpCatalog,
+      SOURCE_PACKS.ucpCheckout,
+      SOURCE_PACKS.storefrontMcp,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "is-hydrogen-ready-for-ai-shopping-agents": {
+    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.hydrogenSeo,
+      SOURCE_PACKS.storefrontMcp,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "ai-readable-shopify-product-pages": {
+    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    claimTypes: ["official_shopify_fact", "emre_experience", "seo_hypothesis"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenSeo,
+      SOURCE_PACKS.storefrontMcp,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "shopify-hydrogen-seo-for-ai-agents": {
+    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    claimTypes: ["official_shopify_fact", "emre_experience", "seo_hypothesis"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenSeo,
+      SOURCE_PACKS.storefrontMcp,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "storefront-mcp-product-discovery-cart-checkout": {
+    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    claimTypes: ["official_shopify_fact", "commercial_opinion"],
+    sourceMap: [
+      SOURCE_PACKS.storefrontMcp,
+      SOURCE_PACKS.ucpCatalog,
+      SOURCE_PACKS.ucpCheckout,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "should-your-store-build-an-ai-shopping-agent": {
+    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
+    sourceMap: [
+      SOURCE_PACKS.storefrontMcp,
+      SOURCE_PACKS.ucpCatalog,
+      SOURCE_PACKS.hydrogenSeo,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
 } as const satisfies Record<string, ContentSourceMetadata>;
 
 export const STATIC_PAGE_SOURCE_METADATA = {
@@ -283,6 +502,80 @@ export const STATIC_PAGE_SOURCE_METADATA = {
     claimTypes: ["emre_experience", "case_study_fact", "commercial_opinion"],
     sourceMap: [
       SOURCE_PACKS.caseStudyEvidence,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "/shopify-hydrogen-agency-usa": {
+    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    claimTypes: ["official_shopify_fact", "case_study_fact", "commercial_opinion"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.caseStudyEvidence,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "/shopify-hydrogen-fit-audit": {
+    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.hydrogenSeo,
+      SOURCE_PACKS.hydrogenAnalytics,
+      SOURCE_PACKS.hydrogenConsent,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "/shopify-hydrogen-maintenance-cost": {
+    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.hydrogenAnalytics,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "/shopify-hydrogen-vs-liquid": {
+    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.hydrogenSeo,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "/shopify-hydrogen-for-luxury-jewelry": {
+    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    claimTypes: ["case_study_fact", "emre_experience", "commercial_opinion"],
+    sourceMap: [
+      SOURCE_PACKS.caseStudyEvidence,
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "/shopify-hydrogen-for-large-catalog-retail": {
+    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    claimTypes: ["case_study_fact", "emre_experience", "commercial_opinion"],
+    sourceMap: [
+      SOURCE_PACKS.caseStudyEvidence,
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "/shopify-hydrogen-for-dtc-education-brands": {
+    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    claimTypes: ["case_study_fact", "emre_experience", "commercial_opinion"],
+    sourceMap: [
+      SOURCE_PACKS.caseStudyEvidence,
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "/shopify-hydrogen-for-beauty-brands": {
+    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    claimTypes: ["case_study_fact", "emre_experience", "commercial_opinion"],
+    sourceMap: [
+      SOURCE_PACKS.caseStudyEvidence,
+      SOURCE_PACKS.hydrogenFundamentals,
       SOURCE_PACKS.emreProductionExperience,
     ],
   },

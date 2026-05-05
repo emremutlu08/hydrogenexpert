@@ -38,8 +38,30 @@ These are the next Supabase-backed posts to publish. They should be inserted or 
 | `liquid-to-hydrogen-migration-checklist` | `liquid to hydrogen migration` | Migration support article |
 | `shopify-hydrogen-performance-checklist` | `shopify hydrogen performance` | Optimization support article |
 | `shopify-hydrogen-seo-checklist` | `shopify hydrogen seo checklist` | SEO support article |
+| `hydrogen-sitemap-robots-oxygen` | `hydrogen sitemap robots oxygen` | SEO cluster support |
+| `hydrogen-json-ld-product-state` | `hydrogen json-ld product state` | SEO cluster support |
+| `hydrogen-variant-urls-seo` | `hydrogen variant urls seo` | SEO cluster support |
+| `hydrogen-product-content-ssr` | `hydrogen product content ssr` | SEO cluster support |
+| `what-breaks-when-moving-from-liquid-to-hydrogen` | `what breaks moving from liquid to hydrogen` | Migration cluster support |
+| `shopify-storefront-mcp-explained` | `shopify storefront mcp` | Agentic commerce cluster |
+| `storefront-mcp-vs-shopify-dev-mcp` | `storefront mcp vs shopify dev mcp` | Agentic commerce distinction |
 | `shopify-plus-hydrogen` | `shopify plus hydrogen` | Plus-brand commercial article |
 | `shopify-hydrogen-developer-vs-agency` | `shopify hydrogen agency` | Buyer-intent comparison |
+
+## MCP-Grounded Blog Metadata Template
+
+Use `content/blog-templates/mcp-grounded-blog-template.md` before writing a new article. Every future technical blog draft should have:
+
+- `title`
+- `description`
+- `targetKeyword`
+- `searchIntent`
+- `reviewedBy`
+- `contentType`
+- `lastVerified`
+- `sourceMap`
+
+Keep source metadata in `lib/content-sources.ts` until the Supabase content engine proves useful enough to justify a schema migration.
 
 ## Hydrogen Freshness Checklist
 

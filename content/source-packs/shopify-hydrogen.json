@@ -1,0 +1,93 @@
+{
+  "lastVerified": "2026-05-05",
+  "sourcePacks": [
+    {
+      "topic": "Hydrogen fundamentals",
+      "officialSourceLabel": "Shopify: Hydrogen and Oxygen fundamentals",
+      "url": "https://shopify.dev/docs/storefronts/headless/hydrogen/fundamentals",
+      "keyFacts": [
+        "Hydrogen is Shopify's framework for building custom storefronts.",
+        "Oxygen is Shopify's hosting platform for Hydrogen storefronts.",
+        "Hydrogen storefronts require application-level ownership after launch."
+      ],
+      "pagesUsingIt": [
+        "/",
+        "/services",
+        "/shopify-hydrogen-vs-liquid",
+        "/shopify-hydrogen-maintenance-cost"
+      ]
+    },
+    {
+      "topic": "Hydrogen SEO",
+      "officialSourceLabel": "Shopify: Search Engine Optimization for Hydrogen",
+      "url": "https://shopify.dev/docs/storefronts/headless/hydrogen/seo",
+      "keyFacts": [
+        "Hydrogen SEO work includes metadata, canonical URLs, JSON-LD, sitemap, and robots behavior.",
+        "Product state, route state, and structured data should stay consistent.",
+        "Sitemap and robots behavior needs launch QA."
+      ],
+      "pagesUsingIt": [
+        "/shopify-hydrogen-seo",
+        "/liquid-to-hydrogen-migration",
+        "/shopify-hydrogen-fit-audit"
+      ]
+    },
+    {
+      "topic": "Analytics and consent",
+      "officialSourceLabel": "Shopify: Analytics with Hydrogen and Oxygen",
+      "url": "https://shopify.dev/docs/storefronts/headless/hydrogen/analytics",
+      "keyFacts": [
+        "Hydrogen analytics work should be checked against Shopify's current analytics and customer privacy guidance.",
+        "Consent behavior matters when tracking touches customer privacy-sensitive surfaces."
+      ],
+      "pagesUsingIt": [
+        "/shopify-hydrogen-audit",
+        "/liquid-to-hydrogen-migration",
+        "/shopify-hydrogen-performance-optimization"
+      ]
+    },
+    {
+      "topic": "Customer Account API",
+      "officialSourceLabel": "Shopify: Customer Account API reference",
+      "url": "https://shopify.dev/docs/api/customer/2026-04",
+      "keyFacts": [
+        "Customer Account API is for customer-scoped data and authenticated customer actions.",
+        "Public client flows use OAuth 2.0 and PKCE.",
+        "Discovery endpoints should be used rather than hardcoded URLs."
+      ],
+      "pagesUsingIt": [
+        "/shopify-hydrogen-developer",
+        "/custom-shopify-hydrogen-storefront"
+      ]
+    },
+    {
+      "topic": "Storefront MCP",
+      "officialSourceLabel": "Shopify: Storefront MCP server",
+      "url": "https://shopify.dev/docs/apps/build/storefront-mcp/servers/storefront",
+      "keyFacts": [
+        "Storefront MCP connects an AI agent to a specific Shopify store's catalog, cart, and policies.",
+        "Storefront MCP is store-scoped and uses a store-specific endpoint.",
+        "Storefront MCP should not be treated as the source for Hydrogen developer documentation."
+      ],
+      "pagesUsingIt": [
+        "/",
+        "/blog/shopify-storefront-mcp-explained",
+        "/blog/storefront-mcp-vs-shopify-dev-mcp"
+      ]
+    },
+    {
+      "topic": "UCP catalog and checkout",
+      "officialSourceLabel": "Shopify: Catalog MCP server and Checkout MCP server",
+      "url": "https://shopify.dev/docs/agents/catalog/mcp",
+      "keyFacts": [
+        "Catalog MCP supports product discovery across Shopify's broader catalog ecosystem.",
+        "Checkout MCP supports checkout session creation and trusted handoff behavior.",
+        "UCP content should distinguish discovery, checkout, orders, and store-scoped Storefront MCP surfaces."
+      ],
+      "pagesUsingIt": [
+        "/blog/shopify-storefront-mcp-explained",
+        "/blog/storefront-mcp-vs-shopify-dev-mcp"
+      ]
+    }
+  ]
+}
