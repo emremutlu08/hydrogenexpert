@@ -17,7 +17,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 - PR: [#12 Expand source-grounded Hydrogen authority pages](https://github.com/emremutlu08/hydrogenexpert/pull/12)
 - Branch: `codex/source-grounded-authority-expansion`
-- Deployment: [Production deploy](https://hydrogenexpert-9ehd7194j-emremutlu8s-projects.vercel.app) aliased to `https://hydrogenexpert.co`.
+- Deployment: [Production deploy](https://hydrogenexpert-dgtyw8vbc-emremutlu8s-projects.vercel.app) aliased to `https://hydrogenexpert.co`.
 - Summary:
   - Reworked the shared service landing model so all 10 Hydrogen service pages now include unique middle sections, decision tables, contextual proof links, and wrong-fit guidance.
   - Added direct pricing ranges to `/shopify-hydrogen-cost` and productized `/shopify-hydrogen-audit` with the Shopify Hydrogen Fit & Risk Audit offer details.
