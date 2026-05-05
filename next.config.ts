@@ -47,8 +47,8 @@ const securityHeaders = [
     value: "same-site",
   },
   {
-    key: "X-Robots-Tag",
-    value: "index, follow",
+    key: "Strict-Transport-Security",
+    value: "max-age=63072000; includeSubDomains",
   },
 ];
 

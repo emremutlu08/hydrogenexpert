@@ -24,33 +24,46 @@ function buildSummary() {
     "- Delivery model: Senior-led Hydrogen studio / agency alternative, not a fake local office or broad full-service agency",
     "- Audience: Shopify Plus and growth-stage ecommerce teams researching Hydrogen, headless Shopify, migrations, audits, cost, and support",
     "- Primary goal: Qualified Hydrogen fit audit, scoping, migration, build, optimization, and support inquiries",
-    `- LinkedIn: ${OWNER.linkedIn}`,
-    `- Upwork: ${OWNER.upwork}`,
+    llmsLink("LinkedIn", OWNER.linkedIn, "Primary professional profile for Emre Mutlu."),
+    llmsLink("Upwork", OWNER.upwork, "Public marketplace profile for Hydrogen delivery proof."),
+    llmsLink("Udemy", OWNER.udemyUrl, "Public Shopify Hydrogen teaching profile."),
     "",
   ].join("\n");
 }
 
+function llmsLink(title: string, pathOrUrl: string, description: string) {
+  const url = pathOrUrl.startsWith("http") ? pathOrUrl : absoluteUrl(pathOrUrl);
+
+  return `- [${title}](${url}): ${description}`;
+}
+
 function buildPageIndex() {
   const serviceLines = SERVICE_PACKAGES.map(
-    (servicePackage) => `- ${servicePackage.name}: ${absoluteUrl(servicePackage.pagePath)}`,
+    (servicePackage) =>
+      llmsLink(servicePackage.name, servicePackage.pagePath, servicePackage.summary),
   );
   const caseStudyLines = CASE_STUDIES.map(
-    (study) => `- ${study.clientName}: ${absoluteUrl(`/case-studies/${study.slug}`)}`,
+    (study) =>
+      llmsLink(
+        study.clientName,
+        `/case-studies/${study.slug}`,
+        `${study.clientName} Shopify Hydrogen case-study context for ${study.industry.toLowerCase()}.`,
+      ),
   );
 
   return [
     "## Core pages",
     "",
-    `- Home: ${absoluteUrl("/")}`,
-    `- Services: ${absoluteUrl("/services")}`,
+    llmsLink("Home", "/", "Senior-led Shopify Hydrogen services, proof, case studies, and fit guidance."),
+    llmsLink("Services", "/services", "Overview of Hydrogen audits, migrations, custom builds, performance, SEO, and support paths."),
     ...serviceLines,
-    `- What Is Hydrogen: ${absoluteUrl("/what-is-hydrogen")}`,
-    `- Should I Use It: ${absoluteUrl("/should-i-use-it")}`,
-    `- Cost: ${absoluteUrl("/shopify-hydrogen-cost")}`,
-    `- Case Studies: ${absoluteUrl("/case-studies")}`,
+    llmsLink("What Is Hydrogen", "/what-is-hydrogen", "Plain-English explanation of Shopify Hydrogen for Shopify Plus and growth-stage brands."),
+    llmsLink("Should I Use It", "/should-i-use-it", "Merchant decision guide for when Hydrogen is or is not commercially justified."),
+    llmsLink("Cost", "/shopify-hydrogen-cost", "Hydrogen budget planning, scope ranges, and maintenance-cost guidance."),
+    llmsLink("Case Studies", "/case-studies", "Approved production contexts for EveShop, Bayam Jewelry, and Rebel Bunny."),
     ...caseStudyLines,
-    `- Hire Me: ${absoluteUrl("/hire-me")}`,
-    `- Blog: ${absoluteUrl("/blog")}`,
+    llmsLink("Hire Me", "/hire-me", "Direct hiring page for a senior Shopify Hydrogen developer and advisor."),
+    llmsLink("Blog", "/blog", "Production notes on Hydrogen SEO, SSR content, metaobjects, variants, and performance."),
     "",
   ].join("\n");
 }
@@ -79,7 +92,12 @@ export async function buildLlmsFullTxt() {
       ? posts
           .map(
             (post) =>
-              `- ${post.title}: ${absoluteUrl(`/blog/${post.slug}`)}${post.metaDescription ? ` — ${post.metaDescription}` : ""}`,
+              llmsLink(
+                post.title,
+                `/blog/${post.slug}`,
+                post.metaDescription ||
+                  "Shopify Hydrogen production note from HydrogenExpert.",
+              ),
           )
           .join("\n")
       : "- No published posts found.";

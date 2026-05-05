@@ -17,6 +17,7 @@ import {
   SITE_LOGO_PATH,
   SITE_NAME,
   VERIFIED_PROFILE_URLS,
+  getSchemaIds,
   getSiteUrl,
 } from "@/lib/site";
 import {
@@ -31,6 +32,7 @@ const geist = Geist({
 });
 
 const verification = process.env.GOOGLE_SITE_VERIFICATION;
+const bingVerification = process.env.BING_SITE_VERIFICATION;
 const gaId = getValidGaMeasurementId();
 
 export const metadata: Metadata = {
@@ -73,6 +75,7 @@ export default async function RootLayout({
 }>) {
   const navItems = await getSiteNavigation();
   const siteUrl = getSiteUrl();
+  const schemaIds = getSchemaIds();
   const proofLinks = VERIFIED_PROFILE_URLS.filter(Boolean);
   const logoUrl = `${siteUrl}${SITE_LOGO_PATH}`;
   const rootSchema = asSchemaArray(
@@ -82,7 +85,8 @@ export default async function RootLayout({
       url: OWNER.linkedIn,
       image: `${siteUrl}${FOUNDER_IMAGE_PATH}`,
       sameAs: proofLinks,
-      id: `${siteUrl}/about#emre-mutlu`,
+      id: schemaIds.person,
+      worksForId: schemaIds.professionalService,
     }),
     buildProfessionalServiceSchema({
       name: SITE_NAME,
@@ -94,6 +98,8 @@ export default async function RootLayout({
       logo: logoUrl,
       image: logoUrl,
       founderUrl: OWNER.linkedIn,
+      id: schemaIds.professionalService,
+      founderId: schemaIds.person,
     }),
   );
 
@@ -102,6 +108,9 @@ export default async function RootLayout({
       <head>
         {verification ? (
           <meta name="google-site-verification" content={verification} />
+        ) : null}
+        {bingVerification ? (
+          <meta name="msvalidate.01" content={bingVerification} />
         ) : null}
       </head>
       <body className="bg-white text-slate-900 antialiased">

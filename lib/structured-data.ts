@@ -49,6 +49,7 @@ export function buildPersonSchema({
   image,
   sameAs,
   id,
+  worksForId,
 }: {
   name: string;
   title: string;
@@ -56,6 +57,7 @@ export function buildPersonSchema({
   image: string;
   sameAs: readonly string[];
   id?: string;
+  worksForId?: string;
 }) {
   return {
     "@context": "https://schema.org",
@@ -66,6 +68,15 @@ export function buildPersonSchema({
     url,
     image,
     sameAs,
+    ...(worksForId
+      ? {
+          worksFor: {
+            "@type": "ProfessionalService",
+            "@id": worksForId,
+            name: "HydrogenExpert",
+          },
+        }
+      : {}),
     knowsAbout: [
       "Shopify Hydrogen",
       "Shopify Liquid",
@@ -85,6 +96,8 @@ export function buildProfessionalServiceSchema({
   logo,
   image,
   founderUrl,
+  id,
+  founderId,
 }: {
   name: string;
   url: string;
@@ -94,10 +107,13 @@ export function buildProfessionalServiceSchema({
   logo?: string;
   image?: string;
   founderUrl?: string;
+  id?: string;
+  founderId?: string;
 }) {
   return {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
+    ...(id ? { "@id": id } : {}),
     name,
     url,
     description,
@@ -105,11 +121,19 @@ export function buildProfessionalServiceSchema({
     ...(image ? { image } : {}),
     founder: {
       "@type": "Person",
+      ...(founderId ? { "@id": founderId } : {}),
       name: founderName,
       ...(founderUrl ? { url: founderUrl } : {}),
     },
     areaServed: "Worldwide",
     sameAs,
+    knowsAbout: [
+      "Shopify Hydrogen",
+      "Headless Shopify",
+      "Liquid to Hydrogen migration",
+      "Shopify storefront performance",
+      "Shopify Hydrogen SEO",
+    ],
     serviceType: [
       "Shopify Hydrogen development",
       "Shopify Hydrogen audit",
@@ -124,6 +148,8 @@ export function buildServiceSchema({
   url,
   description,
   providerName,
+  providerUrl,
+  providerId,
   serviceType,
   areaServed = "Worldwide",
 }: {
@@ -131,6 +157,8 @@ export function buildServiceSchema({
   url: string;
   description: string;
   providerName: string;
+  providerUrl?: string;
+  providerId?: string;
   serviceType: string;
   areaServed?: string;
 }) {
@@ -144,8 +172,9 @@ export function buildServiceSchema({
     areaServed,
     provider: {
       "@type": "ProfessionalService",
+      ...(providerId ? { "@id": providerId } : {}),
       name: providerName,
-      url,
+      url: providerUrl ?? url,
     },
   };
 }
@@ -155,12 +184,14 @@ export function buildCreativeWorkSchema({
   url,
   description,
   creatorName,
+  creatorId,
   dateModified,
 }: {
   name: string;
   url: string;
   description: string;
   creatorName: string;
+  creatorId?: string;
   dateModified: string;
 }) {
   return {
@@ -171,6 +202,7 @@ export function buildCreativeWorkSchema({
     description,
     creator: {
       "@type": "Person",
+      ...(creatorId ? { "@id": creatorId } : {}),
       name: creatorName,
     },
     dateModified,
@@ -182,19 +214,25 @@ export function buildCaseStudyArticleSchema({
   url,
   description,
   authorName,
+  authorId,
   datePublished,
   dateModified,
   image,
   publisherLogo,
+  publisherId,
+  publisherUrl,
 }: {
   headline: string;
   url: string;
   description: string;
   authorName: string;
+  authorId?: string;
   datePublished: string;
   dateModified: string;
   image?: string;
   publisherLogo?: string;
+  publisherId?: string;
+  publisherUrl?: string;
 }) {
   return {
     "@context": "https://schema.org",
@@ -204,11 +242,14 @@ export function buildCaseStudyArticleSchema({
     description,
     author: {
       "@type": "Person",
+      ...(authorId ? { "@id": authorId } : {}),
       name: authorName,
     },
     publisher: {
       "@type": "Organization",
+      ...(publisherId ? { "@id": publisherId } : {}),
       name: "HydrogenExpert",
+      ...(publisherUrl ? { url: publisherUrl } : {}),
       ...(publisherLogo
         ? {
             logo: {
@@ -229,13 +270,16 @@ export function buildPublisherSchema({
   name,
   url,
   logo,
+  id,
 }: {
   name: string;
   url: string;
   logo: string;
+  id?: string;
 }) {
   return {
     "@type": "Organization",
+    ...(id ? { "@id": id } : {}),
     name,
     url,
     logo: {

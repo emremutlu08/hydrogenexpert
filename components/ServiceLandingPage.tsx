@@ -7,7 +7,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { PageIntroSection } from "@/components/PageIntroSection";
 import { SectionHeader } from "@/components/SectionHeader";
 import type { ServicePackage } from "@/lib/services";
-import { absoluteUrl, OWNER } from "@/lib/site";
+import { absoluteUrl, getSchemaIds, OWNER } from "@/lib/site";
 import {
   asSchemaArray,
   buildBreadcrumbListSchema,
@@ -20,6 +20,7 @@ interface ServiceLandingPageProps {
 }
 
 export function ServiceLandingPage({ service }: ServiceLandingPageProps) {
+  const schemaIds = getSchemaIds();
   const breadcrumbs = [
     { label: "Home", href: "/" },
     { label: "Services", href: "/services" },
@@ -36,6 +37,8 @@ export function ServiceLandingPage({ service }: ServiceLandingPageProps) {
     url: absoluteUrl(service.pagePath),
     description: service.metaDescription,
     providerName: "HydrogenExpert",
+    providerUrl: absoluteUrl("/"),
+    providerId: schemaIds.professionalService,
     serviceType: service.name,
   });
   const faqSchema = buildFaqPageSchema(service.faq);
@@ -52,6 +55,15 @@ export function ServiceLandingPage({ service }: ServiceLandingPageProps) {
           description={service.summary}
           body={service.commercialIntent}
         />
+
+        <section className="surface-card space-y-3">
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#10b981]">
+            Short answer
+          </p>
+          <p className="max-w-4xl text-lg leading-8 text-neutral-700">
+            {service.name} is the right next step when {service.bestFor.charAt(0).toLowerCase() + service.bestFor.slice(1)} If that pressure is not visible yet, start with a narrower audit before buying a full Hydrogen scope.
+          </p>
+        </section>
 
         <section className="grid gap-6 lg:grid-cols-[0.92fr_1.08fr]">
           <div className="hero-card space-y-5">
@@ -173,32 +185,37 @@ export function ServiceLandingPage({ service }: ServiceLandingPageProps) {
             description="Use this table to keep the page tied to a real buyer decision instead of a generic service pitch."
             className="max-w-5xl"
           />
-          <div className="grid gap-4">
-            {service.decisionTable.map((row) => (
-              <article
-                key={row.signal}
-                className="grid gap-4 rounded-[1.2rem] border border-black/8 bg-white p-5 md:grid-cols-[1fr_1fr_1fr]"
-              >
-                <div>
-                  <p className="text-[0.68rem] font-bold uppercase tracking-[0.2em] text-[#10b981]">
+          <div className="overflow-x-auto rounded-[1.2rem] border border-black/8 bg-white">
+            <table className="min-w-full border-collapse text-left text-sm">
+              <thead className="bg-[#f7f7f7]">
+                <tr>
+                  <th className="px-5 py-4 font-bold uppercase tracking-[0.16em] text-[#0f8a5d]">
                     Signal
-                  </p>
-                  <p className="mt-3 text-sm leading-7 text-neutral-700">{row.signal}</p>
-                </div>
-                <div>
-                  <p className="text-[0.68rem] font-bold uppercase tracking-[0.2em] text-[#10b981]">
+                  </th>
+                  <th className="px-5 py-4 font-bold uppercase tracking-[0.16em] text-[#0f8a5d]">
                     Stronger move
-                  </p>
-                  <p className="mt-3 text-sm leading-7 text-neutral-700">{row.strongerMove}</p>
-                </div>
-                <div>
-                  <p className="text-[0.68rem] font-bold uppercase tracking-[0.2em] text-[#10b981]">
+                  </th>
+                  <th className="px-5 py-4 font-bold uppercase tracking-[0.16em] text-[#0f8a5d]">
                     Caution
-                  </p>
-                  <p className="mt-3 text-sm leading-7 text-neutral-700">{row.caution}</p>
-                </div>
-              </article>
-            ))}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {service.decisionTable.map((row) => (
+                  <tr key={row.signal} className="border-t border-black/8 align-top">
+                    <td className="min-w-[14rem] px-5 py-4 leading-7 text-neutral-700">
+                      {row.signal}
+                    </td>
+                    <td className="min-w-[14rem] px-5 py-4 leading-7 text-neutral-700">
+                      {row.strongerMove}
+                    </td>
+                    <td className="min-w-[14rem] px-5 py-4 leading-7 text-neutral-700">
+                      {row.caution}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </section>
 

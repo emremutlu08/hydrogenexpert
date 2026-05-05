@@ -149,7 +149,7 @@ const SERVICE_PACKAGE_BASES = [
     title: "Plan headless Shopify without buying complexity first",
     metaTitle: "Headless Shopify Agency Alternative | Emre Mutlu",
     metaDescription:
-      "Headless Shopify agency alternative for brands evaluating Hydrogen, custom storefront architecture, Liquid tradeoffs, SEO risk, migration cost, and launch support.",
+      "Headless Shopify agency alternative for brands evaluating Hydrogen, custom storefront architecture, Liquid tradeoffs, SEO risk, and launch support.",
     heroTitle: "Headless Shopify agency alternative for teams comparing serious storefront paths",
     summary:
       "A practical path for brands researching headless Shopify agencies and needing a senior Hydrogen perspective on whether headless is justified at all.",
@@ -211,7 +211,7 @@ const SERVICE_PACKAGE_BASES = [
     title: "Hire a senior Shopify Hydrogen developer for direct storefront work",
     metaTitle: "Shopify Hydrogen Developer for Shopify Plus Brands | Emre Mutlu",
     metaDescription:
-      "Hire a senior Shopify Hydrogen developer for audits, Liquid to Hydrogen migrations, custom storefront builds, SEO fixes, performance cleanup, and launch support.",
+      "Hire a senior Shopify Hydrogen developer for audits, migrations, custom builds, SEO fixes, performance cleanup, and launch support.",
     heroTitle: "Shopify Hydrogen developer for stores that need senior execution",
     summary:
       "Direct Hydrogen implementation and advisory for Shopify Plus brands that need someone who can scope, build, debug, and launch without a translation layer.",
@@ -398,7 +398,7 @@ const SERVICE_PACKAGE_BASES = [
     title: "Make a Hydrogen storefront crawlable, stable, and commercially useful",
     metaTitle: "Shopify Hydrogen SEO for Custom Storefronts | Emre Mutlu",
     metaDescription:
-      "Shopify Hydrogen SEO service for custom storefronts covering metadata, canonical URLs, JSON-LD, variant URLs, sitemap, robots, SSR content, and crawl consistency.",
+      "Shopify Hydrogen SEO service for custom storefronts covering metadata, canonicals, JSON-LD, variant URLs, sitemap, robots, SSR content, and crawl consistency.",
     heroTitle: "Shopify Hydrogen SEO for custom storefronts that need clean crawl signals",
     summary:
       "SEO review and implementation support for Hydrogen storefronts where route metadata, canonical choices, product state, structured data, and rendered HTML need to agree.",

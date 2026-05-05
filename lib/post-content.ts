@@ -108,10 +108,22 @@ function splitInlineHeading(line: string) {
   return null;
 }
 
+function normalizeHeadingParagraphs(content: string) {
+  return content.replace(
+    /<p\b[^>]*>\s*(#{2,4})\s+([\s\S]*?)\s*<\/p>/gi,
+    (_match, hashes: string, heading: string) => {
+      const level = Math.min(Math.max(hashes.length, 2), 4);
+
+      return `<h${level}>${heading.trim()}</h${level}>`;
+    },
+  );
+}
+
 function formatMarkdownLike(content: string) {
   const normalized = content
     .replace(/\r\n/g, "\n")
     .replace(/^##\s+([^\n]+?)\s+##$/gm, "## $1")
+    .replace(/(^|\n)(#{1,4}\s+[^\n]+)(?=\n|$)/g, "$1\n\n$2\n\n")
     .trim();
 
   const chunks = normalized.split(/\n{2,}/);
@@ -149,6 +161,10 @@ function formatMarkdownLike(content: string) {
       .map((line) => line.trim())
       .filter(Boolean)
       .flatMap((line) => {
+        if (/^#{1,4}\s+/.test(line)) {
+          return [line];
+        }
+
         const splitHeading = splitInlineHeading(line);
         return splitHeading ? [splitHeading.heading, splitHeading.rest] : [line];
       });
@@ -249,7 +265,7 @@ export function formatPostContent(content: string) {
   const contentWithoutCodeBlocks = content.replace(/```[\s\S]*?```/g, "");
   const looksLikeHtml = /<([a-z][a-z0-9]*)\b[^>]*>/i.test(contentWithoutCodeBlocks);
   if (looksLikeHtml) {
-    return sanitizeHtmlContent(content);
+    return sanitizeHtmlContent(normalizeHeadingParagraphs(content));
   }
 
   return formatMarkdownLike(content);
