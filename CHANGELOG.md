@@ -15,6 +15,50 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-05
 
+- PR: [#12 Expand source-grounded Hydrogen authority pages](https://github.com/emremutlu08/hydrogenexpert/pull/12)
+- Branch: `codex/source-grounded-authority-expansion`
+- Deployment: [Production deploy](https://hydrogenexpert-9ehd7194j-emremutlu8s-projects.vercel.app) aliased to `https://hydrogenexpert.co`.
+- Summary:
+  - Reworked the shared service landing model so all 10 Hydrogen service pages now include unique middle sections, decision tables, contextual proof links, and wrong-fit guidance.
+  - Added direct pricing ranges to `/shopify-hydrogen-cost` and productized `/shopify-hydrogen-audit` with the Shopify Hydrogen Fit & Risk Audit offer details.
+  - Added high-intent pages for `/shopify-hydrogen-fit-audit`, `/shopify-hydrogen-maintenance-cost`, `/shopify-hydrogen-vs-liquid`, and `/shopify-hydrogen-agency-usa`.
+  - Added proof-backed vertical pages for luxury jewelry, large-catalog retail, DTC education brands, and beauty brands.
+  - Deepened case-study detail pages with proof briefs, limitations, and relevant service/vertical links.
+  - Added source-pack data, MCP-grounded blog template, and a full cluster manifest for Hydrogen SEO, Liquid to Hydrogen migration, Hydrogen/Oxygen runtime, and Storefront MCP/UCP content.
+  - Expanded `lib/content-sources.ts`, blog enhancements, claim audit, and content validation so new decision pages and planned cluster posts are source-mapped.
+- Files changed:
+  - `lib/services.ts`
+  - `components/ServiceLandingPage.tsx`
+  - `components/DecisionLandingPage.tsx`
+  - `lib/decision-pages.ts`
+  - `lib/content-sources.ts`
+  - `lib/post-enhancements.ts`
+  - `lib/sitemap-entries.ts`
+  - `content/source-packs/shopify-hydrogen.json`
+  - `content/blog-templates/mcp-grounded-blog-template.md`
+  - `content/blog-clusters/shopify-authority-clusters.json`
+  - New `app/shopify-hydrogen-*` and vertical proof routes
+  - `app/case-studies/[slug]/page.tsx`
+  - `scripts/audit-shopify-claims.ts`
+  - `scripts/validate-content.ts`
+  - `tests/design-standardization.test.ts`
+  - `BLOG_PUBLISHING_PLAYBOOK.md`
+- Verification:
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm test`: 25 tests passed.
+  - `npm run build`: passed, 47 local static pages generated before deploy.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed with 0 pages needing source review.
+  - Branch freshness before deploy: local `HEAD` matched `origin/codex/source-grounded-authority-expansion`; ahead/behind was `0/0`.
+  - Vercel production build passed and generated 51 pages including Supabase-backed blog slugs.
+  - Live production verification: `/`, `/shopify-hydrogen-cost`, `/shopify-hydrogen-fit-audit`, `/shopify-hydrogen-agency-usa`, `/shopify-hydrogen-vs-liquid`, `/shopify-hydrogen-for-luxury-jewelry`, `/case-studies/bayam-jewelry-shopify-hydrogen`, `/sitemap.xml`, and `/robots.txt` returned HTTP 200 from `https://hydrogenexpert.co`.
+  - Live canonical/schema verification: key pages returned expected canonical URLs and JSON-LD.
+  - Live sitemap verification: sitemap includes new high-intent routes and excludes `/shopify-hydrogen-seo-guide`.
+  - Live mobile/desktop browser verification: `/shopify-hydrogen-fit-audit`, `/shopify-hydrogen-agency-usa`, `/shopify-hydrogen-vs-liquid`, and `/shopify-hydrogen-for-luxury-jewelry` returned one H1, breadcrumb UI, and no horizontal overflow at 1440px and 390px widths.
+- Manual follow-up:
+  - Supabase-backed blog cluster posts are planned and source-mapped in code; publish/update the actual `posts` rows through the existing blog workflow when ready to make each article public.
+
 - PR: [#11 Add source-grounded content governance](https://github.com/emremutlu08/hydrogenexpert/pull/11)
 - Branch: `codex/source-grounded-authority-foundation`
 - Deployment: [Production deploy](https://hydrogenexpert-bufhsu7jh-emremutlu8s-projects.vercel.app) aliased to `https://hydrogenexpert.co`.
