@@ -316,8 +316,8 @@ const references = [
 
 const technicalResources = [
   {
-    title: "Shopify Hydrogen SEO Guide",
-    href: "/shopify-hydrogen-seo-guide",
+    title: "Shopify Hydrogen SEO",
+    href: "/shopify-hydrogen-seo",
     body:
       "A practical guide to metadata, canonical URLs, JSON-LD, variant URLs, sitemaps, robots, and crawl consistency in custom Hydrogen storefronts.",
   },
@@ -332,6 +332,51 @@ const technicalResources = [
     href: "/blog/cut-homepage-load-time-from-5s-to-2s-shopify-hydrogen",
     body:
       "A real-world note on restoring server-rendered product data and cutting a Shopify Hydrogen homepage from roughly 5s to 2s.",
+  },
+  {
+    title: "Metaobjects for content sections",
+    href: "/blog/shopify-hydrogen-metaobjects-page-specific-sections",
+    body:
+      "A production note on using Shopify metaobjects for page-specific content sections without pushing primary content into fragile client-only paths.",
+  },
+] as const;
+
+const buyerDecisionResources = [
+  {
+    title: "US agency alternative",
+    href: "/shopify-hydrogen-agency-usa",
+    body:
+      "Remote senior-led Hydrogen support for US brands without pretending there is a fake local office.",
+  },
+  {
+    title: "Hydrogen vs Liquid",
+    href: "/shopify-hydrogen-vs-liquid",
+    body:
+      "Plain-English tradeoffs for teams deciding whether a theme can still solve the real storefront problem.",
+  },
+  {
+    title: "Maintenance cost",
+    href: "/shopify-hydrogen-maintenance-cost",
+    body:
+      "A practical look at the application ownership cost that starts after a Hydrogen storefront launches.",
+  },
+  {
+    title: "Large-catalog retail",
+    href: "/shopify-hydrogen-for-large-catalog-retail",
+    body:
+      "A vertical decision page for retailers where product discovery, scale, and route discipline matter.",
+  },
+  {
+    title: "DTC education brands",
+    href: "/shopify-hydrogen-for-dtc-education-brands",
+    body:
+      "A fit page for commerce brands where education content is part of conversion, not a separate blog layer.",
+  },
+  {
+    title: "Beauty brands",
+    href: "/shopify-hydrogen-for-beauty-brands",
+    body:
+      "A conservative beauty and cosmetics angle tied to real catalog, content, and product-story constraints.",
   },
 ] as const;
 
@@ -467,8 +512,28 @@ export default function HomePage() {
             title="Start with the pages Google and merchants should understand first."
             description="The core commercial pages explain fit, cost, and proof. These technical resources support the same positioning with practical Hydrogen SEO, URL, and performance detail."
           />
-          <div className="grid gap-4 md:grid-cols-3">
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
             {technicalResources.map((resource) => (
+              <Link
+                key={resource.href}
+                href={resource.href}
+                className="rounded-[1.3rem] border border-black/8 bg-white p-5 hover:border-[#10b981]"
+              >
+                <h3 className="text-lg font-semibold text-[#171717]">{resource.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-neutral-600">{resource.body}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <section className="surface-card space-y-6">
+          <SectionHeader
+            eyebrow="Buyer decision paths"
+            title="Route commercial research into the right supporting page."
+            description="These pages catch specific comparison, maintenance, and vertical-fit questions without turning Hydrogen into a default recommendation."
+          />
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+            {buyerDecisionResources.map((resource) => (
               <Link
                 key={resource.href}
                 href={resource.href}
