@@ -24,6 +24,7 @@ import {
   UPWORK_PROFILE,
   VERIFIED_PROFILE_URLS,
   absoluteUrl,
+  getSchemaIds,
 } from "@/lib/site";
 import {
   asSchemaArray,
@@ -32,6 +33,7 @@ import {
 } from "@/lib/structured-data";
 
 const LAST_UPDATED = "2026-04-21";
+const schemaIds = getSchemaIds();
 
 export const metadata = buildMetadata({
   title: "Senior-Led Shopify Hydrogen Agency Alternative | HydrogenExpert",
@@ -44,11 +46,17 @@ export const metadata = buildMetadata({
 const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
+  "@id": schemaIds.person,
   name: OWNER.name,
   jobTitle: OWNER.title,
   description: OWNER.headline,
   image: absoluteUrl(FOUNDER_IMAGE_PATH),
   sameAs: VERIFIED_PROFILE_URLS,
+  worksFor: {
+    "@type": "ProfessionalService",
+    "@id": schemaIds.professionalService,
+    name: SITE_NAME,
+  },
   knowsAbout: ["Shopify Hydrogen", "Shopify storefront performance", "Shopify migration planning"],
 };
 
@@ -56,17 +64,20 @@ const publisherSchema = buildPublisherSchema({
   name: SITE_NAME,
   url: absoluteUrl("/"),
   logo: absoluteUrl(SITE_LOGO_PATH),
+  id: schemaIds.organization,
 });
 
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": schemaIds.organization,
   name: SITE_NAME,
   url: absoluteUrl("/"),
   logo: absoluteUrl(SITE_LOGO_PATH),
   image: absoluteUrl(SITE_LOGO_PATH),
   founder: {
     "@type": "Person",
+    "@id": schemaIds.person,
     name: OWNER.name,
   },
   sameAs: VERIFIED_PROFILE_URLS,
@@ -75,13 +86,15 @@ const organizationSchema = {
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": schemaIds.website,
   name: SITE_NAME,
   url: absoluteUrl("/"),
   description:
     "Senior-led Shopify Hydrogen services site for brands researching Hydrogen strategy, migration fit, pricing, audits, development, and case studies.",
   publisher: {
-    "@type": "Person",
-    name: OWNER.name,
+    "@type": "Organization",
+    "@id": schemaIds.organization,
+    name: SITE_NAME,
   },
 };
 
@@ -93,6 +106,7 @@ const articleSchema = {
     "Merchant-friendly guidance on Shopify Hydrogen strategy, speed, migration fit, cost ranges, custom storefront development, and launch planning for growing brands.",
   author: {
     "@type": "Person",
+    "@id": schemaIds.person,
     name: OWNER.name,
     sameAs: VERIFIED_PROFILE_URLS,
   },
@@ -110,34 +124,6 @@ const itemListSchema = {
     { "@type": "ListItem", position: 1, name: "Audit storefront friction and system drag" },
     { "@type": "ListItem", position: 2, name: "Scope the commercial case for Hydrogen" },
     { "@type": "ListItem", position: 3, name: "Ship a production-grade storefront with launch control" },
-  ],
-};
-
-const howToSchema = {
-  "@context": "https://schema.org",
-  "@type": "HowTo",
-  name: "How to evaluate whether Shopify Hydrogen is right for your store",
-  description:
-    "A three-step merchant-friendly process for deciding whether a Shopify Hydrogen storefront is worth scoping.",
-  step: [
-    {
-      "@type": "HowToStep",
-      name: "Audit the storefront pressure points",
-      text: "Review where speed, browsing friction, and maintainability issues are slowing growth or hurting conversion.",
-      url: absoluteUrl("/#process"),
-    },
-    {
-      "@type": "HowToStep",
-      name: "Define the business case",
-      text: "Estimate scope, timing, and whether the upside is strong enough to justify a custom storefront.",
-      url: absoluteUrl("/#process"),
-    },
-    {
-      "@type": "HowToStep",
-      name: "Launch with control",
-      text: "Move forward with QA, analytics, and a launch plan that gives the operating team confidence after go-live.",
-      url: absoluteUrl("/#process"),
-    },
   ],
 };
 
@@ -391,7 +377,6 @@ export default function HomePage() {
           articleSchema,
           itemListSchema,
           faqSchema,
-          howToSchema,
         )}
       />
       <div className="page-shell">

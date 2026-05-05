@@ -18,6 +18,7 @@ import {
   UPWORK_PROFILE,
   VERIFIED_PROFILE_URLS,
   absoluteUrl,
+  getSchemaIds,
 } from "@/lib/site";
 import {
   asSchemaArray,
@@ -33,13 +34,16 @@ export const metadata = buildMetadata({
   path: "/about",
 });
 
+const schemaIds = getSchemaIds();
+
 const personSchema = buildPersonSchema({
   name: OWNER.name,
   title: OWNER.title,
   url: OWNER.linkedIn,
   image: absoluteUrl(FOUNDER_IMAGE_PATH),
   sameAs: VERIFIED_PROFILE_URLS,
-  id: absoluteUrl("/about#emre-mutlu"),
+  id: schemaIds.person,
+  worksForId: schemaIds.professionalService,
 });
 
 const profilePageSchema = buildProfilePageSchema({
@@ -117,6 +121,29 @@ const standards = [
   "When proof is partial, the page says only what is publicly supportable.",
 ] as const;
 
+const verifiedProfiles = [
+  {
+    label: "LinkedIn",
+    href: OWNER.linkedIn,
+    note: "Primary professional profile and audience signal for Emre Mutlu.",
+  },
+  {
+    label: "Upwork",
+    href: OWNER.upwork,
+    note: "Public marketplace profile for Top Rated Plus, Job Success Score, and delivery history.",
+  },
+  {
+    label: "Udemy",
+    href: OWNER.udemyUrl,
+    note: "Public teaching profile tied to the Shopify Hydrogen course.",
+  },
+  {
+    label: "Instagram",
+    href: OWNER.instagram,
+    note: "Owned public social profile used only as an entity corroboration signal.",
+  },
+] as const;
+
 export default function AboutPage() {
   return (
     <>
@@ -150,6 +177,47 @@ export default function AboutPage() {
           <ProofCardGrid items={proofCards} columnsClassName="grid gap-5 md:grid-cols-3" />
         </section>
 
+        <section className="surface-card space-y-6">
+          <SectionHeader
+            eyebrow="Verified profiles"
+            title="Canonical external profiles used for entity proof."
+            description="These are the same real profiles used by the site schema. They support Emre Mutlu as the primary entity behind HydrogenExpert without inventing a larger company footprint."
+          />
+          <div className="overflow-x-auto rounded-[1.2rem] border border-black/8 bg-white">
+            <table className="min-w-full border-collapse text-left text-sm">
+              <thead className="bg-[#f7f7f7]">
+                <tr>
+                  <th className="px-5 py-4 font-bold uppercase tracking-[0.16em] text-[#0f8a5d]">
+                    Profile
+                  </th>
+                  <th className="px-5 py-4 font-bold uppercase tracking-[0.16em] text-[#0f8a5d]">
+                    Why it is linked
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {verifiedProfiles.map((profile) => (
+                  <tr key={profile.href} className="border-t border-black/8 align-top">
+                    <td className="min-w-[12rem] px-5 py-4 font-semibold text-[#171717]">
+                      <Link
+                        href={profile.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="transition hover:text-[#10b981]"
+                      >
+                        {profile.label}
+                      </Link>
+                    </td>
+                    <td className="min-w-[18rem] px-5 py-4 leading-7 text-neutral-700">
+                      {profile.note}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
         <section className="grid gap-6 lg:grid-cols-[0.82fr_1.18fr]">
           <div className="rounded-[1.45rem] border border-black/8 bg-[#171717] p-6 text-white">
             <p className="dna-kicker text-[#8df1cb]">Proof standard</p>
@@ -166,6 +234,25 @@ export default function AboutPage() {
                 <span>{standard}</span>
               </li>
             ))}
+          </ul>
+        </section>
+
+        <section className="surface-card space-y-6">
+          <SectionHeader
+            eyebrow="Editorial standard"
+            title="How HydrogenExpert keeps technical claims useful."
+            description="The site separates official Shopify facts from Emre's operator interpretation, updates technical articles when platform behavior changes, and corrects pages instead of stretching proof."
+          />
+          <ul className="editorial-list">
+            <li>
+              <span>Shopify platform behavior is checked against official Shopify developer documentation before material content updates.</span>
+            </li>
+            <li>
+              <span>Commercial guidance is presented as operator judgment, not as guaranteed ranking, revenue, or conversion outcome.</span>
+            </li>
+            <li>
+              <span>When a public proof point changes, the site should update the claim or remove it until it can be verified again.</span>
+            </li>
           </ul>
         </section>
 

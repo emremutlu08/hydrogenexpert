@@ -114,7 +114,7 @@ export const DECISION_PAGES = {
     navLabel: "Hydrogen Fit Audit",
     metaTitle: "Shopify Hydrogen Fit & Risk Audit | Emre Mutlu",
     metaDescription:
-      "Fixed-scope Shopify Hydrogen Fit & Risk Audit covering Liquid vs Hydrogen fit, SEO, routes, apps, analytics, consent, budget range, and recommended next step.",
+      "Fixed-scope Shopify Hydrogen Fit & Risk Audit covering Liquid vs Hydrogen fit, SEO, routes, apps, analytics, consent, budget, and next step.",
     eyebrow: "Paid audit offer",
     title: "Shopify Hydrogen Fit & Risk Audit",
     description:
@@ -184,7 +184,7 @@ export const DECISION_PAGES = {
     navLabel: "Hydrogen Maintenance Cost",
     metaTitle: "Shopify Hydrogen Maintenance Cost | Emre Mutlu",
     metaDescription:
-      "Plain-English Shopify Hydrogen maintenance cost guide covering application ownership, dependencies, integrations, SEO, analytics, support, and when Liquid is cheaper.",
+      "Plain-English Shopify Hydrogen maintenance cost guide covering app ownership, dependencies, integrations, SEO, analytics, support, and when Liquid is cheaper.",
     eyebrow: "Ongoing cost",
     title: "Shopify Hydrogen maintenance cost is application ownership",
     description:

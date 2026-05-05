@@ -31,7 +31,7 @@ import {
 export const metadata = buildMetadata({
   title: "Hire a Shopify Hydrogen Developer | Emre Mutlu",
   description:
-    "Hire Emre Mutlu for senior Shopify Hydrogen audits, Liquid-to-Hydrogen migration, custom storefront builds, performance optimization, and direct launch support.",
+    "Hire Emre Mutlu for Shopify Hydrogen audits, Liquid-to-Hydrogen migration, custom storefront builds, performance optimization, and direct launch support.",
   path: "/hire-me",
 });
 

@@ -31,6 +31,7 @@ export const VERIFIED_PROFILE_URLS = [
   OWNER.linkedIn,
   OWNER.upwork,
   OWNER.udemyUrl,
+  OWNER.instagram,
 ] as const;
 
 export const SITE_KEYWORDS = [
@@ -85,4 +86,15 @@ export function getSiteUrl(): string {
 export function absoluteUrl(pathname: string): string {
   const normalizedPath = pathname === "/" ? "" : pathname;
   return `${getSiteUrl()}${normalizedPath}`;
+}
+
+export function getSchemaIds() {
+  const siteUrl = getSiteUrl();
+
+  return {
+    organization: `${siteUrl}/#organization`,
+    person: `${siteUrl}/about#emre-mutlu`,
+    professionalService: `${siteUrl}/#professionalservice`,
+    website: `${siteUrl}/#website`,
+  } as const;
 }

@@ -15,7 +15,7 @@ import { buildBreadcrumbListSchema } from "@/lib/structured-data";
 export const metadata = buildMetadata({
   title: "Shopify Hydrogen Blog for Shopify Plus Brands | Emre Mutlu",
   description:
-    "First-hand Shopify Hydrogen articles for Shopify Plus brands covering performance fixes, migration decisions, case studies, and production storefront tradeoffs.",
+    "First-hand Shopify Hydrogen articles for Shopify Plus brands covering performance fixes, migration decisions, case studies, and storefront tradeoffs.",
   path: "/blog",
 });
 

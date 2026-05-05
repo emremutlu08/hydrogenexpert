@@ -7,7 +7,7 @@ import { PageIntroSection } from "@/components/PageIntroSection";
 import { SectionHeader } from "@/components/SectionHeader";
 import { buildMetadata } from "@/lib/seo";
 import { SECONDARY_SERVICE, SERVICE_PACKAGES } from "@/lib/services";
-import { absoluteUrl } from "@/lib/site";
+import { absoluteUrl, getSchemaIds } from "@/lib/site";
 import {
   asSchemaArray,
   buildBreadcrumbListSchema,
@@ -22,6 +22,7 @@ export const metadata = buildMetadata({
 });
 
 export default function ServicesPage() {
+  const schemaIds = getSchemaIds();
   const breadcrumbs = [
     { label: "Home", href: "/" },
     { label: "Services", href: "/services" },
@@ -38,6 +39,8 @@ export default function ServicesPage() {
       url: absoluteUrl(servicePackage.pagePath),
       description: servicePackage.metaDescription,
       providerName: "HydrogenExpert",
+      providerUrl: absoluteUrl("/"),
+      providerId: schemaIds.professionalService,
       serviceType: servicePackage.name,
     }),
   );

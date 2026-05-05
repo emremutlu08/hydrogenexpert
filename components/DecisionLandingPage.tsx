@@ -6,7 +6,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { PageIntroSection } from "@/components/PageIntroSection";
 import { SectionHeader } from "@/components/SectionHeader";
 import type { DecisionPageData } from "@/lib/decision-pages";
-import { absoluteUrl } from "@/lib/site";
+import { absoluteUrl, getSchemaIds } from "@/lib/site";
 import {
   asSchemaArray,
   buildBreadcrumbListSchema,
@@ -25,6 +25,7 @@ export function DecisionLandingPage({
   page,
   parent = { href: "/services", label: "Services" },
 }: DecisionLandingPageProps) {
+  const schemaIds = getSchemaIds();
   const breadcrumbs = [
     { label: "Home", href: "/" },
     { label: parent.label, href: parent.href },
@@ -41,6 +42,8 @@ export function DecisionLandingPage({
     url: absoluteUrl(page.path),
     description: page.metaDescription,
     providerName: "HydrogenExpert",
+    providerUrl: absoluteUrl("/"),
+    providerId: schemaIds.professionalService,
     serviceType: page.navLabel,
   });
 
@@ -55,6 +58,15 @@ export function DecisionLandingPage({
           description={page.description}
           body={page.body}
         />
+
+        <section className="surface-card space-y-3">
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#10b981]">
+            Short answer
+          </p>
+          <p className="max-w-4xl text-lg leading-8 text-neutral-700">
+            {page.description} The safer decision is to compare the commercial signal, the next move, and the caution together before treating Hydrogen as the default upgrade.
+          </p>
+        </section>
 
         <section className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="hero-card space-y-5">
@@ -109,32 +121,37 @@ export function DecisionLandingPage({
             description="Each row separates the commercial signal, the recommended move, and the caution that keeps Hydrogen from becoming a default answer."
             className="max-w-5xl"
           />
-          <div className="grid gap-4">
-            {page.decisionRows.map((row) => (
-              <article
-                key={row.signal}
-                className="grid gap-4 rounded-[1.2rem] border border-black/8 bg-white p-5 md:grid-cols-3"
-              >
-                <div>
-                  <p className="text-[0.68rem] font-bold uppercase tracking-[0.2em] text-[#10b981]">
+          <div className="overflow-x-auto rounded-[1.2rem] border border-black/8 bg-white">
+            <table className="min-w-full border-collapse text-left text-sm">
+              <thead className="bg-[#f7f7f7]">
+                <tr>
+                  <th className="px-5 py-4 font-bold uppercase tracking-[0.16em] text-[#0f8a5d]">
                     Signal
-                  </p>
-                  <p className="mt-3 text-sm leading-7 text-neutral-700">{row.signal}</p>
-                </div>
-                <div>
-                  <p className="text-[0.68rem] font-bold uppercase tracking-[0.2em] text-[#10b981]">
+                  </th>
+                  <th className="px-5 py-4 font-bold uppercase tracking-[0.16em] text-[#0f8a5d]">
                     Move
-                  </p>
-                  <p className="mt-3 text-sm leading-7 text-neutral-700">{row.move}</p>
-                </div>
-                <div>
-                  <p className="text-[0.68rem] font-bold uppercase tracking-[0.2em] text-[#10b981]">
+                  </th>
+                  <th className="px-5 py-4 font-bold uppercase tracking-[0.16em] text-[#0f8a5d]">
                     Caution
-                  </p>
-                  <p className="mt-3 text-sm leading-7 text-neutral-700">{row.caution}</p>
-                </div>
-              </article>
-            ))}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {page.decisionRows.map((row) => (
+                  <tr key={row.signal} className="border-t border-black/8 align-top">
+                    <td className="min-w-[14rem] px-5 py-4 leading-7 text-neutral-700">
+                      {row.signal}
+                    </td>
+                    <td className="min-w-[14rem] px-5 py-4 leading-7 text-neutral-700">
+                      {row.move}
+                    </td>
+                    <td className="min-w-[14rem] px-5 py-4 leading-7 text-neutral-700">
+                      {row.caution}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </section>
 

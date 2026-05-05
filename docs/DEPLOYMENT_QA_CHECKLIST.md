@@ -25,6 +25,8 @@ Use this before production deployment and again after the live deployment is ava
 - [ ] Apex canonical URL is used.
 - [ ] `/sitemap.xml` returns expected URLs.
 - [ ] `/robots.txt` references the sitemap.
+- [ ] `/indexnow-key.txt` and `/.well-known/indexnow-key.txt` return the same IndexNow key.
+- [ ] Bing Webmaster verification is configured with `BING_SITE_VERIFICATION` when the account is available.
 - [ ] Touched pages are indexable unless intentionally noindexed.
 - [ ] Schema-bearing source is present in rendered HTML.
 - [ ] Form submission path is still protected by Turnstile/rate limiting.

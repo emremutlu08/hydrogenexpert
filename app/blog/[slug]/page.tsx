@@ -12,7 +12,7 @@ import { formatPostContent } from "@/lib/post-content";
 import { buildPostMarkdown } from "@/lib/post-markdown";
 import { getPublishedPostBySlug, getPublishedPostSlugs } from "@/lib/posts";
 import { buildMetadata } from "@/lib/seo";
-import { OWNER, SITE_LOGO_PATH, SITE_NAME, absoluteUrl } from "@/lib/site";
+import { OWNER, SITE_LOGO_PATH, SITE_NAME, absoluteUrl, getSchemaIds } from "@/lib/site";
 import {
   asSchemaArray,
   buildBreadcrumbListSchema,
@@ -99,6 +99,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     enhancement.heroVisual.type !== "none"
       ? enhancement.heroVisual
       : getSafeCoverVisual(post.cover_image);
+  const schemaIds = getSchemaIds();
 
   const articleSchema = {
     "@context": "https://schema.org",
@@ -108,8 +109,16 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     dateModified: post.updated_at || post.published_at,
     author: {
       "@type": "Person",
+      "@id": schemaIds.person,
       name: OWNER.name,
       url: OWNER.linkedIn,
+      sameAs: OWNER.linkedIn ? [OWNER.linkedIn, OWNER.upwork, OWNER.udemyUrl] : undefined,
+      jobTitle: OWNER.title,
+      worksFor: {
+        "@type": "ProfessionalService",
+        "@id": schemaIds.professionalService,
+        name: SITE_NAME,
+      },
     },
     url: absoluteUrl(`/blog/${post.slug}`),
     description: post.meta_description,
@@ -118,8 +127,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       name: SITE_NAME,
       url: absoluteUrl("/"),
       logo: absoluteUrl(SITE_LOGO_PATH),
+      id: schemaIds.organization,
     }),
     image: enhancement.ogImage ? absoluteUrl(enhancement.ogImage) : undefined,
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: [".card-soft p", ".article-html h2", ".article-html h3"],
+    },
   };
 
   const faqSchema = visibleFaq

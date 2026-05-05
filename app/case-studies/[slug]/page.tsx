@@ -16,7 +16,7 @@ import {
   getCaseStudyBySlug,
 } from "@/data/caseStudies";
 import { buildMetadata } from "@/lib/seo";
-import { absoluteUrl, OWNER, SITE_LOGO_PATH } from "@/lib/site";
+import { absoluteUrl, getSchemaIds, OWNER, SITE_LOGO_PATH } from "@/lib/site";
 import {
   asSchemaArray,
   buildBreadcrumbListSchema,
@@ -69,6 +69,7 @@ export default async function CaseStudyDetailPage({
   }
 
   const path = `/case-studies/${study.slug}`;
+  const schemaIds = getSchemaIds();
   const breadcrumbs = [
     { label: "Home", href: "/" },
     { label: "Case Studies", href: "/case-studies" },
@@ -85,6 +86,7 @@ export default async function CaseStudyDetailPage({
     url: absoluteUrl(path),
     description: study.metaDescription,
     authorName: OWNER.name,
+    authorId: schemaIds.person,
     datePublished: LAST_UPDATED,
     dateModified: LAST_UPDATED,
     image: study.heroImage?.src
@@ -93,12 +95,15 @@ export default async function CaseStudyDetailPage({
         ? absoluteUrl(study.logo.src)
         : undefined,
     publisherLogo: absoluteUrl(SITE_LOGO_PATH),
+    publisherId: schemaIds.organization,
+    publisherUrl: absoluteUrl("/"),
   });
   const creativeWorkSchema = buildCreativeWorkSchema({
     name: `${study.clientName} Shopify Hydrogen case study`,
     url: absoluteUrl(path),
     description: study.metaDescription,
     creatorName: OWNER.name,
+    creatorId: schemaIds.person,
     dateModified: LAST_UPDATED,
   });
 
