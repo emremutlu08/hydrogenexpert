@@ -15,6 +15,30 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-05
 
+- PR: [#15 Fix HydrogenExpert internal link authority paths](https://github.com/emremutlu08/hydrogenexpert/pull/15)
+- Branch: `codex/link-authority-cleanup`
+- Deployment: Production deployment [hydrogenexpert-njxsa3zsb-emremutlu8s-projects.vercel.app](https://hydrogenexpert-njxsa3zsb-emremutlu8s-projects.vercel.app) aliased to [https://hydrogenexpert.co](https://hydrogenexpert.co).
+- Summary:
+  - Replaced four service-page links that pointed at unpublished blog slugs with live canonical pages or published posts.
+  - Added homepage resource links for low-inlink commercial, comparison, maintenance, vertical, and supporting blog pages.
+  - Updated the homepage SEO resource to point at the canonical `/shopify-hydrogen-seo` page instead of the redirecting `/shopify-hydrogen-seo-guide` URL.
+- Files changed:
+  - `app/page.tsx`
+  - `lib/services.ts`
+- Verification:
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run build`: passed, 51 routes generated.
+  - `npm run audit:shopify-claims`: passed with 0 pages needing source review.
+  - Local production-mode link audit via `next start` on port 3015: old broken blog hrefs were absent from sampled rendered HTML, and the new resource links rendered.
+  - Local production-mode Playwright verification: homepage rendered the new resource sections with no horizontal overflow at 390px and 1440px.
+  - Vercel production build passed and generated 51 routes.
+  - Live production verification: `/`, `/sitemap.xml`, `/robots.txt`, `/shopify-hydrogen-agency-usa`, `/shopify-hydrogen-maintenance-cost`, and `/blog/shopify-hydrogen-metaobjects-page-specific-sections` returned HTTP 200 from `https://hydrogenexpert.co`.
+  - Live production link audit: old broken blog hrefs were absent from sampled rendered HTML, and expected internal authority links rendered.
+  - Live mobile/desktop browser verification: homepage had no horizontal overflow at 390px and 1440px, and the new resource links were visible in rendered text.
+- Manual follow-up:
+  - Third-party profile edits for external link/mention building still require direct access to LinkedIn, Upwork, Udemy, DEV, or other platforms.
+
 - PR: [#14 Reposition HydrogenExpert as senior-led agency alternative](https://github.com/emremutlu08/hydrogenexpert/pull/14)
 - Branch: `codex/hydrogenexpert-agency-positioning`
 - Deployment: Production deployment aliased to [https://hydrogenexpert.co](https://hydrogenexpert.co).
