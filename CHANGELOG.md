@@ -13,6 +13,59 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 - Verification:
 - Manual follow-up:
 
+## 2026-05-06
+
+- PR: [#17 Add scheduled Articles SEO architecture](https://github.com/emremutlu08/hydrogenexpert/pull/17)
+- Branch: `codex/seo-articles-scheduled-publishing`
+- Deployment: Pending production deployment after PR validation.
+- Summary:
+  - Added a separate `/articles` section for evergreen commercial SEO guides while keeping `/blog` reserved for personal production notes and first-hand implementation lessons.
+  - Added scheduled article publishing metadata, runtime public gating, future article 404 behavior, Article JSON-LD for public article pages only, and sitemap exclusion for future scheduled articles.
+  - Created five scheduled article sources for the hiring, agency comparison, experienced developer, expert proof, and cost decision clusters with 3-day publish spacing.
+  - Updated the `/shopify-hydrogen-developer` landing page title/meta/H1/copy, added a hiring decision section, and added compact production proof cards linked to approved case studies.
+  - Productized `/shopify-hydrogen-audit`, clarified `/blog`, corrected Oxygen/Plus accuracy on `/when-not-to-use-hydrogen`, added static quiz result interpretation, standardized CTA labels, softened the homepage 7-brand claim, and added `data-nosnippet` around form/footer boilerplate.
+  - Added daily scheduled publish workflow support with optional `VERCEL_DEPLOY_HOOK_URL`, SEO/GSC changelog documentation, scheduled article tests, and sitemap article coverage tests.
+- Files changed:
+  - `.github/workflows/scheduled-article-publish.yml`
+  - `app/articles/page.tsx`
+  - `app/articles/[slug]/page.tsx`
+  - `app/api/lead-capture/route.ts`
+  - `app/blog/page.tsx`
+  - `app/blog/[slug]/page.tsx`
+  - `app/case-studies/page.tsx`
+  - `app/contact/page.tsx`
+  - `app/page.tsx`
+  - `app/should-i-use-it/page.tsx`
+  - `app/sitemap.ts`
+  - `app/when-not-to-use-hydrogen/page.tsx`
+  - `components/CTASection.tsx`
+  - `components/Footer.tsx`
+  - `components/Header.tsx`
+  - `components/LeadCaptureForm.tsx`
+  - `components/ServiceLandingPage.tsx`
+  - `components/quiz/QuizResult.tsx`
+  - `docs/seo-gsc-commercial-intent-changelog.md`
+  - `lib/articles.ts`
+  - `lib/navigation.ts`
+  - `lib/services.ts`
+  - `lib/sitemap-entries.ts`
+  - `tests/articles.test.ts`
+  - `tests/sitemap-entries.test.ts`
+- Verification:
+  - Baseline before changes: `npm run lint`, `npm run typecheck`, and `npm run build` passed.
+  - `git diff --check`: passed.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run test`: 10 test files and 36 tests passed.
+  - `npm run audit:shopify-claims`: passed with 0 pages needing source review.
+  - `npm run build`: passed, 51 routes generated.
+  - Local production-mode HTTP verification: `/`, `/shopify-hydrogen-developer`, `/shopify-hydrogen-audit`, `/should-i-use-it`, `/when-not-to-use-hydrogen`, `/case-studies`, `/contact`, `/blog`, `/articles`, `/sitemap.xml`, and `/robots.txt` returned expected statuses; future scheduled article URLs returned 404, were absent from `/articles`, were absent from `/sitemap.xml`, and did not emit Article JSON-LD.
+  - Local production-mode Playwright verification at 390px: sampled pages returned one H1 and no horizontal overflow; quiz result interaction rendered the updated result label. Local Vercel Analytics and Speed Insights scripts return expected localhost-only 404/MIME console noise outside Vercel.
+- Manual follow-up:
+  - Add repository secret `VERCEL_DEPLOY_HOOK_URL` only if the deployment target needs daily rebuilds instead of relying on runtime `publishAt` gating.
+  - Inspect `/shopify-hydrogen-developer`, `/articles`, `/sitemap.xml`, and each article URL in Google Search Console on or after its publish date.
+  - Run the Search Console query-to-page checks at 7, 14, and 28 days after deployment.
+
 ## 2026-05-05
 
 - PR: [#16 Fix GEO audit findings](https://github.com/emremutlu08/hydrogenexpert/pull/16)
