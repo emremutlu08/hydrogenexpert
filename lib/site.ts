@@ -50,12 +50,22 @@ export const CLIENTS = [
   "EveShop",
 ] as const;
 
+export const DELIVERY_PROOF = {
+  productionHydrogenStorefronts: "3",
+  eveShopUsers: "400K+",
+  linkedInFollowers: "32K+",
+  firstProductionHydrogenInTurkey: "First",
+  firstEnglishHydrogenCourse: "First",
+  rebelBunnyFeedback: "5.0 Rebel Bunny feedback",
+  udemyCourseClaim: "World's First in English",
+} as const;
+
 export const TRUST_ITEMS = [
-  "Top Rated Plus",
-  "100% JSS",
-  "1,900+ hours on Upwork",
-  "32K+ LinkedIn followers",
-  "World's first in English",
+  UPWORK_PROFILE.badge,
+  `${UPWORK_PROFILE.jobSuccessScore} JSS`,
+  `${UPWORK_PROFILE.totalHoursLabel} hours on Upwork`,
+  `${DELIVERY_PROOF.linkedInFollowers} LinkedIn followers`,
+  DELIVERY_PROOF.udemyCourseClaim,
   "First in Turkey",
 ] as const;
 

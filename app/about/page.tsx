@@ -11,6 +11,7 @@ import { StatCardGrid } from "@/components/StatCardGrid";
 import { FOUNDER_STORY } from "@/lib/founder";
 import { buildMetadata } from "@/lib/seo";
 import {
+  DELIVERY_PROOF,
   FOUNDER_IMAGE_PATH,
   OWNER,
   SITE_NAME,
@@ -62,8 +63,18 @@ const breadcrumbSchema = buildBreadcrumbListSchema(
 const proofStats = [
   { id: "upwork-hours", value: UPWORK_PROFILE.totalHoursLabel, label: "hours delivered on Upwork", href: OWNER.upwork, external: true },
   { id: "jss", value: UPWORK_PROFILE.jobSuccessScore, label: "Job Success Score on Upwork", href: OWNER.upwork, external: true },
-  { id: "clients", value: "3", label: "production Shopify Hydrogen storefront contexts" },
-  { id: "course", value: "First", label: "English Shopify Hydrogen course on Udemy", href: OWNER.udemyUrl, external: true },
+  {
+    id: "clients",
+    value: DELIVERY_PROOF.productionHydrogenStorefronts,
+    label: "production Shopify Hydrogen storefront contexts",
+  },
+  {
+    id: "course",
+    value: DELIVERY_PROOF.firstEnglishHydrogenCourse,
+    label: "English Shopify Hydrogen course on Udemy",
+    href: OWNER.udemyUrl,
+    external: true,
+  },
 ] as const;
 
 const proofCards = [
@@ -72,10 +83,10 @@ const proofCards = [
     eyebrow: "Public profile",
     title: (
       <Link href={OWNER.upwork} target="_blank" rel="noreferrer" className="transition hover:text-[#10b981]">
-        Top Rated Plus on Upwork
+        {UPWORK_PROFILE.badge} on Upwork
       </Link>
     ),
-    body: "The Upwork profile carries the public delivery signal: Top Rated Plus, 100% Job Success Score, and 1,900+ hours.",
+    body: `The Upwork profile carries the public delivery signal: ${UPWORK_PROFILE.badge}, ${UPWORK_PROFILE.jobSuccessScore} Job Success Score, and ${UPWORK_PROFILE.totalHoursLabel} hours.`,
   },
   {
     id: "rebel-bunny",

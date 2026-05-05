@@ -1,4 +1,4 @@
-import { OWNER, absoluteUrl, getSiteUrl } from "@/lib/site";
+import { DELIVERY_PROOF, OWNER, UPWORK_PROFILE, absoluteUrl, getSiteUrl } from "@/lib/site";
 import { getPublishedPosts } from "@/lib/posts";
 import { CASE_STUDIES } from "@/data/caseStudies";
 import { SERVICE_PACKAGES } from "@/lib/services";
@@ -94,10 +94,10 @@ export async function buildLlmsFullTxt() {
     "",
     "## Credibility",
     "",
-    "- Top Rated Plus on Upwork",
-    "- 100% Job Success Score",
-    "- 1,900+ hours delivered on Upwork",
-    "- 5.0 Rebel Bunny client feedback on Upwork",
+    `- ${UPWORK_PROFILE.badge} on Upwork`,
+    `- ${UPWORK_PROFILE.jobSuccessScore} Job Success Score`,
+    `- ${UPWORK_PROFILE.totalHoursLabel} hours delivered on Upwork`,
+    `- ${DELIVERY_PROOF.rebelBunnyFeedback} on Upwork`,
     "- Creator of the first English Shopify Hydrogen course on Udemy",
     "- Client references include Rebel Bunny, Bayam Jewelry, and EveShop",
     "",

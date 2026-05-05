@@ -16,10 +16,12 @@ import { clientLogos } from "@/data/clientLogos";
 import { FOUNDER_STORY } from "@/lib/founder";
 import { buildMetadata } from "@/lib/seo";
 import {
+  DELIVERY_PROOF,
   FOUNDER_IMAGE_PATH,
   OWNER,
   SITE_LOGO_PATH,
   SITE_NAME,
+  UPWORK_PROFILE,
   VERIFIED_PROFILE_URLS,
   absoluteUrl,
 } from "@/lib/site";
@@ -187,11 +189,11 @@ const proofCards = [
         rel="noreferrer"
         className="transition hover:text-[#10b981]"
       >
-        Top Rated Plus
+        {UPWORK_PROFILE.badge}
       </Link>
     ),
     body:
-      "A practical trust signal backed by 1,900+ Upwork hours and public client feedback.",
+      `A practical trust signal backed by ${UPWORK_PROFILE.totalHoursLabel} Upwork hours and public client feedback.`,
   },
   {
     id: "jss",
@@ -203,7 +205,7 @@ const proofCards = [
         rel="noreferrer"
         className="transition hover:text-[#10b981]"
       >
-        100% Job Success Score
+        {UPWORK_PROFILE.jobSuccessScore} Job Success Score
       </Link>
     ),
     body:
@@ -217,7 +219,7 @@ const proofCards = [
         href="/case-studies/rebel-bunny-shopify-hydrogen"
         className="transition hover:text-[#10b981]"
       >
-        5.0 Rebel Bunny feedback
+        {DELIVERY_PROOF.rebelBunnyFeedback}
       </Link>
     ),
     body:
@@ -233,7 +235,7 @@ const proofCards = [
         rel="noreferrer"
         className="transition hover:text-[#10b981]"
       >
-        World&apos;s First in English
+        {DELIVERY_PROOF.udemyCourseClaim}
       </Link>
     ),
     body:
@@ -249,25 +251,29 @@ const proofCards = [
 ] as const;
 
 const homepageMetrics = [
-  { id: "stores", value: "3", label: "production Shopify Plus Hydrogen storefronts shipped" },
-  { id: "scale", value: "400K+", label: "users on EveShop at production scale" },
+  {
+    id: "stores",
+    value: DELIVERY_PROOF.productionHydrogenStorefronts,
+    label: "production Shopify Plus Hydrogen storefronts shipped",
+  },
+  { id: "scale", value: DELIVERY_PROOF.eveShopUsers, label: "users on EveShop at production scale" },
   {
     id: "hours",
-    value: "1,900+",
+    value: UPWORK_PROFILE.totalHoursLabel,
     label: "hours of Upwork production delivery",
     href: OWNER.upwork,
     external: true,
   },
   {
     id: "linkedin",
-    value: "32K+",
+    value: DELIVERY_PROOF.linkedInFollowers,
     label: "LinkedIn followers",
     href: OWNER.linkedIn,
     external: true,
   },
   {
     id: "jss",
-    value: "100%",
+    value: UPWORK_PROFILE.jobSuccessScore,
     label: "Job Success Score on Upwork",
     href: OWNER.upwork,
     external: true,
