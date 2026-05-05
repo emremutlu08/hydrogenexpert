@@ -17,7 +17,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 - PR: [#17 Add scheduled Articles SEO architecture](https://github.com/emremutlu08/hydrogenexpert/pull/17)
 - Branch: `codex/seo-articles-scheduled-publishing`
-- Deployment: Pending production deployment after PR validation.
+- Deployment: Production deployment [hydrogenexpert-6y8iqthf3-emremutlu8s-projects.vercel.app](https://hydrogenexpert-6y8iqthf3-emremutlu8s-projects.vercel.app) aliased to [https://hydrogenexpert.co](https://hydrogenexpert.co).
 - Summary:
   - Added a separate `/articles` section for evergreen commercial SEO guides while keeping `/blog` reserved for personal production notes and first-hand implementation lessons.
   - Added scheduled article publishing metadata, runtime public gating, future article 404 behavior, Article JSON-LD for public article pages only, and sitemap exclusion for future scheduled articles.
@@ -61,6 +61,9 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - `npm run build`: passed, 51 routes generated.
   - Local production-mode HTTP verification: `/`, `/shopify-hydrogen-developer`, `/shopify-hydrogen-audit`, `/should-i-use-it`, `/when-not-to-use-hydrogen`, `/case-studies`, `/contact`, `/blog`, `/articles`, `/sitemap.xml`, and `/robots.txt` returned expected statuses; future scheduled article URLs returned 404, were absent from `/articles`, were absent from `/sitemap.xml`, and did not emit Article JSON-LD.
   - Local production-mode Playwright verification at 390px: sampled pages returned one H1 and no horizontal overflow; quiz result interaction rendered the updated result label. Local Vercel Analytics and Speed Insights scripts return expected localhost-only 404/MIME console noise outside Vercel.
+  - Vercel production deployment passed and was aliased to `https://hydrogenexpert.co`.
+  - Live production HTTP verification: `/`, `/shopify-hydrogen-developer`, `/shopify-hydrogen-audit`, `/should-i-use-it`, `/when-not-to-use-hydrogen`, `/case-studies`, `/contact`, `/blog`, `/articles`, `/sitemap.xml`, and `/robots.txt` returned HTTP 200 with expected titles/canonicals; `/robots.txt` returned `text/plain`, `/sitemap.xml` returned `application/xml`, `/articles` appeared in the sitemap, and all future scheduled article URLs returned 404 without Article JSON-LD.
+  - Live production Playwright verification at 390px: `/`, `/shopify-hydrogen-developer`, `/shopify-hydrogen-audit`, and `/articles` each returned one H1 and no horizontal overflow.
 - Manual follow-up:
   - Add repository secret `VERCEL_DEPLOY_HOOK_URL` only if the deployment target needs daily rebuilds instead of relying on runtime `publishAt` gating.
   - Inspect `/shopify-hydrogen-developer`, `/articles`, `/sitemap.xml`, and each article URL in Google Search Console on or after its publish date.
