@@ -5,6 +5,7 @@ import {
   getBlogSourceMetadata,
   getStaticPageSourceMetadata,
 } from "../lib/content-sources";
+import { DECISION_PAGES } from "../lib/decision-pages";
 import { SERVICE_PACKAGES } from "../lib/services";
 
 const SHOPIFY_CLAIM_TERMS = [
@@ -40,6 +41,8 @@ interface ClaimRecord {
   hasLastVerified: boolean;
 }
 
+const decisionPagePaths = new Set(Object.keys(DECISION_PAGES));
+
 function flatten(value: unknown): string {
   if (Array.isArray(value)) {
     return value.map(flatten).join(" ");
@@ -63,18 +66,30 @@ function formatCsvCell(value: string) {
 }
 
 const records: ClaimRecord[] = [
-  ...Object.entries(STATIC_PAGE_SOURCE_METADATA).map(([pagePath, metadata]) => ({
-    pagePath,
-    content: pagePath,
-    hasSourceMetadata: metadata.sourceMap.length > 0,
-    hasLastVerified: Boolean(metadata.lastVerified),
-  })),
+  ...Object.entries(STATIC_PAGE_SOURCE_METADATA)
+    .filter(([pagePath]) => !decisionPagePaths.has(pagePath))
+    .map(([pagePath, metadata]) => ({
+      pagePath,
+      content: pagePath,
+      hasSourceMetadata: metadata.sourceMap.length > 0,
+      hasLastVerified: Boolean(metadata.lastVerified),
+    })),
   ...SERVICE_PACKAGES.map((servicePackage) => ({
     pagePath: servicePackage.pagePath,
     content: flatten(servicePackage),
     hasSourceMetadata: servicePackage.sourceMap.length > 0,
     hasLastVerified: Boolean(servicePackage.lastVerified),
   })),
+  ...Object.values(DECISION_PAGES).map((page) => {
+    const metadata = getStaticPageSourceMetadata(page.path);
+
+    return {
+      pagePath: page.path,
+      content: flatten(page),
+      hasSourceMetadata: Boolean(metadata?.sourceMap.length),
+      hasLastVerified: Boolean(metadata?.lastVerified),
+    };
+  }),
   ...CASE_STUDIES.map((caseStudy) => {
     const inheritedMetadata = getStaticPageSourceMetadata("/case-studies");
 

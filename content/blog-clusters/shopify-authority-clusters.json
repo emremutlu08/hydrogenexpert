@@ -1,0 +1,185 @@
+{
+  "lastVerified": "2026-05-05",
+  "reviewedBy": "Emre Mutlu",
+  "contentType": "mcp_grounded_blog_cluster_plan",
+  "clusters": [
+    {
+      "name": "Shopify Hydrogen SEO",
+      "pillar": "/shopify-hydrogen-seo",
+      "sourcePacks": ["hydrogenSeo", "hydrogenFundamentals", "googleHelpfulContent"],
+      "articles": [
+        {
+          "slug": "shopify-hydrogen-seo-checklist",
+          "targetKeyword": "shopify hydrogen seo checklist",
+          "searchIntent": "implementation checklist",
+          "uniqueAngle": "Metadata, canonical URLs, JSON-LD, sitemap, robots, SSR content, and product state consistency as one QA system."
+        },
+        {
+          "slug": "hydrogen-sitemap-robots-oxygen",
+          "targetKeyword": "hydrogen sitemap robots oxygen",
+          "searchIntent": "launch QA",
+          "uniqueAngle": "Sitemap and robots behavior as launch QA, including Oxygen production and preview expectations."
+        },
+        {
+          "slug": "hydrogen-json-ld-product-state",
+          "targetKeyword": "hydrogen json-ld product state",
+          "searchIntent": "structured data troubleshooting",
+          "uniqueAngle": "Structured data must match visible product and variant state, not a preferred marketing state."
+        },
+        {
+          "slug": "hydrogen-variant-urls-seo",
+          "targetKeyword": "hydrogen variant urls seo",
+          "searchIntent": "variant SEO decision",
+          "uniqueAngle": "Stable selected-option URLs, canonical rules, and internal links for variant-heavy PDPs."
+        },
+        {
+          "slug": "hydrogen-product-content-ssr",
+          "targetKeyword": "hydrogen product content ssr",
+          "searchIntent": "SSR crawlability fix",
+          "uniqueAngle": "Product descriptions and buyer-critical content should appear in initial HTML when they matter."
+        }
+      ]
+    },
+    {
+      "name": "Liquid to Hydrogen Migration",
+      "pillar": "/liquid-to-hydrogen-migration",
+      "sourcePacks": ["hydrogenFundamentals", "hydrogenSeo", "hydrogenAnalytics", "hydrogenConsent"],
+      "articles": [
+        {
+          "slug": "liquid-to-hydrogen-migration-checklist",
+          "targetKeyword": "liquid to hydrogen migration checklist",
+          "searchIntent": "migration planning",
+          "uniqueAngle": "Routes, redirects, canonicals, app replacement, analytics, cart, checkout, and launch QA in one operational checklist."
+        },
+        {
+          "slug": "what-breaks-when-moving-from-liquid-to-hydrogen",
+          "targetKeyword": "what breaks moving from liquid to hydrogen",
+          "searchIntent": "risk discovery",
+          "uniqueAngle": "Failure modes before the rebuild starts: URLs, apps, structured data, consent, analytics, and checkout handoff."
+        },
+        {
+          "slug": "shopify-hydrogen-route-mapping",
+          "targetKeyword": "shopify hydrogen route mapping",
+          "searchIntent": "technical migration planning",
+          "uniqueAngle": "Route inventory, canonical ownership, redirects, and sitemap preservation for custom storefront migrations."
+        },
+        {
+          "slug": "shopify-hydrogen-analytics-migration",
+          "targetKeyword": "shopify hydrogen analytics migration",
+          "searchIntent": "analytics migration",
+          "uniqueAngle": "Event continuity, Shopify analytics, consent behavior, and reporting gaps after leaving Liquid."
+        },
+        {
+          "slug": "shopify-apps-in-hydrogen-what-to-check",
+          "targetKeyword": "shopify apps in hydrogen",
+          "searchIntent": "app compatibility check",
+          "uniqueAngle": "Theme app assumptions versus custom storefront implementation surfaces."
+        },
+        {
+          "slug": "hydrogen-checkout-handoff-risks",
+          "targetKeyword": "hydrogen checkout handoff risks",
+          "searchIntent": "checkout risk QA",
+          "uniqueAngle": "Cart state, checkout URLs, discounts, buyer identity, and tracking across the storefront to checkout boundary."
+        }
+      ]
+    },
+    {
+      "name": "Hydrogen and Oxygen Runtime",
+      "pillar": "/what-is-hydrogen",
+      "sourcePacks": ["hydrogenFundamentals", "hydrogenAnalytics"],
+      "articles": [
+        {
+          "slug": "what-is-shopify-hydrogen-in-plain-english",
+          "targetKeyword": "what is shopify hydrogen",
+          "searchIntent": "merchant education",
+          "uniqueAngle": "Explain Hydrogen as a custom storefront application without developer-only framing."
+        },
+        {
+          "slug": "what-is-shopify-oxygen",
+          "targetKeyword": "what is shopify oxygen",
+          "searchIntent": "runtime education",
+          "uniqueAngle": "Explain Oxygen as hosting/runtime context for Hydrogen without turning it into a hosting sales page."
+        },
+        {
+          "slug": "hydrogen-vs-liquid-maintenance-cost",
+          "targetKeyword": "hydrogen vs liquid maintenance cost",
+          "searchIntent": "budget comparison",
+          "uniqueAngle": "Application ownership versus theme ownership after launch."
+        },
+        {
+          "slug": "hydrogen-deployment-checklist",
+          "targetKeyword": "hydrogen deployment checklist",
+          "searchIntent": "launch QA",
+          "uniqueAngle": "Environment variables, routes, analytics, robots, sitemap, and rollback checks."
+        },
+        {
+          "slug": "oxygen-preview-production-launch-qa",
+          "targetKeyword": "oxygen preview production launch qa",
+          "searchIntent": "deployment QA",
+          "uniqueAngle": "Separate preview behavior from production behavior before search engines see the store."
+        },
+        {
+          "slug": "hydrogen-environment-variables-and-launch-risk",
+          "targetKeyword": "hydrogen environment variables",
+          "searchIntent": "launch troubleshooting",
+          "uniqueAngle": "Environment mistakes as launch risk, not only developer configuration."
+        }
+      ]
+    },
+    {
+      "name": "Agentic Commerce and Storefront MCP",
+      "pillar": "/blog/shopify-storefront-mcp-explained",
+      "sourcePacks": ["storefrontMcp", "ucpCatalog", "ucpCheckout", "customerAccountApi"],
+      "articles": [
+        {
+          "slug": "shopify-storefront-mcp-explained",
+          "targetKeyword": "shopify storefront mcp",
+          "searchIntent": "agentic commerce overview",
+          "uniqueAngle": "Store-scoped catalog, cart, checkout, and policy tasks without vague AI commerce hype."
+        },
+        {
+          "slug": "storefront-mcp-vs-shopify-dev-mcp",
+          "targetKeyword": "storefront mcp vs shopify dev mcp",
+          "searchIntent": "tooling distinction",
+          "uniqueAngle": "Dev MCP grounds documentation and APIs; Storefront MCP powers selected-store shopping agents."
+        },
+        {
+          "slug": "what-ucp-means-for-shopify-merchants",
+          "targetKeyword": "ucp shopify merchants",
+          "searchIntent": "merchant education",
+          "uniqueAngle": "Discovery, checkout, orders, and trusted handoff explained in merchant language."
+        },
+        {
+          "slug": "is-hydrogen-ready-for-ai-shopping-agents",
+          "targetKeyword": "hydrogen ai shopping agents",
+          "searchIntent": "readiness assessment",
+          "uniqueAngle": "AI-readable commerce depends on product data quality, route clarity, SSR content, and structured state."
+        },
+        {
+          "slug": "ai-readable-shopify-product-pages",
+          "targetKeyword": "ai readable shopify product pages",
+          "searchIntent": "technical content QA",
+          "uniqueAngle": "Product pages must be readable to humans, search crawlers, and agent workflows without hiding key data."
+        },
+        {
+          "slug": "shopify-hydrogen-seo-for-ai-agents",
+          "targetKeyword": "shopify hydrogen seo ai agents",
+          "searchIntent": "SEO and AI overlap",
+          "uniqueAngle": "SSR product content, structured data, and clear URLs are useful for SEO and agent-facing commerce."
+        },
+        {
+          "slug": "storefront-mcp-product-discovery-cart-checkout",
+          "targetKeyword": "storefront mcp product discovery cart checkout",
+          "searchIntent": "implementation surface overview",
+          "uniqueAngle": "Product search, variant detail, cart actions, policies, and checkout handoff as concrete agent surfaces."
+        },
+        {
+          "slug": "should-your-store-build-an-ai-shopping-agent",
+          "targetKeyword": "should shopify store build ai shopping agent",
+          "searchIntent": "commercial decision",
+          "uniqueAngle": "Not every merchant needs an agent; start with product data, support burden, catalog complexity, and buyer behavior."
+        }
+      ]
+    }
+  ]
+}

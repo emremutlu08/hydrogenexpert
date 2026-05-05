@@ -19,6 +19,14 @@ export function getStaticSitemapRoutes() {
     "/case-studies",
     "/hire-me",
     "/contact",
+    "/shopify-hydrogen-agency-usa",
+    "/shopify-hydrogen-fit-audit",
+    "/shopify-hydrogen-maintenance-cost",
+    "/shopify-hydrogen-vs-liquid",
+    "/shopify-hydrogen-for-luxury-jewelry",
+    "/shopify-hydrogen-for-large-catalog-retail",
+    "/shopify-hydrogen-for-dtc-education-brands",
+    "/shopify-hydrogen-for-beauty-brands",
     ...SERVICE_PACKAGES.map((servicePackage) => servicePackage.pagePath),
   ];
 

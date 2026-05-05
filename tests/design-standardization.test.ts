@@ -10,6 +10,7 @@ interface PageFile {
 
 const PUBLIC_PAGE_EXEMPTIONS = new Set(["/", "/agency", "/cost", "/shopify-hydrogen-seo-guide"]);
 const APPROVED_SHARED_TEMPLATE = "<ServiceLandingPage";
+const APPROVED_DECISION_TEMPLATE = "<DecisionLandingPage";
 
 function collectPageFiles(dir = "app"): PageFile[] {
   const pages: PageFile[] = [];
@@ -39,7 +40,7 @@ function collectPageFiles(dir = "app"): PageFile[] {
 }
 
 function usesApprovedSharedTemplate(source: string) {
-  return source.includes(APPROVED_SHARED_TEMPLATE);
+  return source.includes(APPROVED_SHARED_TEMPLATE) || source.includes(APPROVED_DECISION_TEMPLATE);
 }
 
 describe("public page design standards", () => {
