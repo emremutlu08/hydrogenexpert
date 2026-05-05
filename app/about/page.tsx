@@ -123,6 +123,11 @@ const standards = [
 
 const verifiedProfiles = [
   {
+    label: "Personal site",
+    href: OWNER.personalSite,
+    note: "Owned personal authority hub that connects Emre Mutlu's broader Shopify proof back to HydrogenExpert.",
+  },
+  {
     label: "LinkedIn",
     href: OWNER.linkedIn,
     note: "Primary professional profile and audience signal for Emre Mutlu.",
@@ -141,6 +146,11 @@ const verifiedProfiles = [
     label: "Instagram",
     href: OWNER.instagram,
     note: "Owned public social profile used only as an entity corroboration signal.",
+  },
+  {
+    label: "YouTube",
+    href: OWNER.youtube,
+    note: "Owned video profile for future Shopify Hydrogen teaching and entity corroboration.",
   },
 ] as const;
 

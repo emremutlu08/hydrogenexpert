@@ -71,6 +71,31 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-05
 
+- PR: [#18 Add owner profile entity links](https://github.com/emremutlu08/hydrogenexpert/pull/18)
+- Branch: `codex/add-entity-profile-links`
+- Deployment: Production deployment via Vercel aliased to [https://hydrogenexpert.co](https://hydrogenexpert.co).
+- Summary:
+  - Added Emre Mutlu's owned personal site and YouTube channel to the canonical profile and schema `sameAs` list.
+  - Expanded the `/about` verified profiles table with Personal Site and YouTube alongside LinkedIn, Upwork, Udemy, and Instagram.
+  - Added Personal Site, Instagram, and YouTube profile links to `llms.txt` for clearer AI/entity ingestion.
+  - Reused the expanded verified profile set in hire-page and blog-post Person schema.
+  - Marked the GEO external-profile follow-up as account-owner completed, with a note that public third-party crawl/cache visibility may lag.
+- Files changed:
+  - `GEO-AUDIT-REPORT.md`
+  - `app/about/page.tsx`
+  - `app/blog/[slug]/page.tsx`
+  - `app/hire-me/page.tsx`
+  - `lib/llms.ts`
+  - `lib/site.ts`
+- Verification:
+  - `git diff --check`: passed.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run build`: passed, 51 routes generated.
+  - Local production-mode HTTP verification: `/about`, `/hire-me`, `/blog/shopify-hydrogen-variant-selection-fallback`, and `/llms.txt` include the personal site, YouTube, LinkedIn, Upwork, Instagram, and expanded `sameAs` links.
+- Manual follow-up:
+  - Third-party platforms can take time to expose updated profile text in public HTML and search caches.
+
 - PR: [#16 Fix GEO audit findings](https://github.com/emremutlu08/hydrogenexpert/pull/16)
 - Branch: `codex/fix-geo-audit-findings`
 - Deployment: Production deployment via Vercel aliased to [https://hydrogenexpert.co](https://hydrogenexpert.co).
