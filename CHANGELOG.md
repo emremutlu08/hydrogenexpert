@@ -17,7 +17,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 - PR: [#13 Complete product lead capture and analytics layer](https://github.com/emremutlu08/hydrogenexpert/pull/13)
 - Branch: `codex/product-completion`
-- Deployment: [Production deploy](https://hydrogenexpert-73bm1ksfv-emremutlu8s-projects.vercel.app) aliased to `https://hydrogenexpert.co`.
+- Deployment: [Production deploy](https://hydrogenexpert-n2za67own-emremutlu8s-projects.vercel.app) aliased to `https://hydrogenexpert.co`.
 - Summary:
   - Expanded the owned lead capture form with current stack, main problem, budget, timeline, monthly revenue band, Shopify Plus status, and engagement-type fields.
   - Added low-cardinality, non-PII analytics events for lead form views/submits and CTA intent: `lead_form_view`, `lead_form_submit`, `audit_cta_click`, `upwork_click`, `linkedin_click`, `case_study_click`, `cost_page_cta_click`, and `service_page_cta_click`.
