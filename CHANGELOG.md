@@ -15,6 +15,49 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-05
 
+- PR: [#16 Fix GEO audit findings](https://github.com/emremutlu08/hydrogenexpert/pull/16)
+- Branch: `codex/fix-geo-audit-findings`
+- Deployment: Production deployment via Vercel aliased to [https://hydrogenexpert.co](https://hydrogenexpert.co).
+- Summary:
+  - Updated the GEO audit report with code-side remediation status and remaining external account-owner follow-ups.
+  - Consolidated JSON-LD identity across Organization, Person, ProfessionalService, Service, Article, and CreativeWork schemas with stable canonical `@id` links.
+  - Improved AI extraction surfaces with short-answer blocks, semantic decision tables, markdown-formatted `llms.txt` links, verified profile signals, and editorial-standard copy.
+  - Added IndexNow key files, Bing verification meta support, HSTS, cleaner meta descriptions, and removed the global `X-Robots-Tag` header that conflicted with legal-page noindex metadata.
+  - Normalized markdown-style blog headings in rendered post content so generated HTML no longer exposes raw `##` heading text.
+- Files changed:
+  - `GEO-AUDIT-REPORT.md`
+  - `app/about/page.tsx`
+  - `app/blog/[slug]/page.tsx`
+  - `app/case-studies/[slug]/page.tsx`
+  - `app/layout.tsx`
+  - `app/page.tsx`
+  - `app/services/page.tsx`
+  - `components/DecisionLandingPage.tsx`
+  - `components/ServiceLandingPage.tsx`
+  - `docs/DEPLOYMENT_QA_CHECKLIST.md`
+  - `lib/decision-pages.ts`
+  - `lib/llms.ts`
+  - `lib/post-content.ts`
+  - `lib/services.ts`
+  - `lib/site.ts`
+  - `lib/structured-data.ts`
+  - `next.config.ts`
+  - `public/indexnow-key.txt`
+  - `public/.well-known/indexnow-key.txt`
+- Verification:
+  - `git diff --check`: passed.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run build`: passed, 51 routes generated.
+  - `npm test`: 9 test files and 31 tests passed.
+  - `npm run audit:shopify-claims`: passed with 0 pages needing source review.
+  - `npm run validate:content`: passed.
+  - Local production-mode HTTP verification: sampled core pages, service pages, decision pages, blog, legal page, `llms.txt`, `llms-full.txt`, `/indexnow-key.txt`, and `/.well-known/indexnow-key.txt` returned HTTP 200; max meta description length was 158; `llms.txt` had markdown links and no plain title-url rows; privacy retained page-level noindex without the conflicting global header.
+  - Local production-mode Playwright verification: sampled pages had no horizontal overflow at 390px and 1440px; about page rendered verified-profile and editorial-standard sections; decision pages rendered semantic tables; blog post content rendered normalized headings.
+- Manual follow-up:
+  - Add `BING_SITE_VERIFICATION` in Vercel after Bing Webmaster Tools provides the token.
+  - Update LinkedIn, Upwork, Udemy, Instagram, and YouTube/entity corroboration from account-owner surfaces.
+
 - PR: [#15 Fix HydrogenExpert internal link authority paths](https://github.com/emremutlu08/hydrogenexpert/pull/15)
 - Branch: `codex/link-authority-cleanup`
 - Deployment: Production deployment [hydrogenexpert-njxsa3zsb-emremutlu8s-projects.vercel.app](https://hydrogenexpert-njxsa3zsb-emremutlu8s-projects.vercel.app) aliased to [https://hydrogenexpert.co](https://hydrogenexpert.co).
