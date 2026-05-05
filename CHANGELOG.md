@@ -17,7 +17,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 - PR: [#11 Add source-grounded content governance](https://github.com/emremutlu08/hydrogenexpert/pull/11)
 - Branch: `codex/source-grounded-authority-foundation`
-- Deployment: Not deployed yet. This PR is the foundation/governance slice; use `docs/DEPLOYMENT_QA_CHECKLIST.md` before production deployment and avoid `scripts/deploy.sh` unless the current shell has verified non-empty production env vars.
+- Deployment: [Production deploy](https://hydrogenexpert-bufhsu7jh-emremutlu8s-projects.vercel.app) aliased to `https://hydrogenexpert.co`.
 - Summary:
   - Added `CONTENT_PROTOCOL.md` with source hierarchy, claim classification, forbidden content, page standards, MCP-grounded blog workflow, AI-assisted content review, and doorway-risk review.
   - Added Shopify Dev MCP setup notes and deployment QA checklist docs.
@@ -46,9 +46,14 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - `npm run lint`: passed.
   - `npm run typecheck`: passed.
   - `npm run build`: passed, 39 static pages generated.
+  - Branch freshness before deploy: local `HEAD` matched `origin/codex/source-grounded-authority-foundation` at `e5946e1`; ahead/behind was `0/0`.
+  - Live production verification: `/`, `/robots.txt`, `/sitemap.xml`, `/services`, and `/shopify-hydrogen-seo` returned HTTP 200 from `https://hydrogenexpert.co`.
+  - Live canonical verification: `/`, `/services`, and `/shopify-hydrogen-seo` returned the expected canonical URLs.
+  - Live sitemap verification: sitemap included case studies, blog posts, `/liquid-to-hydrogen-migration`, and `/shopify-hydrogen-seo`.
+  - Live robots verification: `robots.txt` allowed all crawlers and referenced `https://hydrogenexpert.co/sitemap.xml`.
 - Manual follow-up:
   - Continue with the next roadmap PR for foundation content grounding.
-  - Deploy after review using the safe Vercel path and then merge/close the PR according to the updated workflow.
+  - Merge or close the PR according to the updated workflow after deployment verification.
 
 - PR: [#9 Add commercial Hydrogen landing pages](https://github.com/emremutlu08/hydrogenexpert/pull/9)
 - Branch: `codex/commercial-landing-pages`
