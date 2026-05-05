@@ -22,6 +22,7 @@ export const getSiteNavigation = cache(async (): Promise<readonly SiteNavItem[]>
     items.push({ href: "/blog", label: "Blog" });
   }
 
+  items.push({ href: "/articles", label: "Articles" });
   items.push({ href: "/hire-me", label: "Hire Me" });
 
   return items;

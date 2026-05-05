@@ -58,8 +58,9 @@ export async function POST(request: Request) {
   const sourcePath = sanitize(formData.get("sourcePath")) || "/";
   const sourceKind = sanitize(formData.get("sourceKind")) || "site_cta";
   const qualification = parseLeadQualification(formData);
+  const isQuizResult = sourceKind === "hydrogen_quiz_result";
 
-  if (!name || !email || !message) {
+  if (!name || !email || (!isQuizResult && (!storeUrl || !qualification.mainProblem))) {
     return NextResponse.json(
       { ok: false, error: "Please fill out the required fields." },
       { status: 400, headers: getApiHeaders({ Vary: "Origin" }) },
@@ -105,7 +106,7 @@ export async function POST(request: Request) {
     name,
     email,
     store_url: storeUrl,
-    message,
+    message: message || qualification.mainProblem || "Hydrogen quiz result",
     source_path: sourcePath,
     source_kind: sourceKind,
     current_stack: qualification.currentStack,

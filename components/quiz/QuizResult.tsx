@@ -11,26 +11,42 @@ interface QuizResultProps {
 }
 
 export function QuizResult({ score, answers, emailAnchorId }: QuizResultProps) {
-  const isHydrogenFit = score >= 3;
   const totalAnswers = answers.length;
+  const result =
+    score <= 2
+      ? {
+          title: `Your score: ${score}/${totalAnswers} - stay on Liquid or refactor first`,
+          body:
+            "Hydrogen is probably not the next move yet. A stronger theme, cleaner app stack, faster product pages, or narrower UX cleanup may create more ROI than a custom storefront rebuild.",
+          strongFit: false,
+        }
+      : score <= 4
+        ? {
+            title: `Your score: ${score}/${totalAnswers} - run a Fit & Risk Audit`,
+            body:
+              "Hydrogen may be justified, but the decision needs scope discipline. Before rebuild budget moves, review the current storefront constraint, SEO risk, app stack, analytics, migration complexity, and maintenance readiness.",
+            strongFit: true,
+          }
+        : {
+            title: `Your score: ${score}/${totalAnswers} - Hydrogen deserves serious planning`,
+            body:
+              "The store is likely running into custom UX, performance, merchandising, or growth-stage limits that a theme may not solve cleanly. The next step is a scoped Hydrogen plan with migration, SEO, data, launch, and maintenance ownership defined.",
+            strongFit: true,
+          };
 
   return (
     <section className="hero-card space-y-6">
       <div className="space-y-4">
         <p className="dna-kicker text-[#8df1cb]">Result</p>
         <h2 className="font-display text-[2.2rem] leading-[0.98] tracking-[-0.05em] text-white md:text-[3.2rem]">
-          {isHydrogenFit
-            ? `Your score: ${score}/${totalAnswers} - Hydrogen is worth evaluating`
-            : `Your score: ${score}/${totalAnswers} - A stronger Liquid setup is likely the smarter move`}
+          {result.title}
         </h2>
         <p className="max-w-3xl text-base leading-8 text-neutral-300">
-          {isHydrogenFit
-            ? "Based on your answers, your store is hitting the kinds of limits that a theme cannot solve cleanly. The next step is scoping: what should ship first, what can wait, and whether the budget and timeline work for your stage."
-            : "Based on your answers, the current constraints do not yet justify a custom storefront rebuild. A better theme, cleaner app stack, or a targeted UX fix will probably deliver more ROI right now."}
+          {result.body}
         </p>
       </div>
 
-      {isHydrogenFit ? (
+      {result.strongFit ? (
         <div className="space-y-4">
           <div className="flex flex-wrap items-center gap-4">
             <TrackedCTAButton

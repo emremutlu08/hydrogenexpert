@@ -209,12 +209,12 @@ const SERVICE_PACKAGE_BASES = [
     pagePath: "/shopify-hydrogen-developer",
     name: "Shopify Hydrogen Developer",
     title: "Hire a senior Shopify Hydrogen developer for direct storefront work",
-    metaTitle: "Shopify Hydrogen Developer for Shopify Plus Brands | Emre Mutlu",
+    metaTitle: "Hire a Shopify Hydrogen Developer | Senior Storefront Expert",
     metaDescription:
-      "Hire a senior Shopify Hydrogen developer for audits, migrations, custom builds, SEO fixes, performance cleanup, and launch support.",
-    heroTitle: "Shopify Hydrogen developer for stores that need senior execution",
+      "Hire a senior Shopify Hydrogen developer for Shopify Plus storefronts, migrations, Storefront API work, SEO-safe launches, performance cleanup, and custom Hydrogen builds.",
+    heroTitle: "Hire a senior Shopify Hydrogen developer for custom storefront work",
     summary:
-      "Direct Hydrogen implementation and advisory for Shopify Plus brands that need someone who can scope, build, debug, and launch without a translation layer.",
+      "Direct Hydrogen implementation and advisory for Shopify Plus and growth-stage brands that need experienced Shopify Hydrogen development without a generic agency layer.",
     commercialIntent:
       "For teams searching for a Shopify Hydrogen developer rather than a generic Shopify agency or broad ecommerce vendor.",
     bestFor:
@@ -250,19 +250,24 @@ const SERVICE_PACKAGE_BASES = [
     ],
     relatedLinks: [
       {
-        href: "/hire-me",
-        label: "Emre Mutlu proof profile",
-        note: "Use this for credentials, client proof, and direct background.",
+        href: "/shopify-hydrogen-audit",
+        label: "Start with a Fit & Risk Audit",
+        note: "Use this when the business case or launch risk needs proof before implementation.",
       },
       {
-        href: "/shopify-hydrogen-agency",
-        label: "Shopify Hydrogen agency alternative",
-        note: "Use this when internal stakeholders are comparing agency routes.",
+        href: "/shopify-hydrogen-cost",
+        label: "Review Hydrogen cost ranges",
+        note: "Use this before budget conversations expand into a full rebuild scope.",
       },
       {
         href: "/case-studies",
-        label: "Production case studies",
+        label: "See Production Proof",
         note: "Review production contexts before scoping a new Hydrogen engagement.",
+      },
+      {
+        href: "/contact",
+        label: "Request a Hydrogen Fit Review",
+        note: "Send the current store URL and the commercial pressure behind the work.",
       },
     ],
   },
@@ -271,9 +276,9 @@ const SERVICE_PACKAGE_BASES = [
     pagePath: "/shopify-hydrogen-audit",
     name: "Strategy & Fit Audit",
     title: "Find out whether Hydrogen is actually justified",
-    metaTitle: "Shopify Hydrogen Audit for Shopify Plus Brands | Emre Mutlu",
+    metaTitle: "Shopify Hydrogen Audit | Fit & Risk Review Before Rebuild",
     metaDescription:
-      "Shopify Hydrogen audit for Shopify Plus brands reviewing performance, SEO, variant URLs, Storefront API usage, analytics, and migration risk.",
+      "Start with a Shopify Hydrogen Fit & Risk Audit before rebuild budget moves. Get a written decision memo on Liquid vs Hydrogen, SEO risk, cost, scope, and maintenance readiness.",
     heroTitle: "Shopify Hydrogen audit before the rebuild money moves",
     summary:
       "A senior review for brands considering Hydrogen but unsure whether the cost, complexity, and maintenance model make commercial sense.",
@@ -322,9 +327,19 @@ const SERVICE_PACKAGE_BASES = [
         note: "A practical filter when the audit question is whether Hydrogen is justified at all.",
       },
       {
+        href: "/when-not-to-use-hydrogen",
+        label: "When not to use Hydrogen",
+        note: "Use this when the safer commercial answer may be Liquid, cleanup, or delay.",
+      },
+      {
         href: "/shopify-hydrogen-cost",
         label: "Shopify Hydrogen cost",
         note: "Use this to connect audit findings to realistic budget ranges.",
+      },
+      {
+        href: "/contact",
+        label: "Request a Hydrogen Fit Review",
+        note: "Send the storefront context before rebuild budget moves.",
       },
     ],
   },
@@ -458,9 +473,9 @@ const SERVICE_PACKAGE_BASES = [
     pagePath: "/shopify-hydrogen-cost",
     name: "Shopify Hydrogen Cost",
     title: "Understand Hydrogen budget before the scope gets expensive",
-    metaTitle: "Shopify Hydrogen Cost and Budget Planning | Emre Mutlu",
+    metaTitle: "Shopify Hydrogen Cost Guide | Audit, Build & Migration Pricing",
     metaDescription:
-      "Shopify Hydrogen cost planning for Shopify Plus brands comparing budget ranges, migration scope, integrations, SEO risk, maintenance, and launch support.",
+      "Understand realistic Shopify Hydrogen cost ranges for audits, cleanup, lean builds, custom storefronts, Plus migrations, support, and maintenance.",
     heroTitle: "Shopify Hydrogen cost planning for brands weighing rebuild budget",
     summary:
       "A budget-focused landing page for teams trying to understand what drives Hydrogen cost before choosing an agency, developer, migration, or audit path.",

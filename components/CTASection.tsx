@@ -8,18 +8,20 @@ interface CTASectionProps {
   headline?: string;
   subtext: string;
   sourceKind?: string;
+  primaryLabel?: string;
 }
 
 export function CTASection({
   headline = DEFAULT_CTA_HEADLINE,
   subtext,
   sourceKind = "shared_cta",
+  primaryLabel = "Request a Hydrogen Fit Review",
 }: CTASectionProps) {
   return (
     <section className="hero-card">
       <div className="ambient-orb right-[-3rem] top-[-2rem] h-40 w-40 bg-[#10b981]/30" />
       <div className="relative grid gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-start">
-        <div className="space-y-6">
+        <div data-nosnippet className="space-y-6">
           <p className="dna-kicker text-[#8df1cb]">Next Step</p>
           <h2 className="font-display text-[2.5rem] leading-[0.96] tracking-[-0.055em] text-white md:text-6xl">
             {headline}
@@ -32,11 +34,11 @@ export function CTASection({
               href="#email-form"
               className="inline-flex min-h-11 items-center rounded-full bg-[#10b981] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-[#171717]"
             >
-              Request Hydrogen Fit Audit
+              {primaryLabel}
             </Link>
             <TrackedCTAButton
               destination="linkedin"
-              label="Book a Scoping Call"
+              label="Message on LinkedIn"
               sourceKind={sourceKind}
               className="inline-flex min-h-11 items-center rounded-full border border-white/16 px-6 py-3 text-sm font-semibold text-white transition-colors hover:border-[#8df1cb] hover:text-[#8df1cb]"
             />

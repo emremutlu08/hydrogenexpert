@@ -40,12 +40,12 @@ export function Header({ navItems }: HeaderProps) {
             <div className="flex items-center gap-2">
               <TrackedCTAButton
                 destination="linkedin"
-                label="Let's Chat"
+                label="Message on LinkedIn"
                 className="hidden min-h-11 w-fit items-center rounded-full bg-[#171717] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#10b981] md:inline-flex"
               />
               <TrackedCTAButton
                 destination="linkedin"
-                label="Chat"
+                label="Message"
                 className="inline-flex min-h-11 items-center rounded-full bg-[#171717] px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#10b981] md:hidden"
               />
             </div>

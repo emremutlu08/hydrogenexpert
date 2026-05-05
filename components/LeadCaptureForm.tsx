@@ -82,19 +82,19 @@ export function LeadCaptureForm({
   }
 
   return (
-    <form
-      id="email-form"
-      onSubmit={handleSubmit}
-      className="lead-form-card lead-form-layout scroll-mt-32"
-      noValidate
-    >
+    <section data-nosnippet aria-label="Project inquiry form">
+      <form
+        id="email-form"
+        onSubmit={handleSubmit}
+        className="lead-form-card lead-form-layout scroll-mt-32"
+      >
       <div className="lead-form-stack">
         <p className="dna-kicker text-[#8df1cb]">Owned lead capture</p>
         <h3 className="text-xl font-semibold leading-8 text-white md:text-[1.65rem]">
-          Request a Hydrogen fit review
+          Request a Hydrogen Fit Review
         </h3>
         <p className="text-sm leading-7 text-neutral-300">
-          Send enough context to qualify the right path: audit, migration, custom build, optimization, support, Liquid cleanup, or no rebuild.
+          If you are not ready to fill everything out, send the store URL, current stack, and what feels slow or limiting. The rest can be clarified later.
         </p>
         <p className="lead-form-note">
           I do not sell Hydrogen if Liquid is the better move.
@@ -114,7 +114,7 @@ export function LeadCaptureForm({
 
       <label className="lead-form-field">
         <span>Store URL or brand</span>
-        <input name="storeUrl" type="text" autoComplete="url" placeholder="https://yourstore.com" />
+        <input name="storeUrl" type="text" required autoComplete="url" placeholder="https://yourstore.com" />
       </label>
 
       <div className={formClassName}>
@@ -131,7 +131,7 @@ export function LeadCaptureForm({
         </label>
         <label className="lead-form-field">
           <span>Main problem</span>
-          <select name="mainProblem" defaultValue="">
+          <select name="mainProblem" required defaultValue="">
             <option value="">Select one</option>
             {MAIN_PROBLEM_OPTIONS.map((option) => (
               <option key={option.value} value={option.value}>
@@ -208,7 +208,6 @@ export function LeadCaptureForm({
         <span>What is blocking growth?</span>
         <textarea
           name="message"
-          required
           rows={compact ? 4 : 5}
           placeholder="Mobile UX, slow feature delivery, migration question, performance drag, SEO risk, app limits..."
         />
@@ -232,7 +231,7 @@ export function LeadCaptureForm({
           disabled={status === "submitting"}
           className="inline-flex min-h-11 items-center rounded-full bg-[#10b981] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-[#171717] disabled:cursor-not-allowed disabled:opacity-70"
         >
-          {status === "submitting" ? "Sending..." : "Request fit review"}
+          {status === "submitting" ? "Sending..." : "Request a Hydrogen Fit Review"}
         </button>
       </div>
 
@@ -249,6 +248,7 @@ export function LeadCaptureForm({
           {message}
         </p>
       ) : null}
-    </form>
+      </form>
+    </section>
   );
 }

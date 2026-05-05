@@ -22,9 +22,9 @@ import {
 } from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
-  title: "Shopify Hydrogen Case Studies: EveShop, Bayam, Rebel Bunny",
+  title: "Shopify Hydrogen Case Studies for Shopify Plus Brands",
   description:
-    "Production Shopify Hydrogen case studies across retail, luxury ecommerce, and premium DTC with only approved proof shown on the page.",
+    "Production Shopify Hydrogen case studies across nationwide retail, luxury ecommerce, and premium DTC, with approved proof from EveShop, Bayam Jewelry, and Rebel Bunny.",
   path: "/case-studies",
 });
 
@@ -140,6 +140,38 @@ export default function CaseStudiesPage() {
         </section>
 
         <FaqSection title="Case study questions that usually matter after the first scroll." faqs={faqs} />
+
+        <section className="card-soft space-y-5">
+          <div className="max-w-3xl">
+            <p className="eyebrow">Commercial next steps</p>
+            <h2 className="subsection-title mt-3">Connect proof to the right buying path.</h2>
+          </div>
+          <div className="authority-links">
+            {[
+              {
+                href: "/shopify-hydrogen-developer",
+                label: "Hire a Shopify Hydrogen Developer",
+                note: "Use this when the next step is direct senior implementation support.",
+              },
+              {
+                href: "/shopify-hydrogen-audit",
+                label: "Start with a Fit & Risk Audit",
+                note: "Use this when the storefront decision still needs proof and risk review.",
+              },
+              {
+                href: "/contact",
+                label: "Request a Hydrogen Fit Review",
+                note: "Send the store URL and the constraint behind the project.",
+              },
+            ].map((item) => (
+              <Link key={item.href} href={item.href} className="authority-link-card">
+                <p className="authority-link-card__label">HydrogenExpert</p>
+                <h3 className="authority-link-card__title">{item.label}</h3>
+                <p className="authority-link-card__body">{item.note}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
 
         <CTASection
           headline="Your storefront, written honestly on a page"

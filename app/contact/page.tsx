@@ -13,7 +13,7 @@ import { buildBreadcrumbListSchema } from "@/lib/structured-data";
 export const metadata = buildMetadata({
   title: "Request a Shopify Hydrogen Fit Review | HydrogenExpert",
   description:
-    "Request a Shopify Hydrogen fit review for audits, migrations, custom storefront development, performance, SEO, and support.",
+    "Send your Shopify store URL, current stack, and storefront constraints to get a direct recommendation on Hydrogen, Liquid cleanup, audit, migration, optimization, support, or no rebuild.",
   path: "/contact",
 });
 

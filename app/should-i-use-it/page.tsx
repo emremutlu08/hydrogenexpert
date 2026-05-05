@@ -4,6 +4,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { HydrogenFitQuiz } from "@/components/quiz/HydrogenFitQuiz";
 import { JsonLd } from "@/components/JsonLd";
 import { PageIntroSection } from "@/components/PageIntroSection";
+import { SectionHeader } from "@/components/SectionHeader";
 import { buildMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 import {
@@ -13,9 +14,9 @@ import {
 } from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
-  title: "Should I Use Shopify Hydrogen? A Merchant Decision Guide",
+  title: "Should I Use Shopify Hydrogen? Merchant Decision Guide",
   description:
-    "Use five merchant-focused questions to decide whether Shopify Hydrogen fits your store, budget, mobile UX goals, and growth plan.",
+    "Use a practical 5-question Shopify Hydrogen decision guide to decide whether to stay on Liquid, run a fit audit, or plan a custom Hydrogen storefront.",
   path: "/should-i-use-it",
 });
 
@@ -110,6 +111,62 @@ export default function ShouldIUseItPage() {
         />
 
         <HydrogenFitQuiz questions={questions} />
+
+        <section className="surface-card space-y-6">
+          <SectionHeader
+            eyebrow="Score interpretation"
+            title="How to interpret your Hydrogen fit score"
+            description="The quiz result should lead to a practical next move, not a default rebuild."
+            className="max-w-5xl"
+          />
+          <div className="grid gap-4 lg:grid-cols-3">
+            {[
+              {
+                title: "0-2 yes answers: stay on Liquid or refactor first",
+                body:
+                  "Hydrogen is probably not the next move yet. A stronger theme, cleaner app stack, faster product pages, or narrower UX cleanup may create more ROI than a custom storefront rebuild.",
+                links: [
+                  { href: "/when-not-to-use-hydrogen", label: "Read when Hydrogen is the wrong move" },
+                  { href: "/contact", label: "Ask for a lighter recommendation" },
+                ],
+              },
+              {
+                title: "3-4 yes answers: run a Fit & Risk Audit",
+                body:
+                  "Hydrogen may be justified, but the decision needs scope discipline. Before rebuild budget moves, review the current storefront constraint, SEO risk, app stack, analytics, migration complexity, and maintenance readiness.",
+                links: [
+                  { href: "/shopify-hydrogen-audit", label: "Start with a Fit & Risk Audit" },
+                  { href: "/shopify-hydrogen-cost", label: "Review Hydrogen cost ranges" },
+                ],
+              },
+              {
+                title: "5 yes answers: Hydrogen deserves serious planning",
+                body:
+                  "The store is likely running into custom UX, performance, merchandising, or growth-stage limits that a theme may not solve cleanly. The next step is not a rushed rebuild; it is a scoped Hydrogen plan with migration, SEO, data, launch, and maintenance ownership defined.",
+                links: [
+                  { href: "/liquid-to-hydrogen-migration", label: "Plan a Liquid to Hydrogen migration" },
+                  { href: "/contact", label: "Request a Hydrogen Fit Review" },
+                ],
+              },
+            ].map((card) => (
+              <article key={card.title} className="rounded-[1.2rem] border border-black/8 bg-white p-5">
+                <h2 className="text-lg font-semibold leading-7 text-[#171717]">{card.title}</h2>
+                <p className="mt-3 text-sm leading-7 text-neutral-600">{card.body}</p>
+                <div className="mt-5 flex flex-wrap gap-3">
+                  {card.links.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="inline-flex min-h-10 items-center rounded-full border border-black/10 px-4 py-2 text-sm font-semibold text-[#171717] transition hover:border-[#10b981] hover:text-[#10b981]"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
       </div>
     </>
   );

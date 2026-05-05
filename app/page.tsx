@@ -38,7 +38,7 @@ const schemaIds = getSchemaIds();
 export const metadata = buildMetadata({
   title: "Senior-Led Shopify Hydrogen Agency Alternative | HydrogenExpert",
   description:
-    "Senior-led Shopify Hydrogen services for Plus storefront audits, Liquid-to-Hydrogen migrations, custom builds, performance, SEO, and support.",
+    "Senior-led Shopify Hydrogen services for growth-stage and Shopify Plus brands: fit audits, migrations, custom storefront builds, SEO, optimization, and support.",
   path: "/",
   ogImage: absoluteUrl("/og-home.svg"),
 });
@@ -308,6 +308,12 @@ const technicalResources = [
       "A practical guide to metadata, canonical URLs, JSON-LD, variant URLs, sitemaps, robots, and crawl consistency in custom Hydrogen storefronts.",
   },
   {
+    title: "Shopify Hydrogen Articles",
+    href: "/articles",
+    body:
+      "Evergreen merchant guides for hiring, migration, SEO, cost, and Hydrogen fit decisions.",
+  },
+  {
     title: "Variant URLs and fallback bugs",
     href: "/blog/shopify-hydrogen-variant-selection-fallback",
     body:
@@ -401,13 +407,13 @@ export default function HomePage() {
                 href="/shopify-hydrogen-audit"
                 className="rounded-full bg-[#171717] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#10b981]"
               >
-                Request a Hydrogen Fit Audit
+                Start with a Fit & Risk Audit
               </Link>
               <Link
                 href="/case-studies"
                 className="rounded-full border border-black/10 bg-white px-6 py-3 text-sm font-semibold text-[#171717] transition hover:border-[#10b981] hover:text-[#10b981]"
               >
-                See The Proof
+                See Production Proof
               </Link>
             </div>
           </div>
@@ -417,9 +423,54 @@ export default function HomePage() {
 
         <LogoWall
           logos={clientLogos}
-          title="Selected work across 7 ecommerce brands"
-          subtitle="Current Shopify Plus Hydrogen clients highlighted."
+          title="Selected Shopify and Hydrogen work, with three production Hydrogen storefronts highlighted."
+          subtitle="Current Shopify Plus Hydrogen clients and approved public work highlighted."
         />
+
+        <section className="surface-card space-y-6">
+          <SectionHeader
+            eyebrow="Commercial paths"
+            title="Find the right entry point for the storefront decision."
+            description="The primary path stays the senior-led Hydrogen service. Articles support the decision, but they do not replace direct commercial scoping."
+          />
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            {[
+              {
+                href: "/shopify-hydrogen-developer",
+                title: "Hire a Shopify Hydrogen Developer",
+                body:
+                  "Work directly with a senior Hydrogen specialist instead of a general Shopify vendor.",
+              },
+              {
+                href: "/shopify-hydrogen-audit",
+                title: "Start with a Fit & Risk Audit",
+                body:
+                  "Use a paid diagnostic before rebuild budget, migration scope, or agency comparison moves.",
+              },
+              {
+                href: "/case-studies",
+                title: "See Production Proof",
+                body:
+                  "Review approved Hydrogen storefront work across retail, luxury ecommerce, and DTC.",
+              },
+              {
+                href: "/articles",
+                title: "Shopify Hydrogen Articles",
+                body:
+                  "Read Shopify Hydrogen articles for hiring, migration, SEO, cost, and fit decisions.",
+              },
+            ].map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="rounded-[1.3rem] border border-black/8 bg-white p-5 hover:border-[#10b981]"
+              >
+                <h2 className="text-lg font-semibold text-[#171717]">{item.title}</h2>
+                <p className="mt-3 text-sm leading-7 text-neutral-600">{item.body}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
 
         <section className="surface-card space-y-6">
           <SectionHeader
