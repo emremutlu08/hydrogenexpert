@@ -1,4 +1,7 @@
-export interface ServicePackage {
+import type { ContentSourceMetadata } from "./content-sources";
+import { SHOPIFY_CONTENT_LAST_VERIFIED, SOURCE_PACKS } from "./content-sources";
+
+interface ServicePackageBase {
   slug:
     | "shopify-hydrogen-agency-alternative"
     | "headless-shopify-agency-alternative"
@@ -32,7 +35,9 @@ export interface ServicePackage {
   }[];
 }
 
-export const SERVICE_PACKAGES: readonly ServicePackage[] = [
+export interface ServicePackage extends ServicePackageBase, ContentSourceMetadata {}
+
+const SERVICE_PACKAGE_BASES = [
   {
     slug: "shopify-hydrogen-agency-alternative",
     pagePath: "/shopify-hydrogen-agency",
@@ -656,7 +661,115 @@ export const SERVICE_PACKAGES: readonly ServicePackage[] = [
       },
     ],
   },
-];
+] as const satisfies readonly ServicePackageBase[];
+
+const SERVICE_SOURCE_METADATA = {
+  "shopify-hydrogen-agency-alternative": {
+    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.caseStudyEvidence,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "headless-shopify-agency-alternative": {
+    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    claimTypes: ["official_shopify_fact", "commercial_opinion"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.hydrogenSeo,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "shopify-hydrogen-developer": {
+    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.customerAccountApi,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "hydrogen-strategy-fit-audit": {
+    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.hydrogenSeo,
+      SOURCE_PACKS.hydrogenAnalytics,
+      SOURCE_PACKS.hydrogenConsent,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "liquid-to-hydrogen-migration": {
+    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.hydrogenSeo,
+      SOURCE_PACKS.hydrogenAnalytics,
+      SOURCE_PACKS.hydrogenConsent,
+      SOURCE_PACKS.caseStudyEvidence,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "shopify-hydrogen-seo": {
+    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    claimTypes: ["official_shopify_fact", "emre_experience", "seo_hypothesis"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenSeo,
+      SOURCE_PACKS.googleHelpfulContent,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "shopify-hydrogen-cost": {
+    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.hydrogenSeo,
+      SOURCE_PACKS.caseStudyEvidence,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "custom-hydrogen-storefront-development": {
+    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.customerAccountApi,
+      SOURCE_PACKS.caseStudyEvidence,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "hydrogen-performance-seo-ux-optimization": {
+    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.hydrogenSeo,
+      SOURCE_PACKS.hydrogenAnalytics,
+      SOURCE_PACKS.hydrogenConsent,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "hydrogen-support-retainer": {
+    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.hydrogenAnalytics,
+      SOURCE_PACKS.caseStudyEvidence,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+} as const satisfies Record<ServicePackageBase["slug"], ContentSourceMetadata>;
+
+export const SERVICE_PACKAGES = SERVICE_PACKAGE_BASES.map((servicePackage) => ({
+  ...servicePackage,
+  ...SERVICE_SOURCE_METADATA[servicePackage.slug],
+})) satisfies readonly ServicePackage[];
 
 export const SECONDARY_SERVICE = {
   title: "Shopify Liquid development is still on the table",
