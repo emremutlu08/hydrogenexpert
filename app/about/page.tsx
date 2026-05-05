@@ -127,7 +127,7 @@ export default function AboutPage() {
           eyebrow={SITE_NAME}
           title="About Emre Mutlu"
           description="Independent Shopify Hydrogen developer with public delivery, teaching, and case-study proof."
-          body="HydrogenExpert is the focused surface for my Shopify Hydrogen advisory and implementation work. The site exists to help merchants decide whether Hydrogen is commercially justified, then scope and ship the work without agency layers."
+          body="HydrogenExpert is the focused surface for my Shopify Hydrogen advisory and implementation work. The site exists to help merchants decide whether Hydrogen is commercially justified, then scope and ship the work with direct senior ownership."
         />
 
         <FounderCard size="lg" showBio showCredentials>
@@ -195,7 +195,6 @@ export default function AboutPage() {
         </section>
 
         <CTASection
-          primaryLink="upwork"
           headline="Want the direct version for your storefront?"
           subtext="Send the current store URL and what feels slow, limiting, or expensive to change. I will tell you whether the next move is Liquid, Hydrogen, or no rebuild."
           sourceKind="about_page"

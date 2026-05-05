@@ -284,7 +284,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </article>
 
         <CTASection
-          primaryLink="upwork"
           subtext="If this article sounds like your store’s situation, I can help you turn the insight into a clear Hydrogen scope and launch plan."
           sourceKind={`blog_post:${post.slug}`}
         />

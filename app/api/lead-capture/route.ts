@@ -53,6 +53,10 @@ export async function POST(request: Request) {
   const email = sanitize(formData.get("email"));
   const storeUrl = sanitize(formData.get("storeUrl")) || null;
   const message = sanitize(formData.get("message"));
+  const currentStack = sanitize(formData.get("currentStack"));
+  const projectType = sanitize(formData.get("projectType"));
+  const timeline = sanitize(formData.get("timeline"));
+  const budgetRange = sanitize(formData.get("budgetRange"));
   const turnstileToken = sanitize(formData.get("turnstileToken"));
   const sourcePath = sanitize(formData.get("sourcePath")) || "/";
   const sourceKind = sanitize(formData.get("sourceKind")) || "site_cta";
@@ -71,7 +75,16 @@ export async function POST(request: Request) {
     );
   }
 
-  if (name.length > 120 || email.length > 200 || (storeUrl && storeUrl.length > 300) || message.length > 4000) {
+  if (
+    name.length > 120 ||
+    email.length > 200 ||
+    (storeUrl && storeUrl.length > 300) ||
+    message.length > 4000 ||
+    currentStack.length > 120 ||
+    projectType.length > 120 ||
+    timeline.length > 120 ||
+    budgetRange.length > 120
+  ) {
     return NextResponse.json(
       { ok: false, error: "One or more fields are too long." },
       { status: 400, headers: getApiHeaders({ Vary: "Origin" }) },
@@ -94,11 +107,22 @@ export async function POST(request: Request) {
     );
   }
 
+  const qualifiedMessage = [
+    projectType ? `Project type: ${projectType}` : null,
+    currentStack ? `Current storefront: ${currentStack}` : null,
+    timeline ? `Timeline: ${timeline}` : null,
+    budgetRange ? `Budget range: ${budgetRange}` : null,
+    "",
+    message,
+  ]
+    .filter((line) => line !== null)
+    .join("\n");
+
   const { error } = await supabase.from("lead_submissions").insert({
     name,
     email,
     store_url: storeUrl,
-    message,
+    message: qualifiedMessage,
     source_path: sourcePath,
     source_kind: sourceKind,
   });

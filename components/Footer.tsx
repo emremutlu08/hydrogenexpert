@@ -128,7 +128,7 @@ export function Footer({ navItems }: FooterProps) {
                       HydrogenExpert
                     </p>
                     <p className="mt-1 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-neutral-500">
-                      Senior Shopify Hydrogen development and advisory
+                      Senior-led Shopify Hydrogen services
                     </p>
                   </div>
                 </div>
@@ -138,8 +138,8 @@ export function Footer({ navItems }: FooterProps) {
               </div>
               <p className="max-w-xl text-sm leading-7 text-neutral-400">
                 I help Shopify Plus and growth-stage ecommerce brands decide whether
-                Hydrogen is worth it, then scope and ship production-grade storefronts
-                without agency layers. If Liquid is still the smarter move, I will say so.
+                Hydrogen is worth it, then scope audits, migrations, custom builds,
+                optimization, and support with direct senior ownership.
               </p>
               <div className="flex flex-wrap items-center gap-3">
                 <SocialLink href={OWNER.linkedIn} label="LinkedIn" />
@@ -172,7 +172,7 @@ export function Footer({ navItems }: FooterProps) {
                   href="/hire-me"
                   className="inline-flex min-h-11 items-center rounded-full border border-white/14 px-5 py-3 text-sm font-semibold text-white transition-colors hover:border-[#10b981] hover:text-[#8df1cb]"
                 >
-                  Hire Me
+                  View Proof
                 </Link>
                 <Link
                   href="#email-form"

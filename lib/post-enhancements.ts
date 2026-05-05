@@ -74,7 +74,7 @@ const DEFAULT_INTERNAL_LINKS: PostReferenceLink[] = [
   {
     href: "/hire-me",
     label: "Work with Emre",
-    note: "The direct route if your store needs a specialist instead of another agency layer.",
+    note: "The direct route if your store needs senior Hydrogen implementation with focused ownership.",
   },
   {
     href: "/should-i-use-it",
@@ -657,7 +657,7 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
       {
         href: "/hire-me",
         label: "Work with Emre",
-        note: "The direct route if your storefront needs senior Hydrogen implementation without agency layers.",
+        note: "The direct route if your storefront needs senior Hydrogen implementation with focused ownership.",
       },
     ],
     externalLinks: [
@@ -731,7 +731,7 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
       {
         href: "/hire-me",
         label: "Work with Emre",
-        note: "The direct route if your storefront needs senior Hydrogen implementation without agency layers.",
+        note: "The direct route if your storefront needs senior Hydrogen implementation with focused ownership.",
       },
     ],
     externalLinks: [
@@ -796,6 +796,23 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
     closingPitch:
       "Your Shopify store works, but every new feature takes 3x longer than last year? That's when I come in. If your Hydrogen product pages have edge cases like variant fallback, out-of-stock navigation, or option URLs that feel fragile, I can help you fix the logic without turning the storefront into a bigger rebuild than it needs to be.",
     ogImage: "/og-post.svg",
+    internalLinks: [
+      {
+        href: "/shopify-hydrogen-seo",
+        label: "Shopify Hydrogen SEO",
+        note: "Use this when variant URLs, canonicals, structured data, and rendered product state need to agree.",
+      },
+      {
+        href: "/custom-shopify-hydrogen-storefront",
+        label: "Custom Hydrogen storefront development",
+        note: "Use this when product option behavior is part of a broader custom buying journey.",
+      },
+      {
+        href: "/shopify-hydrogen-audit",
+        label: "Hydrogen storefront audit",
+        note: "Use this when variant behavior needs to be reviewed before more feature work ships.",
+      },
+    ],
     externalLinks: [
       {
         href: "https://hydrogen.shopify.dev/update/april-2025",
@@ -849,6 +866,11 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
       "Your Shopify store works, but every new feature takes 3x longer than last year? That is when I come in. If your homepage, collection, or product pages are hitting the ceiling of what your current stack can deliver, I can help you see whether Hydrogen is the right move, and if it is, how to implement it without these traps.",
     ogImage: "/og-post.svg",
     internalLinks: [
+      {
+        href: "/shopify-hydrogen-performance-optimization",
+        label: "Hydrogen performance optimization",
+        note: "Use this when a live Hydrogen storefront needs SSR, data-loading, media, or API-query cleanup.",
+      },
       {
         href: "/shopify-hydrogen-cost",
         label: "Shopify Hydrogen cost",

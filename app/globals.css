@@ -694,9 +694,14 @@ select {
 }
 
 .lead-form-field input,
-.lead-form-field textarea {
+.lead-form-field textarea,
+.lead-form-field select {
   @apply min-w-0 max-w-full w-full rounded-[1.15rem] border border-white/18 bg-white/[0.08] px-4 py-4 text-sm text-white outline-none transition-colors placeholder:text-neutral-400 focus:border-[#10b981] focus:bg-white/[0.12];
   min-height: 44px;
+}
+
+.lead-form-field option {
+  @apply bg-[#171717] text-white;
 }
 
 .lead-form-actions {

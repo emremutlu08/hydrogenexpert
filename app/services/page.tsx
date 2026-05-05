@@ -15,9 +15,9 @@ import {
 } from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
-  title: "Shopify Hydrogen Services for Plus Brands | Emre Mutlu",
+  title: "Shopify Hydrogen Services and Agency Alternative | HydrogenExpert",
   description:
-    "Hydrogen-first Shopify services for audits, Liquid to Hydrogen migrations, custom storefront development, performance, SEO, UX, and support retainers.",
+    "Senior-led Shopify Hydrogen services for audits, Liquid to Hydrogen migrations, custom storefront development, performance, SEO, UX, and support retainers.",
   path: "/services",
 });
 
@@ -49,8 +49,8 @@ export default function ServicesPage() {
         <Breadcrumbs items={breadcrumbs} />
         <PageIntroSection
           eyebrow="Hydrogen-first services"
-          title="Shopify Hydrogen services without the agency maze"
-          description="Choose the commercial path that matches the search: agency alternative, developer, audit, migration, SEO, cost, build, optimization, or support."
+          title="Shopify Hydrogen services for serious storefront decisions"
+          description="Choose the commercial path that matches the buyer intent: agency alternative, development, audit, migration, SEO, cost, custom build, optimization, or support."
           body="This is not a broad Shopify agency service list. The work is centered on Shopify Hydrogen, custom storefront decisions, and the honest question behind every serious rebuild: should this be Hydrogen, Liquid, or no rebuild at all?"
         />
 
@@ -61,20 +61,21 @@ export default function ServicesPage() {
             Hydrogen is powerful. That does not mean every store should use it.
           </h2>
           <p className="text-base leading-8 text-neutral-300">
-            I help Shopify teams decide when Hydrogen is worth the operational cost, then scope
-            and ship the work directly. If Liquid is faster, safer, and better for the business,
-            I will say that before you spend rebuild money.
+            I help Shopify teams decide when Hydrogen is worth the operational cost, then package
+            the next move into a clear audit, migration, build, optimization, or support path. If
+            Liquid is faster, safer, and better for the business, I will say that before you spend
+            rebuild money.
           </p>
         </div>
 
         <div className="card-soft space-y-5">
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#10b981]">
-            How this differs from an agency page
+            How this differs from a generic agency page
           </p>
           <ul className="editorial-list">
             <li><span>No generic “full-service ecommerce” positioning.</span></li>
             <li><span>No automatic push toward headless if Liquid can solve the problem.</span></li>
-            <li><span>No account manager layer between strategy and implementation.</span></li>
+            <li><span>Senior-led scope instead of a vague vendor menu.</span></li>
             <li><span>Every service is tied to a storefront decision, migration, build, optimization, or support need.</span></li>
           </ul>
         </div>

@@ -50,6 +50,33 @@ export const SOURCE_PACKS = {
     usedFor:
       "Hydrogen, React Router, custom storefront, and Oxygen positioning claims.",
   },
+  headlessBuildOptions: {
+    label: "Shopify: Options for building headless",
+    sourceType: "shopify_official",
+    topic: "storefront_api",
+    url: "https://shopify.dev/docs/storefronts/headless/getting-started/build-options",
+    retrievedAt: SHOPIFY_CONTENT_LAST_VERIFIED,
+    usedFor:
+      "Headless Shopify, Hydrogen, Hydrogen React, Headless channel, and Storefront API positioning claims.",
+  },
+  hydrogenDataFetching: {
+    label: "Shopify: Fetch Shopify API data in Hydrogen",
+    sourceType: "shopify_official",
+    topic: "storefront_api",
+    url: "https://shopify.dev/docs/storefronts/headless/hydrogen/data-fetching",
+    retrievedAt: SHOPIFY_CONTENT_LAST_VERIFIED,
+    usedFor:
+      "Storefront API, Customer Account API, loader data, caching, and performance-related Hydrogen claims.",
+  },
+  hydrogenGithubDeployments: {
+    label: "Shopify: Hydrogen CI/CD with GitHub",
+    sourceType: "shopify_official",
+    topic: "oxygen",
+    url: "https://shopify.dev/docs/storefronts/headless/hydrogen/deployments/github",
+    retrievedAt: SHOPIFY_CONTENT_LAST_VERIFIED,
+    usedFor:
+      "Oxygen, Hydrogen channel, GitHub deployment workflow, preview deployment, and PR deployment claims.",
+  },
   hydrogenSeo: {
     label: "Shopify: Search Engine Optimization for Hydrogen",
     sourceType: "shopify_official",
@@ -387,6 +414,7 @@ export const BLOG_SOURCE_METADATA = {
     claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
     sourceMap: [
       SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.headlessBuildOptions,
       SOURCE_PACKS.hydrogenSeo,
       SOURCE_PACKS.storefrontMcp,
       SOURCE_PACKS.emreProductionExperience,
@@ -449,6 +477,7 @@ export const STATIC_PAGE_SOURCE_METADATA = {
     claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
     sourceMap: [
       SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.headlessBuildOptions,
       SOURCE_PACKS.hydrogenSeo,
       SOURCE_PACKS.hydrogenAnalytics,
       SOURCE_PACKS.caseStudyEvidence,
@@ -510,6 +539,7 @@ export const STATIC_PAGE_SOURCE_METADATA = {
     claimTypes: ["official_shopify_fact", "case_study_fact", "commercial_opinion"],
     sourceMap: [
       SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.headlessBuildOptions,
       SOURCE_PACKS.caseStudyEvidence,
       SOURCE_PACKS.emreProductionExperience,
     ],

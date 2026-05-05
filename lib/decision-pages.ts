@@ -37,18 +37,26 @@ export const DECISION_PAGES = {
     metaDescription:
       "Remote Shopify Hydrogen agency alternative for US Shopify Plus and growth-stage brands needing senior audit, migration, SEO, build, and support help.",
     eyebrow: "US Hydrogen agency alternative",
-    title: "Remote senior Shopify Hydrogen support for US brands",
+    title: "Remote senior-led Shopify Hydrogen services for US brands",
     description:
-      "A differentiated US-intent page for Shopify Plus and growth-stage brands that want senior Hydrogen judgment without creating a separate local-agency fiction.",
+      "A differentiated US-intent page for Shopify Plus and growth-stage brands that want senior Hydrogen judgment, clear USD planning, and remote collaboration without creating a separate local-agency fiction.",
     body:
-      "HydrogenExpert is not a local US office or a full-service ad agency. It is a direct senior operator path for US teams that need Hydrogen audit, migration, build, SEO, or support decisions with clear USD expectations and remote collaboration.",
+      "HydrogenExpert is not a local US office or a full-service ad agency. It is a senior-led Hydrogen services path for US teams that need audit, migration, custom build, SEO, optimization, or support decisions with clear USD expectations and remote collaboration.",
     sections: [
       {
         eyebrow: "Collaboration model",
         title: "Why US brands hire remote senior Hydrogen support.",
         body: [
           "US Shopify teams often need specialized Hydrogen judgment more than they need another broad vendor list. A focused remote model works when the team can share storefront context, meet asynchronously, and make decisions around a clear commercial pressure.",
-          "The trust path is practical: review the store, define the constraint, use Upwork or direct professional channels where useful, and keep the work tied to budget, timeline, and launch risk.",
+          "The trust path is practical: review the store, define the constraint, use Upwork or direct professional channels where useful, and keep the work tied to budget, timeline, launch risk, and async-friendly decision records.",
+        ],
+      },
+      {
+        eyebrow: "Buyer fit",
+        title: "What a US buyer should expect before the first call.",
+        body: [
+          "The first useful step is not a sales deck. It is the store URL, current storefront stack, what feels expensive or slow to change, and which commercial decision needs support.",
+          "Strong fits usually have one of six needs: Hydrogen fit audit, Liquid to Hydrogen migration, custom Hydrogen build, performance or SEO cleanup, Oxygen/deployment confidence, or ongoing support for an existing Hydrogen storefront.",
         ],
       },
       {

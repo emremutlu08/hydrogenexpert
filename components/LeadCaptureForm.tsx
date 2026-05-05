@@ -73,10 +73,10 @@ export function LeadCaptureForm({
       <div className="lead-form-stack">
         <p className="dna-kicker text-[#8df1cb]">Owned lead capture</p>
         <h3 className="text-xl font-semibold leading-8 text-white md:text-[1.65rem]">
-          Prefer email over platform DMs?
+          Request a Hydrogen fit review
         </h3>
         <p className="text-sm leading-7 text-neutral-300">
-          Send a short note about what is slowing your storefront down. I only need enough context to tell you whether the next move is Liquid, Hydrogen, or no rebuild at all.
+          Send enough context to qualify the right path: audit, migration, custom build, optimization, support, Liquid cleanup, or no rebuild.
         </p>
       </div>
 
@@ -96,13 +96,63 @@ export function LeadCaptureForm({
         <input name="storeUrl" type="text" autoComplete="url" placeholder="https://yourstore.com" />
       </label>
 
+      <div className={formClassName}>
+        <label className="lead-form-field">
+          <span>Current storefront</span>
+          <select name="currentStack" defaultValue="">
+            <option value="" disabled>Select one</option>
+            <option>Shopify Liquid theme</option>
+            <option>Existing Hydrogen storefront</option>
+            <option>Other headless Shopify storefront</option>
+            <option>Not sure yet</option>
+          </select>
+        </label>
+        <label className="lead-form-field">
+          <span>Project type</span>
+          <select name="projectType" defaultValue="">
+            <option value="" disabled>Select one</option>
+            <option>Hydrogen fit audit</option>
+            <option>Liquid to Hydrogen migration</option>
+            <option>Custom Hydrogen build</option>
+            <option>Performance / SEO optimization</option>
+            <option>Ongoing Hydrogen support</option>
+            <option>Not sure yet</option>
+          </select>
+        </label>
+      </div>
+
+      <div className={formClassName}>
+        <label className="lead-form-field">
+          <span>Timeline</span>
+          <select name="timeline" defaultValue="">
+            <option value="" disabled>Select one</option>
+            <option>This month</option>
+            <option>1-3 months</option>
+            <option>3-6 months</option>
+            <option>Researching only</option>
+          </select>
+        </label>
+        <label className="lead-form-field">
+          <span>Budget range</span>
+          <select name="budgetRange" defaultValue="">
+            <option value="" disabled>Select one</option>
+            <option>Audit only</option>
+            <option>$3K-$12K optimization</option>
+            <option>$15K-$30K lean build</option>
+            <option>$30K-$60K growth build</option>
+            <option>$60K+ complex migration</option>
+            <option>Not set yet</option>
+          </select>
+        </label>
+      </div>
+
       <label className="lead-form-field">
         <span>What is blocking growth?</span>
         <textarea
           name="message"
           required
           rows={compact ? 4 : 5}
-          placeholder="Mobile UX, slow feature delivery, migration question, performance drag..."
+          placeholder="Mobile UX, slow feature delivery, migration question, performance drag, SEO risk, app limits..."
         />
       </label>
 
@@ -124,7 +174,7 @@ export function LeadCaptureForm({
           disabled={status === "submitting"}
           className="inline-flex min-h-11 items-center rounded-full bg-[#10b981] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-[#171717] disabled:cursor-not-allowed disabled:opacity-70"
         >
-          {status === "submitting" ? "Sending..." : "Send project note"}
+          {status === "submitting" ? "Sending..." : "Request fit review"}
         </button>
       </div>
 

@@ -76,6 +76,30 @@ export function ServiceLandingPage({ service }: ServiceLandingPageProps) {
           </div>
         </section>
 
+        <section className="surface-card space-y-6">
+          <SectionHeader
+            eyebrow="Offer snapshot"
+            title="What a buyer can actually start with."
+            description="This keeps the page tied to a purchasable service path instead of only explaining the technical topic."
+            className="max-w-5xl"
+          />
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            {[
+              ["Entry point", service.offerSnapshot.entryPoint],
+              ["Typical timeline", service.offerSnapshot.typicalTimeline],
+              ["Expected output", service.offerSnapshot.expectedOutput],
+              ["Qualification", service.offerSnapshot.qualification],
+            ].map(([label, value]) => (
+              <article key={label} className="rounded-[1.2rem] border border-black/8 bg-white p-5">
+                <p className="text-[0.68rem] font-bold uppercase tracking-[0.2em] text-[#10b981]">
+                  {label}
+                </p>
+                <p className="mt-3 text-sm leading-7 text-neutral-700">{value}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
         {service.pricingRows?.length ? (
           <section className="surface-card space-y-6">
             <SectionHeader
@@ -249,7 +273,6 @@ export function ServiceLandingPage({ service }: ServiceLandingPageProps) {
         />
 
         <CTASection
-          primaryLink="upwork"
           headline={`Need ${service.name.toLowerCase()} from a senior Hydrogen developer?`}
           subtext={`Send the current store URL and the commercial pressure behind the work. I will tell you whether ${service.name.toLowerCase()} is the right next move, or whether a narrower Shopify path is safer.`}
           sourceKind={`service:${service.slug}`}

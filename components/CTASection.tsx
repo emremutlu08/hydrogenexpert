@@ -7,7 +7,6 @@ import { TrackedCTAButton } from "@/components/TrackedCTAButton";
 interface CTASectionProps {
   headline?: string;
   subtext: string;
-  primaryLink?: "linkedin" | "upwork";
   sourceKind?: string;
 }
 
@@ -29,14 +28,15 @@ export function CTASection({
             {subtext}
           </p>
           <div className="flex flex-wrap items-center gap-4 pt-3">
-            <TrackedCTAButton
-              destination="upwork"
-              label="Hire Emre on Upwork"
+            <Link
+              href="#email-form"
               className="inline-flex min-h-11 items-center rounded-full bg-[#10b981] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-[#171717]"
-            />
+            >
+              Request Hydrogen Fit Audit
+            </Link>
             <TrackedCTAButton
               destination="linkedin"
-              label="Message on LinkedIn"
+              label="Book a Scoping Call"
               className="inline-flex min-h-11 items-center rounded-full border border-white/16 px-6 py-3 text-sm font-semibold text-white transition-colors hover:border-[#8df1cb] hover:text-[#8df1cb]"
             />
           </div>
@@ -48,7 +48,7 @@ export function CTASection({
               Or send an email brief
             </Link>
             <p className="text-sm font-medium uppercase tracking-[0.18em] text-neutral-500">
-              Direct access. No agency maze.
+              Direct senior access. No fake agency layer.
             </p>
           </div>
         </div>

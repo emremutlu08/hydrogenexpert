@@ -150,7 +150,7 @@ const faqs = [
   {
     question: "Do you take strategy-only work or only implementation?",
     answer:
-      "Both. Some brands need a clean Hydrogen decision and scope before they commit. Others already know they need implementation and want direct senior delivery without extra agency layers between planning and build work.",
+      "Both. Some brands need a clean Hydrogen decision and scope before they commit. Others already know they need implementation and want direct senior delivery with planning and build work owned closely together.",
   },
   {
     question: "Is this only for full Shopify Hydrogen rebuilds?",
@@ -180,7 +180,7 @@ export default function HireMePage() {
         <PageIntroSection
           eyebrow="Why Emre"
           title="Hire a Shopify Hydrogen developer with real delivery history"
-          description="Direct senior delivery for Shopify Plus brands that need sharper storefront systems without agency theatre."
+          description="Direct senior delivery for Shopify Plus brands that need sharper storefront systems and a focused Hydrogen service path."
           body="I help brands move from theme limitations to faster, more flexible Shopify Hydrogen storefronts. The work stays grounded in conversion, UX, and launch reality."
         />
 
@@ -207,7 +207,7 @@ export default function HireMePage() {
         <section className="surface-card space-y-6">
           <SectionHeader
             eyebrow="Client proof"
-            title="Clear credentials, direct contact, less agency noise."
+            title="Clear credentials, direct contact, focused Hydrogen ownership."
             description="The point is not to sell complexity. It is to help brands understand what they need and launch with fewer surprises."
           />
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
@@ -293,7 +293,6 @@ export default function HireMePage() {
         />
 
         <CTASection
-          primaryLink="upwork"
           subtext="If you already know your storefront needs a stronger customer experience, the fastest next step is a direct conversation on Upwork."
           sourceKind="hire_me_cta"
         />

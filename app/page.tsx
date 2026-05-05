@@ -34,9 +34,9 @@ import {
 const LAST_UPDATED = "2026-04-21";
 
 export const metadata = buildMetadata({
-  title: "Shopify Hydrogen Developer for Shopify Plus Brands | Emre Mutlu",
+  title: "Senior-Led Shopify Hydrogen Agency Alternative | HydrogenExpert",
   description:
-    "Senior Shopify Hydrogen developer for Plus storefront audits, Liquid-to-Hydrogen migrations, custom builds, performance work, and launch support.",
+    "Senior-led Shopify Hydrogen services for Plus storefront audits, Liquid-to-Hydrogen migrations, custom builds, performance, SEO, and support.",
   path: "/",
   ogImage: absoluteUrl("/og-home.svg"),
 });
@@ -78,7 +78,7 @@ const websiteSchema = {
   name: SITE_NAME,
   url: absoluteUrl("/"),
   description:
-    "Lead generation site for Shopify store owners researching Hydrogen strategy, migration fit, pricing, and case studies.",
+    "Senior-led Shopify Hydrogen services site for brands researching Hydrogen strategy, migration fit, pricing, audits, development, and case studies.",
   publisher: {
     "@type": "Person",
     name: OWNER.name,
@@ -88,9 +88,9 @@ const websiteSchema = {
 const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "Shopify Hydrogen Developer for Growing Brands",
+  headline: "Senior-Led Shopify Hydrogen Services for Growing Brands",
   description:
-    "Merchant-friendly guidance on Shopify Hydrogen strategy, speed, migration fit, cost ranges, and launch planning for growing brands.",
+    "Merchant-friendly guidance on Shopify Hydrogen strategy, speed, migration fit, cost ranges, custom storefront development, and launch planning for growing brands.",
   author: {
     "@type": "Person",
     name: OWNER.name,
@@ -307,6 +307,11 @@ const references = [
     href: "https://shopify.dev/docs/storefronts/headless/hydrogen/getting-started",
     note: "Official documentation for setup, capabilities, and implementation path.",
   },
+  {
+    label: "Shopify Hydrogen and Oxygen fundamentals",
+    href: "https://shopify.dev/docs/storefronts/headless/hydrogen/fundamentals",
+    note: "Official reference for Hydrogen, React Router, Oxygen, and deployment architecture.",
+  },
 ] as const;
 
 const technicalResources = [
@@ -347,25 +352,26 @@ export default function HomePage() {
       <div className="page-shell">
         <section className="space-y-8">
           <div className="mx-auto max-w-5xl space-y-7 text-center">
-            <p className="eyebrow justify-center">Senior Shopify Hydrogen development and advisory</p>
+            <p className="eyebrow justify-center">Senior-led Shopify Hydrogen services</p>
             <div className="space-y-3">
               <h1 className="hero-statement">
-                Shopify Hydrogen developer for growing brands
+                Shopify Hydrogen agency alternative for growing brands
               </h1>
               <p className="hero-response">
                 {"Your Shopify store works, but every new feature takes 3x longer than last year? That's when I come in."}
               </p>
             </div>
             <p className="mx-auto max-w-3xl page-intro">
-              I help growth-minded Shopify Plus brands decide when Hydrogen is worth it, scope the
-              right move, and ship production-grade storefronts without agency noise.
+              I help Shopify Plus and growth-stage brands decide whether Hydrogen is worth it,
+              scope the right service path, and ship production-grade custom storefront work with
+              direct senior ownership.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-3">
               <Link
-                href="/hire-me"
+                href="/shopify-hydrogen-audit"
                 className="rounded-full bg-[#171717] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#10b981]"
               >
-                {"Let's Get Started"}
+                Request a Hydrogen Fit Audit
               </Link>
               <Link
                 href="/case-studies"
@@ -397,8 +403,8 @@ export default function HomePage() {
         <section className="surface-card space-y-6">
           <SectionHeader
             eyebrow="Proof"
-            title="Public trust signals without fake agency theater."
-            description="The proof layer should scan cleanly before the page asks a merchant to take the next step."
+            title="Public trust signals for a senior-led service model."
+            description="The proof layer should scan cleanly before the page asks a merchant to take the next step. No fake office, no fake team, no unsupported partner badges."
           />
           <ProofCardGrid
             items={proofCards}
@@ -432,7 +438,7 @@ export default function HomePage() {
           <SectionHeader
             eyebrow="About Emre"
             title="Direct operator, direct context, direct accountability"
-            description="The point is not to sell a headless rebuild. It is to help founders and ecommerce leads make the right commercial call, then ship the work without agency layers."
+            description="The point is not to sell a headless rebuild by default. It is to help founders and ecommerce leads make the right commercial call, then ship the work with senior ownership."
           />
           <FounderCard size="lg" showBio showCredentials>
             {FOUNDER_STORY.map((paragraph) => (
@@ -505,8 +511,7 @@ export default function HomePage() {
         </section>
 
         <CTASection
-          primaryLink="upwork"
-          subtext="If your brand has outgrown a theme-based storefront, I can help you decide whether Hydrogen is the right next move and what that should look like commercially."
+          subtext="If your brand has outgrown a theme-based storefront, I can help you decide whether Hydrogen is the right next move and which service path should come first: audit, migration, custom build, optimization, support, or no rebuild."
           sourceKind="homepage_cta"
         />
       </div>
