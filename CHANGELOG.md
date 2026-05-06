@@ -15,6 +15,52 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-06
 
+- PR: [#19 Close HydrogenExpert V1 QA cleanup](https://github.com/emremutlu08/hydrogenexpert/pull/19)
+- Branch: `codex/hydrogenexpert-v1-closure`
+- Deployment: Production deployment [hydrogenexpert-25hakq2t9-emremutlu8s-projects.vercel.app](https://hydrogenexpert-25hakq2t9-emremutlu8s-projects.vercel.app) aliased to [https://hydrogenexpert.co](https://hydrogenexpert.co).
+- Summary:
+  - Completed HydrogenExpert V1 closure cleanup: buyer-facing service copy polish, generated short-answer grammar fix, primary footer service taxonomy, tracked Email Brief CTAs, and Articles top-nav gating while no evergreen article is public.
+  - Normalized analytics event helpers for CTA clicks, lead form start/success/error, quiz answers/results, content-card clicks, and read-depth tracking.
+  - Added V1 closure docs for form QA, analytics events, SEO QA, link audit, proof registry, quiz QA, sales kit, audit deliverable template, technical audit checklist, and final closure checklist.
+  - Added legal-page last-updated dates and aligned privacy copy with the actual lead form fields.
+- Files changed:
+  - `app/articles/page.tsx`
+  - `app/blog/page.tsx`
+  - `app/contact/page.tsx`
+  - `app/cookies/page.tsx`
+  - `app/privacy/page.tsx`
+  - `app/terms/page.tsx`
+  - `components/CTASection.tsx`
+  - `components/DecisionLandingPage.tsx`
+  - `components/Footer.tsx`
+  - `components/LeadCaptureForm.tsx`
+  - `components/ServiceLandingPage.tsx`
+  - `components/TrackedInternalLink.tsx`
+  - `components/quiz/HydrogenFitQuiz.tsx`
+  - `components/quiz/QuizQuestion.tsx`
+  - `components/quiz/QuizResult.tsx`
+  - `docs/hydrogenexpert-v1/*`
+  - `lib/analytics.ts`
+  - `lib/navigation.ts`
+  - `tests/analytics-events.test.ts`
+- Verification:
+  - `npm install`: up to date, 0 vulnerabilities.
+  - `git diff --check`: passed.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run test`: 10 test files and 37 tests passed.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed with 0 pages needing source review.
+  - `npm run build`: passed, 51 routes generated.
+  - Local production server smoke: sampled public routes, sitemap, robots, scheduled article 404, footer services, and Email Brief copy passed.
+  - Local internal crawl: 40 routes visited, no internal 404s, no future article leaks.
+  - Local Playwright probe at 390px and 1440px: sampled pages had one H1, no horizontal overflow, no Articles primary nav; quiz 3/5 result rendered.
+  - Lead API probes: honeypot `200`, missing required fields `400`, invalid email `400`, missing trusted origin `403`.
+  - Live production verification: `/`, `/services`, `/shopify-hydrogen-audit`, `/custom-shopify-hydrogen-storefront`, `/shopify-hydrogen-performance-optimization`, `/shopify-hydrogen-support-retainer`, `/contact`, `/articles`, `/should-i-use-it`, `/sitemap.xml`, and `/robots.txt` returned expected statuses; `/articles/how-to-hire-shopify-hydrogen-developer` returned `404`; sitemap excluded the future article URL; robots pointed to the production sitemap; old Email Brief text and `#email-form` were absent from sampled public HTML.
+- Manual follow-up:
+  - Submit one real production test lead to verify Supabase insert, source fields, qualification fields, success state, rate limiting, and Turnstile configured-env behavior.
+  - Re-check external proof links periodically because third-party profiles can vary automated responses.
+
 - PR: [#17 Add scheduled Articles SEO architecture](https://github.com/emremutlu08/hydrogenexpert/pull/17)
 - Branch: `codex/seo-articles-scheduled-publishing`
 - Deployment: Production deployment [hydrogenexpert-6y8iqthf3-emremutlu8s-projects.vercel.app](https://hydrogenexpert-6y8iqthf3-emremutlu8s-projects.vercel.app) aliased to [https://hydrogenexpert.co](https://hydrogenexpert.co).
