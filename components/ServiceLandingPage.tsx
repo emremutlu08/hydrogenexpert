@@ -90,6 +90,12 @@ function isArticle(article: Article | null): article is Article {
   return article !== null;
 }
 
+function formatShortAnswerAudience(bestFor: string) {
+  const normalized = bestFor.trim().replace(/\.$/, "");
+
+  return normalized.charAt(0).toLowerCase() + normalized.slice(1);
+}
+
 export function ServiceLandingPage({ service }: ServiceLandingPageProps) {
   const schemaIds = getSchemaIds();
   const serviceCta = getServiceCta(service);
@@ -138,7 +144,7 @@ export function ServiceLandingPage({ service }: ServiceLandingPageProps) {
             Short answer
           </p>
           <p className="max-w-4xl text-lg leading-8 text-neutral-700">
-            {service.name} is the right next step when {service.bestFor.charAt(0).toLowerCase() + service.bestFor.slice(1)} If that pressure is not visible yet, start with a narrower audit before buying a full Hydrogen scope.
+            {service.name} is the right next step for {formatShortAnswerAudience(service.bestFor)}. If that pressure is not visible yet, start with a narrower audit before buying a full Hydrogen scope.
           </p>
         </section>
 
@@ -169,7 +175,7 @@ export function ServiceLandingPage({ service }: ServiceLandingPageProps) {
           <SectionHeader
             eyebrow="Offer snapshot"
             title="What a buyer can actually start with."
-            description="This keeps the page tied to a purchasable service path instead of only explaining the technical topic."
+            description="A quick view of the practical entry point, timeline, output, and qualification signals before a buyer commits to the next step."
             className="max-w-5xl"
           />
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
@@ -296,7 +302,7 @@ export function ServiceLandingPage({ service }: ServiceLandingPageProps) {
           <SectionHeader
             eyebrow="Decision logic"
             title="What the signal means for the next move."
-            description="Use this table to keep the page tied to a real buyer decision instead of a generic service pitch."
+            description="Compare the storefront signal, stronger move, and caution before deciding how much Hydrogen scope to buy."
             className="max-w-5xl"
           />
           <div className="overflow-x-auto rounded-[1.2rem] border border-black/8 bg-white">
@@ -353,7 +359,7 @@ export function ServiceLandingPage({ service }: ServiceLandingPageProps) {
           <SectionHeader
             eyebrow="Proof-led scoping"
             title="What stays grounded before the work starts."
-            description="The page is specific enough for commercial search, but the work stays honest about fit, proof, and maintenance cost."
+            description="The scope stays tied to visible storefront pressure, proof, and maintenance reality before a rebuild gets bigger than it should."
             className="max-w-5xl"
           />
           <div className="grid gap-4 md:grid-cols-3">

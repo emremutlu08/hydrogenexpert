@@ -6,7 +6,7 @@ import { TurnstileField } from "@/components/TurnstileField";
 import { QuizQuestion } from "@/components/quiz/QuizQuestion";
 import { QuizResult } from "@/components/quiz/QuizResult";
 import { QuizScoreDisplay } from "@/components/quiz/QuizScoreDisplay";
-import { trackLeadStart, trackLeadSubmit } from "@/lib/analytics";
+import { trackLeadStart, trackLeadSubmit, trackQuizResult } from "@/lib/analytics";
 
 interface QuizItem {
   title: string;
@@ -43,6 +43,10 @@ export function HydrogenFitQuiz({ questions }: HydrogenFitQuizProps) {
   function handleShowResult() {
     if (!allAnswered) {
       return;
+    }
+
+    if (!showResult) {
+      trackQuizResult({ score: yesCount, total: questions.length, sourcePath: "/should-i-use-it" });
     }
 
     setShowResult(true);

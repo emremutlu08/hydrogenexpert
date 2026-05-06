@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { TrackedCTALink } from "@/components/TrackedInternalLink";
 import type { SiteNavItem } from "@/lib/navigation";
 import { OWNER } from "@/lib/site";
 
@@ -36,12 +37,12 @@ interface FooterProps {
 }
 
 const SERVICE_ITEMS = [
-  { href: "/shopify-hydrogen-agency", label: "Hydrogen Agency Alternative" },
-  { href: "/headless-shopify-agency", label: "Headless Shopify Agency" },
-  { href: "/shopify-hydrogen-developer", label: "Hydrogen Developer" },
-  { href: "/shopify-hydrogen-audit", label: "Hydrogen Storefront Audit" },
+  { href: "/shopify-hydrogen-audit", label: "Shopify Hydrogen Audit" },
   { href: "/liquid-to-hydrogen-migration", label: "Liquid to Hydrogen Migration" },
-  { href: "/shopify-hydrogen-seo", label: "Hydrogen SEO" },
+  { href: "/custom-shopify-hydrogen-storefront", label: "Custom Hydrogen Storefront" },
+  { href: "/shopify-hydrogen-seo", label: "Shopify Hydrogen SEO" },
+  { href: "/shopify-hydrogen-performance-optimization", label: "Hydrogen Performance Optimization" },
+  { href: "/shopify-hydrogen-support-retainer", label: "Hydrogen Support Retainer" },
   { href: "/shopify-hydrogen-cost", label: "Hydrogen Cost" },
 ] as const;
 
@@ -175,12 +176,14 @@ export function Footer({ navItems }: FooterProps) {
                 >
                   View Proof
                 </Link>
-                <Link
-                  href="#email-form"
+                <TrackedCTALink
+                  href="/contact#fit-review-form"
+                  eventName="cta_click_email_brief"
+                  sourceKind="footer_start_here"
                   className="inline-flex min-h-11 items-center rounded-full border border-white/14 px-5 py-3 text-sm font-semibold text-white transition-colors hover:border-[#10b981] hover:text-[#8df1cb]"
                 >
-                  Email Brief
-                </Link>
+                  Send an email brief
+                </TrackedCTALink>
               </div>
             </div>
           </div>

@@ -2,9 +2,12 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 
 import {
   trackAnchorCTA,
+  trackBlogCardClick,
   trackCTA,
   trackLeadFormView,
   trackLeadSubmit,
+  trackQuizAnswer,
+  trackQuizResult,
 } from "../lib/analytics";
 
 function eventCalls(gtag: ReturnType<typeof vi.fn>) {
@@ -33,6 +36,15 @@ describe("analytics events", () => {
       {
         command: "event",
         eventName: "cta_click",
+        params: {
+          destination: "upwork",
+          source: "service:shopify-hydrogen-seo",
+          source_path: "/shopify-hydrogen-seo",
+        },
+      },
+      {
+        command: "event",
+        eventName: "cta_click_upwork",
         params: {
           destination: "upwork",
           source: "service:shopify-hydrogen-seo",
@@ -85,6 +97,15 @@ describe("analytics events", () => {
           engagement_type: "fit_audit",
         },
       },
+      {
+        command: "event",
+        eventName: "lead_form_submit_success",
+        params: {
+          source: "contact_page",
+          status: "success",
+          engagement_type: "fit_audit",
+        },
+      },
     ]);
   });
 
@@ -106,6 +127,72 @@ describe("analytics events", () => {
           source: "fit_audit_cta",
           source_path: "/shopify-hydrogen-fit-audit",
           target: "/contact",
+        },
+      },
+      {
+        command: "event",
+        eventName: "cta_click_fit_audit",
+        params: {
+          source: "fit_audit_cta",
+          source_path: "/shopify-hydrogen-fit-audit",
+          target: "/contact",
+        },
+      },
+    ]);
+  });
+
+  it("tracks email brief, quiz, and content card events", () => {
+    const gtag = vi.fn();
+    vi.stubGlobal("window", { gtag });
+
+    trackAnchorCTA("cta_click_email_brief", {
+      sourceKind: "footer_start_here",
+      sourcePath: "/",
+      target: "/contact#fit-review-form",
+    });
+    trackQuizAnswer({ questionNumber: 2, answer: "yes", sourcePath: "/should-i-use-it" });
+    trackQuizResult({ score: 4, total: 5, sourcePath: "/should-i-use-it" });
+    trackBlogCardClick({
+      slug: "shopify-hydrogen-product-description-ssr-seo",
+      contentType: "blog",
+      sourcePath: "/blog",
+    });
+
+    expect(eventCalls(gtag)).toEqual([
+      {
+        command: "event",
+        eventName: "cta_click_email_brief",
+        params: {
+          source: "footer_start_here",
+          source_path: "/",
+          target: "/contact#fit-review-form",
+        },
+      },
+      {
+        command: "event",
+        eventName: "quiz_answer_click",
+        params: {
+          question_number: "2",
+          answer: "yes",
+          source_path: "/should-i-use-it",
+        },
+      },
+      {
+        command: "event",
+        eventName: "quiz_result_view",
+        params: {
+          score: "4",
+          total: "5",
+          source_path: "/should-i-use-it",
+        },
+      },
+      {
+        command: "event",
+        eventName: "blog_card_click",
+        params: {
+          content_slug: "shopify-hydrogen-product-description-ssr-seo",
+          content_type: "blog",
+          source_path: "/blog",
         },
       },
     ]);

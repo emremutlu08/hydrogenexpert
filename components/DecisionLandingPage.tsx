@@ -64,7 +64,7 @@ export function DecisionLandingPage({
             Short answer
           </p>
           <p className="max-w-4xl text-lg leading-8 text-neutral-700">
-            {page.description} The safer decision is to compare the commercial signal, the next move, and the caution together before treating Hydrogen as the default upgrade.
+            {page.description} Compare the commercial signal, next move, and caution together before treating Hydrogen as the default upgrade.
           </p>
         </section>
 

@@ -3,6 +3,7 @@
 import Link from "next/link";
 
 import { TrackedCTAButton } from "@/components/TrackedCTAButton";
+import { TrackedCTALink } from "@/components/TrackedInternalLink";
 
 interface QuizResultProps {
   score: number;
@@ -62,12 +63,14 @@ export function QuizResult({ score, answers, emailAnchorId }: QuizResultProps) {
               className="inline-flex items-center rounded-full border border-white/16 px-6 py-3 text-sm font-semibold text-white transition hover:border-[#8df1cb] hover:text-[#8df1cb]"
             />
           </div>
-          <Link
+          <TrackedCTALink
             href={`#${emailAnchorId}`}
+            eventName="cta_click_email_brief"
+            sourceKind="hydrogen_quiz_result"
             className="inline-flex text-sm font-medium text-white underline decoration-white/25 underline-offset-4 transition hover:text-[#8df1cb]"
           >
-            Or send an email brief
-          </Link>
+            Send an email brief
+          </TrackedCTALink>
         </div>
       ) : (
         <Link

@@ -4,6 +4,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
 import { PageIntroSection } from "@/components/PageIntroSection";
 import { SectionHeader } from "@/components/SectionHeader";
+import { TrackedContentLink } from "@/components/TrackedInternalLink";
 import { getPublicArticles } from "@/lib/articles";
 import { buildMetadata } from "@/lib/seo";
 import { OWNER, SITE_LOGO_PATH, SITE_NAME, absoluteUrl, getSchemaIds } from "@/lib/site";
@@ -111,19 +112,26 @@ export default async function ArticlesPage() {
                     </time>
                   </div>
                   <h2 className="subsection-title">
-                    <Link href={`/articles/${article.slug}`} className="transition hover:text-[#10b981]">
+                    <TrackedContentLink
+                      href={`/articles/${article.slug}`}
+                      contentType="article"
+                      slug={article.slug}
+                      className="transition hover:text-[#10b981]"
+                    >
                       {article.title}
-                    </Link>
+                    </TrackedContentLink>
                   </h2>
                   <p className="max-w-3xl text-base leading-8 text-neutral-600">
                     {article.description}
                   </p>
-                  <Link
+                  <TrackedContentLink
                     href={`/articles/${article.slug}`}
+                    contentType="article"
+                    slug={article.slug}
                     className="inline-flex min-h-11 items-center rounded-full bg-[#171717] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#10b981]"
                   >
                     Read article
-                  </Link>
+                  </TrackedContentLink>
                 </article>
               ))}
             </div>
