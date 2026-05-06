@@ -119,8 +119,9 @@ export function sanitizeJsonScriptContent(input: string) {
 
 export async function verifyTurnstileToken(token: string, ip?: string | null) {
   const secret = process.env.TURNSTILE_SECRET_KEY;
+  const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
-  if (!secret) {
+  if (!secret || !siteKey) {
     return { success: true, optional: true as const };
   }
 
