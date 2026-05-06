@@ -54,6 +54,7 @@ export default function CookiesPage() {
           description="HydrogenExpert uses a small set of services for security, form protection, analytics, and performance measurement."
           body="There is no advertising retargeting setup described here. The current intent is site measurement and inquiry protection."
         />
+        <p className="text-sm font-medium text-neutral-500">Last updated: May 7, 2026</p>
 
       <section className="surface-card space-y-6">
         <SectionHeader

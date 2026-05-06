@@ -1,5 +1,6 @@
 import { cache } from "react";
 
+import { getPublicArticles } from "@/lib/articles";
 import { getPublishedPosts } from "@/lib/posts";
 
 export interface SiteNavItem {
@@ -8,7 +9,9 @@ export interface SiteNavItem {
 }
 
 export const getSiteNavigation = cache(async (): Promise<readonly SiteNavItem[]> => {
-  const hasBlog = (await getPublishedPosts()).length > 0;
+  const [posts, articles] = await Promise.all([getPublishedPosts(), getPublicArticles()]);
+  const hasBlog = posts.length > 0;
+  const hasArticles = articles.length > 0;
   const items: SiteNavItem[] = [
     { href: "/", label: "Home" },
     { href: "/services", label: "Services" },
@@ -22,7 +25,10 @@ export const getSiteNavigation = cache(async (): Promise<readonly SiteNavItem[]>
     items.push({ href: "/blog", label: "Blog" });
   }
 
-  items.push({ href: "/articles", label: "Articles" });
+  if (hasArticles) {
+    items.push({ href: "/articles", label: "Articles" });
+  }
+
   items.push({ href: "/hire-me", label: "Hire Me" });
 
   return items;

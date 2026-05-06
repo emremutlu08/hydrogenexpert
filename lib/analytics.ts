@@ -2,6 +2,14 @@ type AnalyticsValue = string | null | undefined;
 type AnalyticsParams = Record<string, AnalyticsValue>;
 type ExternalDestination = "linkedin" | "upwork";
 type LeadStatus = "success" | "error";
+type InternalCtaEvent =
+  | "cta_click_fit_audit"
+  | "cta_click_email_brief"
+  | "cta_click_case_studies"
+  | "audit_cta_click"
+  | "case_study_click"
+  | "cost_page_cta_click"
+  | "service_page_cta_click";
 
 function cleanParams(params: AnalyticsParams = {}) {
   return Object.fromEntries(
@@ -50,6 +58,7 @@ export function trackCTA(
   };
 
   sendEvent("cta_click", params);
+  sendEvent(`cta_click_${destination}`, params);
   sendEvent(`${destination}_click`, params);
 
   const contextualEvent = contextualCtaEvent(context.sourceKind);
@@ -60,14 +69,24 @@ export function trackCTA(
 }
 
 export function trackAnchorCTA(
-  eventName: "audit_cta_click" | "case_study_click" | "cost_page_cta_click" | "service_page_cta_click",
+  eventName: InternalCtaEvent,
   context: { sourceKind?: string; sourcePath?: string; target?: string } = {},
 ) {
-  sendEvent(eventName, {
+  const params = {
     source: context.sourceKind,
     source_path: context.sourcePath,
     target: context.target,
-  });
+  };
+
+  sendEvent(eventName, params);
+
+  if (eventName === "audit_cta_click") {
+    sendEvent("cta_click_fit_audit", params);
+  }
+
+  if (eventName === "case_study_click") {
+    sendEvent("cta_click_case_studies", params);
+  }
 }
 
 export function trackLeadFormView(source: string, sourcePath?: string) {
@@ -83,11 +102,44 @@ export function trackLeadSubmit(
   status: LeadStatus,
   details: AnalyticsParams = {},
 ) {
-  sendEvent("lead_form_submit", { source, status, ...details });
+  const params = { source, status, ...details };
+
+  sendEvent("lead_form_submit", params);
+  sendEvent(status === "success" ? "lead_form_submit_success" : "lead_form_submit_error", params);
 }
 
 export function trackBlogView(slug: string) {
   sendEvent("blog_view", { post_slug: slug });
+}
+
+export function trackQuizAnswer(
+  context: { questionNumber: number; answer: "yes" | "no"; sourcePath?: string },
+) {
+  sendEvent("quiz_answer_click", {
+    question_number: String(context.questionNumber),
+    answer: context.answer,
+    source_path: context.sourcePath,
+  });
+}
+
+export function trackQuizResult(
+  context: { score: number; total: number; sourcePath?: string },
+) {
+  sendEvent("quiz_result_view", {
+    score: String(context.score),
+    total: String(context.total),
+    source_path: context.sourcePath,
+  });
+}
+
+export function trackBlogCardClick(
+  context: { slug: string; contentType: "blog" | "article"; sourcePath?: string },
+) {
+  sendEvent("blog_card_click", {
+    content_slug: context.slug,
+    content_type: context.contentType,
+    source_path: context.sourcePath,
+  });
 }
 
 export function trackScrollDepth(slug: string) {
@@ -110,6 +162,7 @@ export function trackScrollDepth(slug: string) {
 
       if (entry?.isIntersecting && !fired) {
         fired = true;
+        sendEvent("article_read_depth", { post_slug: slug, depth: "80" });
         sendEvent("blog_read", { post_slug: slug });
         observer.disconnect();
       }

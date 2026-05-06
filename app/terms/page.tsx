@@ -60,6 +60,7 @@ export default function TermsPage() {
           description="Basic terms for using the HydrogenExpert website and reading its service content."
           body="Project terms, payment terms, and delivery responsibilities are handled separately inside the actual client engagement."
         />
+        <p className="text-sm font-medium text-neutral-500">Last updated: May 7, 2026</p>
 
       <section className="surface-card space-y-6">
         <SectionHeader

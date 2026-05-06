@@ -6,6 +6,7 @@ import { CTASection } from "@/components/CTASection";
 import { JsonLd } from "@/components/JsonLd";
 import { PageIntroSection } from "@/components/PageIntroSection";
 import { PostVisual } from "@/components/PostVisual";
+import { TrackedContentLink } from "@/components/TrackedInternalLink";
 import { buildMetadata } from "@/lib/seo";
 import { getPostEnhancement } from "@/lib/post-enhancements";
 import { getPublishedPosts } from "@/lib/posts";
@@ -120,9 +121,14 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                   {previewVisual ? <PostVisual visual={previewVisual} compact /> : null}
                   <div className="card-rail__title">
                     <h2 className="subsection-title mt-0">
-                      <Link href={`/blog/${post.slug}`} className="transition hover:text-[#10b981]">
+                      <TrackedContentLink
+                        href={`/blog/${post.slug}`}
+                        contentType="blog"
+                        slug={post.slug}
+                        className="transition hover:text-[#10b981]"
+                      >
                         {post.title}
-                      </Link>
+                      </TrackedContentLink>
                     </h2>
                   </div>
                   <p className="max-w-3xl text-base leading-8 text-neutral-600">
@@ -132,12 +138,14 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                     <p className="mt-3 text-sm font-medium text-neutral-500">{post.readingTime} min read</p>
                   ) : null}
                   <div className="card-rail__footer">
-                    <Link
+                    <TrackedContentLink
                       href={`/blog/${post.slug}`}
+                      contentType="blog"
+                      slug={post.slug}
                       className="inline-flex min-h-11 items-center rounded-full bg-[#171717] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#10b981]"
                     >
                       Read Production Notes
-                    </Link>
+                    </TrackedContentLink>
                   </div>
                 </div>
               </article>

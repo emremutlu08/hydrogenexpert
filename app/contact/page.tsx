@@ -21,7 +21,7 @@ const contactOptions = [
   {
     title: "Hydrogen fit review",
     body: "Best path when you want a direct recommendation on audit, migration, build, optimization, support, Liquid, or no rebuild.",
-    href: "#email-form",
+    href: "#fit-review-form",
   },
   {
     title: "LinkedIn",

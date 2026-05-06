@@ -1,5 +1,7 @@
 "use client";
 
+import { trackQuizAnswer } from "@/lib/analytics";
+
 interface QuizQuestionProps {
   number: number;
   question: string;
@@ -27,7 +29,10 @@ export function QuizQuestion({
           <button
             type="button"
             aria-pressed={value === "yes"}
-            onClick={() => onChange("yes")}
+            onClick={() => {
+              trackQuizAnswer({ questionNumber: number, answer: "yes", sourcePath: "/should-i-use-it" });
+              onChange("yes");
+            }}
             className={`rounded-full px-5 py-3 text-sm font-semibold transition ${
               value === "yes"
                 ? "bg-[#171717] text-white"
@@ -39,7 +44,10 @@ export function QuizQuestion({
           <button
             type="button"
             aria-pressed={value === "no"}
-            onClick={() => onChange("no")}
+            onClick={() => {
+              trackQuizAnswer({ questionNumber: number, answer: "no", sourcePath: "/should-i-use-it" });
+              onChange("no");
+            }}
             className={`rounded-full px-5 py-3 text-sm font-semibold transition ${
               value === "no"
                 ? "bg-[#171717] text-white"

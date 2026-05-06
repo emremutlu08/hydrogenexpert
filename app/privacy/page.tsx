@@ -22,7 +22,7 @@ export const metadata = buildMetadata({
 const sections = [
   {
     title: "What the lead form collects",
-    body: "When you submit a project note, the form collects the name, email, store URL or brand, message, source path, and source kind needed to understand the inquiry and reply to it.",
+    body: "When you submit a project note, the form collects the name, email, store URL or brand, current stack, main problem, budget range, timeline, monthly revenue band, Shopify Plus status, help type, message, source path, and source kind needed to understand the inquiry and reply to it.",
   },
   {
     title: "How inquiry data is used",
@@ -68,6 +68,7 @@ export default function PrivacyPage() {
           description="A practical explanation of how this site handles project inquiry data, analytics, and security services."
           body="This notice is written for a small professional services site. It is not a formal legal opinion, but it explains the data handling choices built into HydrogenExpert."
         />
+        <p className="text-sm font-medium text-neutral-500">Last updated: May 7, 2026</p>
 
       <section className="surface-card space-y-6">
         <SectionHeader
