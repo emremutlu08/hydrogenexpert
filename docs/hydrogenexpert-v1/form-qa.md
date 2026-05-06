@@ -18,7 +18,7 @@ Last updated: May 7, 2026
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase client setup | Missing value returns a safe 503 from the API route. |
 | `SUPABASE_SERVICE_ROLE_KEY` | Lead insert and durable rate limit | Missing value returns a safe 503 from the API route. |
 | `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Turnstile widget | Missing value hides the widget and keeps the page usable. |
-| `TURNSTILE_SECRET_KEY` | Turnstile verification | Missing value makes Turnstile optional server-side. |
+| `TURNSTILE_SECRET_KEY` | Turnstile verification | Verification is active only when both the secret and public site key are configured; partial env keeps the form usable. |
 
 ## Test Cases
 

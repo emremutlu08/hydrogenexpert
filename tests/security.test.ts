@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 
-import { isTrustedOrigin, safeCompare } from "../lib/security";
+import { isTrustedOrigin, safeCompare, verifyTurnstileToken } from "../lib/security";
 
 function requestWithOrigin(origin?: string) {
   return new Request("https://hydrogenexpert.co/api/lead-capture", {
@@ -47,5 +47,21 @@ describe("safeCompare", () => {
 
   it("rejects different-length strings", () => {
     expect(safeCompare("short", "a much longer secret")).toBe(false);
+  });
+});
+
+describe("verifyTurnstileToken", () => {
+  afterEach(() => {
+    vi.unstubAllEnvs();
+  });
+
+  it("keeps lead capture usable when Turnstile is not fully configured", async () => {
+    vi.stubEnv("TURNSTILE_SECRET_KEY", "secret-only");
+    vi.stubEnv("NEXT_PUBLIC_TURNSTILE_SITE_KEY", "");
+
+    await expect(verifyTurnstileToken("")).resolves.toEqual({
+      success: true,
+      optional: true,
+    });
   });
 });

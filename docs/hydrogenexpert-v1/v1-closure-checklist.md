@@ -23,7 +23,7 @@ Status values: Done, Failed, Needs manual review
 | Quiz QA | Playwright 3/5 interaction | Done | Result rendered correctly. |
 | Form QA | API probes | Done | Honeypot, required fields, invalid email, and origin checks passed. |
 | Supabase insert | Real production lead insert | Needs manual review | Avoided creating a real lead row during local closure run. |
-| Turnstile configured path | Production env behavior | Needs manual review | Requires live env verification. |
+| Turnstile configured path | Production env behavior | Done | Production had secret-only partial config; hotfix keeps the form usable unless both Turnstile keys are configured. |
 | Rate limit | Production IP/window behavior | Needs manual review | Requires controlled production or staging test. |
 | Analytics QA | Event helper tests and docs | Done | Dedicated CTA, lead, quiz, card, and read-depth events documented. |
 | SEO QA | Route table and smoke checks | Done | Metadata/canonical/sitemap/robots documented and sampled locally. |

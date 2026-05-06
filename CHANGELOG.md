@@ -13,6 +13,31 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 - Verification:
 - Manual follow-up:
 
+## 2026-05-07
+
+- PR: [#20 Handle partial Turnstile configuration](https://github.com/emremutlu08/hydrogenexpert/pull/20)
+- Branch: `codex/fix-turnstile-partial-env`
+- Deployment: Production deployment [hydrogenexpert-f6sqccfmr-emremutlu8s-projects.vercel.app](https://hydrogenexpert-f6sqccfmr-emremutlu8s-projects.vercel.app) aliased to [https://hydrogenexpert.co](https://hydrogenexpert.co).
+- Summary:
+  - Updated Turnstile verification so partial configuration does not break lead capture: server verification is enforced only when both `TURNSTILE_SECRET_KEY` and `NEXT_PUBLIC_TURNSTILE_SITE_KEY` are configured.
+  - Added a regression test for secret-only partial Turnstile configuration.
+  - Updated HydrogenExpert V1 form QA and closure checklist docs with the Turnstile behavior.
+- Files changed:
+  - `CHANGELOG.md`
+  - `docs/hydrogenexpert-v1/form-qa.md`
+  - `docs/hydrogenexpert-v1/v1-closure-checklist.md`
+  - `lib/security.ts`
+  - `tests/security.test.ts`
+- Verification:
+  - `git diff --check`: passed.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run test`: 10 test files and 38 tests passed.
+  - `npm run build`: passed, 51 routes generated.
+  - Live production form QA: Turnstile widget and script render on `/contact#fit-review-form`; tokenless bot/API submissions fail with `Bot verification failed`; repeated attempts triggered `429 Too many attempts`, proving rate limiting is active.
+- Manual follow-up:
+  - A real human browser submission is still needed to complete the final Supabase insert confirmation because Cloudflare Turnstile did not issue a token to automated browser sessions.
+
 ## 2026-05-06
 
 - PR: [#19 Close HydrogenExpert V1 QA cleanup](https://github.com/emremutlu08/hydrogenexpert/pull/19)
