@@ -470,7 +470,7 @@ select {
 
 @media (min-width: 1024px) {
   .site-header__nav--responsive {
-    @apply flex-wrap gap-2 overflow-visible px-0 pb-0;
+    @apply flex-wrap justify-center gap-2 overflow-visible px-0 pb-0;
     mask-image: none;
   }
 }
