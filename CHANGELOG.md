@@ -13,6 +13,25 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 - Verification:
 - Manual follow-up:
 
+## 2026-05-09
+
+- PR: [#21 Fix header nav wrapping on laptop widths](https://github.com/emremutlu08/hydrogenexpert/pull/21)
+- Branch: `codex/header-nav-laptop-wrap`
+- Deployment: Pending production deployment.
+- Summary:
+  - Kept the primary navigation chips on a second header row through laptop-sized widths so the 13-inch Mac layout no longer feels compressed.
+  - Delayed the single-line desktop header layout until very wide screens where the brand, CTA, and full navigation fit without crowding.
+- Files changed:
+  - `CHANGELOG.md`
+  - `app/globals.css`
+- Verification:
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run build`: passed, 52 routes generated.
+  - Local production Playwright viewport smoke at 1280, 1440, 1536, 1719, and 1720px: no horizontal overflow; nav wraps below the top row below 1720px and returns to single-row layout at 1720px+.
+- Manual follow-up:
+  - None.
+
 ## 2026-05-07
 
 - PR: [#20 Handle partial Turnstile configuration](https://github.com/emremutlu08/hydrogenexpert/pull/20)
