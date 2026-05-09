@@ -462,13 +462,13 @@ select {
 }
 
 .site-header__nav--responsive {
-  @apply mt-3 flex justify-start gap-1.5 overflow-x-auto px-3 pb-1 lg:hidden;
+  @apply mt-3 flex justify-start gap-1.5 overflow-x-auto px-3 pb-1;
   -webkit-overflow-scrolling: touch;
   scroll-padding-inline: 0.75rem;
   mask-image: linear-gradient(90deg, transparent 0, #000 12px, #000 calc(100% - 18px), transparent 100%);
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1720px) {
   .site-header__frame {
     @apply flex items-center justify-between gap-4;
   }
