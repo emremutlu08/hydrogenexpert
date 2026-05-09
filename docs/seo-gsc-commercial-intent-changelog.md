@@ -108,6 +108,31 @@ Supporting pages:
 - Track impressions, average position, CTR, and clicks for target queries.
 - Check country and device filters.
 
+## 2026-05-10 Search Console review
+
+Observed from Google Search Console Performance, last 3 months:
+- Total site performance: 2 clicks, 850 impressions, 0.2% CTR, 7.8 average position.
+- Top commercial query: `hire shopify hydrogen developers`, 40 impressions, 0 clicks.
+- Query-to-page mapping for `hire shopify hydrogen developers`: 100% of impressions mapped to `/`, with 39.9 average position.
+- High-impression pages included `/`, `/case-studies`, `/blog`, `/what-is-hydrogen`, `/should-i-use-it`, and `/custom-shopify-hydrogen-storefront`.
+- The public hiring guide `/articles/how-to-hire-shopify-hydrogen-developer` went live on 2026-05-08, while the visible GSC chart only covered data through 2026-05-07.
+
+Interpretation:
+- Google already associates the homepage with hire-developer intent, but it is not yet routing that intent strongly enough to the dedicated developer landing page or public hiring guide.
+- Because the article became public after the latest visible GSC data, the first response should be internal-link and snippet alignment, not a larger keyword rewrite.
+
+2026-05-10 changes:
+- Updated homepage metadata description to mention hiring a senior Shopify Hydrogen developer naturally.
+- Added a homepage FAQ entry that answers whether Emre can be hired directly as a Shopify Hydrogen developer and links to `/shopify-hydrogen-developer`.
+- Strengthened the commercial-path card for `/shopify-hydrogen-developer` with natural plural-query language while preserving the solo senior-operator positioning.
+- Replaced the generic articles commercial-path card with the now-public hiring guide at `/articles/how-to-hire-shopify-hydrogen-developer`.
+- Added the hiring guide to the technical resources cluster so crawlers and merchants can reach it from the homepage.
+
+Next Search Console follow-up:
+- Inspect `/`, `/shopify-hydrogen-developer`, and `/articles/how-to-hire-shopify-hydrogen-developer`.
+- Request indexing for the hiring guide now that it is public.
+- Recheck the query-to-page mapping for `hire shopify hydrogen developers` after 7, 14, and 28 days.
+
 ## Scheduled publishing smoke test
 
 - Future articles hidden from `/articles`.
