@@ -17,7 +17,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 - PR: [#21 Fix header nav wrapping on laptop widths](https://github.com/emremutlu08/hydrogenexpert/pull/21)
 - Branch: `codex/header-nav-laptop-wrap`
-- Deployment: Pending production deployment.
+- Deployment: Production deployment [hydrogenexpert-psn2iqwnm-emremutlu8s-projects.vercel.app](https://hydrogenexpert-psn2iqwnm-emremutlu8s-projects.vercel.app) aliased to [https://hydrogenexpert.co](https://hydrogenexpert.co).
 - Summary:
   - Kept the primary navigation chips on a second header row through laptop-sized widths so the 13-inch Mac layout no longer feels compressed.
   - Delayed the single-line desktop header layout until very wide screens where the brand, CTA, and full navigation fit without crowding.
@@ -29,6 +29,8 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - `npm run typecheck`: passed.
   - `npm run build`: passed, 52 routes generated.
   - Local production Playwright viewport smoke at 1280, 1440, 1536, 1719, and 1720px: no horizontal overflow; nav wraps below the top row below 1720px and returns to single-row layout at 1720px+.
+  - Live production HTTP verification: `/`, `/sitemap.xml`, and `/robots.txt` returned HTTP 200 from `https://hydrogenexpert.co`.
+  - Live production Playwright viewport smoke at 1280, 1440, 1536, 1719, and 1720px: no horizontal overflow; nav wraps below the top row below 1720px and returns to single-row layout at 1720px+.
 - Manual follow-up:
   - None.
 
