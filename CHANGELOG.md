@@ -15,6 +15,33 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-10
 
+- PR: [#24 Improve homepage hiring intent signals](https://github.com/emremutlu08/hydrogenexpert/pull/24)
+- Branch: `codex/gsc-hiring-intent-homepage`
+- Deployment: Production deployment via Vercel, aliased to [https://hydrogenexpert.co](https://hydrogenexpert.co).
+- Summary:
+  - Reviewed Google Search Console Performance for the last 3 months and found the primary commercial opportunity in `hire shopify hydrogen developers`, where impressions mapped to the homepage rather than the dedicated developer path.
+  - Updated homepage metadata, FAQ, commercial path cards, and resource links so hiring intent routes more clearly to `/shopify-hydrogen-developer` and `/articles/how-to-hire-shopify-hydrogen-developer`.
+  - Documented the Search Console snapshot and follow-up indexing checks in the commercial-intent SEO changelog.
+- Files changed:
+  - `CHANGELOG.md`
+  - `app/page.tsx`
+  - `docs/seo-gsc-commercial-intent-changelog.md`
+- Verification:
+  - Shopify Dev MCP Hydrogen docs check: completed for Hydrogen/custom storefront and Storefront API framing.
+  - `git diff --check`: passed.
+  - `npm run audit:shopify-claims`: passed.
+  - `npm run validate:content`: passed.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run build`: passed, 52 routes generated.
+  - Local production Playwright rendered smoke at 390, 768, and 1280px: no body overflow; homepage meta description, FAQ, developer links, and hiring guide links render.
+  - Local production Playwright rendered smoke for `/articles/how-to-hire-shopify-hydrogen-developer`: HTTP 200, expected H1/title, and Article JSON-LD present.
+- Manual follow-up:
+  - In Search Console, inspect `/`, `/shopify-hydrogen-developer`, and `/articles/how-to-hire-shopify-hydrogen-developer`, then request indexing for the public hiring guide.
+  - Recheck `hire shopify hydrogen developers` query-to-page mapping after 7, 14, and 28 days.
+
+## 2026-05-10
+
 - PR: [#23 Center header navigation chips](https://github.com/emremutlu08/hydrogenexpert/pull/23)
 - Branch: `codex/center-header-nav-chips`
 - Deployment: Production deployment [hydrogenexpert-w3cv28r6r-emremutlu8s-projects.vercel.app](https://hydrogenexpert-w3cv28r6r-emremutlu8s-projects.vercel.app) aliased to [https://hydrogenexpert.co](https://hydrogenexpert.co).

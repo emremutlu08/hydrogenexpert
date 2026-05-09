@@ -32,13 +32,13 @@ import {
   buildPublisherSchema,
 } from "@/lib/structured-data";
 
-const LAST_UPDATED = "2026-04-21";
+const LAST_UPDATED = "2026-05-10";
 const schemaIds = getSchemaIds();
 
 export const metadata = buildMetadata({
   title: "Senior-Led Shopify Hydrogen Agency Alternative | HydrogenExpert",
   description:
-    "Senior-led Shopify Hydrogen services for growth-stage and Shopify Plus brands: fit audits, migrations, custom storefront builds, SEO, optimization, and support.",
+    "Hire a senior Shopify Hydrogen developer for audits, migrations, custom storefront builds, SEO, optimization, and support for growth-stage and Shopify Plus brands.",
   path: "/",
   ogImage: absoluteUrl("/og-home.svg"),
 });
@@ -90,7 +90,7 @@ const websiteSchema = {
   name: SITE_NAME,
   url: absoluteUrl("/"),
   description:
-    "Senior-led Shopify Hydrogen services site for brands researching Hydrogen strategy, migration fit, pricing, audits, development, and case studies.",
+    "Senior-led Shopify Hydrogen services site for brands researching Hydrogen strategy, migration fit, pricing, audits, developer hiring, development, and case studies.",
   publisher: {
     "@type": "Organization",
     "@id": schemaIds.organization,
@@ -103,7 +103,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Senior-Led Shopify Hydrogen Services for Growing Brands",
   description:
-    "Merchant-friendly guidance on Shopify Hydrogen strategy, speed, migration fit, cost ranges, custom storefront development, and launch planning for growing brands.",
+    "Merchant-friendly guidance on Shopify Hydrogen strategy, speed, migration fit, cost ranges, hiring a senior Hydrogen developer, custom storefront development, and launch planning for growing brands.",
   author: {
     "@type": "Person",
     "@id": schemaIds.person,
@@ -149,6 +149,13 @@ const faqs = [
     question: "How long does a Hydrogen migration usually take?",
     answer:
       "A lean Hydrogen project may take around 6 weeks, while more complex storefronts can take closer to 16 weeks. Timelines expand when integrations, content readiness, or wider launch planning add more moving parts.",
+  },
+  {
+    question: "Can I hire you as a Shopify Hydrogen developer?",
+    answer:
+      "Yes. If the scope is clear, I can work directly on Hydrogen routes, Storefront API data, SEO-safe launch work, performance cleanup, and post-launch fixes. If the commercial case is still unclear, start with a Fit & Risk Audit before buying a rebuild.",
+    linkHref: "/shopify-hydrogen-developer",
+    linkLabel: "Review the Shopify Hydrogen developer service.",
   },
   {
     question: "Is Hydrogen ready for AI agent commerce in 2026?",
@@ -314,6 +321,12 @@ const technicalResources = [
       "Evergreen merchant guides for hiring, migration, SEO, cost, and Hydrogen fit decisions.",
   },
   {
+    title: "How to hire a Hydrogen developer",
+    href: "/articles/how-to-hire-shopify-hydrogen-developer",
+    body:
+      "A buyer guide for evaluating Shopify Hydrogen developers, senior ownership, proof, SEO discipline, Storefront API work, and when an audit should come before a rebuild.",
+  },
+  {
     title: "Variant URLs and fallback bugs",
     href: "/blog/shopify-hydrogen-variant-selection-fallback",
     body:
@@ -437,9 +450,9 @@ export default function HomePage() {
             {[
               {
                 href: "/shopify-hydrogen-developer",
-                title: "Hire a Shopify Hydrogen Developer",
+                title: "Hire a senior Shopify Hydrogen developer",
                 body:
-                  "Work directly with a senior Hydrogen specialist instead of a general Shopify vendor.",
+                  "If you searched for Shopify Hydrogen developers, this is the direct senior-operator path instead of a general Shopify vendor.",
               },
               {
                 href: "/shopify-hydrogen-audit",
@@ -454,10 +467,10 @@ export default function HomePage() {
                   "Review approved Hydrogen storefront work across retail, luxury ecommerce, and DTC.",
               },
               {
-                href: "/articles",
-                title: "Shopify Hydrogen Articles",
+                href: "/articles/how-to-hire-shopify-hydrogen-developer",
+                title: "Read the hiring guide",
                 body:
-                  "Read Shopify Hydrogen articles for hiring, migration, SEO, cost, and fit decisions.",
+                  "Use the guide to evaluate Hydrogen developer proof, ownership, SEO judgment, and when an audit is the safer first move.",
               },
             ].map((item) => (
               <Link
