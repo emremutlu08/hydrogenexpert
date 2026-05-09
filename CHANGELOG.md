@@ -17,7 +17,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 - PR: [#23 Center header navigation chips](https://github.com/emremutlu08/hydrogenexpert/pull/23)
 - Branch: `codex/center-header-nav-chips`
-- Deployment: Pending production deployment.
+- Deployment: Production deployment [hydrogenexpert-w3cv28r6r-emremutlu8s-projects.vercel.app](https://hydrogenexpert-w3cv28r6r-emremutlu8s-projects.vercel.app) aliased to [https://hydrogenexpert.co](https://hydrogenexpert.co).
 - Summary:
   - Centered the header navigation chip row on laptop and desktop widths while preserving the left-started horizontal scroll rail on mobile and tablet widths.
 - Files changed:
@@ -28,6 +28,8 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - `npm run typecheck`: passed.
   - `npm run build`: passed, 52 routes generated.
   - Local production Playwright viewport smoke at 390, 768, 1024, 1280, 1440, 1536, and 1920px: no body overflow; nav remains below the top row; 1024px+ chip group center delta is 0.
+  - Live production HTTP verification: `/` returned HTTP 200 from `https://hydrogenexpert.co`.
+  - Live production Playwright viewport smoke at 390, 768, 1024, 1280, 1440, 1536, and 1920px: no body overflow; nav remains below the top row; 1024px+ chip group center delta is 0.
 - Manual follow-up:
   - None.
 
