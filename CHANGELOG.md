@@ -15,6 +15,25 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-09
 
+- PR: [#22 Keep header navigation in chip row](https://github.com/emremutlu08/hydrogenexpert/pull/22)
+- Branch: `codex/header-nav-chip-row`
+- Deployment: Pending production deployment.
+- Summary:
+  - Reworked the header navigation into a permanent chip row beneath the brand and CTA row instead of switching back into a crowded single-line header at very wide breakpoints.
+  - Allowed the chip row to wrap on laptop widths while keeping mobile and tablet chip scrolling contained inside the nav rail.
+- Files changed:
+  - `CHANGELOG.md`
+  - `app/globals.css`
+- Verification:
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run build`: passed, 52 routes generated.
+  - Local production Playwright viewport smoke at 390, 768, 1024, 1280, 1440, 1536, 1720, and 1920px: no body overflow; nav remains below the top row; 1024px wraps into two chip rows; 1280px+ fits in one chip row.
+- Manual follow-up:
+  - None.
+
+## 2026-05-09
+
 - PR: [#21 Fix header nav wrapping on laptop widths](https://github.com/emremutlu08/hydrogenexpert/pull/21)
 - Branch: `codex/header-nav-laptop-wrap`
 - Deployment: Production deployment [hydrogenexpert-psn2iqwnm-emremutlu8s-projects.vercel.app](https://hydrogenexpert-psn2iqwnm-emremutlu8s-projects.vercel.app) aliased to [https://hydrogenexpert.co](https://hydrogenexpert.co).
