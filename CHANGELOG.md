@@ -17,7 +17,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 - PR: [#29 Fix current state gaps](https://github.com/emremutlu08/hydrogenexpert/pull/29)
 - Branch: `codex/fix-current-state-gaps-2026-05-11`
-- Deployment: Pending production deployment and live verification.
+- Deployment: Production deployment [hydrogenexpert-lg6vs8y3w-emremutlu8s-projects.vercel.app](https://hydrogenexpert-lg6vs8y3w-emremutlu8s-projects.vercel.app), aliased to [https://hydrogenexpert.co](https://hydrogenexpert.co).
 - Summary:
   - Fixed the scheduled article workflow secret check by moving the Vercel deploy hook secret into job environment context before step-level conditions use it.
   - Changed the protected AI blog generation route from immediate public publishing to draft-only generation with an explicit review tag.
@@ -37,9 +37,13 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - `npm run audit:shopify-claims`: passed.
   - `npm audit --audit-level=moderate`: passed with 0 vulnerabilities.
   - `npm run build`: passed, 53 routes generated.
+  - Vercel production build: passed, 53 routes generated.
+  - Live production HTTP smoke: `/`, `/about`, `/hire-me`, `/shopify-hydrogen-developer`, `/articles`, `/blog`, `/contact`, `/sitemap.xml`, `/robots.txt`, `/llms.txt`, and `/feed.xml` returned HTTP 200 from `https://hydrogenexpert.co`.
+  - Live production content smoke: `/hire-me` rendered the updated `1,900+` Upwork hours label, did not render the old exact `1,916` value, did not render placeholder GA, and did not expose private task terms.
+  - Live production API smoke: unauthorized `/api/generate-post` POST returned HTTP 401.
+  - Live sitemap smoke: 38 URLs, 5 blog post URLs, 1 article URL, `/articles` included, and no `/privacy` URL.
 - Manual follow-up:
-  - Confirm the GitHub Actions workflow creates jobs again after the branch push or manual dispatch.
-  - After production deployment, verify the live site and update this entry with the deployment result.
+  - Confirm the scheduled article workflow creates jobs again on the next scheduled or manual run.
 
 ## 2026-05-10
 
