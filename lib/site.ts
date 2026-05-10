@@ -19,14 +19,14 @@ export const SITE_LOGO_PATH = "/brand/hydrogenexpert-logo-icon.png";
 export const FOUNDER_IMAGE_PATH = "/emre-city-16x9.png";
 
 export const UPWORK_PROFILE = {
-  title: "Shopify Hydrogen & Liquid Expert | Plus Stores | Headless Dev",
-  hourlyRate: "$32/hr",
+  title: "Shopify Hydrogen & Liquid Expert | Headless Shopify Developer",
+  hourlyRate: "$40/hr",
   jobSuccessScore: "100%",
   badge: "Top Rated Plus",
   totalHoursLabel: "1,900+",
-  totalHoursExact: "1,916",
+  totalHoursExact: "1,956",
   totalJobs: "6",
-  lastVerified: "2026-05-03",
+  lastVerified: "2026-05-11",
 } as const;
 
 export const VERIFIED_PROFILE_URLS = [

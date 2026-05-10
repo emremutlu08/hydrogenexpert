@@ -1,6 +1,11 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { NextResponse } from "next/server";
 
+import {
+  CONTENT_WRITER_SYSTEM_PROMPT,
+  GENERATED_POST_STATUS,
+  GENERATED_POST_TAGS,
+} from "@/lib/generated-post-governance";
 import { getApiHeaders, getClientIp, isRateLimitedDurable, safeCompare } from "@/lib/security";
 import { getSupabaseAdminClient, getSupabaseClient } from "@/lib/supabase";
 
@@ -149,8 +154,7 @@ async function generateCandidate(
         model,
         max_tokens: 2400,
         temperature: 0.7,
-        system:
-          'You are a content writer for a Shopify development agency. Write a blog post for non-technical Shopify store owners — no code, plain English, merchant perspective. Format: JSON with fields title (max 60 chars), slug (lowercase-hyphenated), content (full HTML article, 800–1200 words), meta_description (140–155 chars). Return JSON only with no markdown fences.',
+        system: CONTENT_WRITER_SYSTEM_PROMPT,
         messages: [
           {
             role: "user",
@@ -310,9 +314,9 @@ export async function POST(request: Request) {
     content: payload.content,
     excerpt: buildExcerpt(payload.content, payload.meta_description),
     meta_description: payload.meta_description,
-    tags: ["Shopify Hydrogen", "Store Owner Guide"],
+    tags: [...GENERATED_POST_TAGS],
     reading_time: calculateReadingTime(payload.content),
-    status: "published",
+    status: GENERATED_POST_STATUS,
   });
 
   if (insertError) {
@@ -323,7 +327,7 @@ export async function POST(request: Request) {
   }
 
   return NextResponse.json(
-    { success: true, slug: payload.slug, model: selectedModel },
+    { success: true, slug: payload.slug, model: selectedModel, status: GENERATED_POST_STATUS },
     { headers: getApiHeaders() },
   );
 }
