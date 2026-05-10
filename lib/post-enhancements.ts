@@ -227,6 +227,54 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
       },
     ],
   },
+  "shopify-hydrogen-hero-video-carousel-onended": {
+    heroVisual: {
+      type: "none",
+    },
+    faq: [
+      {
+        question: "Should a video carousel use the same timer as image slides?",
+        answer:
+          "Usually no. Image slides can use a fixed interval, but active video slides should advance from the video ended event so the full clip is visible before the carousel moves on.",
+      },
+      {
+        question: "Why should inactive videos be ignored?",
+        answer:
+          "Inactive videos can still emit events during a carousel state change. The handler should verify that the event came from the active slide before it advances the carousel.",
+      },
+    ],
+    internalLinks: [
+      {
+        href: "/shopify-hydrogen-performance-optimization",
+        label: "Hydrogen performance optimization",
+        note: "Use this when homepage media, scripts, and interaction timing need production cleanup.",
+      },
+      {
+        href: "/custom-shopify-hydrogen-storefront",
+        label: "Custom Shopify Hydrogen storefront",
+        note: "The service path for custom storefront UI patterns that need careful behavior and maintainability.",
+      },
+      {
+        href: "/blog/cut-homepage-load-time-from-5s-to-2s-shopify-hydrogen",
+        label: "Hydrogen homepage performance note",
+        note: "A related production note about homepage behavior, initial rendering, and practical frontend tradeoffs.",
+      },
+    ],
+    externalLinks: [
+      {
+        href: "https://shopify.dev/docs/api/hydrogen/2025-05/components/media/video",
+        label: "Shopify Hydrogen Video component",
+        note: "Official Shopify reference for rendering Shopify video media in Hydrogen storefronts.",
+      },
+      {
+        href: "https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/ended_event",
+        label: "MDN HTMLMediaElement ended event",
+        note: "Reference for the native media event that fires when playback reaches the end.",
+      },
+    ],
+    closingPitch:
+      "If your Hydrogen storefront has small media bugs like this, the useful work is not only patching one carousel. It is checking whether the component ownership, timers, and browser events still match the buying experience you intended.",
+  },
   "shopify-hydrogen-seo-checklist": {
     heroVisual: {
       type: "code-card",
