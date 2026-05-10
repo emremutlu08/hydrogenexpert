@@ -15,6 +15,24 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-11
 
+- PR: [#30 Opt scheduled workflow into Node 24 action runtime](https://github.com/emremutlu08/hydrogenexpert/pull/30)
+- Branch: `codex/workflow-node24-runtime-2026-05-11`
+- Deployment: Workflow-only follow-up; no production application redeploy required.
+- Summary:
+  - Opted the scheduled article workflow into GitHub's Node 24 JavaScript action runtime after the successful manual dispatch exposed the upcoming Node 20 action deprecation warning.
+  - Updated the PR #29 changelog entry to record the successful manual workflow dispatch and clear its manual follow-up.
+- Files changed:
+  - `.github/workflows/scheduled-article-publish.yml`
+  - `CHANGELOG.md`
+- Verification:
+  - `git diff --check`: passed.
+  - `npm run lint`: passed.
+  - `npm run test -- tests/generated-post.test.ts`: passed.
+- Manual follow-up:
+  - None.
+
+## 2026-05-11
+
 - PR: [#29 Fix current state gaps](https://github.com/emremutlu08/hydrogenexpert/pull/29)
 - Branch: `codex/fix-current-state-gaps-2026-05-11`
 - Deployment: Production deployment [hydrogenexpert-lg6vs8y3w-emremutlu8s-projects.vercel.app](https://hydrogenexpert-lg6vs8y3w-emremutlu8s-projects.vercel.app), aliased to [https://hydrogenexpert.co](https://hydrogenexpert.co).
