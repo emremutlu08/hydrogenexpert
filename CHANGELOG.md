@@ -20,6 +20,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 - Deployment: Production deployment [hydrogenexpert-lg6vs8y3w-emremutlu8s-projects.vercel.app](https://hydrogenexpert-lg6vs8y3w-emremutlu8s-projects.vercel.app), aliased to [https://hydrogenexpert.co](https://hydrogenexpert.co).
 - Summary:
   - Fixed the scheduled article workflow secret check by moving the Vercel deploy hook secret into job environment context before step-level conditions use it.
+  - Opted the scheduled article workflow into the GitHub Actions Node 24 JavaScript action runtime to avoid the upcoming Node 20 action deprecation.
   - Changed the protected AI blog generation route from immediate public publishing to draft-only generation with an explicit review tag.
   - Updated Upwork proof constants from the live public profile checked on 2026-05-11.
   - Added regression tests that keep generated posts in draft review and keep the prompt aligned with the solo senior operator positioning.
@@ -42,8 +43,9 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - Live production content smoke: `/hire-me` rendered the updated `1,900+` Upwork hours label, did not render the old exact `1,916` value, did not render placeholder GA, and did not expose private task terms.
   - Live production API smoke: unauthorized `/api/generate-post` POST returned HTTP 401.
   - Live sitemap smoke: 38 URLs, 5 blog post URLs, 1 article URL, `/articles` included, and no `/privacy` URL.
+  - Manual GitHub Actions workflow dispatch after merge: passed for `Scheduled article publish` run 25640763499.
 - Manual follow-up:
-  - Confirm the scheduled article workflow creates jobs again on the next scheduled or manual run.
+  - None.
 
 ## 2026-05-10
 
