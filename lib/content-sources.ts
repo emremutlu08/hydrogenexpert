@@ -36,6 +36,10 @@ export interface ContentSourceMetadata {
   lastVerified: string;
   claimTypes: readonly ClaimClassification[];
   sourceMap: readonly ContentSource[];
+  targetKeyword?: string;
+  searchIntent?: string;
+  reviewedBy?: string;
+  contentType?: string;
 }
 
 export const SHOPIFY_CONTENT_LAST_VERIFIED = "2026-05-05";
@@ -94,6 +98,15 @@ export const SOURCE_PACKS = {
     retrievedAt: SHOPIFY_CONTENT_LAST_VERIFIED,
     usedFor:
       "Hydrogen analytics, Shopify analytics, and tracking implementation claims.",
+  },
+  hydrogenVideoComponent: {
+    label: "Shopify: Hydrogen Video component",
+    sourceType: "shopify_official",
+    topic: "hydrogen",
+    url: "https://shopify.dev/docs/api/hydrogen/2025-05/components/media/video",
+    retrievedAt: "2026-05-10",
+    usedFor:
+      "Hydrogen video media rendering reference for the hero carousel timing production note.",
   },
   hydrogenConsent: {
     label: "Shopify: Get consent for analytics and customer privacy",
@@ -455,6 +468,19 @@ export const BLOG_SOURCE_METADATA = {
       SOURCE_PACKS.storefrontMcp,
       SOURCE_PACKS.ucpCatalog,
       SOURCE_PACKS.hydrogenSeo,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "shopify-hydrogen-hero-video-carousel-onended": {
+    lastVerified: "2026-05-10",
+    claimTypes: ["official_shopify_fact", "emre_experience"],
+    targetKeyword: "shopify hydrogen hero video carousel",
+    searchIntent: "post-launch troubleshooting",
+    reviewedBy: "Emre Mutlu",
+    contentType: "technical_blog",
+    sourceMap: [
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.hydrogenVideoComponent,
       SOURCE_PACKS.emreProductionExperience,
     ],
   },
