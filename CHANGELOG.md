@@ -28,9 +28,8 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 - Verification:
   - `git diff --check`: passed.
   - `npm run lint`: passed.
-  - Manual GitHub Actions workflow dispatch after merge: pending.
 - Manual follow-up:
-  - Confirm the next manual workflow dispatch completes without the Node 20 action deprecation annotation.
+  - None.
 
 ## 2026-05-11
 
