@@ -15,6 +15,24 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-11
 
+- PR: [#31 Update scheduled workflow GitHub Action versions](https://github.com/emremutlu08/hydrogenexpert/pull/31)
+- Branch: `codex/update-github-action-versions-2026-05-11`
+- Deployment: Workflow-only follow-up; no production application redeploy required.
+- Summary:
+  - Updated the scheduled article workflow from `actions/checkout@v4` to `actions/checkout@v5`.
+  - Updated the scheduled article workflow from `actions/setup-node@v4` to `actions/setup-node@v6`.
+  - Kept the Node 24 action-runtime opt-in from PR #30 while using action versions that target the newer runtime directly.
+- Files changed:
+  - `.github/workflows/scheduled-article-publish.yml`
+  - `CHANGELOG.md`
+- Verification:
+  - `git diff --check`: passed.
+  - `npm run lint`: passed.
+- Manual follow-up:
+  - None.
+
+## 2026-05-11
+
 - PR: [#30 Opt scheduled workflow into Node 24 action runtime](https://github.com/emremutlu08/hydrogenexpert/pull/30)
 - Branch: `codex/workflow-node24-runtime-2026-05-11`
 - Deployment: Workflow-only follow-up; no production application redeploy required.
