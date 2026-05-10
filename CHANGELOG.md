@@ -15,6 +15,30 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-10
 
+- PR: [#28 Upgrade TypeScript and Node types](https://github.com/emremutlu08/hydrogenexpert/pull/28)
+- Branch: `codex/typescript-node-types-upgrade-2026-05-10`
+- Deployment: Production deployment via Vercel, aliased to [https://hydrogenexpert.co](https://hydrogenexpert.co).
+- Summary:
+  - Upgraded TypeScript to 6.0.3.
+  - Upgraded Node type definitions to 25.6.2.
+  - Kept ESLint on 9.39.4 because the current Next-managed ESLint plugin stack does not yet advertise ESLint 10 peer support.
+- Files changed:
+  - `CHANGELOG.md`
+  - `package.json`
+  - `package-lock.json`
+- Verification:
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run test`: 10 test files and 38 tests passed.
+  - `npm run build`: passed, 53 routes generated.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed.
+  - `npm audit --audit-level=moderate`: passed with 0 vulnerabilities.
+- Manual follow-up:
+  - Revisit ESLint 10 after `eslint-plugin-import`, `eslint-plugin-jsx-a11y`, and `eslint-plugin-react` advertise compatible peer ranges.
+
+## 2026-05-10
+
 - PR: [#26 Update application dependencies](https://github.com/emremutlu08/hydrogenexpert/pull/26)
 - Branch: `codex/update-packages-2026-05-10`
 - Deployment: Production deployment [hydrogenexpert-ldbvsc23g-emremutlu8s-projects.vercel.app](https://hydrogenexpert-ldbvsc23g-emremutlu8s-projects.vercel.app) aliased to [https://hydrogenexpert.co](https://hydrogenexpert.co).
