@@ -15,6 +15,33 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-10
 
+- PR: [#25 Add hero video carousel blog post enhancements](https://github.com/emremutlu08/hydrogenexpert/pull/25)
+- Branch: `codex/blog-hero-video-carousel-post`
+- Deployment: Production deployment via Vercel, aliased to [https://hydrogenexpert.co](https://hydrogenexpert.co).
+- Summary:
+  - Published the Supabase-backed production note for the hero video carousel timing bug at `/blog/shopify-hydrogen-hero-video-carousel-onended`.
+  - Added source metadata for the new Shopify Hydrogen blog slug, including the exact Shopify Hydrogen Video component reference checked through Shopify Dev MCP.
+  - Added public post enhancements: FAQ, internal links, official references, and closing CTA copy.
+- Files changed:
+  - `CHANGELOG.md`
+  - `lib/content-sources.ts`
+  - `lib/post-enhancements.ts`
+- Verification:
+  - Shopify Dev MCP Hydrogen docs check: completed for the Hydrogen Video component reference.
+  - `git diff --check`: passed.
+  - `npm run audit:shopify-claims`: passed.
+  - `npm run validate:content`: passed.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run build`: passed, 53 routes generated after clearing stale local build cache.
+  - Local production HTTP smoke: `/blog/shopify-hydrogen-hero-video-carousel-onended`, `/blog`, and `/sitemap.xml` returned `200` or included the new slug as expected.
+  - Local rendered-source smoke: title present, FAQ schema present, two TSX code blocks render as code blocks, blog index links the post, and private task terms are absent.
+  - Live pre-deploy smoke: the Supabase-backed post and blog index returned `200`, sitemap included the slug, two TSX code blocks rendered, and private task terms were absent.
+- Manual follow-up:
+  - None.
+
+## 2026-05-10
+
 - PR: [#24 Improve homepage hiring intent signals](https://github.com/emremutlu08/hydrogenexpert/pull/24)
 - Branch: `codex/gsc-hiring-intent-homepage`
 - Deployment: Production deployment via Vercel, aliased to [https://hydrogenexpert.co](https://hydrogenexpert.co).
