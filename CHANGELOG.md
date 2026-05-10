@@ -15,6 +15,30 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-10
 
+- PR: [#26 Update application dependencies](https://github.com/emremutlu08/hydrogenexpert/pull/26)
+- Branch: `codex/update-packages-2026-05-10`
+- Deployment: Production deployment [hydrogenexpert-ldbvsc23g-emremutlu8s-projects.vercel.app](https://hydrogenexpert-ldbvsc23g-emremutlu8s-projects.vercel.app) aliased to [https://hydrogenexpert.co](https://hydrogenexpert.co).
+- Summary:
+  - Updated Next.js, React, Next third-party packages, Supabase, Anthropic SDK, Tailwind, and Node 20 type patch dependencies.
+  - Kept major toolchain jumps for a separate migration: TypeScript 6, ESLint 10, and Node types 25.
+- Files changed:
+  - `package.json`
+  - `package-lock.json`
+- Verification:
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run test`: 10 test files and 38 tests passed.
+  - `npm run build`: passed, 53 routes generated.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed.
+  - `npm audit --audit-level=moderate`: passed with 0 vulnerabilities.
+  - Vercel production build: passed with Next.js 16.2.6 and 53 generated static pages.
+  - Live production HTTP smoke: `/`, `/shopify-hydrogen-developer`, `/articles`, `/blog`, `/contact`, `/sitemap.xml`, `/robots.txt`, and `/llms.txt` returned HTTP 200 from `https://hydrogenexpert.co`.
+- Manual follow-up:
+  - Plan a separate major toolchain migration for TypeScript 6, ESLint 10, and Node types 25.
+
+## 2026-05-10
+
 - PR: [#25 Add hero video carousel blog post enhancements](https://github.com/emremutlu08/hydrogenexpert/pull/25)
 - Branch: `codex/blog-hero-video-carousel-post`
 - Deployment: Production deployment via Vercel, aliased to [https://hydrogenexpert.co](https://hydrogenexpert.co).
