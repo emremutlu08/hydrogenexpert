@@ -13,6 +13,30 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 - Verification:
 - Manual follow-up:
 
+## 2026-05-14
+
+- PR: [#32 Add hero title metaobject mismatch blog post](https://github.com/emremutlu08/hydrogenexpert/pull/32)
+- Branch: `codex/blog-hero-title-metaobject-mismatch`
+- Deployment: Pending production deployment; target live URL is [https://hydrogenexpert.co/blog/shopify-hydrogen-hero-title-mobile-desktop-metaobject-mismatch](https://hydrogenexpert.co/blog/shopify-hydrogen-hero-title-mobile-desktop-metaobject-mismatch).
+- Summary:
+  - Published the Supabase-backed production note `shopify-hydrogen-hero-title-mobile-desktop-metaobject-mismatch` from Emre's source material.
+  - Converted the private debugging transcript into public-safe English blog copy about responsive title rendering, Shopify metaobject field drift, and component/content ownership boundaries.
+  - Added source metadata, FAQ, internal links, official Shopify references, a flow-diagram enhancement, and the standard closing CTA.
+- Files changed:
+  - `lib/content-sources.ts`
+  - `lib/post-enhancements.ts`
+  - `CHANGELOG.md`
+- Verification:
+  - Official Shopify docs checked directly on `shopify.dev` because Shopify Dev MCP was unavailable in this thread.
+  - `npm run audit:shopify-claims`: passed.
+  - `npm run validate:content`: passed.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run build`: passed, including static generation for `/blog/shopify-hydrogen-hero-title-mobile-desktop-metaobject-mismatch`.
+  - Local rendered smoke: article and `/blog` returned HTTP 200, sitemap and RSS included the slug, FAQ rendered, targeted private-note leakage check passed, and mobile/desktop overflow checks passed.
+- Manual follow-up:
+  - None after production deployment is verified.
+
 ## 2026-05-11
 
 - PR: [#31 Update scheduled workflow GitHub Action versions](https://github.com/emremutlu08/hydrogenexpert/pull/31)
