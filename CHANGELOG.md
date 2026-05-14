@@ -34,7 +34,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - `npm run typecheck`: passed.
   - `npm run build`: passed, including static generation for `/blog/shopify-hydrogen-hero-title-mobile-desktop-metaobject-mismatch`.
   - Local rendered smoke: article and `/blog` returned HTTP 200, sitemap and RSS included the slug, FAQ rendered, targeted private-note leakage check passed, and mobile/desktop overflow checks passed.
-  - Local production render after clearing `.next`: markdown headings rendered as headings, raw `##` text was absent, code blocks rendered, FAQ count was 3, and mobile overflow was absent.
+  - Local production render after clearing `.next`: markdown headings rendered as headings, raw markdown/code-fence markers were absent, 5 code blocks rendered, FAQ count was 3, and mobile overflow was absent.
 - Manual follow-up:
   - None after production deployment is verified.
 
