@@ -81,6 +81,15 @@ export const SOURCE_PACKS = {
     usedFor:
       "Oxygen, Hydrogen channel, GitHub deployment workflow, preview deployment, and PR deployment claims.",
   },
+  storefrontMetaobjects: {
+    label: "Shopify Storefront API: metaobjects query",
+    sourceType: "shopify_official",
+    topic: "storefront_api",
+    url: "https://shopify.dev/docs/api/storefront/latest/queries/metaobjects",
+    retrievedAt: "2026-05-14",
+    usedFor:
+      "Metaobject type, first/page arguments, and merchant-defined content section grounding.",
+  },
   hydrogenSeo: {
     label: "Shopify: Search Engine Optimization for Hydrogen",
     sourceType: "shopify_official",
@@ -481,6 +490,20 @@ export const BLOG_SOURCE_METADATA = {
     sourceMap: [
       SOURCE_PACKS.hydrogenFundamentals,
       SOURCE_PACKS.hydrogenVideoComponent,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "shopify-hydrogen-hero-title-mobile-desktop-metaobject-mismatch": {
+    lastVerified: "2026-05-14",
+    claimTypes: ["official_shopify_fact", "emre_experience"],
+    targetKeyword: "shopify hydrogen metaobject responsive title",
+    searchIntent: "post-launch troubleshooting",
+    reviewedBy: "Emre Mutlu",
+    contentType: "technical_blog",
+    sourceMap: [
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.storefrontMetaobjects,
+      SOURCE_PACKS.hydrogenGithubDeployments,
       SOURCE_PACKS.emreProductionExperience,
     ],
   },

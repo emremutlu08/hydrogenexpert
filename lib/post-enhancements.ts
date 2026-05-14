@@ -275,6 +275,74 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
     closingPitch:
       "If your Hydrogen storefront has small media bugs like this, the useful work is not only patching one carousel. It is checking whether the component ownership, timers, and browser events still match the buying experience you intended.",
   },
+  "shopify-hydrogen-hero-title-mobile-desktop-metaobject-mismatch": {
+    heroVisual: {
+      type: "flow-diagram-svg",
+      caption: "A responsive title bug can come from the boundary between Shopify content data and component render strategy.",
+      steps: [
+        {
+          label: "Metaobject fields",
+          body: "Desktop and mobile title fields are read from the storefront content model.",
+        },
+        {
+          label: "Component comparison",
+          body: "The title component decides whether mobile text is distinct from desktop text.",
+        },
+        {
+          label: "DOM shape changes",
+          body: "Different values move the breakpoint behavior from heading elements to inline spans.",
+        },
+      ],
+    },
+    faq: [
+      {
+        question: "Why did the Hydrogen hero title change after a refactor?",
+        answer:
+          "The refactor changed the rendering strategy. The old component hid whole desktop and mobile heading elements. The new component kept the heading and switched inner spans when mobile and desktop text differed.",
+      },
+      {
+        question: "Where should a merchant check this in Shopify Admin?",
+        answer:
+          "Check the metaobject entry that powers the hero copy, especially the desktop and mobile title fields. If the storefront query reads the first entry for a type, confirm the active entry order and market-specific translations too.",
+      },
+      {
+        question: "Is whitespace enough to trigger this kind of mismatch?",
+        answer:
+          "Yes, if the component compares raw strings. A leading space, trailing space, non-breaking space, line break, or translated field variant can make two visually similar values behave as distinct.",
+      },
+    ],
+    internalLinks: [
+      {
+        href: "/custom-shopify-hydrogen-storefront",
+        label: "Custom Shopify Hydrogen storefront",
+        note: "The service path for storefront components that need merchant-editable content without fragile UI behavior.",
+      },
+      {
+        href: "/shopify-hydrogen-audit",
+        label: "Shopify Hydrogen audit",
+        note: "Use this when a live Hydrogen store needs a focused check across code, content models, and deployment risk.",
+      },
+      {
+        href: "/blog/shopify-hydrogen-hero-video-carousel-onended",
+        label: "Hero carousel production note",
+        note: "A related homepage production note about small component behavior changes with visible storefront impact.",
+      },
+    ],
+    externalLinks: [
+      {
+        href: "https://shopify.dev/docs/api/storefront/latest/queries/metaobjects",
+        label: "Storefront API metaobjects query",
+        note: "Official Shopify reference for retrieving metaobject entries by type from the Storefront API.",
+      },
+      {
+        href: "https://shopify.dev/docs/storefronts/headless/hydrogen/deployments/github",
+        label: "Hydrogen CI/CD with GitHub",
+        note: "Official Shopify reference for Hydrogen GitHub deployments and Oxygen preview behavior.",
+      },
+    ],
+    closingPitch:
+      "Your Shopify store works, but every new feature takes 3x longer than last year? That's when I come in. If a Hydrogen bug sits between storefront code, Shopify Admin content, and deployment workflow, I can help trace the real boundary before the fix turns into guesswork.",
+  },
   "shopify-hydrogen-seo-checklist": {
     heroVisual: {
       type: "code-card",
