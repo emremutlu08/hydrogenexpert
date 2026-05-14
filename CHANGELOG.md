@@ -17,7 +17,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 - PR: [#32 Add hero title metaobject mismatch blog post](https://github.com/emremutlu08/hydrogenexpert/pull/32)
 - Branch: `codex/blog-hero-title-metaobject-mismatch`
-- Deployment: Pending production deployment; target live URL is [https://hydrogenexpert.co/blog/shopify-hydrogen-hero-title-mobile-desktop-metaobject-mismatch](https://hydrogenexpert.co/blog/shopify-hydrogen-hero-title-mobile-desktop-metaobject-mismatch).
+- Deployment: Production deployment [hydrogenexpert-p03jd2p8e-emremutlu8s-projects.vercel.app](https://hydrogenexpert-p03jd2p8e-emremutlu8s-projects.vercel.app), aliased to [https://hydrogenexpert.co](https://hydrogenexpert.co). Live article: [https://hydrogenexpert.co/blog/shopify-hydrogen-hero-title-mobile-desktop-metaobject-mismatch](https://hydrogenexpert.co/blog/shopify-hydrogen-hero-title-mobile-desktop-metaobject-mismatch).
 - Summary:
   - Published the Supabase-backed production note `shopify-hydrogen-hero-title-mobile-desktop-metaobject-mismatch` from Emre's source material.
   - Converted the private debugging transcript into public-safe English blog copy about responsive title rendering, Shopify metaobject field drift, and component/content ownership boundaries.
@@ -35,8 +35,10 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - `npm run build`: passed, including static generation for `/blog/shopify-hydrogen-hero-title-mobile-desktop-metaobject-mismatch`.
   - Local rendered smoke: article and `/blog` returned HTTP 200, sitemap and RSS included the slug, FAQ rendered, targeted private-note leakage check passed, and mobile/desktop overflow checks passed.
   - Local production render after clearing `.next`: markdown headings rendered as headings, raw markdown/code-fence markers were absent, 5 code blocks rendered, FAQ count was 3, and mobile overflow was absent.
+  - Vercel preview: passed for commit `4385a75` and rendered the article with real headings and code blocks.
+  - Live production smoke: article and `/blog` returned HTTP 200, sitemap and RSS included the slug, BlogPosting and FAQPage schema were present, browser-visible markdown/code-fence markers were absent, 5 code blocks rendered, FAQ count was 3, and mobile overflow was absent.
 - Manual follow-up:
-  - None after production deployment is verified.
+  - None.
 
 ## 2026-05-11
 
