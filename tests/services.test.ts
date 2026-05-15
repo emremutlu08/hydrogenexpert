@@ -6,6 +6,7 @@ const targetCommercialRoutes = [
   "/shopify-hydrogen-agency",
   "/headless-shopify-agency",
   "/shopify-hydrogen-developer",
+  "/shopify-hydrogen-experts",
   "/liquid-to-hydrogen-migration",
   "/shopify-hydrogen-seo",
   "/shopify-hydrogen-audit",

@@ -13,6 +13,44 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 - Verification:
 - Manual follow-up:
 
+## 2026-05-15
+
+- PR: [#33 Add Shopify Hydrogen experts SEO pages](https://github.com/emremutlu08/hydrogenexpert/pull/33)
+- Branch: `codex/shopify-hydrogen-experts-pages`
+- Deployment: Production deployment [hydrogenexpert-2tgdzd3gq-emremutlu8s-projects.vercel.app](https://hydrogenexpert-2tgdzd3gq-emremutlu8s-projects.vercel.app), aliased to [https://hydrogenexpert.co](https://hydrogenexpert.co). Live pages: [https://hydrogenexpert.co/shopify-hydrogen-experts](https://hydrogenexpert.co/shopify-hydrogen-experts) and [https://hydrogenexpert.co/articles/shopify-hydrogen-experts-production-experience](https://hydrogenexpert.co/articles/shopify-hydrogen-experts-production-experience).
+- Summary:
+  - Added the `/shopify-hydrogen-experts` service landing page for the commercial query `shopify hydrogen experts`.
+  - Published the previously scheduled Shopify Hydrogen experts article on 2026-05-15 so the exact-match content is indexable now.
+  - Added internal links from the homepage, footer, related service pages, and article clusters toward the new experts page and public article.
+  - Updated the SEO keyword map and GSC commercial-intent changelog with the SERP diagnosis and follow-up tracking notes.
+- Files changed:
+  - `app/shopify-hydrogen-experts/page.tsx`
+  - `app/page.tsx`
+  - `components/Footer.tsx`
+  - `components/ServiceLandingPage.tsx`
+  - `lib/articles.ts`
+  - `lib/services.ts`
+  - `scripts/validate-content.ts`
+  - `tests/articles.test.ts`
+  - `tests/services.test.ts`
+  - `tests/sitemap-entries.test.ts`
+  - `docs/seo-gsc-commercial-intent-changelog.md`
+  - `docs/seo-keyword-map.md`
+- Verification:
+  - SERP review for `shopify hydrogen experts`: current results favored exact-match agency/service pages, Shopify docs/community pages, public profile authority, and LinkedIn/community surfaces; our site had indexed pages but the exact `experts` surface was missing.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run test`: 11 test files and 40 tests passed.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed.
+  - `npm run build`: passed, 58 routes generated including `/shopify-hydrogen-experts`.
+  - Local production smoke: `/shopify-hydrogen-experts`, `/articles/shopify-hydrogen-experts-production-experience`, `/articles`, `/sitemap.xml`, and `/robots.txt` returned HTTP 200; sitemap included both new URLs and robots exposed the sitemap.
+  - Browser QA: desktop and 390px mobile checks found no horizontal overflow on the new service page or article; title, canonical, and index/follow metadata were present.
+  - Live production smoke: both new live URLs returned HTTP 200, exposed canonical metadata, rendered without `noindex`, and appeared in the live sitemap.
+- Manual follow-up:
+  - Submit/request indexing for `/shopify-hydrogen-experts` and `/articles/shopify-hydrogen-experts-production-experience` in Google Search Console.
+  - Watch GSC impressions for `shopify hydrogen experts`, `shopify hydrogen expert`, and `hydrogen experts` after Google recrawls the sitemap.
+
 ## 2026-05-14
 
 - PR: [#32 Add hero title metaobject mismatch blog post](https://github.com/emremutlu08/hydrogenexpert/pull/32)

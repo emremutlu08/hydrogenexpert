@@ -230,9 +230,9 @@ const ARTICLES = [
     description:
       "How to evaluate Shopify Hydrogen experts before hiring based on production work, SEO, Storefront API, maintenance judgment, and honest fit decisions.",
     category: "Evaluation",
-    status: "scheduled",
-    publishAt: "2026-05-17T10:00:00+03:00",
-    updatedAt: "2026-05-17T10:00:00+03:00",
+    status: "published",
+    publishAt: "2026-05-15T10:00:00+03:00",
+    updatedAt: "2026-05-15T10:00:00+03:00",
     author: OWNER.name,
     metaTitle: "Shopify Hydrogen Experts | How to Evaluate Production Experience",
     metaDescription:
@@ -261,6 +261,7 @@ const ARTICLES = [
       "Evaluate Shopify Hydrogen expertise by proof, judgment, and maintenance realism before choosing a rebuild path.",
     links: [
       { href: "/", label: "HydrogenExpert" },
+      { href: "/shopify-hydrogen-experts", label: "Shopify Hydrogen Experts" },
       { href: "/shopify-hydrogen-developer", label: "Hire a Shopify Hydrogen Developer" },
       { href: "/shopify-hydrogen-audit", label: "Start with a Fit & Risk Audit" },
       { href: "/case-studies", label: "See Production Proof" },

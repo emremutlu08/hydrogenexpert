@@ -321,6 +321,12 @@ const technicalResources = [
       "Evergreen merchant guides for hiring, migration, SEO, cost, and Hydrogen fit decisions.",
   },
   {
+    title: "Shopify Hydrogen Experts",
+    href: "/shopify-hydrogen-experts",
+    body:
+      "A commercial evaluation page for teams comparing Hydrogen experts, agencies, proof, SEO risk, and senior storefront ownership.",
+  },
+  {
     title: "How to hire a Hydrogen developer",
     href: "/articles/how-to-hire-shopify-hydrogen-developer",
     body:
@@ -446,8 +452,14 @@ export default function HomePage() {
             title="Find the right entry point for the storefront decision."
             description="The primary path stays the senior-led Hydrogen service. Articles support the decision, but they do not replace direct commercial scoping."
           />
-          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
             {[
+              {
+                href: "/shopify-hydrogen-experts",
+                title: "Evaluate Shopify Hydrogen experts",
+                body:
+                  "Use this path when the search is about expert proof, agency comparison, and who should safely own Hydrogen scope.",
+              },
               {
                 href: "/shopify-hydrogen-developer",
                 title: "Hire a senior Shopify Hydrogen developer",

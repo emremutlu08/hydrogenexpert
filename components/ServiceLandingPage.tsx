@@ -33,6 +33,17 @@ function getServiceCta(service: ServicePackage) {
     };
   }
 
+  if (service.slug === "shopify-hydrogen-experts") {
+    return {
+      headline: "Comparing Shopify Hydrogen experts?",
+      subtext:
+        "Send your current store URL, the expert or agency options you are comparing, and what feels risky about the rebuild. I will help you decide whether the safer next step is a Fit & Risk Audit, direct senior support, broader agency scope, Liquid cleanup, or no rebuild.",
+      primaryLabel: "Request a Hydrogen Fit Review",
+      srOnly:
+        "Emre Mutlu helps Shopify Plus and growth-stage brands evaluate Shopify Hydrogen experts, production proof, migration risk, SEO, and implementation scope.",
+    };
+  }
+
   if (service.slug === "hydrogen-strategy-fit-audit") {
     return {
       headline: "Need a clear Hydrogen decision before rebuild budget moves?",
@@ -101,6 +112,7 @@ export function ServiceLandingPage({ service }: ServiceLandingPageProps) {
   const serviceCta = getServiceCta(service);
   const publicDeveloperArticle = getPublicArticleBySlugForDate("how-to-hire-shopify-hydrogen-developer");
   const publicExperiencedArticle = getPublicArticleBySlugForDate("experienced-shopify-hydrogen-developers");
+  const publicExpertsArticle = getPublicArticleBySlugForDate("shopify-hydrogen-experts-production-experience");
   const publicCostArticle = getPublicArticleBySlugForDate(
     "shopify-hydrogen-development-cost-developer-agency-audit",
   );
@@ -519,14 +531,33 @@ export function ServiceLandingPage({ service }: ServiceLandingPageProps) {
         ) : null}
 
         {service.slug === "shopify-hydrogen-developer" &&
-        (publicDeveloperArticle || publicExperiencedArticle) ? (
+        (publicDeveloperArticle || publicExperiencedArticle || publicExpertsArticle) ? (
           <section className="card-soft space-y-5">
             <div className="max-w-3xl">
               <p className="eyebrow">Published articles</p>
               <h2 className="subsection-title mt-3">Evergreen hiring guides once they are public.</h2>
             </div>
             <div className="authority-links">
-              {[publicDeveloperArticle, publicExperiencedArticle].filter(isArticle).map((article) => (
+              {[publicDeveloperArticle, publicExperiencedArticle, publicExpertsArticle].filter(isArticle).map((article) => (
+                <Link key={article.slug} href={`/articles/${article.slug}`} className="authority-link-card">
+                  <p className="authority-link-card__label">{article.category}</p>
+                  <h3 className="authority-link-card__title">{article.title}</h3>
+                  <p className="authority-link-card__body">{article.description}</p>
+                </Link>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
+        {service.slug === "shopify-hydrogen-experts" &&
+        (publicExpertsArticle || publicExperiencedArticle || publicDeveloperArticle) ? (
+          <section className="card-soft space-y-5">
+            <div className="max-w-3xl">
+              <p className="eyebrow">Published articles</p>
+              <h2 className="subsection-title mt-3">Evaluation guides for expert-search intent.</h2>
+            </div>
+            <div className="authority-links">
+              {[publicExpertsArticle, publicExperiencedArticle, publicDeveloperArticle].filter(isArticle).map((article) => (
                 <Link key={article.slug} href={`/articles/${article.slug}`} className="authority-link-card">
                   <p className="authority-link-card__label">{article.category}</p>
                   <h3 className="authority-link-card__title">{article.title}</h3>
