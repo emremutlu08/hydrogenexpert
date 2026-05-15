@@ -44,6 +44,17 @@ function getServiceCta(service: ServicePackage) {
     };
   }
 
+  if (service.slug === "shopify-hydrogen-expert") {
+    return {
+      headline: "Need one senior Shopify Hydrogen expert?",
+      subtext:
+        "Send your current store URL, what feels risky, and whether you are comparing an expert, agency, or internal build. I will help you decide whether direct senior support, a Fit & Risk Audit, Liquid cleanup, or no rebuild is the safer next step.",
+      primaryLabel: "Request a Hydrogen Fit Review",
+      srOnly:
+        "Emre Mutlu provides senior Shopify Hydrogen expert support for custom storefront architecture, Storefront API work, SEO-safe migration, performance, and launch-risk review.",
+    };
+  }
+
   if (service.slug === "hydrogen-strategy-fit-audit") {
     return {
       headline: "Need a clear Hydrogen decision before rebuild budget moves?",
@@ -549,7 +560,7 @@ export function ServiceLandingPage({ service }: ServiceLandingPageProps) {
           </section>
         ) : null}
 
-        {service.slug === "shopify-hydrogen-experts" &&
+        {(service.slug === "shopify-hydrogen-experts" || service.slug === "shopify-hydrogen-expert") &&
         (publicExpertsArticle || publicExperiencedArticle || publicDeveloperArticle) ? (
           <section className="card-soft space-y-5">
             <div className="max-w-3xl">

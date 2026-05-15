@@ -15,6 +15,42 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-15
 
+- PR: [#34 Add singular Shopify Hydrogen expert page](https://github.com/emremutlu08/hydrogenexpert/pull/34)
+- Branch: `codex/shopify-hydrogen-expert-page`
+- Deployment: Production deployment [hydrogenexpert-9bltxrk4e-emremutlu8s-projects.vercel.app](https://hydrogenexpert-9bltxrk4e-emremutlu8s-projects.vercel.app), aliased to [https://hydrogenexpert.co](https://hydrogenexpert.co). Live page: [https://hydrogenexpert.co/shopify-hydrogen-expert](https://hydrogenexpert.co/shopify-hydrogen-expert).
+- Summary:
+  - Added `/shopify-hydrogen-expert` as the singular commercial landing page for buyers searching for one senior Shopify Hydrogen specialist.
+  - Differentiated the singular page from `/shopify-hydrogen-experts` by focusing on direct senior ownership instead of broad expert and agency comparison.
+  - Added internal links from the homepage, footer, agency/headless/developer/expert pages, and article cluster toward the singular expert page.
+  - Updated SEO docs and route coverage tests so the singular and plural keyword targets are tracked separately.
+- Files changed:
+  - `app/shopify-hydrogen-expert/page.tsx`
+  - `app/page.tsx`
+  - `components/Footer.tsx`
+  - `components/ServiceLandingPage.tsx`
+  - `lib/services.ts`
+  - `tests/services.test.ts`
+  - `tests/sitemap-entries.test.ts`
+  - `docs/seo-gsc-commercial-intent-changelog.md`
+  - `docs/seo-keyword-map.md`
+- Verification:
+  - `git diff --check`: passed.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run test`: 11 test files and 40 tests passed.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed.
+  - `npm run build`: passed, 59 routes generated including `/shopify-hydrogen-expert`.
+  - Local production smoke: `/shopify-hydrogen-expert` returned HTTP 200, exposed the canonical URL, rendered without `noindex`, and appeared in the local sitemap.
+  - Local browser QA: 390px mobile and 1440px desktop checks found no horizontal overflow; the page linked to `/shopify-hydrogen-experts` and the expert evaluation article.
+  - Vercel preview check: passed for PR #34.
+  - Live production smoke: `/shopify-hydrogen-expert` returned HTTP 200, exposed canonical metadata, rendered without `noindex`, and appeared in the live sitemap alongside `/shopify-hydrogen-experts`.
+- Manual follow-up:
+  - Submit/request indexing for `/shopify-hydrogen-expert` in Google Search Console.
+  - Track `shopify hydrogen expert` separately from `shopify hydrogen experts` after Google recrawls the sitemap.
+
+## 2026-05-15
+
 - PR: [#33 Add Shopify Hydrogen experts SEO pages](https://github.com/emremutlu08/hydrogenexpert/pull/33)
 - Branch: `codex/shopify-hydrogen-experts-pages`
 - Deployment: Production deployment [hydrogenexpert-2tgdzd3gq-emremutlu8s-projects.vercel.app](https://hydrogenexpert-2tgdzd3gq-emremutlu8s-projects.vercel.app), aliased to [https://hydrogenexpert.co](https://hydrogenexpert.co). Live pages: [https://hydrogenexpert.co/shopify-hydrogen-experts](https://hydrogenexpert.co/shopify-hydrogen-experts) and [https://hydrogenexpert.co/articles/shopify-hydrogen-experts-production-experience](https://hydrogenexpert.co/articles/shopify-hydrogen-experts-production-experience).
