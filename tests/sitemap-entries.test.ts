@@ -36,6 +36,7 @@ describe("buildSitemapEntries", () => {
     expect(paths).toContain("/shopify-hydrogen-agency");
     expect(paths).toContain("/headless-shopify-agency");
     expect(paths).toContain("/shopify-hydrogen-developer");
+    expect(paths).toContain("/shopify-hydrogen-experts");
     expect(paths).toContain("/shopify-hydrogen-audit");
     expect(paths).toContain("/liquid-to-hydrogen-migration");
     expect(paths).toContain("/shopify-hydrogen-seo");

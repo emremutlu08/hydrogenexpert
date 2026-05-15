@@ -53,6 +53,7 @@ Secondary query targets:
 
 Primary landing page:
 - `/shopify-hydrogen-developer`
+- `/shopify-hydrogen-experts`
 
 Supporting pages:
 - `/`
@@ -69,7 +70,7 @@ Supporting pages:
 - 2026-05-08 10:00 Europe/Istanbul: `/articles/how-to-hire-shopify-hydrogen-developer`
 - 2026-05-11 10:00 Europe/Istanbul: `/articles/shopify-hydrogen-developer-vs-agency`
 - 2026-05-14 10:00 Europe/Istanbul: `/articles/experienced-shopify-hydrogen-developers`
-- 2026-05-17 10:00 Europe/Istanbul: `/articles/shopify-hydrogen-experts-production-experience`
+- 2026-05-15 10:00 Europe/Istanbul: `/articles/shopify-hydrogen-experts-production-experience`
 - 2026-05-20 10:00 Europe/Istanbul: `/articles/shopify-hydrogen-development-cost-developer-agency-audit`
 
 ## Changes made
@@ -143,3 +144,21 @@ Next Search Console follow-up:
 Current automated coverage:
 - `tests/articles.test.ts` verifies future article hiding, post-`publishAt` visibility, and direct future access returning no public article.
 - `tests/sitemap-entries.test.ts` verifies `/articles` sitemap coverage and that only public article detail routes passed by the publishing layer appear.
+
+## 2026-05-15 Shopify Hydrogen experts SERP response
+
+Observed issue:
+- Google showed agency, marketplace, official-doc, community, and video results for `shopify hydrogen experts`.
+- HydrogenExpert had indexed pages, but the exact expert-intent article was still scheduled and returned a future-article 404/noindex response.
+
+Changes:
+- Added `/shopify-hydrogen-experts` as the primary commercial landing page for expert-search intent.
+- Published `/articles/shopify-hydrogen-experts-production-experience` early on 2026-05-15.
+- Added homepage links to `/shopify-hydrogen-experts` from the commercial path and technical resource clusters.
+- Added service-level internal links from agency, headless, developer, and experts pages into the new expert page/article cluster.
+
+Next Search Console follow-up:
+- Inspect `/shopify-hydrogen-experts`.
+- Inspect `/articles/shopify-hydrogen-experts-production-experience`.
+- Request indexing for both URLs after production verification.
+- Recheck `shopify hydrogen experts`, `best shopify hydrogen experts`, and `shopify hydrogen experts list` after 7, 14, and 28 days.

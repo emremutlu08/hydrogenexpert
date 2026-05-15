@@ -13,9 +13,11 @@ describe("scheduled articles", () => {
 
   it("keeps future scheduled articles hidden from public article lists", () => {
     const publicArticles = getPublicArticlesForDate(beforeFirstPublish);
+    const publicSlugs = publicArticles.map((article) => article.slug);
 
-    expect(publicArticles).toHaveLength(0);
-    expect(getPublicArticleSlugsForDate(beforeFirstPublish)).toEqual([]);
+    expect(publicSlugs).toContain("shopify-hydrogen-experts-production-experience");
+    expect(publicSlugs).not.toContain("how-to-hire-shopify-hydrogen-developer");
+    expect(getPublicArticleSlugsForDate(beforeFirstPublish)).toEqual(publicSlugs);
   });
 
   it("publishes scheduled articles after publishAt", () => {
@@ -34,6 +36,6 @@ describe("scheduled articles", () => {
 
   it("keeps article source files separate from Supabase-backed blog posts", () => {
     expect(getAllArticles().every((article) => article.slug.length > 0)).toBe(true);
-    expect(getAllArticles().every((article) => article.status === "scheduled")).toBe(true);
+    expect(getAllArticles().every((article) => ["published", "scheduled"].includes(article.status))).toBe(true);
   });
 });

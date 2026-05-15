@@ -1,6 +1,6 @@
 # HydrogenExpert SEO Keyword Map
 
-Last updated: 2026-05-05
+Last updated: 2026-05-15
 
 ## Commercial Pages
 
@@ -9,6 +9,7 @@ Last updated: 2026-05-05
 | Shopify Hydrogen agency | `/shopify-hydrogen-agency` | `/services`, `/case-studies`, `/shopify-hydrogen-agency-usa` | Compare agency options and decide whether a senior-led alternative fits. |
 | Shopify Hydrogen agency USA | `/shopify-hydrogen-agency-usa` | `/shopify-hydrogen-agency`, `/case-studies/bayam-jewelry-shopify-hydrogen`, `/shopify-hydrogen-cost` | US buyer wants remote senior Hydrogen support without fake local-office claims. |
 | Headless Shopify agency | `/headless-shopify-agency` | `/shopify-hydrogen-agency`, `/liquid-to-hydrogen-migration`, `/shopify-hydrogen-cost` | Buyer is comparing headless paths before committing to Hydrogen. |
+| Shopify Hydrogen experts | `/shopify-hydrogen-experts` | `/articles/shopify-hydrogen-experts-production-experience`, `/shopify-hydrogen-developer`, `/case-studies` | Buyer is comparing expert proof, agency options, and senior implementation paths. |
 | Shopify Hydrogen developer | `/shopify-hydrogen-developer` | `/hire-me`, `/case-studies`, `/custom-shopify-hydrogen-storefront` | Buyer needs direct senior implementation. |
 | Shopify Hydrogen development | `/custom-shopify-hydrogen-storefront` | `/shopify-hydrogen-developer`, `/liquid-to-hydrogen-migration`, `/case-studies` | Buyer wants a custom Hydrogen storefront built. |
 | Liquid to Hydrogen migration | `/liquid-to-hydrogen-migration` | `/shopify-hydrogen-audit`, `/shopify-hydrogen-cost`, `/when-not-to-use-hydrogen` | Buyer is considering replacing a Liquid theme with Hydrogen. |
@@ -24,7 +25,7 @@ Last updated: 2026-05-05
 - Variant URL articles should link to `/shopify-hydrogen-seo`, `/custom-shopify-hydrogen-storefront`, and `/shopify-hydrogen-audit`.
 - Metaobject/content-model articles should link to `/custom-shopify-hydrogen-storefront` and `/liquid-to-hydrogen-migration`.
 - Migration articles should link to `/liquid-to-hydrogen-migration`, `/shopify-hydrogen-audit`, and `/shopify-hydrogen-cost`.
-- Agency/developer comparison articles should link to `/shopify-hydrogen-agency`, `/headless-shopify-agency`, and `/shopify-hydrogen-developer`.
+- Agency/developer/expert comparison articles should link to `/shopify-hydrogen-experts`, `/shopify-hydrogen-agency`, `/headless-shopify-agency`, and `/shopify-hydrogen-developer`.
 
 ## Metadata Rules
 
@@ -32,4 +33,3 @@ Last updated: 2026-05-05
 - Service page titles should describe the offer, not only the topic.
 - Meta descriptions should include buyer stage, service path, and one concrete risk handled.
 - Do not create near-duplicate location or vertical pages unless there is real proof, buyer logic, and differentiated copy.
-

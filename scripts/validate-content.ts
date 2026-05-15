@@ -2,6 +2,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
 import { CASE_STUDIES } from "../data/caseStudies";
+import { getAllArticles } from "../lib/articles";
 import {
   BLOG_SOURCE_METADATA,
   STATIC_PAGE_SOURCE_METADATA,
@@ -50,6 +51,7 @@ const knownRoutes = new Set([
   "/blog",
   ...getStaticSitemapRoutes(),
   ...CASE_STUDIES.map((caseStudy) => `/case-studies/${caseStudy.slug}`),
+  ...getAllArticles().map((article) => `/articles/${article.slug}`),
   ...Object.keys(DECISION_PAGES),
   ...Object.keys(BLOG_SOURCE_METADATA).map((slug) => `/blog/${slug}`),
 ]);
