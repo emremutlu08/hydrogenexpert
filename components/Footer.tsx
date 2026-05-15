@@ -49,6 +49,7 @@ const SERVICE_ITEMS = [
 const RESOURCE_ITEMS = [
   { href: "/about", label: "About" },
   { href: "/what-is-hydrogen", label: "What Is Shopify Hydrogen?" },
+  { href: "/shopify-hydrogen-expert", label: "Shopify Hydrogen Expert" },
   { href: "/shopify-hydrogen-experts", label: "Shopify Hydrogen Experts" },
   { href: "/should-i-use-it", label: "Should I Use Hydrogen?" },
   { href: "/when-not-to-use-hydrogen", label: "When Not to Use Hydrogen" },

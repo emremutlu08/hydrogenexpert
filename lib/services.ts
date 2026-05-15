@@ -6,6 +6,7 @@ interface ServicePackageBase {
     | "shopify-hydrogen-agency-alternative"
     | "headless-shopify-agency-alternative"
     | "shopify-hydrogen-developer"
+    | "shopify-hydrogen-expert"
     | "shopify-hydrogen-experts"
     | "hydrogen-strategy-fit-audit"
     | "liquid-to-hydrogen-migration"
@@ -142,6 +143,11 @@ const SERVICE_PACKAGE_BASES = [
         note: "Use this when stakeholders are comparing expert proof, agency options, and senior support paths.",
       },
       {
+        href: "/shopify-hydrogen-expert",
+        label: "Shopify Hydrogen expert",
+        note: "Use this when the buyer wants one senior specialist instead of an agency bench.",
+      },
+      {
         href: "/shopify-hydrogen-audit",
         label: "Shopify Hydrogen audit",
         note: "Use this before choosing an agency path when the business case still needs proof.",
@@ -213,6 +219,11 @@ const SERVICE_PACKAGE_BASES = [
         label: "Shopify Hydrogen experts",
         note: "Use this when the headless search has narrowed to who can safely own Hydrogen work.",
       },
+      {
+        href: "/shopify-hydrogen-expert",
+        label: "Shopify Hydrogen expert",
+        note: "Use this when the next step is evaluating one senior specialist for direct ownership.",
+      },
     ],
   },
   {
@@ -276,9 +287,81 @@ const SERVICE_PACKAGE_BASES = [
         note: "Review production contexts before scoping a new Hydrogen engagement.",
       },
       {
+        href: "/shopify-hydrogen-expert",
+        label: "Shopify Hydrogen expert",
+        note: "Use this when the buyer wants one senior specialist, not a broader expert list.",
+      },
+      {
         href: "/contact",
         label: "Request a Hydrogen Fit Review",
         note: "Send the current store URL and the commercial pressure behind the work.",
+      },
+    ],
+  },
+  {
+    slug: "shopify-hydrogen-expert",
+    pagePath: "/shopify-hydrogen-expert",
+    name: "Shopify Hydrogen Expert",
+    title: "Work with one senior Shopify Hydrogen expert instead of a vendor layer",
+    metaTitle: "Shopify Hydrogen Expert | Senior Storefront Support",
+    metaDescription:
+      "Work with a senior Shopify Hydrogen expert for custom storefront architecture, Storefront API work, SEO-safe migration, performance cleanup, and launch-risk review.",
+    heroTitle: "Shopify Hydrogen expert for brands that need direct senior ownership",
+    summary:
+      "A focused commercial page for teams searching for one Shopify Hydrogen expert who can review risk, advise on architecture, and own senior storefront implementation.",
+    commercialIntent:
+      "For teams comparing a single senior Shopify Hydrogen expert against freelance marketplaces, agencies, and internal implementation before committing budget.",
+    bestFor:
+      "Brands that want direct access to a senior Hydrogen specialist for architecture, Storefront API decisions, SEO-safe route planning, migration judgment, performance work, or launch cleanup.",
+    deliverables: [
+      "Senior Hydrogen implementation and advisory path",
+      "Storefront architecture, route, and Storefront API review",
+      "SEO, analytics, cart, and checkout handoff risk checks",
+      "Liquid vs Hydrogen vs agency path recommendation",
+      "Clear next step: direct expert support, audit, agency scope, or no rebuild",
+    ],
+    proofNotes: [
+      "This page targets singular expert-search intent: a buyer looking for one senior specialist, not a directory of experts.",
+      "The page keeps the claim grounded in production Hydrogen storefront work, public proof surfaces, and senior implementation judgment.",
+      "The buyer is routed toward the right engagement shape: direct development, a Fit & Risk Audit, the broader experts comparison page, case studies, or no rebuild.",
+    ],
+    faq: [
+      {
+        question: "What should a Shopify Hydrogen expert be able to own?",
+        answer:
+          "A senior Shopify Hydrogen expert should be able to connect React implementation, Shopify Storefront API data, route architecture, SEO, analytics, cart behavior, checkout handoff, and post-launch maintenance into one practical storefront plan.",
+      },
+      {
+        question: "Is a Shopify Hydrogen expert different from a Shopify developer?",
+        answer:
+          "Yes. A Shopify developer may focus on themes, apps, or admin workflows. A Hydrogen expert should understand Shopify's custom storefront model, server-rendered routes, Storefront API work, Oxygen deployment concerns, and the migration risks that come with leaving a Liquid theme.",
+      },
+      {
+        question: "When should I choose one expert instead of an agency?",
+        answer:
+          "Choose one senior expert when the biggest risk is technical judgment, architecture, implementation quality, SEO safety, or launch ownership. Choose an agency when the project also needs brand, creative, paid media, content production, and several delivery teams in parallel.",
+      },
+    ],
+    relatedLinks: [
+      {
+        href: "/shopify-hydrogen-experts",
+        label: "Compare Shopify Hydrogen experts",
+        note: "Use this when stakeholders want a broader expert and agency comparison path.",
+      },
+      {
+        href: "/shopify-hydrogen-developer",
+        label: "Hire a Shopify Hydrogen developer",
+        note: "Use this when the need has already become implementation work.",
+      },
+      {
+        href: "/articles/shopify-hydrogen-experts-production-experience",
+        label: "Expert evaluation guide",
+        note: "Use this to judge production experience before hiring.",
+      },
+      {
+        href: "/case-studies",
+        label: "Review production proof",
+        note: "Use this to inspect approved Hydrogen storefront contexts.",
       },
     ],
   },
@@ -331,6 +414,11 @@ const SERVICE_PACKAGE_BASES = [
         href: "/articles/shopify-hydrogen-experts-production-experience",
         label: "How to evaluate Shopify Hydrogen experts",
         note: "The supporting article for proof, questions, and production-experience checks.",
+      },
+      {
+        href: "/shopify-hydrogen-expert",
+        label: "Shopify Hydrogen expert",
+        note: "Use this when the buyer wants one senior expert rather than a broad comparison.",
       },
       {
         href: "/shopify-hydrogen-developer",
@@ -913,10 +1001,66 @@ const SERVICE_PAGE_ENRICHMENTS = {
         note: "Use this when the buyer is comparing proof, expert claims, agencies, and direct senior support.",
       },
       {
+        href: "/shopify-hydrogen-expert",
+        label: "Shopify Hydrogen expert",
+        note: "Use this when the buyer wants direct senior ownership from one specialist.",
+      },
+      {
         href: "/blog/cut-homepage-load-time-from-5s-to-2s-shopify-hydrogen",
         label: "Performance production note",
         note: "Where senior implementation often shows up after launch.",
       },
+    ],
+  },
+  "shopify-hydrogen-expert": {
+    uniqueSection: {
+      eyebrow: "Senior specialist path",
+      title: "A singular expert page should answer who owns the hard decisions.",
+      body: [
+        "A search for a Shopify Hydrogen expert is usually not asking for a generic vendor list. It is asking whether one senior person can understand the current store, separate Hydrogen hype from actual constraints, and carry the storefront decision from architecture into implementation.",
+        "That means the proof should not stop at React or Shopify vocabulary. The expert should be able to explain Storefront API data shape, route and caching behavior, SEO continuity, analytics and consent requirements, cart and checkout handoff, merchant editing workflows, and what happens after launch when the storefront becomes an application to maintain.",
+        "HydrogenExpert keeps this page focused on direct senior ownership. If the need is broader, the path routes to expert comparison, agency-alternative pages, or a Fit & Risk Audit before rebuild scope expands.",
+      ],
+    },
+    decisionTable: [
+      {
+        signal: "The buyer wants one accountable senior person.",
+        strongerMove: "Use a specialist path with direct architecture and implementation ownership.",
+        caution: "A large agency layer may add coordination cost if the problem is mostly technical judgment.",
+      },
+      {
+        signal: "The store has SEO, routing, product-data, or migration risk.",
+        strongerMove: "Review routes, rendered content, Storefront API shape, and launch rollback paths before build.",
+        caution: "Do not treat a custom storefront as safe just because the frontend looks polished.",
+      },
+      {
+        signal: "Stakeholders are still unsure whether Hydrogen is justified.",
+        strongerMove: "Start with a Fit & Risk Audit before buying development scope.",
+        caution: "The expert should be willing to recommend Liquid cleanup or no rebuild when that is safer.",
+      },
+    ],
+    contextualLinks: [
+      {
+        href: "/shopify-hydrogen-experts",
+        label: "Broader expert comparison",
+        note: "Use this when stakeholders are still comparing experts, agencies, and marketplace options.",
+      },
+      {
+        href: "/articles/shopify-hydrogen-experts-production-experience",
+        label: "How to evaluate production experience",
+        note: "A public checklist for judging expert proof before hiring.",
+      },
+      {
+        href: "/shopify-hydrogen-audit",
+        label: "Start with an audit",
+        note: "Use a diagnostic when the right expert path depends on fit, risk, and budget clarity.",
+      },
+    ],
+    wrongFitNotes: [
+      "The project needs brand, content, paid media, and several delivery pods more than senior storefront ownership.",
+      "The store only needs small Liquid theme edits or app configuration.",
+      "Stakeholders cannot name the business constraint Hydrogen needs to solve.",
+      "The team wants the cheapest implementation option and is not ready to pay for senior judgment.",
     ],
   },
   "shopify-hydrogen-experts": {
@@ -1309,6 +1453,17 @@ const SERVICE_SOURCE_METADATA = {
       SOURCE_PACKS.emreProductionExperience,
     ],
   },
+  "shopify-hydrogen-expert": {
+    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.hydrogenDataFetching,
+      SOURCE_PACKS.hydrogenSeo,
+      SOURCE_PACKS.caseStudyEvidence,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
   "shopify-hydrogen-experts": {
     lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
     claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
@@ -1420,6 +1575,12 @@ const SERVICE_OFFER_SNAPSHOTS = {
     typicalTimeline: "2-6 weeks for focused work, 6-16 weeks for broader builds",
     expectedOutput: "Production-ready Hydrogen routes, components, Storefront API work, QA, and launch support",
     qualification: "Best when Hydrogen is already likely and the team needs senior implementation ownership.",
+  },
+  "shopify-hydrogen-expert": {
+    entryPoint: "Expert-fit review, direct senior support, or Fit & Risk Audit",
+    typicalTimeline: "2-5 business days for first-pass review, 5-10 business days for audit",
+    expectedOutput: "Clear recommendation on direct expert support, audit, agency scope, Liquid cleanup, or no rebuild",
+    qualification: "Best when the buyer wants one accountable Hydrogen specialist before committing scope.",
   },
   "shopify-hydrogen-experts": {
     entryPoint: "Expert-fit review, Fit & Risk Audit, or senior implementation scope",

@@ -49,10 +49,12 @@ Primary GSC query target:
 Secondary query targets:
 - shopify hydrogen development experts
 - experienced shopify hydrogen developers
+- shopify hydrogen expert
 - shopify hydrogen experts
 
 Primary landing page:
 - `/shopify-hydrogen-developer`
+- `/shopify-hydrogen-expert`
 - `/shopify-hydrogen-experts`
 
 Supporting pages:
@@ -153,12 +155,14 @@ Observed issue:
 
 Changes:
 - Added `/shopify-hydrogen-experts` as the primary commercial landing page for expert-search intent.
+- Added `/shopify-hydrogen-expert` as the singular commercial landing page for buyers looking for one senior specialist.
 - Published `/articles/shopify-hydrogen-experts-production-experience` early on 2026-05-15.
-- Added homepage links to `/shopify-hydrogen-experts` from the commercial path and technical resource clusters.
-- Added service-level internal links from agency, headless, developer, and experts pages into the new expert page/article cluster.
+- Added homepage links to `/shopify-hydrogen-expert` and `/shopify-hydrogen-experts` from commercial path and technical resource clusters.
+- Added service-level internal links from agency, headless, developer, expert, and experts pages into the expert page/article cluster.
 
 Next Search Console follow-up:
+- Inspect `/shopify-hydrogen-expert`.
 - Inspect `/shopify-hydrogen-experts`.
 - Inspect `/articles/shopify-hydrogen-experts-production-experience`.
-- Request indexing for both URLs after production verification.
-- Recheck `shopify hydrogen experts`, `best shopify hydrogen experts`, and `shopify hydrogen experts list` after 7, 14, and 28 days.
+- Request indexing for all three URLs after production verification.
+- Recheck `shopify hydrogen expert`, `shopify hydrogen experts`, `best shopify hydrogen experts`, and `shopify hydrogen experts list` after 7, 14, and 28 days.

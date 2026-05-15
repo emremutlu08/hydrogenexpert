@@ -327,6 +327,12 @@ const technicalResources = [
       "A commercial evaluation page for teams comparing Hydrogen experts, agencies, proof, SEO risk, and senior storefront ownership.",
   },
   {
+    title: "Shopify Hydrogen Expert",
+    href: "/shopify-hydrogen-expert",
+    body:
+      "A focused page for buyers who want one senior Hydrogen specialist for architecture, Storefront API work, SEO-safe migration, and launch-risk review.",
+  },
+  {
     title: "How to hire a Hydrogen developer",
     href: "/articles/how-to-hire-shopify-hydrogen-developer",
     body:
@@ -454,6 +460,12 @@ export default function HomePage() {
           />
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
             {[
+              {
+                href: "/shopify-hydrogen-expert",
+                title: "Work with one Shopify Hydrogen expert",
+                body:
+                  "Use this path when the search is about direct senior ownership from one specialist, not a broad agency or vendor list.",
+              },
               {
                 href: "/shopify-hydrogen-experts",
                 title: "Evaluate Shopify Hydrogen experts",
