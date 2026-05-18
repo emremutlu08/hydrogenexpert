@@ -15,6 +15,35 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-18
 
+- PR: Pending
+- Branch: `codex/gsc-legacy-blog-redirect`
+- Deployment: Pending.
+- Summary:
+  - Added a permanent redirect for the Google Search Console 404 example `/blog/shopify-hydrogen-v2-setup-guide`.
+  - Routed the legacy setup-guide URL to the current informational Hydrogen page at `/what-is-hydrogen`.
+  - Covered the redirect mapping and sitemap exclusion with tests.
+- Files changed:
+  - `proxy.ts`
+  - `tests/proxy.test.ts`
+  - `tests/sitemap-entries.test.ts`
+  - `CHANGELOG.md`
+- Verification:
+  - Live pre-fix check: `https://hydrogenexpert.co/blog/shopify-hydrogen-v2-setup-guide` returned HTTP 404 from the `/blog/[slug]` route.
+  - Live sitemap/blog check before the change: the old slug was absent from `/sitemap.xml` and the blog index.
+  - `git diff --check`: passed.
+  - `npx vitest run tests/proxy.test.ts tests/sitemap-entries.test.ts`: 2 test files and 8 tests passed.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run test`: 12 test files and 43 tests passed.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed with no review-needed rows.
+  - `npm run build`: passed, 60 routes generated.
+  - Local production smoke on `localhost:3017`: `/blog/shopify-hydrogen-v2-setup-guide` returned `301` to `/what-is-hydrogen`, following the redirect returned `200`, and `/sitemap.xml` contained `/what-is-hydrogen` but not the legacy slug.
+- Manual follow-up:
+  - After production deploy, validate the fix in Google Search Console for the Not found (404) issue.
+
+## 2026-05-18
+
 - PR: [#35 Publish anonymous B2B partner pricing blog post](https://github.com/emremutlu08/hydrogenexpert/pull/35)
 - Branch: `codex/anonymous-b2b-partner-pricing-blog`
 - Deployment: Preview deployment [hydrogenexpert-joh1o9clt-emremutlu8s-projects.vercel.app](https://hydrogenexpert-joh1o9clt-emremutlu8s-projects.vercel.app), production deployment pending merge.
