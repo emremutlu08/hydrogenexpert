@@ -17,7 +17,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 - PR: [#36 Fix legacy Hydrogen setup guide 404](https://github.com/emremutlu08/hydrogenexpert/pull/36)
 - Branch: `codex/gsc-legacy-blog-redirect`
-- Deployment: Preview pending.
+- Deployment: Preview deployment [hydrogenexpert-git-codex-gsc-legacy-0d6121-emremutlu8s-projects.vercel.app](https://hydrogenexpert-git-codex-gsc-legacy-0d6121-emremutlu8s-projects.vercel.app), production deployment [hydrogenexpert-lowd6krod-emremutlu8s-projects.vercel.app](https://hydrogenexpert-lowd6krod-emremutlu8s-projects.vercel.app), aliased to [https://hydrogenexpert.co](https://hydrogenexpert.co).
 - Summary:
   - Added a permanent redirect for the Google Search Console 404 example `/blog/shopify-hydrogen-v2-setup-guide`.
   - Routed the legacy setup-guide URL to the current informational Hydrogen page at `/what-is-hydrogen`.
@@ -39,6 +39,8 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - `npm run audit:shopify-claims`: passed with no review-needed rows.
   - `npm run build`: passed, 60 routes generated.
   - Local production smoke on `localhost:3017`: `/blog/shopify-hydrogen-v2-setup-guide` returned `301` to `/what-is-hydrogen`, following the redirect returned `200`, and `/sitemap.xml` contained `/what-is-hydrogen` but not the legacy slug.
+  - Vercel PR check: passed for PR #36; direct preview `curl` was blocked by Vercel deployment protection (`401`).
+  - Live production smoke: `/blog/shopify-hydrogen-v2-setup-guide` returns `301` to `/what-is-hydrogen`, following the redirect returns `200`, and `/sitemap.xml` contains `/what-is-hydrogen` but not the legacy slug.
 - Manual follow-up:
   - After production deploy, validate the fix in Google Search Console for the Not found (404) issue.
 
