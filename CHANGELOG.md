@@ -13,6 +13,36 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 - Verification:
 - Manual follow-up:
 
+## 2026-05-18
+
+- PR: [#35 Publish anonymous B2B partner pricing blog post](https://github.com/emremutlu08/hydrogenexpert/pull/35)
+- Branch: `codex/anonymous-b2b-partner-pricing-blog`
+- Deployment: Preview deployment [hydrogenexpert-joh1o9clt-emremutlu8s-projects.vercel.app](https://hydrogenexpert-joh1o9clt-emremutlu8s-projects.vercel.app), production deployment pending merge.
+- Summary:
+  - Published the Supabase-backed production note `shopify-b2b-partner-pricing-without-separate-storefront` from Emre's source material.
+  - Converted the partner portal requirements into public-safe English blog copy without client, brand, product, or free-SKU names.
+  - Added source metadata, FAQ, internal links, official Shopify references, a flow-diagram enhancement, and the standard direct CTA.
+- Files changed:
+  - `lib/content-sources.ts`
+  - `lib/post-enhancements.ts`
+  - `CHANGELOG.md`
+- Verification:
+  - Official Shopify docs checked directly on `shopify.dev`; Shopify Dev MCP was unavailable in this thread.
+  - Supabase row upserted with `status: published`, 6-minute reading time, and slug `shopify-b2b-partner-pricing-without-separate-storefront`.
+  - Supabase anonymity check: no source brand, product, or free-SKU names found in title, slug, content, excerpt, or meta description.
+  - `git diff --check`: passed.
+  - `npm run audit:shopify-claims`: passed.
+  - `npm run validate:content`: passed.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run test`: 11 test files and 40 tests passed.
+  - `npm run build`: passed, 60 routes generated including `/blog/shopify-b2b-partner-pricing-without-separate-storefront`.
+  - Local production smoke on `localhost:3016`: article, `/blog`, `/sitemap.xml`, and `/feed.xml` returned HTTP 200 and included the new slug.
+  - Local browser QA: 390px mobile and 1440px desktop rendered the article with no main-content brand-name leakage, no visible raw markdown markers, 3 FAQ disclosures, FAQ schema, and no horizontal overflow.
+  - Vercel preview check: passed for PR #35; protected preview article returned HTTP 200 and rendered the new slug, canonical, BlogPosting schema, and FAQPage schema.
+- Manual follow-up:
+  - None.
+
 ## 2026-05-15
 
 - PR: [#34 Add singular Shopify Hydrogen expert page](https://github.com/emremutlu08/hydrogenexpert/pull/34)

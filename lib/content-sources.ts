@@ -10,6 +10,8 @@ export type SourceTopic =
   | "oxygen"
   | "storefront_api"
   | "customer_account_api"
+  | "b2b"
+  | "discounts"
   | "seo"
   | "analytics"
   | "storefront_mcp"
@@ -161,6 +163,60 @@ export const SOURCE_PACKS = {
     retrievedAt: SHOPIFY_CONTENT_LAST_VERIFIED,
     usedFor:
       "Customer Account API authentication, customer account, order, address, and customer-scoped data claims.",
+  },
+  customerAccountApiHydrogen: {
+    label: "Shopify: Using the Customer Account API with Hydrogen",
+    sourceType: "shopify_official",
+    topic: "customer_account_api",
+    url: "https://shopify.dev/docs/storefronts/headless/building-with-the-customer-account-api/hydrogen",
+    retrievedAt: "2026-05-18",
+    usedFor:
+      "Hydrogen customer login and customer recognition claims for partner pricing production notes.",
+  },
+  shopifyDiscounts: {
+    label: "Shopify: About discounts",
+    sourceType: "shopify_official",
+    topic: "discounts",
+    url: "https://shopify.dev/docs/apps/build/discounts",
+    retrievedAt: "2026-05-18",
+    usedFor:
+      "Automatic discount, code discount, discount app, and Shopify Functions discount positioning claims.",
+  },
+  shopifyDiscountFunctions: {
+    label: "Shopify: Discount Function API",
+    sourceType: "shopify_official",
+    topic: "discounts",
+    url: "https://shopify.dev/docs/api/functions/reference/order-discounts/graphql/input",
+    retrievedAt: "2026-05-18",
+    usedFor:
+      "Checkout-integrated discount logic, function combination rules, and automatic cart math claims.",
+  },
+  shopifyDiscountCustomerSegments: {
+    label: "Shopify Admin GraphQL: DiscountCustomerSegments",
+    sourceType: "shopify_official",
+    topic: "discounts",
+    url: "https://shopify.dev/docs/api/admin-graphql/latest/objects/DiscountCustomerSegments",
+    retrievedAt: "2026-05-18",
+    usedFor:
+      "Customer-segment eligibility claims for partner pricing and future pricing-model extensibility.",
+  },
+  shopifyB2BApps: {
+    label: "Shopify: Apps and B2B",
+    sourceType: "shopify_official",
+    topic: "b2b",
+    url: "https://shopify.dev/docs/apps/build/b2b",
+    retrievedAt: "2026-05-18",
+    usedFor:
+      "Shopify Plus B2B company, company location, catalog, and negotiated-pricing migration caveats.",
+  },
+  shopifyHeadlessB2B: {
+    label: "Shopify: Headless with B2B",
+    sourceType: "shopify_official",
+    topic: "b2b",
+    url: "https://shopify.dev/docs/storefronts/headless/bring-your-own-stack/b2b",
+    retrievedAt: "2026-05-18",
+    usedFor:
+      "Future native B2B custom storefront context for customer accounts, company locations, B2B pricing, and cart contextualization.",
   },
   googleHelpfulContent: {
     label: "Google Search Central: Creating helpful, reliable, people-first content",
@@ -504,6 +560,24 @@ export const BLOG_SOURCE_METADATA = {
       SOURCE_PACKS.hydrogenFundamentals,
       SOURCE_PACKS.storefrontMetaobjects,
       SOURCE_PACKS.hydrogenGithubDeployments,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "shopify-b2b-partner-pricing-without-separate-storefront": {
+    lastVerified: "2026-05-18",
+    claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
+    targetKeyword: "shopify b2b partner pricing",
+    searchIntent: "implementation planning",
+    reviewedBy: "Emre Mutlu",
+    contentType: "technical_blog",
+    sourceMap: [
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.customerAccountApiHydrogen,
+      SOURCE_PACKS.shopifyDiscounts,
+      SOURCE_PACKS.shopifyDiscountFunctions,
+      SOURCE_PACKS.shopifyDiscountCustomerSegments,
+      SOURCE_PACKS.shopifyB2BApps,
+      SOURCE_PACKS.shopifyHeadlessB2B,
       SOURCE_PACKS.emreProductionExperience,
     ],
   },

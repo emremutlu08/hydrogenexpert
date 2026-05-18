@@ -343,6 +343,84 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
     closingPitch:
       "Your Shopify store works, but every new feature takes 3x longer than last year? That's when I come in. If a Hydrogen bug sits between storefront code, Shopify Admin content, and deployment workflow, I can help trace the real boundary before the fix turns into guesswork.",
   },
+  "shopify-b2b-partner-pricing-without-separate-storefront": {
+    heroVisual: {
+      type: "flow-diagram-svg",
+      caption: "Partner pricing works best when recognition, display, cart math, and migration planning use the same rule boundary.",
+      steps: [
+        {
+          label: "Recognize partner",
+          body: "Customer accounts identify the shopper and map them to an eligible segment or tag.",
+        },
+        {
+          label: "Show the promise",
+          body: "Product cards, PDPs, and cart rows show partner pricing before checkout.",
+        },
+        {
+          label: "Apply once",
+          body: "A checkout-safe discount layer applies the eligible price without coupon codes or duplicate products.",
+        },
+      ],
+    },
+    faq: [
+      {
+        question: "Can partner pricing work on Shopify without a separate wholesale storefront?",
+        answer:
+          "Yes, if the catalog, inventory, and merchandising stay unified while customer recognition and discount logic decide which prices apply to eligible partners.",
+      },
+      {
+        question: "Should partner pricing use discount codes?",
+        answer:
+          "Not for a clean partner portal experience. The pricing should apply automatically from the buyer context so partners do not need to remember or share a manual code.",
+      },
+      {
+        question: "How should a non-Plus build prepare for native Shopify B2B later?",
+        answer:
+          "Keep products and variants canonical, avoid hard-coded one-off partner states, and model eligibility around segments or tags that can later map to companies, company locations, and catalogs.",
+      },
+    ],
+    internalLinks: [
+      {
+        href: "/custom-shopify-hydrogen-storefront",
+        label: "Custom Shopify Hydrogen storefront",
+        note: "The service path when partner UX needs to live inside the real storefront instead of a separate portal.",
+      },
+      {
+        href: "/shopify-hydrogen-audit",
+        label: "Shopify Hydrogen audit",
+        note: "Use this when customer recognition, pricing display, and checkout behavior need a focused production review.",
+      },
+      {
+        href: "/shopify-hydrogen-fit-audit",
+        label: "Hydrogen Fit & Risk Audit",
+        note: "Use this before turning partner pricing requirements into a larger storefront rebuild.",
+      },
+    ],
+    externalLinks: [
+      {
+        href: "https://shopify.dev/docs/storefronts/headless/building-with-the-customer-account-api/hydrogen",
+        label: "Customer Account API with Hydrogen",
+        note: "Official Shopify guide for authenticating customers in a Hydrogen storefront.",
+      },
+      {
+        href: "https://shopify.dev/docs/apps/build/discounts",
+        label: "Shopify discounts and Functions",
+        note: "Official Shopify guide covering automatic discounts, discount apps, and Functions-based discount logic.",
+      },
+      {
+        href: "https://shopify.dev/docs/api/admin-graphql/latest/objects/DiscountCustomerSegments",
+        label: "DiscountCustomerSegments",
+        note: "Official Admin GraphQL reference for targeting discounts to customer segments.",
+      },
+      {
+        href: "https://shopify.dev/docs/apps/build/b2b",
+        label: "Apps and B2B",
+        note: "Official Shopify B2B reference for companies, company locations, catalogs, and negotiated pricing.",
+      },
+    ],
+    closingPitch:
+      "If your partner pricing logic is starting to leak across product data, theme code, and checkout exceptions, the useful work is drawing the boundary before another workaround becomes permanent.",
+  },
   "shopify-hydrogen-seo-checklist": {
     heroVisual: {
       type: "code-card",
