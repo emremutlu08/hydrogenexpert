@@ -15,9 +15,9 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-18
 
-- PR: Pending
+- PR: [#36 Fix legacy Hydrogen setup guide 404](https://github.com/emremutlu08/hydrogenexpert/pull/36)
 - Branch: `codex/gsc-legacy-blog-redirect`
-- Deployment: Pending.
+- Deployment: Preview pending.
 - Summary:
   - Added a permanent redirect for the Google Search Console 404 example `/blog/shopify-hydrogen-v2-setup-guide`.
   - Routed the legacy setup-guide URL to the current informational Hydrogen page at `/what-is-hydrogen`.
