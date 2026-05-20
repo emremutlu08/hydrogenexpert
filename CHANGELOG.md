@@ -17,7 +17,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 - PR: [#39 Use Next Vercel Web Analytics integration](https://github.com/emremutlu08/hydrogenexpert/pull/39)
 - Branch: `codex/vercel-web-analytics-next`
-- Deployment: Preview and production deployment pending validation.
+- Deployment: Preview deployment [hydrogenexpert-git-codex-vercel-web-82816e-emremutlu8s-projects.vercel.app](https://hydrogenexpert-git-codex-vercel-web-82816e-emremutlu8s-projects.vercel.app), production deployment [hydrogenexpert-b1yx9yytq-emremutlu8s-projects.vercel.app](https://hydrogenexpert-b1yx9yytq-emremutlu8s-projects.vercel.app), aliased to [https://hydrogenexpert.co](https://hydrogenexpert.co).
 - Summary:
   - Switched the Vercel Web Analytics component import from the generic React entrypoint to the documented Next.js entrypoint.
   - Kept the existing Web Analytics, Speed Insights, and optional Google Analytics layout wiring in place.
@@ -30,6 +30,10 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - `npm run test`: 12 test files and 43 tests passed.
   - `npm run build`: passed, 61 routes generated.
   - Local production smoke on `localhost:3018`: Chrome confirmed `/_vercel/insights/script.js` and `/_vercel/speed-insights/script.js` were injected, the homepage rendered the expected title, and the 390px viewport had no horizontal overflow.
+  - Vercel PR checks: passed for PR #39.
+  - Protected preview fetch through Vercel tooling returned HTTP 200 and rendered the expected HydrogenExpert title.
+  - Production deployment reached `READY`, was aliased to `hydrogenexpert.co`, and live production returned HTTP 200.
+  - Live production Chrome smoke confirmed the Vercel Web Analytics script `cbea06fe5090affc/script.js` and Speed Insights script `03a16e9536e814ef/script.js` loaded with HTTP 200, page views were queued for `/` and `/blog`, and the 390px viewport had no horizontal overflow.
 - Manual follow-up:
   - After production verification, visit the live site and navigate between pages without a content blocker, then recheck the Vercel Analytics dashboard after at least 30 seconds.
 
