@@ -13,6 +13,33 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 - Verification:
 - Manual follow-up:
 
+## 2026-05-20
+
+- PR: [#37 Update safe dependency versions](https://github.com/emremutlu08/hydrogenexpert/pull/37)
+- Branch: `codex/dependency-refresh-2026-05-20`
+- Deployment: Preview deployment [hydrogenexpert-git-codex-dependency-783f9a-emremutlu8s-projects.vercel.app](https://hydrogenexpert-git-codex-dependency-783f9a-emremutlu8s-projects.vercel.app), production deployment [hydrogenexpert-gr0zejbwa-emremutlu8s-projects.vercel.app](https://hydrogenexpert-gr0zejbwa-emremutlu8s-projects.vercel.app), aliased to [https://hydrogenexpert.co](https://hydrogenexpert.co).
+- Summary:
+  - Updated safe runtime dependencies: `@anthropic-ai/sdk`, `@supabase/supabase-js`, and `sanitize-html`.
+  - Updated safe dev dependencies: `@types/node`, `@types/react`, `@types/react-dom`, `playwright`, `tsx`, and `vitest`.
+  - Refreshed `package-lock.json` and cleared the critical `sanitize-html <=2.17.3` advisory.
+- Files changed:
+  - `package.json`
+  - `package-lock.json`
+- Verification:
+  - `npm audit --audit-level=moderate`: passed with zero vulnerabilities.
+  - `npm run lint`: passed.
+  - `npm run test`: 12 test files and 43 tests passed.
+  - `npm run typecheck`: passed.
+  - `npm run validate:content`: passed.
+  - `npm run build`: passed, 61 routes generated.
+  - `npm ls --depth=0`: passed.
+  - Vercel PR checks: passed for PR #37.
+  - Protected preview fetch through Vercel tooling returned HTTP 200 and rendered the expected HydrogenExpert title.
+  - Production deployment for commit `e44eda3` reached `READY`, was aliased to `hydrogenexpert.co`, and live production returned HTTP 200 with the expected HydrogenExpert title.
+- Manual follow-up:
+  - Review `@anthropic-ai/sdk@0.97.1` separately because it is outside the current `^0.95.x` range.
+  - Review `eslint@10.4.0` separately because it is a major update.
+
 ## 2026-05-18
 
 - PR: [#36 Fix legacy Hydrogen setup guide 404](https://github.com/emremutlu08/hydrogenexpert/pull/36)
