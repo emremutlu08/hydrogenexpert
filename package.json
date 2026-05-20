@@ -13,30 +13,30 @@
     "validate:content": "tsx scripts/validate-content.ts"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.95.1",
+    "@anthropic-ai/sdk": "^0.95.2",
     "@next/third-parties": "^16.2.6",
-    "@supabase/supabase-js": "^2.105.4",
+    "@supabase/supabase-js": "^2.106.1",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
     "next": "16.2.6",
     "next-sitemap": "^4.2.3",
     "react": "19.2.6",
     "react-dom": "19.2.6",
-    "sanitize-html": "^2.17.3"
+    "sanitize-html": "^2.17.4"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.0",
-    "@types/node": "^25.6.2",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "@types/node": "^25.9.1",
+    "@types/react": "^19.2.15",
+    "@types/react-dom": "^19.2.3",
     "@types/sanitize-html": "^2.16.1",
     "eslint": "^9.39.4",
     "eslint-config-next": "16.2.6",
-    "playwright": "^1.59.1",
+    "playwright": "^1.60.0",
     "tailwindcss": "^4.3.0",
-    "tsx": "^4.21.0",
+    "tsx": "^4.22.3",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.5"
+    "vitest": "^4.1.7"
   },
   "overrides": {
     "postcss": "8.5.13"
