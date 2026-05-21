@@ -17,7 +17,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 - PR: [#41 Add Google Search Console verification tag](https://github.com/emremutlu08/hydrogenexpert/pull/41)
 - Branch: `codex/google-site-verification`
-- Deployment: Preview deployment [hydrogenexpert-git-codex-google-sit-6900b0-emremutlu8s-projects.vercel.app](https://hydrogenexpert-git-codex-google-sit-6900b0-emremutlu8s-projects.vercel.app), production deployment [hydrogenexpert-5xybdpct3-emremutlu8s-projects.vercel.app](https://hydrogenexpert-5xybdpct3-emremutlu8s-projects.vercel.app), aliased to [https://hydrogenexpert.co](https://hydrogenexpert.co).
+- Deployment: Preview deployment [hydrogenexpert-git-codex-google-sit-6900b0-emremutlu8s-projects.vercel.app](https://hydrogenexpert-git-codex-google-sit-6900b0-emremutlu8s-projects.vercel.app), production verified on [https://hydrogenexpert.co](https://hydrogenexpert.co).
 - Summary:
   - Added the Google Search Console ownership verification token shown for `https://hydrogenexpert.co/` to the root layout.
   - Kept any existing `GOOGLE_SITE_VERIFICATION` environment token working while always rendering the new ownership token.
