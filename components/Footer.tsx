@@ -37,6 +37,7 @@ interface FooterProps {
 }
 
 const SERVICE_ITEMS = [
+  { href: "/shopify-hydrogen-developer", label: "Shopify Hydrogen Developer" },
   { href: "/shopify-hydrogen-audit", label: "Shopify Hydrogen Audit" },
   { href: "/liquid-to-hydrogen-migration", label: "Liquid to Hydrogen Migration" },
   { href: "/custom-shopify-hydrogen-storefront", label: "Custom Hydrogen Storefront" },

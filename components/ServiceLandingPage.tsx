@@ -179,6 +179,88 @@ const developerComparisonRows = [
   },
 ] as const;
 
+const developerSearchIntentRows = [
+  {
+    query: "shopify hydrogen developer github",
+    intent: "Docs and repository research",
+    answer:
+      "Use the official Hydrogen documentation and Shopify's public repository to understand the framework. Hire a developer when that research needs to become production routes, data loading, QA, and launch work.",
+    links: [
+      {
+        href: "https://github.com/Shopify/hydrogen",
+        label: "Shopify Hydrogen GitHub",
+        external: true,
+      },
+      {
+        href: "https://shopify.dev/docs/storefronts/headless/hydrogen/fundamentals",
+        label: "Hydrogen fundamentals",
+        external: true,
+      },
+    ],
+  },
+  {
+    query: "shopify hydrogen developer training",
+    intent: "Training and team readiness",
+    answer:
+      "Training helps an internal team learn the stack. Production ownership still needs judgment across Shopify data, SEO, analytics, deployment, and maintenance.",
+    links: [
+      { href: OWNER.udemyUrl, label: "Hydrogen course", external: true },
+      { href: "/articles/how-to-hire-shopify-hydrogen-developer", label: "Hiring guide" },
+    ],
+  },
+  {
+    query: "shopify hydrogen templates and components",
+    intent: "Build acceleration",
+    answer:
+      "Templates and components can reduce setup time, but a real storefront still needs product data shape, route behavior, content modeling, cart logic, and SEO-safe launch checks.",
+    links: [
+      { href: "/custom-shopify-hydrogen-storefront", label: "Custom storefront build" },
+      {
+        href: "https://shopify.dev/docs/storefronts/headless/hydrogen/fundamentals",
+        label: "Hydrogen stack",
+        external: true,
+      },
+    ],
+  },
+  {
+    query: "shopify hydrogen pricing",
+    intent: "Budget qualification",
+    answer:
+      "Hydrogen cost depends on whether the work is an audit, focused cleanup, senior developer support, full custom build, or broader agency scope.",
+    links: [
+      { href: "/shopify-hydrogen-cost", label: "Hydrogen cost ranges" },
+      {
+        href: "/articles/shopify-hydrogen-development-cost-developer-agency-audit",
+        label: "Cost decision guide",
+      },
+    ],
+  },
+  {
+    query: "shopify oxygen",
+    intent: "Deployment and hosting",
+    answer:
+      "Oxygen matters when the Hydrogen storefront needs preview environments, environment variables, caching, deployment checks, and production handoff discipline.",
+    links: [
+      {
+        href: "https://shopify.dev/docs/storefronts/headless/hydrogen/deployments/github",
+        label: "Hydrogen GitHub deployments",
+        external: true,
+      },
+      { href: "/shopify-hydrogen-audit", label: "Launch risk audit" },
+    ],
+  },
+  {
+    query: "shopify hydrogen developer jobs",
+    intent: "Hiring path",
+    answer:
+      "For hiring, evaluate shipped Hydrogen storefronts, Storefront API depth, SEO discipline, Liquid tradeoff judgment, and whether the developer can explain when not to rebuild.",
+    links: [
+      { href: "/articles/experienced-shopify-hydrogen-developers", label: "Experience checklist" },
+      { href: "/case-studies", label: "Production proof" },
+    ],
+  },
+] as const;
+
 const developerResponsibilities = [
   "React Router route architecture",
   "Storefront API and GraphQL data modeling",
@@ -196,6 +278,20 @@ function buildDeveloperResponsibilitiesSchema() {
       "@type": "ListItem",
       position: index + 1,
       name: responsibility,
+    })),
+  };
+}
+
+function buildDeveloperSearchIntentSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Shopify Hydrogen developer search intent map",
+    itemListElement: developerSearchIntentRows.map((row, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: row.query,
+      description: row.answer,
     })),
   };
 }
@@ -234,6 +330,8 @@ export function ServiceLandingPage({ service }: ServiceLandingPageProps) {
     service.slug === "shopify-hydrogen-developer"
       ? buildDeveloperResponsibilitiesSchema()
       : null;
+  const developerSearchIntentSchema =
+    service.slug === "shopify-hydrogen-developer" ? buildDeveloperSearchIntentSchema() : null;
   const sourceLinks = service.sourceMap.filter((source) => source.url);
 
   return (
@@ -244,6 +342,7 @@ export function ServiceLandingPage({ service }: ServiceLandingPageProps) {
           breadcrumbSchema,
           faqSchema,
           developerResponsibilitiesSchema,
+          developerSearchIntentSchema,
         )}
       />
       <div className="page-shell">
@@ -386,6 +485,49 @@ export function ServiceLandingPage({ service }: ServiceLandingPageProps) {
                     ))}
                   </tbody>
                 </table>
+              </div>
+            </section>
+
+            <section className="surface-card space-y-6">
+              <SectionHeader
+                eyebrow="Search paths"
+                title="What people usually mean by Shopify Hydrogen developer."
+                description="The same search can mean docs research, training, templates, pricing, Oxygen deployment, or a hiring decision. These paths keep the next click specific."
+                className="max-w-5xl"
+              />
+              <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+                {developerSearchIntentRows.map((row) => (
+                  <article key={row.query} className="rounded-[1.2rem] border border-black/8 bg-white p-5">
+                    <p className="text-[0.68rem] font-bold uppercase tracking-[0.2em] text-[#0f8a5d]">
+                      {row.query}
+                    </p>
+                    <h3 className="mt-3 text-lg font-semibold text-[#171717]">{row.intent}</h3>
+                    <p className="mt-3 text-sm leading-7 text-neutral-600">{row.answer}</p>
+                    <div className="mt-5 flex flex-wrap gap-2">
+                      {row.links.map((link) =>
+                        "external" in link && link.external ? (
+                          <a
+                            key={link.href}
+                            href={link.href}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex min-h-10 items-center rounded-full border border-black/10 px-3 py-2 text-xs font-semibold text-[#171717] transition hover:border-[#10b981] hover:text-[#10b981]"
+                          >
+                            {link.label}
+                          </a>
+                        ) : (
+                          <Link
+                            key={link.href}
+                            href={link.href}
+                            className="inline-flex min-h-10 items-center rounded-full border border-black/10 px-3 py-2 text-xs font-semibold text-[#171717] transition hover:border-[#10b981] hover:text-[#10b981]"
+                          >
+                            {link.label}
+                          </Link>
+                        ),
+                      )}
+                    </div>
+                  </article>
+                ))}
               </div>
             </section>
           </>

@@ -185,3 +185,23 @@ Next Search Console follow-up:
 - Inspect `/shopify-hydrogen-developer` after production deployment.
 - Request indexing for `/shopify-hydrogen-developer`.
 - Recheck `Shopify Hydrogen Developer`, `hire Shopify Hydrogen developer`, and `Shopify Hydrogen developer vs Shopify theme developer` after 7, 14, and 28 days.
+
+## 2026-05-21 Google regular SERP Shopify Hydrogen Developer response
+
+Observed issue:
+- The regular Google results page for `Shopify Hydrogen Developer` shows official Shopify surfaces, Shopify Academy, GitHub, Weaverse, videos, and an exact-match service domain near the top.
+- HydrogenExpert can appear for the query, but Google may choose the homepage result instead of routing the intent to `/shopify-hydrogen-developer`.
+- The visible related searches branch into GitHub, training, templates, jobs, pricing, docs, components, and Oxygen, so the target page needs to answer those branches without creating thin modifier pages.
+
+Changes:
+- Added `/shopify-hydrogen-developer` to primary navigation and the sitewide footer services list.
+- Updated `/shopify-hydrogen-developer` metadata to start with the exact query while keeping the page-specific service angle distinct.
+- Added a search-intent section covering GitHub/docs, training, templates/components, pricing, Oxygen deployment, and hiring/jobs paths with official or internal next links.
+- Added ItemList JSON-LD for the search-intent map alongside the existing developer-responsibility ItemList.
+- Added two FAQ entries for templates and mixed research/hiring intent.
+- Marked `/shopify-hydrogen-developer` as a fresh weekly sitemap route with priority `0.9`.
+
+Next Search Console follow-up:
+- Inspect `/shopify-hydrogen-developer` and request indexing after production deployment.
+- Check whether Google keeps showing `/` or starts showing `/shopify-hydrogen-developer` for `Shopify Hydrogen Developer`.
+- Recheck `shopify hydrogen developer github`, `shopify hydrogen developer training`, `shopify hydrogen templates`, `shopify hydrogen pricing`, `shopify oxygen`, and `shopify hydrogen developer jobs` after 7, 14, and 28 days.

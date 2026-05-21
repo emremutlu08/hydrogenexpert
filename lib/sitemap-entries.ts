@@ -6,6 +6,16 @@ import type { PostSummary } from "./posts";
 import { SERVICE_PACKAGES } from "./services";
 
 const LAST_SIGNIFICANT_UPDATE = new Date("2026-04-25T00:00:00.000Z");
+const STATIC_ROUTE_OVERRIDES: Record<
+  string,
+  Pick<MetadataRoute.Sitemap[number], "changeFrequency" | "lastModified" | "priority">
+> = {
+  "/shopify-hydrogen-developer": {
+    lastModified: new Date("2026-05-21T00:00:00.000Z"),
+    changeFrequency: "weekly",
+    priority: 0.9,
+  },
+};
 
 export const NOINDEX_STATIC_ROUTES = ["/privacy", "/cookies", "/terms"] as const;
 
@@ -54,12 +64,18 @@ export function buildSitemapEntries({
 
   staticRoutes.push("/articles");
 
-  const staticEntries: MetadataRoute.Sitemap = staticRoutes.map((route) => ({
-    url: `${normalizedSiteUrl}${route === "/" ? "" : route}`,
-    lastModified: LAST_SIGNIFICANT_UPDATE,
-    changeFrequency: route === "/" ? "weekly" : route === "/blog" ? "daily" : "monthly",
-    priority: route === "/" ? 1 : route === "/blog" ? 0.9 : 0.8,
-  }));
+  const staticEntries: MetadataRoute.Sitemap = staticRoutes.map((route) => {
+    const routeOverride = STATIC_ROUTE_OVERRIDES[route];
+
+    return {
+      url: `${normalizedSiteUrl}${route === "/" ? "" : route}`,
+      lastModified: routeOverride?.lastModified ?? LAST_SIGNIFICANT_UPDATE,
+      changeFrequency:
+        routeOverride?.changeFrequency ??
+        (route === "/" ? "weekly" : route === "/blog" ? "daily" : "monthly"),
+      priority: routeOverride?.priority ?? (route === "/" ? 1 : route === "/blog" ? 0.9 : 0.8),
+    };
+  });
 
   const dynamicEntries: MetadataRoute.Sitemap = posts.map((post) => ({
     url: `${normalizedSiteUrl}/blog/${post.slug}`,
