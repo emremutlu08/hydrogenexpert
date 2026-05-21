@@ -17,7 +17,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 - PR: [#41 Add Google Search Console verification tag](https://github.com/emremutlu08/hydrogenexpert/pull/41)
 - Branch: `codex/google-site-verification`
-- Deployment: Pending production deployment after PR validation.
+- Deployment: Preview deployment [hydrogenexpert-git-codex-google-sit-6900b0-emremutlu8s-projects.vercel.app](https://hydrogenexpert-git-codex-google-sit-6900b0-emremutlu8s-projects.vercel.app), production deployment [hydrogenexpert-5xybdpct3-emremutlu8s-projects.vercel.app](https://hydrogenexpert-5xybdpct3-emremutlu8s-projects.vercel.app), aliased to [https://hydrogenexpert.co](https://hydrogenexpert.co).
 - Summary:
   - Added the Google Search Console ownership verification token shown for `https://hydrogenexpert.co/` to the root layout.
   - Kept any existing `GOOGLE_SITE_VERIFICATION` environment token working while always rendering the new ownership token.
@@ -32,6 +32,11 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - `npm run test`: 12 test files and 43 tests passed.
   - `npm run build`: passed, 61 routes generated.
   - Local production server on `localhost:3021`: homepage HTML included `<meta name="google-site-verification" content="8v_b8lOHLJCR-BHF5yEbO9Kt6WS1jq0SmcpFnfmt79U"/>`.
+  - Vercel PR checks: passed for PR #41.
+  - Protected preview fetch through Vercel tooling returned HTTP 200 and homepage HTML included the Google Search Console verification meta tag.
+  - Production deployment reached `READY`, was aliased to `hydrogenexpert.co`, and live production returned HTTP 200.
+  - Live production homepage HTML included `<meta name="google-site-verification" content="8v_b8lOHLJCR-BHF5yEbO9Kt6WS1jq0SmcpFnfmt79U"/>`.
+  - Live production `/robots.txt` and `/sitemap.xml` returned expected crawl-discovery responses.
 - Manual follow-up:
   - After production verification, click Verify in Google Search Console for `https://hydrogenexpert.co/` using the HTML tag method.
 
