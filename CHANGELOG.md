@@ -17,7 +17,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 - PR: [#42 Fix GSC coverage link signals](https://github.com/emremutlu08/hydrogenexpert/pull/42)
 - Branch: `codex/gsc-coverage-link-signals`
-- Deployment: Pending
+- Deployment: Preview deployment [hydrogenexpert-git-codex-gsc-covera-09bc3f-emremutlu8s-projects.vercel.app](https://hydrogenexpert-git-codex-gsc-covera-09bc3f-emremutlu8s-projects.vercel.app), production deployment [hydrogenexpert-9jjpdtiid-emremutlu8s-projects.vercel.app](https://hydrogenexpert-9jjpdtiid-emremutlu8s-projects.vercel.app), aliased to [https://hydrogenexpert.co](https://hydrogenexpert.co).
 - Summary:
   - Responded to the Google Search Console Coverage export from 2026-05-21: 1 `Not found (404)` URL in validation and 14 `Discovered - currently not indexed` URLs.
   - Kept the already-live legacy blog 404 redirect path intact while improving crawl signals from rendered blog content.
@@ -42,6 +42,11 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - `npm run build`: passed, 61 routes generated.
   - Local production server on `localhost:3022`: the affected blog post rendered with 0 legacy internal anchors, 0 internal `nofollow` anchors, and 5 canonical `/shopify-hydrogen-cost` anchors.
   - Local Chrome rendered smoke on the affected blog post: H1 rendered, 0 legacy internal anchors, 0 internal `nofollow` anchors, 5 canonical `/shopify-hydrogen-cost` anchors, and body overflow 0. Local-only console errors were limited to Vercel Analytics and Speed Insights scripts returning 404 on `next start`.
+  - Vercel PR checks: passed for PR #42.
+  - Protected preview fetch through Vercel tooling returned HTTP 200 for the affected blog post with 0 legacy internal anchors, 0 internal `nofollow` anchors, and 5 canonical `/shopify-hydrogen-cost` anchors.
+  - Production deployment reached `READY`, was aliased to `hydrogenexpert.co`, and live production returned HTTP 200 for the affected blog post with 0 legacy internal anchors, 0 internal `nofollow` anchors, and 5 canonical `/shopify-hydrogen-cost` anchors.
+  - Live production `/blog/shopify-hydrogen-v2-setup-guide` returns HTTP 301 to `/what-is-hydrogen`.
+  - Live production `/sitemap.xml` and `/robots.txt` return HTTP 200 with expected crawl-discovery content types.
 - Manual follow-up:
   - In Google Search Console, request validation/indexing after the PR is deployed and live checks confirm the rendered blog links are canonical and followable.
 
