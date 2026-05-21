@@ -105,4 +105,15 @@ describe("buildSitemapEntries", () => {
     expect(paths).toContain("/articles/past-public-article");
     expect(paths).not.toContain("/articles/future-scheduled-article");
   });
+
+  it("gives the Shopify Hydrogen developer page fresh discovery metadata", () => {
+    const entries = buildSitemapEntries({ siteUrl, posts });
+    const developerEntry = entries.find(
+      (entry) => new URL(entry.url).pathname === "/shopify-hydrogen-developer",
+    );
+
+    expect(developerEntry?.changeFrequency).toBe("weekly");
+    expect(developerEntry?.priority).toBe(0.9);
+    expect(developerEntry?.lastModified).toEqual(new Date("2026-05-21T00:00:00.000Z"));
+  });
 });

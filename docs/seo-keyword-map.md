@@ -1,6 +1,6 @@
 # HydrogenExpert SEO Keyword Map
 
-Last updated: 2026-05-15
+Last updated: 2026-05-21
 
 ## Commercial Pages
 
@@ -11,7 +11,7 @@ Last updated: 2026-05-15
 | Headless Shopify agency | `/headless-shopify-agency` | `/shopify-hydrogen-agency`, `/liquid-to-hydrogen-migration`, `/shopify-hydrogen-cost` | Buyer is comparing headless paths before committing to Hydrogen. |
 | Shopify Hydrogen expert | `/shopify-hydrogen-expert` | `/shopify-hydrogen-experts`, `/shopify-hydrogen-developer`, `/articles/shopify-hydrogen-experts-production-experience` | Buyer wants one senior specialist rather than a broad agency, marketplace, or expert list. |
 | Shopify Hydrogen experts | `/shopify-hydrogen-experts` | `/articles/shopify-hydrogen-experts-production-experience`, `/shopify-hydrogen-developer`, `/case-studies` | Buyer is comparing expert proof, agency options, and senior implementation paths. |
-| Shopify Hydrogen developer | `/shopify-hydrogen-developer` | `/hire-me`, `/case-studies`, `/custom-shopify-hydrogen-storefront` | Buyer needs direct senior implementation. |
+| Shopify Hydrogen developer | `/shopify-hydrogen-developer` | `/hire-me`, `/case-studies`, `/custom-shopify-hydrogen-storefront`, `/articles/how-to-hire-shopify-hydrogen-developer`, `/articles/shopify-hydrogen-developer-vs-agency`, `/shopify-hydrogen-cost` | Buyer needs direct senior implementation and may also compare GitHub/docs, training, templates, pricing, Oxygen, jobs, and agency alternatives. |
 | Shopify Hydrogen development | `/custom-shopify-hydrogen-storefront` | `/shopify-hydrogen-developer`, `/liquid-to-hydrogen-migration`, `/case-studies` | Buyer wants a custom Hydrogen storefront built. |
 | Liquid to Hydrogen migration | `/liquid-to-hydrogen-migration` | `/shopify-hydrogen-audit`, `/shopify-hydrogen-cost`, `/when-not-to-use-hydrogen` | Buyer is considering replacing a Liquid theme with Hydrogen. |
 | Shopify Hydrogen audit | `/shopify-hydrogen-audit` | `/shopify-hydrogen-fit-audit`, `/shopify-hydrogen-cost`, `/should-i-use-it` | Buyer needs risk, fit, SEO, and migration review before scope. |
@@ -27,6 +27,7 @@ Last updated: 2026-05-15
 - Metaobject/content-model articles should link to `/custom-shopify-hydrogen-storefront` and `/liquid-to-hydrogen-migration`.
 - Migration articles should link to `/liquid-to-hydrogen-migration`, `/shopify-hydrogen-audit`, and `/shopify-hydrogen-cost`.
 - Agency/developer/expert comparison articles should link to `/shopify-hydrogen-expert`, `/shopify-hydrogen-experts`, `/shopify-hydrogen-agency`, `/headless-shopify-agency`, and `/shopify-hydrogen-developer`.
+- Developer-intent pages should answer the regular SERP branches around Hydrogen GitHub/docs, training, templates/components, pricing, Oxygen, and hiring/jobs without creating thin duplicate pages for each modifier.
 
 ## Metadata Rules
 

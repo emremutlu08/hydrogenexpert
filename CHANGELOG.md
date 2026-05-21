@@ -15,6 +15,48 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-21
 
+- PR: [#43 Improve Shopify Hydrogen developer SERP signals](https://github.com/emremutlu08/hydrogenexpert/pull/43)
+- Branch: `codex/serp-shopify-hydrogen-developer`
+- Deployment: Preview deployment [hydrogenexpert-git-codex-serp-shopi-ac47d7-emremutlu8s-projects.vercel.app](https://hydrogenexpert-git-codex-serp-shopi-ac47d7-emremutlu8s-projects.vercel.app); production deployment reached `READY` and was aliased to [https://hydrogenexpert.co](https://hydrogenexpert.co).
+- Summary:
+  - Responded to the regular Google SERP for `Shopify Hydrogen Developer`, where official Shopify surfaces, GitHub, Shopify Academy, videos, and an exact-match service domain all compete for the same query.
+  - Strengthened `/shopify-hydrogen-developer` as the primary target by adding sitewide primary-nav and footer links.
+  - Updated the developer page title/meta, added a SERP-intent section for GitHub/docs, training, templates/components, pricing, Oxygen, and hiring/jobs branches, and added matching ItemList JSON-LD.
+  - Expanded the developer page FAQ with template and mixed research/hiring intent answers.
+  - Marked `/shopify-hydrogen-developer` as a fresh weekly sitemap route with priority `0.9`.
+- Files changed:
+  - `CHANGELOG.md`
+  - `components/Footer.tsx`
+  - `components/ServiceLandingPage.tsx`
+  - `docs/seo-gsc-commercial-intent-changelog.md`
+  - `docs/seo-keyword-map.md`
+  - `lib/navigation.ts`
+  - `lib/services.ts`
+  - `lib/sitemap-entries.ts`
+  - `tests/sitemap-entries.test.ts`
+- Verification:
+  - Exact-query SERP review confirmed HydrogenExpert can appear for `Shopify Hydrogen Developer`, while the visible SERP also branches into GitHub/docs, training, templates, jobs, pricing, components, and Oxygen intent.
+  - Shopify Hydrogen official docs and GitHub repo references were checked for the page's Hydrogen, Oxygen, GitHub, React Router, and deployment grounding.
+  - `git diff --check`: passed.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed with no `Needs review` rows.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run test`: passed, 12 files and 45 tests.
+  - `npm run build`: passed, 61 routes generated.
+  - Local production server on `localhost:3022`: `/shopify-hydrogen-developer`, `/sitemap.xml`, and `/robots.txt` returned HTTP 200; developer page HTML included the updated title/meta, search-intent section, 7 FAQ entries, and search-intent ItemList schema.
+  - Local Playwright rendered checks at 390px and 1280px: one H1, body overflow 0, new primary-nav developer link, footer developer link, search-intent section, and search-intent ItemList schema present. Local-only console errors were limited to Vercel Analytics and Speed Insights scripts returning 404 on `next start`.
+  - Vercel PR checks passed for PR #43.
+  - Protected preview fetch through Vercel tooling returned HTTP 200 for `/shopify-hydrogen-developer`, `/sitemap.xml`, and `/robots.txt`; preview HTML included the updated title/meta, search-intent section, FAQ, and ItemList schema.
+  - Production deployment reached `READY`, was aliased to `hydrogenexpert.co`, and live production returned HTTP 200 for `/shopify-hydrogen-developer`, `/sitemap.xml`, and `/robots.txt`.
+  - Live production HTML included the updated title/meta, canonical `/shopify-hydrogen-developer`, search-intent section, FAQ entries, primary-nav/footer developer links, and search-intent ItemList schema.
+  - Live production sitemap included `/shopify-hydrogen-developer` with `lastmod` `2026-05-21T00:00:00.000Z`, `weekly` changefreq, and priority `0.9`.
+- Manual follow-up:
+  - In Google Search Console, inspect `/shopify-hydrogen-developer`, request indexing, and recheck whether Google switches the exact query from `/` to `/shopify-hydrogen-developer`.
+  - Recheck `Shopify Hydrogen Developer`, `shopify hydrogen developer github`, `shopify hydrogen developer training`, `shopify hydrogen templates`, `shopify hydrogen pricing`, `shopify oxygen`, and `shopify hydrogen developer jobs` after 7, 14, and 28 days.
+
+## 2026-05-21
+
 - PR: [#42 Fix GSC coverage link signals](https://github.com/emremutlu08/hydrogenexpert/pull/42)
 - Branch: `codex/gsc-coverage-link-signals`
 - Deployment: Preview deployment [hydrogenexpert-git-codex-gsc-covera-09bc3f-emremutlu8s-projects.vercel.app](https://hydrogenexpert-git-codex-gsc-covera-09bc3f-emremutlu8s-projects.vercel.app), production deployment [hydrogenexpert-9jjpdtiid-emremutlu8s-projects.vercel.app](https://hydrogenexpert-9jjpdtiid-emremutlu8s-projects.vercel.app), aliased to [https://hydrogenexpert.co](https://hydrogenexpert.co).
