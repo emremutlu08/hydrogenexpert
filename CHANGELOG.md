@@ -17,7 +17,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 - PR: [#43 Improve Shopify Hydrogen developer SERP signals](https://github.com/emremutlu08/hydrogenexpert/pull/43)
 - Branch: `codex/serp-shopify-hydrogen-developer`
-- Deployment: Preview deployment [hydrogenexpert-git-codex-serp-shopi-ac47d7-emremutlu8s-projects.vercel.app](https://hydrogenexpert-git-codex-serp-shopi-ac47d7-emremutlu8s-projects.vercel.app), production deployment [hydrogenexpert-j0dxyfy7t-emremutlu8s-projects.vercel.app](https://hydrogenexpert-j0dxyfy7t-emremutlu8s-projects.vercel.app), aliased to [https://hydrogenexpert.co](https://hydrogenexpert.co).
+- Deployment: Preview deployment [hydrogenexpert-git-codex-serp-shopi-ac47d7-emremutlu8s-projects.vercel.app](https://hydrogenexpert-git-codex-serp-shopi-ac47d7-emremutlu8s-projects.vercel.app); production deployment reached `READY` and was aliased to [https://hydrogenexpert.co](https://hydrogenexpert.co).
 - Summary:
   - Responded to the regular Google SERP for `Shopify Hydrogen Developer`, where official Shopify surfaces, GitHub, Shopify Academy, videos, and an exact-match service domain all compete for the same query.
   - Strengthened `/shopify-hydrogen-developer` as the primary target by adding sitewide primary-nav and footer links.
