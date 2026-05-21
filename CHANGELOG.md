@@ -15,6 +15,38 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-21
 
+- PR: Pending
+- Branch: `codex/gsc-coverage-link-signals`
+- Deployment: Pending
+- Summary:
+  - Responded to the Google Search Console Coverage export from 2026-05-21: 1 `Not found (404)` URL in validation and 14 `Discovered - currently not indexed` URLs.
+  - Kept the already-live legacy blog 404 redirect path intact while improving crawl signals from rendered blog content.
+  - Updated Supabase-rendered blog HTML sanitization so internal HydrogenExpert links remain followable instead of rendering with `rel="nofollow"`.
+  - Rewrote legacy internal blog links before render: `/cost`, `/agency`, `/shopify-hydrogen-seo-guide`, and `/blog/shopify-hydrogen-v2-setup-guide` now point at their canonical targets when they appear inside article HTML.
+  - Kept external article references safe with `rel="noopener noreferrer"` without applying internal-link nofollow.
+- Files changed:
+  - `CHANGELOG.md`
+  - `lib/post-content.ts`
+  - `tests/post-content.test.ts`
+- Verification:
+  - Coverage workbook inspection confirmed active issue buckets: `Not found (404)` with 1 page and `Discovered - currently not indexed` with 14 pages.
+  - Live production pre-fix crawl found `/sitemap.xml` returning HTTP 200 with 46 URLs and no sitemap URL returning 404.
+  - Live production pre-fix check confirmed `/blog/shopify-hydrogen-v2-setup-guide` already returns 301 to `/what-is-hydrogen`.
+  - Live production pre-fix crawl found rendered blog content linking internally with `rel="nofollow noopener noreferrer"` and one rendered blog link pointing at legacy `/cost`.
+  - `git diff --check`: passed.
+  - `npm run lint`: passed with no warnings.
+  - `npm run typecheck`: passed.
+  - `npm run test`: passed, 12 files and 44 tests.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed with no `Needs review` rows.
+  - `npm run build`: passed, 61 routes generated.
+  - Local production server on `localhost:3022`: the affected blog post rendered with 0 legacy internal anchors, 0 internal `nofollow` anchors, and 5 canonical `/shopify-hydrogen-cost` anchors.
+  - Local Chrome rendered smoke on the affected blog post: H1 rendered, 0 legacy internal anchors, 0 internal `nofollow` anchors, 5 canonical `/shopify-hydrogen-cost` anchors, and body overflow 0. Local-only console errors were limited to Vercel Analytics and Speed Insights scripts returning 404 on `next start`.
+- Manual follow-up:
+  - In Google Search Console, request validation/indexing after the PR is deployed and live checks confirm the rendered blog links are canonical and followable.
+
+## 2026-05-21
+
 - PR: [#41 Add Google Search Console verification tag](https://github.com/emremutlu08/hydrogenexpert/pull/41)
 - Branch: `codex/google-site-verification`
 - Deployment: Preview deployment [hydrogenexpert-git-codex-google-sit-6900b0-emremutlu8s-projects.vercel.app](https://hydrogenexpert-git-codex-google-sit-6900b0-emremutlu8s-projects.vercel.app), production verified on [https://hydrogenexpert.co](https://hydrogenexpert.co).

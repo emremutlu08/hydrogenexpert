@@ -29,6 +29,15 @@ const ALLOWED_ARTICLE_CLASSES = {
   code: [/^language-[a-z0-9-]+$/],
 };
 
+const INTERNAL_HOSTS = new Set(["hydrogenexpert.co", "www.hydrogenexpert.co"]);
+
+const LEGACY_INTERNAL_LINKS = new Map([
+  ["/agency", "/services"],
+  ["/cost", "/shopify-hydrogen-cost"],
+  ["/shopify-hydrogen-seo-guide", "/shopify-hydrogen-seo"],
+  ["/blog/shopify-hydrogen-v2-setup-guide", "/what-is-hydrogen"],
+]);
+
 function escapeHtml(value: string) {
   return value
     .replaceAll("&", "&amp;")
@@ -117,6 +126,60 @@ function normalizeHeadingParagraphs(content: string) {
       return `<h${level}>${heading.trim()}</h${level}>`;
     },
   );
+}
+
+function normalizePathname(pathname: string) {
+  if (pathname !== "/" && pathname.endsWith("/")) {
+    return pathname.slice(0, -1);
+  }
+
+  return pathname;
+}
+
+function getCanonicalInternalHref(pathname: string, search: string, hash: string) {
+  const normalizedPathname = normalizePathname(pathname);
+  const legacyTarget = LEGACY_INTERNAL_LINKS.get(normalizedPathname);
+
+  if (legacyTarget) {
+    return legacyTarget;
+  }
+
+  return `${normalizedPathname}${search}${hash}`;
+}
+
+function normalizeArticleHref(href: string) {
+  if (href.startsWith("#")) {
+    return {
+      href,
+      isInternal: true,
+    };
+  }
+
+  const hasScheme = /^[a-z][a-z0-9+.-]*:/i.test(href);
+  const shouldResolveFromSiteRoot = !hasScheme && !href.startsWith("//");
+
+  try {
+    const url = shouldResolveFromSiteRoot
+      ? new URL(href, "https://hydrogenexpert.co")
+      : new URL(href);
+
+    if (INTERNAL_HOSTS.has(url.hostname)) {
+      return {
+        href: getCanonicalInternalHref(url.pathname, url.search, url.hash),
+        isInternal: true,
+      };
+    }
+  } catch {
+    return {
+      href,
+      isInternal: false,
+    };
+  }
+
+  return {
+    href,
+    isInternal: false,
+  };
 }
 
 function formatMarkdownLike(content: string) {
@@ -248,10 +311,30 @@ export function sanitizeHtmlContent(content: string) {
     transformTags: {
       a: (_tagName, attribs) => ({
         tagName: "a",
-        attribs: {
-          ...attribs,
-          rel: "nofollow noopener noreferrer",
-        },
+        attribs: (() => {
+          const safeAttribs = { ...attribs };
+          delete safeAttribs.rel;
+
+          if (!attribs.href) {
+            return safeAttribs;
+          }
+
+          const normalized = normalizeArticleHref(attribs.href);
+          delete safeAttribs.href;
+
+          if (normalized.isInternal || normalized.href.startsWith("mailto:")) {
+            return {
+              ...safeAttribs,
+              href: normalized.href,
+            };
+          }
+
+          return {
+            ...safeAttribs,
+            href: normalized.href,
+            rel: "noopener noreferrer",
+          };
+        })(),
       }),
     },
   });
