@@ -15,6 +15,28 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-21
 
+- PR: [#41 Add Google Search Console verification tag](https://github.com/emremutlu08/hydrogenexpert/pull/41)
+- Branch: `codex/google-site-verification`
+- Deployment: Pending production deployment after PR validation.
+- Summary:
+  - Added the Google Search Console ownership verification token shown for `https://hydrogenexpert.co/` to the root layout.
+  - Kept any existing `GOOGLE_SITE_VERIFICATION` environment token working while always rendering the new ownership token.
+- Files changed:
+  - `CHANGELOG.md`
+  - `app/layout.tsx`
+- Verification:
+  - Current live production check before the fix returned HTTP 200 but no `google-site-verification` meta tag.
+  - `git diff --check`: passed.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run test`: 12 test files and 43 tests passed.
+  - `npm run build`: passed, 61 routes generated.
+  - Local production server on `localhost:3021`: homepage HTML included `<meta name="google-site-verification" content="8v_b8lOHLJCR-BHF5yEbO9Kt6WS1jq0SmcpFnfmt79U"/>`.
+- Manual follow-up:
+  - After production verification, click Verify in Google Search Console for `https://hydrogenexpert.co/` using the HTML tag method.
+
+## 2026-05-21
+
 - PR: [#40 Improve AI visibility for Hydrogen developer page](https://github.com/emremutlu08/hydrogenexpert/pull/40)
 - Branch: `codex/ai-mode-hydrogen-developer`
 - Deployment: Preview deployment [hydrogenexpert-git-codex-ai-mode-hy-39536d-emremutlu8s-projects.vercel.app](https://hydrogenexpert-git-codex-ai-mode-hy-39536d-emremutlu8s-projects.vercel.app), production deployment [hydrogenexpert-h8uqs1grg-emremutlu8s-projects.vercel.app](https://hydrogenexpert-h8uqs1grg-emremutlu8s-projects.vercel.app), aliased to [https://hydrogenexpert.co](https://hydrogenexpert.co).
