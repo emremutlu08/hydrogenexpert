@@ -31,7 +31,14 @@ const geist = Geist({
   variable: "--font-geist",
 });
 
-const verification = process.env.GOOGLE_SITE_VERIFICATION;
+const googleSiteVerifications = Array.from(
+  new Set(
+    [
+      process.env.GOOGLE_SITE_VERIFICATION?.trim(),
+      "8v_b8lOHLJCR-BHF5yEbO9Kt6WS1jq0SmcpFnfmt79U",
+    ].filter((value): value is string => Boolean(value)),
+  ),
+);
 const bingVerification = process.env.BING_SITE_VERIFICATION;
 const gaId = getValidGaMeasurementId();
 
@@ -106,9 +113,13 @@ export default async function RootLayout({
   return (
     <html lang="en" className={`${geist.variable}`}>
       <head>
-        {verification ? (
-          <meta name="google-site-verification" content={verification} />
-        ) : null}
+        {googleSiteVerifications.map((verification) => (
+          <meta
+            key={verification}
+            name="google-site-verification"
+            content={verification}
+          />
+        ))}
         {bingVerification ? (
           <meta name="msvalidate.01" content={bingVerification} />
         ) : null}
