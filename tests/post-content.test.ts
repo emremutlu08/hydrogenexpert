@@ -11,8 +11,27 @@ describe("sanitizeHtmlContent", () => {
     expect(html).toContain("<h2>Heading</h2>");
     expect(html).toContain("<strong>this</strong>");
     expect(html).toContain('href="https://example.com"');
-    expect(html).toContain('rel="nofollow noopener noreferrer"');
+    expect(html).toContain('rel="noopener noreferrer"');
     expect(html).toContain('class="language-ts"');
+  });
+
+  it("keeps internal article links followable and canonical", () => {
+    const html = sanitizeHtmlContent(
+      [
+        '<p><a href="/cost">Cost</a></p>',
+        '<p><a href="https://www.hydrogenexpert.co/shopify-hydrogen-seo-guide/">SEO guide</a></p>',
+        '<p><a href="agency/">Services</a></p>',
+        '<p><a href="#faq">FAQ</a></p>',
+        '<p><a href="/blog/shopify-hydrogen-v2-setup-guide?utm_source=old">Old guide</a></p>',
+      ].join(""),
+    );
+
+    expect(html).toContain('href="/shopify-hydrogen-cost"');
+    expect(html).toContain('href="/shopify-hydrogen-seo"');
+    expect(html).toContain('href="/services"');
+    expect(html).toContain('href="#faq"');
+    expect(html).toContain('href="/what-is-hydrogen"');
+    expect(html).not.toContain("nofollow");
   });
 
   it("removes dangerous active content and attributes", () => {
