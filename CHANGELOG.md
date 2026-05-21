@@ -15,9 +15,9 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-21
 
-- PR: Pending
+- PR: [#40 Improve AI visibility for Hydrogen developer page](https://github.com/emremutlu08/hydrogenexpert/pull/40)
 - Branch: `codex/ai-mode-hydrogen-developer`
-- Deployment: Pending
+- Deployment: Preview deployment [hydrogenexpert-git-codex-ai-mode-hy-39536d-emremutlu8s-projects.vercel.app](https://hydrogenexpert-git-codex-ai-mode-hy-39536d-emremutlu8s-projects.vercel.app), production deployment [hydrogenexpert-h8uqs1grg-emremutlu8s-projects.vercel.app](https://hydrogenexpert-h8uqs1grg-emremutlu8s-projects.vercel.app), aliased to [https://hydrogenexpert.co](https://hydrogenexpert.co).
 - Summary:
   - Responded to Google AI Mode visibility pressure for `Shopify Hydrogen Developer` by strengthening `/shopify-hydrogen-developer` as a direct answer and citation-ready service page.
   - Added a role-definition section, Hydrogen developer stack table, hiring-trigger section, Shopify theme developer vs Shopify Hydrogen developer comparison table, and visible official-source grounding.
@@ -42,6 +42,11 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - Local production server on `localhost:3020`: rendered-source smoke found the new definition, comparison, source section, and ItemList schema text.
   - Local Chrome rendered smoke on `/shopify-hydrogen-developer`: title correct, one H1, definition/stack/hiring/comparison/source blocks visible, 5 FAQ answers in JSON-LD, ItemList schema present, and desktop body overflow 0.
   - Local Playwright smoke at 390px and 1280px: one H1, new definition/comparison text visible, body overflow 0; local-only 404s were limited to Vercel Analytics and Speed Insights scripts.
+  - Vercel PR checks: passed for PR #40.
+  - Protected preview fetch through Vercel tooling returned HTTP 200 for `/shopify-hydrogen-developer`, `/sitemap.xml`, and `/robots.txt`; preview HTML included the new definition text, FAQ schema, ItemList schema, and source-grounding section.
+  - Production deployment reached `READY`, was aliased to `hydrogenexpert.co`, and live production returned HTTP 200 for `/shopify-hydrogen-developer`, `/sitemap.xml`, and `/robots.txt`.
+  - Live production rendered-source smoke found the new definition, React Router stack table, comparison table, source section, and ItemList schema text.
+  - Live production Playwright smoke at 390px and 1280px: one H1, definition/stack/comparison/source text visible, ItemList schema present, 5 FAQ answers in JSON-LD, body overflow 0, and no bad HTTP responses.
 - Manual follow-up:
   - After production verification, inspect `/shopify-hydrogen-developer` in Google Search Console and request indexing.
   - Recheck `Shopify Hydrogen Developer`, `hire Shopify Hydrogen developer`, and `Shopify Hydrogen developer vs Shopify theme developer` after 7, 14, and 28 days.
