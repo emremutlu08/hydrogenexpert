@@ -166,3 +166,22 @@ Next Search Console follow-up:
 - Inspect `/articles/shopify-hydrogen-experts-production-experience`.
 - Request indexing for all three URLs after production verification.
 - Recheck `shopify hydrogen expert`, `shopify hydrogen experts`, `best shopify hydrogen experts`, and `shopify hydrogen experts list` after 7, 14, and 28 days.
+
+## 2026-05-21 Google AI Mode Shopify Hydrogen Developer response
+
+Observed issue:
+- Google AI Mode for `Shopify Hydrogen Developer` showed a broad educational answer with official Shopify docs, agency/vendor pages, community/video sources, and an exact-match developer domain in the supporting links.
+- HydrogenExpert already had an indexable `/shopify-hydrogen-developer` page, but the visible page was stronger as a commercial landing page than as a standalone answer source for definition, stack, hiring trigger, and Liquid-vs-Hydrogen comparison intent.
+
+Changes:
+- Strengthened `/shopify-hydrogen-developer` with a direct definition block for "What is a Shopify Hydrogen developer?"
+- Added a semantic core-stack table covering React Router/server rendering, Storefront API/GraphQL, Hydrogen/deployment workflow, and SEO/analytics/commerce behavior.
+- Added a direct "When should you hire a Shopify Hydrogen developer?" section and a Shopify theme developer vs Shopify Hydrogen developer comparison table.
+- Expanded page FAQ schema from 3 to 5 questions for hiring-trigger and stack-intent extraction.
+- Added ItemList JSON-LD for Shopify Hydrogen developer responsibilities.
+- Added visible official-source grounding on the page and added Hydrogen SEO to the page source map.
+
+Next Search Console follow-up:
+- Inspect `/shopify-hydrogen-developer` after production deployment.
+- Request indexing for `/shopify-hydrogen-developer`.
+- Recheck `Shopify Hydrogen Developer`, `hire Shopify Hydrogen developer`, and `Shopify Hydrogen developer vs Shopify theme developer` after 7, 14, and 28 days.

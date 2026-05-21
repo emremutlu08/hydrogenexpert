@@ -13,6 +13,39 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 - Verification:
 - Manual follow-up:
 
+## 2026-05-21
+
+- PR: Pending
+- Branch: `codex/ai-mode-hydrogen-developer`
+- Deployment: Pending
+- Summary:
+  - Responded to Google AI Mode visibility pressure for `Shopify Hydrogen Developer` by strengthening `/shopify-hydrogen-developer` as a direct answer and citation-ready service page.
+  - Added a role-definition section, Hydrogen developer stack table, hiring-trigger section, Shopify theme developer vs Shopify Hydrogen developer comparison table, and visible official-source grounding.
+  - Expanded the developer page FAQ schema from 3 to 5 questions and added ItemList JSON-LD for Shopify Hydrogen developer responsibilities.
+  - Added Hydrogen SEO to the developer page source map and documented the AI Mode/GSC follow-up loop.
+- Files changed:
+  - `CHANGELOG.md`
+  - `components/ServiceLandingPage.tsx`
+  - `content/source-packs/shopify-hydrogen.json`
+  - `docs/seo-gsc-commercial-intent-changelog.md`
+  - `lib/services.ts`
+- Verification:
+  - Google Search Central AI features and generative AI search guidance reviewed for the AI Mode eligibility boundary.
+  - Shopify Hydrogen fundamentals, data fetching, and SEO docs reviewed for React Router, Storefront API, sitemap, robots, and metadata grounding.
+  - `git diff --check`: passed.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed.
+  - `npm run lint`: passed.
+  - `npm run test`: 12 test files and 43 tests passed.
+  - `npm run build`: passed, 61 routes generated.
+  - `npm run typecheck`: passed after the build completed.
+  - Local production server on `localhost:3020`: rendered-source smoke found the new definition, comparison, source section, and ItemList schema text.
+  - Local Chrome rendered smoke on `/shopify-hydrogen-developer`: title correct, one H1, definition/stack/hiring/comparison/source blocks visible, 5 FAQ answers in JSON-LD, ItemList schema present, and desktop body overflow 0.
+  - Local Playwright smoke at 390px and 1280px: one H1, new definition/comparison text visible, body overflow 0; local-only 404s were limited to Vercel Analytics and Speed Insights scripts.
+- Manual follow-up:
+  - After production verification, inspect `/shopify-hydrogen-developer` in Google Search Console and request indexing.
+  - Recheck `Shopify Hydrogen Developer`, `hire Shopify Hydrogen developer`, and `Shopify Hydrogen developer vs Shopify theme developer` after 7, 14, and 28 days.
+
 ## 2026-05-20
 
 - PR: [#39 Use Next Vercel Web Analytics integration](https://github.com/emremutlu08/hydrogenexpert/pull/39)

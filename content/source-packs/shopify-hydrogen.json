@@ -13,6 +13,7 @@
       "pagesUsingIt": [
         "/",
         "/services",
+        "/shopify-hydrogen-developer",
         "/shopify-hydrogen-vs-liquid",
         "/shopify-hydrogen-maintenance-cost"
       ]
@@ -27,6 +28,7 @@
         "Sitemap and robots behavior needs launch QA."
       ],
       "pagesUsingIt": [
+        "/shopify-hydrogen-developer",
         "/shopify-hydrogen-seo",
         "/liquid-to-hydrogen-migration",
         "/shopify-hydrogen-fit-audit"

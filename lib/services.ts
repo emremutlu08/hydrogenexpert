@@ -234,9 +234,9 @@ const SERVICE_PACKAGE_BASES = [
     metaTitle: "Hire a Shopify Hydrogen Developer | Senior Storefront Expert",
     metaDescription:
       "Hire a senior Shopify Hydrogen developer for Shopify Plus storefronts, migrations, Storefront API work, SEO-safe launches, performance cleanup, and custom Hydrogen builds.",
-    heroTitle: "Hire a senior Shopify Hydrogen developer for custom storefront work",
+    heroTitle: "Shopify Hydrogen developer for custom storefront work",
     summary:
-      "Direct Hydrogen implementation and advisory for Shopify Plus and growth-stage brands that need experienced Shopify Hydrogen development without a generic agency layer.",
+      "A Shopify Hydrogen developer builds custom React storefronts for Shopify with Storefront API data, server-rendered routes, SEO-safe product pages, cart logic, analytics, and launch support.",
     commercialIntent:
       "For teams searching for a Shopify Hydrogen developer rather than a generic Shopify agency or broad ecommerce vendor.",
     bestFor:
@@ -268,6 +268,16 @@ const SERVICE_PACKAGE_BASES = [
         question: "How is this different from hiring a general Shopify developer?",
         answer:
           "Hydrogen work is closer to application development than theme customization. It needs React, routing, server rendering, data loading, SEO, performance, and Shopify commerce knowledge together.",
+      },
+      {
+        question: "When should you hire a Shopify Hydrogen developer?",
+        answer:
+          "Hire a Shopify Hydrogen developer when a brand has outgrown normal theme changes and needs custom storefront architecture, Storefront API data work, SEO-safe migration, cart behavior, performance cleanup, or post-launch Hydrogen support.",
+      },
+      {
+        question: "What technical stack should a Shopify Hydrogen developer know?",
+        answer:
+          "A senior Hydrogen developer should understand React Router, TypeScript, GraphQL, Shopify Storefront API, Customer Account API, Hydrogen components and utilities, caching, SEO metadata, structured data, analytics, consent, and deployment workflows such as Oxygen or another supported hosting path.",
       },
     ],
     relatedLinks: [
@@ -967,7 +977,7 @@ const SERVICE_PAGE_ENRICHMENTS = {
       eyebrow: "Senior ownership",
       title: "What senior Hydrogen ownership actually covers.",
       body: [
-        "A senior Hydrogen developer is not only writing React components. The useful ownership covers route design, Storefront API data shape, server-rendered product content, cart and checkout handoff, analytics behavior, metadata, canonical logic, performance tradeoffs, and the boring launch details that decide whether a custom storefront is safe to run.",
+        "A senior Hydrogen developer is not only writing React components. The useful ownership covers React Router route design, Storefront API query shape, server-rendered product content, cart and checkout handoff, analytics behavior, metadata, canonical logic, performance tradeoffs, and the launch details that decide whether a custom storefront is safe to run.",
         "Hydrogen work sits between commerce architecture and frontend implementation. A developer needs to understand Shopify data, the buyer journey, how crawlers see the page, and how the merchant team will maintain the code after launch. That is why this service is framed around judgment as much as throughput.",
         "The right output can be implementation, but it can also be a smaller recommendation: fix the current Hydrogen store, delay a migration, tighten a Liquid theme, or run a fit audit before committing rebuild budget.",
       ],
@@ -1449,6 +1459,7 @@ const SERVICE_SOURCE_METADATA = {
     sourceMap: [
       SOURCE_PACKS.hydrogenFundamentals,
       SOURCE_PACKS.hydrogenDataFetching,
+      SOURCE_PACKS.hydrogenSeo,
       SOURCE_PACKS.customerAccountApi,
       SOURCE_PACKS.emreProductionExperience,
     ],
