@@ -15,7 +15,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-21
 
-- PR: Pending
+- PR: [#42 Fix GSC coverage link signals](https://github.com/emremutlu08/hydrogenexpert/pull/42)
 - Branch: `codex/gsc-coverage-link-signals`
 - Deployment: Pending
 - Summary:
