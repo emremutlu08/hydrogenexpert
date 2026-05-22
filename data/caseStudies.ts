@@ -88,6 +88,10 @@ export const CASE_STUDIES: readonly CaseStudyEntry[] = [
       alt: BRAND_CLIENT_ASSETS.eveshop.logoAlt,
       label: "EveShop",
     },
+    heroImage: {
+      src: BRAND_CLIENT_ASSETS.eveshop.imageSrc,
+      alt: BRAND_CLIENT_ASSETS.eveshop.imageAlt,
+    },
     problem:
       "EveShop is a nationwide cosmetics and personal care retailer that opened its first store in April 2015 and launched ecommerce roughly 1.5 years later. By the time this Hydrogen work started, the business was serving a large retail footprint, a broad catalog across beauty and personal care, and a documented audience context of 400K+ web users plus 100K+ mobile users. The storefront had to support digital-first shoppers, campaign traffic, and customers moving between physical stores, the site, and mobile commerce without making merchandising feel chaotic. In practical terms, the pressure was not just page speed. It was how to present a high-SKU catalog cleanly, keep browsing understandable, and give the team a storefront surface that could handle enterprise-like retail complexity without collapsing into theme-level compromise.",
     context:
@@ -139,7 +143,13 @@ export const CASE_STUDIES: readonly CaseStudyEntry[] = [
       "GraphQL",
       "GTM",
     ],
-    screenshots: [],
+    screenshots: [
+      {
+        src: BRAND_CLIENT_ASSETS.eveshop.imageSrc,
+        alt: BRAND_CLIENT_ASSETS.eveshop.imageAlt,
+        caption: "Live storefront homepage screenshot captured from eveshop.com.tr.",
+      },
+    ],
     testimonial: null,
   },
   {
@@ -207,8 +217,8 @@ export const CASE_STUDIES: readonly CaseStudyEntry[] = [
     screenshots: [
       {
         src: BRAND_CLIENT_ASSETS.bayam.imageSrc,
-        alt: "Bayam Jewelry storefront preview",
-        caption: "Homepage and luxury brand presentation layer.",
+        alt: BRAND_CLIENT_ASSETS.bayam.imageAlt,
+        caption: "Live storefront homepage screenshot captured from bayamjewelry.com.",
       },
     ],
     testimonial: null,
@@ -286,8 +296,8 @@ export const CASE_STUDIES: readonly CaseStudyEntry[] = [
     screenshots: [
       {
         src: BRAND_CLIENT_ASSETS.rebelBunny.imageSrc,
-        alt: "Rebel Bunny storefront preview",
-        caption: "DTC storefront with brand-led editorial presentation.",
+        alt: BRAND_CLIENT_ASSETS.rebelBunny.imageAlt,
+        caption: "Live storefront homepage screenshot captured from rebelbunny.com.",
       },
     ],
     testimonial: {
@@ -312,9 +322,14 @@ export const CASE_STUDIES: readonly CaseStudyEntry[] = [
     tagline: "A Shopify Liquid storefront for kitchen, decor, bathroom, and organizer catalog browsing.",
     role: "Shopify Liquid Developer",
     industry: "Home goods, kitchen, decor, bathroom, and organization",
+    liveUrl: "https://kirazev.com/",
     logo: {
       alt: "Kirazev case study label",
       label: "Kirazev",
+    },
+    heroImage: {
+      src: BRAND_CLIENT_ASSETS.kirazev.imageSrc,
+      alt: BRAND_CLIENT_ASSETS.kirazev.imageAlt,
     },
     problem:
       "Kirazev needed a straightforward Shopify commerce surface for home goods categories such as kitchen, decor, bathroom, and organizers. The business value was not in forcing a headless rebuild. It was in getting a clean catalog experience live quickly, keeping Shopify-native operations intact, and making the store easy to manage after launch.",
@@ -355,7 +370,13 @@ export const CASE_STUDIES: readonly CaseStudyEntry[] = [
       "JavaScript",
       "Responsive UI",
     ],
-    screenshots: [],
+    screenshots: [
+      {
+        src: BRAND_CLIENT_ASSETS.kirazev.imageSrc,
+        alt: BRAND_CLIENT_ASSETS.kirazev.imageAlt,
+        caption: "Live storefront homepage screenshot captured from kirazev.com.",
+      },
+    ],
     testimonial: null,
   },
   {
@@ -370,9 +391,14 @@ export const CASE_STUDIES: readonly CaseStudyEntry[] = [
     tagline: "A Shopify Liquid storefront for India-focused ethnic, casual, and festive apparel discovery.",
     role: "Shopify Liquid Developer",
     industry: "International apparel, ethnic wear, casual wear, and festive fashion",
+    liveUrl: "https://www.clohi.in/",
     logo: {
       alt: "Clohi case study label",
       label: "Clohi",
+    },
+    heroImage: {
+      src: BRAND_CLIENT_ASSETS.clohi.imageSrc,
+      alt: BRAND_CLIENT_ASSETS.clohi.imageAlt,
     },
     problem:
       "Clohi needed an apparel storefront shaped around India-focused shopping behavior rather than a generic international fashion template. Categories such as kurta, saree, festive wear, and casual wear have different browsing expectations, while market trust signals such as COD and easy returns need to be visible enough to reduce hesitation.",
@@ -413,7 +439,13 @@ export const CASE_STUDIES: readonly CaseStudyEntry[] = [
       "JavaScript",
       "Responsive UI",
     ],
-    screenshots: [],
+    screenshots: [
+      {
+        src: BRAND_CLIENT_ASSETS.clohi.imageSrc,
+        alt: BRAND_CLIENT_ASSETS.clohi.imageAlt,
+        caption: "Live storefront homepage screenshot captured from clohi.in.",
+      },
+    ],
     testimonial: null,
   },
 ] as const;

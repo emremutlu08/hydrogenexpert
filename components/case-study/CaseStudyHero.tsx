@@ -31,6 +31,7 @@ export function CaseStudyHero({
 }: CaseStudyHeroProps) {
   const hasLogo = Boolean(logo.src && hasPublicAsset(logo.src));
   const hasHeroImage = Boolean(heroImage?.src && hasPublicAsset(heroImage.src));
+  const liveStoreHost = liveUrl ? formatLiveStoreHost(liveUrl) : null;
 
   return (
     <div
@@ -82,29 +83,41 @@ export function CaseStudyHero({
             href={liveUrl}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center rounded-full border border-black/10 px-5 py-3 text-sm font-semibold text-[#171717] transition hover:border-[#10b981] hover:text-[#10b981]"
+            aria-label={`View ${clientName} live store at ${liveStoreHost ?? liveUrl}`}
+            className="inline-flex flex-wrap items-center gap-2 rounded-full border border-black/10 px-5 py-3 text-sm font-semibold text-[#171717] transition hover:border-[#10b981] hover:text-[#10b981]"
           >
-            View live store
+            <span>View live store</span>
+            {liveStoreHost ? (
+              <span className="font-medium text-neutral-500">{liveStoreHost}</span>
+            ) : null}
           </Link>
         ) : null}
       </div>
 
       {hasHeroImage && heroImage?.src ? (
         <div className="w-full overflow-hidden rounded-[1.45rem] border border-black/8 bg-[linear-gradient(180deg,#f7f8f8_0%,#ecefee_100%)] p-4">
-            <div className="relative aspect-[16/9] overflow-hidden rounded-[1.1rem]">
-              <Image
-                src={heroImage.src}
-                alt={heroImage.alt}
-                title={heroImage.alt}
-                width={1200}
-                height={heroImage.src.endsWith(".jpg") ? 1137 : 638}
-                loading="lazy"
-                sizes="(min-width: 1024px) 576px, 100vw"
-                className="h-full w-full object-contain"
-              />
-            </div>
+          <div className="relative aspect-[16/9] overflow-hidden rounded-[1.1rem]">
+            <Image
+              src={heroImage.src}
+              alt={heroImage.alt}
+              title={heroImage.alt}
+              width={1440}
+              height={683}
+              loading="lazy"
+              sizes="(min-width: 1024px) 576px, 100vw"
+              className="h-full w-full object-contain"
+            />
+          </div>
         </div>
       ) : null}
     </div>
   );
+}
+
+function formatLiveStoreHost(liveUrl: string) {
+  try {
+    return new URL(liveUrl).hostname.replace(/^www\./, "");
+  } catch {
+    return liveUrl;
+  }
 }
