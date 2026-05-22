@@ -249,7 +249,7 @@ const homepageMetrics = [
     value: DELIVERY_PROOF.productionHydrogenStorefronts,
     label: "production Shopify Plus Hydrogen storefronts shipped",
   },
-  { id: "scale", value: DELIVERY_PROOF.eveShopUsers, label: "users on EveShop at production scale" },
+  { id: "scale", value: DELIVERY_PROOF.eveShopUsers, label: "web users on EveShop at production scale" },
   {
     id: "hours",
     value: UPWORK_PROFILE.totalHoursLabel,
@@ -448,8 +448,8 @@ export default function HomePage() {
 
         <LogoWall
           logos={clientLogos}
-          title="Selected Shopify and Hydrogen work, with three production Hydrogen storefronts highlighted."
-          subtitle="Current Shopify Plus Hydrogen clients and approved public work highlighted."
+          title="Selected Shopify work across Hydrogen and Liquid."
+          subtitle="Hydrogen, luxury ecommerce, DTC storytelling, and fast Liquid builds shown as approved portfolio proof."
         />
 
         <section className="surface-card space-y-6">
@@ -512,8 +512,8 @@ export default function HomePage() {
         <section className="surface-card space-y-6">
           <SectionHeader
             eyebrow="Selected work"
-            title="Three production Shopify Hydrogen storefronts"
-            description="Including Turkey's first production Hydrogen storefront and EveShop at 400K+ users. Real stores, real constraints, and the kind of implementation detail that only shows up once a storefront is live."
+            title={`${DELIVERY_PROOF.shopifyPortfolioProjects} Shopify projects, with Hydrogen proof at the center`}
+            description={`Including Turkey's first production Hydrogen storefront, EveShop at ${DELIVERY_PROOF.eveShopUsers} web users and ${DELIVERY_PROOF.eveShopMobileUsers} mobile users, plus Liquid projects that prove when a faster theme-native build is the better answer.`}
           />
           <SelectedWorkGrid />
         </section>

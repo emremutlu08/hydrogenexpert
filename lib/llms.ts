@@ -50,7 +50,7 @@ function buildPageIndex() {
       llmsLink(
         study.clientName,
         `/case-studies/${study.slug}`,
-        `${study.clientName} Shopify Hydrogen case-study context for ${study.industry.toLowerCase()}.`,
+        `${study.caseStudyTitle} for ${study.industry.toLowerCase()}. Portfolio angle: ${study.portfolioAngle}`,
       ),
   );
 
@@ -63,7 +63,7 @@ function buildPageIndex() {
     llmsLink("What Is Hydrogen", "/what-is-hydrogen", "Plain-English explanation of Shopify Hydrogen for Shopify Plus and growth-stage brands."),
     llmsLink("Should I Use It", "/should-i-use-it", "Merchant decision guide for when Hydrogen is or is not commercially justified."),
     llmsLink("Cost", "/shopify-hydrogen-cost", "Hydrogen budget planning, scope ranges, and maintenance-cost guidance."),
-    llmsLink("Case Studies", "/case-studies", "Approved production contexts for EveShop, Bayam Jewelry, and Rebel Bunny."),
+    llmsLink("Case Studies", "/case-studies", "Approved production contexts for EveShop, Bayam Jewelry, Rebel Bunny, Kirazev, and Clohi."),
     ...caseStudyLines,
     llmsLink("Hire Me", "/hire-me", "Direct hiring page for a senior Shopify Hydrogen developer and advisor."),
     llmsLink("Blog", "/blog", "Production notes on Hydrogen SEO, SSR content, metaobjects, variants, and performance."),
@@ -124,7 +124,7 @@ export async function buildLlmsFullTxt() {
     `- ${UPWORK_PROFILE.totalHoursLabel} hours delivered on Upwork`,
     `- ${DELIVERY_PROOF.rebelBunnyFeedback} on Upwork`,
     "- Creator of the first English Shopify Hydrogen course on Udemy",
-    "- Client references include Rebel Bunny, Bayam Jewelry, and EveShop",
+    "- Client references include Rebel Bunny, Bayam Jewelry, EveShop, Kirazev, and Clohi",
     "",
     buildPageIndex(),
     "## Blog posts",

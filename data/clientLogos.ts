@@ -28,4 +28,16 @@ export const clientLogos: readonly ClientLogo[] = [
     isCurrent: true,
     link: "/case-studies#rebel-bunny",
   },
+  {
+    alt: "Kirazev",
+    label: "Kirazev",
+    isCurrent: false,
+    link: "/case-studies#kirazev",
+  },
+  {
+    alt: "Clohi",
+    label: "Clohi",
+    isCurrent: false,
+    link: "/case-studies#clohi",
+  },
 ] as const;

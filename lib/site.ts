@@ -57,11 +57,15 @@ export const CLIENTS = [
   "Rebel Bunny",
   "Bayam Jewelry",
   "EveShop",
+  "Kirazev",
+  "Clohi",
 ] as const;
 
 export const DELIVERY_PROOF = {
   productionHydrogenStorefronts: "3",
   eveShopUsers: "400K+",
+  eveShopMobileUsers: "100K+",
+  shopifyPortfolioProjects: "5",
   linkedInFollowers: "32K+",
   firstProductionHydrogenInTurkey: "First",
   firstEnglishHydrogenCourse: "First",

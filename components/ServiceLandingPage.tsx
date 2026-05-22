@@ -786,7 +786,7 @@ export function ServiceLandingPage({ service }: ServiceLandingPageProps) {
                 {
                   title: "EveShop",
                   body:
-                    "Frontend team lead on Turkey's first production Shopify Hydrogen storefront for a nationwide cosmetics and personal care retailer, referenced on HydrogenExpert as production-scale work with 400K+ users.",
+                    "Frontend team lead on Turkey's first production Shopify Hydrogen storefront for a nationwide cosmetics and personal care retailer, referenced on HydrogenExpert as production-scale work with 400K+ web users.",
                   href: "/case-studies/eveshop-shopify-hydrogen",
                   label: "Read the EveShop case study",
                 },

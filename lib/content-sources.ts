@@ -250,7 +250,7 @@ export const SOURCE_PACKS = {
     topic: "commercial_positioning",
     retrievedAt: SHOPIFY_CONTENT_LAST_VERIFIED,
     usedFor:
-      "EveShop, Bayam Jewelry, and Rebel Bunny context that is already approved for public use.",
+      "EveShop, Bayam Jewelry, Rebel Bunny, Kirazev, and Clohi context that is already approved for public use.",
   },
 } as const satisfies Record<string, ContentSource>;
 

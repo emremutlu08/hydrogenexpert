@@ -22,22 +22,27 @@ import {
 } from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
-  title: "Shopify Hydrogen Case Studies for Shopify Plus Brands",
+  title: "Shopify Portfolio Case Studies for Hydrogen and Liquid Builds",
   description:
-    "Production Shopify Hydrogen case studies across nationwide retail, luxury ecommerce, and premium DTC, with approved proof from EveShop, Bayam Jewelry, and Rebel Bunny.",
+    "Shopify portfolio case studies across large-scale Hydrogen, luxury ecommerce, DTC content-commerce, and fast Liquid builds for EveShop, Bayam Jewelry, Rebel Bunny, Kirazev, and Clohi.",
   path: "/case-studies",
 });
 
 const faqs = [
   {
-    question: "Why is EveShop still an important case even if the storefront stack changed later?",
+    question: "Why is EveShop the main portfolio case?",
     answer:
-      "Because the hard part of a case study is proving you have shipped at real scale. EveShop still proves production Hydrogen experience on a national retail brand, and it also reinforces the commercial truth that custom storefronts only keep paying off when the organization is ready to maintain them.",
+      "Because it combines the strongest proof points: large-scale Shopify Hydrogen delivery, React Native mobile commerce involvement, and a documented audience context of 400K+ web users plus 100K+ mobile users.",
   },
   {
-    question: "What makes Bayam and Rebel Bunny different from each other as Hydrogen projects?",
+    question: "What makes Bayam and Rebel Bunny different as Hydrogen projects?",
     answer:
-      "Bayam is a luxury discovery problem with multiple product mindsets inside one premium catalog. Rebel Bunny is a brand, education, and partnership problem where commerce, content, and community all need to live inside one storefront system.",
+      "Bayam is a high-AOV luxury discovery and trust UX problem. Rebel Bunny is a content-commerce and limited-drop storytelling problem where commerce, education, origin content, and partner interest need to live together.",
+  },
+  {
+    question: "Why include Kirazev and Clohi if HydrogenExpert sells Hydrogen services?",
+    answer:
+      "Because they prove Shopify judgment. Some stores need Hydrogen, while others are better served by fast, maintainable Liquid builds. Showing both makes the sales argument more honest and more useful.",
   },
   {
     question: "Why do some cases have testimonials and others do not?",
@@ -67,9 +72,9 @@ export default function CaseStudiesPage() {
         <Breadcrumbs items={breadcrumbs} />
         <PageIntroSection
           eyebrow="Proof"
-          title="Real stores, real constraints, real engineering decisions"
-          description="One proof page, three very different storefront pressures: nationwide retail, luxury ecommerce, and social-first DTC."
-          body="Only verified or approved proof is shown below. Rebel Bunny now includes public Upwork feedback; other quotes, before/after metrics, and deeper visuals stay off the page until they are verified or approved."
+          title="Real stores, real constraints, real storefront decisions"
+          description="One proof page, five different storefront pressures: large-scale beauty retail, luxury jewelry, social-first DTC, home goods Liquid, and international apparel Liquid."
+          body="These projects are not separate business ideas. They support HydrogenExpert and Emre Mutlu's personal brand as sales proof. Only verified or approved proof is shown; screenshots, quotes, and deeper metrics stay off the page until they are approved."
         />
 
         <section className="surface-card space-y-6">
@@ -104,6 +109,9 @@ export default function CaseStudiesPage() {
                 <div>
                   <p className="eyebrow">Case {index + 1}</p>
                   <h3 className="subsection-title mt-3">Problem</h3>
+                  <p className="mt-3 text-sm font-semibold uppercase tracking-[0.16em] text-[#10b981]">
+                    {study.portfolioAngle}
+                  </p>
                   <p className="mt-4 text-base leading-8 text-neutral-600">{study.problem}</p>
                 </div>
 

@@ -1,10 +1,10 @@
 import Image from "next/image";
 
 import { MediaFrame } from "@/components/MediaFrame";
-import { BRAND_CLIENT_ASSETS } from "@/lib/brand-client-assets";
+import { BRAND_CLIENT_ASSETS, type BrandClientId } from "@/lib/brand-client-assets";
 
 interface BrandPreviewMediaProps {
-  brandId: "eveshop" | "bayam" | "rebel-bunny";
+  brandId: BrandClientId;
 }
 
 export function BrandPreviewMedia({ brandId }: BrandPreviewMediaProps) {
@@ -27,7 +27,34 @@ export function BrandPreviewMedia({ brandId }: BrandPreviewMediaProps) {
     );
   }
 
-  const asset = brandId === "bayam" ? BRAND_CLIENT_ASSETS.bayam : BRAND_CLIENT_ASSETS.rebelBunny;
+  const asset =
+    brandId === "bayam"
+      ? BRAND_CLIENT_ASSETS.bayam
+      : brandId === "rebel-bunny"
+        ? BRAND_CLIENT_ASSETS.rebelBunny
+        : brandId === "kirazev"
+          ? BRAND_CLIENT_ASSETS.kirazev
+          : BRAND_CLIENT_ASSETS.clohi;
+
+  if (asset.previewMode === "text") {
+    return (
+      <MediaFrame ratio="preview">
+        <div className={`flex h-full flex-col justify-between px-6 py-6 ${asset.previewTheme}`}>
+          <p className="card-label-block text-[#8df1cb]">{asset.name}</p>
+          <div className="space-y-3">
+            <p className="font-display text-[2.8rem] leading-none text-white md:text-[3.4rem]">
+              {asset.previewMetric}
+            </p>
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-white/70">
+              {asset.previewSubLabel}
+            </p>
+          </div>
+          <div aria-hidden="true" className="h-8" />
+        </div>
+      </MediaFrame>
+    );
+  }
+
   const dimensions =
     brandId === "bayam"
       ? { width: 1200, height: 638 }

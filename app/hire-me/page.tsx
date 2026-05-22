@@ -134,7 +134,7 @@ const stats: Array<{ value: string; label: string; href?: string }> = [
 
 const proofSnapshot = [
   `${DELIVERY_PROOF.productionHydrogenStorefronts} production Shopify Hydrogen storefronts`,
-  `${DELIVERY_PROOF.eveShopUsers} users on EveShop`,
+  `${DELIVERY_PROOF.eveShopUsers} web users on EveShop`,
   `${UPWORK_PROFILE.badge} on Upwork`,
   `${UPWORK_PROFILE.totalHoursLabel} Upwork hours`,
   `${DELIVERY_PROOF.rebelBunnyFeedback} on Upwork`,
