@@ -30,7 +30,27 @@ export const BRAND_CLIENT_ASSETS = {
     imageSrc: "/brand/case-studies/rebel-bunny-og.jpg",
     imageAlt: "Rebel Bunny Matcha branded preview with founder-led DTC imagery.",
   },
+  kirazev: {
+    id: "kirazev",
+    name: "Kirazev",
+    logoAlt: "Kirazev case study label",
+    previewMode: "text" as const,
+    previewMetric: "Liquid",
+    previewSubLabel: "home goods catalog",
+    previewTheme: "bg-[#173a33]",
+  },
+  clohi: {
+    id: "clohi",
+    name: "Clohi",
+    logoAlt: "Clohi case study label",
+    previewMode: "text" as const,
+    previewMetric: "India",
+    previewSubLabel: "apparel Liquid build",
+    previewTheme: "bg-[#432145]",
+  },
 } as const;
+
+export type BrandClientId = (typeof BRAND_CLIENT_ASSETS)[keyof typeof BRAND_CLIENT_ASSETS]["id"];
 
 export const SELECTED_WORK_ITEMS = [
   {
@@ -59,5 +79,23 @@ export const SELECTED_WORK_ITEMS = [
     body: "Dual-funnel storefront serving both direct-to-consumer buyers and wholesale partners.",
     mediaLabel: "Social-first DTC",
     mediaMode: "image" as const,
+  },
+  {
+    id: "kirazev",
+    href: "/case-studies/kirazev-shopify-liquid",
+    title: "Kirazev",
+    eyebrow: "Home goods catalog — Shopify Liquid",
+    body: "Fast Liquid build for kitchen, decor, bathroom, and organizer product discovery.",
+    mediaLabel: "Home goods",
+    mediaMode: "text" as const,
+  },
+  {
+    id: "clohi",
+    href: "/case-studies/clohi-shopify-liquid",
+    title: "Clohi",
+    eyebrow: "International apparel — Shopify Liquid",
+    body: "India-focused apparel storefront for ethnic, casual, and festive wear buying behavior.",
+    mediaLabel: "Apparel",
+    mediaMode: "text" as const,
   },
 ] as const;

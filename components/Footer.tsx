@@ -64,6 +64,8 @@ const PROOF_ITEMS = [
   { href: "/case-studies/eveshop-shopify-hydrogen", label: "EveShop" },
   { href: "/case-studies/bayam-jewelry-shopify-hydrogen", label: "Bayam Jewelry" },
   { href: "/case-studies/rebel-bunny-shopify-hydrogen", label: "Rebel Bunny" },
+  { href: "/case-studies/kirazev-shopify-liquid", label: "Kirazev" },
+  { href: "/case-studies/clohi-shopify-liquid", label: "Clohi" },
 ] as const;
 
 const LEGAL_ITEMS = [

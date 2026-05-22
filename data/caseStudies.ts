@@ -24,12 +24,23 @@ export interface CaseStudyTestimonial {
   date?: string;
 }
 
+export type CaseStudyId = "eveshop" | "bayam" | "rebel-bunny" | "kirazev" | "clohi";
+
+export type CaseStudySlug =
+  | "eveshop-shopify-hydrogen"
+  | "bayam-jewelry-shopify-hydrogen"
+  | "rebel-bunny-shopify-hydrogen"
+  | "kirazev-shopify-liquid"
+  | "clohi-shopify-liquid";
+
 export interface CaseStudyEntry {
-  id: "eveshop" | "bayam" | "rebel-bunny";
-  slug: "eveshop-shopify-hydrogen" | "bayam-jewelry-shopify-hydrogen" | "rebel-bunny-shopify-hydrogen";
+  id: CaseStudyId;
+  slug: CaseStudySlug;
   clientName: string;
   metaTitle: string;
   metaDescription: string;
+  caseStudyTitle: string;
+  portfolioAngle: string;
   tagline: string;
   role: string;
   industry: string;
@@ -65,8 +76,10 @@ export const CASE_STUDIES: readonly CaseStudyEntry[] = [
     clientName: "EveShop",
     metaTitle: "EveShop Shopify Hydrogen Case Study | Emre Mutlu",
     metaDescription:
-      "EveShop Shopify Hydrogen case study covering a nationwide cosmetics retailer, production Hydrogen delivery, retail catalog pressure, and approved proof gaps.",
-    tagline: "Turkey's first production Shopify Hydrogen storefront for a nationwide cosmetics retailer.",
+      "EveShop Shopify Hydrogen case study covering a nationwide cosmetics retailer, production Hydrogen delivery, React Native mobile commerce, 400K+ web users, and 100K+ mobile users.",
+    caseStudyTitle: "EveShop large-scale Shopify Hydrogen + mobile commerce case study",
+    portfolioAngle: "Large-scale Shopify Hydrogen + mobile commerce for cosmetics and personal care retail.",
+    tagline: "Turkey's first production Shopify Hydrogen storefront for a nationwide cosmetics retailer, paired with mobile commerce delivery.",
     role: "Lead Developer / Frontend Team Lead at Machinarium",
     industry: "Cosmetics and personal care retail",
     liveUrl: "https://www.eveshop.com.tr/",
@@ -76,9 +89,9 @@ export const CASE_STUDIES: readonly CaseStudyEntry[] = [
       label: "EveShop",
     },
     problem:
-      "EveShop is a nationwide cosmetics and personal care retailer that opened its first store in April 2015 and launched ecommerce roughly 1.5 years later. By the time this Hydrogen work started, the business was serving a large retail footprint and a broad catalog across beauty and personal care. The storefront had to support digital-first shoppers, campaign traffic, and customers moving between physical stores and the site without making merchandising feel chaotic. In practical terms, the pressure was not just page speed. It was how to present a high-SKU catalog cleanly, keep browsing understandable, and give the team a storefront surface that could handle enterprise-like retail complexity without collapsing into theme-level compromise.",
+      "EveShop is a nationwide cosmetics and personal care retailer that opened its first store in April 2015 and launched ecommerce roughly 1.5 years later. By the time this Hydrogen work started, the business was serving a large retail footprint, a broad catalog across beauty and personal care, and a documented audience context of 400K+ web users plus 100K+ mobile users. The storefront had to support digital-first shoppers, campaign traffic, and customers moving between physical stores, the site, and mobile commerce without making merchandising feel chaotic. In practical terms, the pressure was not just page speed. It was how to present a high-SKU catalog cleanly, keep browsing understandable, and give the team a storefront surface that could handle enterprise-like retail complexity without collapsing into theme-level compromise.",
     context:
-      "A national beauty and personal care retailer needed a storefront that could support retail-scale catalog browsing, campaign traffic, and a production ecommerce operation rather than a small experimental headless build.",
+      "A national beauty and personal care retailer needed a storefront and mobile-adjacent commerce foundation that could support retail-scale catalog browsing, campaign traffic, and a production ecommerce operation rather than a small experimental headless build.",
     constraints: [
       "Large retail catalog with many browsing paths and campaign moments.",
       "Need for reusable frontend patterns across ecommerce and mobile-adjacent work.",
@@ -103,10 +116,20 @@ export const CASE_STUDIES: readonly CaseStudyEntry[] = [
       "The live result became a useful strategic reference point for production Hydrogen work on a national retail brand. Hydrogen can work at this level, but the long-term value depends on the organization staying committed to owning and maintaining a custom storefront after launch. That is exactly why I position Hydrogen as a business decision first. EveShop is strong proof of production experience, but it is also proof that headless only pays off when the operating model is ready for it.",
     results: [
       "Production Shopify Hydrogen experience on a nationally visible retail storefront.",
+      "Portfolio anchor for large-scale Shopify Hydrogen plus React Native mobile commerce experience.",
       "Reusable frontend patterns for a broad cosmetics and personal care catalog.",
       "A clear proof point for the business-first framing behind Hydrogen decisions.",
     ],
-    metrics: [],
+    metrics: [
+      {
+        label: "Web users",
+        value: "400K+",
+      },
+      {
+        label: "Mobile users",
+        value: "100K+",
+      },
+    ],
     techStack: [
       "Shopify Hydrogen",
       "React",
@@ -126,6 +149,8 @@ export const CASE_STUDIES: readonly CaseStudyEntry[] = [
     metaTitle: "Bayam Jewelry Shopify Hydrogen Case Study | Emre Mutlu",
     metaDescription:
       "Bayam Jewelry Shopify Hydrogen case study for a luxury jewelry and watch storefront with premium catalog discovery, showroom trust, and approved visual proof.",
+    caseStudyTitle: "Bayam Jewelry high-AOV luxury ecommerce discovery case study",
+    portfolioAngle: "High-AOV luxury ecommerce, jewelry discovery, filtering, and trust UX.",
     tagline: "A Shopify Hydrogen storefront for luxury jewelry, watches, and showroom-led trust.",
     role: "Shopify Hydrogen Developer",
     industry: "Fine jewelry and luxury watches",
@@ -140,11 +165,12 @@ export const CASE_STUDIES: readonly CaseStudyEntry[] = [
       alt: BRAND_CLIENT_ASSETS.bayam.imageAlt,
     },
     problem:
-      "Bayam Jewelry operates out of NYC's Diamond District and sells real gold jewelry, diamonds, and luxury watches. The storefront had to balance two different discovery behaviors in one surface: jewelry buyers often browse by style, gifting, and taste, while watch shoppers compare by brand, condition, and model-specific details. On top of that, the experience needed to feel refined enough for a luxury audience rather than like a generic catalog. The challenge was less about adding more pages and more about making premium discovery feel coherent.",
+      "Bayam Jewelry operates out of NYC's Diamond District and sells real gold jewelry, diamonds, and luxury watches. The storefront had to balance two different discovery behaviors in one surface: jewelry buyers often browse by style, gifting, and taste, while watch shoppers compare by brand, condition, and model-specific details. The public store also carries trust signals such as 0% APR financing, free shipping, and free returns, so the experience needed to make those buying assurances easy to understand without turning the page into a generic promo surface. The challenge was less about adding more pages and more about making premium discovery feel coherent.",
     context:
       "A luxury jewelry and watch retailer needed a Hydrogen storefront that could support premium browsing, showroom-led trust, and multiple catalog mindsets inside one brand surface.",
     constraints: [
       "Jewelry and watch shoppers compare products differently.",
+      "High-AOV buying decisions need financing, shipping, return, and product-trust signals to be visible without cheapening the brand.",
       "The storefront needed to feel premium without hiding useful product context.",
       "Collection browsing needed clearer entry points than a flat category surface.",
       "The implementation had to improve presentation without inventing unsupported proof claims.",
@@ -194,6 +220,8 @@ export const CASE_STUDIES: readonly CaseStudyEntry[] = [
     metaTitle: "Rebel Bunny Shopify Hydrogen Case Study | Emre Mutlu",
     metaDescription:
       "Rebel Bunny Shopify Hydrogen case study for a social-first DTC matcha storefront combining commerce, partner acquisition, education, and 5.0 Upwork feedback.",
+    caseStudyTitle: "Rebel Bunny content-commerce and limited drop UX case study",
+    portfolioAngle: "Content-commerce, limited drop UX, DTC product storytelling, and origin content.",
     tagline: "A social-first Shopify Hydrogen storefront spanning DTC, wholesale, and education.",
     role: "Shopify Developer",
     industry: "Premium matcha, DTC, and wholesale",
@@ -208,11 +236,12 @@ export const CASE_STUDIES: readonly CaseStudyEntry[] = [
       alt: BRAND_CLIENT_ASSETS.rebelBunny.imageAlt,
     },
     problem:
-      "Rebel Bunny is a premium matcha brand with a storefront that has to do more than sell tins of tea. The public site combines direct-to-consumer shopping, a partner flow for premium cafes and artisan brands, and Matchacation, an owned education surface built into the brand experience. That creates a very different storefront pressure from a standard DTC theme build. Mobile presentation matters because discovery is social and creator-led, but the site also has to hold product detail, brand story, education, and partner acquisition together without feeling fragmented.",
+      "Rebel Bunny is a premium matcha brand with a storefront that has to do more than sell tins of tea. The public site combines direct-to-consumer shopping, limited drop energy, cult classic products, a partner flow for premium cafes and artisan brands, Matchacation education, and To The Source origin storytelling. That creates a very different storefront pressure from a standard DTC theme build. Mobile presentation matters because discovery is social and creator-led, but the site also has to hold product detail, brand story, education, and partner acquisition together without feeling fragmented.",
     context:
       "A premium matcha brand needed one branded Shopify storefront to carry DTC shopping, wholesale or partner interest, and education without splitting those journeys into disconnected surfaces.",
     constraints: [
       "Social-first discovery made mobile presentation and brand energy especially important.",
+      "Limited drops and cult classic products needed product storytelling that could still sell.",
       "Commerce, education, and partner acquisition had to live together coherently.",
       "Custom product templates and promotional surfaces needed to support conversion without flattening the brand.",
       "The case study could show approved storefront context, but not invented metrics or quotes.",
@@ -270,6 +299,122 @@ export const CASE_STUDIES: readonly CaseStudyEntry[] = [
       sourceUrl: "https://www.upwork.com/freelancers/emremutlu",
       date: "May 3, 2026",
     },
+  },
+  {
+    id: "kirazev",
+    slug: "kirazev-shopify-liquid",
+    clientName: "Kirazev",
+    metaTitle: "Kirazev Shopify Liquid Case Study | Emre Mutlu",
+    metaDescription:
+      "Kirazev Shopify Liquid case study for a home goods catalog spanning kitchen, decor, bathroom, and organizer categories with a fast Shopify-native build.",
+    caseStudyTitle: "Kirazev fast Shopify Liquid home goods catalog case study",
+    portfolioAngle: "Fast Shopify Liquid build for a home goods catalog.",
+    tagline: "A Shopify Liquid storefront for kitchen, decor, bathroom, and organizer catalog browsing.",
+    role: "Shopify Liquid Developer",
+    industry: "Home goods, kitchen, decor, bathroom, and organization",
+    logo: {
+      alt: "Kirazev case study label",
+      label: "Kirazev",
+    },
+    problem:
+      "Kirazev needed a straightforward Shopify commerce surface for home goods categories such as kitchen, decor, bathroom, and organizers. The business value was not in forcing a headless rebuild. It was in getting a clean catalog experience live quickly, keeping Shopify-native operations intact, and making the store easy to manage after launch.",
+    context:
+      "A home goods catalog needed a fast Shopify Liquid build that could support everyday product discovery without the cost and maintenance overhead of a custom Hydrogen application.",
+    constraints: [
+      "Catalog browsing had to work across kitchen, decor, bathroom, and organizer products.",
+      "Speed to launch mattered more than custom application architecture.",
+      "The store needed to remain simple for ongoing Shopify operations and merchandising.",
+      "The case should prove Liquid judgment without pretending it was a Hydrogen project.",
+    ],
+    technicalDecisions: [
+      "Use Shopify Liquid because the catalog pressure fit theme-native storefront delivery.",
+      "Keep the implementation close to Shopify's standard content, collection, and product-management model.",
+      "Avoid adding headless complexity where the business needed speed, clarity, and maintainability.",
+    ],
+    seoPerformanceRisks: [
+      "Category pages needed enough structure to avoid thin catalog browsing.",
+      "Theme speed and product-image handling still mattered even without a headless architecture.",
+      "Liquid customization needed to stay maintainable so future merchandising changes did not require a rebuild.",
+    ],
+    approach:
+      "I treated Kirazev as a practical Shopify Liquid build rather than a showcase for unnecessary architecture. The focus was on category clarity, catalog presentation, and keeping the storefront aligned with Shopify-native operations. This matters for HydrogenExpert because it shows the other half of the judgment: knowing when Liquid is the commercially better answer.",
+    implementation:
+      "The implementation centered on Shopify Liquid theme work, catalog structure, collection and product presentation, responsive storefront behavior, and merchant-friendly maintainability.",
+    outcome:
+      "Kirazev belongs in the portfolio as proof that not every ecommerce problem needs Hydrogen. For a home goods catalog where speed, simplicity, and Shopify-native operations matter most, Liquid can be the right technical decision. That makes the case useful in sales conversations because it shows platform judgment rather than headless bias.",
+    results: [
+      "Fast Shopify Liquid delivery for a multi-category home goods catalog.",
+      "A practical proof point for choosing Liquid when custom Hydrogen complexity is not justified.",
+      "A storefront approach aligned with merchant operations and catalog maintainability.",
+    ],
+    metrics: [],
+    techStack: [
+      "Shopify",
+      "Liquid",
+      "Online Store 2.0",
+      "JavaScript",
+      "Responsive UI",
+    ],
+    screenshots: [],
+    testimonial: null,
+  },
+  {
+    id: "clohi",
+    slug: "clohi-shopify-liquid",
+    clientName: "Clohi",
+    metaTitle: "Clohi Shopify Liquid Case Study | Emre Mutlu",
+    metaDescription:
+      "Clohi Shopify Liquid case study for an India-focused ethnic and casual wear storefront with market-specific apparel UX, COD, and easy-return trust signals.",
+    caseStudyTitle: "Clohi international apparel Shopify Liquid case study",
+    portfolioAngle: "International apparel Shopify Liquid project for India-focused ethnic and casual wear.",
+    tagline: "A Shopify Liquid storefront for India-focused ethnic, casual, and festive apparel discovery.",
+    role: "Shopify Liquid Developer",
+    industry: "International apparel, ethnic wear, casual wear, and festive fashion",
+    logo: {
+      alt: "Clohi case study label",
+      label: "Clohi",
+    },
+    problem:
+      "Clohi needed an apparel storefront shaped around India-focused shopping behavior rather than a generic international fashion template. Categories such as kurta, saree, festive wear, and casual wear have different browsing expectations, while market trust signals such as COD and easy returns need to be visible enough to reduce hesitation.",
+    context:
+      "An international apparel brand needed a Shopify Liquid storefront that could carry ethnic, festive, and casual wear while respecting market-specific trust and buying expectations.",
+    constraints: [
+      "Ethnic, festive, and casual apparel categories needed clear discovery paths.",
+      "COD and easy-return signals mattered for shopper trust in the target market.",
+      "The implementation needed to stay Shopify-native and manageable without overbuilding the stack.",
+      "The case should position international Shopify delivery without inventing performance or revenue claims.",
+    ],
+    technicalDecisions: [
+      "Use Shopify Liquid for a market-fit apparel storefront that could launch and iterate quickly.",
+      "Keep category, product, and trust-signal presentation close to Shopify-native merchandising flows.",
+      "Avoid Hydrogen unless the business later outgrows theme constraints around discovery, personalization, or content modeling.",
+    ],
+    seoPerformanceRisks: [
+      "Apparel category intent needed crawlable, understandable collection surfaces.",
+      "Trust signals such as COD and easy returns needed to support conversion without cluttering PDPs.",
+      "International apparel UX needed mobile clarity because discovery and comparison often happen on small screens.",
+    ],
+    approach:
+      "I positioned Clohi as a Shopify Liquid build for an international apparel market, with the practical work focused on category clarity, responsive storefront behavior, and trust cues that match how customers buy in that region. The value for the broader portfolio is not that every apparel brand needs Hydrogen; it is that Shopify implementation should follow the market and buying journey.",
+    implementation:
+      "The implementation centered on Shopify Liquid theme work, apparel category presentation, PDP trust cues, responsive storefront behavior, and market-aware ecommerce UX.",
+    outcome:
+      "Clohi strengthens the portfolio as an international Shopify Liquid proof point. It shows experience outside a single geography and reinforces the HydrogenExpert sales argument: the right storefront stack depends on category pressure, market behavior, and operating needs, not on forcing one technical answer into every brief.",
+    results: [
+      "International apparel Shopify Liquid project for India-focused shopping behavior.",
+      "Market-aware category and trust UX for ethnic, casual, and festive wear.",
+      "A Liquid proof point that supports more honest Hydrogen scoping conversations.",
+    ],
+    metrics: [],
+    techStack: [
+      "Shopify",
+      "Liquid",
+      "Online Store 2.0",
+      "JavaScript",
+      "Responsive UI",
+    ],
+    screenshots: [],
+    testimonial: null,
   },
 ] as const;
 

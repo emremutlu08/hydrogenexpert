@@ -13,6 +13,54 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 - Verification:
 - Manual follow-up:
 
+## 2026-05-22
+
+- PR: [#44 Expand portfolio case studies](https://github.com/emremutlu08/hydrogenexpert/pull/44)
+- Branch: `codex/portfolio-case-study-expansion`
+- Deployment: Preview deployment [hydrogenexpert-git-codex-portfolio-ef9240-emremutlu8s-projects.vercel.app](https://hydrogenexpert-git-codex-portfolio-ef9240-emremutlu8s-projects.vercel.app).
+- Summary:
+  - Expanded the portfolio proof surface from three Hydrogen-only case studies to five Shopify project contexts.
+  - Strengthened EveShop as the primary large-scale Shopify Hydrogen + mobile commerce case with 400K+ web and 100K+ mobile user context.
+  - Added Kirazev and Clohi as Shopify Liquid proof points without presenting them as Hydrogen projects or inventing logos, screenshots, testimonials, or metrics.
+  - Updated homepage, About, footer, selected-work cards, case-study metadata, sitemap coverage, llms output, and proof-governance docs so the new portfolio structure is discoverable and source disciplined.
+- Files changed:
+  - `CHANGELOG.md`
+  - `app/about/page.tsx`
+  - `app/case-studies/[slug]/page.tsx`
+  - `app/case-studies/page.tsx`
+  - `app/hire-me/page.tsx`
+  - `app/page.tsx`
+  - `components/BrandPreviewMedia.tsx`
+  - `components/Footer.tsx`
+  - `components/SelectedWorkGrid.tsx`
+  - `components/ServiceLandingPage.tsx`
+  - `data/caseStudies.ts`
+  - `data/clientLogos.ts`
+  - `docs/hydrogenexpert-v1/proof-registry.md`
+  - `docs/hydrogenexpert-v1/seo-qa.md`
+  - `lib/brand-client-assets.ts`
+  - `lib/content-sources.ts`
+  - `lib/founder.ts`
+  - `lib/llms.ts`
+  - `lib/site.ts`
+  - `lib/sitemap-entries.ts`
+  - `tests/sitemap-entries.test.ts`
+- Verification:
+  - `git diff --check`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run lint`: passed.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed with no `Needs review` rows.
+  - `npm run test`: passed, 12 files and 45 tests.
+  - `npm run build`: passed, 63 routes generated, including `/case-studies/kirazev-shopify-liquid` and `/case-studies/clohi-shopify-liquid`.
+  - Local Browser QA at 390px and 1440px for `/`, `/case-studies`, `/case-studies/kirazev-shopify-liquid`, and `/case-studies/clohi-shopify-liquid`: one H1, canonical present, JSON-LD present, no horizontal overflow, and no image alt/title issues.
+  - Local Browser console check on `/case-studies/kirazev-shopify-liquid`: no console errors.
+  - Vercel PR checks passed.
+  - Protected preview fetch through Vercel tooling returned HTTP 200 for `/case-studies`, `/case-studies/kirazev-shopify-liquid`, `/case-studies/clohi-shopify-liquid`, and `/sitemap.xml`; preview HTML included updated metadata and Liquid case content, and preview sitemap included both new Liquid case-study routes.
+- Manual follow-up:
+  - Add real screenshots or logos for Kirazev, Clohi, and EveShop only after approval.
+  - After merge/deploy, verify live sitemap and live case-study pages include the new Liquid routes.
+
 ## 2026-05-21
 
 - PR: [#43 Improve Shopify Hydrogen developer SERP signals](https://github.com/emremutlu08/hydrogenexpert/pull/43)

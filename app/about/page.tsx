@@ -269,14 +269,14 @@ export default function AboutPage() {
         <section className="surface-card space-y-6">
           <SectionHeader
             eyebrow="Case-study surface"
-            title="Three storefront contexts, three different commercial pressures."
-            description="The case studies show Hydrogen as a business decision, not a framework label."
+            title="Five storefront contexts, five different commercial pressures."
+            description="The case studies show Shopify architecture as a business decision, not a framework label."
           />
           <div className="authority-links">
             <Link href="/case-studies/eveshop-shopify-hydrogen" className="authority-link-card">
               <p className="authority-link-card__label">Retail scale</p>
               <h3 className="authority-link-card__title">EveShop</h3>
-              <p className="authority-link-card__body">National cosmetics retail and production Hydrogen delivery experience.</p>
+              <p className="authority-link-card__body">Large-scale Hydrogen plus mobile commerce for cosmetics and personal care.</p>
             </Link>
             <Link href="/case-studies/bayam-jewelry-shopify-hydrogen" className="authority-link-card">
               <p className="authority-link-card__label">Luxury catalog</p>
@@ -287,6 +287,16 @@ export default function AboutPage() {
               <p className="authority-link-card__label">DTC brand</p>
               <h3 className="authority-link-card__title">Rebel Bunny</h3>
               <p className="authority-link-card__body">Commerce, education, partner acquisition, and public Upwork feedback.</p>
+            </Link>
+            <Link href="/case-studies/kirazev-shopify-liquid" className="authority-link-card">
+              <p className="authority-link-card__label">Home goods Liquid</p>
+              <h3 className="authority-link-card__title">Kirazev</h3>
+              <p className="authority-link-card__body">Fast Shopify Liquid build for a home goods catalog.</p>
+            </Link>
+            <Link href="/case-studies/clohi-shopify-liquid" className="authority-link-card">
+              <p className="authority-link-card__label">International apparel</p>
+              <h3 className="authority-link-card__title">Clohi</h3>
+              <p className="authority-link-card__body">India-focused apparel storefront with market-specific trust UX.</p>
             </Link>
           </div>
         </section>

@@ -45,6 +45,8 @@ describe("buildSitemapEntries", () => {
     expect(paths).toContain("/case-studies/eveshop-shopify-hydrogen");
     expect(paths).toContain("/case-studies/bayam-jewelry-shopify-hydrogen");
     expect(paths).toContain("/case-studies/rebel-bunny-shopify-hydrogen");
+    expect(paths).toContain("/case-studies/kirazev-shopify-liquid");
+    expect(paths).toContain("/case-studies/clohi-shopify-liquid");
     expect(paths).toContain("/blog");
     expect(paths).toContain("/blog/shopify-hydrogen-product-description-ssr-seo");
     expect(paths).toContain("/articles");

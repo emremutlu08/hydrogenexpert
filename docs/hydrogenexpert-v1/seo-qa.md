@@ -32,6 +32,8 @@ Last updated: May 7, 2026
 | `/case-studies/eveshop-shopify-hydrogen` | Unique case metadata | Yes | index/follow | Breadcrumb/CaseStudy-like work schema | Yes | No unsupported testimonial. |
 | `/case-studies/bayam-jewelry-shopify-hydrogen` | Unique case metadata | Yes | index/follow | Breadcrumb/CaseStudy-like work schema | Yes | No unsupported testimonial. |
 | `/case-studies/rebel-bunny-shopify-hydrogen` | Unique case metadata | Yes | index/follow | Breadcrumb/CaseStudy-like work schema | Yes | Public Upwork feedback only. |
+| `/case-studies/kirazev-shopify-liquid` | Unique case metadata | Yes | index/follow | Breadcrumb/CaseStudy-like work schema | Yes | Liquid proof, no fake Hydrogen label. |
+| `/case-studies/clohi-shopify-liquid` | Unique case metadata | Yes | index/follow | Breadcrumb/CaseStudy-like work schema | Yes | Liquid proof, no fake Hydrogen label. |
 | `/should-i-use-it` | Unique decision-guide metadata | Yes | index/follow | Breadcrumb/Service schema | Yes | Quiz remains readable without JS. |
 | `/blog` | Unique blog index metadata | Yes | index/follow | Breadcrumb | Yes if posts exist | Blog is production notes only. |
 | `/blog/[slug]` | Unique post metadata | Yes | index/follow | BlogPosting/Article | Yes if published | Generated from Supabase posts. |

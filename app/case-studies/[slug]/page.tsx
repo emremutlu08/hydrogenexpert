@@ -14,6 +14,7 @@ import { SectionHeader } from "@/components/SectionHeader";
 import {
   getAllCaseStudySlugs,
   getCaseStudyBySlug,
+  type CaseStudyId,
 } from "@/data/caseStudies";
 import { buildMetadata } from "@/lib/seo";
 import { absoluteUrl, getSchemaIds, OWNER, SITE_LOGO_PATH } from "@/lib/site";
@@ -28,7 +29,7 @@ interface CaseStudyDetailPageProps {
   params: Promise<{ slug: string }>;
 }
 
-const LAST_UPDATED = "2026-04-25";
+const LAST_UPDATED = "2026-05-22";
 
 export function generateStaticParams() {
   return getAllCaseStudySlugs().map((slug) => ({ slug }));
@@ -99,7 +100,7 @@ export default async function CaseStudyDetailPage({
     publisherUrl: absoluteUrl("/"),
   });
   const creativeWorkSchema = buildCreativeWorkSchema({
-    name: `${study.clientName} Shopify Hydrogen case study`,
+    name: study.caseStudyTitle,
     url: absoluteUrl(path),
     description: study.metaDescription,
     creatorName: OWNER.name,
@@ -128,10 +129,23 @@ export default async function CaseStudyDetailPage({
             <div>
               <p className="eyebrow">Context</p>
               <h1 className="section-heading mt-3 text-[2.25rem] md:text-[3rem]">
-                {study.clientName} Shopify Hydrogen case study
+                {study.caseStudyTitle}
               </h1>
             </div>
             <p className="text-base leading-8 text-neutral-600">{study.context}</p>
+          </section>
+
+          <section className="grid gap-6 xl:grid-cols-[0.8fr_1.2fr]">
+            <div className="rounded-[1.35rem] border border-black/8 bg-[#171717] p-6 text-white">
+              <p className="eyebrow text-[#8df1cb]">Portfolio angle</p>
+              <p className="mt-4 text-base leading-8 text-neutral-200">{study.portfolioAngle}</p>
+            </div>
+            <div className="rounded-[1.35rem] border border-black/8 bg-white p-6">
+              <p className="eyebrow">Role and stack</p>
+              <p className="mt-4 text-base leading-8 text-neutral-700">
+                {study.role} across {study.techStack.join(", ")}.
+              </p>
+            </div>
           </section>
 
           <section className="grid gap-6 xl:grid-cols-2">
@@ -251,8 +265,8 @@ export default async function CaseStudyDetailPage({
         </article>
 
         <CTASection
-          headline="Need a Hydrogen case written into an implementation plan?"
-          subtext="Send the storefront pressure, current stack, and what the business needs to prove. I can help you scope the Hydrogen path without adding fake certainty."
+          headline="Need this kind of proof turned into an implementation plan?"
+          subtext="Send the storefront pressure, current stack, and what the business needs to prove. I can help you decide whether the next move is Liquid, Hydrogen, or no rebuild."
           sourceKind={`case_study:${study.slug}`}
         />
       </div>
@@ -260,7 +274,7 @@ export default async function CaseStudyDetailPage({
   );
 }
 
-function getCaseStudyLimitation(studyId: "eveshop" | "bayam" | "rebel-bunny") {
+function getCaseStudyLimitation(studyId: CaseStudyId) {
   const limitations = {
     eveshop:
       "It does not prove that every large catalog retailer should move to Hydrogen. It proves production experience in a complex retail context, while the fit still depends on budget, maintenance capacity, SEO risk, and the current theme constraint.",
@@ -268,12 +282,16 @@ function getCaseStudyLimitation(studyId: "eveshop" | "bayam" | "rebel-bunny") {
       "It does not prove that every luxury jewelry or watch brand needs a custom storefront. It proves that Hydrogen can support premium discovery when the catalog and brand surface require more control than a generic theme path.",
     "rebel-bunny":
       "It does not prove that every DTC education brand needs Hydrogen. It proves that a custom storefront can be useful when commerce, education, partner interest, and mobile brand presentation need to move together.",
+    kirazev:
+      "It does not prove that Hydrogen is always the next step for a home goods catalog. It proves the opposite: when speed, simplicity, and Shopify-native operations matter most, Liquid can be the right commercial decision.",
+    clohi:
+      "It does not prove that every international apparel brand needs a custom storefront. It proves market-aware Shopify delivery, where Liquid can cover the buying journey until discovery, content, or personalization pressure outgrows the theme.",
   } as const;
 
   return limitations[studyId];
 }
 
-function getCaseStudyLinks(studyId: "eveshop" | "bayam" | "rebel-bunny") {
+function getCaseStudyLinks(studyId: CaseStudyId) {
   const links = {
     eveshop: [
       {
@@ -324,6 +342,40 @@ function getCaseStudyLinks(studyId: "eveshop" | "bayam" | "rebel-bunny") {
         href: "/custom-shopify-hydrogen-storefront",
         label: "Custom storefront",
         note: "When brand, content, and commerce need one storefront system.",
+      },
+    ],
+    kirazev: [
+      {
+        href: "/shopify-hydrogen-vs-liquid",
+        label: "Hydrogen vs Liquid",
+        note: "Use this when the buying journey may still fit a Shopify theme.",
+      },
+      {
+        href: "/liquid-to-hydrogen-migration",
+        label: "Migration planning",
+        note: "A practical path if Liquid later starts limiting growth.",
+      },
+      {
+        href: "/services",
+        label: "Service paths",
+        note: "Compare audit, migration, custom build, performance, and support paths.",
+      },
+    ],
+    clohi: [
+      {
+        href: "/shopify-hydrogen-vs-liquid",
+        label: "Hydrogen vs Liquid",
+        note: "Use this to decide when market-fit Liquid is enough.",
+      },
+      {
+        href: "/custom-shopify-hydrogen-storefront",
+        label: "Custom storefront",
+        note: "Relevant if apparel discovery outgrows theme constraints.",
+      },
+      {
+        href: "/shopify-hydrogen-cost",
+        label: "Cost planning",
+        note: "Scope the budget before upgrading from Liquid to custom Hydrogen.",
       },
     ],
   } as const;
