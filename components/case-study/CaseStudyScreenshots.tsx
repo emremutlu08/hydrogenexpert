@@ -37,8 +37,8 @@ export function CaseStudyScreenshots({ screenshots }: CaseStudyScreenshotsProps)
                 src={shot.src!}
                 alt={shot.alt}
                 title={shot.alt}
-                width={1200}
-                height={shot.src!.endsWith(".jpg") ? 1137 : 638}
+                width={1440}
+                height={683}
                 loading="lazy"
                 sizes="(min-width: 1024px) 42vw, 100vw"
                 className="h-full w-full object-cover"

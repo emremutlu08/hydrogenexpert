@@ -15,6 +15,42 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-22
 
+- PR: [#45 Add live proof media to case studies](https://github.com/emremutlu08/hydrogenexpert/pull/45)
+- Branch: `codex/case-study-live-media`
+- Deployment: Preview deployment [hydrogenexpert-git-codex-case-study-e6b343-emremutlu8s-projects.vercel.app](https://hydrogenexpert-git-codex-case-study-e6b343-emremutlu8s-projects.vercel.app).
+- Summary:
+  - Added verified live storefront links for all five portfolio case studies.
+  - Added Chrome-captured live storefront screenshots for EveShop, Bayam Jewelry, Rebel Bunny, Kirazev, and Clohi.
+  - Replaced the text-only and metric-only selected-work previews with real storefront imagery.
+  - Added hero and screenshot proof media with meaningful `alt` and `title` text across the case-study pages.
+  - Corrected Clohi's live storefront URL to `https://www.clohi.in/`; `https://clohi.com/` did not resolve as the project storefront.
+- Files changed:
+  - `CHANGELOG.md`
+  - `components/BrandPreviewMedia.tsx`
+  - `components/case-study/CaseStudyHero.tsx`
+  - `components/case-study/CaseStudyScreenshots.tsx`
+  - `data/caseStudies.ts`
+  - `lib/brand-client-assets.ts`
+  - `public/brand/case-studies/bayam-storefront.png`
+  - `public/brand/case-studies/clohi-storefront.png`
+  - `public/brand/case-studies/eveshop-storefront.png`
+  - `public/brand/case-studies/kirazev-storefront.png`
+  - `public/brand/case-studies/rebel-bunny-storefront.png`
+- Verification:
+  - Chrome live-store checks confirmed final storefront URLs and captured screenshots from `https://www.eveshop.com.tr/`, `https://bayamjewelry.com/`, `https://rebelbunny.com/`, `https://kirazev.com/`, and `https://www.clohi.in/`.
+  - `git diff --check`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run lint`: passed.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed with no `Needs review` rows.
+  - `npm run test`: passed, 12 files and 45 tests.
+  - `npm run build`: passed, 63 routes generated.
+  - Local Chrome QA on `/case-studies` and all five detail pages: live store links present, storefront images render, no missing storefront image `alt` or `title`, one H1 per page, no horizontal overflow, and no localhost console errors.
+  - Vercel PR checks passed.
+  - Protected preview fetch through Vercel tooling returned HTTP 200 for `/case-studies`; preview HTML included the new live storefront screenshot assets and external store links.
+- Manual follow-up:
+  - After merge/deploy, verify production `/case-studies` and all five detail pages include the live links and storefront screenshots.
+
 - PR: [#44 Expand portfolio case studies](https://github.com/emremutlu08/hydrogenexpert/pull/44)
 - Branch: `codex/portfolio-case-study-expansion`
 - Deployment: Preview deployment [hydrogenexpert-git-codex-portfolio-ef9240-emremutlu8s-projects.vercel.app](https://hydrogenexpert-git-codex-portfolio-ef9240-emremutlu8s-projects.vercel.app).
@@ -58,7 +94,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - Vercel PR checks passed.
   - Protected preview fetch through Vercel tooling returned HTTP 200 for `/case-studies`, `/case-studies/kirazev-shopify-liquid`, `/case-studies/clohi-shopify-liquid`, and `/sitemap.xml`; preview HTML included updated metadata and Liquid case content, and preview sitemap included both new Liquid case-study routes.
 - Manual follow-up:
-  - Add real screenshots or logos for Kirazev, Clohi, and EveShop only after approval.
+  - Real storefront screenshots were added in PR [#45](https://github.com/emremutlu08/hydrogenexpert/pull/45).
   - After merge/deploy, verify live sitemap and live case-study pages include the new Liquid routes.
 
 ## 2026-05-21
