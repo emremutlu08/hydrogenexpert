@@ -92,6 +92,42 @@ export const SOURCE_PACKS = {
     usedFor:
       "Metaobject type, first/page arguments, and merchant-defined content section grounding.",
   },
+  storefrontCollection: {
+    label: "Shopify Storefront API: Collection object",
+    sourceType: "shopify_official",
+    topic: "storefront_api",
+    url: "https://shopify.dev/docs/api/storefront/latest/objects/Collection",
+    retrievedAt: "2026-05-23",
+    usedFor:
+      "Collection product connection, filters, sorting, and pagination grounding for collection-page troubleshooting.",
+  },
+  storefrontProductAvailability: {
+    label: "Shopify Storefront API: Product object availability",
+    sourceType: "shopify_official",
+    topic: "storefront_api",
+    url: "https://shopify.dev/docs/api/storefront/latest/objects/Product",
+    retrievedAt: "2026-05-23",
+    usedFor:
+      "Product availableForSale and product-list rendering claims for out-of-stock collection-page debugging.",
+  },
+  storefrontProductFilter: {
+    label: "Shopify Storefront API: ProductFilter input",
+    sourceType: "shopify_official",
+    topic: "storefront_api",
+    url: "https://shopify.dev/docs/api/storefront/latest/input-objects/ProductFilter",
+    retrievedAt: "2026-05-23",
+    usedFor:
+      "Availability filter behavior and collection product filtering claims.",
+  },
+  storefrontPageInfo: {
+    label: "Shopify Storefront API: PageInfo object",
+    sourceType: "shopify_official",
+    topic: "storefront_api",
+    url: "https://shopify.dev/docs/api/storefront/latest/objects/PageInfo",
+    retrievedAt: "2026-05-23",
+    usedFor:
+      "Pagination cursor and hasNextPage interpretation when app-local buffers also exist.",
+  },
   hydrogenSeo: {
     label: "Shopify: Search Engine Optimization for Hydrogen",
     sourceType: "shopify_official",
@@ -578,6 +614,22 @@ export const BLOG_SOURCE_METADATA = {
       SOURCE_PACKS.shopifyDiscountCustomerSegments,
       SOURCE_PACKS.shopifyB2BApps,
       SOURCE_PACKS.shopifyHeadlessB2B,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "shopify-hydrogen-collection-out-of-stock-products-hidden": {
+    lastVerified: "2026-05-23",
+    claimTypes: ["official_shopify_fact", "emre_experience"],
+    targetKeyword: "shopify hydrogen out of stock products collection",
+    searchIntent: "post-launch troubleshooting",
+    reviewedBy: "Emre Mutlu",
+    contentType: "technical_blog",
+    sourceMap: [
+      SOURCE_PACKS.hydrogenDataFetching,
+      SOURCE_PACKS.storefrontCollection,
+      SOURCE_PACKS.storefrontProductFilter,
+      SOURCE_PACKS.storefrontProductAvailability,
+      SOURCE_PACKS.storefrontPageInfo,
       SOURCE_PACKS.emreProductionExperience,
     ],
   },
