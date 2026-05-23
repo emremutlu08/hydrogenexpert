@@ -13,6 +13,34 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 - Verification:
 - Manual follow-up:
 
+## 2026-05-23
+
+- PR: [#46 Publish OOS collection production note](https://github.com/emremutlu08/hydrogenexpert/pull/46)
+- Branch: `codex/publish-oos-collection-blog`
+- Deployment: Preview deployment [hydrogenexpert-git-codex-publish-oo-5e28fc-emremutlu8s-projects.vercel.app](https://hydrogenexpert-git-codex-publish-oo-5e28fc-emremutlu8s-projects.vercel.app).
+- Summary:
+  - Published a Supabase-backed production note for a Hydrogen collection page where out-of-stock products were hidden until the availability filter was selected.
+  - Added source metadata for Storefront API collection products, ProductFilter availability, Product availability, PageInfo pagination, and Hydrogen data loading.
+  - Added public post enhancements with accessible hero image `alt` and `title`, FAQ schema, internal links, official Shopify references, and a direct troubleshooting CTA.
+  - Kept the public article anonymized from the raw source chat while preserving the useful production debugging lesson.
+- Files changed:
+  - `CHANGELOG.md`
+  - `lib/content-sources.ts`
+  - `lib/post-enhancements.ts`
+- Verification:
+  - Supabase public anon query returns the new `shopify-hydrogen-collection-out-of-stock-products-hidden` post as `published`.
+  - Public content check found no raw source-chat/client-specific terms in the article body.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed with no `Needs review` rows.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run test`: passed, 12 files and 45 tests.
+  - `rm -rf .next && npm run build`: passed, 64 routes generated including `/blog/shopify-hydrogen-collection-out-of-stock-products-hidden`.
+  - Local Chrome QA on the new blog post confirmed H1/title, Article schema, FAQ schema, 4 FAQ items, accessible hero `alt`/`title`, 3 official Shopify references, no article-private source terms, and no raw markdown fence output.
+  - Local `/blog`, `/sitemap.xml`, and `/feed.xml` checks include the new slug.
+- Manual follow-up:
+  - After merge/deploy, verify the production article, blog index, sitemap, and feed on `https://hydrogenexpert.co`.
+
 ## 2026-05-22
 
 - PR: [#45 Add live proof media to case studies](https://github.com/emremutlu08/hydrogenexpert/pull/45)
