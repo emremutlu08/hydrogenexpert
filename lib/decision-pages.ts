@@ -32,23 +32,23 @@ export interface DecisionPageData {
 export const DECISION_PAGES = {
   "/shopify-hydrogen-agency-usa": {
     path: "/shopify-hydrogen-agency-usa",
-    navLabel: "Hydrogen Agency USA",
-    metaTitle: "Shopify Hydrogen Agency USA Alternative | Emre Mutlu",
+    navLabel: "US-Friendly Hydrogen Builds",
+    metaTitle: "US-Friendly Shopify Hydrogen Builds | Emre Mutlu",
     metaDescription:
-      "Remote Shopify Hydrogen agency alternative for US Shopify Plus and growth-stage brands needing senior audit, migration, SEO, build, and support help.",
-    eyebrow: "US Hydrogen agency alternative",
-    title: "Remote senior-led Shopify Hydrogen services for US brands",
+      "US-friendly remote Shopify Hydrogen storefront builds with clear USD pricing, async communication, and fixed-scope packages from $2K-$5K.",
+    eyebrow: "US-friendly remote collaboration",
+    title: "US-friendly Shopify Hydrogen storefront builds without agency overhead",
     description:
-      "A differentiated US-intent page for Shopify Plus and growth-stage brands that want senior Hydrogen judgment, clear USD planning, and remote collaboration without creating a separate local-agency fiction.",
+      "I am not based in the United States and I do not pretend to have a local US office. I work remotely with English-speaking Shopify brands that want senior Hydrogen implementation, clear USD pricing, async-friendly communication, and fixed-scope storefront builds.",
     body:
-      "HydrogenExpert is not a local US office or a full-service ad agency. It is a senior-led Hydrogen services path for US teams that need audit, migration, custom build, SEO, optimization, or support decisions with clear USD expectations and remote collaboration.",
+      "US buyers are welcome, but the claim stays honest: no fake office, no local-agency costume, no account-manager layer. The offer is direct senior Shopify Hydrogen delivery with fixed-scope packages priced by project requirements.",
     sections: [
       {
         eyebrow: "Collaboration model",
-        title: "Why US brands hire remote senior Hydrogen support.",
+        title: "Why US brands still hire remote Hydrogen specialists.",
         body: [
           "US Shopify teams often need specialized Hydrogen judgment more than they need another broad vendor list. A focused remote model works when the team can share storefront context, meet asynchronously, and make decisions around a clear commercial pressure.",
-          "The trust path is practical: review the store, define the constraint, use Upwork or direct professional channels where useful, and keep the work tied to budget, timeline, launch risk, and async-friendly decision records.",
+          "The practical reasons are clear USD pricing, direct senior developer access, no account manager layer, async-friendly updates, Upwork-friendly collaboration if needed, faster fixed-scope delivery, and lower overhead than a traditional agency.",
         ],
       },
       {
@@ -56,14 +56,14 @@ export const DECISION_PAGES = {
         title: "What a US buyer should expect before the first call.",
         body: [
           "The first useful step is not a sales deck. It is the store URL, current storefront stack, what feels expensive or slow to change, and which commercial decision needs support.",
-          "Strong fits usually have one of six needs: Hydrogen fit audit, Liquid to Hydrogen migration, custom Hydrogen build, performance or SEO cleanup, Oxygen/deployment confidence, or ongoing support for an existing Hydrogen storefront.",
+          "Strong fits usually need a Starter, Standard, Growth, or Custom Hydrogen build, Liquid to Hydrogen migration review, performance or SEO cleanup, Oxygen/deployment confidence, or ongoing support for an existing Hydrogen storefront.",
         ],
       },
       {
         eyebrow: "What this is not",
         title: "No local-office claim, no full-service agency claim.",
         body: [
-          "This page does not claim a US office. It does not offer paid media, brand strategy, or low-cost theme support. It exists for US buyers comparing agency options who may be better served by direct Hydrogen expertise.",
+          "This page does not claim a US office. It does not offer paid media, brand strategy, or low-cost theme support. It exists for US buyers comparing agency options who may be better served by direct Hydrogen expertise and fixed-scope package pricing.",
           "Bayam Jewelry gives this page real US relevance because the work sits in a New York luxury commerce context, but the page stays conservative and does not invent local presence.",
         ],
       },
@@ -71,12 +71,12 @@ export const DECISION_PAGES = {
     decisionRows: [
       {
         signal: "You need Hydrogen-specific judgment, not a full agency stack.",
-        move: "Use a senior operator audit or build scope.",
+        move: "Use a fixed-scope package or senior custom scope.",
         caution: "Choose a traditional agency if you need creative, ads, content, and engineering all bundled.",
       },
       {
         signal: "Stakeholders need USD budget sanity before rebuild approval.",
-        move: "Start with cost planning or Fit & Risk Audit.",
+        move: "Start with $2K-$5K package review.",
         caution: "Avoid wide rebuild ranges with undefined SEO, app, and analytics risk.",
       },
       {
@@ -92,61 +92,61 @@ export const DECISION_PAGES = {
         note: "New York luxury storefront relevance without fake location claims.",
       },
       {
-        href: "/shopify-hydrogen-cost",
-        label: "Hydrogen cost planning",
-        note: "USD budget ranges and price drivers.",
+        href: "/shopify-hydrogen-packages",
+        label: "View $2K-$5K Hydrogen build packages",
+        note: "Starter, Standard, Growth, and Custom scope in USD.",
       },
       {
-        href: "/shopify-hydrogen-audit",
-        label: "Hydrogen audit",
-        note: "Start with risk before scope.",
+        href: "/shopify-hydrogen-cost",
+        label: "Hydrogen cost planning",
+        note: "Scope-based price drivers and package boundaries.",
       },
     ],
     cta: {
       headline: "Send the store URL and the US buyer pressure.",
       subtext:
-        "I will tell you whether the next move is an audit, migration, custom build, optimization pass, retainer, or staying on Liquid.",
+        "I will tell you whether the next move is Starter, Standard, Growth, Custom, optimization pass, retainer, or staying on Liquid.",
       sourceKind: "agency_usa_cta",
     },
   },
   "/shopify-hydrogen-fit-audit": {
     path: "/shopify-hydrogen-fit-audit",
-    navLabel: "Hydrogen Fit Audit",
-    metaTitle: "Shopify Hydrogen Fit & Risk Audit | Emre Mutlu",
+    navLabel: "Hydrogen Scope Review",
+    metaTitle: "Shopify Hydrogen Scope Review | Emre Mutlu",
     metaDescription:
-      "Fixed-scope Shopify Hydrogen Fit & Risk Audit covering Liquid vs Hydrogen fit, SEO, routes, apps, analytics, consent, budget, and next step.",
-    eyebrow: "Paid audit offer",
-    title: "Shopify Hydrogen Fit & Risk Audit",
+      "Free first-pass Shopify Hydrogen scope review with optional paid risk review for SEO, apps, migration, analytics, and unclear requirements.",
+    eyebrow: "Scope review offer",
+    title: "Shopify Hydrogen scope review",
     description:
-      "A fixed-scope diagnostic before a brand spends rebuild money.",
+      "A free first-pass review before a brand spends build money.",
     body:
-      "The audit checks whether Hydrogen is commercially justified and where the migration, SEO, analytics, app, and maintenance risks sit before implementation starts.",
+      "Most small builds do not need a full audit first. Start with a scope review, then use a paid Scope & Risk Review only when SEO, apps, migration, analytics, or unclear requirements could affect the estimate.",
     sections: [
       {
         eyebrow: "Deliverables",
         title: "What you receive.",
         body: [
-          "Storefront constraint review, Liquid vs Hydrogen fit decision, SEO and crawlability risk review, route and canonical risk review, performance and Core Web Vitals notes, app and integration dependency review, analytics and consent risk notes, migration complexity estimate, budget range, and recommended next step.",
-          "The deliverable is a written memo plus Loom walkthrough. The usual starting range is $1.5K-$5K, with a 5-10 business day timeline depending on storefront complexity.",
+          "Free first-pass recommendation on Starter, Standard, Growth, Custom, Liquid cleanup, or no rebuild based on store URL, desired pages, current setup, and required features.",
+          "Optional paid Scope & Risk Review at $300-$750 when SEO, app dependencies, analytics, migration, or unclear requirements could change the build estimate.",
         ],
       },
       {
         eyebrow: "Outcomes",
-        title: "The audit can recommend no rebuild.",
+        title: "The review can recommend no rebuild.",
         body: [
-          "A useful audit is allowed to say stay on Liquid, refactor Liquid, run focused optimization, migrate to Hydrogen, or delay the rebuild. That is the entire point: the recommendation should protect the business, not sell Hydrogen by default.",
+          "A useful review is allowed to say stay on Liquid, refactor Liquid, run focused optimization, use a Starter package, move to Growth, or delay the rebuild. That is the entire point: the recommendation should protect the business, not sell Hydrogen by default.",
         ],
       },
     ],
     decisionRows: [
       {
-        signal: "The team is debating Hydrogen but lacks a technical risk map.",
-        move: "Run the Fit & Risk Audit.",
+        signal: "The team has clear desired pages and features.",
+        move: "Start with free first-pass scope review.",
         caution: "Do not ask implementation vendors to price unknown risk as if it were clear scope.",
       },
       {
         signal: "Organic traffic, analytics, and apps are business-critical.",
-        move: "Audit routes, canonicals, tracking, consent, and app replacement early.",
+        move: "Use paid Scope & Risk Review before final estimate.",
         caution: "These risks are harder to repair after launch.",
       },
       {
@@ -158,13 +158,13 @@ export const DECISION_PAGES = {
     links: [
       {
         href: "/shopify-hydrogen-audit",
-        label: "Audit service",
-        note: "The broader service page for audit search intent.",
+        label: "Scope review service",
+        note: "The broader service page for scope review and audit search intent.",
       },
       {
-        href: "/shopify-hydrogen-cost",
-        label: "Cost page",
-        note: "Budget ranges tied to scope drivers.",
+        href: "/shopify-hydrogen-packages",
+        label: "Build packages",
+        note: "Starter, Standard, Growth, and Custom package details.",
       },
       {
         href: "/liquid-to-hydrogen-migration",
@@ -303,7 +303,7 @@ export const DECISION_PAGES = {
       },
       {
         href: "/shopify-hydrogen-fit-audit",
-        label: "Fit & Risk Audit",
+        label: "Scope Review",
         note: "Use this before committing rebuild money.",
       },
       {

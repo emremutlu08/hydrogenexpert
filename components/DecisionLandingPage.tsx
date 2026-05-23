@@ -2,6 +2,10 @@ import Link from "next/link";
 
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CTASection } from "@/components/CTASection";
+import {
+  AuditScopeReviewSection,
+  HydrogenBuildPackages,
+} from "@/components/HydrogenPackages";
 import { JsonLd } from "@/components/JsonLd";
 import { PageIntroSection } from "@/components/PageIntroSection";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -20,6 +24,16 @@ interface DecisionLandingPageProps {
     label: string;
   };
 }
+
+const usFriendlyBenefits = [
+  "Clear USD pricing",
+  "Direct senior developer access",
+  "No account manager layer",
+  "Async-friendly updates",
+  "Upwork-friendly collaboration if needed",
+  "Faster fixed-scope delivery",
+  "Lower overhead than a traditional agency",
+] as const;
 
 export function DecisionLandingPage({
   page,
@@ -67,6 +81,44 @@ export function DecisionLandingPage({
             {page.description} Compare the commercial signal, next move, and caution together before treating Hydrogen as the default upgrade.
           </p>
         </section>
+
+        {page.path === "/shopify-hydrogen-agency-usa" ? (
+          <>
+            <section className="surface-card space-y-6">
+              <SectionHeader
+                eyebrow="US-friendly"
+                title="Why US brands still hire remote Hydrogen specialists."
+                description="The collaboration model is commercial and practical: clear pricing, direct senior access, and async-friendly execution without pretending there is a US office."
+                className="max-w-5xl"
+              />
+              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                {usFriendlyBenefits.map((benefit) => (
+                  <div
+                    key={benefit}
+                    className="rounded-[1rem] border border-black/8 bg-white px-4 py-3 text-sm font-semibold leading-6 text-neutral-700"
+                  >
+                    {benefit}
+                  </div>
+                ))}
+              </div>
+              <Link
+                href="/shopify-hydrogen-packages"
+                className="inline-flex min-h-11 w-fit items-center rounded-full bg-[#171717] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#10b981]"
+              >
+                View $2K-$5K Hydrogen build packages
+              </Link>
+            </section>
+            <HydrogenBuildPackages
+              title="US-friendly fixed-scope Hydrogen build packages."
+              description="Clear USD package ranges for English-speaking Shopify brands that want direct senior implementation without a local agency layer."
+              compact
+            />
+          </>
+        ) : null}
+
+        {page.path === "/shopify-hydrogen-fit-audit" ? (
+          <AuditScopeReviewSection />
+        ) : null}
 
         <section className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="hero-card space-y-5">

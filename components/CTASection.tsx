@@ -14,7 +14,7 @@ export function CTASection({
   headline = DEFAULT_CTA_HEADLINE,
   subtext,
   sourceKind = "shared_cta",
-  primaryLabel = "Request a Hydrogen Fit Review",
+  primaryLabel = "Request Scope Review",
 }: CTASectionProps) {
   return (
     <section className="hero-card">

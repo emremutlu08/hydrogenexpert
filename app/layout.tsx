@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     template: "%s",
   },
   description:
-    "Shopify Hydrogen strategy, case studies, cost guidance, and custom storefront planning for Shopify Plus brands that need faster delivery and better conversion.",
+    "Shopify Hydrogen packages, case studies, cost guidance, and custom storefront planning for brands that need fixed-scope Hydrogen delivery.",
   applicationName: "HydrogenExpert",
   authors: [{ name: OWNER.name, url: OWNER.linkedIn }],
   creator: OWNER.name,
@@ -99,7 +99,7 @@ export default async function RootLayout({
       name: SITE_NAME,
       url: siteUrl,
       description:
-        "Senior Shopify Hydrogen development and advisory for growth-stage Shopify brands.",
+        "Senior Shopify Hydrogen development and advisory for fixed-scope storefront builds.",
       founderName: OWNER.name,
       sameAs: proofLinks,
       logo: logoUrl,

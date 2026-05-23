@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { LiquidHydrogenDecisionSection } from "@/components/HydrogenPackages";
 import { JsonLd } from "@/components/JsonLd";
 import { PageIntroSection } from "@/components/PageIntroSection";
 import { buildMetadata } from "@/lib/seo";
@@ -28,7 +29,7 @@ const scenarios = [
   {
     title: "Your biggest UX problem is checkout, not browsing",
     explanation:
-      "Hydrogen controls the storefront experience up to the checkout handoff. Checkout itself stays on Shopify. If your conversion drops are happening at the cart, shipping selection, or payment step, a Hydrogen rebuild will not fix them. You will spend 6-16 weeks rebuilding the part of the funnel that was already working.",
+      "Hydrogen controls the storefront experience up to the checkout handoff. Checkout itself stays on Shopify. If your conversion drops are happening at the cart, shipping selection, or payment step, a Hydrogen rebuild will not fix them. You will spend the build budget rebuilding the part of the funnel that was already working.",
     alternatives: [
       "Use Shopify Checkout Extensibility (app-based checkout customization)",
       "Audit your Shop Pay setup and accelerated checkout flow",
@@ -58,7 +59,7 @@ const scenarios = [
   {
     title: "Your revenue is under $500K ARR and you need ROI inside 6 months",
     explanation:
-      "A $15-80K storefront rebuild on a sub-$500K revenue base is not a proportional investment. The 6-16 week build time plus the 8-12 weeks of post-launch iteration means you will not see ROI for 6-9 months. If your business needs to grow 2x in the next 6 months to stay viable, the money is better spent on acquisition, retention, or product photography. Hydrogen is a scale investment, not a survival move.",
+      "Even a lean Hydrogen build needs a clear business case, and a larger custom storefront rebuild on a sub-$500K revenue base is often not proportional. If your business needs to grow 2x in the next 6 months to stay viable, the money is often better spent on acquisition, retention, product photography, or a smaller Liquid improvement. Hydrogen is a scale investment, not a survival move.",
     alternatives: [
       "Spend the rebuild budget on paid acquisition and email retention",
       "Upgrade the theme and hire a UX designer for 2-3 specific flows",
@@ -131,6 +132,8 @@ export default function WhenNotToUseHydrogenPage() {
           ))}
         </section>
 
+        <LiquidHydrogenDecisionSection />
+
         <section className="hero-card space-y-5">
           <p className="dna-kicker text-[#8df1cb]">Still think Hydrogen might fit?</p>
           <h2 className="font-display text-[2.4rem] leading-[0.98] tracking-[-0.05em] text-white md:text-[3.2rem]">
@@ -149,10 +152,10 @@ export default function WhenNotToUseHydrogenPage() {
           </Link>
           <div className="flex flex-wrap gap-3">
             <Link
-              href="/shopify-hydrogen-audit"
+              href="/shopify-hydrogen-packages"
               className="inline-flex items-center rounded-full border border-white/16 px-6 py-3 text-sm font-semibold text-white transition hover:border-[#8df1cb] hover:text-[#8df1cb]"
             >
-              Start with a Fit & Risk Audit
+              View Build Packages
             </Link>
             <Link
               href="/shopify-hydrogen-cost"
@@ -164,7 +167,7 @@ export default function WhenNotToUseHydrogenPage() {
               href="/contact"
               className="inline-flex items-center rounded-full border border-white/16 px-6 py-3 text-sm font-semibold text-white transition hover:border-[#8df1cb] hover:text-[#8df1cb]"
             >
-              Request a Hydrogen Fit Review
+              Request Scope Review
             </Link>
           </div>
         </section>

@@ -392,7 +392,7 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
       },
       {
         href: "/shopify-hydrogen-fit-audit",
-        label: "Hydrogen Fit & Risk Audit",
+        label: "Hydrogen Scope Review",
         note: "Use this before turning partner pricing requirements into a larger storefront rebuild.",
       },
     ],
@@ -623,7 +623,7 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
       },
       {
         href: "/shopify-hydrogen-fit-audit",
-        label: "Fit & Risk Audit",
+        label: "Scope Review",
         note: "Use this before migration scope is approved.",
       },
     ],
@@ -662,7 +662,7 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
       },
       {
         href: "/shopify-hydrogen-fit-audit",
-        label: "Hydrogen Fit & Risk Audit",
+        label: "Hydrogen Scope Review",
         note: "Use this before turning agentic commerce into a rebuild reason.",
       },
     ],

@@ -7,9 +7,12 @@ import { trackLeadFormView, trackLeadStart, trackLeadSubmit } from "@/lib/analyt
 import {
   BUDGET_RANGE_OPTIONS,
   CURRENT_STACK_OPTIONS,
+  DESIGN_STATUS_OPTIONS,
   ENGAGEMENT_TYPE_OPTIONS,
   MAIN_PROBLEM_OPTIONS,
   MONTHLY_REVENUE_OPTIONS,
+  NEEDED_FEATURE_OPTIONS,
+  PRODUCT_COUNT_OPTIONS,
   SHOPIFY_PLUS_OPTIONS,
   TIMELINE_OPTIONS,
   leadQualificationToAnalyticsParams,
@@ -91,10 +94,10 @@ export function LeadCaptureForm({
       <div className="lead-form-stack">
         <p className="dna-kicker text-[#8df1cb]">Owned lead capture</p>
         <h3 className="text-xl font-semibold leading-8 text-white md:text-[1.65rem]">
-          Request a Hydrogen Fit Review
+          Request a Hydrogen Scope Review
         </h3>
         <p className="text-sm leading-7 text-neutral-300">
-          If you are not ready to fill everything out, send the store URL, current stack, and what feels slow or limiting. The rest can be clarified later.
+          If you are not ready to fill everything out, send the store URL, design status, product count, and the features that must ship first. The rest can be clarified later.
         </p>
         <p className="lead-form-note">
           I do not sell Hydrogen if Liquid is the better move.
@@ -204,12 +207,49 @@ export function LeadCaptureForm({
         </select>
       </label>
 
+      <div className={formClassName}>
+        <label className="lead-form-field">
+          <span>Do you already have a design?</span>
+          <select name="designStatus" defaultValue="">
+            <option value="">Select one</option>
+            {DESIGN_STATUS_OPTIONS.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label className="lead-form-field">
+          <span>How many products?</span>
+          <select name="productCount" defaultValue="">
+            <option value="">Select one</option>
+            {PRODUCT_COUNT_OPTIONS.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
+
+      <fieldset className="lead-form-field">
+        <legend>Which features are needed?</legend>
+        <div className="lead-form-choice-grid">
+          {NEEDED_FEATURE_OPTIONS.map((option) => (
+            <label key={option.value} className="lead-form-choice">
+              <input type="checkbox" name="neededFeatures" value={option.value} />
+              <span>{option.label}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+
       <label className="lead-form-field">
         <span>What is blocking growth?</span>
         <textarea
           name="message"
           rows={compact ? 4 : 5}
-          placeholder="Mobile UX, slow feature delivery, migration question, performance drag, SEO risk, app limits..."
+          placeholder="Core pages needed, design source, integrations, migration question, SEO risk, app limits..."
         />
       </label>
 
@@ -231,7 +271,7 @@ export function LeadCaptureForm({
           disabled={status === "submitting"}
           className="inline-flex min-h-11 items-center rounded-full bg-[#10b981] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-[#171717] disabled:cursor-not-allowed disabled:opacity-70"
         >
-          {status === "submitting" ? "Sending..." : "Request a Hydrogen Fit Review"}
+          {status === "submitting" ? "Sending..." : "Request Scope Review"}
         </button>
       </div>
 

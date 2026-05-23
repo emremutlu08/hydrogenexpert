@@ -7,7 +7,10 @@ import {
   isTrustedOrigin,
   verifyTurnstileToken,
 } from "@/lib/security";
-import { parseLeadQualification } from "@/lib/lead-qualification";
+import {
+  formatLeadQualificationSummary,
+  parseLeadQualification,
+} from "@/lib/lead-qualification";
 import { getSupabaseAdminClient } from "@/lib/supabase";
 
 function sanitize(value: FormDataEntryValue | null) {
@@ -58,6 +61,13 @@ export async function POST(request: Request) {
   const sourcePath = sanitize(formData.get("sourcePath")) || "/";
   const sourceKind = sanitize(formData.get("sourceKind")) || "site_cta";
   const qualification = parseLeadQualification(formData);
+  const qualificationSummary = formatLeadQualificationSummary(qualification);
+  const storedMessage = [
+    qualificationSummary ? `Project requirements:\n${qualificationSummary}` : "",
+    message ? `Message:\n${message}` : "",
+  ]
+    .filter(Boolean)
+    .join("\n\n") || qualification.mainProblem || "Hydrogen quiz result";
   const isQuizResult = sourceKind === "hydrogen_quiz_result";
 
   if (!name || !email || (!isQuizResult && (!storeUrl || !qualification.mainProblem))) {
@@ -106,7 +116,7 @@ export async function POST(request: Request) {
     name,
     email,
     store_url: storeUrl,
-    message: message || qualification.mainProblem || "Hydrogen quiz result",
+    message: storedMessage,
     source_path: sourcePath,
     source_kind: sourceKind,
     current_stack: qualification.currentStack,

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { CTASection } from "@/components/CTASection";
 import { FaqSection } from "@/components/FaqSection";
 import { FounderCard } from "@/components/FounderCard";
+import { HydrogenBuildPackages, TwoKBuildBoundarySection } from "@/components/HydrogenPackages";
 import { JsonLd } from "@/components/JsonLd";
 import { LogoWall } from "@/components/LogoWall";
 import { ProcessStepGrid } from "@/components/ProcessStepGrid";
@@ -32,13 +33,13 @@ import {
   buildPublisherSchema,
 } from "@/lib/structured-data";
 
-const LAST_UPDATED = "2026-05-10";
+const LAST_UPDATED = "2026-05-24";
 const schemaIds = getSchemaIds();
 
 export const metadata = buildMetadata({
-  title: "Senior-Led Shopify Hydrogen Agency Alternative | HydrogenExpert",
+  title: "Shopify Hydrogen Storefronts from $2K-$5K | HydrogenExpert",
   description:
-    "Hire a senior Shopify Hydrogen developer for audits, migrations, custom storefront builds, SEO, optimization, and support for growth-stage and Shopify Plus brands.",
+    "AI-assisted, fixed-scope Shopify Hydrogen storefront builds from $2K-$5K by senior Shopify Hydrogen developer Emre Mutlu.",
   path: "/",
   ogImage: absoluteUrl("/og-home.svg"),
 });
@@ -136,7 +137,9 @@ const faqs = [
   {
     question: "How much does a Shopify Hydrogen project usually cost?",
     answer:
-      "Most Shopify Hydrogen projects land between $15K and $80K. The real number depends on design complexity, catalog behavior, integrations, migration scope, analytics requirements, and how much custom UX the storefront needs before launch.",
+      "Fixed-scope Hydrogen storefront packages can start around $2,000 and usually sit in the $2K-$5K range when the requirements are clear. Price changes with page templates, product logic, integrations, migration risk, SEO preservation, analytics, and launch support.",
+    linkHref: "/shopify-hydrogen-packages",
+    linkLabel: "View the Hydrogen build packages.",
   },
   {
     question: "When does Hydrogen make sense for a growing brand?",
@@ -153,7 +156,7 @@ const faqs = [
   {
     question: "Can I hire you as a Shopify Hydrogen developer?",
     answer:
-      "Yes. If the scope is clear, I can work directly on Hydrogen routes, Storefront API data, SEO-safe launch work, performance cleanup, and post-launch fixes. If the commercial case is still unclear, start with a Fit & Risk Audit before buying a rebuild.",
+      "Yes. If the scope is clear, I can work directly on Hydrogen routes, Storefront API data, SEO-safe launch work, product flow, cart behavior, and launch QA. If the scope is unclear, start with a free scope review before buying a full audit.",
     linkHref: "/shopify-hydrogen-developer",
     linkLabel: "Review the Shopify Hydrogen developer service.",
   },
@@ -271,21 +274,21 @@ const homepageMetrics = [
     href: OWNER.upwork,
     external: true,
   },
-  { id: "timeline", value: "6-16", label: "weeks for many scoped Hydrogen builds" },
+  { id: "package-price", value: "$2K-$5K", label: "fixed-scope Hydrogen storefront package range" },
 ] as const;
 
 const processSteps = [
   {
-    title: "Audit the pressure points",
-    body: "I look at what is actually slowing growth, feature velocity, or mobile UX, not what sounds trendy in a kickoff deck.",
+    title: "Review scope first",
+    body: "I look at desired pages, product flow, cart behavior, integrations, SEO risk, design status, and whether Liquid is still the better answer.",
   },
   {
-    title: "Define the commercial case",
-    body: "You get a merchant-friendly answer on scope, cost, timing, and whether Hydrogen is really the right move.",
+    title: "Pick the package path",
+    body: "You get a direct answer on Starter, Standard, Growth, Custom, Liquid cleanup, or no rebuild before the work becomes bigger than it needs to be.",
   },
   {
-    title: "Ship with launch control",
-    body: "If the case is strong, the storefront ships with clearer ownership, QA discipline, and fewer surprises after go-live.",
+    title: "Ship lean, then expand",
+    body: "The first launch stays focused on core ecommerce flow, clean performance, checkout handoff, and launch QA. More features can follow once the direction is proven.",
   },
 ] as const;
 
@@ -413,26 +416,31 @@ export default function HomePage() {
       <div className="page-shell">
         <section className="space-y-8">
           <div className="mx-auto max-w-5xl space-y-7 text-center">
-            <p className="eyebrow justify-center">Senior-led Shopify Hydrogen services</p>
             <div className="space-y-3">
               <h1 className="hero-statement">
-                Shopify Hydrogen agency alternative for growing brands
+                Senior Shopify Hydrogen storefronts from $2K-$5K
               </h1>
               <p className="hero-response">
-                {"Your Shopify store works, but every new feature takes 3x longer than last year? That's when I come in."}
+                Launch a lean custom Hydrogen storefront without agency overhead.
               </p>
             </div>
             <p className="mx-auto max-w-3xl page-intro">
-              I help Shopify Plus and growth-stage brands decide whether Hydrogen is worth it,
-              scope the right service path, and ship production-grade custom storefront work with
-              direct senior ownership.
+              I build fixed-scope Shopify Hydrogen storefronts for brands that need core
+              ecommerce pages, product flow, cart drawer, checkout handoff, and clean
+              performance - priced by project requirements, not traffic or pageviews.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-3">
               <Link
-                href="/shopify-hydrogen-audit"
+                href="/shopify-hydrogen-packages"
                 className="rounded-full bg-[#171717] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#10b981]"
               >
-                Start with a Fit & Risk Audit
+                View Build Packages
+              </Link>
+              <Link
+                href="/contact#fit-review-form"
+                className="rounded-full border border-black/10 bg-white px-6 py-3 text-sm font-semibold text-[#171717] transition hover:border-[#10b981] hover:text-[#10b981]"
+              >
+                Request Scope Review
               </Link>
               <Link
                 href="/case-studies"
@@ -441,10 +449,18 @@ export default function HomePage() {
                 See Production Proof
               </Link>
             </div>
+            <p className="mx-auto max-w-3xl text-sm leading-7 text-neutral-600">
+              Built by Emre Mutlu - Shopify Hydrogen developer, Upwork Top Rated Plus,
+              100% JSS, 1,900+ Upwork hours, and creator of the first English Shopify
+              Hydrogen course on Udemy.
+            </p>
           </div>
 
           <TrustBar />
         </section>
+
+        <HydrogenBuildPackages />
+        <TwoKBuildBoundarySection />
 
         <LogoWall
           logos={clientLogos}
@@ -461,10 +477,10 @@ export default function HomePage() {
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
             {[
               {
-                href: "/shopify-hydrogen-expert",
-                title: "Work with one Shopify Hydrogen expert",
+                href: "/shopify-hydrogen-packages",
+                title: "View fixed-scope build packages",
                 body:
-                  "Use this path when the search is about direct senior ownership from one specialist, not a broad agency or vendor list.",
+                  "Use this path when you want Starter, Standard, Growth, or Custom scope mapped to real storefront requirements.",
               },
               {
                 href: "/shopify-hydrogen-experts",
@@ -480,9 +496,9 @@ export default function HomePage() {
               },
               {
                 href: "/shopify-hydrogen-audit",
-                title: "Start with a Fit & Risk Audit",
+                title: "Use audit only when risk is unclear",
                 body:
-                  "Use a paid diagnostic before rebuild budget, migration scope, or agency comparison moves.",
+                  "Start free. Use paid review when SEO, migration, apps, analytics, or requirements could change the estimate.",
               },
               {
                 href: "/case-studies",

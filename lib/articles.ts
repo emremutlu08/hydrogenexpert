@@ -110,13 +110,13 @@ const ARTICLES = [
       },
     ],
     conclusion:
-      "If you are deciding whether to hire a Shopify Hydrogen developer, start with a direct fit review or a Fit & Risk Audit before rebuild budget moves.",
+      "If you are deciding whether to hire a Shopify Hydrogen developer, start with a direct scope review before rebuild budget moves.",
     links: [
       { href: "/shopify-hydrogen-developer", label: "Hire a Shopify Hydrogen Developer" },
-      { href: "/shopify-hydrogen-audit", label: "Start with a Fit & Risk Audit" },
+      { href: "/shopify-hydrogen-audit", label: "Request Scope Review" },
       { href: "/case-studies", label: "See Production Proof" },
       { href: "/shopify-hydrogen-cost", label: "Review Hydrogen cost ranges" },
-      { href: "/contact", label: "Request a Hydrogen Fit Review" },
+      { href: "/contact", label: "Request Scope Review" },
     ],
   },
   {
@@ -182,9 +182,9 @@ const ARTICLES = [
     links: [
       { href: "/shopify-hydrogen-developer", label: "Hire a Shopify Hydrogen Developer" },
       { href: "/shopify-hydrogen-agency", label: "Shopify Hydrogen agency alternative" },
-      { href: "/shopify-hydrogen-audit", label: "Start with a Fit & Risk Audit" },
+      { href: "/shopify-hydrogen-audit", label: "Request Scope Review" },
       { href: "/case-studies", label: "See Production Proof" },
-      { href: "/contact", label: "Request a Hydrogen Fit Review" },
+      { href: "/contact", label: "Request Scope Review" },
     ],
   },
   {
@@ -221,7 +221,7 @@ const ARTICLES = [
       { href: "/case-studies", label: "See Production Proof" },
       { href: "/shopify-hydrogen-seo", label: "Review Hydrogen SEO" },
       { href: "/shopify-hydrogen-maintenance-cost", label: "Understand maintenance cost" },
-      { href: "/contact", label: "Request a Hydrogen Fit Review" },
+      { href: "/contact", label: "Request Scope Review" },
     ],
   },
   {
@@ -263,9 +263,9 @@ const ARTICLES = [
       { href: "/", label: "HydrogenExpert" },
       { href: "/shopify-hydrogen-experts", label: "Shopify Hydrogen Experts" },
       { href: "/shopify-hydrogen-developer", label: "Hire a Shopify Hydrogen Developer" },
-      { href: "/shopify-hydrogen-audit", label: "Start with a Fit & Risk Audit" },
+      { href: "/shopify-hydrogen-audit", label: "Request Scope Review" },
       { href: "/case-studies", label: "See Production Proof" },
-      { href: "/contact", label: "Request a Hydrogen Fit Review" },
+      { href: "/contact", label: "Request Scope Review" },
     ],
   },
   {
@@ -287,7 +287,7 @@ const ARTICLES = [
     ],
     sections: [
       { title: "Why Hydrogen cost varies so much", body: ["The expensive parts are custom UX, catalog behavior, route preservation, integrations, analytics, SEO risk, QA, and the maintenance model after launch."] },
-      { title: "Path 1: Fit & Risk Audit", body: ["A paid audit is usually the safest first spend when the business case, migration risk, or budget range is unclear."] },
+      { title: "Path 1: Free scope review or paid risk review", body: ["A free first pass is the safest first step when requirements are clear. A paid review is useful only when business case, migration risk, app dependencies, SEO, or budget range is unclear."] },
       { title: "Path 2: Focused cleanup or optimization", body: ["If the storefront is already live or the current theme can still work, cleanup may create more ROI than a rebuild."] },
       { title: "Path 3: Senior Hydrogen developer support", body: ["Direct senior support fits when the scope is clear and the project needs implementation, debugging, Storefront API work, or launch QA."] },
       { title: "Path 4: Custom storefront build", body: ["A custom build is justified when theme constraints block real product discovery, premium UX, or feature velocity."] },
@@ -298,10 +298,10 @@ const ARTICLES = [
       "Choose the cost path after the real storefront constraint is named, not before.",
     links: [
       { href: "/shopify-hydrogen-cost", label: "Review Hydrogen cost ranges" },
-      { href: "/shopify-hydrogen-audit", label: "Start with a Fit & Risk Audit" },
+      { href: "/shopify-hydrogen-audit", label: "Request Scope Review" },
       { href: "/shopify-hydrogen-developer", label: "Hire a Shopify Hydrogen Developer" },
       { href: "/case-studies", label: "See Production Proof" },
-      { href: "/contact", label: "Request a Hydrogen Fit Review" },
+      { href: "/contact", label: "Request Scope Review" },
     ],
   },
 ] as const satisfies readonly Article[];

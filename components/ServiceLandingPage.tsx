@@ -3,6 +3,15 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CTASection } from "@/components/CTASection";
 import { FaqSection } from "@/components/FaqSection";
+import {
+  AiAssistedWorkflowSection,
+  AuditScopeReviewSection,
+  HydrogenBuildPackages,
+  LiquidHydrogenDecisionSection,
+  PriceDriversSection,
+  PricingFaqSection,
+  TwoKBuildBoundarySection,
+} from "@/components/HydrogenPackages";
 import { JsonLd } from "@/components/JsonLd";
 import { PageIntroSection } from "@/components/PageIntroSection";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -26,8 +35,8 @@ function getServiceCta(service: ServicePackage) {
     return {
       headline: "Need a senior Shopify Hydrogen developer?",
       subtext:
-        "Send your current store URL and the commercial pressure behind the work. I will tell you whether senior Hydrogen development, a fit audit, Liquid cleanup, or no rebuild is the safer next step.",
-      primaryLabel: "Request a Hydrogen Fit Review",
+        "Send your current store URL and the commercial pressure behind the work. I will tell you whether senior Hydrogen development, scope review, Liquid cleanup, or no rebuild is the safer next step.",
+      primaryLabel: "Request Scope Review",
       srOnly:
         "Emre Mutlu provides senior Shopify Hydrogen development, audit, migration, SEO, and storefront optimization support for Shopify Plus and growth-stage brands.",
     };
@@ -37,8 +46,8 @@ function getServiceCta(service: ServicePackage) {
     return {
       headline: "Comparing Shopify Hydrogen experts?",
       subtext:
-        "Send your current store URL, the expert or agency options you are comparing, and what feels risky about the rebuild. I will help you decide whether the safer next step is a Fit & Risk Audit, direct senior support, broader agency scope, Liquid cleanup, or no rebuild.",
-      primaryLabel: "Request a Hydrogen Fit Review",
+        "Send your current store URL, the expert or agency options you are comparing, and what feels risky about the rebuild. I will help you decide whether the safer next step is scope review, direct senior support, broader agency scope, Liquid cleanup, or no rebuild.",
+      primaryLabel: "Request Scope Review",
       srOnly:
         "Emre Mutlu helps Shopify Plus and growth-stage brands evaluate Shopify Hydrogen experts, production proof, migration risk, SEO, and implementation scope.",
     };
@@ -48,8 +57,8 @@ function getServiceCta(service: ServicePackage) {
     return {
       headline: "Need one senior Shopify Hydrogen expert?",
       subtext:
-        "Send your current store URL, what feels risky, and whether you are comparing an expert, agency, or internal build. I will help you decide whether direct senior support, a Fit & Risk Audit, Liquid cleanup, or no rebuild is the safer next step.",
-      primaryLabel: "Request a Hydrogen Fit Review",
+        "Send your current store URL, what feels risky, and whether you are comparing an expert, agency, or internal build. I will help you decide whether direct senior support, scope review, Liquid cleanup, or no rebuild is the safer next step.",
+      primaryLabel: "Request Scope Review",
       srOnly:
         "Emre Mutlu provides senior Shopify Hydrogen expert support for custom storefront architecture, Storefront API work, SEO-safe migration, performance, and launch-risk review.",
     };
@@ -57,12 +66,12 @@ function getServiceCta(service: ServicePackage) {
 
   if (service.slug === "hydrogen-strategy-fit-audit") {
     return {
-      headline: "Need a clear Hydrogen decision before rebuild budget moves?",
+      headline: "Need a clear Hydrogen scope review before rebuild budget moves?",
       subtext:
-        "Send your current store URL, what feels slow or limiting, and why Hydrogen is being discussed. I will tell you whether a Fit & Risk Audit, Liquid cleanup, focused optimization, migration scope, or no rebuild is the safer next step.",
-      primaryLabel: "Start with a Fit & Risk Audit",
+        "Send your current store URL, what feels slow or limiting, and why Hydrogen is being discussed. I will tell you whether the next step is free scope review, paid risk review, full audit, Liquid cleanup, focused optimization, or no rebuild.",
+      primaryLabel: "Request Scope Review",
       srOnly:
-        "Emre Mutlu provides Shopify Hydrogen Fit & Risk Audits, migration planning, SEO review, and senior storefront advisory for Shopify Plus and growth-stage brands.",
+        "Emre Mutlu provides Shopify Hydrogen scope reviews, migration planning, SEO review, and senior storefront advisory for Shopify brands.",
     };
   }
 
@@ -71,7 +80,7 @@ function getServiceCta(service: ServicePackage) {
       headline: "Need a Hydrogen SEO review before traffic or rankings are at risk?",
       subtext:
         "Send the current store URL, planned route changes, and the SEO pressure behind the work. I will tell you whether the safer next step is an SEO audit, migration review, focused cleanup, or no rebuild.",
-      primaryLabel: "Request a Hydrogen Fit Review",
+      primaryLabel: "Request Scope Review",
       srOnly:
         "Emre Mutlu provides Shopify Hydrogen SEO review, metadata, canonical, sitemap, structured data, and crawlability support for custom Shopify storefronts.",
     };
@@ -82,7 +91,7 @@ function getServiceCta(service: ServicePackage) {
       headline: "Need a Liquid to Hydrogen migration plan that protects SEO and launch stability?",
       subtext:
         "Send the current theme, store URL, and what feels limiting. I will tell you whether migration, Liquid cleanup, focused optimization, or no rebuild is the safer next step.",
-      primaryLabel: "Request a Hydrogen Fit Review",
+      primaryLabel: "Request Scope Review",
       srOnly:
         "Emre Mutlu provides Liquid to Hydrogen migration planning, route mapping, SEO preservation, and senior storefront implementation support.",
     };
@@ -90,12 +99,12 @@ function getServiceCta(service: ServicePackage) {
 
   if (service.slug === "shopify-hydrogen-cost") {
     return {
-      headline: "Need a realistic Hydrogen cost range before scope expands?",
+      headline: "Need a realistic fixed-scope Hydrogen price before scope expands?",
       subtext:
-        "Send the current store URL, rough scope, timeline pressure, and budget range. I will tell you whether an audit, cleanup sprint, developer support, agency scope, or delayed rebuild is the safer next step.",
-      primaryLabel: "Request a Hydrogen Fit Review",
+        "Send the current store URL, product count, design status, needed pages, and must-have features. I will tell you whether the project fits Starter, Standard, Growth, Custom, Liquid cleanup, or no rebuild.",
+      primaryLabel: "Request Scope Review",
       srOnly:
-        "Emre Mutlu provides Shopify Hydrogen cost planning, fit audits, rebuild scope review, and senior storefront advisory for Shopify Plus and growth-stage brands.",
+        "Emre Mutlu provides Shopify Hydrogen package pricing, scope review, rebuild planning, and senior storefront advisory for Shopify brands.",
     };
   }
 
@@ -103,7 +112,7 @@ function getServiceCta(service: ServicePackage) {
     headline: "Need senior Hydrogen support for this storefront decision?",
     subtext:
       "Send the current store URL and the commercial pressure behind the work. I will help you choose the safer next step: audit, migration, custom build, optimization, support, Liquid cleanup, or no rebuild.",
-    primaryLabel: "Request a Hydrogen Fit Review",
+    primaryLabel: "Request Scope Review",
     srOnly: `${OWNER.name} provides senior Shopify Hydrogen service support for Shopify Plus and growth-stage storefronts.`,
   };
 }
@@ -333,6 +342,11 @@ export function ServiceLandingPage({ service }: ServiceLandingPageProps) {
   const developerSearchIntentSchema =
     service.slug === "shopify-hydrogen-developer" ? buildDeveloperSearchIntentSchema() : null;
   const sourceLinks = service.sourceMap.filter((source) => source.url);
+  const isPackageCommercialPage =
+    service.slug === "shopify-hydrogen-cost" ||
+    service.slug === "custom-hydrogen-storefront-development";
+  const isCostPage = service.slug === "shopify-hydrogen-cost";
+  const isCustomBuildPage = service.slug === "custom-hydrogen-storefront-development";
 
   return (
     <>
@@ -360,9 +374,46 @@ export function ServiceLandingPage({ service }: ServiceLandingPageProps) {
             Short answer
           </p>
           <p className="max-w-4xl text-lg leading-8 text-neutral-700">
-            {service.name} is the right next step for {formatShortAnswerAudience(service.bestFor)}. If that pressure is not visible yet, start with a narrower audit before buying a full Hydrogen scope.
+            {service.name} is the right next step for {formatShortAnswerAudience(service.bestFor)}. If that pressure is not visible yet, start with a narrower scope review before buying a full Hydrogen scope.
           </p>
         </section>
+
+        {service.slug === "hydrogen-strategy-fit-audit" ? (
+          <AuditScopeReviewSection />
+        ) : null}
+
+        {isPackageCommercialPage ? (
+          <HydrogenBuildPackages
+            title={
+              isCostPage
+                ? "Package comparison for fixed-scope Hydrogen storefronts."
+                : "Start with a package before custom scope expands."
+            }
+            description={
+              isCostPage
+                ? "A clear first version can be scoped around pages, product flow, cart behavior, checkout handoff, SEO baseline, and launch QA."
+                : "Starter and Standard builds keep the first launch focused. Growth and Custom scopes add complexity only when the business case is clear."
+            }
+          />
+        ) : null}
+
+        {isCostPage ? (
+          <>
+            <PriceDriversSection />
+            <TwoKBuildBoundarySection />
+            <LiquidHydrogenDecisionSection />
+            <AiAssistedWorkflowSection />
+            <PricingFaqSection />
+          </>
+        ) : null}
+
+        {isCustomBuildPage ? (
+          <>
+            <TwoKBuildBoundarySection />
+            <AiAssistedWorkflowSection />
+            <PricingFaqSection />
+          </>
+        ) : null}
 
         {service.slug === "shopify-hydrogen-developer" ? (
           <>
@@ -605,7 +656,7 @@ export function ServiceLandingPage({ service }: ServiceLandingPageProps) {
         {service.auditOffer ? (
           <section className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
             <div className="hero-card space-y-5">
-              <p className="dna-kicker text-[#8df1cb]">Productized audit</p>
+              <p className="dna-kicker text-[#8df1cb]">Paid review</p>
               <h2 className="font-display text-[2.25rem] leading-[1] text-white md:text-[3rem]">
                 {service.auditOffer.name}
               </h2>
@@ -861,17 +912,17 @@ export function ServiceLandingPage({ service }: ServiceLandingPageProps) {
           <>
             <section className="surface-card space-y-6">
               <SectionHeader
-                eyebrow="Audit outcome"
-                title="What you know at the end"
-                description="The audit is a productized paid diagnostic with a written memo and Loom walkthrough."
+                eyebrow="Review outcome"
+                title="What you know after the first pass."
+                description="The first-pass review should route the buyer into the right package, paid review, Liquid cleanup, or no rebuild without creating an unnecessary audit gate."
                 className="max-w-5xl"
               />
               <ul className="editorial-list">
                 {[
-                  "Whether to stay on Liquid, refactor Liquid, optimize the current storefront, migrate to Hydrogen, or delay the rebuild.",
-                  "Which storefront constraints are real commercial blockers and which are just technical preferences.",
-                  "Where SEO, analytics, routing, app-stack, and checkout-handoff risks could affect launch.",
-                  "What scope, budget range, and next step are commercially sane.",
+                  "Whether the project looks like Starter, Standard, Growth, Custom, Liquid cleanup, or no rebuild.",
+                  "Which desired routes, features, and integrations belong in the first fixed-scope launch.",
+                  "Where SEO, analytics, routing, app-stack, and checkout-handoff risks could change the estimate.",
+                  "Whether a paid Scope & Risk Review is worth doing before the build.",
                 ].map((item) => (
                   <li key={item}><span>{item}</span></li>
                 ))}
@@ -881,14 +932,14 @@ export function ServiceLandingPage({ service }: ServiceLandingPageProps) {
             <section className="grid gap-6 lg:grid-cols-2">
               <div className="card-soft space-y-5">
                 <p className="eyebrow">Inputs</p>
-                <h2 className="subsection-title">What I need before the audit</h2>
+                <h2 className="subsection-title">What I need before the scope review</h2>
                 <ul className="editorial-list">
                   {[
                     "Current store URL and current storefront stack.",
-                    "Main business reason Hydrogen is being discussed.",
-                    "Known performance, SEO, conversion, or app-stack problems.",
-                    "Planned redesign, migration, or launch timeline.",
-                    "Optional analytics, Search Console, or theme/app context if available.",
+                    "Desired pages, product flow, cart behavior, account needs, and must-have features.",
+                    "Design source: Figma, existing theme adaptation, simple clean design, or not sure yet.",
+                    "Approximate product count and required integrations.",
+                    "Known SEO, analytics, app-stack, migration, or launch risks.",
                   ].map((item) => (
                     <li key={item}><span>{item}</span></li>
                   ))}
@@ -897,7 +948,7 @@ export function ServiceLandingPage({ service }: ServiceLandingPageProps) {
 
               <div className="card-soft space-y-5">
                 <p className="eyebrow">Boundary</p>
-                <h2 className="subsection-title">What the audit does not include</h2>
+                <h2 className="subsection-title">What the review does not include</h2>
                 <ul className="editorial-list">
                   {[
                     "Full storefront implementation.",
@@ -915,19 +966,19 @@ export function ServiceLandingPage({ service }: ServiceLandingPageProps) {
 
             <section className="surface-card space-y-6">
               <SectionHeader
-                eyebrow="Decision memo preview"
-                title="The written memo should answer these questions"
-                description="The memo turns the storefront situation into a commercially sane next step."
+                eyebrow="Review questions"
+                title="The review should answer these questions."
+                description="A paid memo is only needed when these questions cannot be answered from the first-pass brief."
                 className="max-w-5xl"
               />
               <ol className="grid gap-3">
                 {[
                   "What is the real storefront constraint?",
                   "Can Liquid still solve it?",
-                  "What would Hydrogen improve?",
-                  "What would Hydrogen make more expensive?",
+                  "Which Hydrogen package fits the first launch?",
+                  "What would make the scope more expensive?",
                   "What SEO, route, analytics, and data risks matter?",
-                  "What budget and timeline range is realistic?",
+                  "What budget range is realistic?",
                   "What is the safest next scope?",
                 ].map((item, index) => (
                   <li key={item} className="rounded-[1.1rem] border border-black/8 bg-white p-4 text-sm leading-7 text-neutral-700">

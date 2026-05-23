@@ -659,6 +659,17 @@ export const STATIC_PAGE_SOURCE_METADATA = {
       SOURCE_PACKS.emreProductionExperience,
     ],
   },
+  "/shopify-hydrogen-packages": {
+    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.headlessBuildOptions,
+      SOURCE_PACKS.hydrogenSeo,
+      SOURCE_PACKS.caseStudyEvidence,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
   "/what-is-hydrogen": {
     lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
     claimTypes: ["official_shopify_fact", "commercial_opinion"],
