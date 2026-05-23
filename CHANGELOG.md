@@ -15,6 +15,20 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-24
 
+- PR: [#49 Narrow PR and live link rule to final replies](https://github.com/emremutlu08/hydrogenexpert/pull/49)
+- Branch: `codex/narrow-final-link-rule`
+- Deployment: Not required for a repo-local agent instruction wording change; live environment remains [hydrogenexpert.co](https://hydrogenexpert.co).
+- Summary:
+  - Narrowed the `AGENTS.md` PR/live-link requirement from every response to the final completion response.
+  - Clarified that interim status updates should not be forced to include PR/live links unless directly useful.
+- Files changed:
+  - `AGENTS.md`
+  - `CHANGELOG.md`
+- Verification:
+  - `git diff --check`: passed.
+- Manual follow-up:
+  - Final completion replies should include the PR and live environment links; interim progress updates can stay concise.
+
 - PR: [#48 Require PR and live links in responses](https://github.com/emremutlu08/hydrogenexpert/pull/48)
 - Branch: `codex/require-pr-live-links`
 - Deployment: Not required for a repo-local agent instruction change; live environment remains [hydrogenexpert.co](https://hydrogenexpert.co).
