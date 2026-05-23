@@ -1099,6 +1099,80 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
       },
     ],
   },
+  "shopify-hydrogen-collection-out-of-stock-products-hidden": {
+    heroVisual: {
+      type: "code-card",
+      src: "/generated/blog/hydrogen-seo-checklist-cover.jpg",
+      alt: "Hydrogen collection diagnostics visual showing availability filters, SSR product cards, and pagination state.",
+      title: "Shopify Hydrogen collection availability diagnostics",
+      width: 1672,
+      height: 941,
+    },
+    faq: [
+      {
+        question: "Should Shopify Hydrogen collection pages show out-of-stock products by default?",
+        answer:
+          "It depends on the merchandising rule. If the default collection is meant to represent the full catalog, the SSR product list should not silently drop out-of-stock products. If the store intentionally hides them, the filter counts, copy, and canonical behavior should make that clear.",
+      },
+      {
+        question: "Is this usually a Shopify Storefront API bug?",
+        answer:
+          "Usually no. The first check is whether the Storefront API and initial HTML contain the missing products. In this production case, the data existed; the app-side availability buffer and pagination state stopped before rendering it.",
+      },
+      {
+        question: "Why can hasNextPage be misleading in this bug?",
+        answer:
+          "hasNextPage describes whether the Shopify connection has another remote page. It does not know about products the Hydrogen app already moved into a local unavailable-product buffer.",
+      },
+      {
+        question: "How do you verify the fix?",
+        answer:
+          "Compare unfiltered collection cards, availability-filter counts, source HTML, out-of-stock labels, and load-more behavior. The important proof is that the unfiltered SSR response contains the expected product cards without asking shoppers to toggle the filter first.",
+      },
+    ],
+    closingPitch:
+      "Your Shopify store works, but edge cases keep surfacing after launch? That is when I come in. If your Hydrogen collections, filters, or product state are drifting from what shoppers and crawlers should see, I can help trace the real data path and fix the storefront without turning it into a broad rebuild.",
+    ogImage: "/og-post.svg",
+    internalLinks: [
+      {
+        href: "/shopify-hydrogen-seo",
+        label: "Shopify Hydrogen SEO",
+        note: "Use this when collection, product, and filter state need to stay crawlable and consistent.",
+      },
+      {
+        href: "/shopify-hydrogen-performance-optimization",
+        label: "Hydrogen performance optimization",
+        note: "Collection loader bugs often overlap with SSR, caching, and load-more behavior.",
+      },
+      {
+        href: "/blog/shopify-hydrogen-product-description-ssr-seo",
+        label: "Product content SSR note",
+        note: "A related production note about checking initial HTML before blaming the platform.",
+      },
+      {
+        href: "/hire-me",
+        label: "Work with Emre",
+        note: "The direct route for focused Hydrogen troubleshooting and implementation.",
+      },
+    ],
+    externalLinks: [
+      {
+        href: "https://shopify.dev/docs/api/storefront/latest/input-objects/ProductFilter",
+        label: "Storefront API ProductFilter",
+        note: "Official Shopify reference for collection product filters, including availability.",
+      },
+      {
+        href: "https://shopify.dev/docs/api/storefront/latest/objects/Collection",
+        label: "Storefront API Collection object",
+        note: "Official Shopify reference for collection product connections, filters, sorting, and pagination.",
+      },
+      {
+        href: "https://shopify.dev/docs/api/storefront/latest/objects/PageInfo",
+        label: "Storefront API PageInfo object",
+        note: "Official Shopify reference for hasNextPage and cursor pagination semantics.",
+      },
+    ],
+  },
 };
 
 export function getPostEnhancement(slug: string) {
