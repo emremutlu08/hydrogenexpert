@@ -15,6 +15,21 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-24
 
+- PR: [#48 Require PR and live links in responses](https://github.com/emremutlu08/hydrogenexpert/pull/48)
+- Branch: `codex/require-pr-live-links`
+- Deployment: Not required for a repo-local agent instruction change; live environment remains [hydrogenexpert.co](https://hydrogenexpert.co).
+- Summary:
+  - Added a durable `AGENTS.md` rule requiring every response to Emre to include both a clickable pull request link and a clickable live environment link.
+  - Clarified that the PR link should use the active/current PR when available, otherwise the most recent relevant PR.
+  - Clarified that the live environment link should usually point to `https://hydrogenexpert.co`.
+- Files changed:
+  - `AGENTS.md`
+  - `CHANGELOG.md`
+- Verification:
+  - `git diff --check`: passed.
+- Manual follow-up:
+  - Use the new response-link rule in future HydrogenExpert replies.
+
 - PR: [#47 Reposition HydrogenExpert around fixed-scope packages](https://github.com/emremutlu08/hydrogenexpert/pull/47)
 - Branch: `codex/fixed-scope-hydrogen-packages`
 - Deployment: Preview deployment [hydrogenexpert-git-codex-fixed-scop-990e9a-emremutlu8s-projects.vercel.app](https://hydrogenexpert-git-codex-fixed-scop-990e9a-emremutlu8s-projects.vercel.app); local production build verified at `http://localhost:3016`.
