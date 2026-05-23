@@ -37,14 +37,15 @@ interface FooterProps {
 }
 
 const SERVICE_ITEMS = [
+  { href: "/shopify-hydrogen-packages", label: "Hydrogen Build Packages" },
+  { href: "/shopify-hydrogen-cost", label: "Hydrogen Cost" },
   { href: "/shopify-hydrogen-developer", label: "Shopify Hydrogen Developer" },
-  { href: "/shopify-hydrogen-audit", label: "Shopify Hydrogen Audit" },
-  { href: "/liquid-to-hydrogen-migration", label: "Liquid to Hydrogen Migration" },
   { href: "/custom-shopify-hydrogen-storefront", label: "Custom Hydrogen Storefront" },
+  { href: "/shopify-hydrogen-audit", label: "Hydrogen Scope Review" },
+  { href: "/liquid-to-hydrogen-migration", label: "Liquid to Hydrogen Migration" },
   { href: "/shopify-hydrogen-seo", label: "Shopify Hydrogen SEO" },
   { href: "/shopify-hydrogen-performance-optimization", label: "Hydrogen Performance Optimization" },
   { href: "/shopify-hydrogen-support-retainer", label: "Hydrogen Support Retainer" },
-  { href: "/shopify-hydrogen-cost", label: "Hydrogen Cost" },
 ] as const;
 
 const RESOURCE_ITEMS = [
@@ -54,6 +55,7 @@ const RESOURCE_ITEMS = [
   { href: "/shopify-hydrogen-experts", label: "Shopify Hydrogen Experts" },
   { href: "/should-i-use-it", label: "Should I Use Hydrogen?" },
   { href: "/when-not-to-use-hydrogen", label: "When Not to Use Hydrogen" },
+  { href: "/shopify-hydrogen-packages", label: "Hydrogen Packages" },
   { href: "/shopify-hydrogen-seo", label: "Hydrogen SEO Guide" },
   { href: "/shopify-hydrogen-cost", label: "Shopify Hydrogen Cost" },
   { href: "/articles", label: "Shopify Hydrogen Articles" },
@@ -140,13 +142,13 @@ export function Footer({ navItems }: FooterProps) {
                   </div>
                 </div>
                 <p className="max-w-2xl font-display text-2xl leading-[1.05] tracking-[-0.045em] text-white md:text-4xl">
-                  {"Your Shopify store works, but every new feature takes 3x longer than last year? That's when I come in."}
+                  Senior Shopify Hydrogen storefronts from $2K-$5K, without agency overhead.
                 </p>
               </div>
               <p data-nosnippet className="max-w-xl text-sm leading-7 text-neutral-400">
-                I help Shopify Plus and growth-stage ecommerce brands decide whether
-                Hydrogen is worth it, then scope audits, migrations, custom builds,
-                optimization, and support with direct senior ownership.
+                I build fixed-scope Shopify Hydrogen storefronts from $2K-$5K
+                when the requirements are clear, and I still say Liquid when a
+                theme-native path is the better answer.
               </p>
               <div className="flex flex-wrap items-center gap-3">
                 <SocialLink href={OWNER.linkedIn} label="LinkedIn" />
@@ -161,10 +163,9 @@ export function Footer({ navItems }: FooterProps) {
                 Not sure if Hydrogen is worth it?
               </h2>
               <p className="mt-4 max-w-2xl text-sm leading-7 text-neutral-300 md:text-base md:leading-8">
-                Send your store URL and what feels slow, limiting, or expensive
-                to change. I will give you a direct answer on whether the next
-                move is Liquid, Hydrogen, or no rebuild. LinkedIn is the fastest
-                place to start the conversation.
+                Send your store URL, design status, product count, and needed
+                features. I will give you a direct answer on whether the next
+                move is Starter, Standard, Growth, Custom, Liquid, or no rebuild.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <Link
@@ -176,10 +177,10 @@ export function Footer({ navItems }: FooterProps) {
                   Message on LinkedIn
                 </Link>
                 <Link
-                  href="/hire-me"
+                  href="/shopify-hydrogen-packages"
                   className="inline-flex min-h-11 items-center rounded-full border border-white/14 px-5 py-3 text-sm font-semibold text-white transition-colors hover:border-[#10b981] hover:text-[#8df1cb]"
                 >
-                  View Proof
+                  View Packages
                 </Link>
                 <TrackedCTALink
                   href="/contact#fit-review-form"

@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { HydrogenBuildPackages } from "@/components/HydrogenPackages";
 import { JsonLd } from "@/components/JsonLd";
 import { LeadCaptureForm } from "@/components/LeadCaptureForm";
 import { PageIntroSection } from "@/components/PageIntroSection";
@@ -11,16 +12,16 @@ import { OWNER, absoluteUrl } from "@/lib/site";
 import { buildBreadcrumbListSchema } from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
-  title: "Request a Shopify Hydrogen Fit Review | HydrogenExpert",
+  title: "Request a Shopify Hydrogen Scope Review | HydrogenExpert",
   description:
-    "Send your Shopify store URL, current stack, and storefront constraints to get a direct recommendation on Hydrogen, Liquid cleanup, audit, migration, optimization, support, or no rebuild.",
+    "Send your Shopify store URL, design status, product count, and needed features to get a direct recommendation on Starter, Standard, Growth, Custom, Liquid cleanup, or no rebuild.",
   path: "/contact",
 });
 
 const contactOptions = [
   {
-    title: "Hydrogen fit review",
-    body: "Best path when you want a direct recommendation on audit, migration, build, optimization, support, Liquid, or no rebuild.",
+    title: "Hydrogen scope review",
+    body: "Best path when you want a direct recommendation on Starter, Standard, Growth, Custom, Liquid cleanup, or no rebuild.",
     href: "#fit-review-form",
   },
   {
@@ -58,9 +59,9 @@ export default function ContactPage() {
         <Breadcrumbs items={breadcrumbs} />
         <PageIntroSection
           eyebrow="Contact"
-          title="Request a Hydrogen fit review."
-          description="A useful first message is short: current store URL, current stack, what feels slow or limiting, and why Hydrogen is being discussed."
-          body="I will tell you whether the next move looks like Liquid cleanup, a Hydrogen audit, migration scope, custom build, performance or SEO work, support retainer, or no rebuild."
+          title="Request a Hydrogen scope review."
+          description="A useful first message is short: current store URL, design status, product count, needed features, and what needs to ship first."
+          body="I will tell you whether the next move looks like Starter, Standard, Growth, Custom, Liquid cleanup, performance or SEO work, support retainer, or no rebuild."
         />
 
       <section className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
@@ -107,6 +108,12 @@ export default function ContactPage() {
 
         <LeadCaptureForm sourceKind="contact_page" />
       </section>
+
+      <HydrogenBuildPackages
+        title="Use the package path to frame the brief."
+        description="The form filters by real project requirements: design readiness, product count, feature needs, budget range, timeline, integrations, and migration risk."
+        compact
+      />
       </div>
     </>
   );

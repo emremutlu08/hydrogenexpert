@@ -298,7 +298,7 @@ const SERVICE_PACKAGE_BASES = [
       },
       {
         href: "/shopify-hydrogen-audit",
-        label: "Start with a Fit & Risk Audit",
+        label: "Request a scope review",
         note: "Use this when the business case or launch risk needs proof before implementation.",
       },
       {
@@ -318,7 +318,7 @@ const SERVICE_PACKAGE_BASES = [
       },
       {
         href: "/contact",
-        label: "Request a Hydrogen Fit Review",
+        label: "Request Scope Review",
         note: "Send the current store URL and the commercial pressure behind the work.",
       },
     ],
@@ -348,7 +348,7 @@ const SERVICE_PACKAGE_BASES = [
     proofNotes: [
       "This page targets singular expert-search intent: a buyer looking for one senior specialist, not a directory of experts.",
       "The page keeps the claim grounded in production Hydrogen storefront work, public proof surfaces, and senior implementation judgment.",
-      "The buyer is routed toward the right engagement shape: direct development, a Fit & Risk Audit, the broader experts comparison page, case studies, or no rebuild.",
+      "The buyer is routed toward the right engagement shape: direct development, scope review, the broader experts comparison page, case studies, or no rebuild.",
     ],
     faq: [
       {
@@ -460,52 +460,52 @@ const SERVICE_PACKAGE_BASES = [
   {
     slug: "hydrogen-strategy-fit-audit",
     pagePath: "/shopify-hydrogen-audit",
-    name: "Strategy & Fit Audit",
-    title: "Find out whether Hydrogen is actually justified",
-    metaTitle: "Shopify Hydrogen Audit | Fit & Risk Review Before Rebuild",
+    name: "Hydrogen Scope Review",
+    title: "Start with the lightest review the build actually needs",
+    metaTitle: "Shopify Hydrogen Scope Review | Free First Pass",
     metaDescription:
-      "Start with a Shopify Hydrogen Fit & Risk Audit before rebuild budget moves. Get a written decision memo on Liquid vs Hydrogen, SEO risk, cost, scope, and maintenance readiness.",
-    heroTitle: "Shopify Hydrogen audit before the rebuild money moves",
+      "Start with a free Shopify Hydrogen scope review. Use a paid risk review only when SEO, apps, migration, analytics, or unclear requirements affect the estimate.",
+    heroTitle: "Shopify Hydrogen scope review before the build estimate expands",
     summary:
-      "A senior review for brands considering Hydrogen but unsure whether the cost, complexity, and maintenance model make commercial sense.",
+      "Most small Hydrogen builds do not need a full audit first. Start with a free first-pass scope review, then use paid review only when the risks are unclear.",
     commercialIntent:
-      "Built for teams searching for a Shopify Hydrogen audit before committing to a rebuild, agency scope, or platform-level decision.",
+      "Built for brands that want to know whether the project is Starter, Standard, Growth, Custom, Liquid cleanup, or no rebuild before they buy a larger diagnostic.",
     bestFor:
-      "Teams feeling theme limits, performance drag, app-stack complexity, or feature velocity problems, but not yet ready to commit to a rebuild.",
+      "Brands considering a fixed-scope Hydrogen build where SEO, apps, migration, analytics, or unclear requirements may affect the estimate.",
     deliverables: [
-      "Current storefront and theme constraint review",
-      "Liquid vs Hydrogen fit assessment",
-      "Performance, SEO, and app-stack risk review",
-      "Migration complexity and maintenance-readiness notes",
-      "Clear recommendation: stay on Liquid, refactor, migrate to Hydrogen, or delay the rebuild",
+      "Free first-pass scope review when requirements are clear",
+      "Optional paid Scope & Risk Review for unclear estimates",
+      "Liquid vs Hydrogen fit recommendation",
+      "Starter, Standard, Growth, Custom, Liquid cleanup, or no rebuild recommendation",
+      "Risk notes for SEO, apps, analytics, migration, and launch scope",
     ],
     proofNotes: [
       "Direct senior review from a Shopify Hydrogen developer, not a generic ecommerce audit package.",
-      "Fit-first framing protects budget when Liquid, targeted UX work, or no rebuild is the better business answer.",
-      "The audit covers SEO, performance, analytics, migration risk, and operating model readiness together.",
+      "Most small builds can start with scope review instead of a full paid audit.",
+      "Paid review stays optional and exists only when risk could change the estimate.",
     ],
     faq: [
       {
-        question: "What does a Shopify Hydrogen audit check?",
+        question: "Do I need a full Hydrogen audit before a $2K build?",
         answer:
-          "It reviews whether Hydrogen is commercially justified, then checks storefront speed, crawlability, route structure, app-stack pressure, Storefront API usage, analytics, migration risk, and maintenance readiness.",
+          "Usually no. If the scope is clear, start with a free first-pass scope review. Use a paid review only when SEO, apps, migration, analytics, or unclear requirements could change the estimate.",
       },
       {
-        question: "Is this only for brands already committed to Hydrogen?",
+        question: "What does the free scope review decide?",
         answer:
-          "No. The point is to decide whether Hydrogen is worth it before a rebuild starts. If Liquid is still the better path, that should be the recommendation.",
+          "It decides whether the work looks like Starter, Standard, Growth, Custom, Liquid cleanup, or no rebuild based on store URL, desired pages, current setup, and required features.",
       },
       {
-        question: "What should a brand send before an audit?",
+        question: "When is a paid review worth it?",
         answer:
-          "Send the current store URL, known performance or SEO issues, the commercial reason Hydrogen is being discussed, and any planned redesign or migration timeline.",
+          "Use a paid review when SEO preservation, app dependencies, analytics, migration risk, or unclear requirements could make a package estimate unreliable.",
       },
     ],
     relatedLinks: [
       {
-        href: "/shopify-hydrogen-seo",
-        label: "Shopify Hydrogen SEO guide",
-        note: "Use this for the broader metadata, canonical, sitemap, robots, and structured-data checklist.",
+        href: "/shopify-hydrogen-packages",
+        label: "Shopify Hydrogen packages",
+        note: "Review Starter, Standard, Growth, and Custom scope before asking for a quote.",
       },
       {
         href: "/should-i-use-it",
@@ -520,11 +520,11 @@ const SERVICE_PACKAGE_BASES = [
       {
         href: "/shopify-hydrogen-cost",
         label: "Shopify Hydrogen cost",
-        note: "Use this to connect audit findings to realistic budget ranges.",
+        note: "Use this to connect scope findings to realistic package pricing.",
       },
       {
         href: "/contact",
-        label: "Request a Hydrogen Fit Review",
+        label: "Request Scope Review",
         note: "Send the storefront context before rebuild budget moves.",
       },
     ],
@@ -658,61 +658,61 @@ const SERVICE_PACKAGE_BASES = [
     slug: "shopify-hydrogen-cost",
     pagePath: "/shopify-hydrogen-cost",
     name: "Shopify Hydrogen Cost",
-    title: "Understand Hydrogen budget before the scope gets expensive",
-    metaTitle: "Shopify Hydrogen Cost Guide | Audit, Build & Migration Pricing",
+    title: "Shopify Hydrogen storefront pricing by project requirements",
+    metaTitle: "Shopify Hydrogen Storefront Pricing | $2K-$5K Builds",
     metaDescription:
-      "Understand realistic Shopify Hydrogen cost ranges for audits, cleanup, lean builds, custom storefronts, Plus migrations, support, and maintenance.",
-    heroTitle: "Shopify Hydrogen cost planning for brands weighing rebuild budget",
+      "Shopify Hydrogen storefront pricing from $2K-$5K for fixed-scope Starter, Standard, and Growth builds priced by requirements, not traffic or pageviews.",
+    heroTitle: "Shopify Hydrogen storefront pricing: $2K-$5K fixed-scope builds",
     summary:
-      "A budget-focused landing page for teams trying to understand what drives Hydrogen cost before choosing an agency, developer, migration, or audit path.",
+      "A lean Hydrogen storefront does not need to start at agency pricing. If the scope is clear, the first version can be priced around core pages, product flow, cart behavior, checkout handoff, SEO baseline, and launch QA.",
     commercialIntent:
-      "For budget-aware leads searching Shopify Hydrogen cost, pricing, or rebuild budget before they are ready to scope implementation.",
+      "For budget-aware leads searching Shopify Hydrogen cost, pricing, packages, and fixed-scope build options before they are ready to scope implementation.",
     bestFor:
-      "Brands that need a realistic cost conversation around custom storefront complexity, integrations, migration risk, SEO preservation, QA, and post-launch support.",
+      "Brands that want a fixed-scope Hydrogen build priced by page templates, components, features, integrations, migration risk, analytics, SEO preservation, and launch support.",
     deliverables: [
-      "Scope and budget driver review",
-      "Lean, growth, and complex build range discussion",
-      "Migration and integration risk notes",
-      "Maintenance and post-launch support considerations",
-      "Recommendation for audit, migration, custom build, optimization, or delay",
+      "Starter, Standard, Growth, or Custom scope review",
+      "Package comparison and budget driver review",
+      "Feature, template, integration, and migration-risk notes",
+      "Liquid vs Hydrogen package recommendation",
+      "Recommendation for free scope review, paid risk review, build, Liquid cleanup, or no rebuild",
     ],
     proofNotes: [
-      "Cost is framed around storefront scope and operating reality, not around the word headless alone.",
-      "The page keeps the existing budget guidance but makes /shopify-hydrogen-cost the canonical commercial URL.",
-      "The output should help teams decide whether to start with an audit before committing to a rebuild quote.",
+      "Cost is framed around storefront scope and operating reality, not around traffic, pageviews, or the word headless alone.",
+      "The first budget question is whether the project fits Starter, Standard, Growth, Custom, Liquid cleanup, or no rebuild.",
+      "The output should help teams understand why a project is $2K, $3K-$3.5K, $4.5K-$5K, or custom.",
     ],
     faq: [
       {
-        question: "What affects Shopify Hydrogen cost the most?",
+        question: "Why can a Hydrogen storefront start around $2,000?",
         answer:
-          "The biggest drivers are custom UX, catalog and merchandising complexity, integrations, migration scope, SEO preservation, analytics, QA depth, and the amount of post-launch iteration required.",
+          "Because the Starter scope is limited to the core shopping path: home or landing page, listing page, product detail page, add to cart, cart drawer, Shopify checkout handoff, basic account entry, header, footer, one reusable content template, SEO baseline, and Oxygen guidance.",
       },
       {
-        question: "Is Hydrogen usually more expensive than Liquid?",
+        question: "What makes a Hydrogen build move toward $5K or custom?",
         answer:
-          "Yes. Liquid is usually cheaper to launch and maintain. Hydrogen becomes easier to justify when custom UX, performance patterns, or feature velocity matter enough to cover the application-level maintenance cost.",
+          "Price increases when the project adds more page templates, PDP complexity, filtering, search, app integrations, analytics events, metaobjects, design complexity, SEO migration, redirect planning, launch QA, or post-launch support.",
       },
       {
-        question: "Should a brand get an audit before asking for a Hydrogen quote?",
+        question: "Is this priced by traffic or monthly visitors?",
         answer:
-          "Often yes. If the business case, route risk, SEO risk, or integration scope is unclear, an audit can keep the rebuild from turning into a broad estimate with too many assumptions.",
+          "No. Pricing is based on project requirements: page templates, features, integrations, design complexity, migration risk, analytics, and launch support.",
       },
     ],
     relatedLinks: [
       {
-        href: "/shopify-hydrogen-audit",
-        label: "Start with a Hydrogen audit",
-        note: "Use this when the budget range is still unclear or the rebuild may not be justified.",
+        href: "/shopify-hydrogen-packages",
+        label: "Shopify Hydrogen packages",
+        note: "Review the Starter, Standard, Growth, and Custom package path.",
       },
       {
-        href: "/liquid-to-hydrogen-migration",
-        label: "Liquid to Hydrogen migration",
-        note: "Use this when the current Shopify theme is the storefront constraint.",
+        href: "/custom-shopify-hydrogen-storefront",
+        label: "Custom Hydrogen storefront",
+        note: "Use this when the package path may need a custom build scope.",
       },
       {
-        href: "/shopify-hydrogen-developer",
-        label: "Shopify Hydrogen developer",
-        note: "Use this when the next step is direct implementation help.",
+        href: "/when-not-to-use-hydrogen",
+        label: "When not to use Hydrogen",
+        note: "Use this when a Liquid theme or smaller cleanup may be the better investment.",
       },
     ],
   },
@@ -720,35 +720,35 @@ const SERVICE_PACKAGE_BASES = [
     slug: "custom-hydrogen-storefront-development",
     pagePath: "/custom-shopify-hydrogen-storefront",
     name: "Custom Hydrogen Storefront",
-    title: "Build the storefront your current theme cannot support",
-    metaTitle: "Custom Shopify Hydrogen Storefront Development | Emre Mutlu",
+    title: "Start with a lean Hydrogen build before custom scope expands",
+    metaTitle: "Custom Shopify Hydrogen Storefront Builds from $2K-$5K",
     metaDescription:
-      "Custom Shopify Hydrogen storefront development for Shopify Plus brands needing bespoke PDPs, collections, search, cart, content, and mobile UX.",
-    heroTitle: "Custom Shopify Hydrogen storefront development for theme-breaking ideas",
+      "Custom Shopify Hydrogen storefront builds from $2K-$5K for brands that need fixed-scope core ecommerce pages before custom scope expands.",
+    heroTitle: "Custom Shopify Hydrogen storefront builds from $2K-$5K",
     summary:
-      "Hydrogen architecture and implementation for brands that need a more flexible, more intentional customer experience than a theme can cleanly deliver.",
+      "A Hydrogen storefront does not need to start as a massive agency rebuild. If the scope is clear, I can build a lean custom storefront around the core ecommerce flow.",
     commercialIntent:
-      "For brands searching for a Shopify Hydrogen developer to build a custom storefront beyond theme guardrails.",
+      "For brands searching for a Shopify Hydrogen developer to build landing, listing, product, cart, checkout handoff, account entry, and basic SEO before custom complexity expands.",
     bestFor:
-      "Brands with custom PDPs, collection experiences, search needs, content models, mobile buying journeys, or merchandising logic that exceed theme guardrails.",
+      "Brands that need more control than a theme, but want Starter, Standard, or Growth scope before committing to a larger custom migration.",
     deliverables: [
-      "Hydrogen architecture and storefront implementation",
-      "PDP, collection, search, cart, and checkout-handoff flows",
-      "Custom React components and interaction patterns",
-      "Shopify metafield and metaobject integration",
-      "CMS integration when the content model requires it",
-      "Performance-focused implementation and launch QA",
+      "Starter, Standard, Growth, or Custom build recommendation",
+      "Core ecommerce routes and reusable components",
+      "Product flow, add to cart, cart drawer, and Shopify checkout handoff",
+      "Basic account entry and SEO baseline",
+      "Metaobjects, integrations, migration, and QA when the selected package includes them",
+      "Clear scope boundaries before advanced custom work starts",
     ],
     proofNotes: [
       "The work is direct senior implementation, so strategy and code decisions stay close together.",
-      "The storefront is built around product discovery, mobile buying behavior, and launch ownership instead of headless novelty.",
-      "Hydrogen is used when the custom experience earns the maintenance cost.",
+      "The first version should prove the storefront direction before the project becomes a full migration.",
+      "Hydrogen is used when the custom experience earns the maintenance cost; Liquid stays valid when it solves the problem.",
     ],
     faq: [
       {
-        question: "What makes a Shopify Hydrogen storefront custom?",
+        question: "Can a custom Hydrogen storefront really start in the $2K-$5K range?",
         answer:
-          "The storefront can define its own React UI, route behavior, product and collection experiences, content model, performance strategy, and commerce handoff while Shopify remains the commerce engine.",
+          "Yes, when the first version is fixed-scope. Starter, Standard, and Growth builds focus on core routes, product flow, cart behavior, checkout handoff, SEO baseline, and selected integrations instead of a full replatforming project.",
       },
       {
         question: "Do custom Hydrogen storefronts still use Shopify checkout?",
@@ -756,26 +756,26 @@ const SERVICE_PACKAGE_BASES = [
           "Yes. Hydrogen storefronts usually build the customer-facing storefront and hand off to Shopify checkout for the transaction path.",
       },
       {
-        question: "How do you keep a custom storefront maintainable?",
+        question: "When does this become custom scope?",
         answer:
-          "Keep the first launch scope focused, use reusable route and component patterns, render important content server-side, and avoid custom logic that does not support a real business need.",
+          "Advanced search, custom filters, B2B, subscriptions, complex content models, large catalog migration, app replacement, SEO-risky URL changes, or custom product logic move the project into custom scope.",
       },
     ],
     relatedLinks: [
       {
-        href: "/liquid-to-hydrogen-migration",
-        label: "Liquid to Hydrogen migration",
-        note: "Use this when the custom build is replacing an existing Shopify theme.",
+        href: "/shopify-hydrogen-packages",
+        label: "Shopify Hydrogen packages",
+        note: "Start with Starter, Standard, or Growth before custom scope expands.",
       },
       {
-        href: "/case-studies/bayam-jewelry-shopify-hydrogen",
-        label: "Bayam Jewelry case study",
-        note: "A luxury catalog example where presentation and discovery mattered.",
+        href: "/shopify-hydrogen-cost",
+        label: "Shopify Hydrogen cost",
+        note: "See how requirements move pricing from $2K to $5K or custom.",
       },
       {
-        href: "/hire-me",
-        label: "Hire a Shopify Hydrogen developer",
-        note: "The direct route when you need senior storefront implementation.",
+        href: "/case-studies",
+        label: "Production proof",
+        note: "Map prior Hydrogen and Liquid work to Starter, Growth, Custom, and Liquid decisions.",
       },
     ],
   },
@@ -1044,7 +1044,7 @@ const SERVICE_PAGE_ENRICHMENTS = {
       body: [
         "A search for a Shopify Hydrogen expert is usually not asking for a generic vendor list. It is asking whether one senior person can understand the current store, separate Hydrogen hype from actual constraints, and carry the storefront decision from architecture into implementation.",
         "That means the proof should not stop at React or Shopify vocabulary. The expert should be able to explain Storefront API data shape, route and caching behavior, SEO continuity, analytics and consent requirements, cart and checkout handoff, merchant editing workflows, and what happens after launch when the storefront becomes an application to maintain.",
-        "HydrogenExpert keeps this page focused on direct senior ownership. If the need is broader, the path routes to expert comparison, agency-alternative pages, or a Fit & Risk Audit before rebuild scope expands.",
+        "HydrogenExpert keeps this page focused on direct senior ownership. If the need is broader, the path routes to expert comparison, agency-alternative pages, or a scope review before rebuild scope expands.",
       ],
     },
     decisionTable: [
@@ -1060,7 +1060,7 @@ const SERVICE_PAGE_ENRICHMENTS = {
       },
       {
         signal: "Stakeholders are still unsure whether Hydrogen is justified.",
-        strongerMove: "Start with a Fit & Risk Audit before buying development scope.",
+        strongerMove: "Start with a scope review before buying development scope.",
         caution: "The expert should be willing to recommend Liquid cleanup or no rebuild when that is safer.",
       },
     ],
@@ -1095,7 +1095,7 @@ const SERVICE_PAGE_ENRICHMENTS = {
       body: [
         "Shopify Hydrogen experts are easy to describe and harder to verify. The useful test is whether the expert can connect React, Storefront API data, route behavior, SEO, analytics, cart logic, checkout handoff, and merchant maintenance into one storefront decision.",
         "A strong expert will not treat Hydrogen as the answer by default. The first job is to decide whether the brand really needs a custom storefront, whether the current Liquid theme can be repaired, and which risks must be handled before budget moves. That is especially important when Google, AI overviews, and buyer research pages group experts, agencies, marketplaces, and official docs together.",
-        "HydrogenExpert is intentionally positioned as a senior-led expert path and agency alternative, not a broad directory. The page gives searchers a practical evaluation path, then routes them to direct developer support, a Fit & Risk Audit, case studies, or the deeper evaluation article.",
+        "HydrogenExpert is intentionally positioned as a senior-led expert path and agency alternative, not a broad directory. The page gives searchers a practical evaluation path, then routes them to direct developer support, a scope review, case studies, or the deeper evaluation article.",
       ],
     },
     decisionTable: [
@@ -1141,23 +1141,23 @@ const SERVICE_PAGE_ENRICHMENTS = {
   },
   "hydrogen-strategy-fit-audit": {
     uniqueSection: {
-      eyebrow: "Paid diagnostic",
-      title: "What I check before recommending Hydrogen.",
+      eyebrow: "Risk filter",
+      title: "Use paid review only when the estimate depends on hidden risk.",
       body: [
-        "The audit exists because rebuild money should not move on vibes. Before recommending Hydrogen, I look at the current storefront constraint, whether Liquid is actually blocked, what the catalog and content model require, how much SEO risk a migration creates, what analytics and consent behavior must survive, and whether the team can maintain an application after launch.",
-        "The deliverable is not a generic score. It is a decision memo: stay on Liquid, refactor Liquid, run focused optimization, migrate to Hydrogen, or delay the rebuild. That recommendation is paired with the risks, rough budget range, and next scope that would make the decision commercially sane.",
-        "This is especially useful when a team is caught between an agency pitch, a theme that feels limiting, and internal pressure to do something bigger. The audit slows the decision down just enough to stop unnecessary complexity.",
+        "A $2K-$5K build should not be blocked by a large audit when the requirements are already clear. The first pass should decide whether the project fits Starter, Standard, Growth, Custom, Liquid cleanup, or no rebuild.",
+        "Paid review makes sense when a quote would otherwise be guesswork: SEO preservation, route changes, app dependencies, analytics, unclear product data, migration risk, or launch responsibilities could all change the scope.",
+        "The goal is not to create another paid gate before the build. The goal is to keep small scopes moving quickly and reserve deeper audit work for stores where hidden risk could make the estimate misleading.",
       ],
     },
     decisionTable: [
       {
-        signal: "The team cannot explain why Hydrogen is necessary.",
-        strongerMove: "Run the Fit & Risk Audit.",
-        caution: "Do not start a rebuild until the constraint is named.",
+        signal: "Desired routes, design source, and required features are clear.",
+        strongerMove: "Start with a free first-pass scope review.",
+        caution: "Do not turn a small fixed-scope build into an unnecessary audit.",
       },
       {
         signal: "SEO, routes, apps, or analytics are business-critical.",
-        strongerMove: "Audit the launch risks before estimating implementation.",
+        strongerMove: "Use a paid Scope & Risk Review before final pricing.",
         caution: "Migration surprises are cheaper to catch before code is underway.",
       },
       {
@@ -1168,27 +1168,27 @@ const SERVICE_PAGE_ENRICHMENTS = {
     ],
     contextualLinks: [
       {
-        href: "/shopify-hydrogen-fit-audit",
-        label: "Dedicated audit offer",
-        note: "Fixed-scope package details, timeline, and outcomes.",
+        href: "/shopify-hydrogen-packages",
+        label: "Build packages",
+        note: "Starter, Standard, Growth, and Custom scopes before paid review.",
       },
       {
         href: "/shopify-hydrogen-cost",
         label: "Cost planning",
-        note: "Translate audit findings into realistic budget ranges.",
+        note: "Translate requirements into $2K-$5K package pricing.",
       },
     ],
     auditOffer: {
-      name: "Shopify Hydrogen Fit & Risk Audit",
-      price: "$1.5K-$5K starting range",
-      timeline: "5-10 business days depending on store complexity",
-      format: "Written memo plus Loom walkthrough",
+      name: "Paid Scope & Risk Review",
+      price: "$300-$750",
+      timeline: "Usually 2-4 business days depending on risk clarity",
+      format: "Written notes plus async walkthrough when useful",
       outcomes: [
-        "Stay on Liquid",
-        "Refactor Liquid",
-        "Run focused optimization",
-        "Migrate to Hydrogen",
-        "Delay rebuild",
+        "Starter Storefront",
+        "Standard Storefront",
+        "Growth Storefront",
+        "Custom Hydrogen scope",
+        "Liquid cleanup or no rebuild",
       ],
     },
   },
@@ -1274,29 +1274,29 @@ const SERVICE_PAGE_ENRICHMENTS = {
   },
   "shopify-hydrogen-cost": {
     uniqueSection: {
-      eyebrow: "Budget drivers",
-      title: "What makes a Hydrogen project expensive.",
+      eyebrow: "Pricing by scope",
+      title: "Pricing is based on project scope, not traffic.",
       body: [
-        "Hydrogen cost rises when the storefront stops being a theme replacement and becomes a custom commerce application. The expensive parts are not only pages. They are design complexity, catalog behavior, integrations, route and SEO preservation, analytics and consent, content modeling, QA depth, launch support, and post-launch ownership.",
-        "A lean Hydrogen build may be reasonable when the brand has a focused product model and clear launch scope. A complex Plus migration becomes expensive when the store has high SEO exposure, multiple app dependencies, unusual merchandising rules, international or B2B needs, and a team that needs launch assurance.",
-        "The budget conversation should also include the wrong answer. Hydrogen may be the wrong investment if the current problems can be solved with Liquid, if there is no plan for maintenance, or if the brand wants a custom storefront mainly because it sounds premium.",
+        "Pricing is based on project scope, not traffic, pageviews, or store size. A lean Hydrogen storefront can start around $2,000 when the scope is clear: core pages, product flow, cart drawer, Shopify checkout handoff, and basic account entry.",
+        "More complex work increases the price when it adds custom filters, integrations, content models, migration risk, analytics, SEO preservation, or post-launch support.",
+        "A $2K Hydrogen build is not a full replatforming project. It is a focused storefront launch with a limited number of routes and features. If the project requires migration planning, advanced filtering, custom search, subscriptions, B2B, multiple apps, or SEO-risky URL changes, the scope moves into the $3K-$5K or custom range.",
       ],
     },
     decisionTable: [
       {
-        signal: "Scope is mostly advisory and risk review.",
-        strongerMove: "Budget for the audit range.",
-        caution: "Do not ask for a full build quote before risks are known.",
+        signal: "Core pages, product flow, cart drawer, checkout handoff, and basic account entry are enough.",
+        strongerMove: "Hydrogen Starter Storefront.",
+        caution: "Keep advanced filters, subscriptions, B2B, and large migration out of scope.",
       },
       {
-        signal: "Custom UX, migration, integrations, and SEO risk all overlap.",
-        strongerMove: "Plan for growth-stage or complex migration budget.",
-        caution: "Low estimates usually hide launch and maintenance assumptions.",
+        signal: "Search, basic filters, content templates, reviews, analytics, and metadata baseline are needed.",
+        strongerMove: "Hydrogen Standard or Growth Storefront.",
+        caution: "Price depends on exact templates, components, integrations, and launch QA.",
       },
       {
-        signal: "The brand wants theme polish on a small budget.",
-        strongerMove: "Stay in Liquid.",
-        caution: "Hydrogen can be overkill for straightforward theme work.",
+        signal: "Migration risk, advanced search, B2B, subscriptions, app replacement, or custom product logic appears.",
+        strongerMove: "Custom Hydrogen Scope.",
+        caution: "Do not force complex projects into a $2K fixed-scope package.",
       },
     ],
     contextualLinks: [
@@ -1312,11 +1312,10 @@ const SERVICE_PAGE_ENRICHMENTS = {
       },
     ],
     pricingRows: [
-      { engagement: "Hydrogen fit / risk audit", range: "$1.5K-$5K" },
-      { engagement: "Focused SEO / performance cleanup", range: "$3K-$12K" },
-      { engagement: "Lean Hydrogen build", range: "$15K-$30K" },
-      { engagement: "Growth-stage custom storefront", range: "$30K-$60K" },
-      { engagement: "Complex Plus migration", range: "$60K-$100K+" },
+      { engagement: "Hydrogen Starter Storefront", range: "Starting at $2,000" },
+      { engagement: "Hydrogen Standard Storefront", range: "$3,000-$3,500" },
+      { engagement: "Hydrogen Growth Storefront", range: "$4,500-$5,000" },
+      { engagement: "Custom Hydrogen Scope", range: "$5K+" },
     ],
     wrongFitNotes: [
       "The main issue is a small visual theme change.",
@@ -1327,12 +1326,12 @@ const SERVICE_PAGE_ENRICHMENTS = {
   },
   "custom-hydrogen-storefront-development": {
     uniqueSection: {
-      eyebrow: "Custom UX",
-      title: "When custom storefront UX earns its maintenance cost.",
+      eyebrow: "Start lean",
+      title: "Start lean, then expand.",
       body: [
-        "A custom Hydrogen storefront earns its cost when the buying experience cannot be expressed cleanly in theme constraints. That might mean richer product discovery, high-trust luxury presentation, unusual PDP logic, content-led commerce, complex mobile journeys, or merchandising patterns that need application-level control.",
-        "The caution is that custom UX also creates custom responsibility. Every route, component, data dependency, image strategy, and content workflow needs an owner. A good Hydrogen build keeps the first launch focused enough to ship, but structured enough to grow without becoming a pile of one-off product pages.",
-        "The build should be justified by the customer journey, not by the architecture label. If the same outcome can be reached with Liquid, that is usually the cheaper and safer move.",
+        "The first version should prove the storefront direction before the project becomes a full migration. Starter and Standard builds keep the first launch focused. Growth and Custom scopes add complexity only when the business case is clear.",
+        "A lean custom storefront can cover the core ecommerce flow: landing page, collection listing, product detail page, cart drawer, checkout handoff, account entry, and basic SEO. That is the right entry point when the brand needs more control than a theme but does not need enterprise scope.",
+        "For advanced search, custom filters, B2B, subscriptions, complex content models, or SEO-risky migration, the project becomes a custom scope.",
       ],
     },
     decisionTable: [
@@ -1585,8 +1584,8 @@ const SERVICE_SOURCE_METADATA = {
 
 const SERVICE_OFFER_SNAPSHOTS = {
   "shopify-hydrogen-agency-alternative": {
-    entryPoint: "Hydrogen fit audit or senior scoping sprint",
-    typicalTimeline: "5-10 business days for audit, 2-3 weeks for deeper scope",
+    entryPoint: "Hydrogen scope review or senior scoping sprint",
+    typicalTimeline: "Free first pass first; deeper scope timing depends on risk",
     expectedOutput: "A clear decision path: audit, migration, build, optimization, support, Liquid, or no rebuild",
     qualification: "Best when stakeholders are comparing agency options but need Hydrogen-specific judgment first.",
   },
@@ -1598,31 +1597,31 @@ const SERVICE_OFFER_SNAPSHOTS = {
   },
   "shopify-hydrogen-developer": {
     entryPoint: "Senior development support or implementation scope",
-    typicalTimeline: "2-6 weeks for focused work, 6-16 weeks for broader builds",
+    typicalTimeline: "Focused package timelines depend on approved routes, design readiness, integrations, and launch QA",
     expectedOutput: "Production-ready Hydrogen routes, components, Storefront API work, QA, and launch support",
     qualification: "Best when Hydrogen is already likely and the team needs senior implementation ownership.",
   },
   "shopify-hydrogen-expert": {
-    entryPoint: "Expert-fit review, direct senior support, or Fit & Risk Audit",
-    typicalTimeline: "2-5 business days for first-pass review, 5-10 business days for audit",
+    entryPoint: "Expert-fit review, direct senior support, or scope review",
+    typicalTimeline: "2-5 business days for first-pass review; paid review only when risk is unclear",
     expectedOutput: "Clear recommendation on direct expert support, audit, agency scope, Liquid cleanup, or no rebuild",
     qualification: "Best when the buyer wants one accountable Hydrogen specialist before committing scope.",
   },
   "shopify-hydrogen-experts": {
-    entryPoint: "Expert-fit review, Fit & Risk Audit, or senior implementation scope",
-    typicalTimeline: "3-5 business days for first-pass evaluation, 5-10 business days for audit",
+    entryPoint: "Expert-fit review, scope review, or senior implementation scope",
+    typicalTimeline: "3-5 business days for first-pass evaluation; paid review only when risk is unclear",
     expectedOutput: "Vendor-path recommendation with proof, risk, SEO, implementation, and maintenance notes",
     qualification: "Best when stakeholders are comparing Hydrogen experts, agencies, and direct senior support.",
   },
   "hydrogen-strategy-fit-audit": {
-    entryPoint: "Shopify Hydrogen Fit & Risk Audit",
-    typicalTimeline: "5-10 business days",
-    expectedOutput: "Written decision memo plus walkthrough with recommended next step",
-    qualification: "Best before rebuild budget moves or when an agency scope feels too broad.",
+    entryPoint: "Free first-pass scope review or optional paid Scope & Risk Review",
+    typicalTimeline: "Free first pass first; 2-4 business days when paid risk review is needed",
+    expectedOutput: "Starter, Standard, Growth, Custom, Liquid cleanup, or no rebuild recommendation",
+    qualification: "Best before a fixed-scope build when requirements or launch risks may affect the estimate.",
   },
   "liquid-to-hydrogen-migration": {
     entryPoint: "Migration scope and route-risk planning",
-    typicalTimeline: "2-4 weeks for planning, 6-16 weeks for implementation depending on complexity",
+    typicalTimeline: "2-4 weeks for planning; implementation depends on route count, integrations, SEO risk, and catalog complexity",
     expectedOutput: "Migration plan, route map, storefront implementation, analytics checks, QA, and launch support",
     qualification: "Best when the current Liquid theme is truly blocking the buying experience or feature velocity.",
   },
@@ -1633,16 +1632,16 @@ const SERVICE_OFFER_SNAPSHOTS = {
     qualification: "Best when a Hydrogen storefront is live or close to launch and search signals need discipline.",
   },
   "shopify-hydrogen-cost": {
-    entryPoint: "Budget sanity review",
-    typicalTimeline: "3-5 business days for first-pass guidance, longer when technical review is required",
-    expectedOutput: "Planning range, budget drivers, risk notes, and recommended first paid step",
-    qualification: "Best when stakeholders need cost confidence before approving audit, migration, or build work.",
+    entryPoint: "Free scope review for Starter, Standard, Growth, or Custom fit",
+    typicalTimeline: "Depends on route count, design readiness, integrations, migration risk, and launch QA",
+    expectedOutput: "Package fit, budget drivers, risk notes, and recommended next step",
+    qualification: "Best when stakeholders need to understand why a build is $2K, $3K-$3.5K, $4.5K-$5K, or custom.",
   },
   "custom-hydrogen-storefront-development": {
-    entryPoint: "Custom storefront build scope",
-    typicalTimeline: "6-16 weeks for many scoped Hydrogen builds",
-    expectedOutput: "Custom Hydrogen storefront surfaces, product flows, content model integration, performance and launch QA",
-    qualification: "Best when theme constraints block a real product, content, or mobile buying journey.",
+    entryPoint: "Starter, Standard, Growth, or Custom build scope",
+    typicalTimeline: "Package timeline depends on templates, components, integrations, and migration risk",
+    expectedOutput: "Lean Hydrogen storefront surfaces, product flows, cart behavior, checkout handoff, performance and launch QA",
+    qualification: "Best when theme constraints block a real product, content, or mobile buying journey but the first launch should stay fixed-scope.",
   },
   "hydrogen-performance-seo-ux-optimization": {
     entryPoint: "Performance, SEO, and UX cleanup sprint",

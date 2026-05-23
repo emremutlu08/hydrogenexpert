@@ -131,12 +131,12 @@ export default function ShouldIUseItPage() {
                 ],
               },
               {
-                title: "3-4 yes answers: run a Fit & Risk Audit",
+                title: "3-4 yes answers: request a scope review",
                 body:
                   "Hydrogen may be justified, but the decision needs scope discipline. Before rebuild budget moves, review the current storefront constraint, SEO risk, app stack, analytics, migration complexity, and maintenance readiness.",
                 links: [
-                  { href: "/shopify-hydrogen-audit", label: "Start with a Fit & Risk Audit" },
-                  { href: "/shopify-hydrogen-cost", label: "Review Hydrogen cost ranges" },
+                  { href: "/shopify-hydrogen-audit", label: "Request Scope Review" },
+                  { href: "/shopify-hydrogen-packages", label: "View Build Packages" },
                 ],
               },
               {
@@ -145,7 +145,7 @@ export default function ShouldIUseItPage() {
                   "The store is likely running into custom UX, performance, merchandising, or growth-stage limits that a theme may not solve cleanly. The next step is not a rushed rebuild; it is a scoped Hydrogen plan with migration, SEO, data, launch, and maintenance ownership defined.",
                 links: [
                   { href: "/liquid-to-hydrogen-migration", label: "Plan a Liquid to Hydrogen migration" },
-                  { href: "/contact", label: "Request a Hydrogen Fit Review" },
+                  { href: "/contact", label: "Request Scope Review" },
                 ],
               },
             ].map((card) => (

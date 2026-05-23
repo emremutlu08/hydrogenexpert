@@ -685,6 +685,10 @@ select {
   @apply text-[0.72rem] font-bold uppercase tracking-[0.16em] text-neutral-300;
 }
 
+.lead-form-field legend {
+  @apply text-[0.72rem] font-bold uppercase tracking-[0.16em] text-neutral-300;
+}
+
 .lead-form-field input,
 .lead-form-field select,
 .lead-form-field textarea {
@@ -698,6 +702,22 @@ select {
 
 .lead-form-field option {
   @apply bg-[#171717] text-white;
+}
+
+.lead-form-choice-grid {
+  @apply grid gap-2 sm:grid-cols-2;
+}
+
+.lead-form-choice {
+  @apply flex min-h-11 items-center gap-3 rounded-[1rem] border border-white/14 bg-white/[0.06] px-3 py-2 text-sm leading-6 text-neutral-200;
+}
+
+.lead-form-choice input {
+  @apply h-4 min-h-0 w-4 shrink-0 appearance-auto rounded border-white/30 p-0 accent-[#10b981];
+}
+
+.lead-form-choice span {
+  @apply text-sm font-medium normal-case tracking-normal text-neutral-200;
 }
 
 .lead-form-note {

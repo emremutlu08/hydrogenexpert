@@ -23,7 +23,7 @@ export function QuizResult({ score, answers, emailAnchorId }: QuizResultProps) {
         }
       : score <= 4
         ? {
-            title: `Your score: ${score}/${totalAnswers} - run a Fit & Risk Audit`,
+            title: `Your score: ${score}/${totalAnswers} - request a scope review`,
             body:
               "Hydrogen may be justified, but the decision needs scope discipline. Before rebuild budget moves, review the current storefront constraint, SEO risk, app stack, analytics, migration complexity, and maintenance readiness.",
             strongFit: true,

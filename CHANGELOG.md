@@ -13,6 +13,47 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 - Verification:
 - Manual follow-up:
 
+## 2026-05-24
+
+- PR: [#47 Reposition HydrogenExpert around fixed-scope packages](https://github.com/emremutlu08/hydrogenexpert/pull/47)
+- Branch: `codex/fixed-scope-hydrogen-packages`
+- Deployment: Preview deployment [hydrogenexpert-git-codex-fixed-scop-990e9a-emremutlu8s-projects.vercel.app](https://hydrogenexpert-git-codex-fixed-scop-990e9a-emremutlu8s-projects.vercel.app); local production build verified at `http://localhost:3016`.
+- Summary:
+  - Repositioned HydrogenExpert around senior-owned, AI-assisted, fixed-scope Shopify Hydrogen storefront builds from $2K-$5K.
+  - Added the dedicated `/shopify-hydrogen-packages` page and reusable package sections for Starter, Standard, Growth, and Custom Hydrogen scopes.
+  - Rebuilt cost, custom storefront, audit/scope review, US-friendly, homepage, contact, and footer paths around project requirements instead of premium agency pricing.
+  - Updated the lead capture form with package-aligned budget/service options, design readiness, product count, and needed feature fields.
+  - Added package relevance labels to portfolio proof and added price-driver, $2K scope boundary, Liquid-vs-Hydrogen, AI-assisted workflow, and pricing FAQ sections.
+- Files changed:
+  - `app/page.tsx`
+  - `app/shopify-hydrogen-packages/page.tsx`
+  - `app/contact/page.tsx`
+  - `app/case-studies/page.tsx`
+  - `app/case-studies/[slug]/page.tsx`
+  - `app/when-not-to-use-hydrogen/page.tsx`
+  - `components/HydrogenPackages.tsx`
+  - `components/LeadCaptureForm.tsx`
+  - `components/ServiceLandingPage.tsx`
+  - `components/DecisionLandingPage.tsx`
+  - `components/Footer.tsx`
+  - `lib/hydrogen-packages.ts`
+  - `lib/lead-qualification.ts`
+  - `lib/services.ts`
+  - `lib/decision-pages.ts`
+  - `lib/navigation.ts`
+  - `lib/sitemap-entries.ts`
+- Verification:
+  - `npm run typecheck`: passed.
+  - `npm run lint`: passed.
+  - `npm run test`: passed, 12 files and 45 tests.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed with no `Needs review` rows.
+  - `npm run build`: passed, 65 routes generated including `/shopify-hydrogen-packages`.
+  - Local Chrome QA on `/`, `/shopify-hydrogen-packages`, `/shopify-hydrogen-cost`, `/custom-shopify-hydrogen-storefront`, `/shopify-hydrogen-audit`, `/shopify-hydrogen-agency-usa`, and `/contact`: no old high-price ranges surfaced, package CTAs rendered, and no horizontal overflow.
+  - Local mobile Chrome QA on `/contact`: form appears before packages, new design/product/features fields render, and the form fits within the viewport.
+- Manual follow-up:
+  - After PR preview/deploy, verify production `/`, `/shopify-hydrogen-packages`, `/shopify-hydrogen-cost`, `/custom-shopify-hydrogen-storefront`, `/shopify-hydrogen-audit`, `/shopify-hydrogen-agency-usa`, `/contact`, `/sitemap.xml`, and `/llms.txt`.
+
 ## 2026-05-23
 
 - PR: [#46 Publish OOS collection production note](https://github.com/emremutlu08/hydrogenexpert/pull/46)

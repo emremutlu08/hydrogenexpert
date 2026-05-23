@@ -22,7 +22,7 @@ export const metadata = buildMetadata({
 const sections = [
   {
     title: "What the lead form collects",
-    body: "When you submit a project note, the form collects the name, email, store URL or brand, current stack, main problem, budget range, timeline, monthly revenue band, Shopify Plus status, help type, message, source path, and source kind needed to understand the inquiry and reply to it.",
+    body: "When you submit a project note, the form collects the name, email, store URL or brand, current stack, main problem, budget range, timeline, monthly revenue band, Shopify Plus status, help type, design status, product count, needed features, message, source path, and source kind needed to understand the inquiry and reply to it.",
   },
   {
     title: "How inquiry data is used",

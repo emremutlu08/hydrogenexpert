@@ -13,6 +13,7 @@ import { PageIntroSection } from "@/components/PageIntroSection";
 import { SelectedWorkGrid } from "@/components/SelectedWorkGrid";
 import { SectionHeader } from "@/components/SectionHeader";
 import { CASE_STUDIES } from "@/data/caseStudies";
+import { CASE_STUDY_PACKAGE_RELEVANCE } from "@/lib/hydrogen-packages";
 import { buildMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 import {
@@ -112,6 +113,10 @@ export default function CaseStudiesPage() {
                   <p className="mt-3 text-sm font-semibold uppercase tracking-[0.16em] text-[#10b981]">
                     {study.portfolioAngle}
                   </p>
+                  <p className="mt-3 rounded-[1rem] border border-black/8 bg-[#f6f7f7] px-4 py-3 text-sm leading-7 text-neutral-700">
+                    <strong className="text-neutral-900">Package relevance:</strong>{" "}
+                    {CASE_STUDY_PACKAGE_RELEVANCE[study.id]}
+                  </p>
                   <p className="mt-4 text-base leading-8 text-neutral-600">{study.problem}</p>
                 </div>
 
@@ -162,13 +167,13 @@ export default function CaseStudiesPage() {
                 note: "Use this when the next step is direct senior implementation support.",
               },
               {
-                href: "/shopify-hydrogen-audit",
-                label: "Start with a Fit & Risk Audit",
-                note: "Use this when the storefront decision still needs proof and risk review.",
+                href: "/shopify-hydrogen-packages",
+                label: "View Build Packages",
+                note: "Map this proof to Starter, Standard, Growth, Custom, or Liquid scope.",
               },
               {
                 href: "/contact",
-                label: "Request a Hydrogen Fit Review",
+                label: "Request Scope Review",
                 note: "Send the store URL and the constraint behind the project.",
               },
             ].map((item) => (

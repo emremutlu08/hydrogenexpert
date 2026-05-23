@@ -41,6 +41,8 @@ export const VERIFIED_PROFILE_URLS = [
 export const SITE_KEYWORDS = [
   "Shopify Hydrogen agency",
   "Shopify Hydrogen agency alternative",
+  "Shopify Hydrogen packages",
+  "Shopify Hydrogen fixed scope build",
   "Shopify Hydrogen developer",
   "Shopify Hydrogen development",
   "Shopify Hydrogen services",
@@ -82,7 +84,7 @@ export const TRUST_ITEMS = [
   "First in Turkey",
 ] as const;
 
-export const DEFAULT_CTA_HEADLINE = "Let’s scope the storefront your growth stage actually needs.";
+export const DEFAULT_CTA_HEADLINE = "Let’s scope the lean Hydrogen storefront you actually need.";
 
 export function getSiteUrl(): string {
   return (

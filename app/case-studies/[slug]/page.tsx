@@ -16,6 +16,7 @@ import {
   getCaseStudyBySlug,
   type CaseStudyId,
 } from "@/data/caseStudies";
+import { CASE_STUDY_PACKAGE_RELEVANCE } from "@/lib/hydrogen-packages";
 import { buildMetadata } from "@/lib/seo";
 import { absoluteUrl, getSchemaIds, OWNER, SITE_LOGO_PATH } from "@/lib/site";
 import {
@@ -141,8 +142,11 @@ export default async function CaseStudyDetailPage({
               <p className="mt-4 text-base leading-8 text-neutral-200">{study.portfolioAngle}</p>
             </div>
             <div className="rounded-[1.35rem] border border-black/8 bg-white p-6">
-              <p className="eyebrow">Role and stack</p>
+              <p className="eyebrow">Package relevance</p>
               <p className="mt-4 text-base leading-8 text-neutral-700">
+                {CASE_STUDY_PACKAGE_RELEVANCE[study.id]}
+              </p>
+              <p className="mt-3 text-sm leading-7 text-neutral-500">
                 {study.role} across {study.techStack.join(", ")}.
               </p>
             </div>
