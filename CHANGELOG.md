@@ -15,6 +15,41 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-24
 
+- PR: [#50 Post-launch lead funnel hardening](https://github.com/emremutlu08/hydrogenexpert/pull/50)
+- Branch: `codex/post-launch-lead-funnel-hardening`
+- Deployment: Preview deployment [hydrogenexpert-git-codex-post-launc-c44d57-emremutlu8s-projects.vercel.app](https://hydrogenexpert-git-codex-post-launc-c44d57-emremutlu8s-projects.vercel.app); local production build verified at `http://127.0.0.1:3017`.
+- Summary:
+  - Added a commercial launch verifier for the fixed-scope $2K-$5K positioning, package SEO metadata, sitemap inclusion, `llms.txt`, package internal links, and legacy pricing regression guardrails.
+  - Added lead-funnel analytics events for package CTAs, scope review CTAs, contact form start/submit, safe select changes, feature selection counts, proof links, Upwork, and LinkedIn without sending PII.
+  - Added `/thank-you`, package-specific brief templates, Liquid cleanup mini-offer routing, package relevance CTAs on case-study detail pages, and a noindex `/upwork-shopify-hydrogen` landing page.
+  - Added internal outreach copy assets for LinkedIn, Upwork proposals, and DM follow-ups.
+- Files changed:
+  - `app/page.tsx`
+  - `app/shopify-hydrogen-packages/page.tsx`
+  - `app/contact/page.tsx`
+  - `app/thank-you/page.tsx`
+  - `app/upwork-shopify-hydrogen/page.tsx`
+  - `app/case-studies/[slug]/page.tsx`
+  - `components/LeadCaptureForm.tsx`
+  - `components/ScopeReviewBriefTemplates.tsx`
+  - `components/LiquidCleanupMiniOffer.tsx`
+  - `lib/analytics.ts`
+  - `lib/commercial-launch-guard.ts`
+  - `scripts/verify-commercial-launch.ts`
+  - `content/internal/outreach/hydrogen-package-outreach.md`
+- Verification:
+  - `npm run typecheck`: passed.
+  - `npm run lint`: passed.
+  - `npm run test`: passed, 14 files and 54 tests.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed with no `Needs review` rows.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed, 67 routes generated.
+  - `COMMERCIAL_LAUNCH_BASE_URL=http://127.0.0.1:3017 npm run verify:commercial-launch`: passed.
+  - Playwright CLI smoke checks covered `/shopify-hydrogen-packages`, `/contact` at 390px, `/thank-you?budget=starter_2k`, and `/upwork-shopify-hydrogen`; only local Vercel Analytics/Speed Insights script 404s appeared.
+  - Protected Vercel preview verified with `vercel curl` for package canonical/title/copy, sitemap inclusion, `llms.txt`, contact templates, thank-you copy, and noindex Upwork page.
+- Manual follow-up:
+  - After merge/deploy, verify production `/`, `/shopify-hydrogen-packages`, `/shopify-hydrogen-cost`, `/contact`, `/thank-you?budget=starter_2k`, `/upwork-shopify-hydrogen`, `/sitemap.xml`, and `/llms.txt`.
+
 - PR: [#49 Narrow PR and live link rule to final replies](https://github.com/emremutlu08/hydrogenexpert/pull/49)
 - Branch: `codex/narrow-final-link-rule`
 - Deployment: Not required for a repo-local agent instruction wording change; live environment remains [hydrogenexpert.co](https://hydrogenexpert.co).

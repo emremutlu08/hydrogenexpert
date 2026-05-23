@@ -10,7 +10,8 @@
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
     "audit:shopify-claims": "tsx scripts/audit-shopify-claims.ts",
-    "validate:content": "tsx scripts/validate-content.ts"
+    "validate:content": "tsx scripts/validate-content.ts",
+    "verify:commercial-launch": "tsx scripts/verify-commercial-launch.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.95.2",

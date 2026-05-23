@@ -12,6 +12,7 @@ import { SelectedWorkGrid } from "@/components/SelectedWorkGrid";
 import { SectionHeader } from "@/components/SectionHeader";
 import { StatCardGrid } from "@/components/StatCardGrid";
 import { TrustBar } from "@/components/TrustBar";
+import { TrackedCTALink, TrackedProofLink } from "@/components/TrackedInternalLink";
 import { UdemyCourseCard } from "@/components/UdemyCourseCard";
 import { clientLogos } from "@/data/clientLogos";
 import { FOUNDER_STORY } from "@/lib/founder";
@@ -179,14 +180,15 @@ const proofCards = [
     id: "upwork",
     eyebrow: "Upwork",
     title: (
-      <Link
+      <TrackedProofLink
         href={OWNER.upwork}
-        target="_blank"
-        rel="noreferrer"
+        label={UPWORK_PROFILE.badge}
+        sourceKind="homepage_proof"
+        external
         className="transition hover:text-[#10b981]"
       >
         {UPWORK_PROFILE.badge}
-      </Link>
+      </TrackedProofLink>
     ),
     body:
       `A practical trust signal backed by ${UPWORK_PROFILE.totalHoursLabel} Upwork hours and public client feedback.`,
@@ -195,14 +197,15 @@ const proofCards = [
     id: "jss",
     eyebrow: "Reputation",
     title: (
-      <Link
+      <TrackedProofLink
         href={OWNER.upwork}
-        target="_blank"
-        rel="noreferrer"
+        label={`${UPWORK_PROFILE.jobSuccessScore} Job Success Score`}
+        sourceKind="homepage_proof"
+        external
         className="transition hover:text-[#10b981]"
       >
         {UPWORK_PROFILE.jobSuccessScore} Job Success Score
-      </Link>
+      </TrackedProofLink>
     ),
     body:
       "Proof of follow-through for merchants making a more serious storefront investment.",
@@ -225,14 +228,15 @@ const proofCards = [
     id: "teaching",
     eyebrow: "Teaching",
     title: (
-      <Link
+      <TrackedProofLink
         href={OWNER.udemyUrl}
-        target="_blank"
-        rel="noreferrer"
+        label={DELIVERY_PROOF.udemyCourseClaim}
+        sourceKind="homepage_proof"
+        external
         className="transition hover:text-[#10b981]"
       >
         {DELIVERY_PROOF.udemyCourseClaim}
-      </Link>
+      </TrackedProofLink>
     ),
     body:
       "Creator of the world's first English Shopify Hydrogen course on Udemy (110+ ratings).",
@@ -430,24 +434,34 @@ export default function HomePage() {
               performance - priced by project requirements, not traffic or pageviews.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-3">
-              <Link
+              <TrackedCTALink
                 href="/shopify-hydrogen-packages"
+                eventName="package_cta_click"
+                sourceKind="homepage_hero"
+                ctaLabel="View Build Packages"
+                packageName="All Hydrogen packages"
                 className="rounded-full bg-[#171717] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#10b981]"
               >
                 View Build Packages
-              </Link>
-              <Link
+              </TrackedCTALink>
+              <TrackedCTALink
                 href="/contact#fit-review-form"
+                eventName="scope_review_cta_click"
+                sourceKind="homepage_hero"
+                ctaLabel="Request Scope Review"
                 className="rounded-full border border-black/10 bg-white px-6 py-3 text-sm font-semibold text-[#171717] transition hover:border-[#10b981] hover:text-[#10b981]"
               >
                 Request Scope Review
-              </Link>
-              <Link
+              </TrackedCTALink>
+              <TrackedCTALink
                 href="/case-studies"
+                eventName="case_study_click"
+                sourceKind="homepage_hero"
+                ctaLabel="See Production Proof"
                 className="rounded-full border border-black/10 bg-white px-6 py-3 text-sm font-semibold text-[#171717] transition hover:border-[#10b981] hover:text-[#10b981]"
               >
                 See Production Proof
-              </Link>
+              </TrackedCTALink>
             </div>
             <p className="mx-auto max-w-3xl text-sm leading-7 text-neutral-600">
               Built by Emre Mutlu - Shopify Hydrogen developer, Upwork Top Rated Plus,

@@ -28,7 +28,7 @@ export function buildMetadata({
     description,
     robots,
     alternates: {
-      canonical: path,
+      canonical: url,
       types: {
         "application/rss+xml": "/feed.xml",
       },

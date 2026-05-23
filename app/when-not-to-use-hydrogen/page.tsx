@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { LiquidHydrogenDecisionSection } from "@/components/HydrogenPackages";
 import { JsonLd } from "@/components/JsonLd";
+import { LiquidCleanupMiniOffer } from "@/components/LiquidCleanupMiniOffer";
 import { PageIntroSection } from "@/components/PageIntroSection";
 import { buildMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
@@ -133,6 +134,7 @@ export default function WhenNotToUseHydrogenPage() {
         </section>
 
         <LiquidHydrogenDecisionSection />
+        <LiquidCleanupMiniOffer />
 
         <section className="hero-card space-y-5">
           <p className="dna-kicker text-[#8df1cb]">Still think Hydrogen might fit?</p>

@@ -102,7 +102,7 @@ export const HYDROGEN_BUILD_PACKAGES: readonly HydrogenBuildPackage[] = [
 ] as const;
 
 export const PACKAGE_PRICING_PRINCIPLE =
-  "Pricing is based on project scope, not traffic, pageviews, or store size.";
+  "Pricing is based on project scope, not traffic, not pageviews, or store size.";
 
 export const PACKAGE_SCOPE_COPY = [
   "A lean Hydrogen storefront can start around $2,000 when the scope is clear: core pages, product flow, cart drawer, Shopify checkout handoff, and basic account entry.",

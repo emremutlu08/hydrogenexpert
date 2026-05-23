@@ -1,9 +1,14 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import { usePathname } from "next/navigation";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 
-import { trackLeadFormView, trackLeadStart, trackLeadSubmit } from "@/lib/analytics";
+import {
+  trackLeadFormView,
+  trackLeadSelection,
+  trackLeadStart,
+  trackLeadSubmit,
+} from "@/lib/analytics";
 import {
   BUDGET_RANGE_OPTIONS,
   CURRENT_STACK_OPTIONS,
@@ -29,9 +34,11 @@ export function LeadCaptureForm({
   sourceKind,
   compact = false,
 }: LeadCaptureFormProps) {
+  const router = useRouter();
   const pathname = usePathname();
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [message, setMessage] = useState<string | null>(null);
+  const hasStarted = useRef(false);
   const sourcePath = pathname || "/";
 
   const formClassName = useMemo(
@@ -46,11 +53,58 @@ export function LeadCaptureForm({
     trackLeadFormView(sourceKind, sourcePath);
   }, [sourceKind, sourcePath]);
 
+  function markFormStarted() {
+    if (hasStarted.current) {
+      return;
+    }
+
+    hasStarted.current = true;
+    trackLeadStart(sourceKind, sourcePath);
+  }
+
+  function handleFieldChange(event: React.ChangeEvent<HTMLFormElement>) {
+    const target = event.target;
+
+    markFormStarted();
+
+    if (target instanceof HTMLSelectElement) {
+      const value = target.value || null;
+
+      if (target.name === "budgetRange") {
+        trackLeadSelection("budget_selected", { sourceKind, sourcePath, value });
+      }
+
+      if (target.name === "engagementType") {
+        trackLeadSelection("service_selected", { sourceKind, sourcePath, value });
+      }
+
+      if (target.name === "designStatus") {
+        trackLeadSelection("design_status_selected", { sourceKind, sourcePath, value });
+      }
+
+      if (target.name === "productCount") {
+        trackLeadSelection("product_count_selected", { sourceKind, sourcePath, value });
+      }
+    }
+
+    if (target instanceof HTMLInputElement && target.type === "checkbox" && target.name === "neededFeatures") {
+      const selectedFeaturesCount =
+        target.form?.querySelectorAll<HTMLInputElement>('input[name="neededFeatures"]:checked').length ?? 0;
+
+      trackLeadSelection("feature_selected", {
+        sourceKind,
+        sourcePath,
+        value: target.value,
+        selectedFeaturesCount,
+      });
+    }
+  }
+
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setStatus("submitting");
     setMessage(null);
-    trackLeadStart(sourceKind, sourcePath);
+    markFormStarted();
 
     const form = event.currentTarget;
     const formData = new FormData(form);
@@ -69,18 +123,22 @@ export function LeadCaptureForm({
       if (!response.ok || !payload.ok) {
         setStatus("error");
         setMessage(payload.error || "Something went wrong. Please try again.");
-        trackLeadSubmit(sourceKind, "error", analyticsDetails);
+        trackLeadSubmit(sourceKind, "error", analyticsDetails, sourcePath);
         return;
       }
 
       form.reset();
       setStatus("success");
       setMessage("Thanks. I have your note and will reply with the clearest next step.");
-      trackLeadSubmit(sourceKind, "success", analyticsDetails);
+      trackLeadSubmit(sourceKind, "success", analyticsDetails, sourcePath);
+      const budgetQuery = qualification.budgetRange
+        ? `?budget=${encodeURIComponent(qualification.budgetRange)}`
+        : "";
+      router.push(`/thank-you${budgetQuery}`);
     } catch {
       setStatus("error");
       setMessage("Something went wrong. Please try again.");
-      trackLeadSubmit(sourceKind, "error", analyticsDetails);
+      trackLeadSubmit(sourceKind, "error", analyticsDetails, sourcePath);
     }
   }
 
@@ -88,6 +146,8 @@ export function LeadCaptureForm({
     <section data-nosnippet aria-label="Project inquiry form">
       <form
         id="fit-review-form"
+        onFocusCapture={markFormStarted}
+        onChange={handleFieldChange}
         onSubmit={handleSubmit}
         className="lead-form-card lead-form-layout scroll-mt-32"
       >

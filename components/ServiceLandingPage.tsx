@@ -13,8 +13,10 @@ import {
   TwoKBuildBoundarySection,
 } from "@/components/HydrogenPackages";
 import { JsonLd } from "@/components/JsonLd";
+import { LiquidCleanupMiniOffer } from "@/components/LiquidCleanupMiniOffer";
 import { PageIntroSection } from "@/components/PageIntroSection";
 import { SectionHeader } from "@/components/SectionHeader";
+import { ScopeReviewBriefTemplates } from "@/components/ScopeReviewBriefTemplates";
 import type { Article } from "@/lib/articles";
 import { getPublicArticleBySlugForDate } from "@/lib/articles";
 import type { ServicePackage } from "@/lib/services";
@@ -402,6 +404,8 @@ export function ServiceLandingPage({ service }: ServiceLandingPageProps) {
             <PriceDriversSection />
             <TwoKBuildBoundarySection />
             <LiquidHydrogenDecisionSection />
+            <LiquidCleanupMiniOffer />
+            <ScopeReviewBriefTemplates />
             <AiAssistedWorkflowSection />
             <PricingFaqSection />
           </>
