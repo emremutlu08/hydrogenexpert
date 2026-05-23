@@ -56,6 +56,7 @@ export const ENGAGEMENT_TYPE_OPTIONS = [
   { value: "standard_build", label: "Standard Hydrogen build" },
   { value: "growth_build", label: "Growth Hydrogen build" },
   { value: "migration", label: "Liquid to Hydrogen migration" },
+  { value: "liquid_cleanup", label: "Liquid cleanup / section work" },
   { value: "performance_cleanup", label: "Hydrogen performance cleanup" },
   { value: "seo_cleanup", label: "Hydrogen SEO cleanup" },
   { value: "support", label: "Support retainer" },
@@ -172,10 +173,11 @@ export function leadQualificationToAnalyticsParams(
     budget_range: qualification.budgetRange,
     timeline: qualification.timeline,
     shopify_plus_status: qualification.shopifyPlusStatus,
+    service_type: qualification.engagementType,
     engagement_type: qualification.engagementType,
     design_status: qualification.designStatus,
     product_count: qualification.productCount,
-    needed_features: qualification.neededFeatures.join(","),
+    selected_features_count: String(qualification.neededFeatures.length),
   };
 }
 

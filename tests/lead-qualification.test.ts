@@ -76,10 +76,11 @@ describe("leadQualificationToAnalyticsParams", () => {
       budget_range: "standard_3k_35k",
       timeline: "1_3_months",
       shopify_plus_status: "unsure",
+      service_type: "standard_build",
       engagement_type: "standard_build",
       design_status: "adapt_existing",
       product_count: "20_100",
-      needed_features: "product_listing,cart_drawer",
+      selected_features_count: "2",
     });
   });
 });

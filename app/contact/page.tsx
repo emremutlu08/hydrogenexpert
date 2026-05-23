@@ -4,8 +4,10 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { HydrogenBuildPackages } from "@/components/HydrogenPackages";
 import { JsonLd } from "@/components/JsonLd";
 import { LeadCaptureForm } from "@/components/LeadCaptureForm";
+import { LiquidCleanupMiniOffer } from "@/components/LiquidCleanupMiniOffer";
 import { PageIntroSection } from "@/components/PageIntroSection";
 import { SectionHeader } from "@/components/SectionHeader";
+import { ScopeReviewBriefTemplates } from "@/components/ScopeReviewBriefTemplates";
 import { TrackedCTAButton } from "@/components/TrackedCTAButton";
 import { buildMetadata } from "@/lib/seo";
 import { OWNER, absoluteUrl } from "@/lib/site";
@@ -114,6 +116,8 @@ export default function ContactPage() {
         description="The form filters by real project requirements: design readiness, product count, feature needs, budget range, timeline, integrations, and migration risk."
         compact
       />
+      <ScopeReviewBriefTemplates />
+      <LiquidCleanupMiniOffer />
       </div>
     </>
   );

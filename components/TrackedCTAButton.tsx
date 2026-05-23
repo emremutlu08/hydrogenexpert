@@ -34,7 +34,7 @@ export function TrackedCTAButton({
       href={DESTINATIONS[destination]}
       target="_blank"
       rel="noreferrer"
-      onClick={() => trackCTA(destination, { sourceKind, sourcePath: trackingPath })}
+      onClick={() => trackCTA(destination, { sourceKind, sourcePath: trackingPath, ctaLabel: label })}
       className={className}
     >
       {label}

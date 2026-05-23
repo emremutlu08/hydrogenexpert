@@ -1,5 +1,4 @@
-import Link from "next/link";
-
+import { TrackedProofLink } from "@/components/TrackedInternalLink";
 import { OWNER, TRUST_ITEMS } from "@/lib/site";
 
 const TRUST_LINKS: Partial<Record<(typeof TRUST_ITEMS)[number], string | null>> = {
@@ -22,14 +21,15 @@ export function TrustBar() {
     }
 
     return (
-      <Link
+      <TrackedProofLink
         href={href}
-        target="_blank"
-        rel="noreferrer"
+        label={item}
+        sourceKind="trust_bar"
+        external
         className="text-center transition hover:text-[#10b981]"
       >
         {item}
-      </Link>
+      </TrackedProofLink>
     );
   }
 

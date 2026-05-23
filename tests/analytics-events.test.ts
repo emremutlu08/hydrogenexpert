@@ -4,8 +4,12 @@ import {
   trackAnchorCTA,
   trackBlogCardClick,
   trackCTA,
+  trackLeadStart,
+  trackLeadSelection,
   trackLeadFormView,
   trackLeadSubmit,
+  trackPackageCtaClick,
+  trackProofLinkClicked,
   trackQuizAnswer,
   trackQuizResult,
 } from "../lib/analytics";
@@ -38,8 +42,10 @@ describe("analytics events", () => {
         eventName: "cta_click",
         params: {
           destination: "upwork",
+          route: "/shopify-hydrogen-seo",
           source: "service:shopify-hydrogen-seo",
           source_path: "/shopify-hydrogen-seo",
+          source_section: "service:shopify-hydrogen-seo",
         },
       },
       {
@@ -47,8 +53,10 @@ describe("analytics events", () => {
         eventName: "cta_click_upwork",
         params: {
           destination: "upwork",
+          route: "/shopify-hydrogen-seo",
           source: "service:shopify-hydrogen-seo",
           source_path: "/shopify-hydrogen-seo",
+          source_section: "service:shopify-hydrogen-seo",
         },
       },
       {
@@ -56,8 +64,21 @@ describe("analytics events", () => {
         eventName: "upwork_click",
         params: {
           destination: "upwork",
+          route: "/shopify-hydrogen-seo",
           source: "service:shopify-hydrogen-seo",
           source_path: "/shopify-hydrogen-seo",
+          source_section: "service:shopify-hydrogen-seo",
+        },
+      },
+      {
+        command: "event",
+        eventName: "upwork_clicked",
+        params: {
+          destination: "upwork",
+          route: "/shopify-hydrogen-seo",
+          source: "service:shopify-hydrogen-seo",
+          source_path: "/shopify-hydrogen-seo",
+          source_section: "service:shopify-hydrogen-seo",
         },
       },
       {
@@ -65,8 +86,10 @@ describe("analytics events", () => {
         eventName: "service_page_cta_click",
         params: {
           destination: "upwork",
+          route: "/shopify-hydrogen-seo",
           source: "service:shopify-hydrogen-seo",
           source_path: "/shopify-hydrogen-seo",
+          source_section: "service:shopify-hydrogen-seo",
         },
       },
     ]);
@@ -86,13 +109,19 @@ describe("analytics events", () => {
       {
         command: "event",
         eventName: "lead_form_view",
-        params: { source: "contact_page", source_path: "/contact" },
+        params: {
+          route: "/contact",
+          source: "contact_page",
+          source_path: "/contact",
+          source_section: "contact_page",
+        },
       },
       {
         command: "event",
         eventName: "lead_form_submit",
         params: {
           source: "contact_page",
+          source_section: "contact_page",
           status: "success",
           engagement_type: "fit_audit",
         },
@@ -102,8 +131,49 @@ describe("analytics events", () => {
         eventName: "lead_form_submit_success",
         params: {
           source: "contact_page",
+          source_section: "contact_page",
           status: "success",
           engagement_type: "fit_audit",
+        },
+      },
+      {
+        command: "event",
+        eventName: "contact_form_submitted",
+        params: {
+          source: "contact_page",
+          source_section: "contact_page",
+          status: "success",
+          engagement_type: "fit_audit",
+        },
+      },
+    ]);
+  });
+
+  it("tracks contact form start as a funnel event", () => {
+    const gtag = vi.fn();
+    vi.stubGlobal("window", { gtag });
+
+    trackLeadStart("contact_page", "/contact");
+
+    expect(eventCalls(gtag)).toEqual([
+      {
+        command: "event",
+        eventName: "lead_form_start",
+        params: {
+          route: "/contact",
+          source: "contact_page",
+          source_path: "/contact",
+          source_section: "contact_page",
+        },
+      },
+      {
+        command: "event",
+        eventName: "contact_form_started",
+        params: {
+          route: "/contact",
+          source: "contact_page",
+          source_path: "/contact",
+          source_section: "contact_page",
         },
       },
     ]);
@@ -124,8 +194,10 @@ describe("analytics events", () => {
         command: "event",
         eventName: "audit_cta_click",
         params: {
+          route: "/shopify-hydrogen-fit-audit",
           source: "fit_audit_cta",
           source_path: "/shopify-hydrogen-fit-audit",
+          source_section: "fit_audit_cta",
           target: "/contact",
         },
       },
@@ -133,8 +205,10 @@ describe("analytics events", () => {
         command: "event",
         eventName: "cta_click_fit_audit",
         params: {
+          route: "/shopify-hydrogen-fit-audit",
           source: "fit_audit_cta",
           source_path: "/shopify-hydrogen-fit-audit",
+          source_section: "fit_audit_cta",
           target: "/contact",
         },
       },
@@ -163,8 +237,21 @@ describe("analytics events", () => {
         command: "event",
         eventName: "cta_click_email_brief",
         params: {
+          route: "/",
           source: "footer_start_here",
           source_path: "/",
+          source_section: "footer_start_here",
+          target: "/contact#fit-review-form",
+        },
+      },
+      {
+        command: "event",
+        eventName: "scope_review_cta_click",
+        params: {
+          route: "/",
+          source: "footer_start_here",
+          source_path: "/",
+          source_section: "footer_start_here",
           target: "/contact#fit-review-form",
         },
       },
@@ -193,6 +280,97 @@ describe("analytics events", () => {
           content_slug: "shopify-hydrogen-product-description-ssr-seo",
           content_type: "blog",
           source_path: "/blog",
+        },
+      },
+    ]);
+  });
+
+  it("tracks package CTAs, form selections, and proof links without PII", () => {
+    const gtag = vi.fn();
+    vi.stubGlobal("window", { gtag });
+
+    trackPackageCtaClick({
+      packageName: "Hydrogen Starter Storefront",
+      ctaLabel: "Request Scope Review",
+      sourceKind: "package_cards",
+      sourcePath: "/shopify-hydrogen-packages",
+    });
+    trackLeadSelection("budget_selected", {
+      sourceKind: "contact_page",
+      sourcePath: "/contact",
+      value: "starter_2k",
+    });
+    trackLeadSelection("feature_selected", {
+      sourceKind: "contact_page",
+      sourcePath: "/contact",
+      value: "cart_drawer",
+      selectedFeaturesCount: 3,
+    });
+    trackProofLinkClicked({
+      proofLabel: "Top Rated Plus",
+      href: "https://example.com/upwork",
+      sourceKind: "trust_bar",
+      sourcePath: "/",
+    });
+
+    expect(eventCalls(gtag)).toEqual([
+      {
+        command: "event",
+        eventName: "package_cta_click",
+        params: {
+          cta_label: "Request Scope Review",
+          package_name: "Hydrogen Starter Storefront",
+          route: "/shopify-hydrogen-packages",
+          source: "package_cards",
+          source_path: "/shopify-hydrogen-packages",
+          source_section: "package_cards",
+        },
+      },
+      {
+        command: "event",
+        eventName: "scope_review_cta_click",
+        params: {
+          cta_label: "Request Scope Review",
+          package_name: "Hydrogen Starter Storefront",
+          route: "/shopify-hydrogen-packages",
+          source: "package_cards",
+          source_path: "/shopify-hydrogen-packages",
+          source_section: "package_cards",
+        },
+      },
+      {
+        command: "event",
+        eventName: "budget_selected",
+        params: {
+          budget_range: "starter_2k",
+          route: "/contact",
+          source: "contact_page",
+          source_path: "/contact",
+          source_section: "contact_page",
+        },
+      },
+      {
+        command: "event",
+        eventName: "feature_selected",
+        params: {
+          feature: "cart_drawer",
+          route: "/contact",
+          selected_features_count: "3",
+          source: "contact_page",
+          source_path: "/contact",
+          source_section: "contact_page",
+        },
+      },
+      {
+        command: "event",
+        eventName: "proof_link_clicked",
+        params: {
+          proof_label: "Top Rated Plus",
+          route: "/",
+          source: "trust_bar",
+          source_path: "/",
+          source_section: "trust_bar",
+          target: "https://example.com/upwork",
         },
       },
     ]);

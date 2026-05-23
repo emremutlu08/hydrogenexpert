@@ -1,7 +1,6 @@
-import Link from "next/link";
-
 import { FaqSection } from "@/components/FaqSection";
 import { SectionHeader } from "@/components/SectionHeader";
+import { TrackedPackageCTALink } from "@/components/TrackedInternalLink";
 import {
   AI_WORKFLOW_COPY,
   AUDIT_REVIEW_OPTIONS,
@@ -90,12 +89,15 @@ export function HydrogenBuildPackages({
               </div>
             </div>
 
-            <Link
+            <TrackedPackageCTALink
               href="/contact#fit-review-form"
+              packageName={buildPackage.name}
+              ctaLabel="Request Scope Review"
+              sourceKind="package_cards"
               className="mt-6 inline-flex min-h-11 items-center justify-center rounded-full bg-[#171717] px-4 py-3 text-sm font-semibold text-white transition hover:bg-[#10b981]"
             >
               Request Scope Review
-            </Link>
+            </TrackedPackageCTALink>
           </article>
         ))}
       </div>

@@ -13,6 +13,7 @@ import {
 import { JsonLd } from "@/components/JsonLd";
 import { PageIntroSection } from "@/components/PageIntroSection";
 import { SectionHeader } from "@/components/SectionHeader";
+import { ScopeReviewBriefTemplates } from "@/components/ScopeReviewBriefTemplates";
 import { CASE_STUDIES } from "@/data/caseStudies";
 import {
   CASE_STUDY_PACKAGE_RELEVANCE,
@@ -102,6 +103,7 @@ export default function ShopifyHydrogenPackagesPage() {
 
         <HydrogenBuildPackages />
         <PriceDriversSection />
+        <ScopeReviewBriefTemplates />
         <TwoKBuildBoundarySection />
         <LiquidHydrogenDecisionSection />
         <AiAssistedWorkflowSection />

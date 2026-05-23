@@ -149,6 +149,14 @@ export default async function CaseStudyDetailPage({
               <p className="mt-3 text-sm leading-7 text-neutral-500">
                 {study.role} across {study.techStack.join(", ")}.
               </p>
+              <Link
+                href={isHydrogenCaseStudy(study.id) ? "/shopify-hydrogen-packages" : "/when-not-to-use-hydrogen"}
+                className="mt-5 inline-flex min-h-11 items-center rounded-full bg-[#171717] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#10b981]"
+              >
+                {isHydrogenCaseStudy(study.id)
+                  ? "Need a leaner version of this? View Hydrogen packages from $2K-$5K."
+                  : "Not every store needs Hydrogen. Read when Liquid is the better move."}
+              </Link>
             </div>
           </section>
 
@@ -276,6 +284,10 @@ export default async function CaseStudyDetailPage({
       </div>
     </>
   );
+}
+
+function isHydrogenCaseStudy(studyId: CaseStudyId) {
+  return studyId === "eveshop" || studyId === "bayam" || studyId === "rebel-bunny";
 }
 
 function getCaseStudyLimitation(studyId: CaseStudyId) {
