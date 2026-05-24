@@ -227,6 +227,13 @@ export function trackBlogCardClick(
   });
 }
 
+export function trackChecklistCopy(context: { templateId: string; templateTitle: string }) {
+  sendEvent("checklist_copy", {
+    template_id: context.templateId,
+    template_title: context.templateTitle,
+  });
+}
+
 export function trackScrollDepth(slug: string) {
   if (typeof window === "undefined") {
     return () => undefined;

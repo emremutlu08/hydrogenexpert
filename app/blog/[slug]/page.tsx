@@ -7,10 +7,14 @@ import { CopyMarkdownButton } from "@/components/CopyMarkdownButton";
 import { CTASection } from "@/components/CTASection";
 import { JsonLd } from "@/components/JsonLd";
 import { PostVisual } from "@/components/PostVisual";
+import { ProductionNoteTemplate } from "@/components/ProductionNoteTemplate";
+import { RelatedLinks } from "@/components/RelatedLinks";
+import { getRelatedLinksForPath } from "@/lib/content-relations";
 import { getPostEnhancement } from "@/lib/post-enhancements";
 import { formatPostContent } from "@/lib/post-content";
 import { buildPostMarkdown } from "@/lib/post-markdown";
 import { getPublishedPostBySlug, getPublishedPostSlugs } from "@/lib/posts";
+import { getProductionNoteFrame } from "@/lib/production-notes";
 import { buildMetadata } from "@/lib/seo";
 import {
   OWNER,
@@ -107,10 +111,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       ? enhancement.heroVisual
       : getSafeCoverVisual(post.cover_image);
   const schemaIds = getSchemaIds();
+  const relatedLinks = getRelatedLinksForPath(`/blog/${post.slug}`);
+  const productionNoteFrame = getProductionNoteFrame(post.slug);
 
   const articleSchema = {
     "@context": "https://schema.org",
-    "@type": "BlogPosting",
+    "@type": "Article",
     headline: post.title,
     datePublished: post.published_at,
     dateModified: post.updated_at || post.published_at,
@@ -143,20 +149,24 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     },
   };
 
-  const faqSchema = visibleFaq
-    ? {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        mainEntity: visibleFaq.map((item) => ({
-          "@type": "Question",
-          name: item.question,
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: item.answer,
-          },
-        })),
-      }
-    : null;
+  const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": schemaIds.person,
+    name: OWNER.name,
+    jobTitle: OWNER.title,
+    url: OWNER.linkedIn,
+    sameAs: VERIFIED_PROFILE_URLS,
+  };
+
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": schemaIds.organization,
+    name: SITE_NAME,
+    url: absoluteUrl("/"),
+    logo: absoluteUrl(SITE_LOGO_PATH),
+  };
 
   const breadcrumbs = [
     { label: "Home", href: "/" },
@@ -180,7 +190,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <>
-      <JsonLd data={asSchemaArray(articleSchema, breadcrumbSchema, faqSchema)} />
+      <JsonLd data={asSchemaArray(articleSchema, breadcrumbSchema, personSchema, organizationSchema)} />
       <div className="page-shell">
         <article className="mx-auto max-w-4xl">
           <Breadcrumbs items={breadcrumbs} />
@@ -233,6 +243,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         {heroVisual.type !== "none" ? <PostVisual visual={heroVisual} /> : null}
 
         <article className="mx-auto max-w-4xl">
+          {productionNoteFrame ? <ProductionNoteTemplate frame={productionNoteFrame} /> : null}
           <div
             className="article-html mt-10"
             dangerouslySetInnerHTML={{ __html: formattedContent }}
@@ -301,6 +312,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           {enhancement.closingPitch ? (
             <p className="mt-10 text-lg leading-8 text-neutral-700">{enhancement.closingPitch}</p>
           ) : null}
+          <RelatedLinks
+            eyebrow="Related guides"
+            title="Related issues, templates, and next steps."
+            links={relatedLinks}
+            className="mt-10"
+          />
           <div data-blog-scroll-marker className="h-16 w-full" />
         </article>
 

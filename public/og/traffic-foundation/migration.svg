@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Liquid to Hydrogen by HydrogenExpert</title>
+  <desc id="desc">Routes, redirects, SEO, analytics, and launch QA.</desc>
+  <rect width="1200" height="630" fill="#171717"/>
+  <rect x="76" y="78" width="1048" height="474" rx="34" fill="#ffffff" stroke="#dfe3e3"/>
+  <text x="118" y="160" fill="#10b981" font-family="Arial, sans-serif" font-size="30" font-weight="700" letter-spacing="6">MIGRATION PLAN</text>
+  <text x="118" y="270" fill="#171717" font-family="Arial, sans-serif" font-size="76" font-weight="800">Liquid to Hydrogen</text>
+  <text x="120" y="354" fill="#5f6368" font-family="Arial, sans-serif" font-size="30">Routes, redirects, SEO, analytics, and launch QA.</text>
+  <rect x="118" y="430" width="250" height="58" rx="29" fill="#171717"/>
+  <text x="162" y="469" fill="#ffffff" font-family="Arial, sans-serif" font-size="24" font-weight="700">HydrogenExpert</text>
+  <rect x="842" y="142" width="200" height="200" rx="34" fill="#10b981" opacity="0.9"/>
+  <path d="M895 240h94M942 193v94" stroke="#ffffff" stroke-width="18" stroke-linecap="round"/>
+</svg>
