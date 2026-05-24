@@ -49,6 +49,11 @@ const SERVICE_ITEMS = [
 ] as const;
 
 const RESOURCE_ITEMS = [
+  { href: "/resources", label: "Resource Hub" },
+  { href: "/shopify-hydrogen-examples", label: "Hydrogen Examples" },
+  { href: "/shopify-hydrogen-issues", label: "Issue Library" },
+  { href: "/shopify-hydrogen-templates", label: "Templates & Checklists" },
+  { href: "/udemy-shopify-hydrogen-course-resources", label: "Udemy Course Resources" },
   { href: "/about", label: "About" },
   { href: "/what-is-hydrogen", label: "What Is Shopify Hydrogen?" },
   { href: "/shopify-hydrogen-expert", label: "Shopify Hydrogen Expert" },

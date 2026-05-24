@@ -5,9 +5,11 @@ import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CTASection } from "@/components/CTASection";
 import { JsonLd } from "@/components/JsonLd";
+import { RelatedLinks } from "@/components/RelatedLinks";
 import { getPublicArticleBySlug, getPublicArticleSlugsForDate } from "@/lib/articles";
+import { getRelatedLinksForPath } from "@/lib/content-relations";
 import { buildMetadata } from "@/lib/seo";
-import { OWNER, SITE_LOGO_PATH, SITE_NAME, absoluteUrl, getSchemaIds } from "@/lib/site";
+import { OWNER, SITE_LOGO_PATH, SITE_NAME, VERIFIED_PROFILE_URLS, absoluteUrl, getSchemaIds } from "@/lib/site";
 import {
   asSchemaArray,
   buildBreadcrumbListSchema,
@@ -88,10 +90,28 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     mainEntityOfPage: absoluteUrl(`/articles/${article.slug}`),
     url: absoluteUrl(`/articles/${article.slug}`),
   };
+  const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": schemaIds.person,
+    name: article.author,
+    jobTitle: OWNER.title,
+    url: OWNER.linkedIn,
+    sameAs: VERIFIED_PROFILE_URLS,
+  };
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": schemaIds.organization,
+    name: SITE_NAME,
+    url: absoluteUrl("/"),
+    logo: absoluteUrl(SITE_LOGO_PATH),
+  };
+  const relatedLinks = getRelatedLinksForPath(`/articles/${article.slug}`);
 
   return (
     <>
-      <JsonLd data={asSchemaArray(articleSchema, breadcrumbSchema)} />
+      <JsonLd data={asSchemaArray(articleSchema, breadcrumbSchema, personSchema, organizationSchema)} />
       <div className="page-shell">
         <article className="mx-auto max-w-4xl">
           <Breadcrumbs items={breadcrumbs} />
@@ -166,6 +186,13 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
               ))}
             </div>
           </section>
+
+          <RelatedLinks
+            eyebrow="Related guides"
+            title="Related issues, templates, and next steps."
+            links={relatedLinks}
+            className="mt-10"
+          />
         </article>
 
         <CTASection

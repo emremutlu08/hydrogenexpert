@@ -11,7 +11,10 @@
     "typecheck": "tsc --noEmit",
     "audit:shopify-claims": "tsx scripts/audit-shopify-claims.ts",
     "validate:content": "tsx scripts/validate-content.ts",
-    "verify:commercial-launch": "tsx scripts/verify-commercial-launch.ts"
+    "verify:commercial-launch": "tsx scripts/verify-commercial-launch.ts",
+    "report:traffic": "tsx scripts/report-traffic.ts",
+    "related:fill": "tsx scripts/fill-related-links.ts",
+    "og:generate": "tsx scripts/generate-og-images.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.95.2",

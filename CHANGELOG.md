@@ -15,6 +15,43 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-24
 
+- PR: [#51 Traffic Foundation](https://github.com/emremutlu08/hydrogenexpert/pull/51)
+- Branch: `codex/traffic-foundation`
+- Deployment: Preview deployment [hydrogenexpert-git-codex-traffic-fo-7ae11d-emremutlu8s-projects.vercel.app](https://hydrogenexpert-git-codex-traffic-fo-7ae11d-emremutlu8s-projects.vercel.app); production deployment verified at [hydrogenexpert.co](https://hydrogenexpert.co).
+- Summary:
+  - Added `/resources`, `/shopify-hydrogen-examples`, `/shopify-hydrogen-issues`, `/shopify-hydrogen-templates`, and `/udemy-shopify-hydrogen-course-resources` to remove verified 404 traffic-foundation slugs.
+  - Added resource clusters, 10 sourced Hydrogen examples, an issue symptom-to-fix library, 8 copyable checklist templates with PII-free `checklist_copy` tracking, and course companion routing.
+  - Added production-note framing for 5 existing blog posts, automated related-links metadata, Article/Breadcrumb/Person/Organization schema hygiene, route-specific OG assets, OG/report generators, and sitemap/nav/footer/homepage discovery links.
+- Files changed:
+  - `app/resources/page.tsx`
+  - `app/shopify-hydrogen-examples/page.tsx`
+  - `app/shopify-hydrogen-issues/page.tsx`
+  - `app/shopify-hydrogen-templates/page.tsx`
+  - `app/udemy-shopify-hydrogen-course-resources/page.tsx`
+  - `components/CopyChecklistButton.tsx`
+  - `components/ProductionNoteTemplate.tsx`
+  - `components/RelatedLinks.tsx`
+  - `lib/traffic-foundation.ts`
+  - `lib/content-relations.ts`
+  - `lib/production-notes.ts`
+  - `scripts/report-traffic.ts`
+  - `scripts/generate-og-images.ts`
+  - `scripts/fill-related-links.ts`
+- Verification:
+  - `npm run related:fill`: passed.
+  - `npm run report:traffic`: generated `content/internal/reports/traffic-2026-05-24.md`.
+  - `npm run og:generate`: generated 5 OG SVGs.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed with no `Needs review` rows.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run test`: passed, 15 files and 62 tests.
+  - `npm run build`: passed, 72 routes generated.
+  - Local Playwright production QA verified new routes as 200, examples ItemList JSON-LD, issue cards, copy checklist tracking, blog production-note frame, issue-library links, and no blog FAQPage schema.
+  - Vercel protected preview verified `/resources`, `/shopify-hydrogen-examples`, `/shopify-hydrogen-issues`, `/shopify-hydrogen-templates`, `/udemy-shopify-hydrogen-course-resources`, and `/sitemap.xml` as 200.
+- Manual follow-up:
+  - Watch the generated weekly traffic report and add Search Console export values once GSC data accumulates for the new routes.
+
 - PR: [#50 Post-launch lead funnel hardening](https://github.com/emremutlu08/hydrogenexpert/pull/50)
 - Branch: `codex/post-launch-lead-funnel-hardening`
 - Deployment: Preview deployment [hydrogenexpert-git-codex-post-launc-c44d57-emremutlu8s-projects.vercel.app](https://hydrogenexpert-git-codex-post-launc-c44d57-emremutlu8s-projects.vercel.app); local production build verified at `http://127.0.0.1:3017`.

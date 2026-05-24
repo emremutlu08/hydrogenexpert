@@ -3,6 +3,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import {
   trackAnchorCTA,
   trackBlogCardClick,
+  trackChecklistCopy,
   trackCTA,
   trackLeadStart,
   trackLeadSelection,
@@ -371,6 +372,27 @@ describe("analytics events", () => {
           source_path: "/",
           source_section: "trust_bar",
           target: "https://example.com/upwork",
+        },
+      },
+    ]);
+  });
+
+  it("tracks checklist copy events without personal data", () => {
+    const gtag = vi.fn();
+    vi.stubGlobal("window", { gtag });
+
+    trackChecklistCopy({
+      templateId: "launch-qa-checklist",
+      templateTitle: "Launch QA checklist",
+    });
+
+    expect(eventCalls(gtag)).toEqual([
+      {
+        command: "event",
+        eventName: "checklist_copy",
+        params: {
+          template_id: "launch-qa-checklist",
+          template_title: "Launch QA checklist",
         },
       },
     ]);

@@ -670,6 +670,58 @@ export const STATIC_PAGE_SOURCE_METADATA = {
       SOURCE_PACKS.emreProductionExperience,
     ],
   },
+  "/resources": {
+    lastVerified: "2026-05-24",
+    claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.hydrogenSeo,
+      SOURCE_PACKS.caseStudyEvidence,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "/shopify-hydrogen-examples": {
+    lastVerified: "2026-05-24",
+    claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.hydrogenDataFetching,
+      SOURCE_PACKS.hydrogenGithubDeployments,
+      SOURCE_PACKS.hydrogenSeo,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "/shopify-hydrogen-issues": {
+    lastVerified: "2026-05-24",
+    claimTypes: ["official_shopify_fact", "emre_experience", "seo_hypothesis"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenSeo,
+      SOURCE_PACKS.hydrogenAnalytics,
+      SOURCE_PACKS.storefrontCollection,
+      SOURCE_PACKS.storefrontProductFilter,
+      SOURCE_PACKS.storefrontMetaobjects,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "/shopify-hydrogen-templates": {
+    lastVerified: "2026-05-24",
+    claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.hydrogenSeo,
+      SOURCE_PACKS.hydrogenAnalytics,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "/udemy-shopify-hydrogen-course-resources": {
+    lastVerified: "2026-05-24",
+    claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.hydrogenSeo,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
   "/what-is-hydrogen": {
     lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
     claimTypes: ["official_shopify_fact", "commercial_opinion"],

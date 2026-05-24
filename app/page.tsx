@@ -471,6 +471,35 @@ export default function HomePage() {
           </div>
 
           <TrustBar />
+
+          <div className="mx-auto grid max-w-5xl gap-3 md:grid-cols-3">
+            {[
+              {
+                href: "/resources",
+                label: "Start at the resource hub",
+                note: "Guides, services, proof, issues, and templates in one map.",
+              },
+              {
+                href: "/shopify-hydrogen-examples",
+                label: "Study Hydrogen examples",
+                note: "Patterns with source links and production takeaways.",
+              },
+              {
+                href: "/shopify-hydrogen-templates",
+                label: "Copy a checklist",
+                note: "Scope, migration, launch, PDP, analytics, and content-model templates.",
+              },
+            ].map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="rounded-[1.2rem] border border-black/8 bg-white/96 p-5 text-left transition hover:border-[#10b981]"
+              >
+                <h2 className="text-base font-semibold text-[#171717]">{item.label}</h2>
+                <p className="mt-2 text-sm leading-7 text-neutral-600">{item.note}</p>
+              </Link>
+            ))}
+          </div>
         </section>
 
         <HydrogenBuildPackages />
