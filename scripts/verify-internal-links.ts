@@ -129,6 +129,7 @@ async function main() {
   console.log(
     `Internal link verification passed against ${baseUrl}: ${sitemapPaths.length} sitemap URL(s), ${internalHrefs.size} internal URL(s).`,
   );
+  process.exit(0);
 }
 
 main().catch((error) => {
