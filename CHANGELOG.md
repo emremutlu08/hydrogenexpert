@@ -17,7 +17,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 - PR: [#57 Add no-loss public surface guardrails](https://github.com/emremutlu08/hydrogenexpert/pull/57)
 - Branch: `codex/no-loss-guardrails`
-- Deployment: Preview/production deployment pending; public runtime behavior unchanged.
+- Deployment: Preview deployment [hydrogenexpert-git-codex-no-loss-gu-f82dd0-emremutlu8s-projects.vercel.app](https://hydrogenexpert-git-codex-no-loss-gu-f82dd0-emremutlu8s-projects.vercel.app); production deployment [hydrogenexpert-cbo3kw0wo-emremutlu8s-projects.vercel.app](https://hydrogenexpert-cbo3kw0wo-emremutlu8s-projects.vercel.app) verified at [hydrogenexpert.co](https://hydrogenexpert.co).
 - Summary:
   - Added agent-doc routing tests so `AGENTS.md`, canonical `agent-docs/` files, root compatibility stubs, and README canonical path stay aligned.
   - Expanded service registry tests for slug uniqueness, path/slug lookup helper behavior, source metadata, and offer snapshot completeness.
@@ -37,6 +37,8 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - `npm run validate:content`: passed.
   - `npm run audit:shopify-claims`: passed with no `Needs review` rows.
   - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed, 73 static pages generated.
+  - Protected Vercel preview verified `/`, `/sitemap.xml`, and `/llms.txt` as `200` through `vercel curl`.
+  - Production verified `/`, `/shopify-hydrogen-packages`, `/shopify-hydrogen-developer`, `/custom-shopify-hydrogen-storefront`, `/resources`, `/sitemap.xml`, `/robots.txt`, and `/llms.txt` as `200`.
 - Manual follow-up:
   - Use these guardrails before the service page and registry refactor PRs.
 
