@@ -15,6 +15,40 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-25
 
+- PR: [#58 Split service landing page sections](https://github.com/emremutlu08/hydrogenexpert/pull/58)
+- Branch: `codex/service-page-risk-cleanup`
+- Deployment: Preview/production deployment pending; public runtime behavior unchanged.
+- Summary:
+  - Kept the public `<ServiceLandingPage service={service} />` interface while turning `components/ServiceLandingPage.tsx` into a thin shell.
+  - Moved common service rendering, developer-only sections/schema/proof, pricing/package sections, audit sections, article links, and CTA helper logic into focused `components/service-landing/` modules.
+  - Updated agent architecture docs to mark the service page risk cleanup phase complete and keep the next registry refactor queued.
+- Files changed:
+  - `components/ServiceLandingPage.tsx`
+  - `components/service-landing/AuditServiceSections.tsx`
+  - `components/service-landing/CommonServiceSections.tsx`
+  - `components/service-landing/DeveloperServiceSections.tsx`
+  - `components/service-landing/PackageServiceSections.tsx`
+  - `components/service-landing/ServiceArticleSections.tsx`
+  - `components/service-landing/ServiceLandingUtils.ts`
+  - `agent-docs/CURRENT-STATE.md`
+  - `agent-docs/DECISIONS.md`
+  - `agent-docs/REPO-STRUCTURE.md`
+  - `agent-docs/TODO.md`
+  - `CHANGELOG.md`
+- Verification:
+  - `git diff --check`: passed.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run test`: passed, 21 files and 82 tests.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed with no `Needs review` rows.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed, 73 static pages generated.
+  - `INTERNAL_LINK_BASE_URL=http://127.0.0.1:3011 NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:internal-links`: passed with 55 sitemap URLs and 69 internal URLs.
+  - Local production smoke verified `/shopify-hydrogen-developer`, `/shopify-hydrogen-cost`, `/custom-shopify-hydrogen-storefront`, `/shopify-hydrogen-audit`, `/sitemap.xml`, and `/llms.txt` as `200`.
+  - Playwright browser smoke verified `/shopify-hydrogen-developer` H1, developer role section, and CTA render.
+- Manual follow-up:
+  - Continue with the service registry architecture split.
+
 - PR: [#57 Add no-loss public surface guardrails](https://github.com/emremutlu08/hydrogenexpert/pull/57)
 - Branch: `codex/no-loss-guardrails`
 - Deployment: Preview deployment [hydrogenexpert-git-codex-no-loss-gu-f82dd0-emremutlu8s-projects.vercel.app](https://hydrogenexpert-git-codex-no-loss-gu-f82dd0-emremutlu8s-projects.vercel.app); production deployment [hydrogenexpert-cbo3kw0wo-emremutlu8s-projects.vercel.app](https://hydrogenexpert-cbo3kw0wo-emremutlu8s-projects.vercel.app) verified at [hydrogenexpert.co](https://hydrogenexpert.co).
