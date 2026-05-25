@@ -26,7 +26,7 @@ describe("llms files", () => {
 
   it("includes public evergreen article routes in the full AI context", async () => {
     process.env.NEXT_PUBLIC_SITE_URL = siteUrl;
-    const llmsFull = await buildLlmsFullTxt();
+    const llmsFull = await buildLlmsFullTxt({ posts: [] });
     const articles = getPublicArticlesForDate(publicArticleDate);
 
     for (const article of articles) {

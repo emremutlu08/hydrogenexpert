@@ -3,9 +3,23 @@ export interface HydrogenBuildPackage {
   name: string;
   price: string;
   bestFor: string;
+  budgetOption: {
+    value: "starter_2k" | "standard_3k_35k" | "growth_45k_5k" | "custom_5k_plus";
+    label: string;
+    thankYouMessage?: string;
+  };
   includes: readonly string[];
   notIncluded: readonly string[];
 }
+
+export const PACKAGE_ROUTE = "/shopify-hydrogen-packages";
+
+export const PACKAGE_PAGE_SEO = {
+  title: "Shopify Hydrogen Packages | $2K-$5K Storefront Builds",
+  description:
+    "Fixed-scope Shopify Hydrogen storefront packages from $2K-$5K. Starter, Standard, and Growth builds priced by project requirements, not traffic or pageviews.",
+  path: PACKAGE_ROUTE,
+} as const;
 
 export const HYDROGEN_BUILD_PACKAGES: readonly HydrogenBuildPackage[] = [
   {
@@ -13,6 +27,12 @@ export const HYDROGEN_BUILD_PACKAGES: readonly HydrogenBuildPackage[] = [
     name: "Hydrogen Starter Storefront",
     price: "Starting at $2,000",
     bestFor: "A lean custom storefront with the core shopping flow.",
+    budgetOption: {
+      value: "starter_2k",
+      label: "Around $2K - Starter Storefront",
+      thankYouMessage:
+        "Starter requests are reviewed around core ecommerce flow: home, listing, PDP, cart drawer, checkout handoff, account entry, SEO baseline, and launch readiness.",
+    },
     includes: [
       "Home / landing page",
       "Collection / listing page",
@@ -42,6 +62,10 @@ export const HYDROGEN_BUILD_PACKAGES: readonly HydrogenBuildPackage[] = [
     name: "Hydrogen Standard Storefront",
     price: "$3,000-$3,500",
     bestFor: "DTC brands that need a more complete storefront than the Starter package.",
+    budgetOption: {
+      value: "standard_3k_35k",
+      label: "$3K-$3.5K - Standard Storefront",
+    },
     includes: [
       "Everything in Starter",
       "Search results page",
@@ -66,6 +90,10 @@ export const HYDROGEN_BUILD_PACKAGES: readonly HydrogenBuildPackage[] = [
     name: "Hydrogen Growth Storefront",
     price: "$4,500-$5,000",
     bestFor: "Brands that need a lean but more flexible Hydrogen storefront.",
+    budgetOption: {
+      value: "growth_45k_5k",
+      label: "$4.5K-$5K - Growth Storefront",
+    },
     includes: [
       "Everything in Standard",
       "Metaobjects-based content blocks",
@@ -92,6 +120,12 @@ export const HYDROGEN_BUILD_PACKAGES: readonly HydrogenBuildPackage[] = [
     price: "$5K+",
     bestFor:
       "Projects with migration risk, app complexity, B2B, large catalogs, advanced search, or custom product logic.",
+    budgetOption: {
+      value: "custom_5k_plus",
+      label: "$5K+ - Custom scope",
+      thankYouMessage:
+        "Custom requests are reviewed around migration risk, integrations, advanced search, B2B, subscriptions, content architecture, SEO preservation, and launch QA.",
+    },
     includes: ["Scoped after review."],
     notIncluded: [
       "Fixed-price package guarantee",
@@ -100,6 +134,28 @@ export const HYDROGEN_BUILD_PACKAGES: readonly HydrogenBuildPackage[] = [
     ],
   },
 ] as const;
+
+export const PACKAGE_BUDGET_RANGE_OPTIONS = HYDROGEN_BUILD_PACKAGES.map(
+  (buildPackage) => ({
+    value: buildPackage.budgetOption.value,
+    label: buildPackage.budgetOption.label,
+  }),
+);
+
+export const BUDGET_RANGE_OPTIONS = [
+  { value: "not_set", label: "Not set yet" },
+  ...PACKAGE_BUDGET_RANGE_OPTIONS,
+  { value: "retainer", label: "Retainer / ongoing support" },
+  { value: "not_sure", label: "Not sure yet" },
+] as const;
+
+export function getBudgetRangeReviewMessage(budget?: string) {
+  return (
+    HYDROGEN_BUILD_PACKAGES.find(
+      (buildPackage) => buildPackage.budgetOption.value === budget,
+    )?.budgetOption.thankYouMessage ?? null
+  );
+}
 
 export const PACKAGE_PRICING_PRINCIPLE =
   "Pricing is based on project scope, not traffic, not pageviews, or store size.";

@@ -3,7 +3,12 @@ import { join } from "node:path";
 
 import { afterEach, describe, expect, it, vi } from "vitest";
 
-import { isTrustedOrigin, safeCompare, verifyTurnstileToken } from "../lib/security";
+import {
+  checkRateLimitDurable,
+  isTrustedOrigin,
+  safeCompare,
+  verifyTurnstileToken,
+} from "../lib/security";
 
 const repoRoot = process.cwd();
 
@@ -67,6 +72,68 @@ describe("verifyTurnstileToken", () => {
     await expect(verifyTurnstileToken("")).resolves.toEqual({
       success: true,
       optional: true,
+    });
+  });
+});
+
+describe("checkRateLimitDurable", () => {
+  it("uses memory fallback when durable storage is unavailable and allowed", async () => {
+    await expect(
+      checkRateLimitDurable({
+        supabase: null,
+        scope: "test-memory-allowed",
+        identifier: crypto.randomUUID(),
+        limit: 1,
+        windowMs: 60_000,
+        fallbackPolicy: "memory",
+      }),
+    ).resolves.toMatchObject({
+      allowed: true,
+      reason: "within_limit",
+      status: 200,
+      backend: "memory",
+      degraded: true,
+    });
+  });
+
+  it("can fail closed when durable storage is unavailable", async () => {
+    await expect(
+      checkRateLimitDurable({
+        supabase: null,
+        scope: "test-deny",
+        identifier: crypto.randomUUID(),
+        limit: 1,
+        windowMs: 60_000,
+        fallbackPolicy: "deny",
+      }),
+    ).resolves.toEqual({
+      allowed: false,
+      reason: "backend_unavailable",
+      status: 503,
+      backend: "none",
+      degraded: true,
+    });
+  });
+
+  it("returns rate-limited status from durable storage", async () => {
+    const supabase = {
+      rpc: vi.fn().mockResolvedValue({ data: 2, error: null }),
+    };
+
+    await expect(
+      checkRateLimitDurable({
+        supabase: supabase as never,
+        scope: "test-supabase",
+        identifier: "127.0.0.1",
+        limit: 1,
+        windowMs: 60_000,
+      }),
+    ).resolves.toMatchObject({
+      allowed: false,
+      reason: "rate_limited",
+      status: 429,
+      backend: "supabase",
+      degraded: false,
     });
   });
 });

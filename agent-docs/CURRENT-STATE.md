@@ -22,6 +22,8 @@ This file summarizes the current repo shape so future agents can orient quickly.
 - `components/ServiceLandingPage.tsx` is now a thin shell over focused service landing section modules; keep checking public output during follow-up refactors.
 - `features/services/registry/` now separates service base data, enrichments, source metadata, offer snapshots, and lookup helpers; `lib/services.ts` remains a compatibility re-export.
 - Large content registry modules now live under feature/domain folders with `lib/` compatibility re-exports.
+- `features/public-discovery/` now centralizes static discovery route metadata, package SEO/discovery constants, llms core entries, and commercial verification route membership.
+- `features/lead-capture/` now owns lead request parsing, validation, fallback response payloads, and Supabase insert mapping while the route handler keeps security and orchestration.
 - Direct-composed resource, article, blog, and traffic-foundation pages were reviewed on 2026-05-25. No shared renderer was extracted because the remaining repetition is mostly local layout rhythm over different data shapes, while reusable pieces already exist in `PageIntroSection`, `SectionHeader`, `RelatedLinks`, `JsonLd`, and feature registries.
 - Treat compatibility re-exports as temporary migration support. Remove them only after imports have stabilized and tests confirm no public behavior changed.
 

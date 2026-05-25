@@ -1,7 +1,7 @@
 import { cache } from "react";
 
 import { getPublicArticles } from "@/lib/articles";
-import { getPublishedPosts } from "@/lib/posts";
+import { getPublishedPostListResult } from "@/lib/posts";
 
 export interface SiteNavItem {
   href: string;
@@ -9,8 +9,11 @@ export interface SiteNavItem {
 }
 
 export const getSiteNavigation = cache(async (): Promise<readonly SiteNavItem[]> => {
-  const [posts, articles] = await Promise.all([getPublishedPosts(), getPublicArticles()]);
-  const hasBlog = posts.length > 0;
+  const [postResult, articles] = await Promise.all([
+    getPublishedPostListResult(),
+    getPublicArticles(),
+  ]);
+  const hasBlog = postResult.status === "source_unavailable" || postResult.posts.length > 0;
   const hasArticles = articles.length > 0;
   const items: SiteNavItem[] = [
     { href: "/shopify-hydrogen-packages", label: "Packages" },

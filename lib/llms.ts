@@ -1,6 +1,7 @@
 import { CASE_STUDIES } from "../data/caseStudies";
+import { LLMS_CORE_PAGE_ENTRIES } from "../features/public-discovery/manifest";
 import { getPublicArticles } from "./articles";
-import { getPublishedPosts } from "./posts";
+import { getPublishedPostListResult, type PostSummary } from "./posts";
 import { SERVICE_PACKAGES } from "./services";
 import { DELIVERY_PROOF, OWNER, UPWORK_PROFILE, absoluteUrl, getSiteUrl } from "./site";
 
@@ -54,22 +55,24 @@ function buildPageIndex() {
         `${study.caseStudyTitle} for ${study.industry.toLowerCase()}. Portfolio angle: ${study.portfolioAngle}`,
       ),
   );
+  const coreLines = LLMS_CORE_PAGE_ENTRIES.flatMap((entry) => {
+    const line = llmsLink(entry.title, entry.path, entry.description);
+
+    if (entry.path === "/services") {
+      return [line, ...serviceLines];
+    }
+
+    if (entry.path === "/case-studies") {
+      return [line, ...caseStudyLines];
+    }
+
+    return [line];
+  });
 
   return [
     "## Core pages",
     "",
-    llmsLink("Home", "/", "Senior-led Shopify Hydrogen services, proof, case studies, and fit guidance."),
-    llmsLink("Packages", "/shopify-hydrogen-packages", "Fixed-scope Hydrogen Starter, Standard, Growth, and Custom package path from $2K-$5K."),
-    llmsLink("Services", "/services", "Overview of Hydrogen scope reviews, migrations, custom builds, performance, SEO, and support paths."),
-    ...serviceLines,
-    llmsLink("What Is Hydrogen", "/what-is-hydrogen", "Plain-English explanation of Shopify Hydrogen for Shopify Plus and growth-stage brands."),
-    llmsLink("Should I Use It", "/should-i-use-it", "Merchant decision guide for when Hydrogen is or is not commercially justified."),
-    llmsLink("Cost", "/shopify-hydrogen-cost", "Hydrogen package pricing, scope drivers, and maintenance-cost guidance."),
-    llmsLink("Case Studies", "/case-studies", "Approved production contexts for EveShop, Bayam Jewelry, Rebel Bunny, Kirazev, and Clohi."),
-    ...caseStudyLines,
-    llmsLink("Hire Me", "/hire-me", "Direct hiring page for a senior Shopify Hydrogen developer and advisor."),
-    llmsLink("Articles", "/articles", "Evergreen merchant guides for Hydrogen hiring, cost, SEO, migration, and fit decisions."),
-    llmsLink("Blog", "/blog", "Production notes on Hydrogen SEO, SSR content, metaobjects, variants, and performance."),
+    ...coreLines,
     "",
   ].join("\n");
 }
@@ -90,8 +93,23 @@ export function buildLlmsTxt() {
   ].join("\n");
 }
 
-export async function buildLlmsFullTxt() {
-  const [posts, articles] = await Promise.all([getPublishedPosts(), getPublicArticles()]);
+export async function buildLlmsFullTxt({
+  posts: providedPosts,
+}: {
+  posts?: readonly PostSummary[];
+} = {}) {
+  const [postResult, articles] = await Promise.all([
+    providedPosts
+      ? Promise.resolve({ status: "ok" as const, posts: providedPosts })
+      : getPublishedPostListResult(),
+    getPublicArticles(),
+  ]);
+
+  if (postResult.status === "source_unavailable") {
+    throw new Error(postResult.error);
+  }
+
+  const posts = postResult.posts;
 
   const postLines =
     posts.length > 0

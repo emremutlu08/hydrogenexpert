@@ -23,6 +23,8 @@ This file maps the repository structure and placement rules. Update it whenever 
 | `features/content-relations/` | Canonical related-link registry and lookup helpers. |
 | `features/post-enhancements/` | Canonical blog post visual, FAQ, pitch, and link enhancements. |
 | `features/traffic-foundation/` | Canonical resource hub, examples, issues, templates, and course companion registries. |
+| `features/public-discovery/` | Canonical public discovery manifest for sitemap, llms, package SEO, and commercial verification route membership. |
+| `features/lead-capture/` | Lead capture request parsing, validation, fallback payloads, and Supabase insert mapping. |
 | `lib/` | Shared runtime helpers, adapters, registries, and compatibility exports. |
 | `features/` | Target home for domain modules and large registries as architecture cleanup progresses. |
 | `data/` | Static structured project data such as case studies and logos. |
@@ -65,6 +67,7 @@ features/
 ├── content-relations/
 ├── post-enhancements/
 ├── traffic-foundation/
+├── public-discovery/
 ├── lead-capture/
 └── generated-posts/
 ```

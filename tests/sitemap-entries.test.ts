@@ -1,5 +1,9 @@
 import { describe, expect, it } from "vitest";
 
+import {
+  LAST_SIGNIFICANT_UPDATE,
+  PACKAGE_PAGE_DISCOVERY,
+} from "../features/public-discovery/manifest";
 import type { PostSummary } from "../lib/posts";
 import { buildSitemapEntries, NOINDEX_STATIC_ROUTES } from "../lib/sitemap-entries";
 
@@ -33,7 +37,7 @@ describe("buildSitemapEntries", () => {
     expect(paths).toContain("/about");
     expect(paths).toContain("/contact");
     expect(paths).toContain("/services");
-    expect(paths).toContain("/shopify-hydrogen-packages");
+    expect(paths).toContain(PACKAGE_PAGE_DISCOVERY.path);
     expect(paths).toContain("/resources");
     expect(paths).toContain("/shopify-hydrogen-examples");
     expect(paths).toContain("/shopify-hydrogen-issues");
@@ -122,6 +126,6 @@ describe("buildSitemapEntries", () => {
 
     expect(developerEntry?.changeFrequency).toBe("weekly");
     expect(developerEntry?.priority).toBe(0.9);
-    expect(developerEntry?.lastModified).toEqual(new Date("2026-05-25T00:00:00.000Z"));
+    expect(developerEntry?.lastModified).toEqual(LAST_SIGNIFICANT_UPDATE);
   });
 });

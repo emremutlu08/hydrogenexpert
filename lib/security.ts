@@ -46,25 +46,71 @@ export function isRateLimited(key: string, limit: number, windowMs: number) {
   return recentHits.length > limit;
 }
 
+export type RateLimitFallbackPolicy = "memory" | "deny";
+
+export interface RateLimitCheckResult {
+  allowed: boolean;
+  reason: "within_limit" | "rate_limited" | "backend_unavailable";
+  status: 200 | 429 | 503;
+  backend: "supabase" | "memory" | "none";
+  degraded: boolean;
+}
+
 function hashIdentifier(value: string) {
   return createHash("sha256").update(value).digest("hex");
 }
 
-export async function isRateLimitedDurable({
+function memoryRateLimitResult({
+  key,
+  limit,
+  windowMs,
+}: {
+  key: string;
+  limit: number;
+  windowMs: number;
+}): RateLimitCheckResult {
+  const rateLimited = isRateLimited(key, limit, windowMs);
+
+  return {
+    allowed: !rateLimited,
+    reason: rateLimited ? "rate_limited" : "within_limit",
+    status: rateLimited ? 429 : 200,
+    backend: "memory",
+    degraded: true,
+  };
+}
+
+function unavailableRateLimitResult(): RateLimitCheckResult {
+  return {
+    allowed: false,
+    reason: "backend_unavailable",
+    status: 503,
+    backend: "none",
+    degraded: true,
+  };
+}
+
+export async function checkRateLimitDurable({
   supabase,
   scope,
   identifier,
   limit,
   windowMs,
+  fallbackPolicy = "memory",
 }: {
   supabase: SupabaseClient<Database> | null;
   scope: string;
   identifier: string;
   limit: number;
   windowMs: number;
-}) {
+  fallbackPolicy?: RateLimitFallbackPolicy;
+}): Promise<RateLimitCheckResult> {
+  const memoryKey = `${scope}:${identifier}`;
+
   if (!supabase) {
-    return isRateLimited(`${scope}:${identifier}`, limit, windowMs);
+    return fallbackPolicy === "memory"
+      ? memoryRateLimitResult({ key: memoryKey, limit, windowMs })
+      : unavailableRateLimitResult();
   }
 
   const windowStart = new Date(Math.floor(Date.now() / windowMs) * windowMs).toISOString();
@@ -77,10 +123,28 @@ export async function isRateLimitedDurable({
   });
 
   if (error || typeof data !== "number") {
-    return isRateLimited(`${scope}:${identifier}`, limit, windowMs);
+    return fallbackPolicy === "memory"
+      ? memoryRateLimitResult({ key: memoryKey, limit, windowMs })
+      : unavailableRateLimitResult();
   }
 
-  return data > limit;
+  const rateLimited = data > limit;
+
+  return {
+    allowed: !rateLimited,
+    reason: rateLimited ? "rate_limited" : "within_limit",
+    status: rateLimited ? 429 : 200,
+    backend: "supabase",
+    degraded: false,
+  };
+}
+
+export async function isRateLimitedDurable(
+  options: Parameters<typeof checkRateLimitDurable>[0],
+) {
+  const result = await checkRateLimitDurable(options);
+
+  return !result.allowed;
 }
 
 export function safeCompare(a: string, b: string) {
