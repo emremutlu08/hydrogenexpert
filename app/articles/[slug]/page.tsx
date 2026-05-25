@@ -7,7 +7,7 @@ import { CTASection } from "@/components/CTASection";
 import { JsonLd } from "@/components/JsonLd";
 import { RelatedLinks } from "@/components/RelatedLinks";
 import { getPublicArticleBySlug, getPublicArticleSlugsForDate } from "@/lib/articles";
-import { getRelatedLinksForPath } from "@/lib/content-relations";
+import { getRelatedLinksForPath } from "@/features/content-relations";
 import { buildMetadata } from "@/lib/seo";
 import { OWNER, SITE_LOGO_PATH, SITE_NAME, VERIFIED_PROFILE_URLS, absoluteUrl, getSchemaIds } from "@/lib/site";
 import {

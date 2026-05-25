@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { getAllContentRelations } from "../lib/content-relations";
+import { getAllContentRelations } from "../features/content-relations";
 import { PRODUCTION_NOTE_FRAMES } from "../lib/production-notes";
 import {
   COURSE_MODULES,
@@ -8,7 +8,7 @@ import {
   HYDROGEN_ISSUE_CATEGORIES,
   HYDROGEN_TEMPLATES,
   RESOURCE_CLUSTERS,
-} from "../lib/traffic-foundation";
+} from "../features/traffic-foundation";
 
 describe("traffic foundation content", () => {
   it("keeps the resource hub clusters useful", () => {

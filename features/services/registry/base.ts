@@ -1,4 +1,4 @@
-import type { ContentSourceMetadata } from "../../../lib/content-sources";
+import type { ContentSourceMetadata } from "../../content-sources";
 
 export interface ServicePackageBase {
   slug:

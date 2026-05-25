@@ -15,6 +15,44 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-25
 
+- PR: [#60 Move content registries into feature modules](https://github.com/emremutlu08/hydrogenexpert/pull/60)
+- Branch: `codex/content-registry-placement`
+- Deployment: Preview deployment [hydrogenexpert-git-codex-content-re-225816-emremutlu8s-projects.vercel.app](https://hydrogenexpert-git-codex-content-re-225816-emremutlu8s-projects.vercel.app); production deployment [hydrogenexpert-n09nhtngf-emremutlu8s-projects.vercel.app](https://hydrogenexpert-n09nhtngf-emremutlu8s-projects.vercel.app) verified at [hydrogenexpert.co](https://hydrogenexpert.co).
+- Summary:
+  - Moved content source metadata, content relations, post enhancements, and traffic foundation registries into feature/domain folders.
+  - Kept `lib/content-sources.ts`, `lib/content-relations.ts`, `lib/post-enhancements.ts`, and `lib/traffic-foundation.ts` as compatibility re-exports.
+  - Updated app, component, script, and test imports to use canonical feature modules where practical.
+  - Updated agent docs to reflect the completed content registry placement phase.
+- Files changed:
+  - `features/content-sources/index.ts`
+  - `features/content-relations/index.ts`
+  - `features/post-enhancements/index.ts`
+  - `features/traffic-foundation/index.ts`
+  - `lib/content-sources.ts`
+  - `lib/content-relations.ts`
+  - `lib/post-enhancements.ts`
+  - `lib/traffic-foundation.ts`
+  - `app/`
+  - `components/`
+  - `scripts/`
+  - `tests/traffic-foundation.test.ts`
+  - `agent-docs/`
+  - `CHANGELOG.md`
+- Verification:
+  - `git diff --check`: passed.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run test`: passed, 21 files and 82 tests.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed with no `Needs review` rows.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed, 73 static pages generated.
+  - `INTERNAL_LINK_BASE_URL=http://127.0.0.1:3013 NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:internal-links`: passed with 55 sitemap URLs and 69 internal URLs.
+  - Local production smoke verified `/resources`, `/shopify-hydrogen-examples`, `/shopify-hydrogen-issues`, `/shopify-hydrogen-templates`, `/udemy-shopify-hydrogen-course-resources`, `/blog/shopify-hydrogen-vs-liquid`, `/sitemap.xml`, and `/llms.txt` as `200`.
+  - Protected Vercel preview verified `/resources`, `/shopify-hydrogen-examples`, `/shopify-hydrogen-issues`, `/shopify-hydrogen-templates`, `/udemy-shopify-hydrogen-course-resources`, `/blog/shopify-hydrogen-vs-liquid`, `/sitemap.xml`, and `/llms.txt` as `200` through `vercel curl` with redirect following where applicable.
+  - Production verified `/resources`, `/shopify-hydrogen-examples`, `/shopify-hydrogen-issues`, `/shopify-hydrogen-templates`, `/udemy-shopify-hydrogen-course-resources`, `/blog/shopify-hydrogen-vs-liquid`, `/sitemap.xml`, `/robots.txt`, and `/llms.txt` as `200`.
+- Manual follow-up:
+  - Continue with the final direct-composed page architecture pass.
+
 - PR: [#59 Split service registry modules](https://github.com/emremutlu08/hydrogenexpert/pull/59)
 - Branch: `codex/service-registry-architecture`
 - Deployment: Preview deployment [hydrogenexpert-git-codex-service-re-ae131e-emremutlu8s-projects.vercel.app](https://hydrogenexpert-git-codex-service-re-ae131e-emremutlu8s-projects.vercel.app); production deployment [hydrogenexpert-ew4snya1l-emremutlu8s-projects.vercel.app](https://hydrogenexpert-ew4snya1l-emremutlu8s-projects.vercel.app) verified at [hydrogenexpert.co](https://hydrogenexpert.co).

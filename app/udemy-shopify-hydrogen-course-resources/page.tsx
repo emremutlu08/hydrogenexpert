@@ -6,11 +6,11 @@ import { PageIntroSection } from "@/components/PageIntroSection";
 import { RelatedLinks } from "@/components/RelatedLinks";
 import { SectionHeader } from "@/components/SectionHeader";
 import { TrackedProofLink } from "@/components/TrackedInternalLink";
-import { getRelatedLinksForPath } from "@/lib/content-relations";
+import { getRelatedLinksForPath } from "@/features/content-relations";
 import { buildMetadata } from "@/lib/seo";
 import { OWNER, SITE_LOGO_PATH, SITE_NAME, VERIFIED_PROFILE_URLS, absoluteUrl, getSchemaIds } from "@/lib/site";
 import { asSchemaArray, buildBreadcrumbListSchema, buildPublisherSchema } from "@/lib/structured-data";
-import { COURSE_MODULES } from "@/lib/traffic-foundation";
+import { COURSE_MODULES } from "@/features/traffic-foundation";
 
 export const metadata = buildMetadata({
   title: "Udemy Shopify Hydrogen Course Resources | HydrogenExpert",

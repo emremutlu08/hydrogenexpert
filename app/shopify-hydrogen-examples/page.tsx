@@ -5,12 +5,12 @@ import { JsonLd } from "@/components/JsonLd";
 import { PageIntroSection } from "@/components/PageIntroSection";
 import { RelatedLinks } from "@/components/RelatedLinks";
 import { SectionHeader } from "@/components/SectionHeader";
-import { getRelatedLinksForPath } from "@/lib/content-relations";
+import { getRelatedLinksForPath } from "@/features/content-relations";
 import { getOgImageForRoute } from "@/lib/og-images";
 import { buildMetadata } from "@/lib/seo";
 import { OWNER, absoluteUrl, getSchemaIds } from "@/lib/site";
 import { asSchemaArray, buildBreadcrumbListSchema } from "@/lib/structured-data";
-import { HYDROGEN_EXAMPLES } from "@/lib/traffic-foundation";
+import { HYDROGEN_EXAMPLES } from "@/features/traffic-foundation";
 
 export const metadata = buildMetadata({
   title: "Shopify Hydrogen Examples | Patterns, Sources & Takeaways",

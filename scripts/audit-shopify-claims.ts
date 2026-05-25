@@ -4,7 +4,7 @@ import {
   STATIC_PAGE_SOURCE_METADATA,
   getBlogSourceMetadata,
   getStaticPageSourceMetadata,
-} from "../lib/content-sources";
+} from "../features/content-sources";
 import { DECISION_PAGES } from "../lib/decision-pages";
 import { SERVICE_PACKAGES } from "../lib/services";
 

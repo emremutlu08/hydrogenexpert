@@ -19,6 +19,10 @@ This file maps the repository structure and placement rules. Update it whenever 
 | `components/` | Shared React UI and section components. |
 | `components/service-landing/` | Focused sections and helpers behind `ServiceLandingPage` while preserving `<ServiceLandingPage service={service} />`. |
 | `features/services/registry/` | Canonical service package registry modules for base data, enrichments, source metadata, offer snapshots, and lookup helpers. |
+| `features/content-sources/` | Canonical Shopify/Hydrogen source metadata and claim classifications. |
+| `features/content-relations/` | Canonical related-link registry and lookup helpers. |
+| `features/post-enhancements/` | Canonical blog post visual, FAQ, pitch, and link enhancements. |
+| `features/traffic-foundation/` | Canonical resource hub, examples, issues, templates, and course companion registries. |
 | `lib/` | Shared runtime helpers, adapters, registries, and compatibility exports. |
 | `features/` | Target home for domain modules and large registries as architecture cleanup progresses. |
 | `data/` | Static structured project data such as case studies and logos. |
@@ -66,7 +70,7 @@ features/
 └── generated-posts/
 ```
 
-Use compatibility re-exports during migrations when it keeps call sites stable and lowers risk. `lib/services.ts` is currently a compatibility export for `features/services/registry/`.
+Use compatibility re-exports during migrations when it keeps call sites stable and lowers risk. `lib/services.ts`, `lib/content-sources.ts`, `lib/content-relations.ts`, `lib/post-enhancements.ts`, and `lib/traffic-foundation.ts` are compatibility exports for canonical `features/` modules.
 
 ## Placement Rules
 

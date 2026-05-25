@@ -1,4 +1,4 @@
-import { getAllContentRelations } from "../lib/content-relations";
+import { getAllContentRelations } from "../features/content-relations";
 
 const relations = getAllContentRelations();
 const failures = relations.filter((relation) => relation.related.length < 3);
