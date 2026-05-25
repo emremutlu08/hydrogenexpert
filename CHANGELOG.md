@@ -17,7 +17,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 - PR: [#64 Implement staged architecture reliability slice](https://github.com/emremutlu08/hydrogenexpert/pull/64)
 - Branch: `codex/staged-v1-architecture`
-- Deployment: Production deployment verified at [hydrogenexpert.co](https://hydrogenexpert.co).
+- Deployment: Production deployment [hydrogenexpert-hzqpqhf2c-emremutlu8s-projects.vercel.app](https://hydrogenexpert-hzqpqhf2c-emremutlu8s-projects.vercel.app) verified at [hydrogenexpert.co](https://hydrogenexpert.co).
 - Summary:
   - Added a public discovery manifest for static sitemap routes, llms core entries, package SEO/discovery metadata, and commercial verification route membership.
   - Made package data the source for lead budget options and thank-you budget review messages while preserving existing option values and visible copy.
