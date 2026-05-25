@@ -15,9 +15,9 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-25
 
-- PR: Pending.
+- PR: [#53 Fix GEO current-state issues](https://github.com/emremutlu08/hydrogenexpert/pull/53)
 - Branch: `codex/fix-geo-current-state-issues`
-- Deployment: Pending preview and production verification.
+- Deployment: Preview deployment [hydrogenexpert-bn5sxi88c-emremutlu8s-projects.vercel.app](https://hydrogenexpert-bn5sxi88c-emremutlu8s-projects.vercel.app); production verification pending merge.
 - Summary:
   - Fixed GEO current-state issues from the May 25 audit: unpublished internal blog links now resolve through canonical live routes or permanent redirects instead of 404s.
   - Added visible reviewed-date signals, package/decision comparison tables, FAQ schema on the Hydrogen-vs-Liquid and when-not-to-use pages, and stronger case-study Article publisher/speakable schema.
@@ -49,6 +49,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed, 73 static pages generated.
   - `INTERNAL_LINK_BASE_URL=http://localhost:3010 NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:internal-links`: passed with 55 sitemap URLs and 69 internal URLs.
   - Local Playwright production smoke passed for mobile and desktop on homepage, package, when-not-to-use, Hydrogen-vs-Liquid, case-study, and article routes.
+  - Vercel protected preview verified touched pages as `200`, legacy/unpublished blog slugs as `301`, `llms.txt` / `llms-full.txt` as `200`, and rendered schema/freshness/table content through `vercel curl`.
 - Manual follow-up:
   - Add `BING_SITE_VERIFICATION` in Vercel when the Bing Webmaster token is available.
   - Inspect or resubmit touched public URLs in Google Search Console after production deploy if stale snippets persist.
