@@ -17,7 +17,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 - PR: [#56 Establish agent docs routing](https://github.com/emremutlu08/hydrogenexpert/pull/56)
 - Branch: `codex/agent-docs-foundation`
-- Deployment: Preview/production deployment pending PR review; public runtime behavior unchanged.
+- Deployment: Preview deployment [hydrogenexpert-git-codex-agent-docs-ed9f6e-emremutlu8s-projects.vercel.app](https://hydrogenexpert-git-codex-agent-docs-ed9f6e-emremutlu8s-projects.vercel.app); production deployment [hydrogenexpert-8iwwqzuea-emremutlu8s-projects.vercel.app](https://hydrogenexpert-8iwwqzuea-emremutlu8s-projects.vercel.app) verified at [hydrogenexpert.co](https://hydrogenexpert.co).
 - Summary:
   - Converted `AGENTS.md` into the canonical read-first router for agents, documentation, planning, validation, and deployment workflows.
   - Created `agent-docs/` as the canonical home for handoff, project brief, current state, repo structure, decisions, workflow, engineering principles, TODOs, planning/doc standards, Hydrogen implementation notes, content governance, design, and deployment QA.
@@ -42,6 +42,8 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - `npm run validate:content`: passed.
   - `npm run audit:shopify-claims`: passed with no `Needs review` rows.
   - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed, 73 static pages generated.
+  - Protected Vercel preview verified `/`, `/sitemap.xml`, and `/llms.txt` as `200` through `vercel curl`.
+  - Production verified `/`, `/shopify-hydrogen-packages`, `/shopify-hydrogen-developer`, `/custom-shopify-hydrogen-storefront`, `/resources`, `/sitemap.xml`, `/robots.txt`, and `/llms.txt` as `200`.
 - Manual follow-up:
   - Continue with the no-loss guardrail PR before moving service page and registry code.
 
