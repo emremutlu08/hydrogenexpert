@@ -11,13 +11,15 @@ This is the quick orientation file for the current HydrogenExpert architecture c
 
 ## Current Focus
 
-- Establish `AGENTS.md` as the read-first router.
-- Move canonical agent guidance into `agent-docs/`.
-- Preserve root-level compatibility stubs for older references.
-- Add guardrails before larger DRY/KISS code refactors.
+- Preserve `AGENTS.md` as the read-first router.
+- Keep canonical agent guidance in `agent-docs/`.
+- Maintain public no-loss guardrails before future architecture work.
+- Treat service and content registry compatibility exports as migration support, not new sources of truth.
 - Keep public site behavior unchanged while architecture improves.
 
 ## Active Program
+
+The 2026-05-25 architecture cleanup program is complete:
 
 1. Agent Router Foundation.
 2. No-loss guardrails for route, sitemap, registry, metadata, docs routing, llms, forms, and image accessibility.
@@ -25,6 +27,8 @@ This is the quick orientation file for the current HydrogenExpert architecture c
 4. Service registry split.
 5. Content registry placement.
 6. Final direct-page architecture pass.
+
+The final pass intentionally did not add a shared page renderer. Direct-composed pages currently repeat layout rhythm over different data shapes, while shared primitives and feature registries already carry the reusable behavior.
 
 ## Start Checklist
 

@@ -54,14 +54,13 @@ Root compatibility stubs may exist for moved docs. Canonical content should live
 
 ## Target Feature Structure
 
-Use this target structure when reducing large-module risk:
+Use this target structure when reducing large-module risk. The service registry and content registry moves are now in place; add new feature folders only when they improve locality, testing, or repeated behavior.
 
 ```txt
 features/
 ├── services/
 │   ├── registry/
-│   ├── sections/ (only if service sections later move out of `components/service-landing/`)
-│   └── ServiceLandingPage.tsx
+│   └── sections/ (only if service sections later move out of `components/service-landing/`)
 ├── content-sources/
 ├── content-relations/
 ├── post-enhancements/
@@ -81,3 +80,4 @@ Use compatibility re-exports during migrations when it keeps call sites stable a
 - Compatibility re-export modules are allowed during staged refactors, but should not become permanent parallel sources of truth.
 - Do not add new root-level agent docs; add canonical docs to `agent-docs/` and route from `AGENTS.md`.
 - Do not create abstractions that only wrap constant behavior.
+- Do not extract a shared page renderer for direct-composed pages unless at least two pages share both data shape and behavior. Similar card styling alone is not enough.
