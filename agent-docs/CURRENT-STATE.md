@@ -17,12 +17,13 @@ This file summarizes the current repo shape so future agents can orient quickly.
 - Public app code lives in `app/`, shared UI in `components/`, service landing sections in `components/service-landing/`, service registry modules in `features/services/registry/`, large content registries in `features/content-sources/`, `features/content-relations/`, `features/post-enhancements/`, and `features/traffic-foundation/`, shared helpers and compatibility exports in `lib/`, content/data in `content/` and `data/`.
 - Canonical agent guidance now lives in `agent-docs/` with `AGENTS.md` as the router.
 
-## Known Architecture Risks
+## Current Architecture Notes
 
 - `components/ServiceLandingPage.tsx` is now a thin shell over focused service landing section modules; keep checking public output during follow-up refactors.
 - `features/services/registry/` now separates service base data, enrichments, source metadata, offer snapshots, and lookup helpers; `lib/services.ts` remains a compatibility re-export.
 - Large content registry modules now live under feature/domain folders with `lib/` compatibility re-exports.
-- Some direct-composed pages repeat card, list, schema, and collection-page rendering patterns.
+- Direct-composed resource, article, blog, and traffic-foundation pages were reviewed on 2026-05-25. No shared renderer was extracted because the remaining repetition is mostly local layout rhythm over different data shapes, while reusable pieces already exist in `PageIntroSection`, `SectionHeader`, `RelatedLinks`, `JsonLd`, and feature registries.
+- Treat compatibility re-exports as temporary migration support. Remove them only after imports have stabilized and tests confirm no public behavior changed.
 
 ## Validation Baseline
 

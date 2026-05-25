@@ -31,3 +31,4 @@ This file records durable decisions so future agents do not re-litigate settled 
 - Keep `lib/content-sources.ts`, `lib/content-relations.ts`, `lib/post-enhancements.ts`, and `lib/traffic-foundation.ts` as compatibility re-exports while canonical content registries live under `features/`.
 - Keep `lib/` for stable adapters, shared helpers, security, metadata, and compatibility modules.
 - Do not split files only to satisfy size preferences; split when locality, leverage, testing, or DRY/KISS improves.
+- Keep direct-composed resource, article, blog, and traffic-foundation pages local unless two or more pages share the same data shape and behavior. The 2026-05-25 final architecture pass found no useful generic renderer to extract without adding indirection.
