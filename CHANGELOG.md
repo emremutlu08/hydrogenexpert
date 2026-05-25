@@ -15,6 +15,34 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-25
 
+- PR: [#61 Finalize architecture documentation pass](https://github.com/emremutlu08/hydrogenexpert/pull/61)
+- Branch: `codex/final-architecture-pass`
+- Deployment: Preview and production verification pending.
+- Summary:
+  - Marked the 2026-05-25 agent-docs and architecture cleanup program complete.
+  - Documented the final direct-composed page review across resource, article, blog, and traffic-foundation pages.
+  - Kept direct-composed pages local because the remaining repetition is layout rhythm over different data shapes, not duplicated business behavior.
+  - Left compatibility re-export removal as the remaining follow-up after imports stabilize.
+- Files changed:
+  - `agent-docs/CURRENT-STATE.md`
+  - `agent-docs/DECISIONS.md`
+  - `agent-docs/HANDOFF.md`
+  - `agent-docs/REPO-STRUCTURE.md`
+  - `agent-docs/TODO.md`
+  - `CHANGELOG.md`
+- Verification:
+  - `git diff --check`: passed.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run test`: passed, 21 files and 82 tests.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed with no `Needs review` rows.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed, 73 static pages generated.
+  - `INTERNAL_LINK_BASE_URL=http://127.0.0.1:3014 NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:internal-links`: passed with 55 sitemap URLs and 69 internal URLs.
+  - Local production smoke verified `/`, `/resources`, `/shopify-hydrogen-developer`, `/custom-shopify-hydrogen-storefront`, `/shopify-hydrogen-examples`, `/shopify-hydrogen-issues`, `/shopify-hydrogen-templates`, `/sitemap.xml`, `/robots.txt`, and `/llms.txt` as `200`.
+- Manual follow-up:
+  - Remove compatibility re-exports only after imports stabilize and validation confirms no public behavior changed.
+
 - PR: [#60 Move content registries into feature modules](https://github.com/emremutlu08/hydrogenexpert/pull/60)
 - Branch: `codex/content-registry-placement`
 - Deployment: Preview deployment [hydrogenexpert-git-codex-content-re-225816-emremutlu8s-projects.vercel.app](https://hydrogenexpert-git-codex-content-re-225816-emremutlu8s-projects.vercel.app); production deployment [hydrogenexpert-n09nhtngf-emremutlu8s-projects.vercel.app](https://hydrogenexpert-n09nhtngf-emremutlu8s-projects.vercel.app) verified at [hydrogenexpert.co](https://hydrogenexpert.co).
