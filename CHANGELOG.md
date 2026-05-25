@@ -17,7 +17,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 - PR: [#62 Remove unused next-sitemap dependency](https://github.com/emremutlu08/hydrogenexpert/pull/62)
 - Branch: `codex/remove-unused-next-sitemap`
-- Deployment: Pending production deployment and live verification.
+- Deployment: Production deployment verified at [hydrogenexpert.co](https://hydrogenexpert.co).
 - Summary:
   - Removed the unused `next-sitemap` runtime dependency.
   - Refreshed `package-lock.json`, dropping `next-sitemap` and its older transitive `@next/env@13.x` dependency chain.
