@@ -8,7 +8,7 @@ import { SectionHeader } from "@/components/SectionHeader";
 import { getRelatedLinksForPath } from "@/lib/content-relations";
 import { getOgImageForRoute } from "@/lib/og-images";
 import { buildMetadata } from "@/lib/seo";
-import { OWNER, SITE_LOGO_PATH, SITE_NAME, absoluteUrl, getSchemaIds } from "@/lib/site";
+import { OWNER, SITE_LOGO_PATH, SITE_NAME, VERIFIED_PROFILE_URLS, absoluteUrl, getSchemaIds } from "@/lib/site";
 import { asSchemaArray, buildBreadcrumbListSchema, buildPublisherSchema } from "@/lib/structured-data";
 import { HYDROGEN_ISSUE_CATEGORIES } from "@/lib/traffic-foundation";
 
@@ -48,6 +48,7 @@ export default function ShopifyHydrogenIssuesPage() {
       url: absoluteUrl("/"),
       logo: absoluteUrl(SITE_LOGO_PATH),
       id: schemaIds.organization,
+      sameAs: VERIFIED_PROFILE_URLS,
     }),
   };
 

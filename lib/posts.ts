@@ -1,7 +1,7 @@
 import { cache } from "react";
 
-import type { PostRecord } from "@/lib/database.types";
-import { getSupabaseClient } from "@/lib/supabase";
+import type { PostRecord } from "./database.types";
+import { getSupabaseClient } from "./supabase";
 
 export interface PostSummary {
   slug: string;

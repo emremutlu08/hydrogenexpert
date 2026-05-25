@@ -67,6 +67,7 @@ const publisherSchema = buildPublisherSchema({
   url: absoluteUrl("/"),
   logo: absoluteUrl(SITE_LOGO_PATH),
   id: schemaIds.organization,
+  sameAs: VERIFIED_PROFILE_URLS,
 });
 
 const organizationSchema = {

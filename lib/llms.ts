@@ -1,7 +1,8 @@
-import { DELIVERY_PROOF, OWNER, UPWORK_PROFILE, absoluteUrl, getSiteUrl } from "@/lib/site";
-import { getPublishedPosts } from "@/lib/posts";
-import { CASE_STUDIES } from "@/data/caseStudies";
-import { SERVICE_PACKAGES } from "@/lib/services";
+import { CASE_STUDIES } from "../data/caseStudies";
+import { getPublicArticles } from "./articles";
+import { getPublishedPosts } from "./posts";
+import { SERVICE_PACKAGES } from "./services";
+import { DELIVERY_PROOF, OWNER, UPWORK_PROFILE, absoluteUrl, getSiteUrl } from "./site";
 
 function buildHeader() {
   const host = new URL(getSiteUrl()).host;
@@ -67,6 +68,7 @@ function buildPageIndex() {
     llmsLink("Case Studies", "/case-studies", "Approved production contexts for EveShop, Bayam Jewelry, Rebel Bunny, Kirazev, and Clohi."),
     ...caseStudyLines,
     llmsLink("Hire Me", "/hire-me", "Direct hiring page for a senior Shopify Hydrogen developer and advisor."),
+    llmsLink("Articles", "/articles", "Evergreen merchant guides for Hydrogen hiring, cost, SEO, migration, and fit decisions."),
     llmsLink("Blog", "/blog", "Production notes on Hydrogen SEO, SSR content, metaobjects, variants, and performance."),
     "",
   ].join("\n");
@@ -89,7 +91,7 @@ export function buildLlmsTxt() {
 }
 
 export async function buildLlmsFullTxt() {
-  const posts = await getPublishedPosts();
+  const [posts, articles] = await Promise.all([getPublishedPosts(), getPublicArticles()]);
 
   const postLines =
     posts.length > 0
@@ -105,6 +107,18 @@ export async function buildLlmsFullTxt() {
           )
           .join("\n")
       : "- No published posts found.";
+  const articleLines =
+    articles.length > 0
+      ? articles
+          .map((article) =>
+            llmsLink(
+              article.title,
+              `/articles/${article.slug}`,
+              article.metaDescription || article.description,
+            ),
+          )
+          .join("\n")
+      : "- No public articles found.";
 
   return [
     buildHeader(),
@@ -131,6 +145,10 @@ export async function buildLlmsFullTxt() {
     "## Blog posts",
     "",
     postLines,
+    "",
+    "## Articles",
+    "",
+    articleLines,
     "",
     "## Usage notes",
     "",

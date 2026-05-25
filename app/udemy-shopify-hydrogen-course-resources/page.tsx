@@ -8,7 +8,7 @@ import { SectionHeader } from "@/components/SectionHeader";
 import { TrackedProofLink } from "@/components/TrackedInternalLink";
 import { getRelatedLinksForPath } from "@/lib/content-relations";
 import { buildMetadata } from "@/lib/seo";
-import { OWNER, SITE_LOGO_PATH, SITE_NAME, absoluteUrl, getSchemaIds } from "@/lib/site";
+import { OWNER, SITE_LOGO_PATH, SITE_NAME, VERIFIED_PROFILE_URLS, absoluteUrl, getSchemaIds } from "@/lib/site";
 import { asSchemaArray, buildBreadcrumbListSchema, buildPublisherSchema } from "@/lib/structured-data";
 import { COURSE_MODULES } from "@/lib/traffic-foundation";
 
@@ -67,6 +67,7 @@ export default function UdemyShopifyHydrogenCourseResourcesPage() {
       url: absoluteUrl("/"),
       logo: absoluteUrl(SITE_LOGO_PATH),
       id: schemaIds.organization,
+      sameAs: VERIFIED_PROFILE_URLS,
     }),
   };
 

@@ -141,6 +141,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       url: absoluteUrl("/"),
       logo: absoluteUrl(SITE_LOGO_PATH),
       id: schemaIds.organization,
+      sameAs: VERIFIED_PROFILE_URLS,
     }),
     image: enhancement.ogImage ? absoluteUrl(enhancement.ogImage) : undefined,
     speakable: {
