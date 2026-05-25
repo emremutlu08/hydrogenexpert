@@ -64,6 +64,7 @@ async function main() {
 
   if (args.dryRun) {
     console.log(JSON.stringify(payload, null, 2));
+    process.exit(0);
     return;
   }
 
@@ -82,6 +83,7 @@ async function main() {
   }
 
   console.log(`IndexNow accepted ${payload.urlList.length} URL(s) with HTTP ${response.status}.`);
+  process.exit(0);
 }
 
 main().catch((error) => {
