@@ -15,6 +15,33 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-25
 
+- PR: [#57 Add no-loss public surface guardrails](https://github.com/emremutlu08/hydrogenexpert/pull/57)
+- Branch: `codex/no-loss-guardrails`
+- Deployment: Preview deployment [hydrogenexpert-git-codex-no-loss-gu-f82dd0-emremutlu8s-projects.vercel.app](https://hydrogenexpert-git-codex-no-loss-gu-f82dd0-emremutlu8s-projects.vercel.app); production deployment [hydrogenexpert-cbo3kw0wo-emremutlu8s-projects.vercel.app](https://hydrogenexpert-cbo3kw0wo-emremutlu8s-projects.vercel.app) verified at [hydrogenexpert.co](https://hydrogenexpert.co).
+- Summary:
+  - Added agent-doc routing tests so `AGENTS.md`, canonical `agent-docs/` files, root compatibility stubs, and README canonical path stay aligned.
+  - Expanded service registry tests for slug uniqueness, path/slug lookup helper behavior, source metadata, and offer snapshot completeness.
+  - Added public surface guardrails for critical route files, sitemap service coverage, and `llms.txt` service registry output.
+  - Added image accessibility guardrails for explicit `alt` and `title` coverage on app/component images.
+- Files changed:
+  - `tests/agent-docs-routing.test.ts`
+  - `tests/image-accessibility.test.ts`
+  - `tests/public-surface-guardrails.test.ts`
+  - `tests/services.test.ts`
+  - `CHANGELOG.md`
+- Verification:
+  - `git diff --check`: passed.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run test`: passed, 21 files and 82 tests.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed with no `Needs review` rows.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed, 73 static pages generated.
+  - Protected Vercel preview verified `/`, `/sitemap.xml`, and `/llms.txt` as `200` through `vercel curl`.
+  - Production verified `/`, `/shopify-hydrogen-packages`, `/shopify-hydrogen-developer`, `/custom-shopify-hydrogen-storefront`, `/resources`, `/sitemap.xml`, `/robots.txt`, and `/llms.txt` as `200`.
+- Manual follow-up:
+  - Use these guardrails before the service page and registry refactor PRs.
+
 - PR: [#56 Establish agent docs routing](https://github.com/emremutlu08/hydrogenexpert/pull/56)
 - Branch: `codex/agent-docs-foundation`
 - Deployment: Preview deployment [hydrogenexpert-git-codex-agent-docs-ed9f6e-emremutlu8s-projects.vercel.app](https://hydrogenexpert-git-codex-agent-docs-ed9f6e-emremutlu8s-projects.vercel.app); production deployment [hydrogenexpert-8iwwqzuea-emremutlu8s-projects.vercel.app](https://hydrogenexpert-8iwwqzuea-emremutlu8s-projects.vercel.app) verified at [hydrogenexpert.co](https://hydrogenexpert.co).
