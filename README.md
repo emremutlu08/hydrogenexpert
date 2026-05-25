@@ -11,7 +11,7 @@ All images in this project must include meaningful alt text.
 - If an image is truly decorative, use an empty alt value (`alt=""`).
 - Keep this rule in mind for any future `next/image`, `img`, OG image, or CMS-driven media usage.
 
-See [AGENTS.md](/Users/emremutlu/Documents/New project/hydrogenexpert/AGENTS.md) for the project rule that AI agents should follow.
+See [AGENTS.md](/Users/emremutlu/Apps/Codex/hydrogenexpert/AGENTS.md) for the project rule that AI agents should follow.
 
 ## Layout System And DRY Rule
 
