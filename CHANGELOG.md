@@ -15,6 +15,36 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-25
 
+- PR: [#56 Establish agent docs routing](https://github.com/emremutlu08/hydrogenexpert/pull/56)
+- Branch: `codex/agent-docs-foundation`
+- Deployment: Preview/production deployment pending PR review; public runtime behavior unchanged.
+- Summary:
+  - Converted `AGENTS.md` into the canonical read-first router for agents, documentation, planning, validation, and deployment workflows.
+  - Created `agent-docs/` as the canonical home for handoff, project brief, current state, repo structure, decisions, workflow, engineering principles, TODOs, planning/doc standards, Hydrogen implementation notes, content governance, design, and deployment QA.
+  - Kept legacy root agent docs as short compatibility stubs that point back to `AGENTS.md` and the relevant `agent-docs/` file.
+  - Updated the README agent-doc link to the canonical local checkout path under `/Users/emremutlu/Apps/Codex/hydrogenexpert`.
+- Files changed:
+  - `AGENTS.md`
+  - `README.md`
+  - `CHANGELOG.md`
+  - `agent-docs/`
+  - `OPERATING_RULES.md`
+  - `CONTENT_PROTOCOL.md`
+  - `BLOG_PUBLISHING_PLAYBOOK.md`
+  - `DEPLOY.md`
+  - `PLANNING.md`
+  - `design.md`
+- Verification:
+  - `git diff --check`: passed.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run test`: passed, 18 files and 72 tests.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed with no `Needs review` rows.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed, 73 static pages generated.
+- Manual follow-up:
+  - Continue with the no-loss guardrail PR before moving service page and registry code.
+
 - PR: [#53 Fix GEO current-state issues](https://github.com/emremutlu08/hydrogenexpert/pull/53)
 - Branch: `codex/fix-geo-current-state-issues`
 - Deployment: Preview deployment [hydrogenexpert-bn5sxi88c-emremutlu8s-projects.vercel.app](https://hydrogenexpert-bn5sxi88c-emremutlu8s-projects.vercel.app); production verification pending merge.
