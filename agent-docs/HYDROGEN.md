@@ -17,6 +17,7 @@ This file captures implementation rules for the HydrogenExpert Next.js site.
 - Hosting: Vercel.
 - Data: Supabase for posts, leads, and durable rate limiting.
 - Security: shared helpers in `lib/security.ts` plus headers in `next.config.ts`.
+- Node runtime: Vercel is configured for Node 24.x; GitHub scheduled validation uses Node 24; `package.json` allows Node `>=22 <25` so local Node 22 development remains supported while deployment stays on the Node 24 line.
 
 Use `package.json` for exact versions.
 
@@ -34,6 +35,11 @@ Use `package.json` for exact scripts. Current important scripts include:
 - `npm run verify:commercial-launch`
 - `npm run verify:internal-links`
 - `npm run indexnow:ping`
+
+## Dependency Notes
+
+- Keep `@types/node` on the Node 24 line while Vercel is configured for Node 24.x.
+- Keep `eslint` on version 9 until the Next-managed ESLint plugin chain supports ESLint 10 without invalid peer dependencies.
 
 ## Implementation Rules
 
