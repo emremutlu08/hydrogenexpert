@@ -1,5 +1,5 @@
 import type { PublishedPost } from "@/lib/posts";
-import type { PostFaqItem, PostReferenceLink } from "@/lib/post-enhancements";
+import type { PostFaqItem, PostReferenceLink } from "../features/post-enhancements";
 
 function formatVisibleDate(value: string | null | undefined) {
   if (!value) {

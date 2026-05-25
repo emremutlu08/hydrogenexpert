@@ -6,7 +6,7 @@ import { getAllArticles } from "../lib/articles";
 import {
   BLOG_SOURCE_METADATA,
   STATIC_PAGE_SOURCE_METADATA,
-} from "../lib/content-sources";
+} from "../features/content-sources";
 import { DECISION_PAGES } from "../lib/decision-pages";
 import { SERVICE_PACKAGES } from "../lib/services";
 import { getStaticSitemapRoutes, NOINDEX_STATIC_ROUTES } from "../lib/sitemap-entries";
@@ -244,6 +244,8 @@ for (const cluster of blogClusterManifest.clusters) {
   "CONTENT_PROTOCOL.md",
   "BLOG_PUBLISHING_PLAYBOOK.md",
   "OPERATING_RULES.md",
+  "features/content-sources/index.ts",
+  "features/services/registry/base.ts",
   "lib/content-sources.ts",
   "lib/services.ts",
   "data/caseStudies.ts",

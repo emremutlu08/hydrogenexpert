@@ -8,7 +8,7 @@ import { PageIntroSection } from "@/components/PageIntroSection";
 import { PostVisual } from "@/components/PostVisual";
 import { TrackedContentLink } from "@/components/TrackedInternalLink";
 import { buildMetadata } from "@/lib/seo";
-import { getPostEnhancement } from "@/lib/post-enhancements";
+import { getPostEnhancement } from "@/features/post-enhancements";
 import { getPublishedPosts } from "@/lib/posts";
 import { absoluteUrl } from "@/lib/site";
 import { buildBreadcrumbListSchema } from "@/lib/structured-data";

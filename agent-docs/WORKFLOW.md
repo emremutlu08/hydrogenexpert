@@ -54,9 +54,9 @@ cd "/Users/emremutlu/Apps/Codex/hydrogenexpert"
 2. Remove private task chats, admin screenshots, Slack/project-management details, internal review notes, AI scores, and draft weaknesses.
 3. Use the site structure: SEO title, slug, meta description, TL;DR, H2/H3 flow, FAQ, official references, internal links, and closing CTA.
 4. Query Shopify Dev MCP before drafting or updating Shopify platform claims.
-5. Add or update internal source metadata in `lib/content-sources.ts`.
+5. Add or update internal source metadata in `features/content-sources/index.ts`.
 6. Publish through the Supabase `posts` table only when Emre explicitly asks to publish that specific article and provides real input/source material.
-7. Add public enhancements in `lib/post-enhancements.ts` when useful.
+7. Add public enhancements in `features/post-enhancements/index.ts` when useful.
 8. Run `npm run audit:shopify-claims`, `npm run lint`, `npm run typecheck`, and `npm run build`.
 9. Deploy to production.
 10. Verify the live post, blog index, sitemap, schema-bearing source, and absence of private notes.

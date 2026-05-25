@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import { BeforeAfterDiagram } from "@/components/BeforeAfterDiagram";
 import { MediaFrame } from "@/components/MediaFrame";
-import type { PostHeroVisual } from "@/lib/post-enhancements";
+import type { PostHeroVisual } from "../features/post-enhancements";
 
 interface PostVisualProps {
   visual: PostHeroVisual;

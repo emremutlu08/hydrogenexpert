@@ -1,5 +1,5 @@
-import type { ContentSourceMetadata } from "../../../lib/content-sources";
-import { SHOPIFY_CONTENT_LAST_VERIFIED, SOURCE_PACKS } from "../../../lib/content-sources";
+import type { ContentSourceMetadata } from "../../content-sources";
+import { SHOPIFY_CONTENT_LAST_VERIFIED, SOURCE_PACKS } from "../../content-sources";
 
 import type { ServicePackageBase } from "./base";
 

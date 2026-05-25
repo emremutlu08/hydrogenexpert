@@ -5,11 +5,11 @@ import { JsonLd } from "@/components/JsonLd";
 import { PageIntroSection } from "@/components/PageIntroSection";
 import { RelatedLinks } from "@/components/RelatedLinks";
 import { SectionHeader } from "@/components/SectionHeader";
-import { getRelatedLinksForPath } from "@/lib/content-relations";
+import { getRelatedLinksForPath } from "@/features/content-relations";
 import { buildMetadata } from "@/lib/seo";
 import { OWNER, SITE_LOGO_PATH, SITE_NAME, VERIFIED_PROFILE_URLS, absoluteUrl, getSchemaIds } from "@/lib/site";
 import { asSchemaArray, buildBreadcrumbListSchema, buildPublisherSchema } from "@/lib/structured-data";
-import { RESOURCE_CLUSTERS } from "@/lib/traffic-foundation";
+import { RESOURCE_CLUSTERS } from "@/features/traffic-foundation";
 import { getOgImageForRoute } from "@/lib/og-images";
 
 export const metadata = buildMetadata({

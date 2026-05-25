@@ -47,7 +47,7 @@ Every new or materially updated buyer-facing page must include:
 - Clear decision guidance, including when Hydrogen may not be the right move.
 - Contextual internal links to relevant service, case-study, and blog pages.
 - Metadata, canonical, and schema review.
-- Internal source metadata using `ContentSource` from `lib/content-sources.ts`.
+- Internal source metadata using `ContentSource` from `features/content-sources/index.ts`.
 
 Source metadata is internal by default. It does not need to be visible unless the page intentionally includes public references.
 
@@ -65,7 +65,7 @@ For every technical blog post:
 4. Pull related HydrogenExpert service, case-study, and blog links.
 5. Classify claims as official fact, Emre experience, interpretation, recommendation, or SEO hypothesis.
 6. Draft with practical operator interpretation instead of only summarizing docs when Emre has asked for a draft or publish task.
-7. Add source metadata sidecar in `lib/content-sources.ts`.
+7. Add source metadata sidecar in `features/content-sources/index.ts`.
 8. Add visible further reading only when it helps the reader.
 9. Run `npm run audit:shopify-claims`.
 10. Run lint, typecheck, and build.

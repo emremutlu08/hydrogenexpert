@@ -23,7 +23,7 @@ Codex must not publish Supabase-backed public blog posts unless Emre provides th
 - For technical posts, include practical evidence when available: TypeScript snippets, variant matrices, before/after tables, diagrams, screenshots, or test cases.
 - Add FAQ items when they answer questions people would realistically search for.
 - Add official references for technical claims, especially Shopify docs, React docs, GitHub issues, or changelogs.
-- Add or update internal source metadata in `lib/content-sources.ts` for Shopify-related posts.
+- Add or update internal source metadata in `features/content-sources/index.ts` for Shopify-related posts.
 - Add internal links to the strongest related HydrogenExpert pages and end with the standard direct CTA.
 
 ## SEO Checklist
@@ -68,7 +68,7 @@ Use `content/blog-templates/mcp-grounded-blog-template.md` before writing a new 
 - `lastVerified`
 - `sourceMap`
 
-Keep source metadata in `lib/content-sources.ts` until the Supabase content engine proves useful enough to justify a schema migration.
+Keep source metadata in `features/content-sources/index.ts` until the Supabase content engine proves useful enough to justify a schema migration.
 
 ## Hydrogen Freshness Checklist
 
@@ -85,8 +85,8 @@ Keep source metadata in `lib/content-sources.ts` until the Supabase content engi
 2. Convert raw notes into public-safe English copy in the site voice.
 3. Separate private editorial comments from public article content before writing to Supabase.
 4. Insert or update the Supabase `posts` row with title, slug, content, excerpt, meta description, tags, reading time, cover image, published date, and `published` status.
-5. Add internal source metadata in `lib/content-sources.ts`, including `sourceMap`, `lastVerified`, claim classification, target keyword, search intent, reviewed-by owner, and content type where available.
-6. Add optional public enhancements in `lib/post-enhancements.ts`: hero visual, FAQ, internal links, official external links, OG image, and closing pitch.
+5. Add internal source metadata in `features/content-sources/index.ts`, including `sourceMap`, `lastVerified`, claim classification, target keyword, search intent, reviewed-by owner, and content type where available.
+6. Add optional public enhancements in `features/post-enhancements/index.ts`: hero visual, FAQ, internal links, official external links, OG image, and closing pitch.
 7. Do not add editorial scoring or review notes to `PostEnhancement`.
 8. Run `npm run audit:shopify-claims`, `npm run lint`, `npm run typecheck`, and `npm run build`.
 9. Deploy to production.

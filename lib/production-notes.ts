@@ -1,4 +1,4 @@
-import type { TrafficLink } from "@/lib/traffic-foundation";
+import type { TrafficLink } from "../features/traffic-foundation";
 
 export interface ProductionNoteFrame {
   slug: string;
