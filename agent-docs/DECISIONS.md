@@ -27,5 +27,6 @@ This file records durable decisions so future agents do not re-litigate settled 
 - Keep compatibility exports during large registry moves when it reduces risk.
 - Prefer feature/domain folders for large registries and page-specific sections.
 - Keep the public service page interface as `<ServiceLandingPage service={service} />`; internal service landing sections may live in `components/service-landing/` while the route import surface stays stable.
+- Keep `lib/services.ts` as a compatibility re-export while the canonical service registry lives in `features/services/registry/`.
 - Keep `lib/` for stable adapters, shared helpers, security, metadata, and compatibility modules.
 - Do not split files only to satisfy size preferences; split when locality, leverage, testing, or DRY/KISS improves.

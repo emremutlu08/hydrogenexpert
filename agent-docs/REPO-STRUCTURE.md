@@ -18,6 +18,7 @@ This file maps the repository structure and placement rules. Update it whenever 
 | `app/` | Next.js App Router routes and route handlers. |
 | `components/` | Shared React UI and section components. |
 | `components/service-landing/` | Focused sections and helpers behind `ServiceLandingPage` while preserving `<ServiceLandingPage service={service} />`. |
+| `features/services/registry/` | Canonical service package registry modules for base data, enrichments, source metadata, offer snapshots, and lookup helpers. |
 | `lib/` | Shared runtime helpers, adapters, registries, and compatibility exports. |
 | `features/` | Target home for domain modules and large registries as architecture cleanup progresses. |
 | `data/` | Static structured project data such as case studies and logos. |
@@ -65,7 +66,7 @@ features/
 └── generated-posts/
 ```
 
-Use compatibility re-exports during migrations when it keeps call sites stable and lowers risk.
+Use compatibility re-exports during migrations when it keeps call sites stable and lowers risk. `lib/services.ts` is currently a compatibility export for `features/services/registry/`.
 
 ## Placement Rules
 
