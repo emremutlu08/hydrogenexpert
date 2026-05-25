@@ -17,7 +17,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 - PR: [#61 Finalize architecture documentation pass](https://github.com/emremutlu08/hydrogenexpert/pull/61)
 - Branch: `codex/final-architecture-pass`
-- Deployment: Preview and production verification pending.
+- Deployment: Preview deployment [hydrogenexpert-git-codex-final-arch-825f0f-emremutlu8s-projects.vercel.app](https://hydrogenexpert-git-codex-final-arch-825f0f-emremutlu8s-projects.vercel.app); production deployment [hydrogenexpert-cw6bt8xw1-emremutlu8s-projects.vercel.app](https://hydrogenexpert-cw6bt8xw1-emremutlu8s-projects.vercel.app) verified at [hydrogenexpert.co](https://hydrogenexpert.co).
 - Summary:
   - Marked the 2026-05-25 agent-docs and architecture cleanup program complete.
   - Documented the final direct-composed page review across resource, article, blog, and traffic-foundation pages.
@@ -40,6 +40,8 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed, 73 static pages generated.
   - `INTERNAL_LINK_BASE_URL=http://127.0.0.1:3014 NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:internal-links`: passed with 55 sitemap URLs and 69 internal URLs.
   - Local production smoke verified `/`, `/resources`, `/shopify-hydrogen-developer`, `/custom-shopify-hydrogen-storefront`, `/shopify-hydrogen-examples`, `/shopify-hydrogen-issues`, `/shopify-hydrogen-templates`, `/sitemap.xml`, `/robots.txt`, and `/llms.txt` as `200`.
+  - Protected Vercel preview verified `/`, `/resources`, `/shopify-hydrogen-developer`, `/custom-shopify-hydrogen-storefront`, `/shopify-hydrogen-examples`, `/shopify-hydrogen-issues`, `/shopify-hydrogen-templates`, `/sitemap.xml`, `/robots.txt`, and `/llms.txt` as `200` through `vercel curl`.
+  - Production verified `/`, `/resources`, `/shopify-hydrogen-developer`, `/custom-shopify-hydrogen-storefront`, `/shopify-hydrogen-examples`, `/shopify-hydrogen-issues`, `/shopify-hydrogen-templates`, `/sitemap.xml`, `/robots.txt`, and `/llms.txt` as `200`.
 - Manual follow-up:
   - Remove compatibility re-exports only after imports stabilize and validation confirms no public behavior changed.
 
