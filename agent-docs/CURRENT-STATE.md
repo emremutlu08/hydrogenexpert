@@ -14,13 +14,13 @@ This file summarizes the current repo shape so future agents can orient quickly.
 - Canonical path: `/Users/emremutlu/Apps/Codex/hydrogenexpert`.
 - Primary branch: `main`.
 - Current app shape: Next.js App Router marketing and lead-generation site.
-- Public app code lives in `app/`, shared UI in `components/`, service landing sections in `components/service-landing/`, shared logic and registries mostly in `lib/`, content/data in `content/` and `data/`.
+- Public app code lives in `app/`, shared UI in `components/`, service landing sections in `components/service-landing/`, service registry modules in `features/services/registry/`, shared helpers and compatibility exports in `lib/`, content/data in `content/` and `data/`.
 - Canonical agent guidance now lives in `agent-docs/` with `AGENTS.md` as the router.
 
 ## Known Architecture Risks
 
 - `components/ServiceLandingPage.tsx` is now a thin shell over focused service landing section modules; keep checking public output during follow-up refactors.
-- `lib/services.ts` combines service base data, enrichments, source metadata, offer snapshots, and lookup helpers.
+- `features/services/registry/` now separates service base data, enrichments, source metadata, offer snapshots, and lookup helpers; `lib/services.ts` remains a compatibility re-export.
 - Large registry modules such as traffic foundation, content sources, post enhancements, and content relations are under `lib/` rather than domain-specific feature folders.
 - Some direct-composed pages repeat card, list, schema, and collection-page rendering patterns.
 

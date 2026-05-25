@@ -15,6 +15,41 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-25
 
+- PR: [#59 Split service registry modules](https://github.com/emremutlu08/hydrogenexpert/pull/59)
+- Branch: `codex/service-registry-architecture`
+- Deployment: Preview deployment [hydrogenexpert-git-codex-service-re-ae131e-emremutlu8s-projects.vercel.app](https://hydrogenexpert-git-codex-service-re-ae131e-emremutlu8s-projects.vercel.app); production deployment [hydrogenexpert-ew4snya1l-emremutlu8s-projects.vercel.app](https://hydrogenexpert-ew4snya1l-emremutlu8s-projects.vercel.app) verified at [hydrogenexpert.co](https://hydrogenexpert.co).
+- Summary:
+  - Moved the canonical service registry into `features/services/registry/`.
+  - Split service base data, page enrichments, source metadata, offer snapshots, and lookup assembly into focused modules.
+  - Kept `lib/services.ts` as a compatibility re-export so existing imports and route files continue to work.
+  - Updated agent architecture docs and TODO state for the completed service registry split.
+- Files changed:
+  - `features/services/registry/base.ts`
+  - `features/services/registry/enrichments.ts`
+  - `features/services/registry/source-metadata.ts`
+  - `features/services/registry/offer-snapshots.ts`
+  - `features/services/registry/index.ts`
+  - `lib/services.ts`
+  - `agent-docs/CURRENT-STATE.md`
+  - `agent-docs/DECISIONS.md`
+  - `agent-docs/REPO-STRUCTURE.md`
+  - `agent-docs/TODO.md`
+  - `CHANGELOG.md`
+- Verification:
+  - `git diff --check`: passed.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run test`: passed, 21 files and 82 tests.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed with no `Needs review` rows.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed, 73 static pages generated.
+  - `INTERNAL_LINK_BASE_URL=http://127.0.0.1:3012 NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:internal-links`: passed with 55 sitemap URLs and 69 internal URLs.
+  - Local production smoke verified `/shopify-hydrogen-developer`, `/shopify-hydrogen-cost`, `/custom-shopify-hydrogen-storefront`, `/shopify-hydrogen-audit`, `/sitemap.xml`, and `/llms.txt` as `200`.
+  - Protected Vercel preview verified `/shopify-hydrogen-developer`, `/shopify-hydrogen-cost`, `/custom-shopify-hydrogen-storefront`, `/shopify-hydrogen-audit`, `/sitemap.xml`, and `/llms.txt` as `200` through `vercel curl`.
+  - Production verified `/shopify-hydrogen-developer`, `/shopify-hydrogen-cost`, `/custom-shopify-hydrogen-storefront`, `/shopify-hydrogen-audit`, `/sitemap.xml`, `/robots.txt`, and `/llms.txt` as `200`.
+- Manual follow-up:
+  - Continue with the content registry placement split.
+
 - PR: [#58 Split service landing page sections](https://github.com/emremutlu08/hydrogenexpert/pull/58)
 - Branch: `codex/service-page-risk-cleanup`
 - Deployment: Preview deployment [hydrogenexpert-git-codex-service-pa-e4dc7d-emremutlu8s-projects.vercel.app](https://hydrogenexpert-git-codex-service-pa-e4dc7d-emremutlu8s-projects.vercel.app); production deployment [hydrogenexpert-3bcmrznw2-emremutlu8s-projects.vercel.app](https://hydrogenexpert-3bcmrznw2-emremutlu8s-projects.vercel.app) verified at [hydrogenexpert.co](https://hydrogenexpert.co).
