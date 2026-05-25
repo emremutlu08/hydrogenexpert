@@ -17,7 +17,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 - PR: [#63 Refresh safe dependencies and align Node runtime](https://github.com/emremutlu08/hydrogenexpert/pull/63)
 - Branch: `codex/dependency-refresh-node24`
-- Deployment: Pending production deployment.
+- Deployment: Production deployment verified at [hydrogenexpert.co](https://hydrogenexpert.co).
 - Summary:
   - Updated `@anthropic-ai/sdk` to `^0.98.0` and `@supabase/supabase-js` to `^2.106.2`.
   - Aligned Node typing and scheduled validation with the Vercel Node 24 runtime: `@types/node` to `^24.12.4`, GitHub scheduled workflow Node 24, and `package.json` engines `>=22 <25`.
@@ -41,6 +41,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - `npm run audit:shopify-claims`: passed with no `Needs review` rows.
   - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed, 73 static pages generated.
   - Local production smoke on `localhost:3020`: `/`, `/sitemap.xml`, and `/robots.txt` returned `200`; sitemap content type was `application/xml`, robots content type was `text/plain`, sitemap contained `/shopify-hydrogen-packages`, robots referenced `https://hydrogenexpert.co/sitemap.xml`, and `POST /api/generate-post` returned `401`.
+  - Production smoke on `https://hydrogenexpert.co`: `/`, `/sitemap.xml`, and `/robots.txt` returned `200`; sitemap content type was `application/xml`, robots content type was `text/plain`, sitemap listed 55 URLs and contained `/shopify-hydrogen-packages`, robots referenced `https://hydrogenexpert.co/sitemap.xml`, and `POST /api/generate-post` returned `401`.
 - Manual follow-up:
   - Revisit ESLint 10 after `eslint-config-next` and its bundled plugin chain support ESLint 10 without invalid peer dependencies.
 
