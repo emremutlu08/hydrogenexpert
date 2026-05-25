@@ -17,7 +17,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 - PR: [#60 Move content registries into feature modules](https://github.com/emremutlu08/hydrogenexpert/pull/60)
 - Branch: `codex/content-registry-placement`
-- Deployment: Preview/production deployment pending; public runtime behavior unchanged.
+- Deployment: Preview deployment [hydrogenexpert-git-codex-content-re-225816-emremutlu8s-projects.vercel.app](https://hydrogenexpert-git-codex-content-re-225816-emremutlu8s-projects.vercel.app); production deployment [hydrogenexpert-n09nhtngf-emremutlu8s-projects.vercel.app](https://hydrogenexpert-n09nhtngf-emremutlu8s-projects.vercel.app) verified at [hydrogenexpert.co](https://hydrogenexpert.co).
 - Summary:
   - Moved content source metadata, content relations, post enhancements, and traffic foundation registries into feature/domain folders.
   - Kept `lib/content-sources.ts`, `lib/content-relations.ts`, `lib/post-enhancements.ts`, and `lib/traffic-foundation.ts` as compatibility re-exports.
@@ -48,6 +48,8 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed, 73 static pages generated.
   - `INTERNAL_LINK_BASE_URL=http://127.0.0.1:3013 NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:internal-links`: passed with 55 sitemap URLs and 69 internal URLs.
   - Local production smoke verified `/resources`, `/shopify-hydrogen-examples`, `/shopify-hydrogen-issues`, `/shopify-hydrogen-templates`, `/udemy-shopify-hydrogen-course-resources`, `/blog/shopify-hydrogen-vs-liquid`, `/sitemap.xml`, and `/llms.txt` as `200`.
+  - Protected Vercel preview verified `/resources`, `/shopify-hydrogen-examples`, `/shopify-hydrogen-issues`, `/shopify-hydrogen-templates`, `/udemy-shopify-hydrogen-course-resources`, `/blog/shopify-hydrogen-vs-liquid`, `/sitemap.xml`, and `/llms.txt` as `200` through `vercel curl` with redirect following where applicable.
+  - Production verified `/resources`, `/shopify-hydrogen-examples`, `/shopify-hydrogen-issues`, `/shopify-hydrogen-templates`, `/udemy-shopify-hydrogen-course-resources`, `/blog/shopify-hydrogen-vs-liquid`, `/sitemap.xml`, `/robots.txt`, and `/llms.txt` as `200`.
 - Manual follow-up:
   - Continue with the final direct-composed page architecture pass.
 
