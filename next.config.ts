@@ -59,16 +59,6 @@ const nextConfig: NextConfig = {
         source: "/:path*",
         headers: securityHeaders,
       },
-      {
-        source: "/",
-        headers: [
-          {
-            key: "Last-Modified",
-            value: "Mon, 20 Apr 2026 12:00:00 GMT",
-          },
-          ...securityHeaders,
-        ],
-      },
     ];
   },
 };

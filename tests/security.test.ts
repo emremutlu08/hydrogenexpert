@@ -1,6 +1,11 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
+
 import { afterEach, describe, expect, it, vi } from "vitest";
 
 import { isTrustedOrigin, safeCompare, verifyTurnstileToken } from "../lib/security";
+
+const repoRoot = process.cwd();
 
 function requestWithOrigin(origin?: string) {
   return new Request("https://hydrogenexpert.co/api/lead-capture", {
@@ -63,5 +68,13 @@ describe("verifyTurnstileToken", () => {
       success: true,
       optional: true,
     });
+  });
+});
+
+describe("response headers", () => {
+  it("does not hardcode a stale homepage Last-Modified header", () => {
+    const nextConfig = readFileSync(join(repoRoot, "next.config.ts"), "utf8");
+
+    expect(nextConfig).not.toContain('key: "Last-Modified"');
   });
 });

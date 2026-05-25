@@ -86,7 +86,13 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
       url: absoluteUrl("/"),
       logo: absoluteUrl(SITE_LOGO_PATH),
       id: schemaIds.organization,
+      sameAs: VERIFIED_PROFILE_URLS,
     }),
+    image: absoluteUrl("/og-default.svg"),
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: [".card-soft p", ".article-html h2"],
+    },
     mainEntityOfPage: absoluteUrl(`/articles/${article.slug}`),
     url: absoluteUrl(`/articles/${article.slug}`),
   };

@@ -271,17 +271,20 @@ export function buildPublisherSchema({
   url,
   logo,
   id,
+  sameAs,
 }: {
   name: string;
   url: string;
   logo: string;
   id?: string;
+  sameAs?: readonly string[];
 }) {
   return {
     "@type": "Organization",
     ...(id ? { "@id": id } : {}),
     name,
     url,
+    ...(sameAs?.length ? { sameAs } : {}),
     logo: {
       "@type": "ImageObject",
       url: logo,
