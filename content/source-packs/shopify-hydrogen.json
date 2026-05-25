@@ -73,8 +73,7 @@
       ],
       "pagesUsingIt": [
         "/",
-        "/blog/shopify-storefront-mcp-explained",
-        "/blog/storefront-mcp-vs-shopify-dev-mcp"
+        "/resources"
       ]
     },
     {
@@ -87,8 +86,7 @@
         "UCP content should distinguish discovery, checkout, orders, and store-scoped Storefront MCP surfaces."
       ],
       "pagesUsingIt": [
-        "/blog/shopify-storefront-mcp-explained",
-        "/blog/storefront-mcp-vs-shopify-dev-mcp"
+        "/resources"
       ]
     }
   ]

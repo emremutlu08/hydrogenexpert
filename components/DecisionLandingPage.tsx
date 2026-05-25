@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CTASection } from "@/components/CTASection";
+import { FaqSection } from "@/components/FaqSection";
 import {
   AuditScopeReviewSection,
   HydrogenBuildPackages,
@@ -14,6 +15,7 @@ import { absoluteUrl, getSchemaIds } from "@/lib/site";
 import {
   asSchemaArray,
   buildBreadcrumbListSchema,
+  buildFaqPageSchema,
   buildServiceSchema,
 } from "@/lib/structured-data";
 
@@ -60,10 +62,11 @@ export function DecisionLandingPage({
     providerId: schemaIds.professionalService,
     serviceType: page.navLabel,
   });
+  const faqSchema = page.faqs?.length ? buildFaqPageSchema(page.faqs) : null;
 
   return (
     <>
-      <JsonLd data={asSchemaArray(serviceSchema, breadcrumbSchema)} />
+      <JsonLd data={asSchemaArray(serviceSchema, breadcrumbSchema, faqSchema)} />
       <div className="page-shell">
         <Breadcrumbs items={breadcrumbs} />
         <PageIntroSection
@@ -71,6 +74,7 @@ export function DecisionLandingPage({
           title={page.title}
           description={page.description}
           body={page.body}
+          reviewedAt="2026-05-25"
         />
 
         <section className="surface-card space-y-3">
@@ -222,6 +226,13 @@ export function DecisionLandingPage({
             ))}
           </div>
         </section>
+
+        {page.faqs?.length ? (
+          <FaqSection
+            title="Short answers for this Hydrogen decision."
+            faqs={page.faqs}
+          />
+        ) : null}
 
         <CTASection
           headline={page.cta.headline}

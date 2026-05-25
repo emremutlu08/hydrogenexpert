@@ -450,9 +450,9 @@ export const HYDROGEN_ISSUE_CATEGORIES = [
         symptom: "Structured data describes a different variant, price, availability, or canonical state.",
         fix: "Generate JSON-LD from the same selected product and variant state shown to shoppers.",
         post: {
-          href: "/blog/hydrogen-json-ld-product-state",
-          label: "Hydrogen JSON-LD product state",
-          note: "Production note",
+          href: "/shopify-hydrogen-seo",
+          label: "Hydrogen SEO and structured data",
+          note: "Canonical guide",
         },
         template: {
           href: "/shopify-hydrogen-templates#seo-migration-checklist",
@@ -465,9 +465,9 @@ export const HYDROGEN_ISSUE_CATEGORIES = [
         symptom: "Production crawl files do not match the storefront routes search engines should discover.",
         fix: "Own sitemap.xml, robots.txt, canonicals, and production route checks as launch QA.",
         post: {
-          href: "/blog/hydrogen-sitemap-robots-oxygen",
-          label: "Hydrogen sitemap and robots on Oxygen",
-          note: "Production note",
+          href: "/shopify-hydrogen-seo",
+          label: "Hydrogen sitemap and robots checks",
+          note: "Canonical guide",
         },
         template: {
           href: "/shopify-hydrogen-templates#launch-qa-checklist",
@@ -502,9 +502,9 @@ export const HYDROGEN_ISSUE_CATEGORIES = [
         symptom: "Important content fails the simple no-JavaScript or view-source check.",
         fix: "Treat product content as render-critical when it helps shoppers or crawlers.",
         post: {
-          href: "/blog/hydrogen-product-content-ssr",
+          href: "/shopify-hydrogen-seo",
           label: "Hydrogen product content SSR",
-          note: "Production note",
+          note: "SEO guide",
         },
         template: {
           href: "/shopify-hydrogen-templates#pdp-requirements",
@@ -517,9 +517,9 @@ export const HYDROGEN_ISSUE_CATEGORIES = [
         symptom: "The team tunes isolated components without naming API, media, third-party, and SSR boundaries.",
         fix: "Audit the page by request path, route data, cache behavior, image loading, and scripts.",
         post: {
-          href: "/blog/shopify-hydrogen-performance-checklist",
-          label: "Hydrogen performance checklist",
-          note: "Production note",
+          href: "/shopify-hydrogen-performance-optimization",
+          label: "Hydrogen performance optimization",
+          note: "Service guide",
         },
         template: {
           href: "/shopify-hydrogen-templates#launch-qa-checklist",
@@ -539,9 +539,9 @@ export const HYDROGEN_ISSUE_CATEGORIES = [
         symptom: "The storefront works until Shopify checkout, discounts, consent, or tracking need to agree.",
         fix: "Map cart state, checkout redirect, analytics, discount rules, and consent before launch.",
         post: {
-          href: "/blog/hydrogen-checkout-handoff-risks",
+          href: "/shopify-hydrogen-templates#launch-qa-checklist",
           label: "Hydrogen checkout handoff risks",
-          note: "Production note",
+          note: "Launch QA checklist",
         },
         template: {
           href: "/shopify-hydrogen-templates#launch-qa-checklist",
@@ -569,9 +569,9 @@ export const HYDROGEN_ISSUE_CATEGORIES = [
         symptom: "A Shopify app works in theme context but has no clean custom storefront equivalent.",
         fix: "Classify each app as API-backed, script-only, checkout-only, replace, or remove.",
         post: {
-          href: "/blog/shopify-apps-in-hydrogen-what-to-check",
+          href: "/shopify-hydrogen-audit",
           label: "Shopify apps in Hydrogen",
-          note: "Production note",
+          note: "Audit guide",
         },
         template: {
           href: "/shopify-hydrogen-templates#route-map",
@@ -606,9 +606,9 @@ export const HYDROGEN_ISSUE_CATEGORIES = [
         symptom: "Search params, selected options, canonical URLs, and visible product state disagree.",
         fix: "Create stable canonical and selected-option rules before indexing variant states.",
         post: {
-          href: "/blog/hydrogen-variant-urls-seo",
+          href: "/shopify-hydrogen-seo",
           label: "Hydrogen variant URLs and SEO",
-          note: "Production note",
+          note: "SEO guide",
         },
         template: {
           href: "/shopify-hydrogen-templates#seo-migration-checklist",
@@ -658,9 +658,9 @@ export const HYDROGEN_ISSUE_CATEGORIES = [
         symptom: "Legacy Liquid collection URLs, filters, or campaign paths are missing from the Hydrogen plan.",
         fix: "Map old routes, new routes, redirects, canonicals, filters, and sitemap entries together.",
         post: {
-          href: "/blog/shopify-hydrogen-route-mapping",
+          href: "/liquid-to-hydrogen-migration",
           label: "Shopify Hydrogen route mapping",
-          note: "Production note",
+          note: "Migration guide",
         },
         template: {
           href: "/shopify-hydrogen-templates#seo-migration-checklist",
@@ -673,9 +673,9 @@ export const HYDROGEN_ISSUE_CATEGORIES = [
         symptom: "Collection browsing, apps, analytics, redirects, and checkout assumptions move at once.",
         fix: "Name each breakage surface before implementation starts.",
         post: {
-          href: "/blog/what-breaks-when-moving-from-liquid-to-hydrogen",
+          href: "/liquid-to-hydrogen-migration",
           label: "What breaks moving from Liquid to Hydrogen",
-          note: "Production note",
+          note: "Migration guide",
         },
         template: {
           href: "/shopify-hydrogen-templates#launch-qa-checklist",
@@ -725,9 +725,9 @@ export const HYDROGEN_ISSUE_CATEGORIES = [
         symptom: "Content models grow without route ownership, validation, or Storefront API cost awareness.",
         fix: "Define fields, ownership, fallback behavior, and route usage before implementation.",
         post: {
-          href: "/blog/shopify-storefront-mcp-explained",
-          label: "Storefront MCP and content boundaries",
-          note: "Production note",
+          href: "/resources",
+          label: "Hydrogen resources",
+          note: "Resource hub",
         },
         template: {
           href: "/shopify-hydrogen-templates#scope-brief",
@@ -889,7 +889,7 @@ export const COURSE_MODULES = [
       { href: "/when-not-to-use-hydrogen", label: "When not to use Hydrogen", note: "Commercial sanity check." },
     ],
     productionNotes: [
-      { href: "/blog/shopify-hydrogen-vs-liquid", label: "Hydrogen vs Liquid production framing", note: "Related blog note." },
+      { href: "/shopify-hydrogen-vs-liquid", label: "Hydrogen vs Liquid production framing", note: "Decision comparison." },
     ],
     templates: [
       { href: "/shopify-hydrogen-templates#scope-brief", label: "Scope brief", note: "Copyable checklist." },
@@ -923,8 +923,8 @@ export const COURSE_MODULES = [
       { href: "/shopify-hydrogen-support-retainer", label: "Support retainer", note: "Post-launch ownership." },
     ],
     productionNotes: [
-      { href: "/blog/hydrogen-sitemap-robots-oxygen", label: "Sitemap and robots", note: "Launch crawl note." },
-      { href: "/blog/hydrogen-json-ld-product-state", label: "JSON-LD product state", note: "Schema state note." },
+      { href: "/shopify-hydrogen-seo", label: "Sitemap and robots", note: "Launch crawl guide." },
+      { href: "/shopify-hydrogen-seo", label: "JSON-LD product state", note: "Schema state guide." },
     ],
     templates: [
       { href: "/shopify-hydrogen-templates#seo-migration-checklist", label: "SEO migration checklist", note: "Copyable checklist." },

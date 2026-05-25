@@ -369,6 +369,7 @@ export function ServiceLandingPage({ service }: ServiceLandingPageProps) {
           title={service.heroTitle}
           description={service.summary}
           body={service.commercialIntent}
+          reviewedAt="2026-05-25"
         />
 
         <section className="surface-card space-y-3">

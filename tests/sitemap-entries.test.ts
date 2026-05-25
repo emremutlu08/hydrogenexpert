@@ -122,6 +122,6 @@ describe("buildSitemapEntries", () => {
 
     expect(developerEntry?.changeFrequency).toBe("weekly");
     expect(developerEntry?.priority).toBe(0.9);
-    expect(developerEntry?.lastModified).toEqual(new Date("2026-05-21T00:00:00.000Z"));
+    expect(developerEntry?.lastModified).toEqual(new Date("2026-05-25T00:00:00.000Z"));
   });
 });

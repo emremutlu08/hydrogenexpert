@@ -1,13 +1,18 @@
 import Link from "next/link";
 
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { FaqSection } from "@/components/FaqSection";
 import { LiquidHydrogenDecisionSection } from "@/components/HydrogenPackages";
 import { JsonLd } from "@/components/JsonLd";
 import { LiquidCleanupMiniOffer } from "@/components/LiquidCleanupMiniOffer";
 import { PageIntroSection } from "@/components/PageIntroSection";
 import { buildMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
-import { buildBreadcrumbListSchema } from "@/lib/structured-data";
+import {
+  asSchemaArray,
+  buildBreadcrumbListSchema,
+  buildFaqPageSchema,
+} from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
   title: "When Not to Use Shopify Hydrogen | Honest Merchant Guide",
@@ -78,6 +83,45 @@ const scenarios = [
     ],
   },
 ] as const;
+
+const decisionRows = [
+  {
+    question: "Is the current problem ordinary theme UX?",
+    liquidMove: "Improve the theme, sections, apps, content, or media pipeline first.",
+    hydrogenMove: "Only reconsider Hydrogen when the theme cannot express the needed buying journey.",
+    proof: "Useful when the issue is standard catalog browsing, photography, copy, or simple merchandising.",
+  },
+  {
+    question: "Is the constraint custom product discovery or data flow?",
+    liquidMove: "Prototype the smallest possible Liquid improvement before a rebuild.",
+    hydrogenMove: "Scope Hydrogen when product logic, content-led commerce, or routing needs exceed theme limits.",
+    proof: "Useful when the issue is application behavior, not just visual polish.",
+  },
+  {
+    question: "Can the team maintain an application after launch?",
+    liquidMove: "Stay on Liquid if merchandisers need most changes to happen in the Shopify admin.",
+    hydrogenMove: "Use Hydrogen only with a developer, retainer, or internal owner attached.",
+    proof: "Hydrogen creates application ownership, so maintenance capacity is part of the decision.",
+  },
+] as const;
+
+const faqs = [
+  {
+    question: "Is Shopify Hydrogen bad for small stores?",
+    answer:
+      "No. Hydrogen can technically work for smaller stores, but many small stores are better served by a stronger Shopify theme because the maintenance cost and developer dependency may outweigh the upside.",
+  },
+  {
+    question: "Should I use Hydrogen if my checkout conversion is the problem?",
+    answer:
+      "Usually no. Hydrogen controls the storefront before Shopify checkout. If the problem is payment, shipping, checkout configuration, or Shop Pay behavior, fix that funnel first.",
+  },
+  {
+    question: "When is Hydrogen worth revisiting?",
+    answer:
+      "Revisit Hydrogen when the store has a real custom storefront constraint: complex product discovery, content-commerce, app replacement pressure, route-level SEO control, or a team ready to maintain a React application.",
+  },
+] as const;
 const breadcrumbs = [
   { label: "Home", href: "/" },
   { label: "When Not to Use Hydrogen", href: "/when-not-to-use-hydrogen" },
@@ -88,11 +132,12 @@ const breadcrumbSchema = buildBreadcrumbListSchema(
     url: absoluteUrl(item.href),
   })),
 );
+const faqSchema = buildFaqPageSchema(faqs);
 
 export default function WhenNotToUseHydrogenPage() {
   return (
     <>
-      <JsonLd data={breadcrumbSchema} />
+      <JsonLd data={asSchemaArray(breadcrumbSchema, faqSchema)} />
       <div className="page-shell">
         <Breadcrumbs items={breadcrumbs} />
         <PageIntroSection
@@ -100,7 +145,59 @@ export default function WhenNotToUseHydrogenPage() {
           title="When Hydrogen is the wrong move"
           description="Six scenarios where a stronger theme, a cleaner app stack, or a narrower UX intervention is the smarter commercial choice."
           body="Most Hydrogen advice is sales material dressed up as education. The framework on this page is the opposite. These are the six situations where I would tell a store owner to walk away from a Hydrogen rebuild, even when they are asking for one. The reasoning is commercial, not ideological. Hydrogen is a powerful framework, but power has cost, and the cost does not always earn its place. If you see your own store in two or more of these scenarios, the honest next step is not a rebuild. It is a stronger theme, a cleaner app stack, or a narrow UX intervention. Save the rebuild budget for a stage where it actually moves revenue."
+          reviewedAt="2026-05-25"
         />
+
+        <section className="surface-card space-y-6">
+          <div className="max-w-4xl">
+            <p className="eyebrow">Fast decision table</p>
+            <h2 className="section-heading mt-3 text-[2.2rem] md:text-[2.8rem]">
+              Start with the constraint, not the framework.
+            </h2>
+            <p className="mt-4 text-base leading-8 text-neutral-600">
+              Name the problem, compare the safer move, and only upgrade when
+              the constraint justifies application ownership.
+            </p>
+          </div>
+          <div className="overflow-x-auto rounded-[1.2rem] border border-black/8 bg-white">
+            <table className="min-w-full border-collapse text-left text-sm">
+              <thead className="bg-[#f7f7f7]">
+                <tr>
+                  <th className="px-5 py-4 font-bold uppercase text-[#0f8a5d]">
+                    Question
+                  </th>
+                  <th className="px-5 py-4 font-bold uppercase text-[#0f8a5d]">
+                    Safer Liquid Move
+                  </th>
+                  <th className="px-5 py-4 font-bold uppercase text-[#0f8a5d]">
+                    Hydrogen Move
+                  </th>
+                  <th className="px-5 py-4 font-bold uppercase text-[#0f8a5d]">
+                    Proof Signal
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {decisionRows.map((row) => (
+                  <tr key={row.question} className="border-t border-black/8 align-top">
+                    <td className="min-w-[14rem] px-5 py-4 font-semibold leading-7 text-neutral-800">
+                      {row.question}
+                    </td>
+                    <td className="min-w-[15rem] px-5 py-4 leading-7 text-neutral-700">
+                      {row.liquidMove}
+                    </td>
+                    <td className="min-w-[15rem] px-5 py-4 leading-7 text-neutral-700">
+                      {row.hydrogenMove}
+                    </td>
+                    <td className="min-w-[15rem] px-5 py-4 leading-7 text-neutral-700">
+                      {row.proof}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
 
         <section className="grid gap-8">
           {scenarios.map((scenario, index) => (
@@ -135,6 +232,10 @@ export default function WhenNotToUseHydrogenPage() {
 
         <LiquidHydrogenDecisionSection />
         <LiquidCleanupMiniOffer />
+        <FaqSection
+          title="Short answers before you spend rebuild money."
+          faqs={faqs}
+        />
 
         <section className="hero-card space-y-5">
           <p className="dna-kicker text-[#8df1cb]">Still think Hydrogen might fit?</p>

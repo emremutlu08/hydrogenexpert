@@ -103,7 +103,7 @@ export const CONTENT_RELATIONS = [
       { href: "/shopify-hydrogen-issues#seo", label: "SEO issue library", note: "Related crawlability symptoms." },
       { href: "/shopify-hydrogen-templates#pdp-requirements", label: "PDP requirements", note: "Checklist for product content state." },
       { href: "/shopify-hydrogen-seo", label: "Hydrogen SEO", note: "Broader crawl and structured-data path." },
-      { href: "/blog/hydrogen-product-content-ssr", label: "Product content SSR", note: "Related production note." },
+      { href: "/shopify-hydrogen-seo", label: "Product content SSR", note: "Related SEO guide." },
     ],
   },
   {
@@ -115,7 +115,7 @@ export const CONTENT_RELATIONS = [
     related: [
       { href: "/shopify-hydrogen-issues#pdp", label: "PDP issue library", note: "Related variant and product-page symptoms." },
       { href: "/shopify-hydrogen-templates#pdp-requirements", label: "PDP requirements", note: "Checklist for option state and schema." },
-      { href: "/blog/hydrogen-variant-urls-seo", label: "Variant URLs and SEO", note: "Related route-state note." },
+      { href: "/shopify-hydrogen-seo", label: "Variant URLs and SEO", note: "Related route-state guide." },
       { href: "/custom-shopify-hydrogen-storefront", label: "Custom storefront", note: "When PDP behavior is part of a wider build." },
     ],
   },
@@ -129,7 +129,7 @@ export const CONTENT_RELATIONS = [
       { href: "/shopify-hydrogen-issues#performance", label: "Performance issue library", note: "Related SSR and speed symptoms." },
       { href: "/shopify-hydrogen-templates#launch-qa-checklist", label: "Launch QA checklist", note: "Checklist for production checks." },
       { href: "/shopify-hydrogen-performance-optimization", label: "Performance optimization", note: "Service path for live storefront cleanup." },
-      { href: "/blog/shopify-hydrogen-performance-checklist", label: "Performance checklist", note: "Related production note." },
+      { href: "/shopify-hydrogen-performance-optimization", label: "Performance checklist", note: "Related performance guide." },
     ],
   },
   {

@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 
+import { FreshnessNote } from "@/components/FreshnessNote";
 import { SectionHeader } from "@/components/SectionHeader";
 
 interface PageIntroSectionProps {
@@ -10,6 +11,7 @@ interface PageIntroSectionProps {
   className?: string;
   titleClassName?: string;
   headingAs?: "h1" | "h2";
+  reviewedAt?: string;
 }
 
 export function PageIntroSection({
@@ -20,9 +22,11 @@ export function PageIntroSection({
   className,
   titleClassName = "page-title mt-3 max-w-4xl",
   headingAs = "h1",
+  reviewedAt,
 }: PageIntroSectionProps) {
   return (
     <section className={`surface-card space-y-5 ${className ?? ""}`.trim()}>
+      {reviewedAt ? <FreshnessNote date={reviewedAt} /> : null}
       <SectionHeader
         eyebrow={eyebrow}
         title={title}
