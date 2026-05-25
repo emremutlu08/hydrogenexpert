@@ -18,7 +18,13 @@ import {
 } from "@/data/caseStudies";
 import { CASE_STUDY_PACKAGE_RELEVANCE } from "@/lib/hydrogen-packages";
 import { buildMetadata } from "@/lib/seo";
-import { absoluteUrl, getSchemaIds, OWNER, SITE_LOGO_PATH } from "@/lib/site";
+import {
+  absoluteUrl,
+  getSchemaIds,
+  OWNER,
+  SITE_LOGO_PATH,
+  VERIFIED_PROFILE_URLS,
+} from "@/lib/site";
 import {
   asSchemaArray,
   buildBreadcrumbListSchema,
@@ -99,6 +105,8 @@ export default async function CaseStudyDetailPage({
     publisherLogo: absoluteUrl(SITE_LOGO_PATH),
     publisherId: schemaIds.organization,
     publisherUrl: absoluteUrl("/"),
+    publisherSameAs: VERIFIED_PROFILE_URLS,
+    speakableCssSelectors: [".section-heading", ".surface-card p", ".card-soft p"],
   });
   const creativeWorkSchema = buildCreativeWorkSchema({
     name: study.caseStudyTitle,

@@ -13,6 +13,47 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 - Verification:
 - Manual follow-up:
 
+## 2026-05-25
+
+- PR: [#53 Fix GEO current-state issues](https://github.com/emremutlu08/hydrogenexpert/pull/53)
+- Branch: `codex/fix-geo-current-state-issues`
+- Deployment: Preview deployment [hydrogenexpert-bn5sxi88c-emremutlu8s-projects.vercel.app](https://hydrogenexpert-bn5sxi88c-emremutlu8s-projects.vercel.app); production verification pending merge.
+- Summary:
+  - Fixed GEO current-state issues from the May 25 audit: unpublished internal blog links now resolve through canonical live routes or permanent redirects instead of 404s.
+  - Added visible reviewed-date signals, package/decision comparison tables, FAQ schema on the Hydrogen-vs-Liquid and when-not-to-use pages, and stronger case-study Article publisher/speakable schema.
+  - Changed evergreen `/articles` routes from `force-dynamic` no-store behavior to ISR with 1-hour revalidation.
+  - Added IndexNow URL submission tooling and a production internal-link verifier so sitemap/internal-link regressions can fail before release.
+- Files changed:
+  - `lib/legacy-redirects.ts`
+  - `proxy.ts`
+  - `lib/traffic-foundation.ts`
+  - `lib/content-relations.ts`
+  - `lib/production-notes.ts`
+  - `components/FreshnessNote.tsx`
+  - `components/PageIntroSection.tsx`
+  - `app/page.tsx`
+  - `app/shopify-hydrogen-packages/page.tsx`
+  - `app/when-not-to-use-hydrogen/page.tsx`
+  - `components/DecisionLandingPage.tsx`
+  - `lib/decision-pages.ts`
+  - `lib/structured-data.ts`
+  - `scripts/ping-indexnow.ts`
+  - `scripts/verify-internal-links.ts`
+- Verification:
+  - `npm run typecheck`: passed.
+  - `npm run lint`: passed.
+  - `npm run test`: passed, 18 files and 72 tests.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed with no `Needs review` rows.
+  - `npm audit --audit-level=moderate`: found 0 vulnerabilities.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed, 73 static pages generated.
+  - `INTERNAL_LINK_BASE_URL=http://localhost:3010 NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:internal-links`: passed with 55 sitemap URLs and 69 internal URLs.
+  - Local Playwright production smoke passed for mobile and desktop on homepage, package, when-not-to-use, Hydrogen-vs-Liquid, case-study, and article routes.
+  - Vercel protected preview verified touched pages as `200`, legacy/unpublished blog slugs as `301`, `llms.txt` / `llms-full.txt` as `200`, and rendered schema/freshness/table content through `vercel curl`.
+- Manual follow-up:
+  - Add `BING_SITE_VERIFICATION` in Vercel when the Bing Webmaster token is available.
+  - Inspect or resubmit touched public URLs in Google Search Console after production deploy if stale snippets persist.
+
 ## 2026-05-24
 
 - PR: [#51 Traffic Foundation](https://github.com/emremutlu08/hydrogenexpert/pull/51)

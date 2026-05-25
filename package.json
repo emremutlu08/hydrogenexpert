@@ -12,6 +12,8 @@
     "audit:shopify-claims": "tsx scripts/audit-shopify-claims.ts",
     "validate:content": "tsx scripts/validate-content.ts",
     "verify:commercial-launch": "tsx scripts/verify-commercial-launch.ts",
+    "verify:internal-links": "tsx scripts/verify-internal-links.ts",
+    "indexnow:ping": "tsx scripts/ping-indexnow.ts",
     "report:traffic": "tsx scripts/report-traffic.ts",
     "related:fill": "tsx scripts/fill-related-links.ts",
     "og:generate": "tsx scripts/generate-og-images.ts"

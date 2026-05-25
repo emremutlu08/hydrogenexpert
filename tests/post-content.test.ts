@@ -23,6 +23,7 @@ describe("sanitizeHtmlContent", () => {
         '<p><a href="agency/">Services</a></p>',
         '<p><a href="#faq">FAQ</a></p>',
         '<p><a href="/blog/shopify-hydrogen-v2-setup-guide?utm_source=old">Old guide</a></p>',
+        '<p><a href="/blog/shopify-hydrogen-performance-checklist">Performance checklist</a></p>',
       ].join(""),
     );
 
@@ -31,6 +32,7 @@ describe("sanitizeHtmlContent", () => {
     expect(html).toContain('href="/services"');
     expect(html).toContain('href="#faq"');
     expect(html).toContain('href="/what-is-hydrogen"');
+    expect(html).toContain('href="/shopify-hydrogen-performance-optimization"');
     expect(html).not.toContain("nofollow");
   });
 

@@ -5,13 +5,13 @@ import type { Article } from "./articles";
 import type { PostSummary } from "./posts";
 import { SERVICE_PACKAGES } from "./services";
 
-const LAST_SIGNIFICANT_UPDATE = new Date("2026-05-24T00:00:00.000Z");
+const LAST_SIGNIFICANT_UPDATE = new Date("2026-05-25T00:00:00.000Z");
 const STATIC_ROUTE_OVERRIDES: Record<
   string,
   Pick<MetadataRoute.Sitemap[number], "changeFrequency" | "lastModified" | "priority">
 > = {
   "/shopify-hydrogen-developer": {
-    lastModified: new Date("2026-05-21T00:00:00.000Z"),
+    lastModified: LAST_SIGNIFICANT_UPDATE,
     changeFrequency: "weekly",
     priority: 0.9,
   },

@@ -1,21 +1,9 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-const LEGACY_PERMANENT_REDIRECTS = new Map([
-  ["/blog/shopify-hydrogen-v2-setup-guide", "/what-is-hydrogen"],
-]);
+import { getLegacyPermanentRedirect } from "./lib/legacy-redirects";
 
-function normalizePathname(pathname: string) {
-  if (pathname !== "/" && pathname.endsWith("/")) {
-    return pathname.slice(0, -1);
-  }
-
-  return pathname;
-}
-
-export function getLegacyPermanentRedirect(pathname: string) {
-  return LEGACY_PERMANENT_REDIRECTS.get(normalizePathname(pathname)) ?? null;
-}
+export { getLegacyPermanentRedirect };
 
 export function proxy(request: NextRequest) {
   const host = request.headers.get("host");

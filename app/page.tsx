@@ -3,6 +3,7 @@ import Link from "next/link";
 import { CTASection } from "@/components/CTASection";
 import { FaqSection } from "@/components/FaqSection";
 import { FounderCard } from "@/components/FounderCard";
+import { FreshnessNote } from "@/components/FreshnessNote";
 import { HydrogenBuildPackages, TwoKBuildBoundarySection } from "@/components/HydrogenPackages";
 import { JsonLd } from "@/components/JsonLd";
 import { LogoWall } from "@/components/LogoWall";
@@ -34,7 +35,7 @@ import {
   buildPublisherSchema,
 } from "@/lib/structured-data";
 
-const LAST_UPDATED = "2026-05-24";
+const LAST_UPDATED = "2026-05-25";
 const schemaIds = getSchemaIds();
 
 export const metadata = buildMetadata({
@@ -114,6 +115,11 @@ const articleSchema = {
     sameAs: VERIFIED_PROFILE_URLS,
   },
   publisher: publisherSchema,
+  image: absoluteUrl("/og-home.svg"),
+  speakable: {
+    "@type": "SpeakableSpecification",
+    cssSelector: [".hero-response", ".page-intro", ".surface-card p"],
+  },
   mainEntityOfPage: absoluteUrl("/"),
   dateModified: LAST_UPDATED,
   datePublished: LAST_UPDATED,
@@ -434,6 +440,7 @@ export default function HomePage() {
               ecommerce pages, product flow, cart drawer, checkout handoff, and clean
               performance - priced by project requirements, not traffic or pageviews.
             </p>
+            <FreshnessNote date={LAST_UPDATED} />
             <div className="flex flex-wrap items-center justify-center gap-3">
               <TrackedCTALink
                 href="/shopify-hydrogen-packages"

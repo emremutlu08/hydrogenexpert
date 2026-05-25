@@ -22,6 +22,10 @@ export interface DecisionPageData {
     label: string;
     note: string;
   }[];
+  faqs?: readonly {
+    question: string;
+    answer: string;
+  }[];
   cta: {
     headline: string;
     subtext: string;
@@ -310,6 +314,23 @@ export const DECISION_PAGES = {
         href: "/shopify-hydrogen-cost",
         label: "Cost planning",
         note: "Compare decision with budget reality.",
+      },
+    ],
+    faqs: [
+      {
+        question: "Is Shopify Liquid usually cheaper than Hydrogen?",
+        answer:
+          "Yes. Liquid is usually cheaper to launch and maintain because it stays closer to Shopify's theme model. Hydrogen is worth considering when the buying journey, performance needs, or custom storefront logic has outgrown theme constraints.",
+      },
+      {
+        question: "Does Hydrogen automatically improve SEO?",
+        answer:
+          "No. Hydrogen can support strong SEO when metadata, canonicals, sitemap, robots, JSON-LD, server-rendered content, and redirects are handled deliberately. A weak Hydrogen build can be worse for SEO than a clean Liquid theme.",
+      },
+      {
+        question: "What is the safest first step before choosing Hydrogen?",
+        answer:
+          "Start with a scope review: current theme limits, product flow, app dependencies, analytics, SEO risk, design readiness, and maintenance ownership. If Liquid still solves the problem, do not rebuild.",
       },
     ],
     cta: {

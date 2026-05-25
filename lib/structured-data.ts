@@ -221,6 +221,8 @@ export function buildCaseStudyArticleSchema({
   publisherLogo,
   publisherId,
   publisherUrl,
+  publisherSameAs,
+  speakableCssSelectors,
 }: {
   headline: string;
   url: string;
@@ -233,6 +235,8 @@ export function buildCaseStudyArticleSchema({
   publisherLogo?: string;
   publisherId?: string;
   publisherUrl?: string;
+  publisherSameAs?: readonly string[];
+  speakableCssSelectors?: readonly string[];
 }) {
   return {
     "@context": "https://schema.org",
@@ -250,6 +254,7 @@ export function buildCaseStudyArticleSchema({
       ...(publisherId ? { "@id": publisherId } : {}),
       name: "HydrogenExpert",
       ...(publisherUrl ? { url: publisherUrl } : {}),
+      ...(publisherSameAs?.length ? { sameAs: publisherSameAs } : {}),
       ...(publisherLogo
         ? {
             logo: {
@@ -260,6 +265,14 @@ export function buildCaseStudyArticleSchema({
         : {}),
     },
     ...(image ? { image } : {}),
+    ...(speakableCssSelectors?.length
+      ? {
+          speakable: {
+            "@type": "SpeakableSpecification",
+            cssSelector: speakableCssSelectors,
+          },
+        }
+      : {}),
     datePublished,
     dateModified,
     mainEntityOfPage: url,

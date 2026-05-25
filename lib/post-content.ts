@@ -1,5 +1,7 @@
 import sanitizeHtml from "sanitize-html";
 
+import { getLegacyPermanentRedirect } from "./legacy-redirects";
+
 const ALLOWED_ARTICLE_TAGS = [
   "a",
   "blockquote",
@@ -35,7 +37,6 @@ const LEGACY_INTERNAL_LINKS = new Map([
   ["/agency", "/services"],
   ["/cost", "/shopify-hydrogen-cost"],
   ["/shopify-hydrogen-seo-guide", "/shopify-hydrogen-seo"],
-  ["/blog/shopify-hydrogen-v2-setup-guide", "/what-is-hydrogen"],
 ]);
 
 function escapeHtml(value: string) {
@@ -138,7 +139,9 @@ function normalizePathname(pathname: string) {
 
 function getCanonicalInternalHref(pathname: string, search: string, hash: string) {
   const normalizedPathname = normalizePathname(pathname);
-  const legacyTarget = LEGACY_INTERNAL_LINKS.get(normalizedPathname);
+  const legacyTarget =
+    LEGACY_INTERNAL_LINKS.get(normalizedPathname) ??
+    getLegacyPermanentRedirect(normalizedPathname);
 
   if (legacyTarget) {
     return legacyTarget;

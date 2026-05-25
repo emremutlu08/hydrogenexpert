@@ -76,6 +76,7 @@ export default function CaseStudiesPage() {
           title="Real stores, real constraints, real storefront decisions"
           description="One proof page, five different storefront pressures: large-scale beauty retail, luxury jewelry, social-first DTC, home goods Liquid, and international apparel Liquid."
           body="These projects are not separate business ideas. They support HydrogenExpert and Emre Mutlu's personal brand as sales proof. Only verified or approved proof is shown; screenshots, quotes, and deeper metrics stay off the page until they are approved."
+          reviewedAt="2026-05-25"
         />
 
         <section className="surface-card space-y-6">

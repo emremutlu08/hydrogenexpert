@@ -14,7 +14,7 @@ import {
   buildPublisherSchema,
 } from "@/lib/structured-data";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 export const metadata = buildMetadata({
   title: "Shopify Hydrogen Articles | Hiring, Cost, SEO & Migration Guides",

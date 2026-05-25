@@ -36,7 +36,7 @@ describe("traffic foundation content", () => {
     for (const category of HYDROGEN_ISSUE_CATEGORIES) {
       expect(category.entries.length).toBeGreaterThanOrEqual(3);
       for (const entry of category.entries) {
-        expect(entry.post.href).toMatch(/^\/blog\//);
+        expect(entry.post.href).toMatch(/^\//);
         expect(entry.template.href).toContain("/shopify-hydrogen-templates");
       }
     }

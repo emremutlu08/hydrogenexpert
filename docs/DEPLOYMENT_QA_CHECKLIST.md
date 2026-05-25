@@ -10,6 +10,7 @@ Use this before production deployment and again after the live deployment is ava
 - [ ] `npm run build` passed.
 - [ ] `npm run audit:shopify-claims` passed or all review flags are explained.
 - [ ] `npm run validate:content` passed when content validation is in scope.
+- [ ] `npm run verify:internal-links` passed against the preview or local production server when internal links changed.
 - [ ] Sitemap works locally or in preview.
 - [ ] Robots works locally or in preview.
 - [ ] Metadata and canonical tags are present on touched pages.
@@ -26,7 +27,9 @@ Use this before production deployment and again after the live deployment is ava
 - [ ] `/sitemap.xml` returns expected URLs.
 - [ ] `/robots.txt` references the sitemap.
 - [ ] `/indexnow-key.txt` and `/.well-known/indexnow-key.txt` return the same IndexNow key.
+- [ ] Run `npm run indexnow:ping -- / /sitemap.xml /shopify-hydrogen-packages` with the touched public URLs after production is live.
 - [ ] Bing Webmaster verification is configured with `BING_SITE_VERIFICATION` when the account is available.
+- [ ] Submit or inspect touched public URLs in Google Search Console when stale snippets need refreshing.
 - [ ] Touched pages are indexable unless intentionally noindexed.
 - [ ] Schema-bearing source is present in rendered HTML.
 - [ ] Form submission path is still protected by Turnstile/rate limiting.

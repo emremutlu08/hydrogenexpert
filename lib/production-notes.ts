@@ -34,7 +34,7 @@ export const PRODUCTION_NOTE_FRAMES = [
     relatedLinks: [
       { href: "/shopify-hydrogen-issues#pdp", label: "PDP issue library", note: "Symptom group for variant problems." },
       { href: "/shopify-hydrogen-templates#pdp-requirements", label: "PDP requirements checklist", note: "Checklist for options, availability, and schema." },
-      { href: "/blog/hydrogen-variant-urls-seo", label: "Variant URLs and SEO", note: "Related route-state note." },
+      { href: "/shopify-hydrogen-seo", label: "Variant URLs and SEO", note: "Related route-state guide." },
     ],
   },
   {

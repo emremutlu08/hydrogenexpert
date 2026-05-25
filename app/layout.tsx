@@ -39,7 +39,7 @@ const googleSiteVerifications = Array.from(
     ].filter((value): value is string => Boolean(value)),
   ),
 );
-const bingVerification = process.env.BING_SITE_VERIFICATION;
+const bingVerification = process.env.BING_SITE_VERIFICATION?.trim();
 const gaId = getValidGaMeasurementId();
 
 export const metadata: Metadata = {

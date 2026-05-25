@@ -79,6 +79,7 @@ export default function ShopifyHydrogenPackagesPage() {
           title="Shopify Hydrogen packages from $2K-$5K"
           description="Launch a lean custom Hydrogen storefront without hiring a full agency."
           body="Starter, Standard, and Growth packages are priced by project requirements: routes, templates, components, integrations, migration risk, SEO needs, analytics, and launch QA. They are not priced by traffic or pageviews."
+          reviewedAt="2026-05-25"
         />
 
         <section className="surface-card space-y-6">
@@ -102,6 +103,58 @@ export default function ShopifyHydrogenPackagesPage() {
         </section>
 
         <HydrogenBuildPackages />
+        <section className="surface-card space-y-6">
+          <SectionHeader
+            eyebrow="Package fit table"
+            title="Compare the package path before the scope grows."
+            description="A compact comparison of budget, fit, inclusions, and boundaries without turning fixed-scope work into a vague rebuild."
+            className="max-w-5xl"
+          />
+          <div className="overflow-x-auto rounded-[1.2rem] border border-black/8 bg-white">
+            <table className="min-w-full border-collapse text-left text-sm">
+              <thead className="bg-[#f7f7f7]">
+                <tr>
+                  <th className="px-5 py-4 font-bold uppercase text-[#0f8a5d]">
+                    Package
+                  </th>
+                  <th className="px-5 py-4 font-bold uppercase text-[#0f8a5d]">
+                    Price
+                  </th>
+                  <th className="px-5 py-4 font-bold uppercase text-[#0f8a5d]">
+                    Best Fit
+                  </th>
+                  <th className="px-5 py-4 font-bold uppercase text-[#0f8a5d]">
+                    Includes
+                  </th>
+                  <th className="px-5 py-4 font-bold uppercase text-[#0f8a5d]">
+                    Boundary
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {HYDROGEN_BUILD_PACKAGES.map((buildPackage) => (
+                  <tr key={buildPackage.id} className="border-t border-black/8 align-top">
+                    <td className="min-w-[13rem] px-5 py-4 font-semibold leading-7 text-neutral-800">
+                      {buildPackage.name}
+                    </td>
+                    <td className="min-w-[10rem] px-5 py-4 leading-7 text-neutral-700">
+                      {buildPackage.price}
+                    </td>
+                    <td className="min-w-[16rem] px-5 py-4 leading-7 text-neutral-700">
+                      {buildPackage.bestFor}
+                    </td>
+                    <td className="min-w-[16rem] px-5 py-4 leading-7 text-neutral-700">
+                      {buildPackage.includes.slice(0, 4).join("; ")}
+                    </td>
+                    <td className="min-w-[16rem] px-5 py-4 leading-7 text-neutral-700">
+                      {buildPackage.notIncluded.slice(0, 4).join("; ")}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
         <PriceDriversSection />
         <ScopeReviewBriefTemplates />
         <TwoKBuildBoundarySection />
