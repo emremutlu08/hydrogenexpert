@@ -17,7 +17,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 - PR: [#58 Split service landing page sections](https://github.com/emremutlu08/hydrogenexpert/pull/58)
 - Branch: `codex/service-page-risk-cleanup`
-- Deployment: Preview/production deployment pending; public runtime behavior unchanged.
+- Deployment: Preview deployment [hydrogenexpert-git-codex-service-pa-e4dc7d-emremutlu8s-projects.vercel.app](https://hydrogenexpert-git-codex-service-pa-e4dc7d-emremutlu8s-projects.vercel.app); production deployment [hydrogenexpert-3bcmrznw2-emremutlu8s-projects.vercel.app](https://hydrogenexpert-3bcmrznw2-emremutlu8s-projects.vercel.app) verified at [hydrogenexpert.co](https://hydrogenexpert.co).
 - Summary:
   - Kept the public `<ServiceLandingPage service={service} />` interface while turning `components/ServiceLandingPage.tsx` into a thin shell.
   - Moved common service rendering, developer-only sections/schema/proof, pricing/package sections, audit sections, article links, and CTA helper logic into focused `components/service-landing/` modules.
@@ -46,6 +46,8 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - `INTERNAL_LINK_BASE_URL=http://127.0.0.1:3011 NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:internal-links`: passed with 55 sitemap URLs and 69 internal URLs.
   - Local production smoke verified `/shopify-hydrogen-developer`, `/shopify-hydrogen-cost`, `/custom-shopify-hydrogen-storefront`, `/shopify-hydrogen-audit`, `/sitemap.xml`, and `/llms.txt` as `200`.
   - Playwright browser smoke verified `/shopify-hydrogen-developer` H1, developer role section, and CTA render.
+  - Protected Vercel preview verified `/shopify-hydrogen-developer`, `/shopify-hydrogen-cost`, `/custom-shopify-hydrogen-storefront`, `/shopify-hydrogen-audit`, `/sitemap.xml`, and `/llms.txt` as `200` through `vercel curl`.
+  - Production verified `/shopify-hydrogen-developer`, `/shopify-hydrogen-cost`, `/custom-shopify-hydrogen-storefront`, `/shopify-hydrogen-audit`, `/sitemap.xml`, `/robots.txt`, and `/llms.txt` as `200`.
 - Manual follow-up:
   - Continue with the service registry architecture split.
 
