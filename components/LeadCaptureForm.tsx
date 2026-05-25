@@ -9,6 +9,7 @@ import {
   trackLeadStart,
   trackLeadSubmit,
 } from "@/lib/analytics";
+import type { LeadCaptureApiResponse } from "@/features/lead-capture/server";
 import {
   BUDGET_RANGE_OPTIONS,
   CURRENT_STACK_OPTIONS,
@@ -38,6 +39,7 @@ export function LeadCaptureForm({
   const pathname = usePathname();
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [message, setMessage] = useState<string | null>(null);
+  const [fallback, setFallback] = useState<LeadCaptureApiResponse["fallback"] | null>(null);
   const hasStarted = useRef(false);
   const sourcePath = pathname || "/";
 
@@ -104,6 +106,7 @@ export function LeadCaptureForm({
     event.preventDefault();
     setStatus("submitting");
     setMessage(null);
+    setFallback(null);
     markFormStarted();
 
     const form = event.currentTarget;
@@ -118,11 +121,12 @@ export function LeadCaptureForm({
         method: "POST",
         body: formData,
       });
-      const payload = (await response.json()) as { ok?: boolean; error?: string };
+      const payload = (await response.json()) as LeadCaptureApiResponse;
 
       if (!response.ok || !payload.ok) {
         setStatus("error");
         setMessage(payload.error || "Something went wrong. Please try again.");
+        setFallback(payload.fallback ?? null);
         trackLeadSubmit(sourceKind, "error", analyticsDetails, sourcePath);
         return;
       }
@@ -138,6 +142,7 @@ export function LeadCaptureForm({
     } catch {
       setStatus("error");
       setMessage("Something went wrong. Please try again.");
+      setFallback(null);
       trackLeadSubmit(sourceKind, "error", analyticsDetails, sourcePath);
     }
   }
@@ -347,6 +352,24 @@ export function LeadCaptureForm({
         >
           {message}
         </p>
+      ) : null}
+      {status === "error" && fallback ? (
+        <div className="rounded-[1.2rem] border border-[#ffb4b4]/40 bg-white/5 p-4 text-sm leading-7 text-neutral-200">
+          <p>{fallback.message}</p>
+          <div className="mt-3 flex flex-wrap gap-3">
+            {fallback.links.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex min-h-11 items-center rounded-full border border-white/15 px-4 py-2 text-sm font-semibold text-white transition hover:border-[#10b981] hover:text-[#8df1cb]"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </div>
       ) : null}
       </form>
     </section>

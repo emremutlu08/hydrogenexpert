@@ -28,6 +28,15 @@ export type PublishedPost = Pick<
   | "status"
 >;
 
+export type PublishedPostListResult =
+  | { status: "ok"; posts: PostSummary[] }
+  | { status: "source_unavailable"; error: string };
+
+export type PublishedPostDetailResult =
+  | { status: "ok"; post: PublishedPost }
+  | { status: "not_found" }
+  | { status: "source_unavailable"; error: string };
+
 function mapSummary(
   post: Pick<
     PostRecord,
@@ -47,11 +56,14 @@ function mapSummary(
   };
 }
 
-export const getPublishedPosts = cache(async (): Promise<PostSummary[]> => {
+export const getPublishedPostListResult = cache(async (): Promise<PublishedPostListResult> => {
   const supabase = getSupabaseClient();
 
   if (!supabase) {
-    return [];
+    return {
+      status: "source_unavailable",
+      error: "Supabase is not configured for published post reads.",
+    };
   }
 
   const { data, error } = await supabase
@@ -61,18 +73,33 @@ export const getPublishedPosts = cache(async (): Promise<PostSummary[]> => {
     .order("published_at", { ascending: false });
 
   if (error || !data) {
-    return [];
+    return {
+      status: "source_unavailable",
+      error: error?.message || "Published post reads returned no data.",
+    };
   }
 
-  return data.map(mapSummary);
+  return {
+    status: "ok",
+    posts: data.map(mapSummary),
+  };
 });
 
-export const getPublishedPostBySlug = cache(
-  async (slug: string): Promise<PublishedPost | null> => {
+export const getPublishedPosts = cache(async (): Promise<PostSummary[]> => {
+  const result = await getPublishedPostListResult();
+
+  return result.status === "ok" ? result.posts : [];
+});
+
+export const getPublishedPostBySlugResult = cache(
+  async (slug: string): Promise<PublishedPostDetailResult> => {
     const supabase = getSupabaseClient();
 
     if (!supabase) {
-      return null;
+      return {
+        status: "source_unavailable",
+        error: "Supabase is not configured for published post reads.",
+      };
     }
 
     const { data, error } = await supabase
@@ -85,14 +112,30 @@ export const getPublishedPostBySlug = cache(
       .maybeSingle();
 
     if (error) {
-      return null;
+      return {
+        status: "source_unavailable",
+        error: error.message,
+      };
     }
 
-    return data;
+    if (!data) {
+      return { status: "not_found" };
+    }
+
+    return { status: "ok", post: data };
+  },
+);
+
+export const getPublishedPostBySlug = cache(
+  async (slug: string): Promise<PublishedPost | null> => {
+    const result = await getPublishedPostBySlugResult(slug);
+
+    return result.status === "ok" ? result.post : null;
   },
 );
 
 export async function getPublishedPostSlugs(): Promise<string[]> {
-  const posts = await getPublishedPosts();
-  return posts.map((post) => post.slug);
+  const result = await getPublishedPostListResult();
+
+  return result.status === "ok" ? result.posts.map((post) => post.slug) : [];
 }

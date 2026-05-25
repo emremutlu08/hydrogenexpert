@@ -13,7 +13,10 @@ import { getRelatedLinksForPath } from "@/features/content-relations";
 import { getPostEnhancement } from "@/features/post-enhancements";
 import { formatPostContent } from "@/lib/post-content";
 import { buildPostMarkdown } from "@/lib/post-markdown";
-import { getPublishedPostBySlug, getPublishedPostSlugs } from "@/lib/posts";
+import {
+  getPublishedPostBySlugResult,
+  getPublishedPostListResult,
+} from "@/lib/posts";
 import { getProductionNoteFrame } from "@/lib/production-notes";
 import { buildMetadata } from "@/lib/seo";
 import {
@@ -42,7 +45,13 @@ const BLOG_METADATA_TITLE_OVERRIDES: Record<string, string> = {
 };
 
 export async function generateStaticParams() {
-  const slugs = await getPublishedPostSlugs();
+  const postResult = await getPublishedPostListResult();
+
+  if (postResult.status === "source_unavailable") {
+    return [];
+  }
+
+  const slugs = postResult.posts.map((post) => post.slug);
 
   return slugs.map((slug) => ({ slug }));
 }
@@ -71,9 +80,13 @@ export async function generateMetadata({
   params,
 }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const post = await getPublishedPostBySlug(slug);
+  const postResult = await getPublishedPostBySlugResult(slug);
 
-  if (!post) {
+  if (postResult.status === "source_unavailable") {
+    throw new Error(postResult.error);
+  }
+
+  if (postResult.status === "not_found") {
     return buildMetadata({
       title: "Shopify Hydrogen Blog Post Not Found | Emre Mutlu",
       description:
@@ -82,6 +95,7 @@ export async function generateMetadata({
     });
   }
 
+  const post = postResult.post;
   const enhancement = getPostEnhancement(post.slug);
 
   return buildMetadata({
@@ -97,12 +111,17 @@ export async function generateMetadata({
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
-  const post = await getPublishedPostBySlug(slug);
+  const postResult = await getPublishedPostBySlugResult(slug);
 
-  if (!post) {
+  if (postResult.status === "source_unavailable") {
+    throw new Error(postResult.error);
+  }
+
+  if (postResult.status === "not_found") {
     notFound();
   }
 
+  const post = postResult.post;
   const enhancement = getPostEnhancement(post.slug);
   const hasInlineFaq = /(^|\n)##\s+FAQ\b|<h2[^>]*>\s*FAQ\s*<\/h2>/i.test(post.content);
   const visibleFaq = hasInlineFaq ? undefined : enhancement.faq;

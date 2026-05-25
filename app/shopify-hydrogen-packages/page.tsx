@@ -18,6 +18,8 @@ import { CASE_STUDIES } from "@/data/caseStudies";
 import {
   CASE_STUDY_PACKAGE_RELEVANCE,
   HYDROGEN_BUILD_PACKAGES,
+  PACKAGE_PAGE_SEO,
+  PACKAGE_ROUTE,
   PRICING_FAQS,
 } from "@/lib/hydrogen-packages";
 import { buildMetadata } from "@/lib/seo";
@@ -28,16 +30,11 @@ import {
   buildFaqPageSchema,
 } from "@/lib/structured-data";
 
-export const metadata = buildMetadata({
-  title: "Shopify Hydrogen Packages | $2K-$5K Storefront Builds",
-  description:
-    "Fixed-scope Shopify Hydrogen storefront packages from $2K-$5K. Starter, Standard, and Growth builds priced by project requirements, not traffic or pageviews.",
-  path: "/shopify-hydrogen-packages",
-});
+export const metadata = buildMetadata(PACKAGE_PAGE_SEO);
 
 const breadcrumbs = [
   { label: "Home", href: "/" },
-  { label: "Shopify Hydrogen Packages", href: "/shopify-hydrogen-packages" },
+  { label: "Shopify Hydrogen Packages", href: PACKAGE_ROUTE },
 ] as const;
 
 const breadcrumbSchema = buildBreadcrumbListSchema(
@@ -56,7 +53,7 @@ const packageListSchema = {
     position: index + 1,
     name: `${buildPackage.name} - ${buildPackage.price}`,
     description: buildPackage.bestFor,
-    url: absoluteUrl("/shopify-hydrogen-packages#packages"),
+    url: absoluteUrl(`${PACKAGE_ROUTE}#packages`),
   })),
 };
 

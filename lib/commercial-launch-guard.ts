@@ -1,3 +1,5 @@
+import { COMMERCIAL_VERIFICATION_ROUTES } from "../features/public-discovery/manifest";
+
 export interface CommercialCopyViolation {
   route: string;
   phrase: string;
@@ -9,10 +11,11 @@ export interface CommercialCopyRule {
   required: readonly string[];
 }
 
-export const COMMERCIAL_COPY_RULES: readonly CommercialCopyRule[] = [
-  {
-    route: "/",
-    required: [
+const COMMERCIAL_REQUIRED_COPY_BY_ROUTE: Record<
+  (typeof COMMERCIAL_VERIFICATION_ROUTES)[number],
+  readonly string[]
+> = {
+  "/": [
       "$2K-$5K",
       "fixed-scope",
       "priced by project requirements",
@@ -24,10 +27,7 @@ export const COMMERCIAL_COPY_RULES: readonly CommercialCopyRule[] = [
       "Custom Hydrogen Scope",
       "Request Scope Review",
     ],
-  },
-  {
-    route: "/shopify-hydrogen-packages",
-    required: [
+  "/shopify-hydrogen-packages": [
       "$2K-$5K",
       "fixed-scope",
       "priced by project requirements",
@@ -39,10 +39,7 @@ export const COMMERCIAL_COPY_RULES: readonly CommercialCopyRule[] = [
       "Custom Hydrogen Scope",
       "Request Scope Review",
     ],
-  },
-  {
-    route: "/shopify-hydrogen-cost",
-    required: [
+  "/shopify-hydrogen-cost": [
       "$2K-$5K",
       "fixed-scope",
       "priced by requirements",
@@ -54,10 +51,7 @@ export const COMMERCIAL_COPY_RULES: readonly CommercialCopyRule[] = [
       "Custom Hydrogen Scope",
       "Request Scope Review",
     ],
-  },
-  {
-    route: "/custom-shopify-hydrogen-storefront",
-    required: [
+  "/custom-shopify-hydrogen-storefront": [
       "$2K-$5K",
       "fixed-scope",
       "Hydrogen Starter Storefront",
@@ -66,10 +60,7 @@ export const COMMERCIAL_COPY_RULES: readonly CommercialCopyRule[] = [
       "Custom Hydrogen Scope",
       "Request Scope Review",
     ],
-  },
-  {
-    route: "/shopify-hydrogen-audit",
-    required: [
+  "/shopify-hydrogen-audit": [
       "fixed-scope",
       "Starter",
       "Standard",
@@ -77,19 +68,13 @@ export const COMMERCIAL_COPY_RULES: readonly CommercialCopyRule[] = [
       "Custom",
       "Request Scope Review",
     ],
-  },
-  {
-    route: "/shopify-hydrogen-agency-usa",
-    required: [
+  "/shopify-hydrogen-agency-usa": [
       "$2K-$5K",
       "fixed-scope",
       "priced by project requirements",
       "Request Scope Review",
     ],
-  },
-  {
-    route: "/contact",
-    required: [
+  "/contact": [
       "$2K-$5K",
       "fixed-scope",
       "Hydrogen Starter Storefront",
@@ -98,17 +83,19 @@ export const COMMERCIAL_COPY_RULES: readonly CommercialCopyRule[] = [
       "Custom Hydrogen Scope",
       "Request Scope Review",
     ],
-  },
-  {
-    route: "/when-not-to-use-hydrogen",
-    required: [
+  "/when-not-to-use-hydrogen": [
       "fixed-scope",
       "Liquid cleanup",
       "Request Scope Review",
       "View Build Packages",
     ],
-  },
-] as const;
+};
+
+export const COMMERCIAL_COPY_RULES: readonly CommercialCopyRule[] =
+  COMMERCIAL_VERIFICATION_ROUTES.map((route) => ({
+    route,
+    required: COMMERCIAL_REQUIRED_COPY_BY_ROUTE[route],
+  }));
 
 export const FORBIDDEN_COMMERCIAL_PHRASES = [
   "$15K-$30K lean build",

@@ -15,6 +15,42 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-25
 
+- PR: [#64 Implement staged architecture reliability slice](https://github.com/emremutlu08/hydrogenexpert/pull/64)
+- Branch: `codex/staged-v1-architecture`
+- Deployment: Production deployment verified at [hydrogenexpert.co](https://hydrogenexpert.co).
+- Summary:
+  - Added a public discovery manifest for static sitemap routes, llms core entries, package SEO/discovery metadata, and commercial verification route membership.
+  - Made package data the source for lead budget options and thank-you budget review messages while preserving existing option values and visible copy.
+  - Extracted lead capture parsing, validation, fallback response payloads, and Supabase insert mapping into `features/lead-capture/`.
+  - Added explicit durable rate-limit results with memory fallback for lead capture and fail-closed behavior for generated-post cron requests.
+  - Added status-aware published-post reads so sitemap, feed, blog, and `llms-full.txt` do not silently treat source failures as empty content.
+- Files changed:
+  - `features/public-discovery/manifest.ts`
+  - `features/lead-capture/server.ts`
+  - `lib/hydrogen-packages.ts`
+  - `lib/security.ts`
+  - `lib/posts.ts`
+  - `lib/sitemap-entries.ts`
+  - `lib/llms.ts`
+  - `app/api/lead-capture/route.ts`
+  - `app/api/generate-post/route.ts`
+  - `components/LeadCaptureForm.tsx`
+  - `tests/`
+  - `agent-docs/`
+- Verification:
+  - `git diff --check`: passed.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run test`: passed, 24 files and 93 tests.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed with no `Needs review` rows.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed, 73 static pages generated.
+  - `COMMERCIAL_LAUNCH_BASE_URL=http://127.0.0.1:3100 npm run verify:commercial-launch`: passed.
+  - `INTERNAL_LINK_BASE_URL=http://127.0.0.1:3100 NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:internal-links`: passed with 55 sitemap URLs and 69 internal URLs.
+  - Local production smoke verified `/`, `/shopify-hydrogen-packages`, `/contact`, `/thank-you?budget=starter_2k`, `/sitemap.xml`, `/llms.txt`, `/llms-full.txt`, and `/feed.xml` as `200`.
+- Manual follow-up:
+  - None.
+
 - PR: [#63 Refresh safe dependencies and align Node runtime](https://github.com/emremutlu08/hydrogenexpert/pull/63)
 - Branch: `codex/dependency-refresh-node24`
 - Deployment: Production deployment verified at [hydrogenexpert.co](https://hydrogenexpert.co).

@@ -9,7 +9,7 @@ import { PostVisual } from "@/components/PostVisual";
 import { TrackedContentLink } from "@/components/TrackedInternalLink";
 import { buildMetadata } from "@/lib/seo";
 import { getPostEnhancement } from "@/features/post-enhancements";
-import { getPublishedPosts } from "@/lib/posts";
+import { getPublishedPostListResult } from "@/lib/posts";
 import { absoluteUrl } from "@/lib/site";
 import { buildBreadcrumbListSchema } from "@/lib/structured-data";
 
@@ -47,7 +47,13 @@ function getSafeCoverVisual(coverImage: string | null) {
 export default async function BlogPage({ searchParams }: BlogPageProps) {
   const params = await searchParams;
   const currentPage = Math.max(1, Number.parseInt(params.page ?? "1", 10) || 1);
-  const posts = await getPublishedPosts();
+  const postResult = await getPublishedPostListResult();
+
+  if (postResult.status === "source_unavailable") {
+    throw new Error(postResult.error);
+  }
+
+  const posts = postResult.posts;
 
   if (posts.length === 0) {
     notFound();

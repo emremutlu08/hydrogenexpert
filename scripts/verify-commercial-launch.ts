@@ -1,20 +1,12 @@
 import {
+  INTERNAL_PACKAGE_LINK_SOURCE_ROUTES,
+  PACKAGE_PAGE_DISCOVERY,
+} from "../features/public-discovery/manifest";
+import {
   COMMERCIAL_COPY_RULES,
   checkCommercialCopy,
   normalizeHtmlForCommercialChecks,
 } from "../lib/commercial-launch-guard";
-
-const PACKAGE_ROUTE = "/shopify-hydrogen-packages";
-const EXPECTED_PACKAGE_TITLE = "Shopify Hydrogen Packages | $2K-$5K Storefront Builds";
-const EXPECTED_PACKAGE_DESCRIPTION =
-  "Fixed-scope Shopify Hydrogen storefront packages from $2K-$5K. Starter, Standard, and Growth builds priced by project requirements, not traffic or pageviews.";
-const EXPECTED_PACKAGE_CANONICAL = "https://hydrogenexpert.co/shopify-hydrogen-packages";
-const INTERNAL_LINK_SOURCE_ROUTES = [
-  "/",
-  "/shopify-hydrogen-cost",
-  "/contact",
-  "/when-not-to-use-hydrogen",
-] as const;
 
 interface LaunchViolation {
   route: string;
@@ -48,49 +40,49 @@ function hasHtml(html: string, expected: string) {
 function verifyPackageSeo(html: string) {
   const violations: LaunchViolation[] = [];
 
-  if (!hasHtml(html, `<title>${EXPECTED_PACKAGE_TITLE}</title>`)) {
+  if (!hasHtml(html, `<title>${PACKAGE_PAGE_DISCOVERY.title}</title>`)) {
     violations.push({
-      route: PACKAGE_ROUTE,
-      phrase: EXPECTED_PACKAGE_TITLE,
+      route: PACKAGE_PAGE_DISCOVERY.path,
+      phrase: PACKAGE_PAGE_DISCOVERY.title,
       reason: "SEO title is missing or changed",
     });
   }
 
-  if (!hasHtml(html, `name="description" content="${EXPECTED_PACKAGE_DESCRIPTION}"`)) {
+  if (!hasHtml(html, `name="description" content="${PACKAGE_PAGE_DISCOVERY.description}"`)) {
     violations.push({
-      route: PACKAGE_ROUTE,
-      phrase: EXPECTED_PACKAGE_DESCRIPTION,
+      route: PACKAGE_PAGE_DISCOVERY.path,
+      phrase: PACKAGE_PAGE_DISCOVERY.description,
       reason: "meta description is missing or changed",
     });
   }
 
-  if (!hasHtml(html, `rel="canonical" href="${EXPECTED_PACKAGE_CANONICAL}"`)) {
+  if (!hasHtml(html, `rel="canonical" href="${PACKAGE_PAGE_DISCOVERY.canonicalUrl}"`)) {
     violations.push({
-      route: PACKAGE_ROUTE,
-      phrase: EXPECTED_PACKAGE_CANONICAL,
+      route: PACKAGE_PAGE_DISCOVERY.path,
+      phrase: PACKAGE_PAGE_DISCOVERY.canonicalUrl,
       reason: "canonical is missing or not absolute",
     });
   }
 
-  if (!hasHtml(html, `property="og:title" content="${EXPECTED_PACKAGE_TITLE}"`)) {
+  if (!hasHtml(html, `property="og:title" content="${PACKAGE_PAGE_DISCOVERY.title}"`)) {
     violations.push({
-      route: PACKAGE_ROUTE,
-      phrase: EXPECTED_PACKAGE_TITLE,
+      route: PACKAGE_PAGE_DISCOVERY.path,
+      phrase: PACKAGE_PAGE_DISCOVERY.title,
       reason: "Open Graph title is missing or changed",
     });
   }
 
-  if (!hasHtml(html, `property="og:description" content="${EXPECTED_PACKAGE_DESCRIPTION}"`)) {
+  if (!hasHtml(html, `property="og:description" content="${PACKAGE_PAGE_DISCOVERY.description}"`)) {
     violations.push({
-      route: PACKAGE_ROUTE,
-      phrase: EXPECTED_PACKAGE_DESCRIPTION,
+      route: PACKAGE_PAGE_DISCOVERY.path,
+      phrase: PACKAGE_PAGE_DISCOVERY.description,
       reason: "Open Graph description is missing or changed",
     });
   }
 
   if (/name="robots" content="[^"]*noindex/i.test(html)) {
     violations.push({
-      route: PACKAGE_ROUTE,
+      route: PACKAGE_PAGE_DISCOVERY.path,
       phrase: "robots noindex",
       reason: "package page must stay indexable",
     });
@@ -101,13 +93,13 @@ function verifyPackageSeo(html: string) {
 
 function verifyInternalPackageLink(route: string, html: string) {
   if (
-    !html.includes('href="/shopify-hydrogen-packages"') &&
-    !html.includes('href="https://hydrogenexpert.co/shopify-hydrogen-packages"')
+    !html.includes(`href="${PACKAGE_PAGE_DISCOVERY.path}"`) &&
+    !html.includes(`href="${PACKAGE_PAGE_DISCOVERY.canonicalUrl}"`)
   ) {
     return [
       {
         route,
-        phrase: "/shopify-hydrogen-packages",
+        phrase: PACKAGE_PAGE_DISCOVERY.path,
         reason: "internal link to package page is missing",
       },
     ];
@@ -128,29 +120,29 @@ async function main() {
 
     violations.push(...checkCommercialCopy(rule.route, html));
 
-    if (rule.route === PACKAGE_ROUTE) {
+    if (rule.route === PACKAGE_PAGE_DISCOVERY.path) {
       violations.push(...verifyPackageSeo(html));
     }
 
-    if ((INTERNAL_LINK_SOURCE_ROUTES as readonly string[]).includes(rule.route)) {
+    if ((INTERNAL_PACKAGE_LINK_SOURCE_ROUTES as readonly string[]).includes(rule.route)) {
       violations.push(...verifyInternalPackageLink(rule.route, html));
     }
   }
 
   const sitemap = await fetchText(baseUrl, "/sitemap.xml");
-  if (!sitemap.includes(EXPECTED_PACKAGE_CANONICAL)) {
+  if (!sitemap.includes(PACKAGE_PAGE_DISCOVERY.canonicalUrl)) {
     violations.push({
       route: "/sitemap.xml",
-      phrase: EXPECTED_PACKAGE_CANONICAL,
+      phrase: PACKAGE_PAGE_DISCOVERY.canonicalUrl,
       reason: "package page is missing from sitemap",
     });
   }
 
   const llms = await fetchText(baseUrl, "/llms.txt");
-  if (!llms.includes(EXPECTED_PACKAGE_CANONICAL)) {
+  if (!llms.includes(PACKAGE_PAGE_DISCOVERY.canonicalUrl)) {
     violations.push({
       route: "/llms.txt",
-      phrase: EXPECTED_PACKAGE_CANONICAL,
+      phrase: PACKAGE_PAGE_DISCOVERY.canonicalUrl,
       reason: "package page is missing from llms.txt",
     });
   }

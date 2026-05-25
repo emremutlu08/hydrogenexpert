@@ -6,7 +6,7 @@ import {
   GENERATED_POST_STATUS,
   GENERATED_POST_TAGS,
 } from "@/lib/generated-post-governance";
-import { getApiHeaders, getClientIp, isRateLimitedDurable, safeCompare } from "@/lib/security";
+import { checkRateLimitDurable, getApiHeaders, getClientIp, safeCompare } from "@/lib/security";
 import { getSupabaseAdminClient, getSupabaseClient } from "@/lib/supabase";
 
 const TOPICS = [
@@ -201,15 +201,23 @@ export async function POST(request: Request) {
     );
   }
 
-  if (
-    await isRateLimitedDurable({
-      supabase: supabaseAdmin,
-      scope: "generate-post",
-      identifier: ip,
-      limit: 10,
-      windowMs: 60 * 60 * 1000,
-    })
-  ) {
+  const rateLimit = await checkRateLimitDurable({
+    supabase: supabaseAdmin,
+    scope: "generate-post",
+    identifier: ip,
+    limit: 10,
+    windowMs: 60 * 60 * 1000,
+    fallbackPolicy: "deny",
+  });
+
+  if (!rateLimit.allowed) {
+    if (rateLimit.status === 503) {
+      return NextResponse.json(
+        { success: false, error: "Rate limiter unavailable." },
+        { status: 503, headers: getApiHeaders() },
+      );
+    }
+
     return NextResponse.json(
       { success: false, error: "Too many generation attempts." },
       { status: 429, headers: getApiHeaders() },

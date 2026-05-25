@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 
+import { COMMERCIAL_VERIFICATION_ROUTES } from "../features/public-discovery/manifest";
 import {
   COMMERCIAL_COPY_RULES,
   checkCommercialCopy,
@@ -7,16 +8,9 @@ import {
 
 describe("commercial launch copy guard", () => {
   it("checks the post-launch commercial routes", () => {
-    expect(COMMERCIAL_COPY_RULES.map((rule) => rule.route)).toEqual([
-      "/",
-      "/shopify-hydrogen-packages",
-      "/shopify-hydrogen-cost",
-      "/custom-shopify-hydrogen-storefront",
-      "/shopify-hydrogen-audit",
-      "/shopify-hydrogen-agency-usa",
-      "/contact",
-      "/when-not-to-use-hydrogen",
-    ]);
+    expect(COMMERCIAL_COPY_RULES.map((rule) => rule.route)).toEqual(
+      COMMERCIAL_VERIFICATION_ROUTES,
+    );
   });
 
   it("fails with route and phrase details when required copy disappears", () => {

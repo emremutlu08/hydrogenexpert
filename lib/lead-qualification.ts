@@ -1,3 +1,7 @@
+import { BUDGET_RANGE_OPTIONS } from "./hydrogen-packages";
+
+export { BUDGET_RANGE_OPTIONS } from "./hydrogen-packages";
+
 export const CURRENT_STACK_OPTIONS = [
   { value: "shopify_liquid", label: "Shopify Liquid theme" },
   { value: "shopify_hydrogen", label: "Shopify Hydrogen / custom storefront" },
@@ -24,16 +28,6 @@ export const MAIN_PROBLEM_OPTIONS = [
   { value: "checkout_cart", label: "Cart / checkout handoff" },
   { value: "app_stack", label: "App stack / integrations" },
   { value: "unsure", label: "Unsure" },
-] as const;
-
-export const BUDGET_RANGE_OPTIONS = [
-  { value: "not_set", label: "Not set yet" },
-  { value: "starter_2k", label: "Around $2K - Starter Storefront" },
-  { value: "standard_3k_35k", label: "$3K-$3.5K - Standard Storefront" },
-  { value: "growth_45k_5k", label: "$4.5K-$5K - Growth Storefront" },
-  { value: "custom_5k_plus", label: "$5K+ - Custom scope" },
-  { value: "retainer", label: "Retainer / ongoing support" },
-  { value: "not_sure", label: "Not sure yet" },
 ] as const;
 
 export const TIMELINE_OPTIONS = [

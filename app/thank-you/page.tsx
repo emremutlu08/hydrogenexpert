@@ -4,6 +4,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
 import { PageIntroSection } from "@/components/PageIntroSection";
 import { TrackedCTAButton } from "@/components/TrackedCTAButton";
+import { getBudgetRangeReviewMessage } from "@/lib/hydrogen-packages";
 import { buildMetadata } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 import { buildBreadcrumbListSchema } from "@/lib/structured-data";
@@ -35,25 +36,13 @@ const breadcrumbSchema = buildBreadcrumbListSchema(
   })),
 );
 
-function getBudgetMessage(budget?: string) {
-  if (budget === "starter_2k") {
-    return "Starter requests are reviewed around core ecommerce flow: home, listing, PDP, cart drawer, checkout handoff, account entry, SEO baseline, and launch readiness.";
-  }
-
-  if (budget === "custom_5k_plus") {
-    return "Custom requests are reviewed around migration risk, integrations, advanced search, B2B, subscriptions, content architecture, SEO preservation, and launch QA.";
-  }
-
-  return null;
-}
-
 export default async function ThankYouPage({
   searchParams,
 }: {
   searchParams: Promise<{ budget?: string }>;
 }) {
   const { budget } = await searchParams;
-  const budgetMessage = getBudgetMessage(budget);
+  const budgetMessage = getBudgetRangeReviewMessage(budget);
 
   return (
     <>
