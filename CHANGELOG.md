@@ -15,6 +15,31 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-25
 
+- PR: [#62 Remove unused next-sitemap dependency](https://github.com/emremutlu08/hydrogenexpert/pull/62)
+- Branch: `codex/remove-unused-next-sitemap`
+- Deployment: Pending production deployment and live verification.
+- Summary:
+  - Removed the unused `next-sitemap` runtime dependency.
+  - Refreshed `package-lock.json`, dropping `next-sitemap` and its older transitive `@next/env@13.x` dependency chain.
+  - Kept sitemap generation on the existing native Next.js `app/sitemap.ts` metadata route.
+- Files changed:
+  - `package.json`
+  - `package-lock.json`
+- Verification:
+  - `git diff --check`: passed.
+  - `npm ls --depth=0`: passed and no longer lists `next-sitemap`.
+  - `npm audit --audit-level=moderate`: passed with zero vulnerabilities.
+  - `npm_config_cache=/tmp/codex-npm-cache-hydrogenexpert npm audit signatures`: passed with 437 verified registry signatures and 92 verified attestations.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run test`: passed, 21 files and 82 tests.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed with no `Needs review` rows.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed, 73 static pages generated.
+  - Local production smoke on `localhost:3019`: `/`, `/sitemap.xml`, and `/robots.txt` returned `200`; sitemap content type was `application/xml`, robots content type was `text/plain`, sitemap contained the homepage and `/shopify-hydrogen-packages`, and robots referenced `https://hydrogenexpert.co/sitemap.xml`.
+- Manual follow-up:
+  - None.
+
 - PR: [#61 Finalize architecture documentation pass](https://github.com/emremutlu08/hydrogenexpert/pull/61)
 - Branch: `codex/final-architecture-pass`
 - Deployment: Preview deployment [hydrogenexpert-git-codex-final-arch-825f0f-emremutlu8s-projects.vercel.app](https://hydrogenexpert-git-codex-final-arch-825f0f-emremutlu8s-projects.vercel.app); production deployment [hydrogenexpert-cw6bt8xw1-emremutlu8s-projects.vercel.app](https://hydrogenexpert-cw6bt8xw1-emremutlu8s-projects.vercel.app) verified at [hydrogenexpert.co](https://hydrogenexpert.co).
