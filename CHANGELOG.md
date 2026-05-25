@@ -17,7 +17,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 - PR: [#59 Split service registry modules](https://github.com/emremutlu08/hydrogenexpert/pull/59)
 - Branch: `codex/service-registry-architecture`
-- Deployment: Preview/production deployment pending; public runtime behavior unchanged.
+- Deployment: Preview deployment [hydrogenexpert-git-codex-service-re-ae131e-emremutlu8s-projects.vercel.app](https://hydrogenexpert-git-codex-service-re-ae131e-emremutlu8s-projects.vercel.app); production deployment [hydrogenexpert-ew4snya1l-emremutlu8s-projects.vercel.app](https://hydrogenexpert-ew4snya1l-emremutlu8s-projects.vercel.app) verified at [hydrogenexpert.co](https://hydrogenexpert.co).
 - Summary:
   - Moved the canonical service registry into `features/services/registry/`.
   - Split service base data, page enrichments, source metadata, offer snapshots, and lookup assembly into focused modules.
@@ -45,6 +45,8 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed, 73 static pages generated.
   - `INTERNAL_LINK_BASE_URL=http://127.0.0.1:3012 NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:internal-links`: passed with 55 sitemap URLs and 69 internal URLs.
   - Local production smoke verified `/shopify-hydrogen-developer`, `/shopify-hydrogen-cost`, `/custom-shopify-hydrogen-storefront`, `/shopify-hydrogen-audit`, `/sitemap.xml`, and `/llms.txt` as `200`.
+  - Protected Vercel preview verified `/shopify-hydrogen-developer`, `/shopify-hydrogen-cost`, `/custom-shopify-hydrogen-storefront`, `/shopify-hydrogen-audit`, `/sitemap.xml`, and `/llms.txt` as `200` through `vercel curl`.
+  - Production verified `/shopify-hydrogen-developer`, `/shopify-hydrogen-cost`, `/custom-shopify-hydrogen-storefront`, `/shopify-hydrogen-audit`, `/sitemap.xml`, `/robots.txt`, and `/llms.txt` as `200`.
 - Manual follow-up:
   - Continue with the content registry placement split.
 
