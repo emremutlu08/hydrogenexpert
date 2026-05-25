@@ -13,6 +13,7 @@ This file tracks prioritized follow-ups and architecture cleanup tasks.
 
 1. Remove compatibility re-exports after imports have stabilized and a dedicated validation pass confirms no public behavior changed.
 2. Watch direct-composed pages during future additions; extract shared renderers only when multiple pages share data shape and behavior.
+3. Revisit ESLint 10 after `eslint-config-next` and its bundled `eslint-plugin-import`, `eslint-plugin-jsx-a11y`, and `eslint-plugin-react` dependency chain supports ESLint 10 without invalid peers.
 
 ## Completed On 2026-05-25
 

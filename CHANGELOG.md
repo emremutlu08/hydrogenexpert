@@ -15,6 +15,36 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-25
 
+- PR: [#63 Refresh safe dependencies and align Node runtime](https://github.com/emremutlu08/hydrogenexpert/pull/63)
+- Branch: `codex/dependency-refresh-node24`
+- Deployment: Production deployment verified at [hydrogenexpert.co](https://hydrogenexpert.co).
+- Summary:
+  - Updated `@anthropic-ai/sdk` to `^0.98.0` and `@supabase/supabase-js` to `^2.106.2`.
+  - Aligned Node typing and scheduled validation with the Vercel Node 24 runtime: `@types/node` to `^24.12.4`, GitHub scheduled workflow Node 24, and `package.json` engines `>=22 <25`.
+  - Documented the dependency policy and deferred ESLint 10 because the Next-managed ESLint plugin chain still reports invalid peer dependencies.
+- Files changed:
+  - `.github/workflows/scheduled-article-publish.yml`
+  - `agent-docs/HYDROGEN.md`
+  - `agent-docs/TODO.md`
+  - `package.json`
+  - `package-lock.json`
+- Verification:
+  - `git diff --check`: passed.
+  - `npm ls --depth=0`: passed.
+  - `npm audit --audit-level=moderate`: passed with zero vulnerabilities.
+  - `npm_config_cache=/tmp/codex-npm-cache-hydrogenexpert npm audit signatures`: passed with 437 verified registry signatures and 92 verified attestations.
+  - `npm ls eslint eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react --depth=3`: passed with ESLint 9.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run test`: passed, 21 files and 82 tests.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed with no `Needs review` rows.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed, 73 static pages generated.
+  - Local production smoke on `localhost:3020`: `/`, `/sitemap.xml`, and `/robots.txt` returned `200`; sitemap content type was `application/xml`, robots content type was `text/plain`, sitemap contained `/shopify-hydrogen-packages`, robots referenced `https://hydrogenexpert.co/sitemap.xml`, and `POST /api/generate-post` returned `401`.
+  - Production smoke on `https://hydrogenexpert.co`: `/`, `/sitemap.xml`, and `/robots.txt` returned `200`; sitemap content type was `application/xml`, robots content type was `text/plain`, sitemap listed 55 URLs and contained `/shopify-hydrogen-packages`, robots referenced `https://hydrogenexpert.co/sitemap.xml`, and `POST /api/generate-post` returned `401`.
+- Manual follow-up:
+  - Revisit ESLint 10 after `eslint-config-next` and its bundled plugin chain support ESLint 10 without invalid peer dependencies.
+
 - PR: [#62 Remove unused next-sitemap dependency](https://github.com/emremutlu08/hydrogenexpert/pull/62)
 - Branch: `codex/remove-unused-next-sitemap`
 - Deployment: Production deployment verified at [hydrogenexpert.co](https://hydrogenexpert.co).
