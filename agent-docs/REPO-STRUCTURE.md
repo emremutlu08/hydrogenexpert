@@ -17,6 +17,7 @@ This file maps the repository structure and placement rules. Update it whenever 
 | `agent-docs/` | Canonical agent-facing project docs, standards, workflows, and decisions. |
 | `app/` | Next.js App Router routes and route handlers. |
 | `components/` | Shared React UI and section components. |
+| `components/service-landing/` | Focused sections and helpers behind `ServiceLandingPage` while preserving `<ServiceLandingPage service={service} />`. |
 | `lib/` | Shared runtime helpers, adapters, registries, and compatibility exports. |
 | `features/` | Target home for domain modules and large registries as architecture cleanup progresses. |
 | `data/` | Static structured project data such as case studies and logos. |
@@ -54,7 +55,7 @@ Use this target structure when reducing large-module risk:
 features/
 ├── services/
 │   ├── registry/
-│   ├── sections/
+│   ├── sections/ (only if service sections later move out of `components/service-landing/`)
 │   └── ServiceLandingPage.tsx
 ├── content-sources/
 ├── content-relations/
