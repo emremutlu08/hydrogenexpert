@@ -5,12 +5,6 @@ import { useEffect, useId, useRef, useState } from "react";
 
 const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
-declare global {
-  interface Window {
-    __hydrogenExpertTurnstileCallback?: (token: string) => void;
-  }
-}
-
 interface TurnstileFieldProps {
   inputId?: string;
 }
@@ -18,6 +12,7 @@ interface TurnstileFieldProps {
 export function TurnstileField({ inputId }: TurnstileFieldProps) {
   const fallbackId = useId().replace(/:/g, "");
   const fieldId = inputId || `turnstile-token-${fallbackId}`;
+  const callbackName = `__hydrogenExpertTurnstileCallback_${fieldId.replace(/[^a-zA-Z0-9_]/g, "_")}`;
   const containerRef = useRef<HTMLDivElement>(null);
   const [shouldLoad, setShouldLoad] = useState(false);
 
@@ -67,11 +62,11 @@ export function TurnstileField({ inputId }: TurnstileFieldProps) {
           />
           <Script id={`${fieldId}-callback`} strategy="afterInteractive">
             {`
-              window.__hydrogenExpertTurnstileCallback = function(token) {
-                var inputs = document.querySelectorAll('input[name="turnstileToken"]');
-                inputs.forEach(function(input) {
+              window[${JSON.stringify(callbackName)}] = function(token) {
+                var input = document.getElementById(${JSON.stringify(fieldId)});
+                if (input) {
                   input.value = token;
-                });
+                }
               };
             `}
           </Script>
@@ -80,7 +75,7 @@ export function TurnstileField({ inputId }: TurnstileFieldProps) {
             data-sitekey={TURNSTILE_SITE_KEY}
             data-theme="dark"
             data-size="flexible"
-            data-callback="__hydrogenExpertTurnstileCallback"
+            data-callback={callbackName}
           />
         </>
       ) : null}

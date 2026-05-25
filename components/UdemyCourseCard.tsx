@@ -13,11 +13,13 @@ interface UdemyCourseCardProps {
   thumbnail?: string;
 }
 
+const STAR_KEYS = ["star-1", "star-2", "star-3", "star-4", "star-5"] as const;
+
 function StarRow() {
   return (
-    <div className="flex items-center gap-1 text-[#171717]">
-      {Array.from({ length: 5 }).map((_, index) => (
-        <svg key={index} viewBox="0 0 20 20" className="h-4 w-4 fill-current">
+    <div className="flex items-center gap-1 text-[#171717]" role="img" aria-label="5 star Udemy course rating">
+      {STAR_KEYS.map((starKey) => (
+        <svg key={starKey} viewBox="0 0 20 20" className="h-4 w-4 fill-current" aria-hidden="true" focusable="false">
           <path d="M10 1.8 12.41 6.68l5.39.78-3.9 3.8.92 5.37L10 14.1l-4.82 2.53.92-5.37-3.9-3.8 5.39-.78L10 1.8Z" />
         </svg>
       ))}
