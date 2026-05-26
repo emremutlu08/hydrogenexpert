@@ -27,4 +27,9 @@ describe("public discovery manifest", () => {
     expect(COMMERCIAL_VERIFICATION_ROUTES).toContain(PACKAGE_PAGE_DISCOVERY.path);
     expect(INTERNAL_PACKAGE_LINK_SOURCE_ROUTES).toContain("/");
   });
+
+  it("keeps the Hydrogen news page discoverable", () => {
+    expect(getPublicDiscoverySitemapRoutes()).toContain("/news-on-shopify-hydrogen");
+    expect(LLMS_CORE_PAGE_ENTRIES.some((entry) => entry.path === "/news-on-shopify-hydrogen")).toBe(true);
+  });
 });

@@ -36,9 +36,23 @@ export const CONTENT_RELATIONS = [
     intent: "evaluate",
     related: [
       { href: "/shopify-hydrogen-examples", label: "Hydrogen examples", note: "Pattern directory with source links." },
+      { href: "/news-on-shopify-hydrogen", label: "Hydrogen news", note: "Official updates translated into merchant impact." },
       { href: "/shopify-hydrogen-issues", label: "Issue library", note: "Symptom to fix index." },
       { href: "/shopify-hydrogen-templates", label: "Free templates", note: "Copyable launch and scope checklists." },
       { href: "/udemy-shopify-hydrogen-course-resources", label: "Course companion", note: "Learning path for course students." },
+    ],
+  },
+  {
+    path: "/news-on-shopify-hydrogen",
+    title: "News on Shopify Hydrogen",
+    cluster: "learning",
+    persona: "merchant",
+    intent: "learn",
+    related: [
+      { href: "/resources", label: "Resource hub", note: "Return to the full HydrogenExpert discovery map." },
+      { href: "/shopify-hydrogen-issues", label: "Issue library", note: "Turn update risk into production symptoms to check." },
+      { href: "/shopify-hydrogen-templates#launch-qa-checklist", label: "Launch QA checklist", note: "Use before shipping a Hydrogen upgrade." },
+      { href: "https://hydrogen.shopify.dev/updates", label: "Official Hydrogen updates", note: "Shopify's source of truth for Hydrogen release notes.", external: true },
     ],
   },
   {

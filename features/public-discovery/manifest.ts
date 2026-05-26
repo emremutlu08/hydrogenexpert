@@ -31,6 +31,7 @@ export const PUBLIC_DISCOVERY_ROUTES: readonly PublicDiscoveryRoute[] = [
   { path: "/services" },
   { path: PACKAGE_ROUTE },
   { path: "/resources" },
+  { path: "/news-on-shopify-hydrogen" },
   { path: "/shopify-hydrogen-examples" },
   { path: "/shopify-hydrogen-issues" },
   { path: "/shopify-hydrogen-templates" },
@@ -85,6 +86,12 @@ export const LLMS_CORE_PAGE_ENTRIES: readonly LlmsPageEntry[] = [
     path: "/what-is-hydrogen",
     description:
       "Plain-English explanation of Shopify Hydrogen for Shopify Plus and growth-stage brands.",
+  },
+  {
+    title: "News on Shopify Hydrogen",
+    path: "/news-on-shopify-hydrogen",
+    description:
+      "Monthly official Hydrogen update notes translated into merchant impact and end-user benefit.",
   },
   {
     title: "Should I Use It",

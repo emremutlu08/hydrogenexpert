@@ -15,6 +15,45 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-26
 
+- PR: [#70 Add News on Shopify Hydrogen update page](https://github.com/emremutlu08/hydrogenexpert/pull/70)
+- Branch: `codex/hydrogen-updates-newsletter`
+- Deployment: Production deployment verified at [News on Shopify Hydrogen](https://hydrogenexpert.co/news-on-shopify-hydrogen), deployment `https://hydrogenexpert-5k094jopn-emremutlu8s-projects.vercel.app`.
+- Summary:
+  - Added `/news-on-shopify-hydrogen` as a public update digest page for official Shopify Hydrogen releases.
+  - Translated the latest observed April 2026 Hydrogen update into merchant-friendly items with an explicit end-user benefit for each item.
+  - Added the page to the resource hub, related links, sitemap discovery, llms core context, and Shopify source metadata.
+  - Created the monthly Codex automation `news-on-shopify-hydrogen-monitor` to check Shopify's official Hydrogen updates page and produce a concise briefing when a newer release appears.
+- Files changed:
+  - `app/news-on-shopify-hydrogen/page.tsx`
+  - `features/content-relations/index.ts`
+  - `features/content-sources/index.ts`
+  - `features/public-discovery/manifest.ts`
+  - `features/traffic-foundation/index.ts`
+  - `tests/llms.test.ts`
+  - `tests/public-discovery-manifest.test.ts`
+  - `tests/sitemap-entries.test.ts`
+  - `CHANGELOG.md`
+- Verification:
+  - Shopify official Hydrogen updates page checked at `https://hydrogen.shopify.dev/updates`.
+  - Shopify Dev MCP Hydrogen docs search checked for source grounding.
+  - `git diff --check`: passed.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed with `/news-on-shopify-hydrogen` marked `Needs review? no`.
+  - `npm run test`: passed, 24 files and 95 tests.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed, 75 static pages generated.
+  - Browser smoke verified `/news-on-shopify-hydrogen` renders the expected H1, latest April 2026 release, official source link, end-user benefit blocks, and no desktop horizontal overflow. Local React eval and Vercel Analytics CSP messages were observed as existing local dev instrumentation noise.
+  - Playwright mobile smoke verified `/news-on-shopify-hydrogen` at 390px with no horizontal overflow.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co INTERNAL_LINK_BASE_URL=http://localhost:3000 npm run verify:internal-links`: passed with 57 sitemap URLs and 72 internal URLs.
+  - Vercel PR check passed for PR #70.
+  - Production deploy completed with `READY` state and was aliased to `https://hydrogenexpert.co`.
+  - Live smoke verified `/news-on-shopify-hydrogen`, `/sitemap.xml`, and `/llms.txt` return `200`; the page HTML contains the April 2026 release, end-user benefit text, and the canonical title.
+  - Live browser smoke verified `/news-on-shopify-hydrogen` renders the expected H1, latest release, benefit blocks, no desktop horizontal overflow, and no console errors.
+  - `INTERNAL_LINK_BASE_URL=https://hydrogenexpert.co NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:internal-links`: passed with 57 sitemap URLs and 72 internal URLs.
+- Manual follow-up:
+  - None.
+
 - PR: [#69 Fill competitive positioning gaps](https://github.com/emremutlu08/hydrogenexpert/pull/69)
 - Branch: `codex/competitive-gap-fixes`
 - Deployment: Production deployment verified at [hydrogenexpert.co](https://hydrogenexpert.co), deployment `https://hydrogenexpert-ot1k7w6gd-emremutlu8s-projects.vercel.app`.

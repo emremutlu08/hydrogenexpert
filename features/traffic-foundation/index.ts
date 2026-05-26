@@ -122,6 +122,11 @@ export const RESOURCE_CLUSTERS = [
         note: "Symptom to fix index across SEO, performance, PDP, collections, cart, and metaobjects.",
       },
       {
+        href: "/news-on-shopify-hydrogen",
+        label: "News on Shopify Hydrogen",
+        note: "Monthly official Hydrogen updates translated into merchant and end-user impact.",
+      },
+      {
         href: "/blog/shopify-hydrogen-product-description-ssr-seo",
         label: "Product descriptions and SSR",
         note: "A product content SEO note from a real storefront issue.",
