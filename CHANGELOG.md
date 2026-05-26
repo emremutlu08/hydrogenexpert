@@ -15,6 +15,36 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-26
 
+- PR: [#67 Prevent broken public images](https://github.com/emremutlu08/hydrogenexpert/pull/67)
+- Branch: `codex/prevent-broken-images`
+- Deployment: Production deployment verified at [hydrogenexpert.co](https://hydrogenexpert.co).
+- Summary:
+  - Disabled Next image optimization so local public assets are served directly instead of through Vercel `/_next/image` optimizer URLs.
+  - Added `npm run verify:public-images` to scan sitemap pages, rendered `<img>` and `srcset` URLs, and fail on non-image or non-200 responses.
+  - Confirmed the previous live failure mode was Vercel optimizer `402` responses, while the underlying public assets served correctly.
+- Files changed:
+  - `next.config.ts`
+  - `package.json`
+  - `scripts/verify-public-images.ts`
+  - `CHANGELOG.md`
+- Verification:
+  - Pre-fix live `npm run verify:public-images` caught `/_next/image` `402` failures.
+  - `git diff --check`: passed.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run test`: passed, 24 files and 93 tests.
+  - `NEXT_PUBLIC_SITE_URL=http://127.0.0.1:3100 npm run build`: passed, 74 static pages generated.
+  - `PUBLIC_IMAGE_BASE_URL=http://127.0.0.1:3100 NEXT_PUBLIC_SITE_URL=http://127.0.0.1:3100 npm run verify:public-images`: passed with 56 pages, 18 unique images, and `broken=0`.
+  - Browser smoke on `/blog/how-to-find-shopify-hydrogen-expert` found no completed image with zero natural width or height. Local Vercel Analytics and Speed Insights script 404s were observed as existing local instrumentation noise.
+  - `INTERNAL_LINK_BASE_URL=http://127.0.0.1:3100 NEXT_PUBLIC_SITE_URL=http://127.0.0.1:3100 npm run verify:internal-links`: passed with 56 sitemap URLs and 56 internal URLs.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed with no `Needs review` rows.
+  - Production deployment was aliased to `https://hydrogenexpert.co` and inspected as `Ready`.
+  - Live article HTML now uses direct public asset paths such as `/generated/blog/hydrogen-developer-vs-agency-cover.jpg` instead of `/_next/image` optimizer URLs.
+  - `PUBLIC_IMAGE_BASE_URL=https://hydrogenexpert.co NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:public-images`: passed with 56 pages, 18 unique images, and `broken=0`.
+- Manual follow-up:
+  - None.
+
 - PR: [#66 Publish Shopify Hydrogen expert hiring guide](https://github.com/emremutlu08/hydrogenexpert/pull/66)
 - Branch: `codex/publish-shopify-hydrogen-expert-guide`
 - Deployment: Production deployment verified at [How to Find a Shopify Hydrogen Expert](https://hydrogenexpert.co/blog/how-to-find-shopify-hydrogen-expert).

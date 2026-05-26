@@ -13,6 +13,7 @@
     "validate:content": "tsx scripts/validate-content.ts",
     "verify:commercial-launch": "tsx scripts/verify-commercial-launch.ts",
     "verify:internal-links": "tsx scripts/verify-internal-links.ts",
+    "verify:public-images": "tsx scripts/verify-public-images.ts",
     "indexnow:ping": "tsx scripts/ping-indexnow.ts",
     "report:traffic": "tsx scripts/report-traffic.ts",
     "related:fill": "tsx scripts/fill-related-links.ts",
