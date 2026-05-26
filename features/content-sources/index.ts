@@ -11,11 +11,14 @@ export type SourceTopic =
   | "storefront_api"
   | "customer_account_api"
   | "b2b"
+  | "checkout"
   | "discounts"
+  | "automation"
   | "seo"
   | "analytics"
   | "storefront_mcp"
   | "ucp"
+  | "shopify_partners"
   | "commercial_positioning";
 
 export type ClaimClassification =
@@ -236,6 +239,42 @@ export const SOURCE_PACKS = {
     usedFor:
       "Customer-segment eligibility claims for partner pricing and future pricing-model extensibility.",
   },
+  shopifyPartnerDirectory: {
+    label: "Shopify Help Center: Partner Directory",
+    sourceType: "shopify_official",
+    topic: "shopify_partners",
+    url: "https://help.shopify.com/en/manual/partner-directory",
+    retrievedAt: "2026-05-26",
+    usedFor:
+      "Partner Directory, service-category, and Experts Marketplace replacement claims for hiring guidance.",
+  },
+  shopifyCheckoutExtensions: {
+    label: "Shopify: Apps in checkout",
+    sourceType: "shopify_official",
+    topic: "checkout",
+    url: "https://shopify.dev/docs/apps/build/checkout",
+    retrievedAt: "2026-05-26",
+    usedFor:
+      "Checkout extension, checkout UI extension, and upgrade-safe checkout customization claims.",
+  },
+  shopifyFunctions: {
+    label: "Shopify: Function APIs",
+    sourceType: "shopify_official",
+    topic: "checkout",
+    url: "https://shopify.dev/docs/api/functions/latest",
+    retrievedAt: "2026-05-26",
+    usedFor:
+      "Shopify Functions claims for custom backend commerce logic in checkout-adjacent flows.",
+  },
+  shopifyFlow: {
+    label: "Shopify: About Flow",
+    sourceType: "shopify_official",
+    topic: "automation",
+    url: "https://shopify.dev/docs/apps/build/flow",
+    retrievedAt: "2026-05-26",
+    usedFor:
+      "Shopify Flow automation and workflow integration claims for Plus and growth-stage operations.",
+  },
   shopifyB2BApps: {
     label: "Shopify: Apps and B2B",
     sourceType: "shopify_official",
@@ -360,6 +399,23 @@ export const BLOG_SOURCE_METADATA = {
       SOURCE_PACKS.caseStudyEvidence,
       SOURCE_PACKS.emreProductionExperience,
     ],
+  },
+  "how-to-find-shopify-hydrogen-expert": {
+    lastVerified: "2026-05-26",
+    claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
+    sourceMap: [
+      SOURCE_PACKS.shopifyPartnerDirectory,
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.shopifyCheckoutExtensions,
+      SOURCE_PACKS.shopifyFunctions,
+      SOURCE_PACKS.shopifyFlow,
+      SOURCE_PACKS.shopifyB2BApps,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+    targetKeyword: "how to find shopify hydrogen expert",
+    searchIntent: "hiring evaluation",
+    reviewedBy: "Emre Mutlu",
+    contentType: "source_grounded_blog_post",
   },
   "hydrogen-sitemap-robots-oxygen": {
     lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
