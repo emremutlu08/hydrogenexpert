@@ -31,6 +31,7 @@ import {
   ExpertArticleLinksSection,
 } from "@/components/service-landing/ServiceArticleSections";
 import { getServiceCta } from "@/components/service-landing/ServiceLandingUtils";
+import { HydrogenSeoAuditChecklistSection } from "@/components/service-landing/SeoServiceSections";
 import { getPublicArticleBySlugForDate } from "@/lib/articles";
 import type { ServicePackage } from "@/lib/services";
 import { absoluteUrl, getSchemaIds } from "@/lib/site";
@@ -119,6 +120,7 @@ export function ServiceLandingPage({ service }: ServiceLandingPageProps) {
         <PricingRowsSection service={service} />
         <AuditOfferSection service={service} />
         <UniqueServiceSection service={service} />
+        <HydrogenSeoAuditChecklistSection service={service} />
         <DeveloperHiringDecisionSection service={service} />
         <DecisionLogicSection service={service} />
         <WrongFitSection service={service} />

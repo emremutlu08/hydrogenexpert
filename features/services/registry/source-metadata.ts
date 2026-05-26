@@ -98,6 +98,8 @@ export const SERVICE_SOURCE_METADATA = {
     sourceMap: [
       SOURCE_PACKS.hydrogenFundamentals,
       SOURCE_PACKS.headlessBuildOptions,
+      SOURCE_PACKS.packDigitalHydrogen,
+      SOURCE_PACKS.weaverseHydrogen,
       SOURCE_PACKS.hydrogenSeo,
       SOURCE_PACKS.caseStudyEvidence,
       SOURCE_PACKS.emreProductionExperience,
@@ -109,6 +111,8 @@ export const SERVICE_SOURCE_METADATA = {
     sourceMap: [
       SOURCE_PACKS.hydrogenFundamentals,
       SOURCE_PACKS.hydrogenDataFetching,
+      SOURCE_PACKS.packDigitalHydrogen,
+      SOURCE_PACKS.weaverseHydrogen,
       SOURCE_PACKS.customerAccountApi,
       SOURCE_PACKS.caseStudyEvidence,
       SOURCE_PACKS.emreProductionExperience,

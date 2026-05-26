@@ -7,8 +7,10 @@ import {
   AI_WORKFLOW_COPY,
   AUDIT_REVIEW_OPTIONS,
   HYDROGEN_BUILD_PACKAGES,
+  HYDROGEN_TOOLING_DECISIONS,
   LIQUID_VS_HYDROGEN_DECISION,
   PACKAGE_PRICING_PRINCIPLE,
+  PACKAGE_SCOPE_BOUNDARY_COMPARISON,
   PACKAGE_SCOPE_COPY,
   PRICE_DRIVER_ITEMS,
   PRICING_FAQS,
@@ -177,6 +179,85 @@ export function TwoKBuildBoundarySection() {
             </li>
           ))}
         </ul>
+      </div>
+    </section>
+  );
+}
+
+export function EnterpriseScopeBoundarySection() {
+  return (
+    <section className="surface-card space-y-6">
+      <SectionHeader
+        eyebrow="Scope boundary"
+        title="A fixed-scope package is not an enterprise replatform."
+        description="The offer is intentionally smaller than a full agency program. The right path depends on whether the buyer needs a first custom storefront, a larger custom scope, a multi-discipline agency team, or no rebuild."
+        className="max-w-5xl"
+      />
+      <div className="overflow-x-auto rounded-[1.2rem] border border-black/8 bg-white">
+        <table className="min-w-full border-collapse text-left text-sm">
+          <thead className="bg-[#f7f7f7]">
+            <tr>
+              <th className="px-5 py-4 font-bold uppercase tracking-[0.16em] text-[#0f8a5d]">
+                Path
+              </th>
+              <th className="px-5 py-4 font-bold uppercase tracking-[0.16em] text-[#0f8a5d]">
+                Signal
+              </th>
+              <th className="px-5 py-4 font-bold uppercase tracking-[0.16em] text-[#0f8a5d]">
+                Use when
+              </th>
+              <th className="px-5 py-4 font-bold uppercase tracking-[0.16em] text-[#0f8a5d]">
+                Caution
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {PACKAGE_SCOPE_BOUNDARY_COMPARISON.map((row) => (
+              <tr key={row.title} className="border-t border-black/8 align-top">
+                <td className="min-w-[13rem] px-5 py-4 font-semibold leading-7 text-neutral-800">
+                  {row.title}
+                </td>
+                <td className="min-w-[11rem] px-5 py-4 font-bold leading-7 text-[#0f8a5d]">
+                  {row.budgetSignal}
+                </td>
+                <td className="min-w-[18rem] px-5 py-4 leading-7 text-neutral-700">
+                  <span>{row.bestWhen}</span>
+                  <span className="mt-3 block text-neutral-600">{row.buyerMove}</span>
+                </td>
+                <td className="min-w-[18rem] px-5 py-4 leading-7 text-neutral-700">
+                  {row.caution}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  );
+}
+
+export function HydrogenToolingDecisionSection() {
+  return (
+    <section className="surface-card space-y-6">
+      <SectionHeader
+        eyebrow="Build path"
+        title="Visual builder, Shopify content model, or custom Hydrogen components?"
+        description="The fastest safe path is not always custom code. The scope review should identify whether Liquid, a visual Hydrogen builder, Shopify metaobjects, or a custom component system is the lowest-risk answer."
+        className="max-w-5xl"
+      />
+      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        {HYDROGEN_TOOLING_DECISIONS.map((decision) => (
+          <article key={decision.title} className="rounded-[1.15rem] border border-black/8 bg-white p-5">
+            <div className="h-1 w-10 rounded-full bg-[#10b981]" />
+            <h3 className="mt-4 text-lg font-semibold leading-7 text-[#171717]">
+              {decision.title}
+            </h3>
+            <p className="mt-3 text-sm leading-7 text-neutral-600">{decision.trigger}</p>
+            <p className="mt-4 text-sm font-semibold leading-7 text-neutral-800">
+              {decision.strongerMove}
+            </p>
+          </article>
+        ))}
       </div>
     </section>
   );

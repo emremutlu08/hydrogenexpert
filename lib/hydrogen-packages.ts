@@ -188,6 +188,7 @@ export const PACKAGE_PRICING_PRINCIPLE =
 export const PACKAGE_SCOPE_COPY = [
   "A lean Hydrogen storefront can start around $2,000 when the scope is clear: core pages, product flow, cart drawer, Shopify checkout handoff, and basic account entry.",
   "More complex work increases the price when it adds custom filters, integrations, content models, migration risk, analytics, SEO preservation, or post-launch support.",
+  "The package range is not a promise to compress a full enterprise replatform into $5K. It is a bounded first-launch scope before custom complexity, agency scope, or no-rebuild recommendations take over.",
 ] as const;
 
 export const PRICE_DRIVER_ITEMS = [
@@ -219,6 +220,49 @@ export const TWO_K_BUILD_IS_NOT = [
   "B2B build",
   "Subscription architecture",
   "Large-catalog SEO migration",
+] as const;
+
+export const PACKAGE_SCOPE_BOUNDARY_COMPARISON = [
+  {
+    title: "Fixed-scope Hydrogen package",
+    budgetSignal: "$2K-$5K",
+    bestWhen:
+      "The store needs a focused first custom storefront around core commerce routes and clear requirements.",
+    buyerMove:
+      "Choose Starter, Standard, or Growth when page templates, product flow, cart behavior, SEO baseline, and launch QA are bounded.",
+    caution:
+      "Do not add advanced search, complex apps, custom checkout, B2B, subscriptions, or large migration work to a fixed package.",
+  },
+  {
+    title: "Custom Hydrogen scope",
+    budgetSignal: "$5K+",
+    bestWhen:
+      "The project has migration risk, large catalog behavior, app replacement, advanced search, B2B, subscriptions, or custom product logic.",
+    buyerMove:
+      "Start with a scope review so the estimate is tied to templates, integrations, SEO risk, analytics, QA, and support.",
+    caution:
+      "Do not force a complex project into Starter pricing just to make the first quote look smaller.",
+  },
+  {
+    title: "Full agency program",
+    budgetSignal: "Agency scope",
+    bestWhen:
+      "The brand needs strategy, UX, creative, copy, CRO, PM, QA, retention, integrations, and engineering moving in parallel.",
+    buyerMove:
+      "Use a serious Shopify Plus or headless agency when coordination and multi-discipline delivery are the real problem.",
+    caution:
+      "Do not buy a full agency apparatus when the actual blocker is a narrow Hydrogen implementation decision.",
+  },
+  {
+    title: "Liquid cleanup or no rebuild",
+    budgetSignal: "Smaller scope",
+    bestWhen:
+      "The theme can still solve the commercial problem with better sections, performance work, app cleanup, or clearer content.",
+    buyerMove:
+      "Keep Liquid when a custom storefront would add application maintenance without enough business return.",
+    caution:
+      "Do not move to Hydrogen because competitors mention headless if the current store has a simpler path.",
+  },
 ] as const;
 
 export const LIQUID_VS_HYDROGEN_DECISION = [
@@ -255,6 +299,37 @@ export const LIQUID_VS_HYDROGEN_DECISION = [
   },
 ] as const;
 
+export const HYDROGEN_TOOLING_DECISIONS = [
+  {
+    title: "Stay theme-native",
+    trigger:
+      "The team wants merchant editing, simple sections, and low maintenance more than custom storefront control.",
+    strongerMove:
+      "Use Liquid cleanup, theme sections, or a smaller performance and UX pass before funding Hydrogen.",
+  },
+  {
+    title: "Use a visual Hydrogen builder",
+    trigger:
+      "Marketing needs editable Hydrogen pages and reusable sections, but the storefront should still stay close to code.",
+    strongerMove:
+      "Evaluate visual Hydrogen builder paths such as Pack, Weaverse, or a similar DXP before building a custom CMS layer.",
+  },
+  {
+    title: "Use Shopify content primitives",
+    trigger:
+      "The store needs structured product, collection, or landing content without adding a separate editorial system.",
+    strongerMove:
+      "Start with Shopify metaobjects, metafields, and a small component system before adding external complexity.",
+  },
+  {
+    title: "Build custom Hydrogen components",
+    trigger:
+      "Product discovery, cart UX, content-commerce layout, or integration behavior cannot be handled safely by a theme or builder.",
+    strongerMove:
+      "Scope custom routes and components as Starter, Standard, Growth, or Custom based on actual requirements.",
+  },
+] as const;
+
 export const PRICING_FAQS = [
   {
     question: "How can a Hydrogen build start at $2,000?",
@@ -275,6 +350,11 @@ export const PRICING_FAQS = [
     question: "Can I add more features later?",
     answer:
       "Yes. The first build should stay lean. Additional filters, search, content sections, integrations, and support can be added later as a Growth scope or retainer.",
+  },
+  {
+    question: "When should I hire a full agency instead of using a fixed-scope package?",
+    answer:
+      "Use a full agency when the project needs brand strategy, UX design, copy, CRO, project management, QA, retention, integrations, and multiple delivery teams in parallel. Use a fixed-scope package when the main need is a bounded Hydrogen storefront path with direct senior implementation.",
   },
   {
     question: "Do I need Shopify Plus?",

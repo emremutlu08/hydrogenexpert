@@ -696,6 +696,11 @@ export const SERVICE_PACKAGE_BASES = [
         answer:
           "No. Pricing is based on project requirements: page templates, features, integrations, design complexity, migration risk, analytics, and launch support.",
       },
+      {
+        question: "Is a $2K-$5K package the same as a full agency replatform?",
+        answer:
+          "No. The package range is for a bounded first Hydrogen storefront launch. Use a full agency program when the project needs brand strategy, UX, copy, CRO, project management, QA, retention, integrations, and multiple delivery teams in parallel.",
+      },
     ],
     relatedLinks: [
       {
