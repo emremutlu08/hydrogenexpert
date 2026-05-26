@@ -37,6 +37,8 @@ const COMMERCIAL_REQUIRED_COPY_BY_ROUTE: Record<
       "Hydrogen Standard Storefront",
       "Hydrogen Growth Storefront",
       "Custom Hydrogen Scope",
+      "not an enterprise replatform",
+      "visual builder",
       "Request Scope Review",
     ],
   "/shopify-hydrogen-cost": [
@@ -49,6 +51,8 @@ const COMMERCIAL_REQUIRED_COPY_BY_ROUTE: Record<
       "Hydrogen Standard Storefront",
       "Hydrogen Growth Storefront",
       "Custom Hydrogen Scope",
+      "not an enterprise replatform",
+      "visual builder",
       "Request Scope Review",
     ],
   "/custom-shopify-hydrogen-storefront": [
@@ -58,6 +62,8 @@ const COMMERCIAL_REQUIRED_COPY_BY_ROUTE: Record<
       "Hydrogen Standard Storefront",
       "Hydrogen Growth Storefront",
       "Custom Hydrogen Scope",
+      "not an enterprise replatform",
+      "visual builder",
       "Request Scope Review",
     ],
   "/shopify-hydrogen-audit": [

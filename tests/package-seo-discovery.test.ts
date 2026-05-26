@@ -44,4 +44,15 @@ describe("package SEO and discovery", () => {
       `path: PACKAGE_ROUTE`,
     );
   });
+
+  it("keeps the package page clear about package boundaries and builder alternatives", () => {
+    const pageSource = readRepoFile("app/shopify-hydrogen-packages/page.tsx");
+    const packageComponentSource = readRepoFile("components/HydrogenPackages.tsx");
+    const packageDataSource = readRepoFile("lib/hydrogen-packages.ts");
+
+    expect(pageSource).toContain("EnterpriseScopeBoundarySection");
+    expect(pageSource).toContain("HydrogenToolingDecisionSection");
+    expect(packageComponentSource).toContain("not an enterprise replatform");
+    expect(packageDataSource).toContain("Pack, Weaverse");
+  });
 });

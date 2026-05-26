@@ -1,6 +1,8 @@
 import {
   AiAssistedWorkflowSection,
   AuditScopeReviewSection,
+  EnterpriseScopeBoundarySection,
+  HydrogenToolingDecisionSection,
   HydrogenBuildPackages,
   LiquidHydrogenDecisionSection,
   PriceDriversSection,
@@ -41,6 +43,8 @@ export function PackageServiceSections({ service }: { service: ServicePackage })
         <>
           <PriceDriversSection />
           <TwoKBuildBoundarySection />
+          <EnterpriseScopeBoundarySection />
+          <HydrogenToolingDecisionSection />
           <LiquidHydrogenDecisionSection />
           <LiquidCleanupMiniOffer />
           <ScopeReviewBriefTemplates />
@@ -52,6 +56,8 @@ export function PackageServiceSections({ service }: { service: ServicePackage })
       {isCustomBuildPage ? (
         <>
           <TwoKBuildBoundarySection />
+          <EnterpriseScopeBoundarySection />
+          <HydrogenToolingDecisionSection />
           <AiAssistedWorkflowSection />
           <PricingFaqSection />
         </>

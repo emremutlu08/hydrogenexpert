@@ -15,6 +15,45 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-26
 
+- PR: [#69 Fill competitive positioning gaps](https://github.com/emremutlu08/hydrogenexpert/pull/69)
+- Branch: `codex/competitive-gap-fixes`
+- Deployment: Production deployment verified at [hydrogenexpert.co](https://hydrogenexpert.co), deployment `https://hydrogenexpert-ot1k7w6gd-emremutlu8s-projects.vercel.app`.
+- Summary:
+  - Added public package, cost, and custom-storefront sections clarifying that $2K-$5K packages are bounded first-launch scopes, not enterprise replatforms.
+  - Added a visual-builder, Shopify content-model, and custom-component decision section so buyers can compare Liquid, Pack/Weaverse-style builders, Shopify content primitives, and custom Hydrogen components.
+  - Added a route-level Hydrogen SEO audit checklist for rendered HTML, metadata, structured data, discovery files, route migration risk, and performance/hydration checks.
+  - Extended source metadata and commercial copy guardrails so the new positioning and builder-alternative language cannot silently disappear.
+- Files changed:
+  - `app/shopify-hydrogen-packages/page.tsx`
+  - `components/HydrogenPackages.tsx`
+  - `components/ServiceLandingPage.tsx`
+  - `components/service-landing/PackageServiceSections.tsx`
+  - `components/service-landing/SeoServiceSections.tsx`
+  - `features/content-sources/index.ts`
+  - `features/services/registry/base.ts`
+  - `features/services/registry/source-metadata.ts`
+  - `lib/commercial-launch-guard.ts`
+  - `lib/hydrogen-packages.ts`
+  - `tests/package-seo-discovery.test.ts`
+- Verification:
+  - `git diff --check`: passed.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed with no `Needs review` rows.
+  - `npm run test`: passed, 24 files and 94 tests.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed, 74 static pages generated.
+  - `COMMERCIAL_LAUNCH_BASE_URL=http://127.0.0.1:3100 npm run verify:commercial-launch`: passed.
+  - `INTERNAL_LINK_BASE_URL=http://127.0.0.1:3100 NEXT_PUBLIC_SITE_URL=http://127.0.0.1:3100 npm run verify:internal-links`: passed with 56 sitemap URLs and 57 internal URLs.
+  - Browser smoke verified `/shopify-hydrogen-packages` and `/shopify-hydrogen-seo` rendered the new sections with no desktop overflow. Local Vercel Analytics and Speed Insights script 404/MIME warnings were observed and treated as existing local instrumentation noise.
+  - Playwright mobile smoke verified `/shopify-hydrogen-packages`, `/shopify-hydrogen-cost`, and `/shopify-hydrogen-seo` at 390px with no horizontal overflow.
+  - Production deploy completed with `READY` state and was aliased to `https://hydrogenexpert.co`.
+  - Live `curl` smoke confirmed `/shopify-hydrogen-packages`, `/shopify-hydrogen-cost`, and `/shopify-hydrogen-seo` contain the new competitive-positioning and audit-checklist copy.
+  - `COMMERCIAL_LAUNCH_BASE_URL=https://hydrogenexpert.co npm run verify:commercial-launch`: passed.
+  - `INTERNAL_LINK_BASE_URL=https://hydrogenexpert.co NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:internal-links`: passed with 56 sitemap URLs and 71 internal URLs.
+- Manual follow-up:
+  - None.
+
 - PR: [#68 Add HydrogenExpert competitive analysis report](https://github.com/emremutlu08/hydrogenexpert/pull/68)
 - Branch: `codex/hydrogenexpert-competitive-analysis`
 - Deployment: Not deployed; internal Markdown report only and no public route or rendering behavior changed.

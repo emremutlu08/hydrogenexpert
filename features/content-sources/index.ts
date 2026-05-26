@@ -68,6 +68,24 @@ export const SOURCE_PACKS = {
     usedFor:
       "Headless Shopify, Hydrogen, Hydrogen React, Headless channel, and Storefront API positioning claims.",
   },
+  packDigitalHydrogen: {
+    label: "Pack Digital: Hydrogen DXP introduction",
+    sourceType: "competitor_reference",
+    topic: "commercial_positioning",
+    url: "https://docs.packdigital.com/getting-started/introduction",
+    retrievedAt: "2026-05-26",
+    usedFor:
+      "Visual Hydrogen builder and marketer-editable DXP decision-path positioning.",
+  },
+  weaverseHydrogen: {
+    label: "Weaverse: Visual SDK for Shopify Hydrogen",
+    sourceType: "competitor_reference",
+    topic: "commercial_positioning",
+    url: "https://weaverse.io/",
+    retrievedAt: "2026-05-26",
+    usedFor:
+      "Visual Hydrogen builder, Git-friendly workflow, and marketer-control positioning.",
+  },
   hydrogenDataFetching: {
     label: "Shopify: Fetch Shopify API data in Hydrogen",
     sourceType: "shopify_official",
@@ -721,6 +739,8 @@ export const STATIC_PAGE_SOURCE_METADATA = {
     sourceMap: [
       SOURCE_PACKS.hydrogenFundamentals,
       SOURCE_PACKS.headlessBuildOptions,
+      SOURCE_PACKS.packDigitalHydrogen,
+      SOURCE_PACKS.weaverseHydrogen,
       SOURCE_PACKS.hydrogenSeo,
       SOURCE_PACKS.caseStudyEvidence,
       SOURCE_PACKS.emreProductionExperience,

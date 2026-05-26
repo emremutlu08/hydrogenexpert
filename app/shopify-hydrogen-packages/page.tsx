@@ -4,6 +4,8 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CTASection } from "@/components/CTASection";
 import {
   AiAssistedWorkflowSection,
+  EnterpriseScopeBoundarySection,
+  HydrogenToolingDecisionSection,
   HydrogenBuildPackages,
   LiquidHydrogenDecisionSection,
   PriceDriversSection,
@@ -61,6 +63,7 @@ const internalLinks = [
   { href: "/shopify-hydrogen-cost", label: "Cost" },
   { href: "/custom-shopify-hydrogen-storefront", label: "Custom storefront" },
   { href: "/when-not-to-use-hydrogen", label: "When Not to Use Hydrogen" },
+  { href: "/articles/shopify-hydrogen-developer-vs-agency", label: "Developer vs agency" },
   { href: "/case-studies", label: "Proof" },
   { href: "/shopify-hydrogen-agency-usa", label: "US-friendly collaboration" },
 ] as const;
@@ -155,6 +158,8 @@ export default function ShopifyHydrogenPackagesPage() {
         <PriceDriversSection />
         <ScopeReviewBriefTemplates />
         <TwoKBuildBoundarySection />
+        <EnterpriseScopeBoundarySection />
+        <HydrogenToolingDecisionSection />
         <LiquidHydrogenDecisionSection />
         <AiAssistedWorkflowSection />
 
