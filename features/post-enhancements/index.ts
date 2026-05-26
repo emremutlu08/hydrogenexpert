@@ -798,6 +798,85 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
       },
     ],
   },
+  "how-to-find-shopify-hydrogen-expert": {
+    heroVisual: {
+      type: "code-card",
+      src: "/generated/blog/hydrogen-developer-vs-agency-cover.jpg",
+      alt: "Shopify Hydrogen hiring evaluation visual comparing senior specialist ownership, agency layers, and storefront risk areas.",
+      title: "How to find a Shopify Hydrogen expert",
+      width: 1672,
+      height: 941,
+    },
+    faq: [
+      {
+        question: "Where should I look for Shopify experts today?",
+        answer:
+          "Use Shopify's Partner Directory for broad partner discovery, but do not stop there. For Hydrogen work, also check production storefront proof, technical writing, case studies, and whether the person can explain Storefront API, SEO, cart, and checkout boundaries.",
+      },
+      {
+        question: "What makes a Shopify Hydrogen expert different from a general Shopify expert?",
+        answer:
+          "A general Shopify expert may be enough for theme edits, app setup, or store operations. A Hydrogen expert should be able to own a custom storefront application: routing, server-rendered content, Storefront API data, cart behavior, analytics, deployment, and launch QA.",
+      },
+      {
+        question: "Should I hire a freelancer, agency, or senior specialist?",
+        answer:
+          "Hire the model that matches the risk. Freelancers can be good for contained tasks, agencies for broad cross-functional scope, and senior specialists for direct technical ownership when the storefront architecture is the main problem.",
+      },
+    ],
+    closingPitch:
+      "Your Shopify store works, but every new feature takes 3x longer than last year? That's when I come in. If you are not sure whether you need theme cleanup, a Hydrogen migration, or a smaller audit first, start with a focused scope review before buying a rebuild.",
+    ogImage: "/og-post.svg",
+    internalLinks: [
+      {
+        href: "/shopify-hydrogen-developer",
+        label: "Hire a Shopify Hydrogen developer",
+        note: "The direct hiring path when the store needs senior Hydrogen implementation ownership.",
+      },
+      {
+        href: "/shopify-hydrogen-audit",
+        label: "Shopify Hydrogen audit",
+        note: "Use this before committing to a rebuild when the risks, budget, or fit are still unclear.",
+      },
+      {
+        href: "/shopify-hydrogen-packages",
+        label: "Fixed-scope Hydrogen packages",
+        note: "A clearer buying path when the work can be framed as Starter, Standard, Growth, or Custom scope.",
+      },
+      {
+        href: "/articles/shopify-hydrogen-experts-production-experience",
+        label: "Evaluate production experience",
+        note: "A related evergreen article focused on proof signals and production ownership.",
+      },
+      {
+        href: "/case-studies",
+        label: "Production proof",
+        note: "Use this when you want the hiring conversation grounded in shipped storefront work.",
+      },
+    ],
+    externalLinks: [
+      {
+        href: "https://help.shopify.com/en/manual/partner-directory",
+        label: "Shopify Partner Directory",
+        note: "Official Shopify guidance for finding and contacting Partners.",
+      },
+      {
+        href: "https://shopify.dev/docs/storefronts/headless/hydrogen/fundamentals",
+        label: "Hydrogen and Oxygen fundamentals",
+        note: "Official Shopify context for Hydrogen, React Router, Oxygen, and custom storefront architecture.",
+      },
+      {
+        href: "https://shopify.dev/docs/apps/build/checkout",
+        label: "Apps in checkout",
+        note: "Official Shopify checkout extension and customization surface overview.",
+      },
+      {
+        href: "https://shopify.dev/docs/api/functions/latest",
+        label: "Shopify Functions",
+        note: "Official Shopify Function API reference for backend commerce logic.",
+      },
+    ],
+  },
   "shopify-hydrogen-product-description-ssr-seo": {
     heroVisual: {
       type: "code-card",

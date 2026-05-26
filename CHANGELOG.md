@@ -15,6 +15,36 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-26
 
+- PR: [#66 Publish Shopify Hydrogen expert hiring guide](https://github.com/emremutlu08/hydrogenexpert/pull/66)
+- Branch: `codex/publish-shopify-hydrogen-expert-guide`
+- Deployment: Production deployment verified at [How to Find a Shopify Hydrogen Expert](https://hydrogenexpert.co/blog/how-to-find-shopify-hydrogen-expert).
+- Summary:
+  - Reworked the supplied Shopify expert article into a HydrogenExpert hiring guide focused on theme help versus general Shopify partner versus senior Hydrogen specialist fit.
+  - Added source metadata for the new post using current Shopify Partner Directory, Hydrogen, checkout, Functions, Flow, B2B, and Emre production-experience references.
+  - Added blog enhancements for the new post: generated hero visual, FAQ, official references, internal links, OG image, and standard direct CTA.
+  - Published the Supabase `posts` row as `how-to-find-shopify-hydrogen-expert` after the PR-backed production code was live.
+- Files changed:
+  - `features/content-sources/index.ts`
+  - `features/post-enhancements/index.ts`
+  - `CHANGELOG.md`
+- Verification:
+  - `git diff --check`: passed.
+  - `npm run audit:shopify-claims`: passed with `/blog/how-to-find-shopify-hydrogen-expert` marked `Needs review? no`.
+  - `npm run validate:content`: passed.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run test`: passed, 24 files and 93 tests.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed, 73 static pages generated before the Supabase draft was published.
+  - Vercel PR checks passed for PR #66.
+  - Production deployment was aliased to `https://hydrogenexpert.co` and inspected as `Ready`.
+  - Final production build generated 74 static pages and included `/blog/how-to-find-shopify-hydrogen-expert`.
+  - Supabase post publish confirmed `status=published` for `how-to-find-shopify-hydrogen-expert`.
+  - Live smoke verified `/blog/how-to-find-shopify-hydrogen-expert`, `/blog`, `/sitemap.xml`, `/feed.xml`, `/llms-full.txt`, and `/generated/blog/hydrogen-developer-vs-agency-cover.jpg` as `200`.
+  - Live article HTML contained title, schema, official references, internal links, and no `DigitalPals` or private editorial leftovers.
+  - `INTERNAL_LINK_BASE_URL=https://hydrogenexpert.co NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:internal-links`: passed with 56 sitemap URLs and 70 internal URLs.
+- Manual follow-up:
+  - None.
+
 - PR: [#65 Tighten commercial positioning funnel](https://github.com/emremutlu08/hydrogenexpert/pull/65)
 - Branch: `codex/commercial-positioning-fixes`
 - Deployment: Production deployment verified at [hydrogenexpert.co](https://hydrogenexpert.co).
