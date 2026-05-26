@@ -36,7 +36,8 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - `npm run test`: passed, 24 files and 93 tests.
   - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed, 73 static pages generated before the Supabase draft was published.
   - Vercel PR checks passed for PR #66.
-  - Production deploy `dpl_2U3cHYCJ1tjowbVU4Tk5rse3995V` was aliased to `https://hydrogenexpert.co`.
+  - Production deployment was aliased to `https://hydrogenexpert.co` and inspected as `Ready`.
+  - Final production build generated 74 static pages and included `/blog/how-to-find-shopify-hydrogen-expert`.
   - Supabase post publish confirmed `status=published` for `how-to-find-shopify-hydrogen-expert`.
   - Live smoke verified `/blog/how-to-find-shopify-hydrogen-expert`, `/blog`, `/sitemap.xml`, `/feed.xml`, `/llms-full.txt`, and `/generated/blog/hydrogen-developer-vs-agency-cover.jpg` as `200`.
   - Live article HTML contained title, schema, official references, internal links, and no `DigitalPals` or private editorial leftovers.
