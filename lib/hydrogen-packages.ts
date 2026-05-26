@@ -8,6 +8,11 @@ export interface HydrogenBuildPackage {
     label: string;
     thankYouMessage?: string;
   };
+  proofPath: {
+    href: string;
+    label: string;
+    note: string;
+  };
   includes: readonly string[];
   notIncluded: readonly string[];
 }
@@ -32,6 +37,11 @@ export const HYDROGEN_BUILD_PACKAGES: readonly HydrogenBuildPackage[] = [
       label: "Around $2K - Starter Storefront",
       thankYouMessage:
         "Starter requests are reviewed around core ecommerce flow: home, listing, PDP, cart drawer, checkout handoff, account entry, SEO baseline, and launch readiness.",
+    },
+    proofPath: {
+      href: "/case-studies/kirazev-shopify-liquid",
+      label: "Scope discipline proof",
+      note: "Liquid proof shows when a smaller theme-native path should beat a Starter build.",
     },
     includes: [
       "Home / landing page",
@@ -66,6 +76,11 @@ export const HYDROGEN_BUILD_PACKAGES: readonly HydrogenBuildPackage[] = [
       value: "standard_3k_35k",
       label: "$3K-$3.5K - Standard Storefront",
     },
+    proofPath: {
+      href: "/case-studies/rebel-bunny-shopify-hydrogen",
+      label: "DTC flow proof",
+      note: "Rebel Bunny maps content, cart UX, and partner interest to a focused storefront.",
+    },
     includes: [
       "Everything in Starter",
       "Search results page",
@@ -93,6 +108,11 @@ export const HYDROGEN_BUILD_PACKAGES: readonly HydrogenBuildPackage[] = [
     budgetOption: {
       value: "growth_45k_5k",
       label: "$4.5K-$5K - Growth Storefront",
+    },
+    proofPath: {
+      href: "/case-studies/bayam-jewelry-shopify-hydrogen",
+      label: "Growth storefront proof",
+      note: "Bayam maps premium catalog discovery, trust UX, and structured commerce surfaces.",
     },
     includes: [
       "Everything in Standard",
@@ -125,6 +145,11 @@ export const HYDROGEN_BUILD_PACKAGES: readonly HydrogenBuildPackage[] = [
       label: "$5K+ - Custom scope",
       thankYouMessage:
         "Custom requests are reviewed around migration risk, integrations, advanced search, B2B, subscriptions, content architecture, SEO preservation, and launch QA.",
+    },
+    proofPath: {
+      href: "/case-studies/eveshop-shopify-hydrogen",
+      label: "Scale proof",
+      note: "EveShop supports custom Hydrogen judgment when scale and migration risk are higher.",
     },
     includes: ["Scoped after review."],
     notIncluded: [

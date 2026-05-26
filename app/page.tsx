@@ -41,7 +41,7 @@ const schemaIds = getSchemaIds();
 export const metadata = buildMetadata({
   title: "Shopify Hydrogen Storefronts from $2K-$5K | HydrogenExpert",
   description:
-    "AI-assisted, fixed-scope Shopify Hydrogen storefront builds from $2K-$5K by senior Shopify Hydrogen developer Emre Mutlu.",
+    "AI-assisted, fixed-scope Shopify Hydrogen storefront builds from $2K-$5K for growth-stage Shopify brands by senior Hydrogen developer Emre Mutlu.",
   path: "/",
   ogImage: absoluteUrl("/og-home.svg"),
 });
@@ -436,45 +436,45 @@ export default function HomePage() {
               </p>
             </div>
             <p className="mx-auto max-w-3xl page-intro">
-              I build fixed-scope Shopify Hydrogen storefronts for brands that need core
-              ecommerce pages, product flow, cart drawer, checkout handoff, and clean
-              performance - priced by project requirements, not traffic or pageviews.
+              I build fixed-scope Shopify Hydrogen storefronts for growth-stage
+              Shopify brands that have outgrown theme limits: core ecommerce pages,
+              product flow, cart drawer, checkout handoff, and clean performance -
+              priced by project requirements, not traffic or pageviews.
             </p>
             <FreshnessNote date={LAST_UPDATED} />
             <div className="flex flex-wrap items-center justify-center gap-3">
+              <TrackedCTALink
+                href="/contact#fit-review-form"
+                eventName="scope_review_cta_click"
+                sourceKind="homepage_hero"
+                ctaLabel="Request Scope Review"
+                className="rounded-full bg-[#171717] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#10b981]"
+              >
+                Request Scope Review
+              </TrackedCTALink>
               <TrackedCTALink
                 href="/shopify-hydrogen-packages"
                 eventName="package_cta_click"
                 sourceKind="homepage_hero"
                 ctaLabel="View Build Packages"
                 packageName="All Hydrogen packages"
-                className="rounded-full bg-[#171717] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#10b981]"
+                className="rounded-full border border-black/10 bg-white px-6 py-3 text-sm font-semibold text-[#171717] transition hover:border-[#10b981] hover:text-[#10b981]"
               >
                 View Build Packages
-              </TrackedCTALink>
-              <TrackedCTALink
-                href="/contact#fit-review-form"
-                eventName="scope_review_cta_click"
-                sourceKind="homepage_hero"
-                ctaLabel="Request Scope Review"
-                className="rounded-full border border-black/10 bg-white px-6 py-3 text-sm font-semibold text-[#171717] transition hover:border-[#10b981] hover:text-[#10b981]"
-              >
-                Request Scope Review
-              </TrackedCTALink>
-              <TrackedCTALink
-                href="/case-studies"
-                eventName="case_study_click"
-                sourceKind="homepage_hero"
-                ctaLabel="See Production Proof"
-                className="rounded-full border border-black/10 bg-white px-6 py-3 text-sm font-semibold text-[#171717] transition hover:border-[#10b981] hover:text-[#10b981]"
-              >
-                See Production Proof
               </TrackedCTALink>
             </div>
             <p className="mx-auto max-w-3xl text-sm leading-7 text-neutral-600">
               Built by Emre Mutlu - Shopify Hydrogen developer, Upwork Top Rated Plus,
               100% JSS, 1,900+ Upwork hours, and creator of the first English Shopify
-              Hydrogen course on Udemy.
+              Hydrogen course on Udemy.{" "}
+              <TrackedProofLink
+                href="/case-studies"
+                label="See production proof"
+                sourceKind="homepage_hero_proof"
+                className="font-semibold text-[#0f8a5d] underline decoration-[#10b981]/30 underline-offset-4 transition hover:text-[#10b981]"
+              >
+                See production proof.
+              </TrackedProofLink>
             </p>
           </div>
 

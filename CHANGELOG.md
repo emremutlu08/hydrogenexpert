@@ -13,6 +13,45 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 - Verification:
 - Manual follow-up:
 
+## 2026-05-26
+
+- PR: [#65 Tighten commercial positioning funnel](https://github.com/emremutlu08/hydrogenexpert/pull/65)
+- Branch: `codex/commercial-positioning-fixes`
+- Deployment: Production deployment verified at [hydrogenexpert.co](https://hydrogenexpert.co).
+- Summary:
+  - Simplified the homepage hero to one primary scope-review CTA and moved production proof into supporting proof copy.
+  - Sharpened the visible ICP around growth-stage Shopify brands with theme limits across homepage, package, and hire-me surfaces.
+  - Added short-brief guidance to the lead form so buyers know only the essential fields are required to start.
+  - Added package-card proof paths that connect Starter, Standard, Growth, and Custom scopes to relevant approved case-study contexts.
+  - Extended commercial launch guardrails to include `/hire-me`.
+- Files changed:
+  - `app/page.tsx`
+  - `app/shopify-hydrogen-packages/page.tsx`
+  - `app/hire-me/page.tsx`
+  - `components/HydrogenPackages.tsx`
+  - `components/LeadCaptureForm.tsx`
+  - `lib/hydrogen-packages.ts`
+  - `features/public-discovery/manifest.ts`
+  - `lib/commercial-launch-guard.ts`
+  - `tests/commercial-launch-guard.test.ts`
+- Verification:
+  - `git diff --check`: passed.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run test`: passed, 24 files and 93 tests.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed with no `Needs review` rows.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed, 73 static pages generated.
+  - `COMMERCIAL_LAUNCH_BASE_URL=http://127.0.0.1:3000 npm run verify:commercial-launch`: passed.
+  - `INTERNAL_LINK_BASE_URL=http://127.0.0.1:3000 npm run verify:internal-links`: passed with 55 sitemap URLs and 69 internal URLs.
+  - Local Playwright smoke verified homepage CTA hierarchy, package proof paths, and short-brief form guidance on desktop and mobile. Local Vercel Analytics and Speed Insights script 404/MIME warnings were observed and treated as non-blocking local instrumentation noise.
+  - Vercel preview smoke verified homepage, package, hire-me, contact, sitemap, and llms surfaces for PR #65.
+  - `COMMERCIAL_LAUNCH_BASE_URL=https://hydrogenexpert.co npm run verify:commercial-launch`: passed.
+  - `INTERNAL_LINK_BASE_URL=https://hydrogenexpert.co npm run verify:internal-links`: passed with 55 sitemap URLs and 69 internal URLs.
+  - Live `curl` smoke verified homepage CTA hierarchy, `/hire-me` commercial copy, `/sitemap.xml`, and `/llms.txt`.
+- Manual follow-up:
+  - None.
+
 ## 2026-05-25
 
 - PR: [#64 Implement staged architecture reliability slice](https://github.com/emremutlu08/hydrogenexpert/pull/64)

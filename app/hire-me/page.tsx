@@ -32,7 +32,7 @@ import {
 export const metadata = buildMetadata({
   title: "Hire a Shopify Hydrogen Developer | Emre Mutlu",
   description:
-    "Hire Emre Mutlu for Shopify Hydrogen audits, Liquid-to-Hydrogen migration, custom storefront builds, performance optimization, and direct launch support.",
+    "Hire Emre Mutlu for fixed-scope Shopify Hydrogen storefront builds from $2K-$5K, scope reviews, Liquid-to-Hydrogen migration, cleanup, and direct launch support.",
   path: "/hire-me",
 });
 
@@ -181,8 +181,8 @@ export default function HireMePage() {
         <PageIntroSection
           eyebrow="Why Emre"
           title="Hire a Shopify Hydrogen developer with real delivery history"
-          description="Direct senior delivery for Shopify Plus brands that need sharper storefront systems and a focused Hydrogen service path."
-          body="I help brands move from theme limitations to faster, more flexible Shopify Hydrogen storefronts. The work stays grounded in conversion, UX, and launch reality."
+          description="Direct senior delivery for growth-stage Shopify brands that need fixed-scope Hydrogen packages, cleanup, or custom scope without agency overhead."
+          body="I help brands move from theme limitations to lean $2K-$5K Hydrogen storefronts when requirements are clear. If Liquid or no rebuild is safer, that stays on the table before scope gets bigger than it needs to be."
         />
 
         <FounderCard size="lg" showBio showCredentials>
@@ -294,7 +294,7 @@ export default function HireMePage() {
         />
 
         <CTASection
-          subtext="If you already know your storefront needs a stronger customer experience, the fastest next step is a direct conversation on Upwork."
+          subtext="Send the store URL, design status, product count, and must-have features. I will tell you whether the next move fits Starter, Standard, Growth, Custom, Liquid cleanup, support, or no rebuild."
           sourceKind="hire_me_cta"
         />
       </div>

@@ -11,6 +11,7 @@ describe("commercial launch copy guard", () => {
     expect(COMMERCIAL_COPY_RULES.map((rule) => rule.route)).toEqual(
       COMMERCIAL_VERIFICATION_ROUTES,
     );
+    expect(COMMERCIAL_VERIFICATION_ROUTES).toContain("/hire-me");
   });
 
   it("fails with route and phrase details when required copy disappears", () => {

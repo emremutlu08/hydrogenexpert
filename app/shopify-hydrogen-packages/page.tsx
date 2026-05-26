@@ -74,7 +74,7 @@ export default function ShopifyHydrogenPackagesPage() {
         <PageIntroSection
           eyebrow="Fixed-scope Hydrogen packages"
           title="Shopify Hydrogen packages from $2K-$5K"
-          description="Launch a lean custom Hydrogen storefront without hiring a full agency."
+          description="Launch a lean custom Hydrogen storefront for a growth-stage Shopify brand without hiring a full agency."
           body="Starter, Standard, and Growth packages are priced by project requirements: routes, templates, components, integrations, migration risk, SEO needs, analytics, and launch QA. They are not priced by traffic or pageviews."
           reviewedAt="2026-05-25"
         />
