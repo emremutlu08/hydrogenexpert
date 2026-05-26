@@ -22,6 +22,9 @@ describe("llms files", () => {
     expect(llms).toContain(
       `- [Articles](${siteUrl}/articles): Evergreen merchant guides for Hydrogen hiring, cost, SEO, migration, and fit decisions.`,
     );
+    expect(llms).toContain(
+      `- [News on Shopify Hydrogen](${siteUrl}/news-on-shopify-hydrogen): Monthly official Hydrogen update notes translated into merchant impact and end-user benefit.`,
+    );
   });
 
   it("includes public evergreen article routes in the full AI context", async () => {

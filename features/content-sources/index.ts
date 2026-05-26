@@ -59,6 +59,15 @@ export const SOURCE_PACKS = {
     usedFor:
       "Hydrogen, React Router, custom storefront, and Oxygen positioning claims.",
   },
+  hydrogenUpdates: {
+    label: "Shopify Hydrogen updates",
+    sourceType: "shopify_official",
+    topic: "hydrogen",
+    url: "https://hydrogen.shopify.dev/updates",
+    retrievedAt: "2026-05-26",
+    usedFor:
+      "Hydrogen release-note dates, update summaries, upgrade monitoring, and merchant-impact interpretation.",
+  },
   headlessBuildOptions: {
     label: "Shopify: Options for building headless",
     sourceType: "shopify_official",
@@ -755,6 +764,20 @@ export const STATIC_PAGE_SOURCE_METADATA = {
       SOURCE_PACKS.caseStudyEvidence,
       SOURCE_PACKS.emreProductionExperience,
     ],
+  },
+  "/news-on-shopify-hydrogen": {
+    lastVerified: "2026-05-26",
+    claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenUpdates,
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.hydrogenSeo,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+    targetKeyword: "Shopify Hydrogen news",
+    searchIntent: "release update monitoring",
+    reviewedBy: "Emre Mutlu",
+    contentType: "official_update_digest",
   },
   "/shopify-hydrogen-examples": {
     lastVerified: "2026-05-24",
