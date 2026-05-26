@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { FaqSection } from "@/components/FaqSection";
 import { SectionHeader } from "@/components/SectionHeader";
 import { TrackedPackageCTALink } from "@/components/TrackedInternalLink";
@@ -57,6 +59,15 @@ export function HydrogenBuildPackages({
               <p className="mt-3 text-sm leading-7 text-neutral-600">
                 <strong className="text-neutral-800">Best for:</strong> {buildPackage.bestFor}
               </p>
+              <Link
+                href={buildPackage.proofPath.href}
+                className="mt-4 block rounded-[1rem] border border-black/8 bg-[#f6f7f7] p-4 text-sm leading-6 text-neutral-700 transition hover:border-[#10b981]"
+              >
+                <span className="block text-[0.68rem] font-bold uppercase tracking-[0.2em] text-[#0f8a5d]">
+                  {buildPackage.proofPath.label}
+                </span>
+                <span className="mt-2 block">{buildPackage.proofPath.note}</span>
+              </Link>
             </div>
 
             <div className="mt-5 grid flex-1 gap-5">

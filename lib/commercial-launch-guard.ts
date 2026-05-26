@@ -74,6 +74,14 @@ const COMMERCIAL_REQUIRED_COPY_BY_ROUTE: Record<
       "priced by project requirements",
       "Request Scope Review",
     ],
+  "/hire-me": [
+      "$2K-$5K",
+      "fixed-scope",
+      "growth-stage Shopify brands",
+      "Request Scope Review",
+      "Liquid",
+      "no rebuild",
+    ],
   "/contact": [
       "$2K-$5K",
       "fixed-scope",

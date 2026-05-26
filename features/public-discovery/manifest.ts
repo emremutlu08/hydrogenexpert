@@ -131,6 +131,7 @@ export const COMMERCIAL_VERIFICATION_ROUTES = [
   "/custom-shopify-hydrogen-storefront",
   "/shopify-hydrogen-audit",
   "/shopify-hydrogen-agency-usa",
+  "/hire-me",
   "/contact",
   "/when-not-to-use-hydrogen",
 ] as const;

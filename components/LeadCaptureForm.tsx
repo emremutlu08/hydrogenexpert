@@ -31,6 +31,12 @@ interface LeadCaptureFormProps {
   compact?: boolean;
 }
 
+const SHORT_BRIEF_ITEMS = [
+  "Store URL or brand",
+  "What feels blocked",
+  "Budget and timeline, if you know them",
+] as const;
+
 export function LeadCaptureForm({
   sourceKind,
   compact = false,
@@ -167,6 +173,22 @@ export function LeadCaptureForm({
         <p className="lead-form-note">
           I do not sell Hydrogen if Liquid is the better move.
         </p>
+        <div className="rounded-[1rem] border border-white/10 bg-white/[0.06] p-4">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#8df1cb]">
+            Short brief path
+          </p>
+          <p className="mt-2 text-sm leading-6 text-neutral-300">
+            Only name, email, store URL, and main problem are required. Start with:
+          </p>
+          <ul className="mt-3 grid gap-2 text-sm leading-6 text-neutral-300">
+            {SHORT_BRIEF_ITEMS.map((item) => (
+              <li key={item} className="flex gap-2">
+                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#8df1cb]" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
 
       <div className={formClassName}>
