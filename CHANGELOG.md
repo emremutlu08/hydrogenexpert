@@ -15,6 +15,23 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-26
 
+- PR: [#68 Add HydrogenExpert competitive analysis report](https://github.com/emremutlu08/hydrogenexpert/pull/68)
+- Branch: `codex/hydrogenexpert-competitive-analysis`
+- Deployment: Not deployed; internal Markdown report only and no public route or rendering behavior changed.
+- Summary:
+  - Added a source-linked internal competitive analysis report for HydrogenExpert.
+  - Compared enterprise Shopify Plus/headless agencies, boutique Hydrogen specialists, full-stack Shopify development shops, Hydrogen SEO competitors, and Hydrogen visual-builder/DXP alternatives.
+  - Captured positioning conclusions, competitive battlecards, SEO/GEO opportunities, strategic guardrails, and recommended next actions around the fixed-scope $2K-$5K Hydrogen package lane.
+- Files changed:
+  - `content/internal/reports/hydrogenexpert-competitive-analysis-2026-05-26.md`
+  - `CHANGELOG.md`
+- Verification:
+  - `git diff --check --cached`: passed for the report commit.
+  - Live `curl` smoke checked current HydrogenExpert homepage title/description signals.
+  - Live `curl` smoke checked current HydrogenExpert package page title/description signals.
+- Manual follow-up:
+  - Decide which report recommendations should become public content or package-page follow-up PRs.
+
 - PR: [#67 Prevent broken public images](https://github.com/emremutlu08/hydrogenexpert/pull/67)
 - Branch: `codex/prevent-broken-images`
 - Deployment: Production deployment verified at [hydrogenexpert.co](https://hydrogenexpert.co).
