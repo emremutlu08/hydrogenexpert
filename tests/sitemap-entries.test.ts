@@ -80,6 +80,7 @@ describe("buildSitemapEntries", () => {
     expect(paths).not.toContain("/cost");
     expect(paths).not.toContain("/shopify-hydrogen-seo-guide");
     expect(paths).not.toContain("/blog/shopify-hydrogen-v2-setup-guide");
+    expect(paths).not.toContain("/blog/hydrogen-worth-2-million-shopify-store");
   });
 
   it("omits the blog index when no published posts exist", () => {
