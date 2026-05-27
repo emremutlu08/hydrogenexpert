@@ -9,6 +9,12 @@ describe("legacy permanent redirects", () => {
     );
   });
 
+  it("redirects the Google-crawled legacy worth-it blog URL", () => {
+    expect(getLegacyPermanentRedirect("/blog/hydrogen-worth-2-million-shopify-store")).toBe(
+      "/should-i-use-it",
+    );
+  });
+
   it("redirects unpublished production-note URLs to live canonical resources", () => {
     expect(getLegacyPermanentRedirect("/blog/hydrogen-json-ld-product-state")).toBe(
       "/shopify-hydrogen-seo",

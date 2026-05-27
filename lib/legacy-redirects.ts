@@ -1,5 +1,6 @@
 export const LEGACY_PERMANENT_REDIRECTS = new Map([
   ["/blog/shopify-hydrogen-v2-setup-guide", "/what-is-hydrogen"],
+  ["/blog/hydrogen-worth-2-million-shopify-store", "/should-i-use-it"],
   ["/blog/hydrogen-json-ld-product-state", "/shopify-hydrogen-seo"],
   ["/blog/hydrogen-product-content-ssr", "/shopify-hydrogen-seo"],
   ["/blog/hydrogen-sitemap-robots-oxygen", "/shopify-hydrogen-seo"],
