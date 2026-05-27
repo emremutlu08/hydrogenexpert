@@ -16,6 +16,20 @@ const repoRoot = process.cwd();
 const failures: string[] = [];
 const warnings: string[] = [];
 const sourceMetadataOnlyRoutes = new Set(["/shopify-hydrogen-seo-guide"]);
+const trafficGapArticleSlugList = [
+  "shopify-hydrogen-nextjs",
+  "shopify-hydrogen-cms-visual-builder",
+  "shopify-apps-in-hydrogen-compatibility-checklist",
+  "shopify-hydrogen-analytics-migration",
+  "shopify-storefront-mcp-ucp-ai-readiness",
+  "shopify-hydrogen-b2b-wholesale-guide",
+  "hydrogen-deployment-checklist-oxygen-preview-production-qa",
+  "shopify-hydrogen-markets-i18n-seo",
+  "shopify-hydrogen-search-filters-product-discovery",
+  "shopify-hydrogen-seo-checklist",
+] as const;
+const trafficGapArticleSlugs = new Set<string>(trafficGapArticleSlugList);
+const trafficGapRefreshDate = "2026-05-27T23:30:00+03:00";
 
 function fail(message: string) {
   failures.push(message);
@@ -46,6 +60,39 @@ function assertNoPlaceholderText(relativePath: string) {
       fail(`${relativePath} contains placeholder text matching ${pattern}.`);
     }
   }
+}
+
+function countArticleWords(article: ReturnType<typeof getAllArticles>[number]) {
+  const text = [
+    article.title,
+    ...article.intro,
+    ...(article.summary ?? []),
+    ...(article.takeaways ?? []).flatMap((item) => [item.label, item.value]),
+    ...article.sections.flatMap((section) => [
+      section.title,
+      ...(section.body ?? []),
+      ...(section.bullets ?? []),
+      ...(section.ordered ?? []),
+    ]),
+    ...(article.faq ?? []).flatMap((item) => [item.question, item.answer]),
+    article.conclusion,
+  ].join(" ");
+
+  return text.split(/\s+/).filter(Boolean).length;
+}
+
+function getInternalRouteBase(href: string) {
+  if (!href.startsWith("/") || href.startsWith("//")) {
+    return href;
+  }
+
+  return href.split("#")[0]?.split("?")[0] || "/";
+}
+
+function isKnownContentHref(href: string) {
+  const routeBase = getInternalRouteBase(href);
+
+  return knownRoutes.has(routeBase) || routeBase.startsWith("/blog/") || href.startsWith("http");
 }
 
 const knownRoutes = new Set([
@@ -133,11 +180,7 @@ for (const servicePackage of SERVICE_PACKAGES) {
   }
 
   for (const link of servicePackage.relatedLinks) {
-    if (
-      !knownRoutes.has(link.href) &&
-      !link.href.startsWith("/blog/") &&
-      !link.href.startsWith("http")
-    ) {
+    if (!isKnownContentHref(link.href)) {
       fail(`${servicePackage.pagePath} links to unknown route ${link.href}.`);
     }
   }
@@ -167,11 +210,7 @@ for (const decisionPage of Object.values(DECISION_PAGES)) {
   }
 
   for (const link of decisionPage.links) {
-    if (
-      !knownRoutes.has(link.href) &&
-      !link.href.startsWith("/blog/") &&
-      !link.href.startsWith("http")
-    ) {
+    if (!isKnownContentHref(link.href)) {
       fail(`${decisionPage.path} links to unknown route ${link.href}.`);
     }
   }
@@ -202,6 +241,57 @@ for (const [slug, metadata] of Object.entries(BLOG_SOURCE_METADATA)) {
 
   if (blogSourceCount === 0) {
     fail(`/blog/${slug} source metadata is missing sourceMap.`);
+  }
+}
+
+for (const article of getAllArticles()) {
+  if (!article.metaTitle.trim()) {
+    fail(`/articles/${article.slug} is missing metaTitle.`);
+  }
+
+  if (!article.metaDescription.trim()) {
+    fail(`/articles/${article.slug} is missing metaDescription.`);
+  }
+
+  for (const link of article.links) {
+    if (!isKnownContentHref(link.href)) {
+      fail(`/articles/${article.slug} links to unknown route ${link.href}.`);
+    }
+  }
+
+  if (
+    article.sources?.length &&
+    !ARTICLE_SOURCE_METADATA[article.slug as keyof typeof ARTICLE_SOURCE_METADATA]
+  ) {
+    fail(`/articles/${article.slug} has sources but is missing ARTICLE_SOURCE_METADATA.`);
+  }
+
+  if (!trafficGapArticleSlugs.has(article.slug)) {
+    continue;
+  }
+
+  if (article.updatedAt !== trafficGapRefreshDate) {
+    fail(`/articles/${article.slug} is missing the latest quality refresh timestamp.`);
+  }
+
+  if ((article.summary?.length ?? 0) < 2) {
+    fail(`/articles/${article.slug} needs at least two decision brief paragraphs.`);
+  }
+
+  if ((article.takeaways?.length ?? 0) < 3) {
+    fail(`/articles/${article.slug} needs at least three decision takeaways.`);
+  }
+
+  if (article.sections.length < 8) {
+    fail(`/articles/${article.slug} needs at least eight substantive sections.`);
+  }
+
+  if ((article.faq?.length ?? 0) < 3) {
+    fail(`/articles/${article.slug} needs at least three FAQ entries.`);
+  }
+
+  if (countArticleWords(article) < 550) {
+    fail(`/articles/${article.slug} is too thin after quality refresh.`);
   }
 }
 

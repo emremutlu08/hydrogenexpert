@@ -21,6 +21,27 @@ const TRAFFIC_GAP_ARTICLE_SLUGS = [
   "shopify-hydrogen-seo-checklist",
 ] as const;
 
+const TRAFFIC_GAP_REFRESH_DATE = "2026-05-27T23:30:00+03:00";
+
+function getArticleWordCount(article: ReturnType<typeof getAllArticles>[number]) {
+  const text = [
+    article.title,
+    ...article.intro,
+    ...(article.summary ?? []),
+    ...(article.takeaways ?? []).flatMap((item) => [item.label, item.value]),
+    ...article.sections.flatMap((section) => [
+      section.title,
+      ...(section.body ?? []),
+      ...(section.bullets ?? []),
+      ...(section.ordered ?? []),
+    ]),
+    ...(article.faq ?? []).flatMap((item) => [item.question, item.answer]),
+    article.conclusion,
+  ].join(" ");
+
+  return text.split(/\s+/).filter(Boolean).length;
+}
+
 describe("scheduled articles", () => {
   const beforeFirstPublish = new Date("2026-05-06T10:00:00+03:00");
   const afterFirstPublish = new Date("2026-05-08T10:01:00+03:00");
@@ -63,6 +84,12 @@ describe("scheduled articles", () => {
       const sourceMetadata = getArticleSourceMetadata(slug);
 
       expect(publicSlugs).toContain(slug);
+      expect(article?.updatedAt).toBe(TRAFFIC_GAP_REFRESH_DATE);
+      expect(article?.summary?.length).toBeGreaterThanOrEqual(2);
+      expect(article?.takeaways?.length).toBeGreaterThanOrEqual(3);
+      expect(article?.sections.length).toBeGreaterThanOrEqual(8);
+      expect(article?.faq?.length).toBeGreaterThanOrEqual(3);
+      expect(article ? getArticleWordCount(article) : 0).toBeGreaterThanOrEqual(550);
       expect(article?.sources?.length).toBeGreaterThan(0);
       expect(sourceMetadata?.sourceMap.length).toBeGreaterThan(0);
       expect(sourceMetadata?.lastVerified).toBe("2026-05-27");
