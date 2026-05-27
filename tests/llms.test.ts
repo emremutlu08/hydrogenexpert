@@ -3,6 +3,7 @@ import { join } from "node:path";
 
 import { describe, expect, it } from "vitest";
 
+import { INDEXING_RECOVERY_CORE_ROUTES } from "../features/public-discovery/manifest";
 import { getPublicArticlesForDate } from "../lib/articles";
 import { buildLlmsFullTxt, buildLlmsTxt } from "../lib/llms";
 
@@ -25,6 +26,10 @@ describe("llms files", () => {
     expect(llms).toContain(
       `- [News on Shopify Hydrogen](${siteUrl}/news-on-shopify-hydrogen): Monthly official Hydrogen update notes translated into merchant impact and end-user benefit.`,
     );
+
+    for (const route of INDEXING_RECOVERY_CORE_ROUTES) {
+      expect(llms).toContain(`${siteUrl}${route}`);
+    }
   });
 
   it("includes public evergreen article routes in the full AI context", async () => {

@@ -41,7 +41,7 @@ const schemaIds = getSchemaIds();
 export const metadata = buildMetadata({
   title: "Shopify Hydrogen Storefronts from $2K-$5K | HydrogenExpert",
   description:
-    "AI-assisted, fixed-scope Shopify Hydrogen storefront builds from $2K-$5K for growth-stage Shopify brands by senior Hydrogen developer Emre Mutlu.",
+    "AI-assisted, fixed-scope Shopify Hydrogen storefront builds from $2K-$5K for growth-stage Shopify brands by Emre Mutlu.",
   path: "/",
   ogImage: absoluteUrl("/og-home.svg"),
 });
@@ -94,7 +94,7 @@ const websiteSchema = {
   name: SITE_NAME,
   url: absoluteUrl("/"),
   description:
-    "Senior-led Shopify Hydrogen services site for brands researching Hydrogen strategy, migration fit, pricing, audits, developer hiring, development, and case studies.",
+    "Senior-led Shopify Hydrogen services site for brands researching Hydrogen strategy, migration fit, pricing, audits, packages, development paths, and case studies.",
   publisher: {
     "@type": "Organization",
     "@id": schemaIds.organization,
@@ -107,7 +107,7 @@ const articleSchema = {
   "@type": "Article",
   headline: "Senior-Led Shopify Hydrogen Services for Growing Brands",
   description:
-    "Merchant-friendly guidance on Shopify Hydrogen strategy, speed, migration fit, cost ranges, hiring a senior Hydrogen developer, custom storefront development, and launch planning for growing brands.",
+    "Merchant-friendly guidance on Shopify Hydrogen strategy, speed, migration fit, package ranges, custom storefront development paths, and launch planning for growing brands.",
   author: {
     "@type": "Person",
     "@id": schemaIds.person,
@@ -162,11 +162,11 @@ const faqs = [
       "A lean Hydrogen project may take around 6 weeks, while more complex storefronts can take closer to 16 weeks. Timelines expand when integrations, content readiness, or wider launch planning add more moving parts.",
   },
   {
-    question: "Can I hire you as a Shopify Hydrogen developer?",
+    question: "Where should I go for direct Hydrogen developer support?",
     answer:
-      "Yes. If the scope is clear, I can work directly on Hydrogen routes, Storefront API data, SEO-safe launch work, product flow, cart behavior, and launch QA. If the scope is unclear, start with a free scope review before buying a full audit.",
+      "Use the dedicated developer service page when the scope is clear and you need direct help with Hydrogen routes, Storefront API data, SEO-safe launch work, product flow, cart behavior, and launch QA. If the scope is unclear, start with a free scope review before buying a full audit.",
     linkHref: "/shopify-hydrogen-developer",
-    linkLabel: "Review the Shopify Hydrogen developer service.",
+    linkLabel: "Review direct developer support.",
   },
   {
     question: "Is Hydrogen ready for AI agent commerce in 2026?",
