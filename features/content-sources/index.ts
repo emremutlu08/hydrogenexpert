@@ -11,6 +11,7 @@ export type SourceTopic =
   | "storefront_api"
   | "customer_account_api"
   | "b2b"
+  | "cms"
   | "checkout"
   | "discounts"
   | "automation"
@@ -18,6 +19,10 @@ export type SourceTopic =
   | "analytics"
   | "storefront_mcp"
   | "ucp"
+  | "app_compatibility"
+  | "product_discovery"
+  | "internationalization"
+  | "deployment"
   | "shopify_partners"
   | "commercial_positioning";
 
@@ -95,6 +100,78 @@ export const SOURCE_PACKS = {
     usedFor:
       "Visual Hydrogen builder, Git-friendly workflow, and marketer-control positioning.",
   },
+  fluxHydrogenNextjs: {
+    label: "Flux: Hydrogen vs Next.js for Shopify",
+    sourceType: "competitor_reference",
+    topic: "commercial_positioning",
+    url: "https://flux.agency/insights/hydrogen-vs-nextjs-shopify-framework-comparison",
+    retrievedAt: "2026-05-27",
+    usedFor:
+      "Hydrogen vs Next.js tradeoff, hosting, ecosystem, and total-cost decision framing.",
+  },
+  talkShopHydrogenNextjs: {
+    label: "Talk Shop: Shopify Hydrogen vs Next.js for headless stores",
+    sourceType: "competitor_reference",
+    topic: "commercial_positioning",
+    url: "https://www.letstalkshop.com/blog/shopify-hydrogen-vs-nextjs-for-headless-store",
+    retrievedAt: "2026-05-27",
+    usedFor:
+      "Hydrogen vs Next.js decision framework, hosting, performance, and cost comparison context.",
+  },
+  builderHydrogenCms: {
+    label: "Builder.io: Headless CMS for Shopify Hydrogen",
+    sourceType: "competitor_reference",
+    topic: "cms",
+    url: "https://www.builder.io/m/hydrogen-cms/",
+    retrievedAt: "2026-05-27",
+    usedFor:
+      "Visual CMS and page-building comparison context for Hydrogen content workflow decisions.",
+  },
+  weaverseVsSanity: {
+    label: "Weaverse: Weaverse vs Sanity",
+    sourceType: "competitor_reference",
+    topic: "cms",
+    url: "https://weaverse.io/comparisons/vs-sanity",
+    retrievedAt: "2026-05-27",
+    usedFor:
+      "Visual storefront builder versus headless CMS role comparison for Hydrogen stores.",
+  },
+  sanityHydrogen: {
+    label: "Flux: Sanity CMS for Shopify Hydrogen",
+    sourceType: "competitor_reference",
+    topic: "cms",
+    url: "https://flux.agency/partners/sanity",
+    retrievedAt: "2026-05-27",
+    usedFor:
+      "Sanity editorial workflow and composable content positioning for Hydrogen CMS decisions.",
+  },
+  yotpoHydrogenReviews: {
+    label: "Yotpo: Using Yotpo Reviews with Shopify Hydrogen",
+    sourceType: "competitor_reference",
+    topic: "app_compatibility",
+    url: "https://support.yotpo.com/docs/using-yotpo-reviews-with-shopify-hydrogen",
+    retrievedAt: "2026-05-27",
+    usedFor:
+      "Reviews integration and headless app compatibility checks for Hydrogen migrations.",
+  },
+  yotpoHeadlessLoyalty: {
+    label: "Yotpo: Loyalty and Referrals on a headless platform",
+    sourceType: "competitor_reference",
+    topic: "app_compatibility",
+    url: "https://support.yotpo.com/docs/setting-up-yotpo-loyalty-referrals-on-a-headless-platform",
+    retrievedAt: "2026-05-27",
+    usedFor:
+      "Loyalty, referrals, customer identity, and headless app compatibility checks.",
+  },
+  shopifyHydrogenSubscriptions: {
+    label: "Shopify: Subscriptions in Hydrogen",
+    sourceType: "shopify_official",
+    topic: "app_compatibility",
+    url: "https://shopify.dev/docs/storefronts/headless/hydrogen/cookbook/subscriptions",
+    retrievedAt: "2026-05-27",
+    usedFor:
+      "Hydrogen subscription product, selling plan, cart, and checkout integration claims.",
+  },
   hydrogenDataFetching: {
     label: "Shopify: Fetch Shopify API data in Hydrogen",
     sourceType: "shopify_official",
@@ -112,6 +189,33 @@ export const SOURCE_PACKS = {
     retrievedAt: SHOPIFY_CONTENT_LAST_VERIFIED,
     usedFor:
       "Oxygen, Hydrogen channel, GitHub deployment workflow, preview deployment, and PR deployment claims.",
+  },
+  hydrogenDeployments: {
+    label: "Shopify: Hydrogen deployments",
+    sourceType: "shopify_official",
+    topic: "deployment",
+    url: "https://shopify.dev/docs/storefronts/headless/hydrogen/deployments/index",
+    retrievedAt: "2026-05-27",
+    usedFor:
+      "Oxygen deployment, preview, production, redeploy, and environment variable launch checks.",
+  },
+  hydrogenDeployCli: {
+    label: "Shopify CLI: hydrogen deploy",
+    sourceType: "shopify_official",
+    topic: "deployment",
+    url: "https://shopify.dev/docs/api/shopify-cli/hydrogen/hydrogen-deploy",
+    retrievedAt: "2026-05-27",
+    usedFor:
+      "Hydrogen deploy command, preview deployment, token, and environment-file launch checks.",
+  },
+  hydrogenMarkets: {
+    label: "Shopify: Internationalization with Shopify Markets",
+    sourceType: "shopify_official",
+    topic: "internationalization",
+    url: "https://shopify.dev/docs/storefronts/headless/hydrogen/markets",
+    retrievedAt: "2026-05-27",
+    usedFor:
+      "Hydrogen Markets, locale, country, currency, and route-context implementation claims.",
   },
   storefrontMetaobjects: {
     label: "Shopify Storefront API: metaobjects query",
@@ -157,6 +261,24 @@ export const SOURCE_PACKS = {
     retrievedAt: "2026-05-23",
     usedFor:
       "Pagination cursor and hasNextPage interpretation when app-local buffers also exist.",
+  },
+  algoliaHydrogen: {
+    label: "Algolia: Shopify Hydrogen search",
+    sourceType: "competitor_reference",
+    topic: "product_discovery",
+    url: "https://www.algolia.com/search-solutions/shopify/hydrogen",
+    retrievedAt: "2026-05-27",
+    usedFor:
+      "Hydrogen search, autocomplete, collection filters, and product discovery architecture context.",
+  },
+  shopifySearchDiscoveryFilters: {
+    label: "Shopify Help Center: Search and Discovery filters",
+    sourceType: "shopify_official",
+    topic: "product_discovery",
+    url: "https://help.shopify.com/en/manual/online-store/storefront-search/search-and-discovery-filters",
+    retrievedAt: "2026-05-27",
+    usedFor:
+      "Filter sources, behavior, limits, and custom storefront filter display claims.",
   },
   hydrogenSeo: {
     label: "Shopify: Search Engine Optimization for Hydrogen",
@@ -220,6 +342,24 @@ export const SOURCE_PACKS = {
     retrievedAt: SHOPIFY_CONTENT_LAST_VERIFIED,
     usedFor:
       "Universal Commerce Protocol catalog discovery, global product search, lookup, and authenticated Catalog MCP claims.",
+  },
+  storefrontCatalogMcp: {
+    label: "Shopify: Storefront Catalog MCP",
+    sourceType: "shopify_official",
+    topic: "storefront_mcp",
+    url: "https://shopify.dev/docs/agents/catalog/storefront-catalog",
+    retrievedAt: "2026-05-27",
+    usedFor:
+      "Store-scoped catalog discovery, UCP catalog capability, and agent readiness claims.",
+  },
+  agenticCommerce: {
+    label: "Shopify: Agentic commerce",
+    sourceType: "shopify_official",
+    topic: "ucp",
+    url: "https://shopify.dev/docs/agents",
+    retrievedAt: "2026-05-27",
+    usedFor:
+      "UCP, global catalog, storefront catalog, universal cart, and agentic commerce positioning.",
   },
   customerAccountApi: {
     label: "Shopify: Customer Account API",
@@ -319,6 +459,42 @@ export const SOURCE_PACKS = {
     retrievedAt: "2026-05-18",
     usedFor:
       "Future native B2B custom storefront context for customer accounts, company locations, B2B pricing, and cart contextualization.",
+  },
+  shopifyB2BCompanies: {
+    label: "Shopify Help Center: Creating and managing B2B companies",
+    sourceType: "shopify_official",
+    topic: "b2b",
+    url: "https://help.shopify.com/en/manual/b2b/companies-and-customers/creating-companies",
+    retrievedAt: "2026-05-27",
+    usedFor:
+      "Company, company location, payment terms, catalog, pricing, and B2B customer context claims.",
+  },
+  googleStructuredData: {
+    label: "Google Search Central: Structured data introduction",
+    sourceType: "google_official",
+    topic: "seo",
+    url: "https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data",
+    retrievedAt: "2026-05-27",
+    usedFor:
+      "Structured data purpose, JSON-LD, and search appearance guidance.",
+  },
+  googleSitemaps: {
+    label: "Google Search Central: Sitemaps overview",
+    sourceType: "google_official",
+    topic: "seo",
+    url: "https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview",
+    retrievedAt: "2026-05-27",
+    usedFor:
+      "Sitemap discovery and crawl guidance for public SEO checklist content.",
+  },
+  googleLocalizedVersions: {
+    label: "Google Search Central: Localized versions",
+    sourceType: "google_official",
+    topic: "internationalization",
+    url: "https://developers.google.com/search/docs/specialty/international/localized-versions",
+    retrievedAt: "2026-05-27",
+    usedFor:
+      "Hreflang and localized URL guidance for Hydrogen Markets and i18n SEO content.",
   },
   googleHelpfulContent: {
     label: "Google Search Central: Creating helpful, reliable, people-first content",
@@ -718,6 +894,202 @@ export const BLOG_SOURCE_METADATA = {
   },
 } as const satisfies Record<string, ContentSourceMetadata>;
 
+export const ARTICLE_SOURCE_METADATA = {
+  "shopify-hydrogen-nextjs": {
+    lastVerified: "2026-05-27",
+    claimTypes: ["official_shopify_fact", "commercial_opinion", "emre_experience"],
+    sourceMap: [
+      SOURCE_PACKS.fluxHydrogenNextjs,
+      SOURCE_PACKS.talkShopHydrogenNextjs,
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+    targetKeyword: "shopify hydrogen vs next.js",
+    searchIntent: "stack selection",
+    reviewedBy: "Emre Mutlu",
+    contentType: "evergreen_article",
+  },
+  "shopify-hydrogen-cms-visual-builder": {
+    lastVerified: "2026-05-27",
+    claimTypes: ["official_shopify_fact", "commercial_opinion", "emre_experience"],
+    sourceMap: [
+      SOURCE_PACKS.builderHydrogenCms,
+      SOURCE_PACKS.weaverseVsSanity,
+      SOURCE_PACKS.packDigitalHydrogen,
+      SOURCE_PACKS.sanityHydrogen,
+      SOURCE_PACKS.storefrontMetaobjects,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+    targetKeyword: "shopify hydrogen cms",
+    searchIntent: "CMS and visual builder decision",
+    reviewedBy: "Emre Mutlu",
+    contentType: "evergreen_article",
+  },
+  "shopify-apps-in-hydrogen-compatibility-checklist": {
+    lastVerified: "2026-05-27",
+    claimTypes: ["official_shopify_fact", "commercial_opinion", "emre_experience"],
+    sourceMap: [
+      SOURCE_PACKS.yotpoHydrogenReviews,
+      SOURCE_PACKS.yotpoHeadlessLoyalty,
+      SOURCE_PACKS.shopifyHydrogenSubscriptions,
+      SOURCE_PACKS.customerAccountApi,
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+    targetKeyword: "shopify apps in hydrogen",
+    searchIntent: "app compatibility audit",
+    reviewedBy: "Emre Mutlu",
+    contentType: "evergreen_article",
+  },
+  "shopify-hydrogen-analytics-migration": {
+    lastVerified: "2026-05-27",
+    claimTypes: ["official_shopify_fact", "commercial_opinion", "emre_experience"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenAnalytics,
+      SOURCE_PACKS.hydrogenConsent,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+    targetKeyword: "shopify hydrogen analytics migration",
+    searchIntent: "analytics migration planning",
+    reviewedBy: "Emre Mutlu",
+    contentType: "evergreen_article",
+  },
+  "shopify-storefront-mcp-ucp-ai-readiness": {
+    lastVerified: "2026-05-27",
+    claimTypes: ["official_shopify_fact", "commercial_opinion", "emre_experience", "seo_hypothesis"],
+    sourceMap: [
+      SOURCE_PACKS.storefrontCatalogMcp,
+      SOURCE_PACKS.storefrontMcp,
+      SOURCE_PACKS.agenticCommerce,
+      SOURCE_PACKS.hydrogenSeo,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+    targetKeyword: "shopify storefront mcp",
+    searchIntent: "AI commerce readiness",
+    reviewedBy: "Emre Mutlu",
+    contentType: "evergreen_article",
+  },
+  "shopify-hydrogen-b2b-wholesale-guide": {
+    lastVerified: "2026-05-27",
+    claimTypes: ["official_shopify_fact", "commercial_opinion", "emre_experience"],
+    sourceMap: [
+      SOURCE_PACKS.shopifyHeadlessB2B,
+      SOURCE_PACKS.shopifyB2BCompanies,
+      SOURCE_PACKS.customerAccountApiHydrogen,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+    targetKeyword: "shopify hydrogen b2b",
+    searchIntent: "B2B implementation planning",
+    reviewedBy: "Emre Mutlu",
+    contentType: "evergreen_article",
+  },
+  "hydrogen-deployment-checklist-oxygen-preview-production-qa": {
+    lastVerified: "2026-05-27",
+    claimTypes: ["official_shopify_fact", "commercial_opinion", "emre_experience", "seo_hypothesis"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenDeployments,
+      SOURCE_PACKS.hydrogenDeployCli,
+      SOURCE_PACKS.hydrogenSeo,
+      SOURCE_PACKS.hydrogenAnalytics,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+    targetKeyword: "hydrogen deployment checklist",
+    searchIntent: "launch QA",
+    reviewedBy: "Emre Mutlu",
+    contentType: "evergreen_article",
+  },
+  "shopify-hydrogen-markets-i18n-seo": {
+    lastVerified: "2026-05-27",
+    claimTypes: ["official_shopify_fact", "commercial_opinion", "emre_experience", "seo_hypothesis"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenMarkets,
+      SOURCE_PACKS.googleLocalizedVersions,
+      SOURCE_PACKS.hydrogenSeo,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+    targetKeyword: "shopify hydrogen markets",
+    searchIntent: "international SEO planning",
+    reviewedBy: "Emre Mutlu",
+    contentType: "evergreen_article",
+  },
+  "shopify-hydrogen-search-filters-product-discovery": {
+    lastVerified: "2026-05-27",
+    claimTypes: ["official_shopify_fact", "commercial_opinion", "emre_experience", "seo_hypothesis"],
+    sourceMap: [
+      SOURCE_PACKS.algoliaHydrogen,
+      SOURCE_PACKS.shopifySearchDiscoveryFilters,
+      SOURCE_PACKS.storefrontCollection,
+      SOURCE_PACKS.storefrontProductFilter,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+    targetKeyword: "shopify hydrogen search",
+    searchIntent: "product discovery architecture",
+    reviewedBy: "Emre Mutlu",
+    contentType: "evergreen_article",
+  },
+  "shopify-hydrogen-seo-checklist": {
+    lastVerified: "2026-05-27",
+    claimTypes: ["official_shopify_fact", "seo_hypothesis", "emre_experience"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenSeo,
+      SOURCE_PACKS.googleStructuredData,
+      SOURCE_PACKS.googleSitemaps,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+    targetKeyword: "shopify hydrogen seo checklist",
+    searchIntent: "implementation checklist",
+    reviewedBy: "Emre Mutlu",
+    contentType: "evergreen_article",
+  },
+  "how-to-hire-shopify-hydrogen-developer": {
+    lastVerified: "2026-05-27",
+    claimTypes: ["official_shopify_fact", "commercial_opinion", "emre_experience"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.shopifyPartnerDirectory,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "shopify-hydrogen-developer-vs-agency": {
+    lastVerified: "2026-05-27",
+    claimTypes: ["official_shopify_fact", "commercial_opinion", "emre_experience"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.caseStudyEvidence,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "experienced-shopify-hydrogen-developers": {
+    lastVerified: "2026-05-27",
+    claimTypes: ["official_shopify_fact", "commercial_opinion", "emre_experience"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.hydrogenSeo,
+      SOURCE_PACKS.hydrogenAnalytics,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "shopify-hydrogen-experts-production-experience": {
+    lastVerified: "2026-05-27",
+    claimTypes: ["official_shopify_fact", "commercial_opinion", "emre_experience", "case_study_fact"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.caseStudyEvidence,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+  "shopify-hydrogen-development-cost-developer-agency-audit": {
+    lastVerified: "2026-05-27",
+    claimTypes: ["official_shopify_fact", "commercial_opinion", "emre_experience"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.hydrogenAnalytics,
+      SOURCE_PACKS.caseStudyEvidence,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+  },
+} as const satisfies Record<string, ContentSourceMetadata>;
+
 export const STATIC_PAGE_SOURCE_METADATA = {
   "/": {
     lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
@@ -954,4 +1326,8 @@ export function getStaticPageSourceMetadata(path: string) {
 
 export function getBlogSourceMetadata(slug: string) {
   return BLOG_SOURCE_METADATA[slug as keyof typeof BLOG_SOURCE_METADATA] ?? null;
+}
+
+export function getArticleSourceMetadata(slug: string) {
+  return ARTICLE_SOURCE_METADATA[slug as keyof typeof ARTICLE_SOURCE_METADATA] ?? null;
 }

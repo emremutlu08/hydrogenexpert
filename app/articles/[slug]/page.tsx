@@ -93,6 +93,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
       "@type": "SpeakableSpecification",
       cssSelector: [".card-soft p", ".article-html h2"],
     },
+    citation: article.sources?.map((source) => source.href),
     mainEntityOfPage: absoluteUrl(`/articles/${article.slug}`),
     url: absoluteUrl(`/articles/${article.slug}`),
   };
@@ -192,6 +193,38 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
               ))}
             </div>
           </section>
+
+          {article.sources?.length ? (
+            <section className="card-soft mt-10 space-y-5">
+              <div>
+                <p className="eyebrow">English sources</p>
+                <h2 className="subsection-title">English source material behind this guide.</h2>
+              </div>
+              <p className="text-base leading-8 text-neutral-700">
+                These English articles and official references informed the internal Turkish
+                translation notes and this public English adaptation.
+              </p>
+              <div className="authority-links">
+                {article.sources.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    target={item.external ? "_blank" : undefined}
+                    rel={item.external ? "noreferrer" : undefined}
+                    className="authority-link-card"
+                  >
+                    <p className="authority-link-card__label">
+                      {item.external ? "External source" : "HydrogenExpert"}
+                    </p>
+                    <h3 className="authority-link-card__title">{item.label}</h3>
+                    <p className="authority-link-card__body">
+                      {item.note || "Reference used for this guide."}
+                    </p>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          ) : null}
 
           <RelatedLinks
             eyebrow="Related guides"

@@ -15,6 +15,52 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-27
 
+- PR: [#73 Add Hydrogen search gap article cluster](https://github.com/emremutlu08/hydrogenexpert/pull/73)
+- Branch: `codex/hydrogen-search-gap-articles`
+- Deployment: Production deployment verified at [hydrogenexpert.co](https://hydrogenexpert.co), deployment `https://hydrogenexpert-2incc7whv-emremutlu8s-projects.vercel.app`.
+- Summary:
+  - Added 10 source-grounded evergreen `/articles/` routes for the Hydrogen search gaps around Hydrogen vs Next.js, CMS/visual builders, app compatibility, analytics migration, Storefront MCP/UCP, B2B, Oxygen launch QA, Markets/i18n, search/filter architecture, and SEO implementation.
+  - Added English source cards to article pages and repo-owned Turkish translation/adaptation notes for the source material.
+  - Connected the new guides to resource clusters, related links, sitemap discovery, `llms` context, source metadata, content validation, and Shopify claim audit coverage.
+- Files changed:
+  - `app/articles/[slug]/page.tsx`
+  - `content/blog-clusters/shopify-authority-clusters.json`
+  - `content/internal/reports/hydrogenexpert-gap-source-translations-2026-05-27.md`
+  - `features/articles/traffic-gap-articles.ts`
+  - `features/content-relations/index.ts`
+  - `features/content-sources/index.ts`
+  - `features/public-discovery/manifest.ts`
+  - `features/traffic-foundation/index.ts`
+  - `lib/articles.ts`
+  - `scripts/audit-shopify-claims.ts`
+  - `scripts/validate-content.ts`
+  - `tests/articles.test.ts`
+  - `tests/llms.test.ts`
+  - `CHANGELOG.md`
+- Verification:
+  - `git diff --check`: passed.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run test`: passed, 24 files and 99 tests.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed with no `Needs review` rows.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed, 85 static pages generated.
+  - `INTERNAL_LINK_BASE_URL=http://localhost:3000 NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:internal-links`: passed with 67 sitemap URLs and 82 internal URLs.
+  - `COMMERCIAL_LAUNCH_BASE_URL=http://localhost:3000 NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:commercial-launch`: passed.
+  - Local `/sitemap.xml` confirmed all 10 new article URLs.
+  - Local `/llms-full.txt` confirmed all 10 new article entries.
+  - Chrome smoke verified `/articles/shopify-hydrogen-nextjs` and `/articles/shopify-hydrogen-cms-visual-builder` render the expected H1, metadata, related section, and English source cards. Local Vercel Analytics and Speed Insights 404/MIME console messages were observed as existing localhost instrumentation noise.
+  - Vercel PR check passed for PR #73 and protected preview was verified through `vercel curl`.
+  - Production deploy completed with `READY` state and was aliased to `https://hydrogenexpert.co`.
+  - `COMMERCIAL_LAUNCH_BASE_URL=https://hydrogenexpert.co NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:commercial-launch`: passed.
+  - `INTERNAL_LINK_BASE_URL=https://hydrogenexpert.co NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:internal-links`: passed with 67 sitemap URLs and 82 internal URLs.
+  - Live `/sitemap.xml` confirmed all 10 new article URLs.
+  - Live `/llms-full.txt` confirmed all 10 new article entries.
+  - Live article HTML confirmed `/articles/shopify-hydrogen-nextjs` title, canonical, H1, source cards, and JSON-LD citations.
+  - Live Chrome smoke verified `/articles/shopify-hydrogen-nextjs` title, H1, canonical, source cards, related section, and 0 console errors.
+- Manual follow-up:
+  - After production deploy, request indexing or inspect the new article routes in Google Search Console once Google has seen the updated sitemap.
+
 - PR: [#72 Fix legacy Hydrogen worth-it blog redirect](https://github.com/emremutlu08/hydrogenexpert/pull/72)
 - Branch: `codex/fix-gsc-hydrogen-worth-redirect`
 - Deployment: Production deployment verified at [hydrogenexpert.co](https://hydrogenexpert.co), deployment `https://hydrogenexpert-esi1x9qgn-emremutlu8s-projects.vercel.app`.

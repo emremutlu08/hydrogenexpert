@@ -8,7 +8,7 @@ import { getPublicArticlesForDate } from "../lib/articles";
 import { buildLlmsFullTxt, buildLlmsTxt } from "../lib/llms";
 
 const siteUrl = "https://hydrogenexpert.co";
-const publicArticleDate = new Date("2026-05-25T00:00:00.000Z");
+const publicArticleDate = new Date("2026-05-27T10:01:00+03:00");
 const repoRoot = process.cwd();
 
 function readRepoFile(path: string) {
@@ -21,7 +21,7 @@ describe("llms files", () => {
     const llms = buildLlmsTxt();
 
     expect(llms).toContain(
-      `- [Articles](${siteUrl}/articles): Evergreen merchant guides for Hydrogen hiring, cost, SEO, migration, and fit decisions.`,
+      `- [Articles](${siteUrl}/articles): Evergreen merchant guides for Hydrogen stack, CMS, app, analytics, AI commerce, B2B, launch, markets, search, SEO, hiring, cost, migration, and fit decisions.`,
     );
     expect(llms).toContain(
       `- [News on Shopify Hydrogen](${siteUrl}/news-on-shopify-hydrogen): Monthly official Hydrogen update notes translated into merchant impact and end-user benefit.`,

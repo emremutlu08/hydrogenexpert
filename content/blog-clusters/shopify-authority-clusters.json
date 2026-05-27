@@ -1,8 +1,29 @@
 {
-  "lastVerified": "2026-05-05",
+  "lastVerified": "2026-05-27",
   "reviewedBy": "Emre Mutlu",
   "contentType": "mcp_grounded_blog_cluster_plan",
   "clusters": [
+    {
+      "name": "Stack and CMS Decisions",
+      "pillar": "/articles/shopify-hydrogen-nextjs",
+      "sourcePacks": ["hydrogenFundamentals", "fluxHydrogenNextjs", "talkShopHydrogenNextjs", "builderHydrogenCms", "storefrontMetaobjects"],
+      "articles": [
+        {
+          "slug": "shopify-hydrogen-nextjs",
+          "implementedRoute": "/articles/shopify-hydrogen-nextjs",
+          "targetKeyword": "shopify hydrogen vs next.js",
+          "searchIntent": "stack selection",
+          "uniqueAngle": "Hydrogen, Next.js, Oxygen, Vercel, app risk, SEO, and TCO as one merchant ownership decision."
+        },
+        {
+          "slug": "shopify-hydrogen-cms-visual-builder",
+          "implementedRoute": "/articles/shopify-hydrogen-cms-visual-builder",
+          "targetKeyword": "shopify hydrogen cms",
+          "searchIntent": "CMS and visual builder decision",
+          "uniqueAngle": "Metaobjects, Sanity, Builder, Pack, Weaverse, and custom Hydrogen components compared by editor workflow."
+        }
+      ]
+    },
     {
       "name": "Shopify Hydrogen SEO",
       "pillar": "/shopify-hydrogen-seo",
@@ -10,12 +31,14 @@
       "articles": [
         {
           "slug": "shopify-hydrogen-seo-checklist",
+          "implementedRoute": "/articles/shopify-hydrogen-seo-checklist",
           "targetKeyword": "shopify hydrogen seo checklist",
           "searchIntent": "implementation checklist",
           "uniqueAngle": "Metadata, canonical URLs, JSON-LD, sitemap, robots, SSR content, and product state consistency as one QA system."
         },
         {
           "slug": "hydrogen-sitemap-robots-oxygen",
+          "implementedRoute": "/articles/shopify-hydrogen-seo-checklist",
           "targetKeyword": "hydrogen sitemap robots oxygen",
           "searchIntent": "launch QA",
           "uniqueAngle": "Sitemap and robots behavior as launch QA, including Oxygen production and preview expectations."
@@ -65,12 +88,14 @@
         },
         {
           "slug": "shopify-hydrogen-analytics-migration",
+          "implementedRoute": "/articles/shopify-hydrogen-analytics-migration",
           "targetKeyword": "shopify hydrogen analytics migration",
           "searchIntent": "analytics migration",
           "uniqueAngle": "Event continuity, Shopify analytics, consent behavior, and reporting gaps after leaving Liquid."
         },
         {
-          "slug": "shopify-apps-in-hydrogen-what-to-check",
+          "slug": "shopify-apps-in-hydrogen-compatibility-checklist",
+          "implementedRoute": "/articles/shopify-apps-in-hydrogen-compatibility-checklist",
           "targetKeyword": "shopify apps in hydrogen",
           "searchIntent": "app compatibility check",
           "uniqueAngle": "Theme app assumptions versus custom storefront implementation surfaces."
@@ -108,12 +133,14 @@
         },
         {
           "slug": "hydrogen-deployment-checklist",
+          "implementedRoute": "/articles/hydrogen-deployment-checklist-oxygen-preview-production-qa",
           "targetKeyword": "hydrogen deployment checklist",
           "searchIntent": "launch QA",
           "uniqueAngle": "Environment variables, routes, analytics, robots, sitemap, and rollback checks."
         },
         {
           "slug": "oxygen-preview-production-launch-qa",
+          "implementedRoute": "/articles/hydrogen-deployment-checklist-oxygen-preview-production-qa",
           "targetKeyword": "oxygen preview production launch qa",
           "searchIntent": "deployment QA",
           "uniqueAngle": "Separate preview behavior from production behavior before search engines see the store."
@@ -128,14 +155,15 @@
     },
     {
       "name": "Agentic Commerce and Storefront MCP",
-      "pillar": "/blog/shopify-storefront-mcp-explained",
+      "pillar": "/articles/shopify-storefront-mcp-ucp-ai-readiness",
       "sourcePacks": ["storefrontMcp", "ucpCatalog", "ucpCheckout", "customerAccountApi"],
       "articles": [
         {
-          "slug": "shopify-storefront-mcp-explained",
+          "slug": "shopify-storefront-mcp-ucp-ai-readiness",
+          "implementedRoute": "/articles/shopify-storefront-mcp-ucp-ai-readiness",
           "targetKeyword": "shopify storefront mcp",
           "searchIntent": "agentic commerce overview",
-          "uniqueAngle": "Store-scoped catalog, cart, checkout, and policy tasks without vague AI commerce hype."
+          "uniqueAngle": "Store-scoped catalog, cart, checkout, policy tasks, product data, SSR content, and schema without vague AI commerce hype."
         },
         {
           "slug": "storefront-mcp-vs-shopify-dev-mcp",
@@ -151,18 +179,21 @@
         },
         {
           "slug": "is-hydrogen-ready-for-ai-shopping-agents",
+          "implementedRoute": "/articles/shopify-storefront-mcp-ucp-ai-readiness",
           "targetKeyword": "hydrogen ai shopping agents",
           "searchIntent": "readiness assessment",
           "uniqueAngle": "AI-readable commerce depends on product data quality, route clarity, SSR content, and structured state."
         },
         {
           "slug": "ai-readable-shopify-product-pages",
+          "implementedRoute": "/articles/shopify-storefront-mcp-ucp-ai-readiness",
           "targetKeyword": "ai readable shopify product pages",
           "searchIntent": "technical content QA",
           "uniqueAngle": "Product pages must be readable to humans, search crawlers, and agent workflows without hiding key data."
         },
         {
           "slug": "shopify-hydrogen-seo-for-ai-agents",
+          "implementedRoute": "/articles/shopify-storefront-mcp-ucp-ai-readiness",
           "targetKeyword": "shopify hydrogen seo ai agents",
           "searchIntent": "SEO and AI overlap",
           "uniqueAngle": "SSR product content, structured data, and clear URLs are useful for SEO and agent-facing commerce."
@@ -175,9 +206,38 @@
         },
         {
           "slug": "should-your-store-build-an-ai-shopping-agent",
+          "implementedRoute": "/articles/shopify-storefront-mcp-ucp-ai-readiness",
           "targetKeyword": "should shopify store build ai shopping agent",
           "searchIntent": "commercial decision",
           "uniqueAngle": "Not every merchant needs an agent; start with product data, support burden, catalog complexity, and buyer behavior."
+        }
+      ]
+    },
+    {
+      "name": "Plus, Markets, and Product Discovery",
+      "pillar": "/articles/shopify-hydrogen-b2b-wholesale-guide",
+      "sourcePacks": ["shopifyHeadlessB2B", "customerAccountApiHydrogen", "hydrogenMarkets", "algoliaHydrogen", "shopifySearchDiscoveryFilters"],
+      "articles": [
+        {
+          "slug": "shopify-hydrogen-b2b-wholesale-guide",
+          "implementedRoute": "/articles/shopify-hydrogen-b2b-wholesale-guide",
+          "targetKeyword": "shopify hydrogen b2b",
+          "searchIntent": "B2B implementation planning",
+          "uniqueAngle": "Company, location, pricing, customer account, catalog visibility, and checkout behavior treated as one operating model."
+        },
+        {
+          "slug": "shopify-hydrogen-markets-i18n-seo",
+          "implementedRoute": "/articles/shopify-hydrogen-markets-i18n-seo",
+          "targetKeyword": "shopify hydrogen markets",
+          "searchIntent": "international SEO planning",
+          "uniqueAngle": "Markets, locale URLs, currency, hreflang, cache, and region-specific storefront state planned together."
+        },
+        {
+          "slug": "shopify-hydrogen-search-filters-product-discovery",
+          "implementedRoute": "/articles/shopify-hydrogen-search-filters-product-discovery",
+          "targetKeyword": "shopify hydrogen search",
+          "searchIntent": "product discovery architecture",
+          "uniqueAngle": "Search, autocomplete, collection filters, indexing, and merchandising as a large-catalog architecture decision."
         }
       ]
     }
