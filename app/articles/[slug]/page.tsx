@@ -13,6 +13,7 @@ import { OWNER, SITE_LOGO_PATH, SITE_NAME, VERIFIED_PROFILE_URLS, absoluteUrl, g
 import {
   asSchemaArray,
   buildBreadcrumbListSchema,
+  buildFaqPageSchema,
   buildPublisherSchema,
 } from "@/lib/structured-data";
 
@@ -57,6 +58,8 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   }
 
   const schemaIds = getSchemaIds();
+  const hasDecisionBrief = Boolean(article.summary?.length || article.takeaways?.length);
+  const hasFaq = Boolean(article.faq?.length);
   const breadcrumbs = [
     { label: "Home", href: "/" },
     { label: "Articles", href: "/articles" },
@@ -91,12 +94,13 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     image: absoluteUrl("/og-default.svg"),
     speakable: {
       "@type": "SpeakableSpecification",
-      cssSelector: [".card-soft p", ".article-html h2"],
+      cssSelector: [".card-soft p", ".article-decision-brief p", ".article-html h2", ".article-faq p"],
     },
     citation: article.sources?.map((source) => source.href),
     mainEntityOfPage: absoluteUrl(`/articles/${article.slug}`),
     url: absoluteUrl(`/articles/${article.slug}`),
   };
+  const faqSchema = hasFaq ? buildFaqPageSchema(article.faq ?? []) : null;
   const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -118,7 +122,9 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
   return (
     <>
-      <JsonLd data={asSchemaArray(articleSchema, breadcrumbSchema, personSchema, organizationSchema)} />
+      <JsonLd
+        data={asSchemaArray(articleSchema, breadcrumbSchema, faqSchema, personSchema, organizationSchema)}
+      />
       <div className="page-shell">
         <article className="mx-auto max-w-4xl">
           <Breadcrumbs items={breadcrumbs} />
@@ -151,6 +157,36 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
               </p>
             ))}
           </div>
+
+          {hasDecisionBrief ? (
+            <section className="article-decision-brief card-soft mt-8 space-y-6">
+              <div>
+                <p className="eyebrow">Decision brief</p>
+                <h2 className="subsection-title">The short version before you scope work.</h2>
+              </div>
+              {article.summary?.length ? (
+                <div className="space-y-4">
+                  {article.summary.map((paragraph) => (
+                    <p key={paragraph} className="text-base leading-8 text-neutral-700">
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+              ) : null}
+              {article.takeaways?.length ? (
+                <dl className="grid gap-5 md:grid-cols-3">
+                  {article.takeaways.map((item) => (
+                    <div key={item.label} className="border-l border-neutral-200 pl-4">
+                      <dt className="text-sm font-semibold uppercase tracking-[0.08em] text-neutral-500">
+                        {item.label}
+                      </dt>
+                      <dd className="mt-2 text-base leading-7 text-neutral-800">{item.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              ) : null}
+            </section>
+          ) : null}
 
           <div className="article-html mt-10">
             {article.sections.map((section) => (
@@ -193,6 +229,25 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
               ))}
             </div>
           </section>
+
+          {hasFaq ? (
+            <section className="article-faq card-soft mt-10 space-y-5">
+              <div>
+                <p className="eyebrow">Decision FAQ</p>
+                <h2 className="subsection-title">Questions that usually decide the scope.</h2>
+              </div>
+              <div className="divide-y divide-neutral-200">
+                {article.faq?.map((item) => (
+                  <details key={item.question} className="group py-4">
+                    <summary className="cursor-pointer list-none text-base font-semibold leading-7 text-neutral-950 outline-none transition focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-4">
+                      {item.question}
+                    </summary>
+                    <p className="mt-3 text-base leading-8 text-neutral-700">{item.answer}</p>
+                  </details>
+                ))}
+              </div>
+            </section>
+          ) : null}
 
           {article.sources?.length ? (
             <section className="card-soft mt-10 space-y-5">

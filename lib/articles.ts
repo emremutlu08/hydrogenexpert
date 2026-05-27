@@ -36,6 +36,16 @@ export interface ArticleSection {
   ordered?: readonly string[];
 }
 
+export interface ArticleTakeaway {
+  label: string;
+  value: string;
+}
+
+export interface ArticleFaq {
+  question: string;
+  answer: string;
+}
+
 export interface Article {
   title: string;
   slug: string;
@@ -49,7 +59,10 @@ export interface Article {
   metaDescription: string;
   h1: string;
   intro: readonly string[];
+  summary?: readonly string[];
+  takeaways?: readonly ArticleTakeaway[];
   sections: readonly ArticleSection[];
+  faq?: readonly ArticleFaq[];
   conclusion: string;
   links: readonly ArticleLink[];
   sources?: readonly ArticleLink[];

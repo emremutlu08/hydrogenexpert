@@ -1,6 +1,6 @@
 import { CASE_STUDIES } from "../data/caseStudies";
 import { LLMS_CORE_PAGE_ENTRIES } from "../features/public-discovery/manifest";
-import { getPublicArticles } from "./articles";
+import { getPublicArticles, type Article } from "./articles";
 import { getPublishedPostListResult, type PostSummary } from "./posts";
 import { SERVICE_PACKAGES } from "./services";
 import { DELIVERY_PROOF, OWNER, UPWORK_PROFILE, absoluteUrl, getSiteUrl } from "./site";
@@ -40,6 +40,10 @@ function llmsLink(title: string, pathOrUrl: string, description: string) {
   const url = pathOrUrl.startsWith("http") ? pathOrUrl : absoluteUrl(pathOrUrl);
 
   return `- [${title}](${url}): ${description}`;
+}
+
+function buildArticleLlmsDescription(article: Article) {
+  return article.summary?.[0] || article.metaDescription || article.description;
 }
 
 function buildPageIndex() {
@@ -132,7 +136,7 @@ export async function buildLlmsFullTxt({
             llmsLink(
               article.title,
               `/articles/${article.slug}`,
-              article.metaDescription || article.description,
+              buildArticleLlmsDescription(article),
             ),
           )
           .join("\n")
