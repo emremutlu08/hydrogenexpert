@@ -15,6 +15,43 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-27
 
+- PR: [#74 Improve Hydrogen article quality](https://github.com/emremutlu08/hydrogenexpert/pull/74)
+- Branch: `codex/hydrogen-article-quality-refresh`
+- Deployment: Production deployment verified at [hydrogenexpert.co](https://hydrogenexpert.co), deployment `https://hydrogenexpert-203b1t5h6-emremutlu8s-projects.vercel.app`.
+- Summary:
+  - Reworked the 10 Hydrogen traffic-gap article routes from thin search pages into deeper decision guides with decision briefs, takeaways, implementation-risk sections, and decision FAQs.
+  - Added article-level decision brief and FAQ rendering, FAQPage JSON-LD, richer speakable selectors, and `llms-full.txt` article descriptions sourced from the new decision summaries.
+  - Added content-quality guardrails so refreshed traffic-gap articles keep source metadata, minimum depth, takeaways, FAQ coverage, and current refresh timestamps.
+- Files changed:
+  - `app/articles/[slug]/page.tsx`
+  - `features/articles/traffic-gap-articles.ts`
+  - `lib/articles.ts`
+  - `lib/llms.ts`
+  - `scripts/validate-content.ts`
+  - `tests/articles.test.ts`
+  - `CHANGELOG.md`
+- Verification:
+  - `git diff --check`: passed.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run test`: passed, 24 files and 99 tests.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed with no `Needs review` rows.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed, 85 static pages generated.
+  - `INTERNAL_LINK_BASE_URL=http://127.0.0.1:3000 NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:internal-links`: passed with 67 sitemap URLs and 82 internal URLs.
+  - `COMMERCIAL_LAUNCH_BASE_URL=http://127.0.0.1:3000 NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:commercial-launch`: passed.
+  - Local Chrome smoke verified `/articles/shopify-hydrogen-nextjs` renders the decision brief, FAQ, English source cards, Article schema, and FAQPage schema. Local Vercel Analytics and Speed Insights 404/MIME console messages were observed as existing localhost instrumentation noise.
+  - Vercel PR check passed for PR #74 and protected preview was verified through `vercel curl`.
+  - Production deploy completed with `READY` state and was aliased to `https://hydrogenexpert.co`.
+  - `COMMERCIAL_LAUNCH_BASE_URL=https://hydrogenexpert.co NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:commercial-launch`: passed.
+  - `INTERNAL_LINK_BASE_URL=https://hydrogenexpert.co NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:internal-links`: passed with 67 sitemap URLs and 82 internal URLs.
+  - Live `/articles/shopify-hydrogen-nextjs` HTML confirmed `Decision brief`, `Decision FAQ`, FAQPage JSON-LD, and `2026-05-27T23:30:00+03:00` dateModified.
+  - Live `/sitemap.xml` confirmed refreshed article URLs including `/articles/shopify-hydrogen-nextjs` and `/articles/shopify-hydrogen-seo-checklist`.
+  - Live `/llms-full.txt` confirmed the refreshed article summaries for the Next.js and SEO checklist guides.
+  - Live Chrome smoke verified `/articles/shopify-hydrogen-nextjs` title, H1, canonical, decision brief, FAQ, source cards, FAQ schema, no horizontal body overflow, and 0 console errors.
+- Manual follow-up:
+  - Re-inspect the refreshed article URLs in Google Search Console after the updated sitemap is recrawled.
+
 - PR: [#73 Add Hydrogen search gap article cluster](https://github.com/emremutlu08/hydrogenexpert/pull/73)
 - Branch: `codex/hydrogen-search-gap-articles`
 - Deployment: Production deployment verified at [hydrogenexpert.co](https://hydrogenexpert.co), deployment `https://hydrogenexpert-2incc7whv-emremutlu8s-projects.vercel.app`.
