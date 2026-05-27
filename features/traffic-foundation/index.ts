@@ -78,6 +78,16 @@ export const RESOURCE_CLUSTERS = [
         note: "Compare cost, maintenance, SEO, UX control, and operating reality.",
       },
       {
+        href: "/articles/shopify-hydrogen-nextjs",
+        label: "Hydrogen vs Next.js",
+        note: "Choose between Shopify-native Hydrogen and a broader Next.js headless stack.",
+      },
+      {
+        href: "/articles/shopify-hydrogen-cms-visual-builder",
+        label: "Hydrogen CMS guide",
+        note: "Compare Metaobjects, Sanity, Builder, Pack, Weaverse, and custom sections.",
+      },
+      {
         href: "/shopify-hydrogen-cost",
         label: "Hydrogen cost",
         note: "Turn scope pressure into a practical budget range.",
@@ -105,9 +115,56 @@ export const RESOURCE_CLUSTERS = [
         note: "Route, SEO, app, analytics, and launch-risk planning.",
       },
       {
+        href: "/articles/shopify-apps-in-hydrogen-compatibility-checklist",
+        label: "Hydrogen app compatibility",
+        note: "Audit reviews, subscriptions, loyalty, search, analytics, and checkout risk.",
+      },
+      {
+        href: "/articles/shopify-hydrogen-analytics-migration",
+        label: "Analytics migration",
+        note: "Plan GA4, GTM, Shopify analytics, consent, and checkout handoff QA.",
+      },
+      {
         href: "/shopify-hydrogen-support-retainer",
         label: "Support retainer",
         note: "Ongoing senior support after a Hydrogen storefront is live.",
+      },
+    ],
+  },
+  {
+    id: "risk-guides",
+    title: "Decision and risk guides",
+    description: "Use these when the next search is about launch risk, Plus complexity, or operating model.",
+    links: [
+      {
+        href: "/articles/shopify-storefront-mcp-ucp-ai-readiness",
+        label: "Storefront MCP and UCP",
+        note: "Prepare product data, SSR content, schema, and policies for agentic commerce.",
+      },
+      {
+        href: "/articles/shopify-hydrogen-b2b-wholesale-guide",
+        label: "Hydrogen B2B guide",
+        note: "Plan company, location, pricing, customer account, catalog, and checkout behavior.",
+      },
+      {
+        href: "/articles/shopify-hydrogen-markets-i18n-seo",
+        label: "Markets and i18n SEO",
+        note: "Handle locale URLs, currency, hreflang, cache, and region-specific storefront state.",
+      },
+      {
+        href: "/articles/shopify-hydrogen-search-filters-product-discovery",
+        label: "Search and filters",
+        note: "Design product discovery for large catalogs, collection filters, and Algolia-style search.",
+      },
+      {
+        href: "/articles/hydrogen-deployment-checklist-oxygen-preview-production-qa",
+        label: "Oxygen launch QA",
+        note: "Check preview, production, env vars, sitemap, robots, analytics, and rollback paths.",
+      },
+      {
+        href: "/articles/shopify-hydrogen-seo-checklist",
+        label: "Hydrogen SEO checklist",
+        note: "Turn metadata, JSON-LD, sitemap, robots, and SSR content into a launch QA system.",
       },
     ],
   },

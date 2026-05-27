@@ -15,7 +15,7 @@ export interface LlmsPageEntry {
   description: string;
 }
 
-export const LAST_SIGNIFICANT_UPDATE = new Date("2026-05-25T00:00:00.000Z");
+export const LAST_SIGNIFICANT_UPDATE = new Date("2026-05-27T00:00:00.000Z");
 
 export const PACKAGE_PAGE_DISCOVERY = {
   ...PACKAGE_PAGE_SEO,
@@ -58,6 +58,16 @@ export const INDEXING_RECOVERY_ROUTES = [
   "/articles/how-to-hire-shopify-hydrogen-developer",
   "/articles/shopify-hydrogen-developer-vs-agency",
   "/articles/shopify-hydrogen-experts-production-experience",
+  "/articles/shopify-hydrogen-nextjs",
+  "/articles/shopify-hydrogen-cms-visual-builder",
+  "/articles/shopify-apps-in-hydrogen-compatibility-checklist",
+  "/articles/shopify-hydrogen-analytics-migration",
+  "/articles/shopify-storefront-mcp-ucp-ai-readiness",
+  "/articles/shopify-hydrogen-b2b-wholesale-guide",
+  "/articles/hydrogen-deployment-checklist-oxygen-preview-production-qa",
+  "/articles/shopify-hydrogen-markets-i18n-seo",
+  "/articles/shopify-hydrogen-search-filters-product-discovery",
+  "/articles/shopify-hydrogen-seo-checklist",
   PACKAGE_ROUTE,
   "/case-studies",
 ] as const;
@@ -158,7 +168,7 @@ export const LLMS_CORE_PAGE_ENTRIES: readonly LlmsPageEntry[] = [
     title: "Articles",
     path: "/articles",
     description:
-      "Evergreen merchant guides for Hydrogen hiring, cost, SEO, migration, and fit decisions.",
+      "Evergreen merchant guides for Hydrogen stack, CMS, app, analytics, AI commerce, B2B, launch, markets, search, SEO, hiring, cost, migration, and fit decisions.",
   },
   {
     title: "Blog",

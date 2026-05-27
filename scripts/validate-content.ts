@@ -4,6 +4,7 @@ import { join } from "node:path";
 import { CASE_STUDIES } from "../data/caseStudies";
 import { getAllArticles } from "../lib/articles";
 import {
+  ARTICLE_SOURCE_METADATA,
   BLOG_SOURCE_METADATA,
   STATIC_PAGE_SOURCE_METADATA,
 } from "../features/content-sources";
@@ -63,6 +64,7 @@ interface BlogClusterManifest {
     pillar: string;
     articles: readonly {
       slug: string;
+      implementedRoute?: string;
       targetKeyword: string;
       searchIntent: string;
       uniqueAngle: string;
@@ -234,7 +236,30 @@ for (const cluster of blogClusterManifest.clusters) {
       fail(`Blog cluster ${cluster.name} has an incomplete article entry.`);
     }
 
-    if (!BLOG_SOURCE_METADATA[article.slug as keyof typeof BLOG_SOURCE_METADATA]) {
+    if (article.implementedRoute && !knownRoutes.has(article.implementedRoute)) {
+      fail(
+        `Blog cluster ${cluster.name} article ${article.slug} has unknown implementedRoute ${article.implementedRoute}.`,
+      );
+    }
+
+    const implementedArticleSlug = article.implementedRoute?.startsWith("/articles/")
+      ? article.implementedRoute.replace("/articles/", "")
+      : null;
+
+    if (
+      implementedArticleSlug &&
+      !ARTICLE_SOURCE_METADATA[implementedArticleSlug as keyof typeof ARTICLE_SOURCE_METADATA]
+    ) {
+      fail(
+        `${article.implementedRoute} is in the cluster manifest but missing ARTICLE_SOURCE_METADATA.`,
+      );
+      continue;
+    }
+
+    if (
+      !implementedArticleSlug &&
+      !BLOG_SOURCE_METADATA[article.slug as keyof typeof BLOG_SOURCE_METADATA]
+    ) {
       fail(`/blog/${article.slug} is in the cluster manifest but missing BLOG_SOURCE_METADATA.`);
     }
   }

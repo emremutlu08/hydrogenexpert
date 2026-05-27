@@ -1,5 +1,6 @@
 import { cache } from "react";
 
+import { TRAFFIC_GAP_ARTICLES } from "../features/articles/traffic-gap-articles";
 import { OWNER } from "./site";
 
 export const ARTICLE_CATEGORIES = [
@@ -9,6 +10,13 @@ export const ARTICLE_CATEGORIES = [
   "Migration",
   "SEO",
   "Decision Guide",
+  "CMS",
+  "Analytics",
+  "AI Commerce",
+  "B2B",
+  "Launch",
+  "International",
+  "Product Discovery",
 ] as const;
 
 export type ArticleCategory = (typeof ARTICLE_CATEGORIES)[number];
@@ -17,6 +25,8 @@ export type ArticleStatus = "draft" | "scheduled" | "published";
 export interface ArticleLink {
   href: string;
   label: string;
+  note?: string;
+  external?: boolean;
 }
 
 export interface ArticleSection {
@@ -42,9 +52,11 @@ export interface Article {
   sections: readonly ArticleSection[];
   conclusion: string;
   links: readonly ArticleLink[];
+  sources?: readonly ArticleLink[];
 }
 
 const ARTICLES = [
+  ...TRAFFIC_GAP_ARTICLES,
   {
     title: "How to Hire a Shopify Hydrogen Developer",
     slug: "how-to-hire-shopify-hydrogen-developer",

@@ -1,10 +1,13 @@
 import { CASE_STUDIES } from "../data/caseStudies";
 import {
+  ARTICLE_SOURCE_METADATA,
   BLOG_SOURCE_METADATA,
   STATIC_PAGE_SOURCE_METADATA,
+  getArticleSourceMetadata,
   getBlogSourceMetadata,
   getStaticPageSourceMetadata,
 } from "../features/content-sources";
+import { getAllArticles } from "../lib/articles";
 import { DECISION_PAGES } from "../lib/decision-pages";
 import { SERVICE_PACKAGES } from "../lib/services";
 
@@ -14,6 +17,7 @@ const SHOPIFY_CLAIM_TERMS = [
   "Oxygen",
   "Storefront API",
   "Customer Account API",
+  "Metaobjects",
   "GraphQL",
   "Remix",
   "React Router",
@@ -21,6 +25,8 @@ const SHOPIFY_CLAIM_TERMS = [
   "headless",
   "custom storefront",
   "Shopify Plus",
+  "Markets",
+  "B2B",
   "MCP",
   "Storefront MCP",
   "UCP",
@@ -110,6 +116,28 @@ const records: ClaimRecord[] = [
       hasLastVerified: Boolean(metadata?.lastVerified),
     };
   }),
+  ...getAllArticles().map((article) => {
+    const metadata = getArticleSourceMetadata(article.slug);
+
+    return {
+      pagePath: `/articles/${article.slug}`,
+      content: flatten(article),
+      hasSourceMetadata: Boolean(metadata?.sourceMap.length),
+      hasLastVerified: Boolean(metadata?.lastVerified),
+    };
+  }),
+  ...Object.keys(ARTICLE_SOURCE_METADATA)
+    .filter((slug) => !getAllArticles().some((article) => article.slug === slug))
+    .map((slug) => {
+      const metadata = getArticleSourceMetadata(slug);
+
+      return {
+        pagePath: `/articles/${slug}`,
+        content: slug.replaceAll("-", " "),
+        hasSourceMetadata: Boolean(metadata?.sourceMap.length),
+        hasLastVerified: Boolean(metadata?.lastVerified),
+      };
+    }),
 ];
 
 const rows = records
