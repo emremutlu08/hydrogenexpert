@@ -15,6 +15,33 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-27
 
+- PR: [#72 Fix legacy Hydrogen worth-it blog redirect](https://github.com/emremutlu08/hydrogenexpert/pull/72)
+- Branch: `codex/fix-gsc-hydrogen-worth-redirect`
+- Deployment: Pending production deployment; local production smoke verified the redirect behavior before deploy.
+- Summary:
+  - Added a permanent redirect for the Google-crawled legacy blog URL `/blog/hydrogen-worth-2-million-shopify-store`.
+  - Redirected the old URL to `/should-i-use-it`, the closest live decision-guide route for the same "is Hydrogen worth it?" intent.
+  - Extended proxy and sitemap guard tests so the old blog slug stays out of discovery while the canonical live page remains sitemap-visible.
+- Files changed:
+  - `lib/legacy-redirects.ts`
+  - `tests/proxy.test.ts`
+  - `tests/sitemap-entries.test.ts`
+  - `CHANGELOG.md`
+- Verification:
+  - Pre-fix production probe confirmed `https://hydrogenexpert.co/blog/hydrogen-worth-2-million-shopify-store` returned `404`, including with a Googlebot user agent.
+  - Live `/sitemap.xml` did not list the old blog URL and did list `/should-i-use-it`.
+  - `npx vitest run tests/proxy.test.ts tests/sitemap-entries.test.ts`: passed, 2 files and 12 tests.
+  - `git diff --check`: passed.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run test`: passed, 24 files and 98 tests.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed with no `Needs review` rows.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed, 75 static pages generated.
+  - Local production smoke confirmed the old URL returns `301` to `/should-i-use-it`, the target returns `200`, and local sitemap output includes `/should-i-use-it` without the old slug.
+- Manual follow-up:
+  - After production deployment, use Google Search Console URL Inspection for `https://hydrogenexpert.co/blog/hydrogen-worth-2-million-shopify-store`, run "Test live URL", then restart validation for the 404 issue.
+
 - PR: [#71 Add GSC indexing recovery guardrails](https://github.com/emremutlu08/hydrogenexpert/pull/71)
 - Branch: `codex/gsc-index-routing-guardrails`
 - Deployment: Production deployment verified at [hydrogenexpert.co](https://hydrogenexpert.co), deployment `https://hydrogenexpert-8yzfqnm5u-emremutlu8s-projects.vercel.app`.
