@@ -17,6 +17,7 @@ export const getSiteNavigation = cache(async (): Promise<readonly SiteNavItem[]>
   const hasArticles = articles.length > 0;
   const items: SiteNavItem[] = [
     { href: "/shopify-hydrogen-packages", label: "Packages" },
+    { href: "/shopify-hydrogen-developer", label: "Developer" },
     { href: "/shopify-hydrogen-cost", label: "Cost" },
     { href: "/case-studies", label: "Proof" },
     { href: "/resources", label: "Resources" },

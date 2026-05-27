@@ -173,6 +173,23 @@ export default function AboutPage() {
           ))}
         </FounderCard>
 
+        <section className="card-soft space-y-4">
+          <p className="eyebrow">Direct support</p>
+          <h2 className="subsection-title">The commercial developer page lives separately from the profile.</h2>
+          <p className="text-base leading-8 text-neutral-600">
+            This About page proves who is behind HydrogenExpert. The direct service path for
+            Hydrogen routes, Storefront API work, SEO-safe launch support, cart behavior, and
+            production QA is{" "}
+            <Link
+              href="/shopify-hydrogen-developer"
+              className="font-semibold text-[#0f8a5d] underline decoration-[#10b981]/30 underline-offset-4 transition hover:text-[#10b981]"
+            >
+              Shopify Hydrogen developer support
+            </Link>
+            .
+          </p>
+        </section>
+
         <StatCardGrid
           items={proofStats}
           columnsClassName="grid gap-4 sm:grid-cols-2 xl:grid-cols-4"

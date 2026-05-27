@@ -36,6 +36,7 @@ This file is the routing layer. It tells you where the current truth lives so yo
 | Deployment QA and live verification checklist | `agent-docs/DEPLOYMENT-QA.md` |
 | Historical positioning rules | `docs/positioning-rules.md` |
 | Historical Shopify source grounding notes | `docs/shopify-source-grounding.md` |
+| External SEO authority profile checklist | `docs/seo-external-authority-checklist.md` |
 | Deployment changelog and PR history | `CHANGELOG.md` |
 | Package scripts and dependency versions | `package.json` |
 

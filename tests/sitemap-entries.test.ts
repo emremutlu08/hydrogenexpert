@@ -1,13 +1,16 @@
 import { describe, expect, it } from "vitest";
 
 import {
+  INDEXING_RECOVERY_ROUTES,
   LAST_SIGNIFICANT_UPDATE,
   PACKAGE_PAGE_DISCOVERY,
 } from "../features/public-discovery/manifest";
+import { getPublicArticlesForDate } from "../lib/articles";
 import type { PostSummary } from "../lib/posts";
 import { buildSitemapEntries, NOINDEX_STATIC_ROUTES } from "../lib/sitemap-entries";
 
 const siteUrl = "https://hydrogenexpert.co";
+const indexingRecoveryDate = new Date("2026-05-27T00:00:00.000+03:00");
 
 const posts: PostSummary[] = [
   {
@@ -128,5 +131,17 @@ describe("buildSitemapEntries", () => {
     expect(developerEntry?.changeFrequency).toBe("weekly");
     expect(developerEntry?.priority).toBe(0.9);
     expect(developerEntry?.lastModified).toEqual(LAST_SIGNIFICANT_UPDATE);
+  });
+
+  it("keeps the GSC indexing recovery URL list discoverable in sitemap output", () => {
+    const paths = buildSitemapEntries({
+      siteUrl,
+      posts,
+      articles: getPublicArticlesForDate(indexingRecoveryDate),
+    }).map((entry) => new URL(entry.url).pathname || "/");
+
+    for (const route of INDEXING_RECOVERY_ROUTES) {
+      expect(paths).toContain(route);
+    }
   });
 });

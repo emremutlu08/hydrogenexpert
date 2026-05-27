@@ -1,5 +1,8 @@
 import {
+  INDEXING_RECOVERY_CORE_ROUTES,
+  INDEXING_RECOVERY_ROUTES,
   INTERNAL_PACKAGE_LINK_SOURCE_ROUTES,
+  MINIMUM_INDEXING_RECOVERY_SITEMAP_URL_COUNT,
   PACKAGE_PAGE_DISCOVERY,
 } from "../features/public-discovery/manifest";
 import {
@@ -108,6 +111,76 @@ function verifyInternalPackageLink(route: string, html: string) {
   return [];
 }
 
+function getProductionUrl(route: string) {
+  const productionOrigin = new URL(PACKAGE_PAGE_DISCOVERY.canonicalUrl).origin;
+
+  return new URL(route, productionOrigin).toString();
+}
+
+function getSitemapUrls(sitemap: string) {
+  return Array.from(sitemap.matchAll(/<loc>([^<]+)<\/loc>/g), (match) => match[1]);
+}
+
+function verifyIndexingRecoverySitemap(sitemap: string) {
+  const violations: LaunchViolation[] = [];
+  const sitemapUrls = getSitemapUrls(sitemap);
+  const sitemapUrlSet = new Set(sitemapUrls);
+
+  if (sitemapUrls.length < MINIMUM_INDEXING_RECOVERY_SITEMAP_URL_COUNT) {
+    violations.push({
+      route: "/sitemap.xml",
+      phrase: `${sitemapUrls.length} URLs`,
+      reason: `sitemap URL count is below the indexing recovery floor of ${MINIMUM_INDEXING_RECOVERY_SITEMAP_URL_COUNT}`,
+    });
+  }
+
+  for (const route of INDEXING_RECOVERY_ROUTES) {
+    const expectedUrl = getProductionUrl(route);
+
+    if (!sitemapUrlSet.has(expectedUrl)) {
+      violations.push({
+        route: "/sitemap.xml",
+        phrase: expectedUrl,
+        reason: "indexing recovery URL is missing from sitemap",
+      });
+    }
+  }
+
+  return violations;
+}
+
+function verifyIndexingRecoveryLlms(llms: string) {
+  const violations: LaunchViolation[] = [];
+
+  for (const route of INDEXING_RECOVERY_CORE_ROUTES) {
+    const expectedUrl = getProductionUrl(route);
+
+    if (!llms.includes(expectedUrl)) {
+      violations.push({
+        route: "/llms.txt",
+        phrase: expectedUrl,
+        reason: "core indexing recovery URL is missing from llms.txt",
+      });
+    }
+  }
+
+  return violations;
+}
+
+function verifyRobotsSitemapReference(robots: string) {
+  if (!/^sitemap:\s*\S+\/sitemap\.xml\s*$/im.test(robots)) {
+    return [
+      {
+        route: "/robots.txt",
+        phrase: "Sitemap: .../sitemap.xml",
+        reason: "robots.txt must reference the sitemap for crawl discovery",
+      },
+    ];
+  }
+
+  return [];
+}
+
 async function main() {
   const baseUrl =
     process.env.COMMERCIAL_LAUNCH_BASE_URL ||
@@ -130,6 +203,8 @@ async function main() {
   }
 
   const sitemap = await fetchText(baseUrl, "/sitemap.xml");
+  violations.push(...verifyIndexingRecoverySitemap(sitemap));
+
   if (!sitemap.includes(PACKAGE_PAGE_DISCOVERY.canonicalUrl)) {
     violations.push({
       route: "/sitemap.xml",
@@ -139,6 +214,8 @@ async function main() {
   }
 
   const llms = await fetchText(baseUrl, "/llms.txt");
+  violations.push(...verifyIndexingRecoveryLlms(llms));
+
   if (!llms.includes(PACKAGE_PAGE_DISCOVERY.canonicalUrl)) {
     violations.push({
       route: "/llms.txt",
@@ -146,6 +223,9 @@ async function main() {
       reason: "package page is missing from llms.txt",
     });
   }
+
+  const robots = await fetchText(baseUrl, "/robots.txt");
+  violations.push(...verifyRobotsSitemapReference(robots));
 
   if (violations.length > 0) {
     console.error("Commercial launch verification failed:");

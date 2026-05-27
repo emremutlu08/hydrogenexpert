@@ -205,3 +205,23 @@ Next Search Console follow-up:
 - Inspect `/shopify-hydrogen-developer` and request indexing after production deployment.
 - Check whether Google keeps showing `/` or starts showing `/shopify-hydrogen-developer` for `Shopify Hydrogen Developer`.
 - Recheck `shopify hydrogen developer github`, `shopify hydrogen developer training`, `shopify hydrogen templates`, `shopify hydrogen pricing`, `shopify oxygen`, and `shopify hydrogen developer jobs` after 7, 14, and 28 days.
+
+## 2026-05-27 GSC indexing recovery response
+
+Observed from Google Search Console and live SERP checks:
+- Last 3 months showed 2 clicks, 1.19k impressions, 0.2% CTR, and 13.1 average position.
+- `/shopify-hydrogen-developer` was previously unknown to Google even though the live test said the page could be indexed.
+- GSC had last read `/sitemap.xml` on 2026-05-04 with 24 discovered pages, while the live sitemap exposed 57 URLs.
+- HydrogenExpert ranked for brand/expert intent, but Google still needed stronger routing toward the dedicated developer URL for developer and hire-developer searches.
+
+Actions taken:
+- Resubmitted `/sitemap.xml` in Google Search Console on 2026-05-27.
+- Confirmed `/shopify-hydrogen-developer`, `/shopify-hydrogen-expert`, `/shopify-hydrogen-experts`, and `/case-studies` are indexed.
+- Requested indexing for `/articles/how-to-hire-shopify-hydrogen-developer`, `/articles/shopify-hydrogen-developer-vs-agency`, `/articles/shopify-hydrogen-experts-production-experience`, and `/shopify-hydrogen-packages`.
+- Added a canonical indexing recovery route list, sitemap URL-count floor, critical-route sitemap checks, and `llms.txt` core-route checks to the commercial launch verifier.
+- Restored `/shopify-hydrogen-developer` to primary navigation and reduced homepage metadata/FAQ wording that could make Google prefer the homepage for direct developer intent.
+
+Next Search Console follow-up:
+- Day 7: confirm `/shopify-hydrogen-developer` remains indexed and has page-level impressions.
+- Day 14: if indexed with impressions but low CTR, review title/meta/snippet copy; if indexed with no impressions, add external mentions and profile links.
+- Day 28: if homepage still receives developer-query impressions, open another internal-routing PR; if `/shopify-hydrogen-developer` enters top 20, strengthen the cluster around the developer page.

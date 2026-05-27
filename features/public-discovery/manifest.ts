@@ -51,14 +51,51 @@ export const PUBLIC_DISCOVERY_ROUTES: readonly PublicDiscoveryRoute[] = [
   { path: "/shopify-hydrogen-for-beauty-brands" },
 ] as const;
 
+export const INDEXING_RECOVERY_ROUTES = [
+  "/shopify-hydrogen-developer",
+  "/shopify-hydrogen-expert",
+  "/shopify-hydrogen-experts",
+  "/articles/how-to-hire-shopify-hydrogen-developer",
+  "/articles/shopify-hydrogen-developer-vs-agency",
+  "/articles/shopify-hydrogen-experts-production-experience",
+  PACKAGE_ROUTE,
+  "/case-studies",
+] as const;
+
+export const INDEXING_RECOVERY_CORE_ROUTES = INDEXING_RECOVERY_ROUTES.filter(
+  (route) => !route.startsWith("/articles/"),
+);
+
+export const MINIMUM_INDEXING_RECOVERY_SITEMAP_URL_COUNT = 50;
+
 export const STATIC_ROUTE_SITEMAP_OVERRIDES: Record<
   string,
   Pick<MetadataRoute.Sitemap[number], "changeFrequency" | "lastModified" | "priority">
 > = {
+  [PACKAGE_ROUTE]: {
+    lastModified: LAST_SIGNIFICANT_UPDATE,
+    changeFrequency: "weekly",
+    priority: 0.9,
+  },
   "/shopify-hydrogen-developer": {
     lastModified: LAST_SIGNIFICANT_UPDATE,
     changeFrequency: "weekly",
     priority: 0.9,
+  },
+  "/shopify-hydrogen-expert": {
+    lastModified: LAST_SIGNIFICANT_UPDATE,
+    changeFrequency: "weekly",
+    priority: 0.9,
+  },
+  "/shopify-hydrogen-experts": {
+    lastModified: LAST_SIGNIFICANT_UPDATE,
+    changeFrequency: "weekly",
+    priority: 0.88,
+  },
+  "/case-studies": {
+    lastModified: LAST_SIGNIFICANT_UPDATE,
+    changeFrequency: "weekly",
+    priority: 0.86,
   },
 };
 
