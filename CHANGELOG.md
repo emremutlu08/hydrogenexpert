@@ -17,7 +17,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 - PR: [#72 Fix legacy Hydrogen worth-it blog redirect](https://github.com/emremutlu08/hydrogenexpert/pull/72)
 - Branch: `codex/fix-gsc-hydrogen-worth-redirect`
-- Deployment: Pending production deployment; local production smoke verified the redirect behavior before deploy.
+- Deployment: Production deployment verified at [hydrogenexpert.co](https://hydrogenexpert.co), deployment `https://hydrogenexpert-esi1x9qgn-emremutlu8s-projects.vercel.app`.
 - Summary:
   - Added a permanent redirect for the Google-crawled legacy blog URL `/blog/hydrogen-worth-2-million-shopify-store`.
   - Redirected the old URL to `/should-i-use-it`, the closest live decision-guide route for the same "is Hydrogen worth it?" intent.
@@ -39,6 +39,12 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - `npm run audit:shopify-claims`: passed with no `Needs review` rows.
   - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed, 75 static pages generated.
   - Local production smoke confirmed the old URL returns `301` to `/should-i-use-it`, the target returns `200`, and local sitemap output includes `/should-i-use-it` without the old slug.
+  - Production deployment completed with `READY` state and was aliased to `https://hydrogenexpert.co`.
+  - Live smoke confirmed `https://hydrogenexpert.co/blog/hydrogen-worth-2-million-shopify-store` returns `301` to `/should-i-use-it`.
+  - Live Googlebot-user-agent smoke confirmed the old URL returns the same `301` to `/should-i-use-it`.
+  - Live redirect follow confirmed `/should-i-use-it` returns `200`.
+  - Live sitemap check confirmed 57 URLs, `/should-i-use-it` present, and `/blog/hydrogen-worth-2-million-shopify-store` absent.
+  - `INTERNAL_LINK_BASE_URL=https://hydrogenexpert.co NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:internal-links`: passed with 57 sitemap URLs and 72 internal URLs.
 - Manual follow-up:
   - After production deployment, use Google Search Console URL Inspection for `https://hydrogenexpert.co/blog/hydrogen-worth-2-million-shopify-store`, run "Test live URL", then restart validation for the 404 issue.
 
