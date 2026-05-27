@@ -13,6 +13,54 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 - Verification:
 - Manual follow-up:
 
+## 2026-05-27
+
+- PR: [#71 Add GSC indexing recovery guardrails](https://github.com/emremutlu08/hydrogenexpert/pull/71)
+- Branch: `codex/gsc-index-routing-guardrails`
+- Deployment: Production deployment verified at [hydrogenexpert.co](https://hydrogenexpert.co), deployment `https://hydrogenexpert-8yzfqnm5u-emremutlu8s-projects.vercel.app`.
+- Summary:
+  - Resubmitted `/sitemap.xml` in Google Search Console and requested indexing for the non-indexed article/package recovery URLs.
+  - Added the indexing recovery URL set to the public discovery manifest and extended the commercial launch verifier to guard sitemap URL count, critical sitemap URLs, `llms.txt` core route coverage, and `robots.txt` sitemap discovery.
+  - Restored `/shopify-hydrogen-developer` to primary navigation, added a direct About-page link, and reduced homepage metadata/FAQ wording that could make Google prefer the homepage for developer intent.
+  - Documented the 7/14/28-day GSC follow-up loop and external authority profile checklist.
+- Files changed:
+  - `AGENTS.md`
+  - `agent-docs/DEPLOYMENT-QA.md`
+  - `app/about/page.tsx`
+  - `app/page.tsx`
+  - `docs/DEPLOYMENT_QA_CHECKLIST.md`
+  - `docs/seo-external-authority-checklist.md`
+  - `docs/seo-gsc-commercial-intent-changelog.md`
+  - `features/public-discovery/manifest.ts`
+  - `lib/navigation.ts`
+  - `scripts/verify-commercial-launch.ts`
+  - `tests/llms.test.ts`
+  - `tests/public-discovery-manifest.test.ts`
+  - `tests/sitemap-entries.test.ts`
+  - `CHANGELOG.md`
+- Verification:
+  - `git diff --check`: passed.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed with no `Needs review` rows.
+  - `npm run test`: passed, 24 files and 97 tests.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed, 75 static pages generated.
+  - `COMMERCIAL_LAUNCH_BASE_URL=http://127.0.0.1:3100 npm run verify:commercial-launch`: passed.
+  - `INTERNAL_LINK_BASE_URL=http://127.0.0.1:3100 NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:internal-links`: passed with 57 sitemap URLs and 72 internal URLs.
+  - Protected Vercel preview verified homepage metadata/navigation, `/sitemap.xml` with 57 URLs, and `/robots.txt` through `vercel curl`.
+  - Production deploy completed with `READY` state and was aliased to `https://hydrogenexpert.co`.
+  - `COMMERCIAL_LAUNCH_BASE_URL=https://hydrogenexpert.co npm run verify:commercial-launch`: passed.
+  - `INTERNAL_LINK_BASE_URL=https://hydrogenexpert.co NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:internal-links`: passed with 57 sitemap URLs and 72 internal URLs.
+  - `npm run indexnow:ping -- / /sitemap.xml /shopify-hydrogen-developer /shopify-hydrogen-expert /shopify-hydrogen-experts /articles/how-to-hire-shopify-hydrogen-developer /articles/shopify-hydrogen-developer-vs-agency /articles/shopify-hydrogen-experts-production-experience /shopify-hydrogen-packages /case-studies`: accepted 10 URLs with HTTP 200.
+  - Live smoke confirmed homepage Developer nav, About-page developer link, live sitemap count of 57, and `robots.txt` sitemap reference.
+  - Live browser smoke verified homepage rendering, updated meta description, Developer nav, no horizontal overflow, and no console errors; About page exposed the developer support link and no console errors.
+- Manual follow-up:
+  - Update at least 5 external profiles and at least 3 direct developer-page profile links using [docs/seo-external-authority-checklist.md](/Users/emremutlu/Apps/Codex/hydrogenexpert/docs/seo-external-authority-checklist.md).
+  - Day 7: confirm `/shopify-hydrogen-developer` remains indexed and receives page-level impressions.
+  - Day 14: if indexed with impressions but low CTR, review title/meta/snippet copy; if indexed with no impressions, add external mentions and profile links.
+  - Day 28: if homepage still receives developer-query impressions, open another internal-routing PR; if `/shopify-hydrogen-developer` enters top 20, strengthen the cluster around the developer page.
+
 ## 2026-05-26
 
 - PR: [#70 Add News on Shopify Hydrogen update page](https://github.com/emremutlu08/hydrogenexpert/pull/70)
