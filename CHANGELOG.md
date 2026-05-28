@@ -15,6 +15,28 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-28
 
+- PR: [#78 Document SEO/GEO audit checklist](https://github.com/emremutlu08/hydrogenexpert/pull/78)
+- Branch: `codex/hydrogenexpert-seo-geo-audit-checklist`
+- Deployment: Not deployed; documentation-only SEO/GEO routing update with no rendered app behavior change.
+- Summary:
+  - Added `agent-docs/SEO-GEO-AUDIT-CHECKLIST.md` as the required status contract for `SEO ne durumda`, GEO readiness, technical SEO checklist reporting, and AI search visibility review.
+  - Linked future SEO/GEO status answers to the relevant SEO/GEO skills and the new checklist so agents report pass/fail/unknown/blocker status instead of generic SEO commentary.
+  - Routed `AGENTS.md`, `agent-docs/CONTENT-PRODUCTION-PLAYBOOK.md`, and `agent-docs/DECISIONS.md` to the new checklist.
+- Files changed:
+  - `AGENTS.md`
+  - `agent-docs/CONTENT-PRODUCTION-PLAYBOOK.md`
+  - `agent-docs/DECISIONS.md`
+  - `agent-docs/SEO-GEO-AUDIT-CHECKLIST.md`
+  - `CHANGELOG.md`
+- Verification:
+  - `git diff --check`: passed.
+  - Targeted cross-project documentation scan across `AGENTS.md`, `agent-docs/`, `docs/`, and `CHANGELOG.md`: only approved HydrogenExpert proof names and historical changelog references appeared; no new non-HydrogenExpert repo routing was introduced.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed with no `Needs review` rows.
+  - Full build not run because this is docs-only and does not change rendered app code, routes, schemas, or registries.
+- Manual follow-up:
+  - None.
+
 - PR: [#77 Add HydrogenExpert content production playbook](https://github.com/emremutlu08/hydrogenexpert/pull/77)
 - Branch: `codex/hydrogenexpert-content-quality-rules`
 - Deployment: Not deployed; documentation-only routing and governance update with no rendered app behavior change.
