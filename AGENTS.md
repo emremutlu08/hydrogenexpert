@@ -32,6 +32,7 @@ This file is the routing layer. It tells you where the current truth lives so yo
 | Next.js, Vercel, Supabase, routes, scripts, and HydrogenExpert implementation notes | `agent-docs/HYDROGEN.md` |
 | Shopify/Hydrogen content governance and publishing rules | `agent-docs/CONTENT-GOVERNANCE.md` |
 | Content production, SEO/GEO, blog, article, landing page, case-study, public discovery, sitemap, llms, schema, and internal-link work | `agent-docs/CONTENT-PRODUCTION-PLAYBOOK.md` |
+| SEO/GEO status questions such as `SEO ne durumda`, technical SEO checklist reporting, and AI search readiness | `agent-docs/SEO-GEO-AUDIT-CHECKLIST.md` |
 | Blog publishing workflow and public-post guardrails | `agent-docs/BLOG-PUBLISHING-PLAYBOOK.md` |
 | Visual system, accessibility, image alt/title, and UI rules | `agent-docs/DESIGN.md` |
 | Deployment QA and live verification checklist | `agent-docs/DEPLOYMENT-QA.md` |
@@ -51,6 +52,7 @@ This file is the routing layer. It tells you where the current truth lives so yo
 - `agent-docs/HYDROGEN.md` defines implementation, runtime, validation, and script expectations for this Next.js site.
 - `agent-docs/CONTENT-GOVERNANCE.md` defines Shopify/Hydrogen content and publishing guardrails.
 - `agent-docs/CONTENT-PRODUCTION-PLAYBOOK.md` defines the execution workflow for HydrogenExpert content production, SEO/GEO, discovery, schema, `llms`, sitemap, and internal-link work.
+- `agent-docs/SEO-GEO-AUDIT-CHECKLIST.md` defines the required response contract for `SEO ne durumda` and similar SEO/GEO status questions.
 - `agent-docs/DESIGN.md` defines visual, accessibility, and image rules.
 - `package.json` is the source of truth for dependency versions and scripts.
 - Current code is the source of truth for behavior. If docs and code disagree, inspect the code and update docs as part of the work when appropriate.
@@ -63,6 +65,7 @@ This file is the routing layer. It tells you where the current truth lives so yo
 - Keep HydrogenExpert positioned as a senior-led Shopify Hydrogen service and agency alternative, not as a generic full-service agency.
 - Before Shopify, Hydrogen, Oxygen, Storefront API, Customer Account API, Storefront MCP, UCP, SEO, analytics, or migration content changes, read `agent-docs/CONTENT-GOVERNANCE.md`.
 - Before content production, blog, article, landing page, case-study, public discovery, sitemap, `llms`, schema, SEO/GEO, or internal-link graph changes, read `agent-docs/CONTENT-PRODUCTION-PLAYBOOK.md`.
+- When Emre asks `SEO ne durumda` or a close SEO/GEO status question, use the relevant SEO and GEO skills, then report the status of the checklist in `agent-docs/SEO-GEO-AUDIT-CHECKLIST.md` with live evidence and access blockers.
 - Before UI or image work, read `agent-docs/DESIGN.md`; every meaningful image must have meaningful `alt` and `title`.
 - Do not publish Supabase-backed public blog posts unless Emre provides real source/input material and explicitly asks to publish that specific article.
 - Do not deploy directly from local work or an unreviewed branch.

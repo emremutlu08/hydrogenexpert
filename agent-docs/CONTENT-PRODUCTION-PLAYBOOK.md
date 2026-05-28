@@ -9,6 +9,8 @@ Source of truth: Current repo, `agent-docs/CONTENT-GOVERNANCE.md`, Shopify sourc
 
 This playbook is the canonical execution guide for HydrogenExpert content production, SEO/GEO work, and public discovery maintenance.
 
+For `SEO ne durumda`, `GEO ne durumda`, and similar current-state questions, use `agent-docs/SEO-GEO-AUDIT-CHECKLIST.md` as the required status checklist after reading this playbook.
+
 Use it when the task touches blog posts, articles, service or landing pages, case studies, homepage/about/contact/hire-me pages, public discovery, sitemap, robots, `llms.txt`, `llms-full.txt`, schema, internal links, content registries, or source metadata.
 
 This document is HydrogenExpert-specific. Do not import non-HydrogenExpert repo rules into this site. EveShop, Bayam, Rebel Bunny, Kirazev, and Clohi are valid HydrogenExpert proof and case-study names when used in the approved HydrogenExpert context.
@@ -20,15 +22,18 @@ Before content-related implementation:
 1. Read `AGENTS.md`.
 2. Check `git status --short --branch`.
 3. Read `agent-docs/CONTENT-GOVERNANCE.md`.
-4. Read `agent-docs/BLOG-PUBLISHING-PLAYBOOK.md` for Supabase-backed blog posts.
-5. Read `agent-docs/PROJECT-BRIEF.md` for positioning and proof boundaries.
-6. Read `agent-docs/DESIGN.md` for visible page, image, accessibility, and layout work.
-7. Read `agent-docs/WORKFLOW.md` and `agent-docs/DEPLOYMENT-QA.md` before release or live verification.
-8. Inspect the current code and registries before editing.
+4. Read `agent-docs/SEO-GEO-AUDIT-CHECKLIST.md` for `SEO ne durumda`, GEO status, technical SEO audit, AI search readiness, or checklist-style reporting.
+5. Read `agent-docs/BLOG-PUBLISHING-PLAYBOOK.md` for Supabase-backed blog posts.
+6. Read `agent-docs/PROJECT-BRIEF.md` for positioning and proof boundaries.
+7. Read `agent-docs/DESIGN.md` for visible page, image, accessibility, and layout work.
+8. Read `agent-docs/WORKFLOW.md` and `agent-docs/DEPLOYMENT-QA.md` before release or live verification.
+9. Inspect the current code and registries before editing.
 
 ## Required Skill Set
 
 Use these skills as the HydrogenExpert content quality stack. Apply the relevant parts to the task rather than producing generic reports.
+
+For `SEO ne durumda` answers, `seo-content-strategist` and the relevant GEO skills are mandatory. Report the resulting status against `agent-docs/SEO-GEO-AUDIT-CHECKLIST.md`, including unknowns and access blockers.
 
 | Skill | HydrogenExpert use |
 | --- | --- |
