@@ -19,7 +19,7 @@ https://hydrogenexpert.co/shopify-hydrogen-developer
 
 ## Profile Targets
 
-- Upwork profile: add the target URL in profile text where external links are allowed.
+- Upwork profile: add the target URL in portfolio/profile text where external links are allowed.
 - LinkedIn profile: add the target URL to Featured, contact info, or an experience description.
 - Udemy course description: add the target URL near the Hydrogen service or author bio copy when Udemy policy allows it.
 - GitHub profile README: add the target URL near Shopify Hydrogen proof and course links.

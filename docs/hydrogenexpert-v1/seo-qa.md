@@ -29,8 +29,11 @@ Last updated: May 7, 2026
 | `/shopify-hydrogen-support-retainer` | Unique service metadata | Yes | index/follow | Service, FAQ, Breadcrumb | Yes | Primary footer service. |
 | `/shopify-hydrogen-cost` | Unique service metadata | Yes | index/follow | Service, FAQ, Breadcrumb | Yes | Primary footer service. |
 | `/case-studies` | Unique case-study index metadata | Yes | index/follow | Breadcrumb/FAQ | Yes | Links all case studies. |
-| Hydrogen case-study detail routes | Unique case metadata | Yes | index/follow | Breadcrumb/CaseStudy-like work schema | Yes | No unsupported testimonial or fake metric. |
-| Shopify proof detail routes | Unique case metadata | Yes | index/follow | Breadcrumb/CaseStudy-like work schema | Yes | Keep each case labeled by its real implementation type. |
+| `/case-studies/eveshop-shopify-hydrogen` | Unique case metadata | Yes | index/follow | Breadcrumb/CaseStudy-like work schema | Yes | No unsupported testimonial. |
+| `/case-studies/bayam-jewelry-shopify-hydrogen` | Unique case metadata | Yes | index/follow | Breadcrumb/CaseStudy-like work schema | Yes | No unsupported testimonial. |
+| `/case-studies/rebel-bunny-shopify-hydrogen` | Unique case metadata | Yes | index/follow | Breadcrumb/CaseStudy-like work schema | Yes | Public Upwork feedback only. |
+| `/case-studies/kirazev-shopify-liquid` | Unique case metadata | Yes | index/follow | Breadcrumb/CaseStudy-like work schema | Yes | Liquid proof, no fake Hydrogen label. |
+| `/case-studies/clohi-shopify-liquid` | Unique case metadata | Yes | index/follow | Breadcrumb/CaseStudy-like work schema | Yes | Liquid proof, no fake Hydrogen label. |
 | `/should-i-use-it` | Unique decision-guide metadata | Yes | index/follow | Breadcrumb/Service schema | Yes | Quiz remains readable without JS. |
 | `/blog` | Unique blog index metadata | Yes | index/follow | Breadcrumb | Yes if posts exist | Blog is production notes only. |
 | `/blog/[slug]` | Unique post metadata | Yes | index/follow | BlogPosting/Article | Yes if published | Generated from Supabase posts. |

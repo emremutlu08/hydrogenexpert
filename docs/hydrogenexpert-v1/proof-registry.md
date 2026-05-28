@@ -12,18 +12,18 @@ Principle: do not invent proof. If proof is not public or client-approved, keep 
 | 32K+ LinkedIn followers | Trust bar, homepage, hire page | Public LinkedIn profile: `https://www.linkedin.com/in/emremutlujs/`; local constant `DELIVERY_PROOF.linkedInFollowers` | Public profile, may fluctuate | Public | "32K+ LinkedIn followers" |
 | Creator of the first English Shopify Hydrogen course | Homepage, about, hire page, blog byline, llms | Udemy course URL from `OWNER.udemyUrl`; source is public course listing | Public profile | Public | "Creator of the first English Shopify Hydrogen course on Udemy" |
 | 110+ Udemy ratings | Homepage course card | Public Udemy course listing; should be rechecked before changing number upward | Public profile, may fluctuate | Public | "110+ Udemy ratings" |
-| First production Hydrogen storefront leadership | Homepage, primary Hydrogen case, founder copy | Internal project history plus approved case-study context; not independently documented in repo with a third-party source | Internal evidence | Semi-public | "Frontend team lead on an early production Shopify Hydrogen storefront" |
-| Approved high-scale web usage context | Homepage, primary proof surfaces, founder copy | Approved internal/public case-study note; source is local approved claim, not a public analytics export | Internal/client-context evidence | Semi-public | Use only where context is already conservative |
-| Approved mobile commerce usage context | Homepage, primary case | User-provided approved case-study note for a Hydrogen storefront plus React Native mobile commerce context | Internal/client-context evidence | Semi-public | Use only near the relevant case context |
-| Approved public client feedback | Case study, about, hire page | Public Upwork feedback on Emre Mutlu profile; case study stores source URL | Public profile | Public | "5.0 Upwork feedback for Shopify Hydrogen work" |
-| Three production Hydrogen storefronts | Homepage selected work, trust/proof copy | Approved Hydrogen case-study contexts | Internal/public case mix | Semi-public | "Three production Hydrogen storefront contexts" |
-| Five Shopify proof contexts | Homepage selected work, case studies, llms | Approved Shopify case-study contexts | Internal/public case mix | Semi-public | "Five Shopify project contexts, with Hydrogen proof at the center" |
+| Turkey's first production Hydrogen storefront | Homepage, EveShop case, founder copy | Internal project history plus EveShop case context; not independently documented in repo with a third-party source | Internal evidence | Semi-public | "Frontend team lead on Turkey's first production Shopify Hydrogen storefront" |
+| 400K+ EveShop web users | Homepage, EveShop proof surfaces, founder copy | Approved internal/public case-study note; source is local approved claim, not a public analytics export | Internal/client-context evidence | Semi-public | "EveShop at 400K+ web users" only where context is already conservative |
+| 100K+ EveShop mobile users | Homepage, EveShop case | User-provided approved case-study note for the Hydrogen storefront plus React Native mobile commerce context | Internal/client-context evidence | Semi-public | "EveShop at 100K+ mobile users" only near the EveShop case context |
+| Rebel Bunny 5.0 feedback | Case study, about, hire page | Public Upwork feedback on Emre Mutlu profile; case study stores source URL | Public profile | Public | "5.0 Upwork feedback for Rebel Bunny work" |
+| Three production Hydrogen storefronts | Homepage selected work, trust/proof copy | Approved case studies: EveShop, Bayam Jewelry, Rebel Bunny | Internal/public case mix | Semi-public | "Three production Hydrogen storefront contexts" |
+| Five Shopify portfolio projects | Homepage selected work, case studies, llms | Approved portfolio contexts: EveShop, Bayam Jewelry, Rebel Bunny, Kirazev, Clohi | Internal/public case mix | Semi-public | "Five Shopify projects, with Hydrogen proof at the center" |
 | No fake testimonials/logos/metrics | Terms, case studies, positioning docs | Site policy and source discipline | Site policy | Public | Keep as policy statement, not as an external certification |
 
 ## Case-Specific Rules
 
-- Public Upwork client feedback may be used only when the source URL is stored and the wording stays faithful to the public profile.
-- Named case studies must not show unsupported testimonials.
-- Approved usage metrics may appear only near the relevant case context and must not be generalized across HydrogenExpert.
-- Shopify Liquid proof should stay labeled as Liquid proof, not Hydrogen proof.
+- Rebel Bunny may use the public Upwork quote and 5.0 feedback.
+- EveShop and Bayam must not show unsupported testimonials.
+- EveShop may show the approved 400K+ web and 100K+ mobile user context. Bayam metrics should remain absent unless sourced or explicitly approved.
+- Kirazev and Clohi should be positioned as Shopify Liquid portfolio proof, not as Hydrogen case studies.
 - Client logos/assets are used only when already present in approved assets.
