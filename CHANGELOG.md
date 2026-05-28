@@ -15,7 +15,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-28
 
-- PR: Pending
+- PR: [#78 Document SEO/GEO audit checklist](https://github.com/emremutlu08/hydrogenexpert/pull/78)
 - Branch: `codex/hydrogenexpert-seo-geo-audit-checklist`
 - Deployment: Not deployed; documentation-only SEO/GEO routing update with no rendered app behavior change.
 - Summary:
