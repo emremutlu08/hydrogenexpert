@@ -15,6 +15,34 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-28
 
+- PR: [#76 Restore HydrogenExpert client proof names](https://github.com/emremutlu08/hydrogenexpert/pull/76)
+- Branch: `codex/hydrogenexpert-restore-client-names`
+- Deployment: Not deployed yet; documentation-only correction with no public app behavior change.
+- Summary:
+  - Restored real HydrogenExpert client/case-study names in proof, SEO QA, GEO audit, historical changelog, and task docs.
+  - Kept unrelated repo/project references out of HydrogenExpert documentation.
+  - Clarified that scope cleanup means avoiding cross-project confusion, not removing valid HydrogenExpert proof names.
+- Files changed:
+  - `CHANGELOG.md`
+  - `CHANGES.md`
+  - `GEO-AUDIT-REPORT.md`
+  - `agent-docs/PROJECT-BRIEF.md`
+  - `docs/hydrogenexpert-v1/proof-registry.md`
+  - `docs/hydrogenexpert-v1/seo-qa.md`
+  - `docs/positioning-rules.md`
+  - `docs/seo-external-authority-checklist.md`
+  - `docs/seo-keyword-map.md`
+  - `tasks/hydrogenexpert-agency-positioning-task-list.md`
+  - `tasks/prd-site-trust-measurement-fixes.md`
+- Verification:
+  - Targeted documentation scan for unrelated repo/project names: no matches.
+  - Client/case-study scan confirms EveShop, Bayam, Rebel Bunny, Kirazev, and Clohi remain in HydrogenExpert proof context.
+  - `git diff --check`: passed.
+- Manual follow-up:
+  - None.
+
+## 2026-05-28
+
 - PR: [#75 Clean HydrogenExpert documentation scope](https://github.com/emremutlu08/hydrogenexpert/pull/75)
 - Branch: `codex/hydrogenexpert-doc-scope-cleanup`
 - Deployment: Not deployed; documentation-only cleanup with no public app behavior change.
