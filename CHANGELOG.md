@@ -19,8 +19,8 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 - Branch: `codex/hydrogenexpert-doc-scope-cleanup`
 - Deployment: Not deployed; documentation-only cleanup with no public app behavior change.
 - Summary:
-  - Audited HydrogenExpert documentation for cross-project, named client/project, and generic non-HydrogenExpert wording.
-  - Replaced cross-project references with HydrogenExpert-only case-study/proof language.
+  - Audited HydrogenExpert documentation for cross-project and non-HydrogenExpert repo wording.
+  - Replaced cross-project references with HydrogenExpert project-scope language while keeping real client/case-study names intact where they are part of HydrogenExpert proof.
   - Kept proof rules conservative: approved case studies, approved public client feedback, no fake metrics, no fake testimonials, and no fake logos.
 - Files changed:
   - `CHANGELOG.md`
@@ -35,7 +35,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - `tasks/hydrogenexpert-agency-positioning-task-list.md`
   - `tasks/prd-site-trust-measurement-fixes.md`
 - Verification:
-  - Documentation scan for cross-project, named client/project, and generic non-HydrogenExpert wording: no matches.
+  - Documentation scan for cross-project and non-HydrogenExpert repo wording: no matches.
   - `git diff --check`: passed.
 - Manual follow-up:
   - None.
@@ -839,7 +839,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - Added the dedicated `/shopify-hydrogen-packages` page and reusable package sections for Starter, Standard, Growth, and Custom Hydrogen scopes.
   - Rebuilt cost, custom storefront, audit/scope review, US-friendly, homepage, contact, and footer paths around project requirements instead of premium agency pricing.
   - Updated the lead capture form with package-aligned budget/service options, design readiness, product count, and needed feature fields.
-  - Added package relevance labels to case-study proof and added price-driver, $2K scope boundary, Liquid-vs-Hydrogen, AI-assisted workflow, and pricing FAQ sections.
+  - Added package relevance labels to portfolio proof and added price-driver, $2K scope boundary, Liquid-vs-Hydrogen, AI-assisted workflow, and pricing FAQ sections.
 - Files changed:
   - `app/page.tsx`
   - `app/shopify-hydrogen-packages/page.tsx`
@@ -904,11 +904,11 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 - Branch: `codex/case-study-live-media`
 - Deployment: Preview deployment [hydrogenexpert-git-codex-case-study-e6b343-emremutlu8s-projects.vercel.app](https://hydrogenexpert-git-codex-case-study-e6b343-emremutlu8s-projects.vercel.app).
 - Summary:
-  - Added verified live storefront links for all approved HydrogenExpert case studies.
-  - Added Chrome-captured live storefront screenshots for approved HydrogenExpert case studies.
+  - Added verified live storefront links for all five portfolio case studies.
+  - Added Chrome-captured live storefront screenshots for EveShop, Bayam Jewelry, Rebel Bunny, Kirazev, and Clohi.
   - Replaced the text-only and metric-only selected-work previews with real storefront imagery.
   - Added hero and screenshot proof media with meaningful `alt` and `title` text across the case-study pages.
-  - Corrected one approved storefront URL after the previous candidate did not resolve as the project storefront.
+  - Corrected Clohi's live storefront URL to `https://www.clohi.in/`; `https://clohi.com/` did not resolve as the project storefront.
 - Files changed:
   - `CHANGELOG.md`
   - `components/BrandPreviewMedia.tsx`
@@ -916,9 +916,13 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - `components/case-study/CaseStudyScreenshots.tsx`
   - `data/caseStudies.ts`
   - `lib/brand-client-assets.ts`
-  - `public/brand/case-studies/*-storefront.png`
+  - `public/brand/case-studies/bayam-storefront.png`
+  - `public/brand/case-studies/clohi-storefront.png`
+  - `public/brand/case-studies/eveshop-storefront.png`
+  - `public/brand/case-studies/kirazev-storefront.png`
+  - `public/brand/case-studies/rebel-bunny-storefront.png`
 - Verification:
-  - Chrome live-store checks confirmed final approved storefront URLs and captured screenshots.
+  - Chrome live-store checks confirmed final storefront URLs and captured screenshots from `https://www.eveshop.com.tr/`, `https://bayamjewelry.com/`, `https://rebelbunny.com/`, `https://kirazev.com/`, and `https://www.clohi.in/`.
   - `git diff --check`: passed.
   - `npm run typecheck`: passed.
   - `npm run lint`: passed.
@@ -932,14 +936,14 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 - Manual follow-up:
   - After merge/deploy, verify production `/case-studies` and all five detail pages include the live links and storefront screenshots.
 
-- PR: [#44 Expand HydrogenExpert case studies](https://github.com/emremutlu08/hydrogenexpert/pull/44)
-- Branch: `codex/hydrogenexpert-case-study-expansion`
-- Deployment: Preview deployment verified for the HydrogenExpert case-study expansion branch.
+- PR: [#44 Expand portfolio case studies](https://github.com/emremutlu08/hydrogenexpert/pull/44)
+- Branch: `codex/portfolio-case-study-expansion`
+- Deployment: Preview deployment [hydrogenexpert-git-codex-portfolio-ef9240-emremutlu8s-projects.vercel.app](https://hydrogenexpert-git-codex-portfolio-ef9240-emremutlu8s-projects.vercel.app).
 - Summary:
-  - Expanded the HydrogenExpert proof surface from Hydrogen-only case studies to broader approved Shopify project contexts.
-  - Strengthened the primary large-scale Shopify Hydrogen + mobile commerce case with approved usage context.
-  - Added Shopify Liquid proof points without presenting them as Hydrogen projects or inventing logos, screenshots, testimonials, or metrics.
-  - Updated homepage, About, footer, selected-work cards, case-study metadata, sitemap coverage, llms output, and proof-governance docs so the case-study structure is discoverable and source disciplined.
+  - Expanded the portfolio proof surface from three Hydrogen-only case studies to five Shopify project contexts.
+  - Strengthened EveShop as the primary large-scale Shopify Hydrogen + mobile commerce case with 400K+ web and 100K+ mobile user context.
+  - Added Kirazev and Clohi as Shopify Liquid proof points without presenting them as Hydrogen projects or inventing logos, screenshots, testimonials, or metrics.
+  - Updated homepage, About, footer, selected-work cards, case-study metadata, sitemap coverage, llms output, and proof-governance docs so the new portfolio structure is discoverable and source disciplined.
 - Files changed:
   - `CHANGELOG.md`
   - `app/about/page.tsx`
@@ -969,14 +973,14 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - `npm run validate:content`: passed.
   - `npm run audit:shopify-claims`: passed with no `Needs review` rows.
   - `npm run test`: passed, 12 files and 45 tests.
-  - `npm run build`: passed, 63 routes generated, including the new Shopify proof routes.
-  - Local Browser QA at 390px and 1440px for `/`, `/case-studies`, and representative Shopify proof routes: one H1, canonical present, JSON-LD present, no horizontal overflow, and no image alt/title issues.
-  - Local Browser console check on a representative Shopify proof route: no console errors.
+  - `npm run build`: passed, 63 routes generated, including `/case-studies/kirazev-shopify-liquid` and `/case-studies/clohi-shopify-liquid`.
+  - Local Browser QA at 390px and 1440px for `/`, `/case-studies`, `/case-studies/kirazev-shopify-liquid`, and `/case-studies/clohi-shopify-liquid`: one H1, canonical present, JSON-LD present, no horizontal overflow, and no image alt/title issues.
+  - Local Browser console check on `/case-studies/kirazev-shopify-liquid`: no console errors.
   - Vercel PR checks passed.
-  - Protected preview fetch through Vercel tooling returned HTTP 200 for `/case-studies`, representative Shopify proof routes, and `/sitemap.xml`; preview HTML included updated metadata and case content, and preview sitemap included the new case-study routes.
+  - Protected preview fetch through Vercel tooling returned HTTP 200 for `/case-studies`, `/case-studies/kirazev-shopify-liquid`, `/case-studies/clohi-shopify-liquid`, and `/sitemap.xml`; preview HTML included updated metadata and Liquid case content, and preview sitemap included both new Liquid case-study routes.
 - Manual follow-up:
   - Real storefront screenshots were added in PR [#45](https://github.com/emremutlu08/hydrogenexpert/pull/45).
-  - After merge/deploy, verify live sitemap and live case-study pages include the new Shopify proof routes.
+  - After merge/deploy, verify live sitemap and live case-study pages include the new Liquid routes.
 
 ## 2026-05-21
 
@@ -1907,7 +1911,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - `npm run audit:shopify-claims`: passed with 0 pages needing source review.
   - Branch freshness before deploy: local `HEAD` matched `origin/codex/source-grounded-authority-expansion`; ahead/behind was `0/0`.
   - Vercel production build passed and generated 51 pages including Supabase-backed blog slugs.
-  - Live production verification: `/`, `/shopify-hydrogen-cost`, `/shopify-hydrogen-fit-audit`, `/shopify-hydrogen-agency-usa`, `/shopify-hydrogen-vs-liquid`, `/shopify-hydrogen-for-luxury-jewelry`, `/case-studies`, a representative case-study detail page, `/sitemap.xml`, and `/robots.txt` returned HTTP 200 from `https://hydrogenexpert.co`.
+  - Live production verification: `/`, `/shopify-hydrogen-cost`, `/shopify-hydrogen-fit-audit`, `/shopify-hydrogen-agency-usa`, `/shopify-hydrogen-vs-liquid`, `/shopify-hydrogen-for-luxury-jewelry`, `/case-studies/bayam-jewelry-shopify-hydrogen`, `/sitemap.xml`, and `/robots.txt` returned HTTP 200 from `https://hydrogenexpert.co`.
   - Live canonical/schema verification: key pages returned expected canonical URLs and JSON-LD.
   - Live sitemap verification: sitemap includes new high-intent routes and excludes `/shopify-hydrogen-seo-guide`.
   - Live mobile/desktop browser verification: `/shopify-hydrogen-fit-audit`, `/shopify-hydrogen-agency-usa`, `/shopify-hydrogen-vs-liquid`, and `/shopify-hydrogen-for-luxury-jewelry` returned one H1, breadcrumb UI, and no horizontal overflow at 1440px and 390px widths.
@@ -2078,8 +2082,8 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - `npm run test`
   - `npm run build`
   - Local production browser sweep at 375, 768, 1024, and 1440 widths for `/`, `/blog`, `/blog/shopify-hydrogen-product-description-ssr-seo`, `/services`, `/case-studies`, and `/hire-me`: no horizontal overflow, Geist computed font family, 0.18s interaction motion, and primary mobile targets passing.
-  - Local production browser sweep at 375, 768, 1024, and 1440 widths for `/`, `/blog`, `/blog/shopify-hydrogen-product-description-ssr-seo`, `/services`, `/shopify-hydrogen-audit`, `/cost`, `/case-studies`, a representative case-study detail page, `/hire-me`, `/should-i-use-it`, `/what-is-hydrogen`, and `/when-not-to-use-hydrogen`: visible breadcrumb on every non-home page, `BreadcrumbList` JSON-LD present, breadcrumb appears before the page heading, Geist computed font family, and no horizontal overflow.
-  - Live production browser sweep on `https://hydrogenexpert.co` at 375, 768, 1024, and 1440 widths for `/`, `/blog`, `/blog/shopify-hydrogen-product-description-ssr-seo`, `/services`, `/shopify-hydrogen-audit`, `/cost`, `/case-studies`, a representative case-study detail page, `/hire-me`, `/should-i-use-it`, `/what-is-hydrogen`, and `/when-not-to-use-hydrogen`: visible breadcrumb on every non-home page, `BreadcrumbList` JSON-LD present, breadcrumb appears before the page heading, Geist computed font family, and no horizontal overflow.
+  - Local production browser sweep at 375, 768, 1024, and 1440 widths for `/`, `/blog`, `/blog/shopify-hydrogen-product-description-ssr-seo`, `/services`, `/shopify-hydrogen-audit`, `/cost`, `/case-studies`, `/case-studies/eveshop-shopify-hydrogen`, `/hire-me`, `/should-i-use-it`, `/what-is-hydrogen`, and `/when-not-to-use-hydrogen`: visible breadcrumb on every non-home page, `BreadcrumbList` JSON-LD present, breadcrumb appears before the page heading, Geist computed font family, and no horizontal overflow.
+  - Live production browser sweep on `https://hydrogenexpert.co` at 375, 768, 1024, and 1440 widths for `/`, `/blog`, `/blog/shopify-hydrogen-product-description-ssr-seo`, `/services`, `/shopify-hydrogen-audit`, `/cost`, `/case-studies`, `/case-studies/eveshop-shopify-hydrogen`, `/hire-me`, `/should-i-use-it`, `/what-is-hydrogen`, and `/when-not-to-use-hydrogen`: visible breadcrumb on every non-home page, `BreadcrumbList` JSON-LD present, breadcrumb appears before the page heading, Geist computed font family, and no horizontal overflow.
   - `/contact` returned 404 on the current `main` base; this PR does not add routes.
 - Manual follow-up:
   - Do not merge the PR unless Emre approves it.
