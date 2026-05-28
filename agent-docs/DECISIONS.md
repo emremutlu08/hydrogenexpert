@@ -1,7 +1,7 @@
 # Decisions
 
 Status: Active
-Last updated: 2026-05-25
+Last updated: 2026-05-28
 Owner: Agent
 Source of truth: Current repo, user instruction, prior release workflow, agent analysis
 
@@ -16,6 +16,7 @@ This file records durable decisions so future agents do not re-litigate settled 
 - Root-level docs that predate `agent-docs/` should become compatibility stubs pointing to canonical docs.
 - HydrogenExpert must remain a senior-led Shopify Hydrogen service and agency alternative, not a generic full-service agency.
 - Public claims must stay source-grounded and conservative.
+- HydrogenExpert content production, SEO/GEO, discovery, schema, `llms`, sitemap, and internal-link work routes through `agent-docs/CONTENT-PRODUCTION-PLAYBOOK.md`.
 - Supabase-backed public blog publishing requires an explicit user request and real input/source material for the specific article.
 - Meaningful changes require PR-first workflow, validation, deployment verification when relevant, changelog paper trail, merge/closeout, and remote branch cleanup unless Emre says otherwise.
 - Final completion replies for finished HydrogenExpert work should include a clickable PR link and clickable live environment link.
