@@ -1,11 +1,13 @@
 # Content Governance
 
 Status: Active
-Last updated: 2026-05-25
+Last updated: 2026-05-28
 Owner: Agent
 Source of truth: Current repo, Shopify source-grounding rules, release history
 
 This protocol keeps HydrogenExpert useful, source-grounded, and commercially honest. Read it before creating or materially updating Shopify, Hydrogen, Oxygen, Storefront API, Customer Account API, Storefront MCP, UCP, SEO, analytics, or migration content.
+
+For the content production workflow, required skill set, public discovery wiring, sitemap, `llms`, schema, internal links, and cross-project boundary rules, read `agent-docs/CONTENT-PRODUCTION-PLAYBOOK.md` after this file.
 
 ## Source Hierarchy
 
@@ -48,6 +50,7 @@ Every new or materially updated buyer-facing page must include:
 - Contextual internal links to relevant service, case-study, and blog pages.
 - Metadata, canonical, and schema review.
 - Internal source metadata using `ContentSource` from `features/content-sources/index.ts`.
+- Public discovery review for sitemap, `llms`, schema, content relations, and internal links when the page should be discoverable.
 
 Source metadata is internal by default. It does not need to be visible unless the page intentionally includes public references.
 
@@ -71,6 +74,8 @@ For every technical blog post:
 10. Run lint, typecheck, and build.
 
 Future blog metadata should include `title`, `description`, `targetKeyword`, `searchIntent`, `sourceMap`, `lastVerified`, `reviewedBy`, and `contentType`.
+
+Blog, article, service, case-study, and discovery updates must stay content-bound: the visible page, source metadata, public discovery, `llms`, sitemap, schema, and related links should not drift into separate stories.
 
 ## AI-Assisted Content Review Checklist
 

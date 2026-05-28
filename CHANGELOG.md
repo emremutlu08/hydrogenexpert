@@ -15,6 +15,29 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-05-28
 
+- PR: [#77 Add HydrogenExpert content production playbook](https://github.com/emremutlu08/hydrogenexpert/pull/77)
+- Branch: `codex/hydrogenexpert-content-quality-rules`
+- Deployment: Not deployed; documentation-only routing and governance update with no rendered app behavior change.
+- Summary:
+  - Added `agent-docs/CONTENT-PRODUCTION-PLAYBOOK.md` as the HydrogenExpert-specific canonical guide for content production, SEO/GEO, public discovery, sitemap, `llms`, schema, internal links, content registries, and QA.
+  - Strengthened `AGENTS.md` so blog, article, landing page, case-study, public discovery, sitemap, `llms`, schema, and internal-link work routes to the new playbook.
+  - Linked content governance, blog publishing, and durable decisions back to the new canonical playbook while preserving approved HydrogenExpert proof names.
+- Files changed:
+  - `AGENTS.md`
+  - `agent-docs/BLOG-PUBLISHING-PLAYBOOK.md`
+  - `agent-docs/CONTENT-GOVERNANCE.md`
+  - `agent-docs/CONTENT-PRODUCTION-PLAYBOOK.md`
+  - `agent-docs/DECISIONS.md`
+  - `CHANGELOG.md`
+- Verification:
+  - `git diff --check`: passed.
+  - Cross-project documentation scan across `AGENTS.md`, `agent-docs/`, and `docs/`: no matches.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed with no `Needs review` rows.
+  - Full build not run because this is docs-only and does not change rendered app code, routes, schemas, or registries.
+- Manual follow-up:
+  - None.
+
 - PR: [#76 Restore HydrogenExpert client proof names](https://github.com/emremutlu08/hydrogenexpert/pull/76)
 - Branch: `codex/hydrogenexpert-restore-client-names`
 - Deployment: Not deployed yet; documentation-only correction with no public app behavior change.

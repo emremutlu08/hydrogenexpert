@@ -1,13 +1,15 @@
 # Blog Publishing Playbook
 
 Status: Active
-Last updated: 2026-05-25
+Last updated: 2026-05-28
 Owner: Agent
 Source of truth: Current repo and content governance history
 
 This playbook defines how raw notes become public HydrogenExpert blog posts. It exists to keep future posts useful, SEO-aware, and safe for production.
 
 Codex must not publish Supabase-backed public blog posts unless Emre provides the real input/source material and explicitly asks for that specific article to be published. The queue below is planning inventory, not permission to publish.
+
+Before drafting, publishing, or updating blog content, also read `agent-docs/CONTENT-PRODUCTION-PLAYBOOK.md` for the HydrogenExpert skill stack, discovery wiring, schema, `llms`, sitemap, internal-link, and cross-project boundary rules.
 
 ## Public Content Rules
 
