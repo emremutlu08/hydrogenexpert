@@ -35,7 +35,7 @@ HydrogenExpert already has a strong narrow SEO and positioning foundation. This 
 
 **Acceptance Criteria:**
 - [ ] `/about` is indexable and included in sitemap.
-- [ ] Page uses existing proof only: Upwork Top Rated Plus, 100% JSS, 1,900+ hours, Rebel Bunny 5.0 feedback, Udemy course, EveShop/Bayam/Rebel Bunny references.
+- [ ] Page uses existing HydrogenExpert proof only: Upwork Top Rated Plus, 100% JSS, 1,900+ hours, approved public client feedback, Udemy course, and approved case-study references.
 - [ ] Page includes an editorial/proof standard: no fake testimonials, unsupported metrics, invented screenshots, or invented logos.
 - [ ] Page links to LinkedIn, Upwork, Udemy, case studies, and `/hire-me`.
 - [ ] Page emits Person-centered `ProfilePage` JSON-LD.

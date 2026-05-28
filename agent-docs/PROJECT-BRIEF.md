@@ -1,7 +1,7 @@
 # Project Brief
 
 Status: Active
-Last updated: 2026-05-25
+Last updated: 2026-05-28
 Owner: Agent
 Source of truth: Current repo, `package.json`, production positioning docs, agent analysis
 
@@ -50,7 +50,7 @@ Use `package.json` for exact versions and scripts.
 Use only approved public or explicitly approved proof:
 
 - Upwork Top Rated Plus and 100% JSS when currently supported.
-- Upwork hours and public Rebel Bunny feedback when verified.
+- Upwork hours and approved public client feedback when verified.
 - LinkedIn and Udemy proof when currently supported.
 - Approved case studies and real site assets.
 

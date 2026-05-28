@@ -42,7 +42,7 @@ It should not pretend to be a traditional US office, broad Shopify agency, paid-
 
 ## Proof Rules
 
-- Use only approved public proof: Upwork Top Rated Plus, 100% JSS, Upwork hours, LinkedIn following, Udemy course, approved case studies, and public Rebel Bunny feedback.
+- Use only approved public proof: Upwork Top Rated Plus, 100% JSS, Upwork hours, LinkedIn following, Udemy course, approved case studies, and approved public client feedback.
 - Do not invent testimonials, screenshots, logos, revenue, conversion lifts, partner badges, office locations, or team claims.
 - If a claim is not approved or public, convert it into a qualitative constraint instead of a metric.
 
@@ -51,4 +51,3 @@ It should not pretend to be a traditional US office, broad Shopify agency, paid-
 - Shopify, Hydrogen, Oxygen, Storefront API, React Router, SEO, analytics, and deployment claims must be grounded in official Shopify docs checked through the Shopify developer docs search flow.
 - Commercial guidance should separate official Shopify facts from Emre's operator interpretation.
 - Every major buyer-facing page should keep a clear "when Hydrogen is wrong" path.
-
