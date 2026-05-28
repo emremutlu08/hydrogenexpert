@@ -13,6 +13,33 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 - Verification:
 - Manual follow-up:
 
+## 2026-05-28
+
+- PR: [#75 Clean HydrogenExpert documentation scope](https://github.com/emremutlu08/hydrogenexpert/pull/75)
+- Branch: `codex/hydrogenexpert-doc-scope-cleanup`
+- Deployment: Not deployed; documentation-only cleanup with no public app behavior change.
+- Summary:
+  - Audited HydrogenExpert documentation for cross-project, named client/project, and generic non-HydrogenExpert wording.
+  - Replaced cross-project references with HydrogenExpert-only case-study/proof language.
+  - Kept proof rules conservative: approved case studies, approved public client feedback, no fake metrics, no fake testimonials, and no fake logos.
+- Files changed:
+  - `CHANGELOG.md`
+  - `CHANGES.md`
+  - `GEO-AUDIT-REPORT.md`
+  - `agent-docs/PROJECT-BRIEF.md`
+  - `docs/hydrogenexpert-v1/proof-registry.md`
+  - `docs/hydrogenexpert-v1/seo-qa.md`
+  - `docs/positioning-rules.md`
+  - `docs/seo-external-authority-checklist.md`
+  - `docs/seo-keyword-map.md`
+  - `tasks/hydrogenexpert-agency-positioning-task-list.md`
+  - `tasks/prd-site-trust-measurement-fixes.md`
+- Verification:
+  - Documentation scan for cross-project, named client/project, and generic non-HydrogenExpert wording: no matches.
+  - `git diff --check`: passed.
+- Manual follow-up:
+  - None.
+
 ## 2026-05-27
 
 - PR: [#74 Improve Hydrogen article quality](https://github.com/emremutlu08/hydrogenexpert/pull/74)
