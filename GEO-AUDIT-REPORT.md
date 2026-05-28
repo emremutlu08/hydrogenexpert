@@ -105,7 +105,7 @@ The content is specific and useful, but several service and vertical pages are d
 
 ### Add More Approved Case-Study Outcomes
 
-The case studies are credible, but EveShop and Bayam still need more approved measurable outcomes where available: before/after performance, launch outcomes, catalog complexity, SEO impact, or workflow improvement.
+The case studies are credible, but HydrogenExpert still needs more approved measurable outcomes where available: before/after performance, launch outcomes, catalog complexity, SEO impact, or workflow improvement.
 
 **Evidence:** case-study data lives in [data/caseStudies.ts](/Users/emremutlu/Apps/Codex/hydrogenexpert/data/caseStudies.ts).
 
@@ -165,7 +165,7 @@ Founder-level authority is good; brand-level authority is still fair. Search res
 | LinkedIn | Strong founder profile signal and follower count |
 | Udemy | Strong teaching proof for Shopify Hydrogen |
 | Medium | Useful technical article syndication |
-| Personal site | Useful corroborating portfolio surface |
+| Personal site | Useful corroborating external authority surface |
 | Reddit / Wikipedia / Wikidata / YouTube | Weak or absent for HydrogenExpert |
 
 Recommended direction: keep Emre Mutlu as the primary entity, but make HydrogenExpert consistently appear in verified profiles, bios, external articles, and schema `sameAs` where the profile is real and controlled.
@@ -183,7 +183,7 @@ The site is credible for a solo senior service business. It shows first-hand exp
 
 Best content signals:
 
-- Real case-study pages for EveShop, Bayam Jewelry, and Rebel Bunny.
+- Real HydrogenExpert case-study pages.
 - Technical blog posts with SSR, variant URL, metaobject, and performance detail.
 - Public proof references to Upwork, LinkedIn, and Udemy.
 - Clear anti-hype stance: Hydrogen is not treated as the default answer.
@@ -314,17 +314,17 @@ Priority schema work:
 | https://hydrogenexpert.co/services | Shopify Hydrogen Services and Agency Alternative / HydrogenExpert | improve merchant readability and proof depth |
 | https://hydrogenexpert.co/should-i-use-it | Should I Use Shopify Hydrogen? A Merchant Decision Guide | good decision-intent page; consider semantic summary table |
 | https://hydrogenexpert.co/when-not-to-use-hydrogen | When Not to Use Shopify Hydrogen / Emre Mutlu | strong citability; keep proof/source adjacency tight |
-| https://hydrogenexpert.co/case-studies | Shopify Hydrogen Case Studies: EveShop, Bayam, Rebel Bunny | add more measurable proof where approved |
+| https://hydrogenexpert.co/case-studies | Shopify Hydrogen Case Studies / HydrogenExpert | add more measurable proof where approved |
 | https://hydrogenexpert.co/hire-me | Hire a Shopify Hydrogen Developer / Emre Mutlu | long meta description edge; profile proof can be clearer |
 | https://hydrogenexpert.co/contact | Request a Shopify Hydrogen Fit Review / HydrogenExpert | none found in crawl |
 | https://hydrogenexpert.co/shopify-hydrogen-agency-usa | Shopify Hydrogen Agency USA Alternative / Emre Mutlu | avoid fake local-office signals; current posture is good |
 | https://hydrogenexpert.co/shopify-hydrogen-fit-audit | Shopify Hydrogen Fit & Risk Audit / Emre Mutlu | long meta description; add short-answer block |
 | https://hydrogenexpert.co/shopify-hydrogen-maintenance-cost | Shopify Hydrogen Maintenance Cost / Emre Mutlu | long meta description; add semantic cost/ownership table |
 | https://hydrogenexpert.co/shopify-hydrogen-vs-liquid | Shopify Hydrogen vs Liquid / Emre Mutlu | convert decision grid to semantic table |
-| https://hydrogenexpert.co/shopify-hydrogen-for-luxury-jewelry | Shopify Hydrogen for Luxury Jewelry / Bayam Context | add more specific real scenarios if available |
-| https://hydrogenexpert.co/shopify-hydrogen-for-large-catalog-retail | Shopify Hydrogen for Large Catalog Retail / EveShop Context | add more specific real scenarios if available |
-| https://hydrogenexpert.co/shopify-hydrogen-for-dtc-education-brands | Shopify Hydrogen for DTC Education Brands / Rebel Bunny Context | add more specific real scenarios if available |
-| https://hydrogenexpert.co/shopify-hydrogen-for-beauty-brands | Shopify Hydrogen for Beauty Brands / EveShop Context | add more specific real scenarios if available |
+| https://hydrogenexpert.co/shopify-hydrogen-for-luxury-jewelry | Shopify Hydrogen for Luxury Jewelry / HydrogenExpert | add more specific real scenarios if available |
+| https://hydrogenexpert.co/shopify-hydrogen-for-large-catalog-retail | Shopify Hydrogen for Large Catalog Retail / HydrogenExpert | add more specific real scenarios if available |
+| https://hydrogenexpert.co/shopify-hydrogen-for-dtc-education-brands | Shopify Hydrogen for DTC Education Brands / HydrogenExpert | add more specific real scenarios if available |
+| https://hydrogenexpert.co/shopify-hydrogen-for-beauty-brands | Shopify Hydrogen for Beauty Brands / HydrogenExpert | add more specific real scenarios if available |
 | https://hydrogenexpert.co/shopify-hydrogen-agency | Shopify Hydrogen Agency Alternative / Emre Mutlu | add more source-adjacent proof links |
 | https://hydrogenexpert.co/headless-shopify-agency | Headless Shopify Agency Alternative / Emre Mutlu | long meta description; semantic comparison could help |
 | https://hydrogenexpert.co/shopify-hydrogen-developer | Shopify Hydrogen Developer for Shopify Plus Brands / Emre Mutlu | long meta description; author proof is strong |
@@ -335,9 +335,7 @@ Priority schema work:
 | https://hydrogenexpert.co/custom-shopify-hydrogen-storefront | Custom Shopify Hydrogen Storefront Development / Emre Mutlu | add source-adjacent proof examples |
 | https://hydrogenexpert.co/shopify-hydrogen-performance-optimization | Shopify Hydrogen Performance Optimization / Emre Mutlu | strong fit for benchmark-style proof |
 | https://hydrogenexpert.co/shopify-hydrogen-support-retainer | Shopify Hydrogen Support Retainer / Emre Mutlu | add support scope table |
-| https://hydrogenexpert.co/case-studies/eveshop-shopify-hydrogen | EveShop Shopify Hydrogen Case Study / Emre Mutlu | add more approved measurable proof |
-| https://hydrogenexpert.co/case-studies/bayam-jewelry-shopify-hydrogen | Bayam Jewelry Shopify Hydrogen Case Study / Emre Mutlu | add more approved measurable proof |
-| https://hydrogenexpert.co/case-studies/rebel-bunny-shopify-hydrogen | Rebel Bunny Shopify Hydrogen Case Study / Emre Mutlu | add more approved measurable proof |
+| Hydrogen case-study detail pages | Shopify Hydrogen Case Study / Emre Mutlu | add more approved measurable proof |
 | https://hydrogenexpert.co/blog | Shopify Hydrogen Blog for Shopify Plus Brands / Emre Mutlu | add blog schema/entity enhancements |
 | https://hydrogenexpert.co/blog/shopify-hydrogen-product-description-ssr-seo | Shopify Hydrogen Product Descriptions: SSR SEO | article entity opportunities |
 | https://hydrogenexpert.co/blog/shopify-hydrogen-metaobjects-page-specific-sections | Shopify Hydrogen Metaobjects for Page-Specific Content Sections | article entity opportunities |
@@ -358,5 +356,5 @@ Priority schema work:
 - Schema crawl: 35/35 pages had JSON-LD; no parse failures in the local crawl.
 - Image crawl: no missing `alt` attributes detected.
 - Lighthouse homepage: Performance 96, Accessibility 96, Best Practices 100, SEO 100.
-- Playwright sampled `/`, `/services`, `/blog`, `/shopify-hydrogen-seo`, `/case-studies/rebel-bunny-shopify-hydrogen`, and `/contact` at 390px and 1440px; no horizontal overflow found.
+- Playwright sampled `/`, `/services`, `/blog`, `/shopify-hydrogen-seo`, representative case-study pages, and `/contact` at 390px and 1440px; no horizontal overflow found.
 - External search found corroborating founder/entity surfaces on Upwork, Udemy, LinkedIn, Medium, and the personal site; no strong HydrogenExpert presence found on Wikipedia/Wikidata/Reddit/YouTube.

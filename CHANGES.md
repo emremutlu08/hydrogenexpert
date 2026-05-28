@@ -53,7 +53,7 @@ This file tracks dated changes by approved phase.
 
 ### TODO and placeholder items
 
-- Add a real EveShop screenshot asset if/when approved.
+- Add a real approved case-study screenshot asset if/when approved.
 - Add `/public/badges/upwork-top-rated-plus.svg` if the official badge asset becomes available.
 - Add client-approved testimonial copy and attribution only when real quotes are available.
 
@@ -154,7 +154,7 @@ This file tracks dated changes by approved phase.
 - Add approved `/services` package details.
 - Add `/public/emre-mutlu.webp` to replace the founder photo fallback.
 - Add `/public/badges/upwork-top-rated-plus.svg` to replace the neutral Upwork badge fallback.
-- Add a real EveShop screenshot asset to replace the `[Screenshot TBD]` placeholder.
+- Add a real approved case-study screenshot asset to replace the `[Screenshot TBD]` placeholder.
 
 ## 2026-04-25 — Lead backend and SEO pillar
 
@@ -193,7 +193,7 @@ This file tracks dated changes by approved phase.
 ### TODO and placeholder items
 
 - Add approved `/services` package details.
-- Add visual assets later: founder photo, Upwork badge, and EveShop screenshot.
+- Add visual assets later: founder photo, Upwork badge, and approved case-study screenshot.
 
 ### Verification
 
@@ -288,25 +288,25 @@ This file tracks dated changes by approved phase.
 
 - Case studies page:
   - Before: `/case-studies` was a strong overview page, but it still read as a shared narrative system more than a full proof page with explicit metrics, screenshots, and structured per-case sections.
-  - After: `/case-studies` is a single proof page with in-page sections for EveShop, Bayam Jewelry, and Rebel Bunny Matcha, each using shared case-study components for hero, proof grid, screenshots, tech stack, and testimonial handling.
+  - After: `/case-studies` is a single proof page with in-page sections for approved HydrogenExpert case-study contexts, each using shared case-study components for hero, proof grid, screenshots, tech stack, and testimonial handling.
 - Content sourcing:
   - Before: the page leaned on internal narrative copy only.
   - After: the rebuilt sections combine repo content with user-provided public material and verified public-source facts, while keeping unsupported items visibly incomplete instead of smoothing them over.
 - Proof structure:
   - Before: there was no metric-card system or screenshot component.
-  - After: each case renders 3-5 supported proof points plus screenshot support, with EveShop intentionally showing a placeholder where a screenshot asset is still missing.
+  - After: each case renders 3-5 supported proof points plus screenshot support, with missing approved screenshot assets shown as placeholders instead of fake visuals.
 - Udemy proof:
   - Before: the Udemy link depended entirely on env configuration.
   - After: the public course URL from Emre's own site/CV is now used as the fallback so the proof layer no longer shows a missing Udemy link.
 
 ### Skipped or not applicable
 
-- No testimonials render yet because there are still no client-approved quotes with complete attribution for EveShop, Bayam Jewelry, or Rebel Bunny Matcha.
-- EveShop still has no approved screenshot asset in the repo, so that case renders a visible `[Screenshot TBD]` placeholder instead of a fake or scraped visual.
+- No testimonials render yet because there are still no client-approved quotes with complete attribution for the case-study contexts.
+- One approved screenshot asset was still missing in the repo, so that case renders a visible `[Screenshot TBD]` placeholder instead of a fake or scraped visual.
 
 ### TODO and placeholder items
 
-- Add a real EveShop screenshot asset to replace the `[Screenshot TBD]` placeholder.
+- Add a real approved case-study screenshot asset to replace the `[Screenshot TBD]` placeholder.
 - Add client-approved testimonial copy plus attribution if testimonial blocks should go live later.
 
 ### Verification
@@ -339,8 +339,8 @@ This file tracks dated changes by approved phase.
   - Before: there was no reusable client-logo wall.
   - After: the wall renders real logo assets where they exist and neutral bordered text chips where logo files are still missing.
 - Current-client emphasis:
-  - Before: Bayam and Rebel Bunny were visible only in cards and narrative copy.
-  - After: Bayam and Rebel Bunny are visually marked as current work inside the logo wall.
+  - Before: current work contexts were visible only in cards and narrative copy.
+  - After: current work contexts are visually marked inside the logo wall.
 
 ### Skipped or not applicable
 
@@ -348,10 +348,7 @@ This file tracks dated changes by approved phase.
 
 ### TODO and placeholder items
 
-- Missing logo asset path: `/logos/atolye-stone.svg`
-- Missing logo asset path: `/logos/clohi.svg`
-- Missing logo asset path: `/logos/kiraz-ev.svg`
-- Missing logo asset path: `/logos/petkonak.svg`
+- Missing logo asset paths were documented for approved case-study contexts; do not add fake logos.
 
 ### Verification
 

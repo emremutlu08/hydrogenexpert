@@ -7,7 +7,7 @@ Last updated: 2026-05-21
 | Primary Keyword | Primary URL | Supporting URLs | Intent |
 |---|---|---|---|
 | Shopify Hydrogen agency | `/shopify-hydrogen-agency` | `/services`, `/case-studies`, `/shopify-hydrogen-agency-usa` | Compare agency options and decide whether a senior-led alternative fits. |
-| Shopify Hydrogen agency USA | `/shopify-hydrogen-agency-usa` | `/shopify-hydrogen-agency`, `/case-studies/bayam-jewelry-shopify-hydrogen`, `/shopify-hydrogen-cost` | US buyer wants remote senior Hydrogen support without fake local-office claims. |
+| Shopify Hydrogen agency USA | `/shopify-hydrogen-agency-usa` | `/shopify-hydrogen-agency`, `/case-studies`, `/shopify-hydrogen-cost` | US buyer wants remote senior Hydrogen support without fake local-office claims. |
 | Headless Shopify agency | `/headless-shopify-agency` | `/shopify-hydrogen-agency`, `/liquid-to-hydrogen-migration`, `/shopify-hydrogen-cost` | Buyer is comparing headless paths before committing to Hydrogen. |
 | Shopify Hydrogen expert | `/shopify-hydrogen-expert` | `/shopify-hydrogen-experts`, `/shopify-hydrogen-developer`, `/articles/shopify-hydrogen-experts-production-experience` | Buyer wants one senior specialist rather than a broad agency, marketplace, or expert list. |
 | Shopify Hydrogen experts | `/shopify-hydrogen-experts` | `/articles/shopify-hydrogen-experts-production-experience`, `/shopify-hydrogen-developer`, `/case-studies` | Buyer is comparing expert proof, agency options, and senior implementation paths. |

@@ -380,7 +380,7 @@ Description:
 Add short "What I check in production" or "How I would scope this" blocks to every production note.
 
 Implementation Notes:
-Use Emre's real project experience: EveShop scale, Bayam luxury catalog, Rebel Bunny dual funnel, Upwork delivery, and course authority only where relevant and supportable.
+Use Emre's real HydrogenExpert project experience: large-catalog scale, luxury catalog constraints, dual-funnel storefront work, Upwork delivery, and course authority only where relevant and supportable.
 
 Acceptance Criteria:
 - Every blog post has at least one first-hand expert commentary block.
