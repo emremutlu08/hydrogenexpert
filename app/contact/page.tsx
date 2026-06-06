@@ -16,7 +16,7 @@ import { buildBreadcrumbListSchema } from "@/lib/structured-data";
 export const metadata = buildMetadata({
   title: "Request a Shopify Hydrogen Scope Review | HydrogenExpert",
   description:
-    "Send your Shopify store URL, design status, product count, and needed features to get a direct recommendation on Starter, Standard, Growth, Custom, Liquid cleanup, or no rebuild.",
+    "Send your Shopify store URL and main storefront problem for a direct Hydrogen, Liquid cleanup, support, or no-rebuild recommendation.",
   path: "/contact",
 });
 
@@ -62,7 +62,7 @@ export default function ContactPage() {
         <PageIntroSection
           eyebrow="Contact"
           title="Request a Hydrogen scope review."
-          description="A useful first message is short: current store URL, design status, product count, needed features, and what needs to ship first."
+          description="A useful first message is short: current store URL or brand, the main storefront problem, and what needs to ship first."
           body="I will tell you whether the next move looks like Starter, Standard, Growth, Custom, Liquid cleanup, performance or SEO work, support retainer, or no rebuild."
         />
 
@@ -70,8 +70,8 @@ export default function ContactPage() {
         <div className="surface-card space-y-6">
           <SectionHeader
             eyebrow="Start here"
-            title="Use the channel that matches the buying motion."
-            description="The form is the best path for qualified project context. LinkedIn and Upwork stay available when the buying motion needs them."
+            title="Use the channel that fits how you want to start."
+            description="The form is best for project context. LinkedIn and Upwork stay available when you want to start the conversation there."
           />
           <div className="grid gap-4">
             {contactOptions.map((option) => {

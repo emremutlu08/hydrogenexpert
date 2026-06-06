@@ -76,7 +76,7 @@ export const CASE_STUDIES: readonly CaseStudyEntry[] = [
     clientName: "EveShop",
     metaTitle: "EveShop Shopify Hydrogen Case Study | Emre Mutlu",
     metaDescription:
-      "EveShop Shopify Hydrogen case study covering a nationwide cosmetics retailer, production Hydrogen delivery, React Native mobile commerce, 400K+ web users, and 100K+ mobile users.",
+      "EveShop Shopify Hydrogen case study for a national cosmetics retailer with production Hydrogen and React Native mobile commerce context.",
     caseStudyTitle: "EveShop large-scale Shopify Hydrogen + mobile commerce case study",
     portfolioAngle: "Large-scale Shopify Hydrogen + mobile commerce for cosmetics and personal care retail.",
     tagline: "Turkey's first production Shopify Hydrogen storefront for a nationwide cosmetics retailer, paired with mobile commerce delivery.",

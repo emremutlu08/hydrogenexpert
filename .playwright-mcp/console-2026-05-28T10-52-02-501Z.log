@@ -1,0 +1,5 @@
+[     336ms] [LOG] Service Worker registered successfully: ServiceWorkerRegistration @ http://localhost:3000/_next/static/chunks/0_kz22tpb.26g.js:11
+[     366ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/api/analytics:0
+[     399ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/api/analytics:0
+[     509ms] [ERROR] Refused to execute script from 'http://localhost:3000/_vercel/insights/script.js' because its MIME type ('text/html') is not executable, and strict MIME type checking is enabled. @ http://localhost:3000/isletme/izmir-bayrakli-kedi-otelleri/izmir-bayrakli-kedi-oteli:0
+[     510ms] [LOG] [Vercel Web Analytics] Failed to load script from /_vercel/insights/script.js. Be sure to enable Web Analytics for your project and deploy again. See https://vercel.com/docs/analytics/quickstart for more information. @ http://localhost:3000/_next/static/chunks/0_kz22tpb.26g.js:0

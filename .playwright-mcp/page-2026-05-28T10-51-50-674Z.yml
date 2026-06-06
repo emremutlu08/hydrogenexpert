@@ -1,0 +1,420 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - link "Petkonak Logo Petkonak" [ref=e7] [cursor=pointer]:
+          - /url: /
+          - img "Petkonak Logo" [ref=e9]
+          - generic [ref=e10]: Petkonak
+        - navigation [ref=e11]:
+          - link "Tüm Hizmetler" [ref=e12] [cursor=pointer]:
+            - /url: /arama
+          - link "Pet Otelleri" [ref=e13] [cursor=pointer]:
+            - /url: /arama/pet-otelleri
+          - link "Köpek Otelleri" [ref=e14] [cursor=pointer]:
+            - /url: /arama/kopek-otelleri
+          - link "Kedi Otelleri" [ref=e15] [cursor=pointer]:
+            - /url: /arama/kedi-otelleri
+          - link "Blog" [ref=e16] [cursor=pointer]:
+            - /url: /blog
+          - link "İşletmeniz için" [ref=e17] [cursor=pointer]:
+            - /url: /isletmeniz-icin
+      - generic [ref=e18]:
+        - link "Ara" [ref=e19] [cursor=pointer]:
+          - /url: /arama
+          - img
+          - text: Ara
+        - generic [ref=e20]:
+          - link "Giriş Yap" [ref=e21] [cursor=pointer]:
+            - /url: /giris-yap
+          - link "Kayıt Ol" [ref=e22] [cursor=pointer]:
+            - /url: /kayit-ol
+    - main "Ana içerik" [ref=e23]:
+      - generic [ref=e24]:
+        - heading "İzmir Kedi Otelleri (8 işletme)" [level=1] [ref=e25]:
+          - text: İzmir Kedi Otelleri
+          - generic [ref=e26]: (8 işletme)
+        - paragraph [ref=e27]: İzmir'de kedi oteli seçeneklerini ilçe, iletişim kanalı, oda/kum düzeni ve karar öncesi teyit listesiyle kısa listeleyin. Bu sayfada 8 işletme sonucu görünür.
+        - paragraph [ref=e28]: "İlçe kapsamı: Bayraklı, Urla, Çiğli, Torbalı, Karşıyaka, Menemen ve diğer ilçeler."
+        - generic [ref=e29]:
+          - link "İzmir kedi oteli fiyatları" [ref=e30] [cursor=pointer]:
+            - /url: /rehber/kedi-oteli-fiyatlari
+          - link "İzmir kedi oteli rehberi" [ref=e31] [cursor=pointer]:
+            - /url: /rehber/izmir-kedi-otelleri
+      - generic [ref=e32]:
+        - navigation "Breadcrumb" [ref=e34]:
+          - list [ref=e35]:
+            - listitem [ref=e36]:
+              - link "Ana Sayfa" [ref=e37] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=e38]:
+              - img [ref=e39]
+              - link "İzmir" [ref=e41] [cursor=pointer]:
+                - /url: /arama/izmir
+            - listitem [ref=e42]:
+              - img [ref=e43]
+              - generic [ref=e45]: Kedi Otelleri
+        - generic [ref=e46]:
+          - complementary [ref=e47]:
+            - generic [ref=e48]:
+              - generic [ref=e50]: Filtreler
+              - generic [ref=e51]:
+                - generic [ref=e52]:
+                  - generic [ref=e54]: İşletme Adı
+                  - textbox "İşletme adı ile ara..." [ref=e56]
+                - generic [ref=e57]:
+                  - text: İşletme Türü
+                  - combobox [ref=e58] [cursor=pointer]:
+                    - generic: Kedi Otelleri
+                    - img [ref=e59]
+                - generic [ref=e61]:
+                  - text: Şehir
+                  - combobox [ref=e62] [cursor=pointer]:
+                    - generic: İzmir
+                    - img [ref=e63]
+                - generic [ref=e65]:
+                  - text: İlçe
+                  - combobox [ref=e66] [cursor=pointer]:
+                    - generic: İlçe seçin
+                    - img [ref=e67]
+                - generic [ref=e69]:
+                  - button "Filtreleri Uygula" [ref=e70] [cursor=pointer]
+                  - button "Filtreleri Temizle" [ref=e71] [cursor=pointer]
+          - main [ref=e72]:
+            - generic [ref=e73]:
+              - link "İzmir Bayraklı Kedi Oteli Favorilere ekle Kedi Oteli İzmir Bayraklı Kedi Oteli Bayraklı, İzmir" [ref=e75] [cursor=pointer]:
+                - /url: /isletme/izmir-bayrakli-kedi-otelleri/izmir-bayrakli-kedi-oteli
+                - generic [ref=e76]:
+                  - img "İzmir Bayraklı Kedi Oteli" [ref=e77]
+                  - button "Favorilere ekle" [ref=e78]:
+                    - img
+                - generic [ref=e81]:
+                  - generic [ref=e82]:
+                    - generic [ref=e83]: Kedi Oteli
+                    - heading "İzmir Bayraklı Kedi Oteli" [level=3] [ref=e84]
+                  - paragraph [ref=e85]: Bayraklı, İzmir
+              - link "Barn Hera Pet Hotel Favorilere ekle Pet Oteli Barn Hera Pet Hotel Urla, İzmir" [ref=e87] [cursor=pointer]:
+                - /url: /isletme/izmir-urla-pet-otelleri/barn-hera-pet-hotel
+                - generic [ref=e88]:
+                  - img "Barn Hera Pet Hotel" [ref=e89]
+                  - button "Favorilere ekle" [ref=e90]:
+                    - img
+                - generic [ref=e93]:
+                  - generic [ref=e94]:
+                    - generic [ref=e95]: Pet Oteli
+                    - heading "Barn Hera Pet Hotel" [level=3] [ref=e96]
+                  - paragraph [ref=e97]: Urla, İzmir
+              - link "İzmir Kedi Oteli Favorilere ekle Kedi Oteli İzmir Kedi Oteli Çiğli, İzmir" [ref=e99] [cursor=pointer]:
+                - /url: /isletme/izmir-cigli-kedi-otelleri/izmir-kedi-oteli
+                - generic [ref=e100]:
+                  - img "İzmir Kedi Oteli" [ref=e101]
+                  - button "Favorilere ekle" [ref=e102]:
+                    - img
+                - generic [ref=e105]:
+                  - generic [ref=e106]:
+                    - generic [ref=e107]: Kedi Oteli
+                    - heading "İzmir Kedi Oteli" [level=3] [ref=e108]
+                  - paragraph [ref=e109]: Çiğli, İzmir
+              - link "Torbalı Kedi Oteli Favorilere ekle Kedi Oteli Torbalı Kedi Oteli Torbalı, İzmir" [ref=e111] [cursor=pointer]:
+                - /url: /isletme/izmir-torbali-kedi-otelleri/torbali-kedi-oteli
+                - generic [ref=e112]:
+                  - img "Torbalı Kedi Oteli" [ref=e113]
+                  - button "Favorilere ekle" [ref=e114]:
+                    - img
+                - generic [ref=e117]:
+                  - generic [ref=e118]:
+                    - generic [ref=e119]: Kedi Oteli
+                    - heading "Torbalı Kedi Oteli" [level=3] [ref=e120]
+                  - paragraph [ref=e121]: Torbalı, İzmir
+              - link "İzmir Bostanlı Kedi Oteli Favorilere ekle Kedi Oteli İzmir Bostanlı Kedi Oteli Karşıyaka, İzmir" [ref=e123] [cursor=pointer]:
+                - /url: /isletme/izmir-karsiyaka-kedi-otelleri/izmir-bostanli-kedi-oteli
+                - generic [ref=e124]:
+                  - img "İzmir Bostanlı Kedi Oteli" [ref=e125]
+                  - button "Favorilere ekle" [ref=e126]:
+                    - img
+                - generic [ref=e129]:
+                  - generic [ref=e130]:
+                    - generic [ref=e131]: Kedi Oteli
+                    - heading "İzmir Bostanlı Kedi Oteli" [level=3] [ref=e132]
+                  - paragraph [ref=e133]: Karşıyaka, İzmir
+              - link "Karşıyaka Kedi oteli Favorilere ekle Kedi Oteli Karşıyaka Kedi oteli Karşıyaka, İzmir" [ref=e135] [cursor=pointer]:
+                - /url: /isletme/izmir-karsiyaka-kedi-otelleri/karsiyaka-kedi-oteli
+                - generic [ref=e136]:
+                  - img "Karşıyaka Kedi oteli" [ref=e137]
+                  - button "Favorilere ekle" [ref=e138]:
+                    - img
+                - generic [ref=e141]:
+                  - generic [ref=e142]:
+                    - generic [ref=e143]: Kedi Oteli
+                    - heading "Karşıyaka Kedi oteli" [level=3] [ref=e144]
+                  - paragraph [ref=e145]: Karşıyaka, İzmir
+              - link "Karşıyaka Pet Otel Favorilere ekle Pet Oteli Karşıyaka Pet Otel Karşıyaka, İzmir" [ref=e147] [cursor=pointer]:
+                - /url: /isletme/izmir-karsiyaka-pet-otelleri/karsiyaka-pet-otel
+                - generic [ref=e148]:
+                  - img "Karşıyaka Pet Otel" [ref=e149]
+                  - button "Favorilere ekle" [ref=e150]:
+                    - img
+                - generic [ref=e153]:
+                  - generic [ref=e154]:
+                    - generic [ref=e155]: Pet Oteli
+                    - heading "Karşıyaka Pet Otel" [level=3] [ref=e156]
+                  - paragraph [ref=e157]: Karşıyaka, İzmir
+              - link "Legend Dog House Favorilere ekle Pet Oteli Legend Dog House Menemen, İzmir" [ref=e159] [cursor=pointer]:
+                - /url: /isletme/izmir-menemen-pet-otelleri/legend-dog-house
+                - generic [ref=e160]:
+                  - img "Legend Dog House" [ref=e161]
+                  - button "Favorilere ekle" [ref=e162]:
+                    - img
+                - generic [ref=e165]:
+                  - generic [ref=e166]:
+                    - generic [ref=e167]: Pet Oteli
+                    - heading "Legend Dog House" [level=3] [ref=e168]
+                  - paragraph [ref=e169]: Menemen, İzmir
+            - generic [ref=e171]:
+              - generic [ref=e172]:
+                - generic [ref=e174]: Diğer Şehirlerdeki İşletmeler
+                - generic [ref=e176]:
+                  - link "İstanbul Kedi Otelleri" [ref=e177] [cursor=pointer]:
+                    - /url: /arama/istanbul-kedi-otelleri
+                    - generic [ref=e178]: İstanbul Kedi Otelleri
+                  - link "Ankara Kedi Otelleri" [ref=e179] [cursor=pointer]:
+                    - /url: /arama/ankara-kedi-otelleri
+                    - generic [ref=e180]: Ankara Kedi Otelleri
+                  - link "Bursa Kedi Otelleri" [ref=e181] [cursor=pointer]:
+                    - /url: /arama/bursa-kedi-otelleri
+                    - generic [ref=e182]: Bursa Kedi Otelleri
+                  - link "Antalya Kedi Otelleri" [ref=e183] [cursor=pointer]:
+                    - /url: /arama/antalya-kedi-otelleri
+                    - generic [ref=e184]: Antalya Kedi Otelleri
+                  - link "Muğla Kedi Otelleri" [ref=e185] [cursor=pointer]:
+                    - /url: /arama/mugla-kedi-otelleri
+                    - generic [ref=e186]: Muğla Kedi Otelleri
+              - generic [ref=e187]:
+                - generic [ref=e189]: İzmir'de Diğer Pet Otelleri
+                - generic [ref=e191]:
+                  - link "İzmir Köpek Otelleri" [ref=e192] [cursor=pointer]:
+                    - /url: /arama/izmir-kopek-otelleri
+                    - generic [ref=e193]: İzmir Köpek Otelleri
+                  - link "İzmir Pet Otelleri" [ref=e194] [cursor=pointer]:
+                    - /url: /arama/izmir-pet-otelleri
+                    - generic [ref=e195]: İzmir Pet Otelleri
+              - generic [ref=e196]:
+                - generic [ref=e198]: İzmir'de Pet Hizmeti Kategorileri
+                - generic [ref=e200]:
+                  - link "İzmir Pet Otelleri" [ref=e201] [cursor=pointer]:
+                    - /url: /arama/izmir-pet-otelleri
+                    - generic [ref=e202]: İzmir Pet Otelleri
+                  - link "İzmir Köpek Otelleri" [ref=e203] [cursor=pointer]:
+                    - /url: /arama/izmir-kopek-otelleri
+                    - generic [ref=e204]: İzmir Köpek Otelleri
+                  - link "İzmir Veteriner Klinikleri" [ref=e205] [cursor=pointer]:
+                    - /url: /arama/izmir-veteriner-klinikleri
+                    - generic [ref=e206]: İzmir Veteriner Klinikleri
+                  - link "İzmir Petshoplar" [ref=e207] [cursor=pointer]:
+                    - /url: /arama/izmir-petshoplar
+                    - generic [ref=e208]: İzmir Petshoplar
+                  - link "İzmir Pet Kuaförleri" [ref=e209] [cursor=pointer]:
+                    - /url: /arama/izmir-pet-kuaforleri
+                    - generic [ref=e210]: İzmir Pet Kuaförleri
+                  - link "İzmir Köpek Eğitim Merkezleri" [ref=e211] [cursor=pointer]:
+                    - /url: /arama/izmir-kopek-egitim-merkezleri
+                    - generic [ref=e212]: İzmir Köpek Eğitim Merkezleri
+                  - link "İzmir Pet Kreşleri" [ref=e213] [cursor=pointer]:
+                    - /url: /arama/izmir-pet-kresleri
+                    - generic [ref=e214]: İzmir Pet Kreşleri
+              - generic [ref=e215]:
+                - generic [ref=e217]: Popüler Aramalar
+                - generic [ref=e219]:
+                  - link "İstanbul Pet Otelleri" [ref=e220] [cursor=pointer]:
+                    - /url: /arama/istanbul-pet-otelleri
+                  - link "Ankara Köpek Otelleri" [ref=e221] [cursor=pointer]:
+                    - /url: /arama/ankara-kopek-otelleri
+                  - link "İzmir Kedi Otelleri" [ref=e222] [cursor=pointer]:
+                    - /url: /arama/izmir-kedi-otelleri
+                  - link "Bursa Pet Otelleri" [ref=e223] [cursor=pointer]:
+                    - /url: /arama/bursa-pet-otelleri
+                  - link "Antalya Köpek Otelleri" [ref=e224] [cursor=pointer]:
+                    - /url: /arama/antalya-kopek-otelleri
+                  - link "Muğla Pet Otelleri" [ref=e225] [cursor=pointer]:
+                    - /url: /arama/mugla-pet-otelleri
+        - generic [ref=e227]:
+          - heading "İzmir Kedi Otelleri seçerken" [level=2] [ref=e228]
+          - paragraph [ref=e229]: İzmir'de kedi oteli ararken önce ilçeyi, oda/kum düzenini, iletişim hızını ve güncel müsaitliği birlikte kontrol edin. kediniz için oda ayrımı, kum kabı düzeni, sakin alan ihtiyacı, günlük bakım rutini ve güncel müsaitlik bilgisi işletmeyle doğrudan netleştirilmelidir.
+          - list [ref=e230]:
+            - listitem [ref=e231]: İzmir içindeki sonuçları ilçe, iletişim kanalı ve hizmet odağına göre kısa listeye alın.
+            - listitem [ref=e232]: Kedi oteli seçmeden önce oda/kafes düzenini, kum kabı temizliğini, mama rutinini ve stres yönetimi yaklaşımını sorun.
+            - listitem [ref=e233]: Fiyat ve müsaitlik dönemsel olarak değişebileceği için profil bilgilerini karar öncesi işletmeyle teyit edin.
+          - generic [ref=e234]:
+            - heading "Bu sayfa nasıl okunmalı?" [level=3] [ref=e235]
+            - paragraph [ref=e236]: Petkonak sonuçları rezervasyon veya fiyat garantisi değil, işletmeyle görüşmeye başlamadan önce kontrol edilecek kısa liste sunar.
+            - list [ref=e237]:
+              - listitem [ref=e238]: Sonuçlar şehir, ilçe, kategori ve kabul edilen hayvan türü sinyallerine göre ayrıştırılır.
+              - listitem [ref=e239]: Profil bilgilerinde karar öncesi teyit edilmesi gereken iletişim, konum ve hizmet notları öne çıkarılır.
+              - listitem [ref=e240]: Yanlış veya güncel olmayan bilgi için işletme sahipliği ve düzeltme talepleri ayrı akışta incelenir.
+            - generic [ref=e241]:
+              - link "Veri kaynakları ve işletme hakları" [ref=e242] [cursor=pointer]:
+                - /url: /veri-kaynaklari
+              - link "Yardım merkezi" [ref=e243] [cursor=pointer]:
+                - /url: /yardim-merkezi
+              - link "İzmir kedi oteli fiyatları" [ref=e244] [cursor=pointer]:
+                - /url: /rehber/kedi-oteli-fiyatlari
+              - link "Kedi pansiyonu kontrol listesi" [ref=e245] [cursor=pointer]:
+                - /url: /rehber/kedi-pansiyonu
+              - link "İzmir kedi otelleri rehberi" [ref=e246] [cursor=pointer]:
+                - /url: /rehber/izmir-kedi-otelleri
+              - link "Pet oteline bırakmadan önce" [ref=e247] [cursor=pointer]:
+                - /url: /rehber/pet-oteline-birakmadan-once
+          - generic [ref=e248]:
+            - generic [ref=e249]:
+              - heading "İzmir kedi oteli fiyatları nasıl değişir?" [level=3] [ref=e250]
+              - paragraph [ref=e251]: Fiyatlar konaklama süresi, oda tipi, mama dahil olup olmaması, transfer, ek bakım hizmetleri ve yoğun dönemlere göre değişebilir. Petkonak fiyat garantisi vermez; güncel tutar işletmeyle doğrudan teyit edilmelidir.
+            - generic [ref=e252]:
+              - heading "kedi oteli ile görüşmeden önce hangi bilgileri hazırlamalıyım?" [level=3] [ref=e253]
+              - paragraph [ref=e254]: Kedinizin yaşı, aşı durumu, kısır olup olmadığı, kronik rahatsızlığı, kullandığı mama/kum tipi ve yalnız kalma toleransı görüşme öncesi net olmalıdır.
+            - generic [ref=e255]:
+              - heading "Petkonak üzerinden rezervasyon veya ödeme yapılır mı?" [level=3] [ref=e256]
+              - paragraph [ref=e257]: Hayır. Petkonak bir keşif rehberidir. Kullanıcılar profil sayfalarındaki telefon, WhatsApp veya web sitesi bağlantılarıyla işletmeye doğrudan ulaşır.
+    - generic [ref=e259]:
+      - generic [ref=e260]:
+        - generic [ref=e261]:
+          - heading "Keşfedin" [level=5] [ref=e262]
+          - list [ref=e263]:
+            - listitem [ref=e264]:
+              - link "Tüm Pet Hizmetleri" [ref=e265] [cursor=pointer]:
+                - /url: /arama
+            - listitem [ref=e266]:
+              - link "Köpek Otelleri" [ref=e267] [cursor=pointer]:
+                - /url: /arama/kopek-otelleri
+            - listitem [ref=e268]:
+              - link "Kedi Otelleri" [ref=e269] [cursor=pointer]:
+                - /url: /arama/kedi-otelleri
+            - listitem [ref=e270]:
+              - link "Blog" [ref=e271] [cursor=pointer]:
+                - /url: /blog
+            - listitem [ref=e272]:
+              - link "Pet Oteli Fiyatları" [ref=e273] [cursor=pointer]:
+                - /url: /rehber/pet-oteli-fiyatlari
+            - listitem [ref=e274]:
+              - link "Pet Oteli Seçerken" [ref=e275] [cursor=pointer]:
+                - /url: /rehber/pet-oteli-secerken
+            - listitem [ref=e276]:
+              - link "Kedi Pansiyonu" [ref=e277] [cursor=pointer]:
+                - /url: /rehber/kedi-pansiyonu
+            - listitem [ref=e278]:
+              - link "Köpek Pansiyonu" [ref=e279] [cursor=pointer]:
+                - /url: /rehber/kopek-pansiyonu
+            - listitem [ref=e280]:
+              - link "Pet Pansiyon" [ref=e281] [cursor=pointer]:
+                - /url: /rehber/pet-pansiyon
+            - listitem [ref=e282]:
+              - link "İstanbul Pet Oteli Rehberi" [ref=e283] [cursor=pointer]:
+                - /url: /rehber/pet-hotel-istanbul
+            - listitem [ref=e284]:
+              - link "Pet Oteli Açmak" [ref=e285] [cursor=pointer]:
+                - /url: /rehber/pet-oteli-acmak
+            - listitem [ref=e286]:
+              - link "Site Haritası" [ref=e287] [cursor=pointer]:
+                - /url: /site-haritasi
+        - generic [ref=e288]:
+          - heading "Popüler Aramalar" [level=5] [ref=e289]
+          - list [ref=e290]:
+            - listitem [ref=e291]:
+              - link "İzmir Kedi Otelleri" [ref=e292] [cursor=pointer]:
+                - /url: /arama/izmir-kedi-otelleri
+            - listitem [ref=e293]:
+              - link "İzmir Pet Otelleri" [ref=e294] [cursor=pointer]:
+                - /url: /arama/izmir-pet-otelleri
+            - listitem [ref=e295]:
+              - link "İstanbul Kedi Otelleri" [ref=e296] [cursor=pointer]:
+                - /url: /arama/istanbul-kedi-otelleri
+            - listitem [ref=e297]:
+              - link "İstanbul Pet Otelleri" [ref=e298] [cursor=pointer]:
+                - /url: /arama/istanbul-pet-otelleri
+            - listitem [ref=e299]:
+              - link "İstanbul Köpek Otelleri" [ref=e300] [cursor=pointer]:
+                - /url: /arama/istanbul-kopek-otelleri
+            - listitem [ref=e301]:
+              - link "Ankara Kedi Otelleri" [ref=e302] [cursor=pointer]:
+                - /url: /arama/ankara-kedi-otelleri
+            - listitem [ref=e303]:
+              - link "Ankara Köpek Otelleri" [ref=e304] [cursor=pointer]:
+                - /url: /arama/ankara-kopek-otelleri
+            - listitem [ref=e305]:
+              - link "Antalya Kedi Otelleri" [ref=e306] [cursor=pointer]:
+                - /url: /arama/antalya-kedi-otelleri
+            - listitem [ref=e307]:
+              - link "Antalya Köpek Otelleri" [ref=e308] [cursor=pointer]:
+                - /url: /arama/antalya-kopek-otelleri
+            - listitem [ref=e309]:
+              - link "Balıkesir Kedi Otelleri" [ref=e310] [cursor=pointer]:
+                - /url: /arama/balikesir-kedi-otelleri
+            - listitem [ref=e311]:
+              - link "Bodrum Köpek Otelleri" [ref=e312] [cursor=pointer]:
+                - /url: /arama/mugla-bodrum-kopek-otelleri
+        - generic [ref=e313]:
+          - heading "Kategoriler" [level=5] [ref=e314]
+          - list [ref=e315]:
+            - listitem [ref=e316]:
+              - link "Pet Otelleri" [ref=e317] [cursor=pointer]:
+                - /url: /arama/pet-otelleri
+            - listitem [ref=e318]:
+              - link "Köpek Otelleri" [ref=e319] [cursor=pointer]:
+                - /url: /arama/kopek-otelleri
+            - listitem [ref=e320]:
+              - link "Kedi Otelleri" [ref=e321] [cursor=pointer]:
+                - /url: /arama/kedi-otelleri
+            - listitem [ref=e322]:
+              - link "Veteriner Klinikleri" [ref=e323] [cursor=pointer]:
+                - /url: /arama/veteriner-klinikleri
+            - listitem [ref=e324]:
+              - link "Petshoplar" [ref=e325] [cursor=pointer]:
+                - /url: /arama/petshoplar
+            - listitem [ref=e326]:
+              - link "Pet Kuaförleri" [ref=e327] [cursor=pointer]:
+                - /url: /arama/pet-kuaforleri
+            - listitem [ref=e328]:
+              - link "Köpek Eğitim Merkezleri" [ref=e329] [cursor=pointer]:
+                - /url: /arama/kopek-egitim-merkezleri
+            - listitem [ref=e330]:
+              - link "Pet Kreşleri" [ref=e331] [cursor=pointer]:
+                - /url: /arama/pet-kresleri
+        - generic [ref=e332]:
+          - heading "Faydalı Bağlantılar" [level=5] [ref=e333]
+          - list [ref=e334]:
+            - listitem [ref=e335]:
+              - link "Hakkımızda" [ref=e336] [cursor=pointer]:
+                - /url: /hakkimizda
+            - listitem [ref=e337]:
+              - link "İletişim" [ref=e338] [cursor=pointer]:
+                - /url: /iletisim
+            - listitem [ref=e339]:
+              - link "Yardım Merkezi" [ref=e340] [cursor=pointer]:
+                - /url: /yardim-merkezi
+            - listitem [ref=e341]:
+              - link "Gizlilik Politikası" [ref=e342] [cursor=pointer]:
+                - /url: /gizlilik-politikasi
+            - listitem [ref=e343]:
+              - link "Veri Kaynakları" [ref=e344] [cursor=pointer]:
+                - /url: /veri-kaynaklari
+            - listitem [ref=e345]:
+              - link "KVKK" [ref=e346] [cursor=pointer]:
+                - /url: /kvkk
+            - listitem [ref=e347]:
+              - link "İşletme görünürlüğü" [ref=e348] [cursor=pointer]:
+                - /url: /isletmeniz-icin
+        - generic [ref=e349]:
+          - heading "İletişim" [level=5] [ref=e350]
+          - list [ref=e351]:
+            - listitem [ref=e352]:
+              - link "destek@petkonak.com" [ref=e353] [cursor=pointer]:
+                - /url: mailto:destek@petkonak.com
+      - paragraph [ref=e355]:
+        - generic [ref=e356]: Pet Otelleri, Pet Pansiyonları, Evcil Hayvan Oteli, Kedi Oteli, Köpek Oteli.
+        - text: © 2026 Petkonak.com Tüm hakları saklıdır.
+        - generic [ref=e357]: Kedi Pansiyonu, Köpek Pansiyonu, Pet Konaklama, Hayvan Oteli.
+  - generic [ref=e359]:
+    - paragraph [ref=e360]: Petkonak, site kullanımını ve işletme iletişim tıklamalarını iyileştirmek için anonimleştirilmiş analitik verileri kullanır. IP adresleri düz metin olarak saklanmaz.
+    - generic [ref=e361]:
+      - button "Reddet" [ref=e362] [cursor=pointer]
+      - button "Tamam" [ref=e363] [cursor=pointer]
+  - alert [ref=e364]

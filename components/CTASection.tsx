@@ -18,7 +18,6 @@ export function CTASection({
 }: CTASectionProps) {
   return (
     <section className="hero-card">
-      <div className="ambient-orb right-[-3rem] top-[-2rem] h-40 w-40 bg-[#10b981]/30" />
       <div className="relative grid gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-start">
         <div data-nosnippet className="space-y-6">
           <p className="dna-kicker text-[#8df1cb]">Next Step</p>

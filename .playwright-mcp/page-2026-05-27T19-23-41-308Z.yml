@@ -1,0 +1,947 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - link "HydrogenExpert logo HydrogenExpert Storefront strategy and delivery" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - img "HydrogenExpert logo" [ref=e9]
+            - generic [ref=e10]:
+              - generic [ref=e11]: HydrogenExpert
+              - generic [ref=e12]: Storefront strategy and delivery
+          - link "Message on LinkedIn" [ref=e14] [cursor=pointer]:
+            - /url: https://www.linkedin.com/in/emremutlujs/
+        - navigation "Primary navigation" [ref=e15]:
+          - link "Packages" [ref=e16] [cursor=pointer]:
+            - /url: /shopify-hydrogen-packages
+          - link "Developer" [ref=e17] [cursor=pointer]:
+            - /url: /shopify-hydrogen-developer
+          - link "Cost" [ref=e18] [cursor=pointer]:
+            - /url: /shopify-hydrogen-cost
+          - link "Proof" [ref=e19] [cursor=pointer]:
+            - /url: /case-studies
+          - link "Resources" [ref=e20] [cursor=pointer]:
+            - /url: /resources
+          - link "When Not to Use Hydrogen" [ref=e21] [cursor=pointer]:
+            - /url: /when-not-to-use-hydrogen
+          - link "Blog" [ref=e22] [cursor=pointer]:
+            - /url: /blog
+          - link "Articles" [ref=e23] [cursor=pointer]:
+            - /url: /articles
+          - link "Hire Me" [ref=e24] [cursor=pointer]:
+            - /url: /hire-me
+    - main [ref=e25]:
+      - generic [ref=e26]:
+        - generic [ref=e27]:
+          - generic [ref=e28]:
+            - generic [ref=e29]:
+              - heading "Senior Shopify Hydrogen storefronts from $2K-$5K" [level=1] [ref=e30]
+              - paragraph [ref=e31]: Launch a lean custom Hydrogen storefront without agency overhead.
+            - paragraph [ref=e32]: "I build fixed-scope Shopify Hydrogen storefronts for growth-stage Shopify brands that have outgrown theme limits: core ecommerce pages, product flow, cart drawer, checkout handoff, and clean performance - priced by project requirements, not traffic or pageviews."
+            - paragraph [ref=e33]:
+              - text: Reviewed
+              - time [ref=e34]: May 25, 2026
+            - generic [ref=e35]:
+              - link "Request Scope Review" [ref=e36] [cursor=pointer]:
+                - /url: /contact#fit-review-form
+              - link "View Build Packages" [ref=e37] [cursor=pointer]:
+                - /url: /shopify-hydrogen-packages
+            - paragraph [ref=e38]:
+              - text: Built by Emre Mutlu - Shopify Hydrogen developer, Upwork Top Rated Plus, 100% JSS, 1,900+ Upwork hours, and creator of the first English Shopify Hydrogen course on Udemy.
+              - link "See production proof." [ref=e39] [cursor=pointer]:
+                - /url: /case-studies
+          - generic [ref=e41]:
+            - generic [ref=e42]:
+              - link "Top Rated Plus" [ref=e44] [cursor=pointer]:
+                - /url: https://www.upwork.com/freelancers/emremutlu
+              - link "100% JSS" [ref=e46] [cursor=pointer]:
+                - /url: https://www.upwork.com/freelancers/emremutlu
+              - link "1,900+ hours on Upwork" [ref=e48] [cursor=pointer]:
+                - /url: https://www.upwork.com/freelancers/emremutlu
+            - generic [ref=e49]:
+              - link "32K+ LinkedIn followers" [ref=e51] [cursor=pointer]:
+                - /url: https://www.linkedin.com/in/emremutlujs/
+              - link "World's First in English" [ref=e53] [cursor=pointer]:
+                - /url: https://www.udemy.com/shopify-hydrogen
+              - generic [ref=e54]: First in Turkey
+          - generic [ref=e55]:
+            - link "Start at the resource hub Guides, services, proof, issues, and templates in one map." [ref=e56] [cursor=pointer]:
+              - /url: /resources
+              - heading "Start at the resource hub" [level=2] [ref=e57]
+              - paragraph [ref=e58]: Guides, services, proof, issues, and templates in one map.
+            - link "Study Hydrogen examples Patterns with source links and production takeaways." [ref=e59] [cursor=pointer]:
+              - /url: /shopify-hydrogen-examples
+              - heading "Study Hydrogen examples" [level=2] [ref=e60]
+              - paragraph [ref=e61]: Patterns with source links and production takeaways.
+            - link "Copy a checklist Scope, migration, launch, PDP, analytics, and content-model templates." [ref=e62] [cursor=pointer]:
+              - /url: /shopify-hydrogen-templates
+              - heading "Copy a checklist" [level=2] [ref=e63]
+              - paragraph [ref=e64]: Scope, migration, launch, PDP, analytics, and content-model templates.
+        - generic [ref=e65]:
+          - generic [ref=e66]:
+            - generic [ref=e67]:
+              - paragraph [ref=e68]: Build packages
+              - heading "Hydrogen build packages priced by project requirements." [level=2] [ref=e69]
+            - paragraph [ref=e70]: Fixed-scope storefront packages for brands that want a lean custom Hydrogen build without agency overhead. Pricing is based on project scope, not traffic, not pageviews, or store size.
+          - generic [ref=e71]:
+            - article [ref=e72]:
+              - generic [ref=e74]:
+                - paragraph [ref=e75]: Starting at $2,000
+                - heading "Hydrogen Starter Storefront" [level=3] [ref=e76]
+                - paragraph [ref=e77]:
+                  - strong [ref=e78]: "Best for:"
+                  - text: A lean custom storefront with the core shopping flow.
+                - link "Scope discipline proof Liquid proof shows when a smaller theme-native path should beat a Starter build." [ref=e79] [cursor=pointer]:
+                  - /url: /case-studies/kirazev-shopify-liquid
+                  - generic [ref=e80]: Scope discipline proof
+                  - generic [ref=e81]: Liquid proof shows when a smaller theme-native path should beat a Starter build.
+              - generic [ref=e82]:
+                - generic [ref=e83]:
+                  - paragraph [ref=e84]: Includes
+                  - list [ref=e85]:
+                    - listitem [ref=e86]:
+                      - generic [ref=e88]: Home / landing page
+                    - listitem [ref=e89]:
+                      - generic [ref=e91]: Collection / listing page
+                    - listitem [ref=e92]:
+                      - generic [ref=e94]: Product detail page
+                    - listitem [ref=e95]:
+                      - generic [ref=e97]: Add to cart
+                    - listitem [ref=e98]:
+                      - generic [ref=e100]: Cart drawer
+                    - listitem [ref=e101]:
+                      - generic [ref=e103]: Shopify checkout handoff
+                    - listitem [ref=e104]:
+                      - generic [ref=e106]: Basic account entry
+                    - listitem [ref=e107]:
+                      - generic [ref=e109]: Header / footer
+                    - listitem [ref=e110]:
+                      - generic [ref=e112]: 1 reusable content page template
+                    - listitem [ref=e113]:
+                      - generic [ref=e115]: Basic SEO setup
+                    - listitem [ref=e116]:
+                      - generic [ref=e118]: Oxygen deployment guidance
+                - generic [ref=e119]:
+                  - paragraph [ref=e120]: Not included
+                  - list [ref=e121]:
+                    - listitem [ref=e122]:
+                      - generic [ref=e124]: Custom checkout
+                    - listitem [ref=e125]:
+                      - generic [ref=e127]: Advanced filtering
+                    - listitem [ref=e128]:
+                      - generic [ref=e130]: Complex search
+                    - listitem [ref=e131]:
+                      - generic [ref=e133]: Subscriptions
+                    - listitem [ref=e134]:
+                      - generic [ref=e136]: B2B
+                    - listitem [ref=e137]:
+                      - generic [ref=e139]: Multi-language
+                    - listitem [ref=e140]:
+                      - generic [ref=e142]: Full CMS
+                    - listitem [ref=e143]:
+                      - generic [ref=e145]: Large migration
+              - link "Request Scope Review" [ref=e146] [cursor=pointer]:
+                - /url: /contact#fit-review-form
+            - article [ref=e147]:
+              - generic [ref=e149]:
+                - paragraph [ref=e150]: $3,000-$3,500
+                - heading "Hydrogen Standard Storefront" [level=3] [ref=e151]
+                - paragraph [ref=e152]:
+                  - strong [ref=e153]: "Best for:"
+                  - text: DTC brands that need a more complete storefront than the Starter package.
+                - link "DTC flow proof Rebel Bunny maps content, cart UX, and partner interest to a focused storefront." [ref=e154] [cursor=pointer]:
+                  - /url: /case-studies/rebel-bunny-shopify-hydrogen
+                  - generic [ref=e155]: DTC flow proof
+                  - generic [ref=e156]: Rebel Bunny maps content, cart UX, and partner interest to a focused storefront.
+              - generic [ref=e157]:
+                - generic [ref=e158]:
+                  - paragraph [ref=e159]: Includes
+                  - list [ref=e160]:
+                    - listitem [ref=e161]:
+                      - generic [ref=e163]: Everything in Starter
+                    - listitem [ref=e164]:
+                      - generic [ref=e166]: Search results page
+                    - listitem [ref=e167]:
+                      - generic [ref=e169]: Basic filters and sorting
+                    - listitem [ref=e170]:
+                      - generic [ref=e172]: About / FAQ / shipping templates
+                    - listitem [ref=e173]:
+                      - generic [ref=e175]: Blog or education template
+                    - listitem [ref=e176]:
+                      - generic [ref=e178]: Basic review app integration
+                    - listitem [ref=e179]:
+                      - generic [ref=e181]: Basic analytics events
+                    - listitem [ref=e182]:
+                      - generic [ref=e184]: JSON-LD / metadata baseline
+                    - listitem [ref=e185]:
+                      - generic [ref=e187]: Improved mobile cart UX
+                - generic [ref=e188]:
+                  - paragraph [ref=e189]: Not included
+                  - list [ref=e190]:
+                    - listitem [ref=e191]:
+                      - generic [ref=e193]: Advanced search systems
+                    - listitem [ref=e194]:
+                      - generic [ref=e196]: Subscription architecture
+                    - listitem [ref=e197]:
+                      - generic [ref=e199]: B2B or wholesale logic
+                    - listitem [ref=e200]:
+                      - generic [ref=e202]: Multi-language setup
+                    - listitem [ref=e203]:
+                      - generic [ref=e205]: Large catalog migration
+              - link "Request Scope Review" [ref=e206] [cursor=pointer]:
+                - /url: /contact#fit-review-form
+            - article [ref=e207]:
+              - generic [ref=e209]:
+                - paragraph [ref=e210]: $4,500-$5,000
+                - heading "Hydrogen Growth Storefront" [level=3] [ref=e211]
+                - paragraph [ref=e212]:
+                  - strong [ref=e213]: "Best for:"
+                  - text: Brands that need a lean but more flexible Hydrogen storefront.
+                - link "Growth storefront proof Bayam maps premium catalog discovery, trust UX, and structured commerce surfaces." [ref=e214] [cursor=pointer]:
+                  - /url: /case-studies/bayam-jewelry-shopify-hydrogen
+                  - generic [ref=e215]: Growth storefront proof
+                  - generic [ref=e216]: Bayam maps premium catalog discovery, trust UX, and structured commerce surfaces.
+              - generic [ref=e217]:
+                - generic [ref=e218]:
+                  - paragraph [ref=e219]: Includes
+                  - list [ref=e220]:
+                    - listitem [ref=e221]:
+                      - generic [ref=e223]: Everything in Standard
+                    - listitem [ref=e224]:
+                      - generic [ref=e226]: Metaobjects-based content blocks
+                    - listitem [ref=e227]:
+                      - generic [ref=e229]: Marketing landing section system
+                    - listitem [ref=e230]:
+                      - generic [ref=e232]: 1-2 third-party integrations
+                    - listitem [ref=e233]:
+                      - generic [ref=e235]: Product recommendation section
+                    - listitem [ref=e236]:
+                      - generic [ref=e238]: Collection intro / subcategory logic
+                    - listitem [ref=e239]:
+                      - generic [ref=e241]: Performance pass
+                    - listitem [ref=e242]:
+                      - generic [ref=e244]: Limited route migration
+                    - listitem [ref=e245]:
+                      - generic [ref=e247]: Basic redirect planning
+                    - listitem [ref=e248]:
+                      - generic [ref=e250]: Launch QA checklist
+                - generic [ref=e251]:
+                  - paragraph [ref=e252]: Not included
+                  - list [ref=e253]:
+                    - listitem [ref=e254]:
+                      - generic [ref=e256]: Full CMS architecture
+                    - listitem [ref=e257]:
+                      - generic [ref=e259]: Complex app replacement
+                    - listitem [ref=e260]:
+                      - generic [ref=e262]: Advanced filters
+                    - listitem [ref=e263]:
+                      - generic [ref=e265]: Custom product builder
+                    - listitem [ref=e266]:
+                      - generic [ref=e268]: SEO-risky large migration
+              - link "Request Scope Review" [ref=e269] [cursor=pointer]:
+                - /url: /contact#fit-review-form
+            - article [ref=e270]:
+              - generic [ref=e272]:
+                - paragraph [ref=e273]: $5K+
+                - heading "Custom Hydrogen Scope" [level=3] [ref=e274]
+                - paragraph [ref=e275]:
+                  - strong [ref=e276]: "Best for:"
+                  - text: Projects with migration risk, app complexity, B2B, large catalogs, advanced search, or custom product logic.
+                - link "Scale proof EveShop supports custom Hydrogen judgment when scale and migration risk are higher." [ref=e277] [cursor=pointer]:
+                  - /url: /case-studies/eveshop-shopify-hydrogen
+                  - generic [ref=e278]: Scale proof
+                  - generic [ref=e279]: EveShop supports custom Hydrogen judgment when scale and migration risk are higher.
+              - generic [ref=e280]:
+                - generic [ref=e281]:
+                  - paragraph [ref=e282]: Includes
+                  - list [ref=e283]:
+                    - listitem [ref=e284]:
+                      - generic [ref=e286]: Scoped after review.
+                - generic [ref=e287]:
+                  - paragraph [ref=e288]: Not included
+                  - list [ref=e289]:
+                    - listitem [ref=e290]:
+                      - generic [ref=e292]: Fixed-price package guarantee
+                    - listitem [ref=e293]:
+                      - generic [ref=e295]: Unlimited feature requests
+                    - listitem [ref=e296]:
+                      - generic [ref=e298]: Custom checkout inside package pricing
+              - link "Request Scope Review" [ref=e299] [cursor=pointer]:
+                - /url: /contact#fit-review-form
+          - generic [ref=e300]:
+            - paragraph [ref=e301]: "A lean Hydrogen storefront can start around $2,000 when the scope is clear: core pages, product flow, cart drawer, Shopify checkout handoff, and basic account entry."
+            - paragraph [ref=e302]: More complex work increases the price when it adds custom filters, integrations, content models, migration risk, analytics, SEO preservation, or post-launch support.
+            - paragraph [ref=e303]: The package range is not a promise to compress a full enterprise replatform into $5K. It is a bounded first-launch scope before custom complexity, agency scope, or no-rebuild recommendations take over.
+        - generic [ref=e304]:
+          - generic [ref=e305]:
+            - paragraph [ref=e306]: What $2K covers
+            - heading "What a $2K Hydrogen build is" [level=2] [ref=e307]
+            - generic [ref=e308]:
+              - paragraph [ref=e309]: A focused first version of a custom Shopify Hydrogen storefront.
+              - paragraph [ref=e310]: "It covers the core shopping path: landing page, listing page, product detail page, cart drawer, checkout handoff, basic account entry, and launch-ready structure."
+          - generic [ref=e311]:
+            - paragraph [ref=e312]: Scope boundary
+            - heading "What it is not" [level=2] [ref=e313]
+            - list [ref=e314]:
+              - listitem [ref=e315]:
+                - generic [ref=e316]: Full replatforming project
+              - listitem [ref=e317]:
+                - generic [ref=e318]: Full UX redesign
+              - listitem [ref=e319]:
+                - generic [ref=e320]: Complex app migration
+              - listitem [ref=e321]:
+                - generic [ref=e322]: Custom checkout
+              - listitem [ref=e323]:
+                - generic [ref=e324]: Advanced search system
+              - listitem [ref=e325]:
+                - generic [ref=e326]: B2B build
+              - listitem [ref=e327]:
+                - generic [ref=e328]: Subscription architecture
+              - listitem [ref=e329]:
+                - generic [ref=e330]: Large-catalog SEO migration
+        - generic [ref=e331]:
+          - generic [ref=e332]:
+            - paragraph [ref=e333]: Client roster
+            - heading "Selected Shopify work across Hydrogen and Liquid." [level=2] [ref=e334]
+            - paragraph [ref=e335]: Hydrogen, luxury ecommerce, DTC storytelling, and fast Liquid builds shown as approved portfolio proof.
+          - generic [ref=e336]:
+            - link "EveShop" [ref=e337] [cursor=pointer]:
+              - /url: /case-studies#eveshop
+              - img "EveShop" [ref=e340]
+            - link "Bayam Jewelry" [ref=e341] [cursor=pointer]:
+              - /url: /case-studies#bayam
+              - img "Bayam Jewelry" [ref=e345]
+            - link "Rebel Bunny Matcha" [ref=e346] [cursor=pointer]:
+              - /url: /case-studies#rebel-bunny
+              - img "Rebel Bunny Matcha" [ref=e350]
+            - link "Kirazev" [ref=e351] [cursor=pointer]:
+              - /url: /case-studies#kirazev
+              - generic [ref=e353]: Kirazev
+            - link "Clohi" [ref=e354] [cursor=pointer]:
+              - /url: /case-studies#clohi
+              - generic [ref=e356]: Clohi
+        - generic [ref=e357]:
+          - generic [ref=e358]:
+            - generic [ref=e359]:
+              - paragraph [ref=e360]: Commercial paths
+              - heading "Find the right entry point for the storefront decision." [level=2] [ref=e361]
+            - paragraph [ref=e362]: The primary path stays the senior-led Hydrogen service. Articles support the decision, but they do not replace direct commercial scoping.
+          - generic [ref=e363]:
+            - link "View fixed-scope build packages Use this path when you want Starter, Standard, Growth, or Custom scope mapped to real storefront requirements." [ref=e364] [cursor=pointer]:
+              - /url: /shopify-hydrogen-packages
+              - heading "View fixed-scope build packages" [level=2] [ref=e365]
+              - paragraph [ref=e366]: Use this path when you want Starter, Standard, Growth, or Custom scope mapped to real storefront requirements.
+            - link "Evaluate Shopify Hydrogen experts Use this path when the search is about expert proof, agency comparison, and who should safely own Hydrogen scope." [ref=e367] [cursor=pointer]:
+              - /url: /shopify-hydrogen-experts
+              - heading "Evaluate Shopify Hydrogen experts" [level=2] [ref=e368]
+              - paragraph [ref=e369]: Use this path when the search is about expert proof, agency comparison, and who should safely own Hydrogen scope.
+            - link "Hire a senior Shopify Hydrogen developer If you searched for Shopify Hydrogen developers, this is the direct senior-operator path instead of a general Shopify vendor." [ref=e370] [cursor=pointer]:
+              - /url: /shopify-hydrogen-developer
+              - heading "Hire a senior Shopify Hydrogen developer" [level=2] [ref=e371]
+              - paragraph [ref=e372]: If you searched for Shopify Hydrogen developers, this is the direct senior-operator path instead of a general Shopify vendor.
+            - link "Use audit only when risk is unclear Start free. Use paid review when SEO, migration, apps, analytics, or requirements could change the estimate." [ref=e373] [cursor=pointer]:
+              - /url: /shopify-hydrogen-audit
+              - heading "Use audit only when risk is unclear" [level=2] [ref=e374]
+              - paragraph [ref=e375]: Start free. Use paid review when SEO, migration, apps, analytics, or requirements could change the estimate.
+            - link "See Production Proof Review approved Hydrogen storefront work across retail, luxury ecommerce, and DTC." [ref=e376] [cursor=pointer]:
+              - /url: /case-studies
+              - heading "See Production Proof" [level=2] [ref=e377]
+              - paragraph [ref=e378]: Review approved Hydrogen storefront work across retail, luxury ecommerce, and DTC.
+            - link "Read the hiring guide Use the guide to evaluate Hydrogen developer proof, ownership, SEO judgment, and when an audit is the safer first move." [ref=e379] [cursor=pointer]:
+              - /url: /articles/how-to-hire-shopify-hydrogen-developer
+              - heading "Read the hiring guide" [level=2] [ref=e380]
+              - paragraph [ref=e381]: Use the guide to evaluate Hydrogen developer proof, ownership, SEO judgment, and when an audit is the safer first move.
+        - generic [ref=e382]:
+          - generic [ref=e383]:
+            - generic [ref=e384]:
+              - paragraph [ref=e385]: Selected work
+              - heading "5 Shopify projects, with Hydrogen proof at the center" [level=2] [ref=e386]
+            - paragraph [ref=e387]: Including Turkey's first production Hydrogen storefront, EveShop at 400K+ web users and 100K+ mobile users, plus Liquid projects that prove when a faster theme-native build is the better answer.
+          - generic [ref=e388]:
+            - link "EveShop live storefront screenshot showing cosmetics and personal care ecommerce navigation. EveShop logo Nationwide cosmetics retailer — Turkey EveShop Frontend team lead on Turkey's first production Shopify Hydrogen storefront." [ref=e389] [cursor=pointer]:
+              - /url: /case-studies/eveshop-shopify-hydrogen
+              - img "EveShop live storefront screenshot showing cosmetics and personal care ecommerce navigation." [ref=e392]
+              - img "EveShop logo" [ref=e395]
+              - generic [ref=e396]:
+                - paragraph [ref=e397]: Nationwide cosmetics retailer — Turkey
+                - paragraph [ref=e399]: EveShop
+                - paragraph [ref=e400]: Frontend team lead on Turkey's first production Shopify Hydrogen storefront.
+            - link "Bayam Jewelry live storefront screenshot showing luxury jewelry and watch shopping context. Bayam Jewelry logo Fine jewelry and luxury watches — New York Bayam Jewelry Hydrogen storefront for a two-world luxury catalog running on a dedicated commerce subdomain." [ref=e401] [cursor=pointer]:
+              - /url: /case-studies/bayam-jewelry-shopify-hydrogen
+              - img "Bayam Jewelry live storefront screenshot showing luxury jewelry and watch shopping context." [ref=e404]
+              - img "Bayam Jewelry logo" [ref=e407]
+              - generic [ref=e408]:
+                - paragraph [ref=e409]: Fine jewelry and luxury watches — New York
+                - paragraph [ref=e411]: Bayam Jewelry
+                - paragraph [ref=e412]: Hydrogen storefront for a two-world luxury catalog running on a dedicated commerce subdomain.
+            - link "Rebel Bunny Matcha live storefront screenshot showing DTC matcha product storytelling. Rebel Bunny Matcha logo Premium matcha — DTC and wholesale Rebel Bunny Matcha Dual-funnel storefront serving both direct-to-consumer buyers and wholesale partners." [ref=e413] [cursor=pointer]:
+              - /url: /case-studies/rebel-bunny-shopify-hydrogen
+              - img "Rebel Bunny Matcha live storefront screenshot showing DTC matcha product storytelling." [ref=e416]
+              - img "Rebel Bunny Matcha logo" [ref=e419]
+              - generic [ref=e420]:
+                - paragraph [ref=e421]: Premium matcha — DTC and wholesale
+                - paragraph [ref=e423]: Rebel Bunny Matcha
+                - paragraph [ref=e424]: Dual-funnel storefront serving both direct-to-consumer buyers and wholesale partners.
+            - link "Kirazev live storefront screenshot showing home goods catalog navigation. Kirazev Home goods catalog — Shopify Liquid Kirazev Fast Liquid build for kitchen, decor, bathroom, and organizer product discovery." [ref=e425] [cursor=pointer]:
+              - /url: /case-studies/kirazev-shopify-liquid
+              - img "Kirazev live storefront screenshot showing home goods catalog navigation." [ref=e428]
+              - generic [ref=e431]: Kirazev
+              - generic [ref=e432]:
+                - paragraph [ref=e433]: Home goods catalog — Shopify Liquid
+                - paragraph [ref=e435]: Kirazev
+                - paragraph [ref=e436]: Fast Liquid build for kitchen, decor, bathroom, and organizer product discovery.
+            - link "Clohi live storefront screenshot showing India-focused apparel shopping context. Clohi International apparel — Shopify Liquid Clohi India-focused apparel storefront for ethnic, casual, and festive wear buying behavior." [ref=e437] [cursor=pointer]:
+              - /url: /case-studies/clohi-shopify-liquid
+              - img "Clohi live storefront screenshot showing India-focused apparel shopping context." [ref=e440]
+              - generic [ref=e443]: Clohi
+              - generic [ref=e444]:
+                - paragraph [ref=e445]: International apparel — Shopify Liquid
+                - paragraph [ref=e447]: Clohi
+                - paragraph [ref=e448]: India-focused apparel storefront for ethnic, casual, and festive wear buying behavior.
+        - generic [ref=e449]:
+          - generic [ref=e450]:
+            - generic [ref=e451]:
+              - paragraph [ref=e452]: Proof
+              - heading "Public trust signals for a senior-led service model." [level=2] [ref=e453]
+            - paragraph [ref=e454]: The proof layer should scan cleanly before the page asks a merchant to take the next step. No fake office, no fake team, no unsupported partner badges.
+          - generic [ref=e455]:
+            - article [ref=e456]:
+              - paragraph [ref=e458]: Upwork
+              - heading "Top Rated Plus" [level=3] [ref=e459]:
+                - link "Top Rated Plus" [ref=e460] [cursor=pointer]:
+                  - /url: https://www.upwork.com/freelancers/emremutlu
+              - paragraph [ref=e461]: A practical trust signal backed by 1,900+ Upwork hours and public client feedback.
+            - article [ref=e462]:
+              - paragraph [ref=e464]: Reputation
+              - heading "100% Job Success Score" [level=3] [ref=e465]:
+                - link "100% Job Success Score" [ref=e466] [cursor=pointer]:
+                  - /url: https://www.upwork.com/freelancers/emremutlu
+              - paragraph [ref=e467]: Proof of follow-through for merchants making a more serious storefront investment.
+            - article [ref=e468]:
+              - paragraph [ref=e470]: Client feedback
+              - heading "5.0 Rebel Bunny feedback" [level=3] [ref=e471]:
+                - link "5.0 Rebel Bunny feedback" [ref=e472] [cursor=pointer]:
+                  - /url: /case-studies/rebel-bunny-shopify-hydrogen
+              - paragraph [ref=e473]: The ongoing custom Hydrogen storefront contract now has public Upwork feedback attached to the case study.
+            - article [ref=e474]:
+              - paragraph [ref=e476]: Teaching
+              - heading "World's First in English" [level=3] [ref=e477]:
+                - link "World's First in English" [ref=e478] [cursor=pointer]:
+                  - /url: https://www.udemy.com/shopify-hydrogen
+              - paragraph [ref=e479]: Creator of the world's first English Shopify Hydrogen course on Udemy (110+ ratings).
+            - article [ref=e480]:
+              - paragraph [ref=e482]: Shipped work
+              - heading "Turkey's first production Hydrogen storefront" [level=3] [ref=e483]
+              - paragraph [ref=e484]: Frontend Team Lead on Turkey's first production Shopify Hydrogen storefront.
+        - generic [ref=e485]:
+          - generic [ref=e486]:
+            - generic [ref=e487]:
+              - paragraph [ref=e488]: Results
+              - heading "Results built for real business decisions." [level=2] [ref=e489]
+            - paragraph [ref=e490]: The useful outcome is not more tech. It is a storefront that is easier to scale, easier to trust, and easier to improve after launch.
+          - generic [ref=e491]:
+            - generic [ref=e493]:
+              - paragraph [ref=e495]: "3"
+              - paragraph [ref=e496]: production Shopify Plus Hydrogen storefronts shipped
+            - generic [ref=e498]:
+              - paragraph [ref=e500]: 400K+
+              - paragraph [ref=e501]: web users on EveShop at production scale
+            - link "1,900+ hours of Upwork production delivery" [ref=e502] [cursor=pointer]:
+              - /url: https://www.upwork.com/freelancers/emremutlu
+              - generic [ref=e503]:
+                - paragraph [ref=e505]: 1,900+
+                - paragraph [ref=e506]: hours of Upwork production delivery
+            - link "32K+ LinkedIn followers" [ref=e507] [cursor=pointer]:
+              - /url: https://www.linkedin.com/in/emremutlujs/
+              - generic [ref=e508]:
+                - paragraph [ref=e510]: 32K+
+                - paragraph [ref=e511]: LinkedIn followers
+            - link "100% Job Success Score on Upwork" [ref=e512] [cursor=pointer]:
+              - /url: https://www.upwork.com/freelancers/emremutlu
+              - generic [ref=e513]:
+                - paragraph [ref=e515]: 100%
+                - paragraph [ref=e516]: Job Success Score on Upwork
+            - generic [ref=e518]:
+              - paragraph [ref=e520]: $2K-$5K
+              - paragraph [ref=e521]: fixed-scope Hydrogen storefront package range
+        - generic [ref=e522]:
+          - generic [ref=e523]:
+            - generic [ref=e524]:
+              - paragraph [ref=e525]: Process
+              - heading "How working together usually goes" [level=2] [ref=e526]
+            - paragraph [ref=e527]: The point is not to push Hydrogen. It is to figure out whether your current stack is still enough, and if it is not, how to move without turning the project into a mess.
+          - generic [ref=e528]:
+            - generic [ref=e529]:
+              - generic [ref=e530]: "01"
+              - heading "Review scope first" [level=3] [ref=e532]
+              - paragraph [ref=e533]: I look at desired pages, product flow, cart behavior, integrations, SEO risk, design status, and whether Liquid is still the better answer.
+            - generic [ref=e534]:
+              - generic [ref=e535]: "02"
+              - heading "Pick the package path" [level=3] [ref=e537]
+              - paragraph [ref=e538]: You get a direct answer on Starter, Standard, Growth, Custom, Liquid cleanup, or no rebuild before the work becomes bigger than it needs to be.
+            - generic [ref=e539]:
+              - generic [ref=e540]: "03"
+              - heading "Ship lean, then expand" [level=3] [ref=e542]
+              - paragraph [ref=e543]: The first launch stays focused on core ecommerce flow, clean performance, checkout handoff, and launch QA. More features can follow once the direction is proven.
+        - generic [ref=e544]:
+          - generic [ref=e545]:
+            - generic [ref=e546]:
+              - paragraph [ref=e547]: About Emre
+              - heading "Direct operator, direct context, direct accountability" [level=2] [ref=e548]
+            - paragraph [ref=e549]: The point is not to sell a headless rebuild by default. It is to help founders and ecommerce leads make the right commercial call, then ship the work with senior ownership.
+          - article [ref=e550]:
+            - generic [ref=e551]:
+              - generic [ref=e552]:
+                - img "Emre Mutlu, Shopify Hydrogen developer, in a city setting" [ref=e554]
+                - generic [ref=e555]:
+                  - paragraph [ref=e556]: Founder
+                  - heading "Emre Mutlu" [level=3] [ref=e557]
+                  - paragraph [ref=e558]: Shopify Hydrogen Developer
+                - generic [ref=e559]:
+                  - link "Message on LinkedIn" [ref=e560] [cursor=pointer]:
+                    - /url: https://www.linkedin.com/in/emremutlujs/
+                  - link "Top Rated Plus" [ref=e561] [cursor=pointer]:
+                    - /url: https://www.upwork.com/freelancers/emremutlu
+                    - generic [ref=e562]: Top Rated Plus
+                  - link "100% JSS" [ref=e563] [cursor=pointer]:
+                    - /url: https://www.upwork.com/freelancers/emremutlu
+              - generic [ref=e564]:
+                - paragraph [ref=e565]: I started in a metalworking shop in Ankara, running laser cutting machines for two years before pandemic-era self-study pulled me into web development. From there it was Shopify themes, then frontend on Turkey's first production Shopify Hydrogen project (EveShop, 400K+ web users at scale).
+                - paragraph [ref=e566]: Today I am an independent Shopify Hydrogen developer. Top Rated Plus on Upwork, 100% Job Success Score across 1,900+ hours of client work. I also created the world's first English Shopify Hydrogen course on Udemy, because when I started there was no English-language reference to learn from.
+                - paragraph [ref=e567]: I work directly with founders and ecommerce leads. No account manager layer, no agency handoffs. If Hydrogen is not the right move for your store, I will say so.
+        - generic [ref=e568]:
+          - generic [ref=e569]:
+            - generic [ref=e570]:
+              - paragraph [ref=e571]: Teaching
+              - heading "Teaching Shopify Hydrogen in plain English" [level=2] [ref=e572]
+            - paragraph [ref=e573]: I created the world's first English Shopify Hydrogen course on Udemy because the English-language path did not exist when I started.
+          - article [ref=e574]:
+            - generic [ref=e575]:
+              - generic [ref=e576]:
+                - generic [ref=e577]: World's First in English
+                - generic [ref=e579]:
+                  - paragraph [ref=e580]: Udemy
+                  - paragraph [ref=e581]: Teaching Shopify Hydrogen in plain English
+              - generic [ref=e582]:
+                - generic [ref=e583]:
+                  - paragraph [ref=e584]: Teaching
+                  - 'heading "Shopify Hydrogen: Build a Headless Storefront" [level=3] [ref=e585]'
+                  - paragraph [ref=e586]: A merchant-friendly and developer-usable course built from the gap that existed when Hydrogen had no English-language learning path.
+                - generic [ref=e587]:
+                  - generic [ref=e589]: Udemy
+                  - generic [ref=e590]:
+                    - img "5 star Udemy course rating" [ref=e591]:
+                      - img [ref=e592]
+                      - img [ref=e594]
+                      - img [ref=e596]
+                      - img [ref=e598]
+                      - img [ref=e600]
+                    - generic [ref=e602]: 110+ ratings
+                - link "View on Udemy" [ref=e603] [cursor=pointer]:
+                  - /url: https://www.udemy.com/shopify-hydrogen
+        - generic [ref=e604]:
+          - generic [ref=e606]:
+            - paragraph [ref=e607]: FAQ
+            - heading "Frequently asked questions about Shopify Hydrogen." [level=2] [ref=e608]
+          - generic [ref=e609]:
+            - group [ref=e610]:
+              - generic "What is Shopify Hydrogen in plain English?" [ref=e611] [cursor=pointer]
+            - group [ref=e612]:
+              - generic "How much does a Shopify Hydrogen project usually cost?" [ref=e613] [cursor=pointer]
+            - group [ref=e614]:
+              - generic "When does Hydrogen make sense for a growing brand?" [ref=e615] [cursor=pointer]
+            - group [ref=e616]:
+              - generic "How long does a Hydrogen migration usually take?" [ref=e617] [cursor=pointer]
+            - group [ref=e618]:
+              - generic "Where should I go for direct Hydrogen developer support?" [ref=e619] [cursor=pointer]
+            - group [ref=e620]:
+              - generic "Is Hydrogen ready for AI agent commerce in 2026?" [ref=e621] [cursor=pointer]
+            - group [ref=e622]:
+              - generic "What's the ongoing maintenance difference between Hydrogen and Liquid?" [ref=e623] [cursor=pointer]
+        - generic [ref=e624]:
+          - generic [ref=e625]:
+            - generic [ref=e626]:
+              - paragraph [ref=e627]: Technical resources
+              - heading "Start with the pages Google and merchants should understand first." [level=2] [ref=e628]
+            - paragraph [ref=e629]: The core commercial pages explain fit, cost, and proof. These technical resources support the same positioning with practical Hydrogen SEO, URL, and performance detail.
+          - generic [ref=e630]:
+            - link "Shopify Hydrogen SEO A practical guide to metadata, canonical URLs, JSON-LD, variant URLs, sitemaps, robots, and crawl consistency in custom Hydrogen storefronts." [ref=e631] [cursor=pointer]:
+              - /url: /shopify-hydrogen-seo
+              - heading "Shopify Hydrogen SEO" [level=3] [ref=e632]
+              - paragraph [ref=e633]: A practical guide to metadata, canonical URLs, JSON-LD, variant URLs, sitemaps, robots, and crawl consistency in custom Hydrogen storefronts.
+            - link "Shopify Hydrogen Articles Evergreen merchant guides for hiring, migration, SEO, cost, and Hydrogen fit decisions." [ref=e634] [cursor=pointer]:
+              - /url: /articles
+              - heading "Shopify Hydrogen Articles" [level=3] [ref=e635]
+              - paragraph [ref=e636]: Evergreen merchant guides for hiring, migration, SEO, cost, and Hydrogen fit decisions.
+            - link "Shopify Hydrogen Experts A commercial evaluation page for teams comparing Hydrogen experts, agencies, proof, SEO risk, and senior storefront ownership." [ref=e637] [cursor=pointer]:
+              - /url: /shopify-hydrogen-experts
+              - heading "Shopify Hydrogen Experts" [level=3] [ref=e638]
+              - paragraph [ref=e639]: A commercial evaluation page for teams comparing Hydrogen experts, agencies, proof, SEO risk, and senior storefront ownership.
+            - link "Shopify Hydrogen Expert A focused page for buyers who want one senior Hydrogen specialist for architecture, Storefront API work, SEO-safe migration, and launch-risk review." [ref=e640] [cursor=pointer]:
+              - /url: /shopify-hydrogen-expert
+              - heading "Shopify Hydrogen Expert" [level=3] [ref=e641]
+              - paragraph [ref=e642]: A focused page for buyers who want one senior Hydrogen specialist for architecture, Storefront API work, SEO-safe migration, and launch-risk review.
+            - link "How to hire a Hydrogen developer A buyer guide for evaluating Shopify Hydrogen developers, senior ownership, proof, SEO discipline, Storefront API work, and when an audit should come before a rebuild." [ref=e643] [cursor=pointer]:
+              - /url: /articles/how-to-hire-shopify-hydrogen-developer
+              - heading "How to hire a Hydrogen developer" [level=3] [ref=e644]
+              - paragraph [ref=e645]: A buyer guide for evaluating Shopify Hydrogen developers, senior ownership, proof, SEO discipline, Storefront API work, and when an audit should come before a rebuild.
+            - link "Variant URLs and fallback bugs A technical article on keeping clicked options locked, preserving stable variant URLs, and avoiding UX or SEO mismatch on product pages." [ref=e646] [cursor=pointer]:
+              - /url: /blog/shopify-hydrogen-variant-selection-fallback
+              - heading "Variant URLs and fallback bugs" [level=3] [ref=e647]
+              - paragraph [ref=e648]: A technical article on keeping clicked options locked, preserving stable variant URLs, and avoiding UX or SEO mismatch on product pages.
+            - link "Hydrogen performance case note A real-world note on restoring server-rendered product data and cutting a Shopify Hydrogen homepage from roughly 5s to 2s." [ref=e649] [cursor=pointer]:
+              - /url: /blog/cut-homepage-load-time-from-5s-to-2s-shopify-hydrogen
+              - heading "Hydrogen performance case note" [level=3] [ref=e650]
+              - paragraph [ref=e651]: A real-world note on restoring server-rendered product data and cutting a Shopify Hydrogen homepage from roughly 5s to 2s.
+            - link "Metaobjects for content sections A production note on using Shopify metaobjects for page-specific content sections without pushing primary content into fragile client-only paths." [ref=e652] [cursor=pointer]:
+              - /url: /blog/shopify-hydrogen-metaobjects-page-specific-sections
+              - heading "Metaobjects for content sections" [level=3] [ref=e653]
+              - paragraph [ref=e654]: A production note on using Shopify metaobjects for page-specific content sections without pushing primary content into fragile client-only paths.
+        - generic [ref=e655]:
+          - generic [ref=e656]:
+            - generic [ref=e657]:
+              - paragraph [ref=e658]: Buyer decision paths
+              - heading "Route commercial research into the right supporting page." [level=2] [ref=e659]
+            - paragraph [ref=e660]: These pages catch specific comparison, maintenance, and vertical-fit questions without turning Hydrogen into a default recommendation.
+          - generic [ref=e661]:
+            - link "US agency alternative Remote senior-led Hydrogen support for US brands without pretending there is a fake local office." [ref=e662] [cursor=pointer]:
+              - /url: /shopify-hydrogen-agency-usa
+              - heading "US agency alternative" [level=3] [ref=e663]
+              - paragraph [ref=e664]: Remote senior-led Hydrogen support for US brands without pretending there is a fake local office.
+            - link "Hydrogen vs Liquid Plain-English tradeoffs for teams deciding whether a theme can still solve the real storefront problem." [ref=e665] [cursor=pointer]:
+              - /url: /shopify-hydrogen-vs-liquid
+              - heading "Hydrogen vs Liquid" [level=3] [ref=e666]
+              - paragraph [ref=e667]: Plain-English tradeoffs for teams deciding whether a theme can still solve the real storefront problem.
+            - link "Maintenance cost A practical look at the application ownership cost that starts after a Hydrogen storefront launches." [ref=e668] [cursor=pointer]:
+              - /url: /shopify-hydrogen-maintenance-cost
+              - heading "Maintenance cost" [level=3] [ref=e669]
+              - paragraph [ref=e670]: A practical look at the application ownership cost that starts after a Hydrogen storefront launches.
+            - link "Large-catalog retail A vertical decision page for retailers where product discovery, scale, and route discipline matter." [ref=e671] [cursor=pointer]:
+              - /url: /shopify-hydrogen-for-large-catalog-retail
+              - heading "Large-catalog retail" [level=3] [ref=e672]
+              - paragraph [ref=e673]: A vertical decision page for retailers where product discovery, scale, and route discipline matter.
+            - link "DTC education brands A fit page for commerce brands where education content is part of conversion, not a separate blog layer." [ref=e674] [cursor=pointer]:
+              - /url: /shopify-hydrogen-for-dtc-education-brands
+              - heading "DTC education brands" [level=3] [ref=e675]
+              - paragraph [ref=e676]: A fit page for commerce brands where education content is part of conversion, not a separate blog layer.
+            - link "Beauty brands A conservative beauty and cosmetics angle tied to real catalog, content, and product-story constraints." [ref=e677] [cursor=pointer]:
+              - /url: /shopify-hydrogen-for-beauty-brands
+              - heading "Beauty brands" [level=3] [ref=e678]
+              - paragraph [ref=e679]: A conservative beauty and cosmetics angle tied to real catalog, content, and product-story constraints.
+        - generic [ref=e681]:
+          - generic [ref=e682]:
+            - paragraph [ref=e683]: Sources
+            - heading "Authority should be grounded in real references." [level=2] [ref=e684]
+            - paragraph [ref=e685]: These are the official sources behind the technical framing on this site. They support the plain-English guidance rather than replacing it.
+          - generic [ref=e686]:
+            - article [ref=e687]:
+              - heading "Hydrogen official site" [level=3] [ref=e688]:
+                - link "Hydrogen official site" [ref=e689] [cursor=pointer]:
+                  - /url: https://hydrogen.shopify.dev/
+              - paragraph [ref=e690]: Shopify describes Hydrogen as its headless stack for building custom storefronts.
+            - article [ref=e691]:
+              - heading "Shopify Hydrogen getting started docs" [level=3] [ref=e692]:
+                - link "Shopify Hydrogen getting started docs" [ref=e693] [cursor=pointer]:
+                  - /url: https://shopify.dev/docs/storefronts/headless/hydrogen/getting-started
+              - paragraph [ref=e694]: Official documentation for setup, capabilities, and implementation path.
+            - article [ref=e695]:
+              - heading "Shopify Hydrogen and Oxygen fundamentals" [level=3] [ref=e696]:
+                - link "Shopify Hydrogen and Oxygen fundamentals" [ref=e697] [cursor=pointer]:
+                  - /url: https://shopify.dev/docs/storefronts/headless/hydrogen/fundamentals
+              - paragraph [ref=e698]: Official reference for Hydrogen, React Router, Oxygen, and deployment architecture.
+        - generic [ref=e700]:
+          - generic [ref=e701]:
+            - paragraph [ref=e702]: Next Step
+            - heading "Let’s scope the lean Hydrogen storefront you actually need." [level=2] [ref=e703]
+            - paragraph [ref=e704]: "If your brand has outgrown a theme-based storefront, I can help you decide whether Hydrogen is the right next move and which service path should come first: audit, migration, custom build, optimization, support, or no rebuild."
+            - generic [ref=e705]:
+              - link "Request Scope Review" [ref=e706] [cursor=pointer]:
+                - /url: "#fit-review-form"
+              - link "Message on LinkedIn" [ref=e707] [cursor=pointer]:
+                - /url: https://www.linkedin.com/in/emremutlujs/
+            - generic [ref=e708]:
+              - link "Send an email brief" [ref=e709] [cursor=pointer]:
+                - /url: "#fit-review-form"
+              - paragraph [ref=e710]: Direct senior access. No fake agency layer.
+          - region "Project inquiry form" [ref=e711]:
+            - generic [ref=e712]:
+              - generic [ref=e713]:
+                - paragraph [ref=e714]: Owned lead capture
+                - heading "Request a Hydrogen Scope Review" [level=3] [ref=e715]
+                - paragraph [ref=e716]: If you are not ready to fill everything out, send the store URL, design status, product count, and the features that must ship first. The rest can be clarified later.
+                - paragraph [ref=e717]: I do not sell Hydrogen if Liquid is the better move.
+                - generic [ref=e718]:
+                  - paragraph [ref=e719]: Short brief path
+                  - paragraph [ref=e720]: "Only name, email, store URL, and main problem are required. Start with:"
+                  - list [ref=e721]:
+                    - listitem [ref=e722]:
+                      - generic [ref=e724]: Store URL or brand
+                    - listitem [ref=e725]:
+                      - generic [ref=e727]: What feels blocked
+                    - listitem [ref=e728]:
+                      - generic [ref=e730]: Budget and timeline, if you know them
+              - generic [ref=e731]:
+                - generic [ref=e732]:
+                  - generic [ref=e733]: Name
+                  - textbox "Name" [ref=e734]
+                - generic [ref=e735]:
+                  - generic [ref=e736]: Email
+                  - textbox "Email" [ref=e737]
+              - generic [ref=e738]:
+                - generic [ref=e739]: Store URL or brand
+                - textbox "Store URL or brand" [ref=e740]:
+                  - /placeholder: https://yourstore.com
+              - generic [ref=e741]:
+                - generic [ref=e742]:
+                  - generic [ref=e743]: Current stack
+                  - combobox "Current stack" [ref=e744]:
+                    - option "Select one" [selected]
+                    - option "Shopify Liquid theme"
+                    - option "Shopify Hydrogen / custom storefront"
+                    - option "Other headless setup"
+                    - option "Planning a migration"
+                    - option "Not sure yet"
+                - generic [ref=e745]:
+                  - generic [ref=e746]: Main problem
+                  - combobox "Main problem" [ref=e747]:
+                    - option "Select one" [selected]
+                    - option "Feature velocity"
+                    - option "Performance"
+                    - option "SEO / migration risk"
+                    - option "Liquid to Hydrogen migration"
+                    - option "Custom UX"
+                    - option "Cart / checkout handoff"
+                    - option "App stack / integrations"
+                    - option "Unsure"
+              - generic [ref=e748]:
+                - generic [ref=e749]:
+                  - generic [ref=e750]: Budget range
+                  - combobox "Budget range" [ref=e751]:
+                    - option "Select one" [selected]
+                    - option "Not set yet"
+                    - option "Around $2K - Starter Storefront"
+                    - option "$3K-$3.5K - Standard Storefront"
+                    - option "$4.5K-$5K - Growth Storefront"
+                    - option "$5K+ - Custom scope"
+                    - option "Retainer / ongoing support"
+                    - option "Not sure yet"
+                - generic [ref=e752]:
+                  - generic [ref=e753]: Timeline
+                  - combobox "Timeline" [ref=e754]:
+                    - option "Select one" [selected]
+                    - option "This month"
+                    - option "1-3 months"
+                    - option "3-6 months"
+                    - option "Planning / not urgent"
+                    - option "Launch rescue"
+              - generic [ref=e755]:
+                - generic [ref=e756]:
+                  - generic [ref=e757]: Monthly revenue
+                  - combobox "Monthly revenue" [ref=e758]:
+                    - option "Optional" [selected]
+                    - option "Prefer not to share"
+                    - option "Pre-revenue / early launch"
+                    - option "Under $50K/mo"
+                    - option "$50K-$250K/mo"
+                    - option "$250K-$1M/mo"
+                    - option "$1M+/mo"
+                - generic [ref=e759]:
+                  - generic [ref=e760]: Shopify Plus?
+                  - combobox "Shopify Plus?" [ref=e761]:
+                    - option "Select one" [selected]
+                    - option "Yes"
+                    - option "No"
+                    - option "Considering Plus"
+                    - option "Unsure"
+              - generic [ref=e762]:
+                - generic [ref=e763]: What kind of help?
+                - combobox "What kind of help?" [ref=e764]:
+                  - option "Select one" [selected]
+                  - option "Starter Hydrogen build"
+                  - option "Standard Hydrogen build"
+                  - option "Growth Hydrogen build"
+                  - option "Liquid to Hydrogen migration"
+                  - option "Liquid cleanup / section work"
+                  - option "Hydrogen performance cleanup"
+                  - option "Hydrogen SEO cleanup"
+                  - option "Support retainer"
+                  - option "Help me decide"
+              - generic [ref=e765]:
+                - generic [ref=e766]:
+                  - generic [ref=e767]: Do you already have a design?
+                  - combobox "Do you already have a design?" [ref=e768]:
+                    - option "Select one" [selected]
+                    - option "Yes, Figma is ready"
+                    - option "Yes, existing Shopify theme/design will be adapted"
+                    - option "No, I need a simple clean design"
+                    - option "Not sure yet"
+                - generic [ref=e769]:
+                  - generic [ref=e770]: How many products?
+                  - combobox "How many products?" [ref=e771]:
+                    - option "Select one" [selected]
+                    - option "Under 20"
+                    - option "20-100"
+                    - option "100-500"
+                    - option "500+"
+              - group "Which features are needed?" [ref=e772]:
+                - generic [ref=e773]: Which features are needed?
+                - generic [ref=e774]:
+                  - generic [ref=e775]:
+                    - checkbox "Product listing" [ref=e776]
+                    - generic [ref=e777]: Product listing
+                  - generic [ref=e778]:
+                    - checkbox "PDP" [ref=e779]
+                    - generic [ref=e780]: PDP
+                  - generic [ref=e781]:
+                    - checkbox "Cart drawer" [ref=e782]
+                    - generic [ref=e783]: Cart drawer
+                  - generic [ref=e784]:
+                    - checkbox "Customer account" [ref=e785]
+                    - generic [ref=e786]: Customer account
+                  - generic [ref=e787]:
+                    - checkbox "Search" [ref=e788]
+                    - generic [ref=e789]: Search
+                  - generic [ref=e790]:
+                    - checkbox "Filters" [ref=e791]
+                    - generic [ref=e792]: Filters
+                  - generic [ref=e793]:
+                    - checkbox "Blog/content" [ref=e794]
+                    - generic [ref=e795]: Blog/content
+                  - generic [ref=e796]:
+                    - checkbox "Reviews app" [ref=e797]
+                    - generic [ref=e798]: Reviews app
+                  - generic [ref=e799]:
+                    - checkbox "Email popup" [ref=e800]
+                    - generic [ref=e801]: Email popup
+                  - generic [ref=e802]:
+                    - checkbox "Subscriptions" [ref=e803]
+                    - generic [ref=e804]: Subscriptions
+                  - generic [ref=e805]:
+                    - checkbox "B2B/wholesale" [ref=e806]
+                    - generic [ref=e807]: B2B/wholesale
+                  - generic [ref=e808]:
+                    - checkbox "Multi-language" [ref=e809]
+                    - generic [ref=e810]: Multi-language
+              - generic [ref=e811]:
+                - generic [ref=e812]: What is blocking growth?
+                - textbox "What is blocking growth?" [ref=e813]:
+                  - /placeholder: Core pages needed, design source, integrations, migration question, SEO risk, app limits...
+              - button "Request Scope Review" [ref=e816]
+              - paragraph [ref=e817]: Your details are used only to reply to this specific project inquiry. No newsletters, no list sharing. If this is a low-budget theme tweak, I will usually point you to a lighter option.
+    - contentinfo [ref=e818]:
+      - generic [ref=e820]:
+        - generic [ref=e821]:
+          - generic [ref=e822]:
+            - generic [ref=e823]:
+              - generic [ref=e824]:
+                - img "HydrogenExpert logo" [ref=e826]
+                - generic [ref=e827]:
+                  - paragraph [ref=e828]: HydrogenExpert
+                  - paragraph [ref=e829]: Senior-led Shopify Hydrogen services
+              - paragraph [ref=e830]: Senior Shopify Hydrogen storefronts from $2K-$5K, without agency overhead.
+            - paragraph [ref=e831]: I build fixed-scope Shopify Hydrogen storefronts from $2K-$5K when the requirements are clear, and I still say Liquid when a theme-native path is the better answer.
+            - generic [ref=e832]:
+              - link "LinkedIn" [ref=e833] [cursor=pointer]:
+                - /url: https://www.linkedin.com/in/emremutlujs/
+              - link "Upwork" [ref=e834] [cursor=pointer]:
+                - /url: https://www.upwork.com/freelancers/emremutlu
+              - link "Udemy" [ref=e835] [cursor=pointer]:
+                - /url: https://www.udemy.com/shopify-hydrogen
+          - generic [ref=e836]:
+            - paragraph [ref=e837]: Start Here
+            - heading "Not sure if Hydrogen is worth it?" [level=2] [ref=e838]
+            - paragraph [ref=e839]: Send your store URL, design status, product count, and needed features. I will give you a direct answer on whether the next move is Starter, Standard, Growth, Custom, Liquid, or no rebuild.
+            - generic [ref=e840]:
+              - link "Message on LinkedIn" [ref=e841] [cursor=pointer]:
+                - /url: https://www.linkedin.com/in/emremutlujs/
+              - link "View Packages" [ref=e842] [cursor=pointer]:
+                - /url: /shopify-hydrogen-packages
+              - link "Send an email brief" [ref=e843] [cursor=pointer]:
+                - /url: /contact#fit-review-form
+        - generic [ref=e844]:
+          - generic [ref=e845]:
+            - paragraph [ref=e846]: Services
+            - generic [ref=e847]:
+              - link "Hydrogen Build Packages" [ref=e848] [cursor=pointer]:
+                - /url: /shopify-hydrogen-packages
+              - link "Hydrogen Cost" [ref=e849] [cursor=pointer]:
+                - /url: /shopify-hydrogen-cost
+              - link "Shopify Hydrogen Developer" [ref=e850] [cursor=pointer]:
+                - /url: /shopify-hydrogen-developer
+              - link "Custom Hydrogen Storefront" [ref=e851] [cursor=pointer]:
+                - /url: /custom-shopify-hydrogen-storefront
+              - link "Hydrogen Scope Review" [ref=e852] [cursor=pointer]:
+                - /url: /shopify-hydrogen-audit
+              - link "Liquid to Hydrogen Migration" [ref=e853] [cursor=pointer]:
+                - /url: /liquid-to-hydrogen-migration
+              - link "Shopify Hydrogen SEO" [ref=e854] [cursor=pointer]:
+                - /url: /shopify-hydrogen-seo
+              - link "Hydrogen Performance Optimization" [ref=e855] [cursor=pointer]:
+                - /url: /shopify-hydrogen-performance-optimization
+              - link "Hydrogen Support Retainer" [ref=e856] [cursor=pointer]:
+                - /url: /shopify-hydrogen-support-retainer
+          - generic [ref=e857]:
+            - paragraph [ref=e858]: Resources
+            - generic [ref=e859]:
+              - link "Resource Hub" [ref=e860] [cursor=pointer]:
+                - /url: /resources
+              - link "Hydrogen Examples" [ref=e861] [cursor=pointer]:
+                - /url: /shopify-hydrogen-examples
+              - link "Issue Library" [ref=e862] [cursor=pointer]:
+                - /url: /shopify-hydrogen-issues
+              - link "Templates & Checklists" [ref=e863] [cursor=pointer]:
+                - /url: /shopify-hydrogen-templates
+              - link "Udemy Course Resources" [ref=e864] [cursor=pointer]:
+                - /url: /udemy-shopify-hydrogen-course-resources
+              - link "About" [ref=e865] [cursor=pointer]:
+                - /url: /about
+              - link "What Is Shopify Hydrogen?" [ref=e866] [cursor=pointer]:
+                - /url: /what-is-hydrogen
+              - link "Shopify Hydrogen Expert" [ref=e867] [cursor=pointer]:
+                - /url: /shopify-hydrogen-expert
+              - link "Shopify Hydrogen Experts" [ref=e868] [cursor=pointer]:
+                - /url: /shopify-hydrogen-experts
+              - link "Should I Use Hydrogen?" [ref=e869] [cursor=pointer]:
+                - /url: /should-i-use-it
+              - link "When Not to Use Hydrogen" [ref=e870] [cursor=pointer]:
+                - /url: /when-not-to-use-hydrogen
+              - link "Hydrogen Packages" [ref=e871] [cursor=pointer]:
+                - /url: /shopify-hydrogen-packages
+              - link "Hydrogen SEO Guide" [ref=e872] [cursor=pointer]:
+                - /url: /shopify-hydrogen-seo
+              - link "Shopify Hydrogen Cost" [ref=e873] [cursor=pointer]:
+                - /url: /shopify-hydrogen-cost
+              - link "Shopify Hydrogen Articles" [ref=e874] [cursor=pointer]:
+                - /url: /articles
+              - link "Hydrogen Blog" [ref=e875] [cursor=pointer]:
+                - /url: /blog
+          - generic [ref=e876]:
+            - paragraph [ref=e877]: Proof
+            - generic [ref=e878]:
+              - link "Case Studies" [ref=e879] [cursor=pointer]:
+                - /url: /case-studies
+              - link "EveShop" [ref=e880] [cursor=pointer]:
+                - /url: /case-studies/eveshop-shopify-hydrogen
+              - link "Bayam Jewelry" [ref=e881] [cursor=pointer]:
+                - /url: /case-studies/bayam-jewelry-shopify-hydrogen
+              - link "Rebel Bunny" [ref=e882] [cursor=pointer]:
+                - /url: /case-studies/rebel-bunny-shopify-hydrogen
+              - link "Kirazev" [ref=e883] [cursor=pointer]:
+                - /url: /case-studies/kirazev-shopify-liquid
+              - link "Clohi" [ref=e884] [cursor=pointer]:
+                - /url: /case-studies/clohi-shopify-liquid
+              - link "Upwork Profile" [ref=e885] [cursor=pointer]:
+                - /url: https://www.upwork.com/freelancers/emremutlu
+          - generic [ref=e886]:
+            - paragraph [ref=e887]: Trust
+            - generic [ref=e888]:
+              - link "Contact" [ref=e889] [cursor=pointer]:
+                - /url: /contact
+              - link "Privacy" [ref=e890] [cursor=pointer]:
+                - /url: /privacy
+              - link "Cookies" [ref=e891] [cursor=pointer]:
+                - /url: /cookies
+              - link "Terms" [ref=e892] [cursor=pointer]:
+                - /url: /terms
+      - generic [ref=e893]: © 2026 Emre Mutlu
+  - alert [ref=e894]

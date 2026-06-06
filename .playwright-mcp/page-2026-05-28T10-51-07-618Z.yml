@@ -1,0 +1,207 @@
+- main [ref=e2]:
+  - generic [ref=e3]: Yükleniyor...
+  - main "Ana içerik" [ref=e4]:
+    - main [ref=e5]:
+      - heading "Pet Oteli Seçerken Nelere Dikkat Edilmeli?" [level=1] [ref=e6]
+      - paragraph [ref=e7]: Evcil hayvanınızı bırakmadan önce temizlik, iletişim, kabul koşulları ve acil durum süreçlerini nasıl kontrol edeceğinizi öğrenin.
+      - img "Pet Oteli Seçerken Nelere Dikkat Edilmeli? görseli" [ref=e9]
+      - generic [ref=e10]:
+        - heading "Kısa cevap" [level=2] [ref=e11]
+        - paragraph [ref=e12]: Pet oteli seçerken en doğru yaklaşım işletmeyi yalnızca fiyatla değil; kabul koşulları, günlük bakım rutini, temizlik, iletişim hızı, acil durum hazırlığı ve evcil hayvanınızın özel ihtiyaçlarına verdiği yanıtla değerlendirmektir. Petkonak bu süreci şehir, ilçe ve kategori bazlı kısa listeye dönüştürür; son teyit işletmeyle yapılır.
+        - list [ref=e13]:
+          - listitem [ref=e14]: Önce hayvan türü, sağlık durumu, bakım ihtiyacı ve tarih aralığı netleştirilmelidir.
+          - listitem [ref=e15]: İşletmeyle aynı soru listesi üzerinden görüşmek daha sağlıklı karşılaştırma sağlar.
+          - listitem [ref=e16]: Fiyat, müsaitlik, kabul ve teslim koşulları Petkonak'ta değil, işletmenin güncel yanıtında kesinleşir.
+      - generic [ref=e17]:
+        - generic [ref=e18]:
+          - heading "İlk kontrol listesi" [level=2] [ref=e19]
+          - paragraph [ref=e20]: İşletmenin kabul ettiği hayvan türleri, iletişim kanalları, çalışma saatleri, konum ve fotoğraflarını birlikte inceleyin. Kedi ve köpek için aynı kriterleri kullanmak yanıltıcı olabilir; kedi için oda ve sakinlik, köpek için hareket alanı ve gezdirme rutini öne çıkar.
+          - list [ref=e21]:
+            - listitem [ref=e22]: İşletme kedi, köpek veya her ikisini kabul ediyor mu?
+            - listitem [ref=e23]: Konaklama mı, gündüz bakım mı, ek hizmet mi sunuluyor?
+            - listitem [ref=e24]: Konum, teslim-alış saati ve ulaşım sizin planınıza uyuyor mu?
+        - generic [ref=e25]:
+          - heading "İletişimde netlik" [level=2] [ref=e26]
+          - paragraph [ref=e27]: Fiyat, müsaitlik, mama düzeni ve özel ihtiyaçları yazılı olarak netleştirmek sonradan yaşanabilecek karışıklıkları azaltır. İlk mesajda tarih, hayvan türü, yaş, aşı durumu, mama/ilaç bilgisi ve varsa davranış notlarını paylaşmak işletmenin hızlı yanıt vermesini sağlar.
+          - list [ref=e28]:
+            - listitem [ref=e29]: Güncel fiyat ve tarih uygunluğu.
+            - listitem [ref=e30]: Mama, ilaç, transfer ve özel bakımın fiyata dahil olup olmadığı.
+            - listitem [ref=e31]: Acil durumda haber verme ve veteriner yönlendirmesi.
+        - generic [ref=e32]:
+          - heading "Yorumları nasıl okumalı?" [level=2] [ref=e33]
+          - paragraph [ref=e34]: "Tekil yorumlardan çok tekrar eden temalara bakın: temizlik, personel ilgisi, iletişim hızı, teslim alma süreci ve hayvanın dönüşteki hali karar için daha anlamlıdır. Aşırı iddialı yorumlar yerine farklı kullanıcıların aynı konuda tutarlı deneyim anlatması daha güçlü sinyaldir."
+          - list [ref=e35]:
+            - listitem [ref=e36]: Temizlik ve koku hakkında tekrar eden yorumlar.
+            - listitem [ref=e37]: Personelin iletişim hızı ve bilgilendirme düzeni.
+            - listitem [ref=e38]: Teslim-alış sürecinde yaşanan olumlu veya olumsuz tekrarlar.
+        - generic [ref=e39]:
+          - heading "Petkonak nasıl yardımcı olur?" [level=2] [ref=e40]
+          - paragraph [ref=e41]: Petkonak, işletme bilgilerini şehir, ilçe ve kategoriye göre okunabilir hale getirir. Profildeki bilgileri karar öncesi kontrol edin; fiyat, müsaitlik ve kabul şartlarını işletmeyle doğrudan teyit edin. Petkonak'ın rolü seçenekleri görünür kılmak ve doğrudan iletişimi kolaylaştırmaktır.
+          - list [ref=e42]:
+            - listitem [ref=e43]: Şehir ve kategori sayfalarıyla kısa liste oluşturun.
+            - listitem [ref=e44]: Profildeki telefon, WhatsApp veya web sitesi bağlantısını kullanın.
+            - listitem [ref=e45]: Güncel koşulları işletmenin yanıtıyla doğrulayın.
+      - generic [ref=e46]:
+        - paragraph [ref=e47]: İşletmeleri karşılaştırmaya hazır mısınız?
+        - link "Pet otellerini görüntüle" [ref=e48] [cursor=pointer]:
+          - /url: /arama/pet-otelleri
+      - generic [ref=e49]:
+        - heading "İlgili bağlantılar" [level=2] [ref=e50]
+        - list [ref=e51]:
+          - listitem [ref=e52]:
+            - link "Pet oteli fiyatları" [ref=e53] [cursor=pointer]:
+              - /url: /rehber/pet-oteli-fiyatlari
+          - listitem [ref=e54]:
+            - link "İstanbul pet otelleri rehberi" [ref=e55] [cursor=pointer]:
+              - /url: /rehber/istanbul-pet-otelleri
+      - generic [ref=e56]:
+        - heading "Kaynaklar ve ek okuma" [level=2] [ref=e57]
+        - paragraph [ref=e58]: Bu bağlantılar genel bakım, konaklama hazırlığı ve işletmeyle görüşme öncesi kontrol için ek okuma sağlar. Tıbbi karar, fiyat, müsaitlik ve kabul koşulları ilgili uzman veya işletmeyle doğrudan teyit edilmelidir.
+        - list [ref=e59]:
+          - listitem [ref=e60]:
+            - 'link "RSPCA: Evcil hayvan bakım seçeneklerini karşılaştırma" [ref=e61] [cursor=pointer]':
+              - /url: https://www.rspca.org.uk/adviceandwelfare/pets/general/holiday/leavingyourpet
+          - listitem [ref=e62]:
+            - 'link "AKC: Köpek konaklaması öncesi tesis ve rutin kontrolü" [ref=e63] [cursor=pointer]':
+              - /url: https://www.akc.org/expert-advice/travel/dog-boarding-tips/
+          - listitem [ref=e64]:
+            - 'link "PetMD: Evcil hayvan konaklama seçeneklerini ayırma rehberi" [ref=e65] [cursor=pointer]':
+              - /url: https://www.petmd.com/general-health/top-boarding-options-for-your-pet
+  - generic [ref=e67]:
+    - generic [ref=e68]:
+      - generic [ref=e69]:
+        - heading "Keşfedin" [level=5] [ref=e70]
+        - list [ref=e71]:
+          - listitem [ref=e72]:
+            - link "Tüm Pet Hizmetleri" [ref=e73] [cursor=pointer]:
+              - /url: /arama
+          - listitem [ref=e74]:
+            - link "Köpek Otelleri" [ref=e75] [cursor=pointer]:
+              - /url: /arama/kopek-otelleri
+          - listitem [ref=e76]:
+            - link "Kedi Otelleri" [ref=e77] [cursor=pointer]:
+              - /url: /arama/kedi-otelleri
+          - listitem [ref=e78]:
+            - link "Blog" [ref=e79] [cursor=pointer]:
+              - /url: /blog
+          - listitem [ref=e80]:
+            - link "Pet Oteli Fiyatları" [ref=e81] [cursor=pointer]:
+              - /url: /rehber/pet-oteli-fiyatlari
+          - listitem [ref=e82]:
+            - link "Pet Oteli Seçerken" [ref=e83] [cursor=pointer]:
+              - /url: /rehber/pet-oteli-secerken
+          - listitem [ref=e84]:
+            - link "Kedi Pansiyonu" [ref=e85] [cursor=pointer]:
+              - /url: /rehber/kedi-pansiyonu
+          - listitem [ref=e86]:
+            - link "Köpek Pansiyonu" [ref=e87] [cursor=pointer]:
+              - /url: /rehber/kopek-pansiyonu
+          - listitem [ref=e88]:
+            - link "Pet Pansiyon" [ref=e89] [cursor=pointer]:
+              - /url: /rehber/pet-pansiyon
+          - listitem [ref=e90]:
+            - link "İstanbul Pet Oteli Rehberi" [ref=e91] [cursor=pointer]:
+              - /url: /rehber/pet-hotel-istanbul
+          - listitem [ref=e92]:
+            - link "Pet Oteli Açmak" [ref=e93] [cursor=pointer]:
+              - /url: /rehber/pet-oteli-acmak
+          - listitem [ref=e94]:
+            - link "Site Haritası" [ref=e95] [cursor=pointer]:
+              - /url: /site-haritasi
+      - generic [ref=e96]:
+        - heading "Popüler Aramalar" [level=5] [ref=e97]
+        - list [ref=e98]:
+          - listitem [ref=e99]:
+            - link "İzmir Kedi Otelleri" [ref=e100] [cursor=pointer]:
+              - /url: /arama/izmir-kedi-otelleri
+          - listitem [ref=e101]:
+            - link "İzmir Pet Otelleri" [ref=e102] [cursor=pointer]:
+              - /url: /arama/izmir-pet-otelleri
+          - listitem [ref=e103]:
+            - link "İstanbul Kedi Otelleri" [ref=e104] [cursor=pointer]:
+              - /url: /arama/istanbul-kedi-otelleri
+          - listitem [ref=e105]:
+            - link "İstanbul Pet Otelleri" [ref=e106] [cursor=pointer]:
+              - /url: /arama/istanbul-pet-otelleri
+          - listitem [ref=e107]:
+            - link "İstanbul Köpek Otelleri" [ref=e108] [cursor=pointer]:
+              - /url: /arama/istanbul-kopek-otelleri
+          - listitem [ref=e109]:
+            - link "Ankara Kedi Otelleri" [ref=e110] [cursor=pointer]:
+              - /url: /arama/ankara-kedi-otelleri
+          - listitem [ref=e111]:
+            - link "Ankara Köpek Otelleri" [ref=e112] [cursor=pointer]:
+              - /url: /arama/ankara-kopek-otelleri
+          - listitem [ref=e113]:
+            - link "Antalya Kedi Otelleri" [ref=e114] [cursor=pointer]:
+              - /url: /arama/antalya-kedi-otelleri
+          - listitem [ref=e115]:
+            - link "Antalya Köpek Otelleri" [ref=e116] [cursor=pointer]:
+              - /url: /arama/antalya-kopek-otelleri
+          - listitem [ref=e117]:
+            - link "Balıkesir Kedi Otelleri" [ref=e118] [cursor=pointer]:
+              - /url: /arama/balikesir-kedi-otelleri
+          - listitem [ref=e119]:
+            - link "Bodrum Köpek Otelleri" [ref=e120] [cursor=pointer]:
+              - /url: /arama/mugla-bodrum-kopek-otelleri
+      - generic [ref=e121]:
+        - heading "Kategoriler" [level=5] [ref=e122]
+        - list [ref=e123]:
+          - listitem [ref=e124]:
+            - link "Pet Otelleri" [ref=e125] [cursor=pointer]:
+              - /url: /arama/pet-otelleri
+          - listitem [ref=e126]:
+            - link "Köpek Otelleri" [ref=e127] [cursor=pointer]:
+              - /url: /arama/kopek-otelleri
+          - listitem [ref=e128]:
+            - link "Kedi Otelleri" [ref=e129] [cursor=pointer]:
+              - /url: /arama/kedi-otelleri
+          - listitem [ref=e130]:
+            - link "Veteriner Klinikleri" [ref=e131] [cursor=pointer]:
+              - /url: /arama/veteriner-klinikleri
+          - listitem [ref=e132]:
+            - link "Petshoplar" [ref=e133] [cursor=pointer]:
+              - /url: /arama/petshoplar
+          - listitem [ref=e134]:
+            - link "Pet Kuaförleri" [ref=e135] [cursor=pointer]:
+              - /url: /arama/pet-kuaforleri
+          - listitem [ref=e136]:
+            - link "Köpek Eğitim Merkezleri" [ref=e137] [cursor=pointer]:
+              - /url: /arama/kopek-egitim-merkezleri
+          - listitem [ref=e138]:
+            - link "Pet Kreşleri" [ref=e139] [cursor=pointer]:
+              - /url: /arama/pet-kresleri
+      - generic [ref=e140]:
+        - heading "Faydalı Bağlantılar" [level=5] [ref=e141]
+        - list [ref=e142]:
+          - listitem [ref=e143]:
+            - link "Hakkımızda" [ref=e144] [cursor=pointer]:
+              - /url: /hakkimizda
+          - listitem [ref=e145]:
+            - link "İletişim" [ref=e146] [cursor=pointer]:
+              - /url: /iletisim
+          - listitem [ref=e147]:
+            - link "Yardım Merkezi" [ref=e148] [cursor=pointer]:
+              - /url: /yardim-merkezi
+          - listitem [ref=e149]:
+            - link "Gizlilik Politikası" [ref=e150] [cursor=pointer]:
+              - /url: /gizlilik-politikasi
+          - listitem [ref=e151]:
+            - link "Veri Kaynakları" [ref=e152] [cursor=pointer]:
+              - /url: /veri-kaynaklari
+          - listitem [ref=e153]:
+            - link "KVKK" [ref=e154] [cursor=pointer]:
+              - /url: /kvkk
+          - listitem [ref=e155]:
+            - link "İşletme görünürlüğü" [ref=e156] [cursor=pointer]:
+              - /url: /isletmeniz-icin
+      - generic [ref=e157]:
+        - heading "İletişim" [level=5] [ref=e158]
+        - list [ref=e159]:
+          - listitem [ref=e160]:
+            - link "destek@petkonak.com" [ref=e161] [cursor=pointer]:
+              - /url: mailto:destek@petkonak.com
+    - paragraph [ref=e163]:
+      - generic [ref=e164]: Pet Otelleri, Pet Pansiyonları, Evcil Hayvan Oteli, Kedi Oteli, Köpek Oteli.
+      - text: © 2026 Petkonak.com Tüm hakları saklıdır.
+      - generic [ref=e165]: Kedi Pansiyonu, Köpek Pansiyonu, Pet Konaklama, Hayvan Oteli.

@@ -319,11 +319,6 @@ select {
   color: #ffffff;
 }
 
-.ambient-orb {
-  @apply pointer-events-none absolute rounded-full blur-3xl;
-  opacity: 0.45;
-}
-
 .editorial-kicker::before {
   content: "";
   @apply inline-block h-px w-12 align-middle;

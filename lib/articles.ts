@@ -82,7 +82,7 @@ const ARTICLES = [
     author: OWNER.name,
     metaTitle: "How to Hire a Shopify Hydrogen Developer | HydrogenExpert",
     metaDescription:
-      "A practical guide for Shopify Plus and growth-stage brands hiring a Hydrogen developer: what to check, what senior ownership covers, and when an audit is safer than a rebuild.",
+      "How to hire a Shopify Hydrogen developer: proof checks, senior ownership, SEO judgment, and when an audit should come before a rebuild.",
     h1: "How to hire a Shopify Hydrogen developer",
     intro: [
       "Hiring a Shopify Hydrogen developer is not the same as hiring someone for theme edits. Hydrogen work sits closer to application engineering: React, routing, Storefront API data, SEO, cart behavior, analytics, deployment, and launch QA all touch the same storefront.",
@@ -261,7 +261,7 @@ const ARTICLES = [
     author: OWNER.name,
     metaTitle: "Shopify Hydrogen Experts | How to Evaluate Production Experience",
     metaDescription:
-      "How to evaluate Shopify Hydrogen experts before hiring: production storefronts, SEO-safe migration, Storefront API experience, maintenance judgment, and honest fit decisions.",
+      "How to evaluate Shopify Hydrogen experts by production work, SEO-safe migration, Storefront API depth, maintenance judgment, and fit decisions.",
     h1: "Shopify Hydrogen experts: how to evaluate real production experience",
     intro: [
       "Expert is easy to claim. Production experience is harder to fake because it has to survive real catalog data, launch timing, SEO constraints, merchant changes, and post-launch maintenance.",

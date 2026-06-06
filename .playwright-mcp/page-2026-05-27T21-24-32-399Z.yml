@@ -1,0 +1,319 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - link "Petkonak Logo Petkonak" [ref=e7] [cursor=pointer]:
+          - /url: /
+          - img "Petkonak Logo" [ref=e9]
+          - generic [ref=e10]: Petkonak
+        - navigation [ref=e11]:
+          - link "Tüm Hizmetler" [ref=e12] [cursor=pointer]:
+            - /url: /arama
+          - link "Pet Otelleri" [ref=e13] [cursor=pointer]:
+            - /url: /arama/pet-otelleri
+          - link "Köpek Otelleri" [ref=e14] [cursor=pointer]:
+            - /url: /arama/kopek-otelleri
+          - link "Kedi Otelleri" [ref=e15] [cursor=pointer]:
+            - /url: /arama/kedi-otelleri
+          - link "Blog" [ref=e16] [cursor=pointer]:
+            - /url: /blog
+          - link "İşletmeniz için" [ref=e17] [cursor=pointer]:
+            - /url: /isletmeniz-icin
+      - generic [ref=e18]:
+        - link "Ara" [ref=e19] [cursor=pointer]:
+          - /url: /arama
+          - img
+          - text: Ara
+        - generic [ref=e20]:
+          - link "Giriş Yap" [ref=e21] [cursor=pointer]:
+            - /url: /giris-yap
+          - link "Kayıt Ol" [ref=e22] [cursor=pointer]:
+            - /url: /kayit-ol
+    - main "Ana içerik" [ref=e23]:
+      - main [ref=e24]:
+        - generic [ref=e25]:
+          - generic [ref=e26]:
+            - paragraph [ref=e27]: Petkonak Rehber
+            - heading "Blog Yazıları" [level=1] [ref=e28]
+            - paragraph [ref=e29]: Pet oteli, kedi oteli ve köpek oteli seçerken işletmeyle görüşmeden önce netleştirmeniz gereken konular.
+          - generic [ref=e30]:
+            - link "TR" [ref=e31] [cursor=pointer]:
+              - /url: /blog
+            - link "EN" [ref=e32] [cursor=pointer]:
+              - /url: /blog?lang=en
+        - navigation "Blog kategorileri" [ref=e33]:
+          - link "Tüm Kategoriler" [ref=e34] [cursor=pointer]:
+            - /url: /blog
+          - link "Bakım İpuçları" [ref=e35] [cursor=pointer]:
+            - /url: /blog?category=Bak%C4%B1m+%C4%B0pu%C3%A7lar%C4%B1
+          - link "Bakım Rehberi" [ref=e36] [cursor=pointer]:
+            - /url: /blog?category=Bak%C4%B1m+Rehberi
+          - link "Kedi Bakımı" [ref=e37] [cursor=pointer]:
+            - /url: /blog?category=Kedi+Bak%C4%B1m%C4%B1
+          - link "Kedi Oteli" [ref=e38] [cursor=pointer]:
+            - /url: /blog?category=Kedi+Oteli
+          - link "Köpek Bakımı" [ref=e39] [cursor=pointer]:
+            - /url: /blog?category=K%C3%B6pek+Bak%C4%B1m%C4%B1
+          - link "Köpek Oteli" [ref=e40] [cursor=pointer]:
+            - /url: /blog?category=K%C3%B6pek+Oteli
+          - link "Pet Oteli Rehberi" [ref=e41] [cursor=pointer]:
+            - /url: /blog?category=Pet+Oteli+Rehberi
+        - feed "Blog yazıları" [ref=e42]:
+          - article [ref=e43]:
+            - generic [ref=e44]:
+              - img "Doğru Pet Oteli Nasıl Seçilir? Kedi ve Köpekler İçin Kontrol Listesi görseli" [ref=e46]
+              - generic [ref=e47]:
+                - generic [ref=e48]: Pet Oteli Rehberi
+                - link "Doğru Pet Oteli Nasıl Seçilir? Kedi ve Köpekler İçin Kontrol Listesi" [ref=e50] [cursor=pointer]:
+                  - /url: /blog/dogru-pet-oteli-nasil-secilir
+                - paragraph [ref=e51]: Pet oteli seçerken oda düzeni, güvenlik, günlük rutin, iletişim ve acil durum hazırlığını aynı kontrol listesinde değerlendirin.
+                - generic [ref=e52]:
+                  - img [ref=e53]
+                  - generic [ref=e57]: Editör
+                - generic [ref=e58]:
+                  - img [ref=e59]
+                  - time [ref=e61]: 26.05.2026
+              - link "Devamını Oku" [ref=e63] [cursor=pointer]:
+                - /url: /blog/dogru-pet-oteli-nasil-secilir
+                - text: Devamını Oku
+                - img
+          - article [ref=e64]:
+            - generic [ref=e65]:
+              - img "Yeni Bir Evcil Hayvan İçin Evde İlk Hafta Planı görseli" [ref=e67]
+              - generic [ref=e68]:
+                - generic [ref=e69]: Bakım Rehberi
+                - link "Yeni Bir Evcil Hayvan İçin Evde İlk Hafta Planı" [ref=e71] [cursor=pointer]:
+                  - /url: /blog/yeni-evcil-hayvan-icin-evde-ilk-hafta-plani
+                - paragraph [ref=e72]: Kedi veya köpek eve geldiğinde ilk hafta, alışma hızını belirleyen sakin bir geçiş dönemi olmalı.
+                - generic [ref=e73]:
+                  - img [ref=e74]
+                  - generic [ref=e78]: Editör
+                - generic [ref=e79]:
+                  - img [ref=e80]
+                  - time [ref=e82]: 26.05.2026
+              - link "Devamını Oku" [ref=e84] [cursor=pointer]:
+                - /url: /blog/yeni-evcil-hayvan-icin-evde-ilk-hafta-plani
+                - text: Devamını Oku
+                - img
+          - article [ref=e85]:
+            - generic [ref=e86]:
+              - img "Kedi Sağlığı Hakkında Bilinmesi Gerekenler görseli" [ref=e88]
+              - generic [ref=e89]:
+                - generic [ref=e90]: Kedi Bakımı
+                - link "Kedi Sağlığı Hakkında Bilinmesi Gerekenler" [ref=e92] [cursor=pointer]:
+                  - /url: /blog/kedi-sagligi-hakkinda-bilinmesi-gerekenler
+                - paragraph [ref=e93]: Kedilerde sağlığı korumak için beslenme, su tüketimi, kum kabı düzeni, aşı takibi ve davranış değişimlerini birlikte izleyin.
+                - generic [ref=e94]:
+                  - img [ref=e95]
+                  - generic [ref=e99]: EMRE MUTLU
+                - generic [ref=e100]:
+                  - img [ref=e101]
+                  - time [ref=e103]: 30.06.2025
+              - link "Devamını Oku" [ref=e105] [cursor=pointer]:
+                - /url: /blog/kedi-sagligi-hakkinda-bilinmesi-gerekenler
+                - text: Devamını Oku
+                - img
+          - article [ref=e106]:
+            - generic [ref=e107]:
+              - 'img "Köpeğiniz Sürekli Patilerini Yalıyorsa: Neden Olur, Ne Yapmalısınız? görseli" [ref=e109]'
+              - generic [ref=e110]:
+                - generic [ref=e111]: Köpek Bakımı
+                - 'link "Köpeğiniz Sürekli Patilerini Yalıyorsa: Neden Olur, Ne Yapmalısınız?" [ref=e113] [cursor=pointer]':
+                  - /url: /blog/kopeklerde-pati-yalama-nedenleri-ve-cozumler
+                - paragraph [ref=e114]: Köpeklerde pati yalama alerji, tahriş, ağrı, parazit, stres veya enfeksiyon belirtisi olabilir; süre, şiddet ve eşlik eden bulgular önemlidir.
+                - generic [ref=e115]:
+                  - img [ref=e116]
+                  - generic [ref=e120]: EMRE MUTLU
+                - generic [ref=e121]:
+                  - img [ref=e122]
+                  - time [ref=e124]: 26.06.2025
+              - link "Devamını Oku" [ref=e126] [cursor=pointer]:
+                - /url: /blog/kopeklerde-pati-yalama-nedenleri-ve-cozumler
+                - text: Devamını Oku
+                - img
+          - article [ref=e127]:
+            - generic [ref=e128]:
+              - img "Kedinizi Pansiyona Bırakmak Zor mu Geliyor? Strese Girmeden Hazırlanın görseli" [ref=e130]
+              - generic [ref=e131]:
+                - generic [ref=e132]: Kedi Oteli
+                - link "Kedinizi Pansiyona Bırakmak Zor mu Geliyor? Strese Girmeden Hazırlanın" [ref=e134] [cursor=pointer]:
+                  - /url: /blog/kediler-icin-pansiyon-hazirlik-rehberi
+                - paragraph [ref=e135]: Kedi pansiyonu sürecini rahatlatmak için koku, saklanma alanı, beslenme rutini, sağlık notu ve güncelleme beklentisini önceden planlayın.
+                - generic [ref=e136]:
+                  - img [ref=e137]
+                  - generic [ref=e141]: EMRE MUTLU
+                - generic [ref=e142]:
+                  - img [ref=e143]
+                  - time [ref=e145]: 23.06.2025
+              - link "Devamını Oku" [ref=e147] [cursor=pointer]:
+                - /url: /blog/kediler-icin-pansiyon-hazirlik-rehberi
+                - text: Devamını Oku
+                - img
+          - article [ref=e148]:
+            - generic [ref=e149]:
+              - 'img "Köpeğinizi Şımartmanın 7 Basit Yolu: Pahalı Oyuncaklara Gerek Yok görseli" [ref=e151]'
+              - generic [ref=e152]:
+                - generic [ref=e153]: Köpek Bakımı
+                - 'link "Köpeğinizi Şımartmanın 7 Basit Yolu: Pahalı Oyuncaklara Gerek Yok" [ref=e155] [cursor=pointer]':
+                  - /url: /blog/kopeginizi-simartmanin-7-basit-ve-uygun-yolu
+                - paragraph [ref=e156]: Köpeği mutlu etmek için pahalı ürünlerden önce düzenli yürüyüş, koklama zamanı, sakin temas, oyun ve öngörülebilir rutin gerekir.
+                - generic [ref=e157]:
+                  - img [ref=e158]
+                  - generic [ref=e162]: EMRE MUTLU
+                - generic [ref=e163]:
+                  - img [ref=e164]
+                  - time [ref=e166]: 21.06.2025
+              - link "Devamını Oku" [ref=e168] [cursor=pointer]:
+                - /url: /blog/kopeginizi-simartmanin-7-basit-ve-uygun-yolu
+                - text: Devamını Oku
+                - img
+        - navigation "Blog sayfalama" [ref=e169]:
+          - link "1" [ref=e170] [cursor=pointer]:
+            - /url: /blog
+          - link "2" [ref=e171] [cursor=pointer]:
+            - /url: /blog?page=2
+        - paragraph [ref=e172]: 11 yayınlanmış yazı
+    - generic [ref=e174]:
+      - generic [ref=e175]:
+        - generic [ref=e176]:
+          - heading "Keşfedin" [level=5] [ref=e177]
+          - list [ref=e178]:
+            - listitem [ref=e179]:
+              - link "Tüm Pet Hizmetleri" [ref=e180] [cursor=pointer]:
+                - /url: /arama
+            - listitem [ref=e181]:
+              - link "Köpek Otelleri" [ref=e182] [cursor=pointer]:
+                - /url: /arama/kopek-otelleri
+            - listitem [ref=e183]:
+              - link "Kedi Otelleri" [ref=e184] [cursor=pointer]:
+                - /url: /arama/kedi-otelleri
+            - listitem [ref=e185]:
+              - link "Blog" [ref=e186] [cursor=pointer]:
+                - /url: /blog
+            - listitem [ref=e187]:
+              - link "Pet Oteli Fiyatları" [ref=e188] [cursor=pointer]:
+                - /url: /rehber/pet-oteli-fiyatlari
+            - listitem [ref=e189]:
+              - link "Pet Oteli Seçerken" [ref=e190] [cursor=pointer]:
+                - /url: /rehber/pet-oteli-secerken
+            - listitem [ref=e191]:
+              - link "Kedi Pansiyonu" [ref=e192] [cursor=pointer]:
+                - /url: /rehber/kedi-pansiyonu
+            - listitem [ref=e193]:
+              - link "Köpek Pansiyonu" [ref=e194] [cursor=pointer]:
+                - /url: /rehber/kopek-pansiyonu
+            - listitem [ref=e195]:
+              - link "Pet Pansiyon" [ref=e196] [cursor=pointer]:
+                - /url: /rehber/pet-pansiyon
+            - listitem [ref=e197]:
+              - link "İstanbul Pet Oteli Rehberi" [ref=e198] [cursor=pointer]:
+                - /url: /rehber/pet-hotel-istanbul
+            - listitem [ref=e199]:
+              - link "Pet Oteli Açmak" [ref=e200] [cursor=pointer]:
+                - /url: /rehber/pet-oteli-acmak
+            - listitem [ref=e201]:
+              - link "Site Haritası" [ref=e202] [cursor=pointer]:
+                - /url: /site-haritasi
+        - generic [ref=e203]:
+          - heading "Popüler Aramalar" [level=5] [ref=e204]
+          - list [ref=e205]:
+            - listitem [ref=e206]:
+              - link "İzmir Kedi Otelleri" [ref=e207] [cursor=pointer]:
+                - /url: /arama/izmir-kedi-otelleri
+            - listitem [ref=e208]:
+              - link "İzmir Pet Otelleri" [ref=e209] [cursor=pointer]:
+                - /url: /arama/izmir-pet-otelleri
+            - listitem [ref=e210]:
+              - link "İstanbul Kedi Otelleri" [ref=e211] [cursor=pointer]:
+                - /url: /arama/istanbul-kedi-otelleri
+            - listitem [ref=e212]:
+              - link "İstanbul Pet Otelleri" [ref=e213] [cursor=pointer]:
+                - /url: /arama/istanbul-pet-otelleri
+            - listitem [ref=e214]:
+              - link "İstanbul Köpek Otelleri" [ref=e215] [cursor=pointer]:
+                - /url: /arama/istanbul-kopek-otelleri
+            - listitem [ref=e216]:
+              - link "Ankara Kedi Otelleri" [ref=e217] [cursor=pointer]:
+                - /url: /arama/ankara-kedi-otelleri
+            - listitem [ref=e218]:
+              - link "Ankara Köpek Otelleri" [ref=e219] [cursor=pointer]:
+                - /url: /arama/ankara-kopek-otelleri
+            - listitem [ref=e220]:
+              - link "Antalya Kedi Otelleri" [ref=e221] [cursor=pointer]:
+                - /url: /arama/antalya-kedi-otelleri
+            - listitem [ref=e222]:
+              - link "Antalya Köpek Otelleri" [ref=e223] [cursor=pointer]:
+                - /url: /arama/antalya-kopek-otelleri
+            - listitem [ref=e224]:
+              - link "Balıkesir Kedi Otelleri" [ref=e225] [cursor=pointer]:
+                - /url: /arama/balikesir-kedi-otelleri
+            - listitem [ref=e226]:
+              - link "Bodrum Köpek Otelleri" [ref=e227] [cursor=pointer]:
+                - /url: /arama/mugla-bodrum-kopek-otelleri
+        - generic [ref=e228]:
+          - heading "Kategoriler" [level=5] [ref=e229]
+          - list [ref=e230]:
+            - listitem [ref=e231]:
+              - link "Pet Otelleri" [ref=e232] [cursor=pointer]:
+                - /url: /arama/pet-otelleri
+            - listitem [ref=e233]:
+              - link "Köpek Otelleri" [ref=e234] [cursor=pointer]:
+                - /url: /arama/kopek-otelleri
+            - listitem [ref=e235]:
+              - link "Kedi Otelleri" [ref=e236] [cursor=pointer]:
+                - /url: /arama/kedi-otelleri
+            - listitem [ref=e237]:
+              - link "Veteriner Klinikleri" [ref=e238] [cursor=pointer]:
+                - /url: /arama/veteriner-klinikleri
+            - listitem [ref=e239]:
+              - link "Petshoplar" [ref=e240] [cursor=pointer]:
+                - /url: /arama/petshoplar
+            - listitem [ref=e241]:
+              - link "Pet Kuaförleri" [ref=e242] [cursor=pointer]:
+                - /url: /arama/pet-kuaforleri
+            - listitem [ref=e243]:
+              - link "Köpek Eğitim Merkezleri" [ref=e244] [cursor=pointer]:
+                - /url: /arama/kopek-egitim-merkezleri
+            - listitem [ref=e245]:
+              - link "Pet Kreşleri" [ref=e246] [cursor=pointer]:
+                - /url: /arama/pet-kresleri
+        - generic [ref=e247]:
+          - heading "Faydalı Bağlantılar" [level=5] [ref=e248]
+          - list [ref=e249]:
+            - listitem [ref=e250]:
+              - link "Hakkımızda" [ref=e251] [cursor=pointer]:
+                - /url: /hakkimizda
+            - listitem [ref=e252]:
+              - link "İletişim" [ref=e253] [cursor=pointer]:
+                - /url: /iletisim
+            - listitem [ref=e254]:
+              - link "Yardım Merkezi" [ref=e255] [cursor=pointer]:
+                - /url: /yardim-merkezi
+            - listitem [ref=e256]:
+              - link "Gizlilik Politikası" [ref=e257] [cursor=pointer]:
+                - /url: /gizlilik-politikasi
+            - listitem [ref=e258]:
+              - link "Veri Kaynakları" [ref=e259] [cursor=pointer]:
+                - /url: /veri-kaynaklari
+            - listitem [ref=e260]:
+              - link "KVKK" [ref=e261] [cursor=pointer]:
+                - /url: /kvkk
+            - listitem [ref=e262]:
+              - link "İşletme görünürlüğü" [ref=e263] [cursor=pointer]:
+                - /url: /isletmeniz-icin
+        - generic [ref=e264]:
+          - heading "İletişim" [level=5] [ref=e265]
+          - list [ref=e266]:
+            - listitem [ref=e267]:
+              - link "destek@petkonak.com" [ref=e268] [cursor=pointer]:
+                - /url: mailto:destek@petkonak.com
+      - paragraph [ref=e270]:
+        - generic [ref=e271]: Pet Otelleri, Pet Pansiyonları, Evcil Hayvan Oteli, Kedi Oteli, Köpek Oteli.
+        - text: © 2026 Petkonak.com Tüm hakları saklıdır.
+        - generic [ref=e272]: Kedi Pansiyonu, Köpek Pansiyonu, Pet Konaklama, Hayvan Oteli.
+  - generic [ref=e274]:
+    - paragraph [ref=e275]: Petkonak, site kullanımını ve işletme iletişim tıklamalarını iyileştirmek için anonimleştirilmiş analitik verileri kullanır. IP adresleri düz metin olarak saklanmaz.
+    - generic [ref=e276]:
+      - button "Reddet" [ref=e277] [cursor=pointer]
+      - button "Tamam" [ref=e278] [cursor=pointer]
+  - alert [ref=e279]
