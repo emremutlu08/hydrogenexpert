@@ -1,0 +1,6 @@
+[     357ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ http://localhost:3000/rehber/pet-oteli-secerken:0
+[     483ms] [ERROR] Refused to execute script from 'http://localhost:3000/_vercel/insights/script.js' because its MIME type ('text/html') is not executable, and strict MIME type checking is enabled. @ http://localhost:3000/rehber/pet-oteli-secerken:0
+[     484ms] [LOG] Service Worker registered successfully: ServiceWorkerRegistration @ http://localhost:3000/_next/static/chunks/0_kz22tpb.26g.js:11
+[     521ms] [LOG] [Vercel Web Analytics] Failed to load script from /_vercel/insights/script.js. Be sure to enable Web Analytics for your project and deploy again. See https://vercel.com/docs/analytics/quickstart for more information. @ http://localhost:3000/_next/static/chunks/0_kz22tpb.26g.js:0
+[     597ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/api/analytics:0
+[     604ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/api/analytics:0

@@ -25,7 +25,7 @@ import {
 export const metadata = buildMetadata({
   title: "Shopify Portfolio Case Studies for Hydrogen and Liquid Builds",
   description:
-    "Shopify portfolio case studies across large-scale Hydrogen, luxury ecommerce, DTC content-commerce, and fast Liquid builds for EveShop, Bayam Jewelry, Rebel Bunny, Kirazev, and Clohi.",
+    "Shopify case studies across Hydrogen and Liquid work for EveShop, Bayam Jewelry, Rebel Bunny, Kirazev, and Clohi.",
   path: "/case-studies",
 });
 
@@ -48,7 +48,7 @@ const faqs = [
   {
     question: "Why do some cases have testimonials and others do not?",
     answer:
-      "Because only verified or approved feedback belongs on the page. Rebel Bunny now has public Upwork feedback, while the other cases still wait for approved quotes or measurable proof before a testimonial is shown.",
+      "Because only verified or approved feedback belongs on the page. Rebel Bunny has public Upwork feedback; other cases stay focused on approved role, constraint, stack, and outcome context.",
   },
 ] as const;
 
@@ -75,7 +75,7 @@ export default function CaseStudiesPage() {
           eyebrow="Proof"
           title="Real stores, real constraints, real storefront decisions"
           description="One proof page, five different storefront pressures: large-scale beauty retail, luxury jewelry, social-first DTC, home goods Liquid, and international apparel Liquid."
-          body="These projects are not separate business ideas. They support HydrogenExpert and Emre Mutlu's personal brand as sales proof. Only verified or approved proof is shown; screenshots, quotes, and deeper metrics stay off the page until they are approved."
+          body="This page uses only approved public proof: role, constraint, stack, visuals, and outcome context. Quotes, metrics, and deeper evidence stay off the page unless they are public or explicitly approved."
           reviewedAt="2026-05-25"
         />
 
@@ -188,8 +188,8 @@ export default function CaseStudiesPage() {
         </section>
 
         <CTASection
-          headline="Your storefront, written honestly on a page"
-          subtext="If your store has constraints that rhyme with any of these, I can help you scope the move with a merchant-friendly plan instead of a vague technical pitch."
+          headline="Use the closest proof to scope the next move"
+          subtext="If your store has similar constraints, I can help you decide whether the next step is Hydrogen, Liquid cleanup, support, or no rebuild."
           sourceKind="case_studies_cta"
         />
       </div>

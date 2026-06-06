@@ -168,7 +168,7 @@ export function LeadCaptureForm({
           Request a Hydrogen Scope Review
         </h3>
         <p className="text-sm leading-7 text-neutral-300">
-          If you are not ready to fill everything out, send the store URL, design status, product count, and the features that must ship first. The rest can be clarified later.
+          Send the required fields first. Add design status, product count, budget, and timeline only if they are already clear.
         </p>
         <p className="lead-form-note">
           I do not sell Hydrogen if Liquid is the better move.
@@ -178,7 +178,7 @@ export function LeadCaptureForm({
             Short brief path
           </p>
           <p className="mt-2 text-sm leading-6 text-neutral-300">
-            Only name, email, store URL, and main problem are required. Start with:
+            Required: name, email, store URL or brand, and main problem. Start with:
           </p>
           <ul className="mt-3 grid gap-2 text-sm leading-6 text-neutral-300">
             {SHORT_BRIEF_ITEMS.map((item) => (
@@ -211,7 +211,7 @@ export function LeadCaptureForm({
         <label className="lead-form-field">
           <span>Current stack</span>
           <select name="currentStack" defaultValue="">
-            <option value="">Select one</option>
+            <option value="">Optional</option>
             {CURRENT_STACK_OPTIONS.map((option) => (
               <option key={option.value} value={option.value}>
                 {option.label}
@@ -236,7 +236,7 @@ export function LeadCaptureForm({
         <label className="lead-form-field">
           <span>Budget range</span>
           <select name="budgetRange" defaultValue="">
-            <option value="">Select one</option>
+            <option value="">Optional</option>
             {BUDGET_RANGE_OPTIONS.map((option) => (
               <option key={option.value} value={option.value}>
                 {option.label}
@@ -247,7 +247,7 @@ export function LeadCaptureForm({
         <label className="lead-form-field">
           <span>Timeline</span>
           <select name="timeline" defaultValue="">
-            <option value="">Select one</option>
+            <option value="">Optional</option>
             {TIMELINE_OPTIONS.map((option) => (
               <option key={option.value} value={option.value}>
                 {option.label}
@@ -272,7 +272,7 @@ export function LeadCaptureForm({
         <label className="lead-form-field">
           <span>Shopify Plus?</span>
           <select name="shopifyPlusStatus" defaultValue="">
-            <option value="">Select one</option>
+            <option value="">Optional</option>
             {SHOPIFY_PLUS_OPTIONS.map((option) => (
               <option key={option.value} value={option.value}>
                 {option.label}
@@ -285,7 +285,7 @@ export function LeadCaptureForm({
       <label className="lead-form-field">
         <span>What kind of help?</span>
         <select name="engagementType" defaultValue="">
-          <option value="">Select one</option>
+          <option value="">Optional</option>
           {ENGAGEMENT_TYPE_OPTIONS.map((option) => (
             <option key={option.value} value={option.value}>
               {option.label}
@@ -298,7 +298,7 @@ export function LeadCaptureForm({
         <label className="lead-form-field">
           <span>Do you already have a design?</span>
           <select name="designStatus" defaultValue="">
-            <option value="">Select one</option>
+            <option value="">Optional</option>
             {DESIGN_STATUS_OPTIONS.map((option) => (
               <option key={option.value} value={option.value}>
                 {option.label}
@@ -309,7 +309,7 @@ export function LeadCaptureForm({
         <label className="lead-form-field">
           <span>How many products?</span>
           <select name="productCount" defaultValue="">
-            <option value="">Select one</option>
+            <option value="">Optional</option>
             {PRODUCT_COUNT_OPTIONS.map((option) => (
               <option key={option.value} value={option.value}>
                 {option.label}
@@ -336,7 +336,7 @@ export function LeadCaptureForm({
         <textarea
           name="message"
           rows={compact ? 4 : 5}
-          placeholder="Core pages needed, design source, integrations, migration question, SEO risk, app limits..."
+          placeholder="Pages needed, design source, integrations, SEO risk, app limits, launch deadline..."
         />
       </label>
 
@@ -363,7 +363,7 @@ export function LeadCaptureForm({
       </div>
 
       <p className="text-xs leading-6 text-neutral-500">
-        Your details are used only to reply to this specific project inquiry. No newsletters, no list sharing. If this is a low-budget theme tweak, I will usually point you to a lighter option.
+        Your details are used only to reply to this project inquiry. No newsletters, no list sharing. If this is a small theme tweak, I will usually point you to a lighter option.
       </p>
 
       {message ? (

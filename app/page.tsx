@@ -41,7 +41,7 @@ const schemaIds = getSchemaIds();
 export const metadata = buildMetadata({
   title: "Shopify Hydrogen Storefronts from $2K-$5K | HydrogenExpert",
   description:
-    "AI-assisted, fixed-scope Shopify Hydrogen storefront builds from $2K-$5K for growth-stage Shopify brands by Emre Mutlu.",
+    "Fixed-scope Shopify Hydrogen storefront builds from $2K-$5K for growth-stage Shopify brands by Emre Mutlu.",
   path: "/",
   ogImage: absoluteUrl("/og-home.svg"),
 });
@@ -169,9 +169,9 @@ const faqs = [
     linkLabel: "Review direct developer support.",
   },
   {
-    question: "Is Hydrogen ready for AI agent commerce in 2026?",
+    question: "Does Hydrogen help when the storefront needs AI-readable pages?",
     answer:
-      "Yes, if the storefront is structured well. Hydrogen gives you a stronger path for AI-readable routing, custom data flows, and agent-friendly surface logic. That still does not mean every store needs it. The business case matters first.",
+      "It can. Hydrogen gives you control over rendered content, routes, schema, and data flow, which makes the storefront easier for search systems and AI answer engines to read. That still does not make Hydrogen the right answer for every store. The business case comes first.",
   },
   {
     question: "What's the ongoing maintenance difference between Hydrogen and Liquid?",
@@ -285,7 +285,6 @@ const homepageMetrics = [
     href: OWNER.upwork,
     external: true,
   },
-  { id: "package-price", value: "$2K-$5K", label: "fixed-scope Hydrogen storefront package range" },
 ] as const;
 
 const processSteps = [
@@ -300,114 +299,6 @@ const processSteps = [
   {
     title: "Ship lean, then expand",
     body: "The first launch stays focused on core ecommerce flow, clean performance, checkout handoff, and launch QA. More features can follow once the direction is proven.",
-  },
-] as const;
-
-const references = [
-  {
-    label: "Hydrogen official site",
-    href: "https://hydrogen.shopify.dev/",
-    note: "Shopify describes Hydrogen as its headless stack for building custom storefronts.",
-  },
-  {
-    label: "Shopify Hydrogen getting started docs",
-    href: "https://shopify.dev/docs/storefronts/headless/hydrogen/getting-started",
-    note: "Official documentation for setup, capabilities, and implementation path.",
-  },
-  {
-    label: "Shopify Hydrogen and Oxygen fundamentals",
-    href: "https://shopify.dev/docs/storefronts/headless/hydrogen/fundamentals",
-    note: "Official reference for Hydrogen, React Router, Oxygen, and deployment architecture.",
-  },
-] as const;
-
-const technicalResources = [
-  {
-    title: "Shopify Hydrogen SEO",
-    href: "/shopify-hydrogen-seo",
-    body:
-      "A practical guide to metadata, canonical URLs, JSON-LD, variant URLs, sitemaps, robots, and crawl consistency in custom Hydrogen storefronts.",
-  },
-  {
-    title: "Shopify Hydrogen Articles",
-    href: "/articles",
-    body:
-      "Evergreen merchant guides for hiring, migration, SEO, cost, and Hydrogen fit decisions.",
-  },
-  {
-    title: "Shopify Hydrogen Experts",
-    href: "/shopify-hydrogen-experts",
-    body:
-      "A commercial evaluation page for teams comparing Hydrogen experts, agencies, proof, SEO risk, and senior storefront ownership.",
-  },
-  {
-    title: "Shopify Hydrogen Expert",
-    href: "/shopify-hydrogen-expert",
-    body:
-      "A focused page for buyers who want one senior Hydrogen specialist for architecture, Storefront API work, SEO-safe migration, and launch-risk review.",
-  },
-  {
-    title: "How to hire a Hydrogen developer",
-    href: "/articles/how-to-hire-shopify-hydrogen-developer",
-    body:
-      "A buyer guide for evaluating Shopify Hydrogen developers, senior ownership, proof, SEO discipline, Storefront API work, and when an audit should come before a rebuild.",
-  },
-  {
-    title: "Variant URLs and fallback bugs",
-    href: "/blog/shopify-hydrogen-variant-selection-fallback",
-    body:
-      "A technical article on keeping clicked options locked, preserving stable variant URLs, and avoiding UX or SEO mismatch on product pages.",
-  },
-  {
-    title: "Hydrogen performance case note",
-    href: "/blog/cut-homepage-load-time-from-5s-to-2s-shopify-hydrogen",
-    body:
-      "A real-world note on restoring server-rendered product data and cutting a Shopify Hydrogen homepage from roughly 5s to 2s.",
-  },
-  {
-    title: "Metaobjects for content sections",
-    href: "/blog/shopify-hydrogen-metaobjects-page-specific-sections",
-    body:
-      "A production note on using Shopify metaobjects for page-specific content sections without pushing primary content into fragile client-only paths.",
-  },
-] as const;
-
-const buyerDecisionResources = [
-  {
-    title: "US agency alternative",
-    href: "/shopify-hydrogen-agency-usa",
-    body:
-      "Remote senior-led Hydrogen support for US brands without pretending there is a fake local office.",
-  },
-  {
-    title: "Hydrogen vs Liquid",
-    href: "/shopify-hydrogen-vs-liquid",
-    body:
-      "Plain-English tradeoffs for teams deciding whether a theme can still solve the real storefront problem.",
-  },
-  {
-    title: "Maintenance cost",
-    href: "/shopify-hydrogen-maintenance-cost",
-    body:
-      "A practical look at the application ownership cost that starts after a Hydrogen storefront launches.",
-  },
-  {
-    title: "Large-catalog retail",
-    href: "/shopify-hydrogen-for-large-catalog-retail",
-    body:
-      "A vertical decision page for retailers where product discovery, scale, and route discipline matter.",
-  },
-  {
-    title: "DTC education brands",
-    href: "/shopify-hydrogen-for-dtc-education-brands",
-    body:
-      "A fit page for commerce brands where education content is part of conversion, not a separate blog layer.",
-  },
-  {
-    title: "Beauty brands",
-    href: "/shopify-hydrogen-for-beauty-brands",
-    body:
-      "A conservative beauty and cosmetics angle tied to real catalog, content, and product-story constraints.",
   },
 ] as const;
 
@@ -479,35 +370,6 @@ export default function HomePage() {
           </div>
 
           <TrustBar />
-
-          <div className="mx-auto grid max-w-5xl gap-3 md:grid-cols-3">
-            {[
-              {
-                href: "/resources",
-                label: "Start at the resource hub",
-                note: "Guides, services, proof, issues, and templates in one map.",
-              },
-              {
-                href: "/shopify-hydrogen-examples",
-                label: "Study Hydrogen examples",
-                note: "Patterns with source links and production takeaways.",
-              },
-              {
-                href: "/shopify-hydrogen-templates",
-                label: "Copy a checklist",
-                note: "Scope, migration, launch, PDP, analytics, and content-model templates.",
-              },
-            ].map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="rounded-[1.2rem] border border-black/8 bg-white/96 p-5 text-left transition hover:border-[#10b981]"
-              >
-                <h2 className="text-base font-semibold text-[#171717]">{item.label}</h2>
-                <p className="mt-2 text-sm leading-7 text-neutral-600">{item.note}</p>
-              </Link>
-            ))}
-          </div>
         </section>
 
         <HydrogenBuildPackages />
@@ -521,66 +383,9 @@ export default function HomePage() {
 
         <section className="surface-card space-y-6">
           <SectionHeader
-            eyebrow="Commercial paths"
-            title="Find the right entry point for the storefront decision."
-            description="The primary path stays the senior-led Hydrogen service. Articles support the decision, but they do not replace direct commercial scoping."
-          />
-          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
-            {[
-              {
-                href: "/shopify-hydrogen-packages",
-                title: "View fixed-scope build packages",
-                body:
-                  "Use this path when you want Starter, Standard, Growth, or Custom scope mapped to real storefront requirements.",
-              },
-              {
-                href: "/shopify-hydrogen-experts",
-                title: "Evaluate Shopify Hydrogen experts",
-                body:
-                  "Use this path when the search is about expert proof, agency comparison, and who should safely own Hydrogen scope.",
-              },
-              {
-                href: "/shopify-hydrogen-developer",
-                title: "Hire a senior Shopify Hydrogen developer",
-                body:
-                  "If you searched for Shopify Hydrogen developers, this is the direct senior-operator path instead of a general Shopify vendor.",
-              },
-              {
-                href: "/shopify-hydrogen-audit",
-                title: "Use audit only when risk is unclear",
-                body:
-                  "Start free. Use paid review when SEO, migration, apps, analytics, or requirements could change the estimate.",
-              },
-              {
-                href: "/case-studies",
-                title: "See Production Proof",
-                body:
-                  "Review approved Hydrogen storefront work across retail, luxury ecommerce, and DTC.",
-              },
-              {
-                href: "/articles/how-to-hire-shopify-hydrogen-developer",
-                title: "Read the hiring guide",
-                body:
-                  "Use the guide to evaluate Hydrogen developer proof, ownership, SEO judgment, and when an audit is the safer first move.",
-              },
-            ].map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="rounded-[1.3rem] border border-black/8 bg-white p-5 hover:border-[#10b981]"
-              >
-                <h2 className="text-lg font-semibold text-[#171717]">{item.title}</h2>
-                <p className="mt-3 text-sm leading-7 text-neutral-600">{item.body}</p>
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        <section className="surface-card space-y-6">
-          <SectionHeader
             eyebrow="Selected work"
             title={`${DELIVERY_PROOF.shopifyPortfolioProjects} Shopify projects, with Hydrogen proof at the center`}
-            description={`Including Turkey's first production Hydrogen storefront, EveShop at ${DELIVERY_PROOF.eveShopUsers} web users and ${DELIVERY_PROOF.eveShopMobileUsers} mobile users, plus Liquid projects that prove when a faster theme-native build is the better answer.`}
+            description={`Approved case-study context across Hydrogen and Liquid: EveShop at ${DELIVERY_PROOF.eveShopUsers} web users and ${DELIVERY_PROOF.eveShopMobileUsers} mobile users, plus smaller builds that show when a theme-native path is the better answer.`}
           />
           <SelectedWorkGrid />
         </section>
@@ -589,7 +394,7 @@ export default function HomePage() {
           <SectionHeader
             eyebrow="Proof"
             title="Public trust signals for a senior-led service model."
-            description="The proof layer should scan cleanly before the page asks a merchant to take the next step. No fake office, no fake team, no unsupported partner badges."
+            description="Only public or approved proof belongs here. No fake office, no fake team, no unsupported partner badges."
           />
           <ProofCardGrid
             items={proofCards}
@@ -599,9 +404,9 @@ export default function HomePage() {
 
         <section className="surface-card space-y-6">
           <SectionHeader
-            eyebrow="Results"
-            title="Results built for real business decisions."
-            description="The useful outcome is not more tech. It is a storefront that is easier to scale, easier to trust, and easier to improve after launch."
+            eyebrow="Proof metrics"
+            title="Numbers used as context, not decoration."
+            description="These signals help qualify the work without turning the page into a pile of claims."
           />
           <StatCardGrid
             items={homepageMetrics}
@@ -622,7 +427,7 @@ export default function HomePage() {
         <section className="surface-card space-y-6">
           <SectionHeader
             eyebrow="About Emre"
-            title="Direct operator, direct context, direct accountability"
+            title="How I work with founders and ecommerce teams"
             description="The point is not to sell a headless rebuild by default. It is to help founders and ecommerce leads make the right commercial call, then ship the work with senior ownership."
           />
           <FounderCard size="lg" showBio showCredentials>
@@ -646,77 +451,8 @@ export default function HomePage() {
           faqs={faqs}
         />
 
-        <section className="surface-card space-y-6">
-          <SectionHeader
-            eyebrow="Technical resources"
-            title="Start with the pages Google and merchants should understand first."
-            description="The core commercial pages explain fit, cost, and proof. These technical resources support the same positioning with practical Hydrogen SEO, URL, and performance detail."
-          />
-          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-            {technicalResources.map((resource) => (
-              <Link
-                key={resource.href}
-                href={resource.href}
-                className="rounded-[1.3rem] border border-black/8 bg-white p-5 hover:border-[#10b981]"
-              >
-                <h3 className="text-lg font-semibold text-[#171717]">{resource.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-neutral-600">{resource.body}</p>
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        <section className="surface-card space-y-6">
-          <SectionHeader
-            eyebrow="Buyer decision paths"
-            title="Route commercial research into the right supporting page."
-            description="These pages catch specific comparison, maintenance, and vertical-fit questions without turning Hydrogen into a default recommendation."
-          />
-          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-            {buyerDecisionResources.map((resource) => (
-              <Link
-                key={resource.href}
-                href={resource.href}
-                className="rounded-[1.3rem] border border-black/8 bg-white p-5 hover:border-[#10b981]"
-              >
-                <h3 className="text-lg font-semibold text-[#171717]">{resource.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-neutral-600">{resource.body}</p>
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        <section className="surface-card">
-          <div className="grid gap-8 lg:grid-cols-[0.44fr_0.56fr] lg:items-start">
-            <div className="max-w-3xl">
-              <p className="eyebrow">Sources</p>
-              <h2 className="section-heading mt-3">Authority should be grounded in real references.</h2>
-              <p className="body-copy mt-4">
-                These are the official sources behind the technical framing on this site. They support the plain-English guidance rather than replacing it.
-              </p>
-            </div>
-            <div className="grid gap-4">
-              {references.map((reference) => (
-                <article key={reference.href} className="agency-grid-card">
-                  <h3 className="text-lg font-semibold text-[#171717]">
-                    <a
-                      href={reference.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="transition hover:text-[#10b981]"
-                    >
-                      {reference.label}
-                    </a>
-                  </h3>
-                  <p className="mt-3 text-sm leading-7 text-neutral-600">{reference.note}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
         <CTASection
-          subtext="If your brand has outgrown a theme-based storefront, I can help you decide whether Hydrogen is the right next move and which service path should come first: audit, migration, custom build, optimization, support, or no rebuild."
+          subtext="Send the store URL, design status, product count, and the feature pressure behind the request. I will tell you whether the next move is a fixed-scope Hydrogen build, cleanup, support, or no rebuild."
           sourceKind="homepage_cta"
         />
       </div>

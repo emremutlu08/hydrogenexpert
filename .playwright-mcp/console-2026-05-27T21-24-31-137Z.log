@@ -1,0 +1,6 @@
+[     933ms] [LOG] Service Worker registered successfully: ServiceWorkerRegistration @ http://localhost:3027/_next/static/chunks/0_kz22tpb.26g.js:11
+[    1137ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3027/api/analytics:0
+[    1161ms] [ERROR] Refused to execute script from 'http://localhost:3027/_vercel/insights/script.js' because its MIME type ('text/html') is not executable, and strict MIME type checking is enabled. @ http://localhost:3027/blog:0
+[    1161ms] [LOG] [Vercel Web Analytics] Failed to load script from /_vercel/insights/script.js. Be sure to enable Web Analytics for your project and deploy again. See https://vercel.com/docs/analytics/quickstart for more information. @ http://localhost:3027/_next/static/chunks/0_kz22tpb.26g.js:0
+[    1263ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ http://localhost:3027/blog:0
+[    4606ms] [WARNING] The resource http://localhost:3027/_next/image?url=%2Fimages%2Fhomepage-hero-bg.jpg&w=640&q=75 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3027/blog:0

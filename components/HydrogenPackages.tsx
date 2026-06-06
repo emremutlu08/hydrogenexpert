@@ -294,9 +294,9 @@ export function AiAssistedWorkflowSection() {
   return (
     <section className="grid gap-6 lg:grid-cols-[0.86fr_1.14fr] lg:items-start">
       <div>
-        <p className="eyebrow">AI-assisted workflow</p>
+        <p className="eyebrow">Fixed-scope workflow</p>
         <h2 className="section-heading mt-3 text-[2.2rem] md:text-[2.8rem]">
-          Why the price is lower than a traditional agency rebuild.
+          Why the price stays bounded.
         </h2>
       </div>
       <div className="space-y-4">

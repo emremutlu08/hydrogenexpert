@@ -11,7 +11,7 @@ function buildHeader() {
   return [
     `# ${host}`,
     "",
-    `> HydrogenExpert is a senior-led Shopify Hydrogen services asset by ${OWNER.name}, focused on AI-assisted fixed-scope Hydrogen storefront builds, scope reviews, migrations, custom storefront development, performance, SEO, and support.`,
+    `> HydrogenExpert is a senior-led Shopify Hydrogen services asset by ${OWNER.name}, focused on fixed-scope Hydrogen storefront builds, scope reviews, migrations, custom storefront development, performance, SEO, and support.`,
     "",
   ].join("\n");
 }
@@ -23,7 +23,7 @@ function buildSummary() {
     `- Site owner: ${OWNER.name}`,
     `- Role: ${OWNER.title}`,
     `- Positioning: ${OWNER.headline}`,
-    "- Delivery model: Senior-led, AI-assisted fixed-scope Hydrogen builds without fake local office or broad full-service agency claims",
+    "- Delivery model: Senior-led, fixed-scope Hydrogen builds without fake local office or broad full-service agency claims",
     "- Audience: English-speaking Shopify merchants researching Hydrogen packages, headless Shopify, migrations, cost, and support",
     "- Primary goal: Qualified Hydrogen scope review, package, migration, build, optimization, and support inquiries",
     llmsLink("Personal site", OWNER.personalSite, "Owned personal authority hub for Emre Mutlu."),

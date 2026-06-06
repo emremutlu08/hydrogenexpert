@@ -252,12 +252,11 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           {article.sources?.length ? (
             <section className="card-soft mt-10 space-y-5">
               <div>
-                <p className="eyebrow">English sources</p>
-                <h2 className="subsection-title">English source material behind this guide.</h2>
+                <p className="eyebrow">Sources</p>
+                <h2 className="subsection-title">Source material behind this guide.</h2>
               </div>
               <p className="text-base leading-8 text-neutral-700">
-                These English articles and official references informed the internal Turkish
-                translation notes and this public English adaptation.
+                These articles and official references informed the public guidance on this page.
               </p>
               <div className="authority-links">
                 {article.sources.map((item) => (

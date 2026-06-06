@@ -1,0 +1,176 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - link "Petkonak Logo Petkonak" [ref=e7] [cursor=pointer]:
+          - /url: /
+          - img "Petkonak Logo" [ref=e9]
+          - generic [ref=e10]: Petkonak
+        - navigation [ref=e11]:
+          - link "Tüm Hizmetler" [ref=e12] [cursor=pointer]:
+            - /url: /arama
+          - link "Pet Otelleri" [ref=e13] [cursor=pointer]:
+            - /url: /arama/pet-otelleri
+          - link "Köpek Otelleri" [ref=e14] [cursor=pointer]:
+            - /url: /arama/kopek-otelleri
+          - link "Kedi Otelleri" [ref=e15] [cursor=pointer]:
+            - /url: /arama/kedi-otelleri
+          - link "Blog" [ref=e16] [cursor=pointer]:
+            - /url: /blog
+          - link "İşletmeniz için" [ref=e17] [cursor=pointer]:
+            - /url: /isletmeniz-icin
+      - generic [ref=e18]:
+        - link "Ara" [ref=e19] [cursor=pointer]:
+          - /url: /arama
+          - img
+          - text: Ara
+        - generic [ref=e20]:
+          - link "Giriş Yap" [ref=e21] [cursor=pointer]:
+            - /url: /giris-yap
+          - link "Kayıt Ol" [ref=e22] [cursor=pointer]:
+            - /url: /kayit-ol
+    - main "Ana içerik" [ref=e23]
+    - generic [ref=e25]:
+      - generic [ref=e26]:
+        - generic [ref=e27]:
+          - heading "Keşfedin" [level=5] [ref=e28]
+          - list [ref=e29]:
+            - listitem [ref=e30]:
+              - link "Tüm Pet Hizmetleri" [ref=e31] [cursor=pointer]:
+                - /url: /arama
+            - listitem [ref=e32]:
+              - link "Köpek Otelleri" [ref=e33] [cursor=pointer]:
+                - /url: /arama/kopek-otelleri
+            - listitem [ref=e34]:
+              - link "Kedi Otelleri" [ref=e35] [cursor=pointer]:
+                - /url: /arama/kedi-otelleri
+            - listitem [ref=e36]:
+              - link "Blog" [ref=e37] [cursor=pointer]:
+                - /url: /blog
+            - listitem [ref=e38]:
+              - link "Pet Oteli Fiyatları" [ref=e39] [cursor=pointer]:
+                - /url: /rehber/pet-oteli-fiyatlari
+            - listitem [ref=e40]:
+              - link "Pet Oteli Seçerken" [ref=e41] [cursor=pointer]:
+                - /url: /rehber/pet-oteli-secerken
+            - listitem [ref=e42]:
+              - link "Kedi Pansiyonu" [ref=e43] [cursor=pointer]:
+                - /url: /rehber/kedi-pansiyonu
+            - listitem [ref=e44]:
+              - link "Köpek Pansiyonu" [ref=e45] [cursor=pointer]:
+                - /url: /rehber/kopek-pansiyonu
+            - listitem [ref=e46]:
+              - link "Pet Pansiyon" [ref=e47] [cursor=pointer]:
+                - /url: /rehber/pet-pansiyon
+            - listitem [ref=e48]:
+              - link "İstanbul Pet Oteli Rehberi" [ref=e49] [cursor=pointer]:
+                - /url: /rehber/pet-hotel-istanbul
+            - listitem [ref=e50]:
+              - link "Pet Oteli Açmak" [ref=e51] [cursor=pointer]:
+                - /url: /rehber/pet-oteli-acmak
+            - listitem [ref=e52]:
+              - link "Site Haritası" [ref=e53] [cursor=pointer]:
+                - /url: /site-haritasi
+        - generic [ref=e54]:
+          - heading "Popüler Aramalar" [level=5] [ref=e55]
+          - list [ref=e56]:
+            - listitem [ref=e57]:
+              - link "İzmir Kedi Otelleri" [ref=e58] [cursor=pointer]:
+                - /url: /arama/izmir-kedi-otelleri
+            - listitem [ref=e59]:
+              - link "İzmir Pet Otelleri" [ref=e60] [cursor=pointer]:
+                - /url: /arama/izmir-pet-otelleri
+            - listitem [ref=e61]:
+              - link "İstanbul Kedi Otelleri" [ref=e62] [cursor=pointer]:
+                - /url: /arama/istanbul-kedi-otelleri
+            - listitem [ref=e63]:
+              - link "İstanbul Pet Otelleri" [ref=e64] [cursor=pointer]:
+                - /url: /arama/istanbul-pet-otelleri
+            - listitem [ref=e65]:
+              - link "İstanbul Köpek Otelleri" [ref=e66] [cursor=pointer]:
+                - /url: /arama/istanbul-kopek-otelleri
+            - listitem [ref=e67]:
+              - link "Ankara Kedi Otelleri" [ref=e68] [cursor=pointer]:
+                - /url: /arama/ankara-kedi-otelleri
+            - listitem [ref=e69]:
+              - link "Ankara Köpek Otelleri" [ref=e70] [cursor=pointer]:
+                - /url: /arama/ankara-kopek-otelleri
+            - listitem [ref=e71]:
+              - link "Antalya Kedi Otelleri" [ref=e72] [cursor=pointer]:
+                - /url: /arama/antalya-kedi-otelleri
+            - listitem [ref=e73]:
+              - link "Antalya Köpek Otelleri" [ref=e74] [cursor=pointer]:
+                - /url: /arama/antalya-kopek-otelleri
+            - listitem [ref=e75]:
+              - link "Balıkesir Kedi Otelleri" [ref=e76] [cursor=pointer]:
+                - /url: /arama/balikesir-kedi-otelleri
+            - listitem [ref=e77]:
+              - link "Bodrum Köpek Otelleri" [ref=e78] [cursor=pointer]:
+                - /url: /arama/mugla-bodrum-kopek-otelleri
+        - generic [ref=e79]:
+          - heading "Kategoriler" [level=5] [ref=e80]
+          - list [ref=e81]:
+            - listitem [ref=e82]:
+              - link "Pet Otelleri" [ref=e83] [cursor=pointer]:
+                - /url: /arama/pet-otelleri
+            - listitem [ref=e84]:
+              - link "Köpek Otelleri" [ref=e85] [cursor=pointer]:
+                - /url: /arama/kopek-otelleri
+            - listitem [ref=e86]:
+              - link "Kedi Otelleri" [ref=e87] [cursor=pointer]:
+                - /url: /arama/kedi-otelleri
+            - listitem [ref=e88]:
+              - link "Veteriner Klinikleri" [ref=e89] [cursor=pointer]:
+                - /url: /arama/veteriner-klinikleri
+            - listitem [ref=e90]:
+              - link "Petshoplar" [ref=e91] [cursor=pointer]:
+                - /url: /arama/petshoplar
+            - listitem [ref=e92]:
+              - link "Pet Kuaförleri" [ref=e93] [cursor=pointer]:
+                - /url: /arama/pet-kuaforleri
+            - listitem [ref=e94]:
+              - link "Köpek Eğitim Merkezleri" [ref=e95] [cursor=pointer]:
+                - /url: /arama/kopek-egitim-merkezleri
+            - listitem [ref=e96]:
+              - link "Pet Kreşleri" [ref=e97] [cursor=pointer]:
+                - /url: /arama/pet-kresleri
+        - generic [ref=e98]:
+          - heading "Faydalı Bağlantılar" [level=5] [ref=e99]
+          - list [ref=e100]:
+            - listitem [ref=e101]:
+              - link "Hakkımızda" [ref=e102] [cursor=pointer]:
+                - /url: /hakkimizda
+            - listitem [ref=e103]:
+              - link "İletişim" [ref=e104] [cursor=pointer]:
+                - /url: /iletisim
+            - listitem [ref=e105]:
+              - link "Yardım Merkezi" [ref=e106] [cursor=pointer]:
+                - /url: /yardim-merkezi
+            - listitem [ref=e107]:
+              - link "Gizlilik Politikası" [ref=e108] [cursor=pointer]:
+                - /url: /gizlilik-politikasi
+            - listitem [ref=e109]:
+              - link "Veri Kaynakları" [ref=e110] [cursor=pointer]:
+                - /url: /veri-kaynaklari
+            - listitem [ref=e111]:
+              - link "KVKK" [ref=e112] [cursor=pointer]:
+                - /url: /kvkk
+            - listitem [ref=e113]:
+              - link "İşletme görünürlüğü" [ref=e114] [cursor=pointer]:
+                - /url: /isletmeniz-icin
+        - generic [ref=e115]:
+          - heading "İletişim" [level=5] [ref=e116]
+          - list [ref=e117]:
+            - listitem [ref=e118]:
+              - link "destek@petkonak.com" [ref=e119] [cursor=pointer]:
+                - /url: mailto:destek@petkonak.com
+      - paragraph [ref=e121]:
+        - generic [ref=e122]: Pet Otelleri, Pet Pansiyonları, Evcil Hayvan Oteli, Kedi Oteli, Köpek Oteli.
+        - text: © 2026 Petkonak.com Tüm hakları saklıdır.
+        - generic [ref=e123]: Kedi Pansiyonu, Köpek Pansiyonu, Pet Konaklama, Hayvan Oteli.
+  - generic [ref=e125]:
+    - paragraph [ref=e126]: Petkonak, site kullanımını ve işletme iletişim tıklamalarını iyileştirmek için anonimleştirilmiş analitik verileri kullanır. IP adresleri düz metin olarak saklanmaz.
+    - generic [ref=e127]:
+      - button "Reddet" [ref=e128] [cursor=pointer]
+      - button "Tamam" [ref=e129] [cursor=pointer]
+  - alert [ref=e130]

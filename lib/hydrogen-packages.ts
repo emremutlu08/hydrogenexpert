@@ -339,7 +339,7 @@ export const PRICING_FAQS = [
   {
     question: "Is this cheaper because the quality is lower?",
     answer:
-      "No. It is cheaper because the scope is smaller, the workflow is productized, and AI-assisted development reduces repetitive implementation time. Senior review, architecture judgment, and launch QA still matter.",
+      "No. It is cheaper because the first launch is smaller and the scope is fixed before implementation starts. Senior review, architecture judgment, and launch QA still matter.",
   },
   {
     question: "Do you price by traffic or monthly visitors?",
@@ -369,9 +369,9 @@ export const PRICING_FAQS = [
 ] as const;
 
 export const AI_WORKFLOW_COPY = [
-  "I use AI-assisted workflows to move faster on repetitive implementation work: component scaffolding, content structure, QA checklists, route planning, and documentation drafts.",
-  "The important decisions are still senior-owned: storefront architecture, Shopify data flow, SEO-safe rendering, cart behavior, performance, and launch readiness.",
-  "AI reduces implementation drag. It does not replace commercial judgment.",
+  "The package price is tied to a bounded first launch: agreed routes, agreed components, known integrations, and clear launch checks.",
+  "The important decisions stay senior-owned: storefront architecture, Shopify data flow, SEO-safe rendering, cart behavior, performance, and launch readiness.",
+  "If the scope starts to look like a migration, app-heavy rebuild, or broad agency project, it should move out of the fixed package instead of being hidden inside it.",
 ] as const;
 
 export const AUDIT_REVIEW_OPTIONS = [

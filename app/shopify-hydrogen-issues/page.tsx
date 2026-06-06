@@ -15,7 +15,7 @@ import { HYDROGEN_ISSUE_CATEGORIES } from "@/features/traffic-foundation";
 export const metadata = buildMetadata({
   title: "Shopify Hydrogen Issue Library | Symptoms, Fixes & Notes",
   description:
-    "A Shopify Hydrogen issue library mapping production symptoms to fixes, production notes, and related templates for SEO, performance, PDP, collections, cart, and metaobjects.",
+    "Shopify Hydrogen issue library for SEO, performance, PDP, collection, cart, checkout, and metaobject fixes.",
   path: "/shopify-hydrogen-issues",
   ogImage: absoluteUrl(getOgImageForRoute("/shopify-hydrogen-issues")),
 });

@@ -1,0 +1,309 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - link "Petkonak Logo Petkonak" [ref=e7] [cursor=pointer]:
+          - /url: /
+          - img "Petkonak Logo" [ref=e9]
+          - generic [ref=e10]: Petkonak
+        - navigation [ref=e11]:
+          - link "Tüm Hizmetler" [ref=e12] [cursor=pointer]:
+            - /url: /arama
+          - link "Pet Otelleri" [ref=e13] [cursor=pointer]:
+            - /url: /arama/pet-otelleri
+          - link "Köpek Otelleri" [ref=e14] [cursor=pointer]:
+            - /url: /arama/kopek-otelleri
+          - link "Kedi Otelleri" [ref=e15] [cursor=pointer]:
+            - /url: /arama/kedi-otelleri
+          - link "Blog" [ref=e16] [cursor=pointer]:
+            - /url: /blog
+          - link "İşletmeniz için" [ref=e17] [cursor=pointer]:
+            - /url: /isletmeniz-icin
+      - generic [ref=e18]:
+        - link "Ara" [ref=e19] [cursor=pointer]:
+          - /url: /arama
+          - img
+          - text: Ara
+        - generic [ref=e20]:
+          - link "Giriş Yap" [ref=e21] [cursor=pointer]:
+            - /url: /giris-yap
+          - link "Kayıt Ol" [ref=e22] [cursor=pointer]:
+            - /url: /kayit-ol
+    - main "Ana içerik" [ref=e23]:
+      - main [ref=e24]:
+        - generic [ref=e25]:
+          - generic [ref=e26]:
+            - generic [ref=e27]:
+              - navigation "Breadcrumb" [ref=e28]:
+                - list [ref=e29]:
+                  - listitem [ref=e30]:
+                    - link "Ana Sayfa" [ref=e31] [cursor=pointer]:
+                      - /url: /
+                  - listitem [ref=e32]:
+                    - img [ref=e33]
+                    - link "Arama" [ref=e35] [cursor=pointer]:
+                      - /url: /arama
+                  - listitem [ref=e36]:
+                    - img [ref=e37]
+                    - link "Kedi Otelleri" [ref=e39] [cursor=pointer]:
+                      - /url: /arama/kedi-otelleri
+                  - listitem [ref=e40]:
+                    - img [ref=e41]
+                    - link "İzmir" [ref=e43] [cursor=pointer]:
+                      - /url: /arama/izmir-kedi-otelleri
+                  - listitem [ref=e44]:
+                    - img [ref=e45]
+                    - link "Bayraklı" [ref=e47] [cursor=pointer]:
+                      - /url: /arama/izmir-bayrakli-kedi-otelleri
+                  - listitem [ref=e48]:
+                    - img [ref=e49]
+                    - generic [ref=e51]: İzmir Bayraklı Kedi Oteli
+              - generic [ref=e52]:
+                - generic [ref=e53]:
+                  - generic [ref=e54]:
+                    - generic [ref=e55]: Kedi Oteli
+                    - generic [ref=e56]:
+                      - img [ref=e57]
+                      - text: Yorum sinyalleri incelendi
+                  - heading "İzmir Bayraklı Kedi Oteli" [level=1] [ref=e60]
+                  - generic [ref=e61]:
+                    - generic [ref=e62]:
+                      - img [ref=e63]
+                      - text: Bayraklı, İzmir
+                    - generic [ref=e66]:
+                      - generic [ref=e67]:
+                        - img [ref=e68]
+                        - img [ref=e70]
+                        - img [ref=e72]
+                        - img [ref=e74]
+                        - img [ref=e76]
+                      - generic [ref=e78]: 4.6 / 21 değerlendirme
+                - generic [ref=e79]:
+                  - generic [ref=e80]:
+                    - paragraph [ref=e81]: Puan
+                    - paragraph [ref=e82]: "4.6"
+                  - generic [ref=e83]:
+                    - paragraph [ref=e84]: İletişim
+                    - paragraph [ref=e85]:
+                      - img [ref=e86]
+                      - text: Direkt
+            - button "İzmir Bayraklı Kedi Oteli ana görselini büyüt" [ref=e92] [cursor=pointer]:
+              - img "İzmir Bayraklı Kedi Oteli ana görsel" [ref=e93]
+          - generic [ref=e94]:
+            - generic [ref=e95]:
+              - region "Genel Bakış" [ref=e96]:
+                - generic [ref=e98]:
+                  - heading "Genel Bakış" [level=2] [ref=e99]
+                  - paragraph [ref=e100]: İşletme profili ve öne çıkan hizmet sinyalleri
+                - generic [ref=e101]:
+                  - paragraph [ref=e103]: İzmir Bayraklı Kedi Oteli için Petkonak katalog kaydı.
+                  - generic [ref=e104]:
+                    - img [ref=e105]
+                    - paragraph [ref=e108]: Kedi konaklama, bakım ve iletişim bilgilerini inceleyin.
+                  - generic [ref=e109]:
+                    - heading "Kedi Konaklama Özellikleri" [level=3] [ref=e110]
+                    - generic [ref=e111]: Öne çıkan özellik bilgisi henüz işletme tarafından beyan edilmemiştir.
+              - generic [ref=e112]:
+                - heading "Değerlendirmeler" [level=2] [ref=e113]
+                - generic [ref=e114]:
+                  - generic [ref=e115]:
+                    - paragraph [ref=e116]: "4.6"
+                    - generic [ref=e117]:
+                      - img [ref=e118]
+                      - img [ref=e120]
+                      - img [ref=e122]
+                      - img [ref=e124]
+                      - img [ref=e126]
+                    - paragraph [ref=e128]: 21 değerlendirme
+                  - generic [ref=e129]:
+                    - heading "Kamuya açık yorum sinyalleri" [level=4] [ref=e130]
+                    - paragraph [ref=e131]: Google işletme profilindeki puan ve değerlendirme sayısı. Ham yorumlar Petkonak'ta yayınlanmaz.
+                    - paragraph [ref=e132]: "Son güncelleme: 28.05.2026"
+                - generic [ref=e133]: Bu işletme için kamuya açık değerlendirme sinyalleri var. Petkonak ham yorumları kopyalamaz; karar verirken aşağıdaki analiz özetini ve işletmeyle doğrudan teyit edeceğiniz güncel bilgileri birlikte kullanın.
+              - generic [ref=e134]:
+                - generic [ref=e136]:
+                  - img [ref=e137]
+                  - text: Hizmet Bilgileri
+                - generic [ref=e140]:
+                  - img [ref=e142]
+                  - paragraph [ref=e144]: Henüz işletme hizmet bilgisi beyanında bulunmamıştır.
+                  - paragraph [ref=e145]: Eğer işletme sahibi sizseniz aşağıdaki linkten işletmenin sahipliği beyanında bulunabilirsiniz.
+                  - button "İşletme sahipliği beyanında bulun" [ref=e146] [cursor=pointer]:
+                    - img
+                    - text: İşletme sahipliği beyanında bulun
+              - generic [ref=e147]:
+                - generic [ref=e149]:
+                  - heading "Konum" [level=2] [ref=e150]
+                  - paragraph [ref=e151]: Adres ve yol tarifi bilgisi
+                - iframe [ref=e153]:
+                  
+                - generic [ref=e154]:
+                  - paragraph [ref=e155]: Sevgiyolu, Bayraklı, 35050 Bayraklı/İzmir, Türkiye
+                  - link "Yol Tarifi Al" [ref=e156] [cursor=pointer]:
+                    - /url: https://www.google.com/maps/dir/?api=1&destination=%C4%B0zmir%20Bayrakl%C4%B1%20Kedi%20Oteli%2C%20Sevgiyolu%2C%20Bayrakl%C4%B1%2C%2035050%20Bayrakl%C4%B1%2F%C4%B0zmir%2C%20T%C3%BCrkiye
+                    - img [ref=e157]
+                    - generic [ref=e159]: Yol Tarifi Al
+            - complementary [ref=e161]:
+              - generic [ref=e162]:
+                - paragraph [ref=e163]: İletişim
+                - paragraph [ref=e164]: Petkonak bir rehber platformudur. Butonlar sizi doğrudan ilgili işletmeye yönlendirir; fiyat, müsaitlik ve kabul koşulları işletmeyle teyit edilir.
+              - generic [ref=e165]:
+                - link "İşletmeyi Ara" [ref=e166] [cursor=pointer]:
+                  - /url: tel:+905511970007
+                  - img
+                  - text: İşletmeyi Ara
+                - link "WhatsApp'tan Yaz" [ref=e167] [cursor=pointer]:
+                  - /url: https://wa.me/905511970007?text=Merhaba%2C%20Petkonak%20%C3%BCzerinden%20ula%C5%9F%C4%B1yorum.%20Evcil%20hayvan%20konaklama%20hizmetiniz%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.
+                  - img
+                  - text: WhatsApp'tan Yaz
+                - link "Web Sitesine Git" [ref=e168] [cursor=pointer]:
+                  - /url: https://www.miyavlove.com/
+                  - img
+                  - text: Web Sitesine Git
+                - button "Sahiplik / düzeltme talebi" [ref=e169] [cursor=pointer]:
+                  - img
+                  - text: Sahiplik / düzeltme talebi
+    - generic [ref=e171]:
+      - generic [ref=e172]:
+        - generic [ref=e173]:
+          - heading "Keşfedin" [level=5] [ref=e174]
+          - list [ref=e175]:
+            - listitem [ref=e176]:
+              - link "Tüm Pet Hizmetleri" [ref=e177] [cursor=pointer]:
+                - /url: /arama
+            - listitem [ref=e178]:
+              - link "Köpek Otelleri" [ref=e179] [cursor=pointer]:
+                - /url: /arama/kopek-otelleri
+            - listitem [ref=e180]:
+              - link "Kedi Otelleri" [ref=e181] [cursor=pointer]:
+                - /url: /arama/kedi-otelleri
+            - listitem [ref=e182]:
+              - link "Blog" [ref=e183] [cursor=pointer]:
+                - /url: /blog
+            - listitem [ref=e184]:
+              - link "Pet Oteli Fiyatları" [ref=e185] [cursor=pointer]:
+                - /url: /rehber/pet-oteli-fiyatlari
+            - listitem [ref=e186]:
+              - link "Pet Oteli Seçerken" [ref=e187] [cursor=pointer]:
+                - /url: /rehber/pet-oteli-secerken
+            - listitem [ref=e188]:
+              - link "Kedi Pansiyonu" [ref=e189] [cursor=pointer]:
+                - /url: /rehber/kedi-pansiyonu
+            - listitem [ref=e190]:
+              - link "Köpek Pansiyonu" [ref=e191] [cursor=pointer]:
+                - /url: /rehber/kopek-pansiyonu
+            - listitem [ref=e192]:
+              - link "Pet Pansiyon" [ref=e193] [cursor=pointer]:
+                - /url: /rehber/pet-pansiyon
+            - listitem [ref=e194]:
+              - link "İstanbul Pet Oteli Rehberi" [ref=e195] [cursor=pointer]:
+                - /url: /rehber/pet-hotel-istanbul
+            - listitem [ref=e196]:
+              - link "Pet Oteli Açmak" [ref=e197] [cursor=pointer]:
+                - /url: /rehber/pet-oteli-acmak
+            - listitem [ref=e198]:
+              - link "Site Haritası" [ref=e199] [cursor=pointer]:
+                - /url: /site-haritasi
+        - generic [ref=e200]:
+          - heading "Popüler Aramalar" [level=5] [ref=e201]
+          - list [ref=e202]:
+            - listitem [ref=e203]:
+              - link "İzmir Kedi Otelleri" [ref=e204] [cursor=pointer]:
+                - /url: /arama/izmir-kedi-otelleri
+            - listitem [ref=e205]:
+              - link "İzmir Pet Otelleri" [ref=e206] [cursor=pointer]:
+                - /url: /arama/izmir-pet-otelleri
+            - listitem [ref=e207]:
+              - link "İstanbul Kedi Otelleri" [ref=e208] [cursor=pointer]:
+                - /url: /arama/istanbul-kedi-otelleri
+            - listitem [ref=e209]:
+              - link "İstanbul Pet Otelleri" [ref=e210] [cursor=pointer]:
+                - /url: /arama/istanbul-pet-otelleri
+            - listitem [ref=e211]:
+              - link "İstanbul Köpek Otelleri" [ref=e212] [cursor=pointer]:
+                - /url: /arama/istanbul-kopek-otelleri
+            - listitem [ref=e213]:
+              - link "Ankara Kedi Otelleri" [ref=e214] [cursor=pointer]:
+                - /url: /arama/ankara-kedi-otelleri
+            - listitem [ref=e215]:
+              - link "Ankara Köpek Otelleri" [ref=e216] [cursor=pointer]:
+                - /url: /arama/ankara-kopek-otelleri
+            - listitem [ref=e217]:
+              - link "Antalya Kedi Otelleri" [ref=e218] [cursor=pointer]:
+                - /url: /arama/antalya-kedi-otelleri
+            - listitem [ref=e219]:
+              - link "Antalya Köpek Otelleri" [ref=e220] [cursor=pointer]:
+                - /url: /arama/antalya-kopek-otelleri
+            - listitem [ref=e221]:
+              - link "Balıkesir Kedi Otelleri" [ref=e222] [cursor=pointer]:
+                - /url: /arama/balikesir-kedi-otelleri
+            - listitem [ref=e223]:
+              - link "Bodrum Köpek Otelleri" [ref=e224] [cursor=pointer]:
+                - /url: /arama/mugla-bodrum-kopek-otelleri
+        - generic [ref=e225]:
+          - heading "Kategoriler" [level=5] [ref=e226]
+          - list [ref=e227]:
+            - listitem [ref=e228]:
+              - link "Pet Otelleri" [ref=e229] [cursor=pointer]:
+                - /url: /arama/pet-otelleri
+            - listitem [ref=e230]:
+              - link "Köpek Otelleri" [ref=e231] [cursor=pointer]:
+                - /url: /arama/kopek-otelleri
+            - listitem [ref=e232]:
+              - link "Kedi Otelleri" [ref=e233] [cursor=pointer]:
+                - /url: /arama/kedi-otelleri
+            - listitem [ref=e234]:
+              - link "Veteriner Klinikleri" [ref=e235] [cursor=pointer]:
+                - /url: /arama/veteriner-klinikleri
+            - listitem [ref=e236]:
+              - link "Petshoplar" [ref=e237] [cursor=pointer]:
+                - /url: /arama/petshoplar
+            - listitem [ref=e238]:
+              - link "Pet Kuaförleri" [ref=e239] [cursor=pointer]:
+                - /url: /arama/pet-kuaforleri
+            - listitem [ref=e240]:
+              - link "Köpek Eğitim Merkezleri" [ref=e241] [cursor=pointer]:
+                - /url: /arama/kopek-egitim-merkezleri
+            - listitem [ref=e242]:
+              - link "Pet Kreşleri" [ref=e243] [cursor=pointer]:
+                - /url: /arama/pet-kresleri
+        - generic [ref=e244]:
+          - heading "Faydalı Bağlantılar" [level=5] [ref=e245]
+          - list [ref=e246]:
+            - listitem [ref=e247]:
+              - link "Hakkımızda" [ref=e248] [cursor=pointer]:
+                - /url: /hakkimizda
+            - listitem [ref=e249]:
+              - link "İletişim" [ref=e250] [cursor=pointer]:
+                - /url: /iletisim
+            - listitem [ref=e251]:
+              - link "Yardım Merkezi" [ref=e252] [cursor=pointer]:
+                - /url: /yardim-merkezi
+            - listitem [ref=e253]:
+              - link "Gizlilik Politikası" [ref=e254] [cursor=pointer]:
+                - /url: /gizlilik-politikasi
+            - listitem [ref=e255]:
+              - link "Veri Kaynakları" [ref=e256] [cursor=pointer]:
+                - /url: /veri-kaynaklari
+            - listitem [ref=e257]:
+              - link "KVKK" [ref=e258] [cursor=pointer]:
+                - /url: /kvkk
+            - listitem [ref=e259]:
+              - link "İşletme görünürlüğü" [ref=e260] [cursor=pointer]:
+                - /url: /isletmeniz-icin
+        - generic [ref=e261]:
+          - heading "İletişim" [level=5] [ref=e262]
+          - list [ref=e263]:
+            - listitem [ref=e264]:
+              - link "destek@petkonak.com" [ref=e265] [cursor=pointer]:
+                - /url: mailto:destek@petkonak.com
+      - paragraph [ref=e267]:
+        - generic [ref=e268]: Pet Otelleri, Pet Pansiyonları, Evcil Hayvan Oteli, Kedi Oteli, Köpek Oteli.
+        - text: © 2026 Petkonak.com Tüm hakları saklıdır.
+        - generic [ref=e269]: Kedi Pansiyonu, Köpek Pansiyonu, Pet Konaklama, Hayvan Oteli.
+  - generic [ref=e271]:
+    - paragraph [ref=e272]: Petkonak, site kullanımını ve işletme iletişim tıklamalarını iyileştirmek için anonimleştirilmiş analitik verileri kullanır. IP adresleri düz metin olarak saklanmaz.
+    - generic [ref=e273]:
+      - button "Reddet" [ref=e274] [cursor=pointer]
+      - button "Tamam" [ref=e275] [cursor=pointer]
+  - alert [ref=e276]

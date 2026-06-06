@@ -78,7 +78,7 @@ const proofCards = [
       </Link>
     ),
     title: UPWORK_PROFILE.badge,
-    body: "External proof that delivery discipline and client trust already exist outside this site.",
+    body: "Public marketplace proof for delivery discipline and client trust.",
     media: null,
   },
   {
@@ -93,7 +93,7 @@ const proofCards = [
       </Link>
     ),
     title: `${UPWORK_PROFILE.jobSuccessScore} Job Success Score`,
-    body: "A cleaner signal of reliability for brands making more serious storefront decisions.",
+    body: "A public reliability signal for brands choosing a senior storefront owner.",
     media: null,
   },
   {
@@ -228,7 +228,7 @@ export default function HireMePage() {
           <SectionHeader
             eyebrow="Teaching"
             title="A public teaching signal alongside the client work"
-            description="The course card makes the educational proof explicit, without pretending missing URL data is already in place."
+            description="The course gives buyers another public way to judge how I explain Hydrogen, not just how I code it."
           />
           <UdemyCourseCard courseUrl={OWNER.udemyUrl} />
         </section>
@@ -244,14 +244,14 @@ export default function HireMePage() {
                 Store owners usually need honest scoping, fast communication, and someone who can explain tradeoffs in business terms. That is exactly how I run projects.
               </p>
               <p className="mt-4 text-base leading-8 text-neutral-600">
-                You do not need to decode technical language to make a smart decision. I keep the conversation focused on risk, payoff, timeline, and launch readiness.
+                You should not need to decode technical language to make a smart decision. I keep the conversation focused on risk, payoff, timeline, and launch readiness.
               </p>
             </>
           }
           right={
             <>
               <p className="text-base leading-8 text-neutral-600">
-                Your Shopify store works, but every new feature takes 3x longer than last year? That is when I come in. The job is not to sell you complexity. It is to figure out whether the stack is still serving the business.
+                If every new storefront feature takes longer than it should, that is when I come in. The job is not to sell you complexity. It is to decide whether the stack is still serving the business.
               </p>
               <div className="grid gap-4 sm:grid-cols-3">
                 {stats.map((item) => (
