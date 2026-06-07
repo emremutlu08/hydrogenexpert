@@ -212,6 +212,28 @@ export function DecisionLogicSection({ service }: { service: ServicePackage }) {
   );
 }
 
+export function HireFitSection({ service }: { service: ServicePackage }) {
+  if (!service.hireFitNotes?.length) {
+    return null;
+  }
+
+  return (
+    <section className="card-soft grid gap-6 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
+      <div>
+        <p className="eyebrow">When to hire me</p>
+        <h2 className="subsection-title mt-3">Use this path when senior ownership lowers risk.</h2>
+      </div>
+      <ul className="editorial-list">
+        {service.hireFitNotes.map((note) => (
+          <li key={note}>
+            <span>{note}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
 export function WrongFitSection({ service }: { service: ServicePackage }) {
   if (!service.wrongFitNotes?.length) {
     return null;
@@ -221,7 +243,7 @@ export function WrongFitSection({ service }: { service: ServicePackage }) {
     <section className="card-soft grid gap-6 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
       <div>
         <p className="eyebrow">Wrong fit</p>
-        <h2 className="subsection-title mt-3">Hydrogen may be the wrong investment if...</h2>
+        <h2 className="subsection-title mt-3">When not to hire me for this path.</h2>
       </div>
       <ul className="editorial-list">
         {service.wrongFitNotes.map((note) => (

@@ -56,6 +56,35 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
+  async redirects() {
+    return [
+      {
+        source: "/case-studies/bayam-jewelry",
+        destination: "/case-studies/bayam-jewelry-shopify-hydrogen",
+        permanent: true,
+      },
+      {
+        source: "/case-studies/rebel-bunny",
+        destination: "/case-studies/rebel-bunny-shopify-hydrogen",
+        permanent: true,
+      },
+      {
+        source: "/blog/shopify-hydrogen-seo",
+        destination: "/shopify-hydrogen-seo",
+        permanent: true,
+      },
+      {
+        source: "/shopify-headless-commerce",
+        destination: "/headless-shopify-agency",
+        permanent: true,
+      },
+      {
+        source: "/shopify-storefront-api-developer",
+        destination: "/shopify-hydrogen-developer",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

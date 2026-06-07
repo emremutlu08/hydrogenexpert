@@ -302,6 +302,34 @@ const processSteps = [
   },
 ] as const;
 
+const commercialPathLinks = [
+  {
+    href: "/shopify-hydrogen-developer",
+    label: "Shopify Hydrogen Developer",
+    note: "Direct senior implementation for Hydrogen routes, product flow, cart behavior, SEO-safe launch work, and support.",
+  },
+  {
+    href: "/shopify-hydrogen-expert",
+    label: "Shopify Hydrogen Expert",
+    note: "One senior specialist for architecture, storefront risk, migration judgment, and implementation ownership.",
+  },
+  {
+    href: "/shopify-hydrogen-seo",
+    label: "Shopify Hydrogen SEO",
+    note: "Technical SEO help for rendered HTML, metadata, canonicals, schema, sitemap, and crawl consistency.",
+  },
+  {
+    href: "/headless-shopify-agency",
+    label: "Headless Shopify Agency Alternative",
+    note: "A senior-led path when you are comparing headless agencies, Hydrogen specialists, and Liquid alternatives.",
+  },
+  {
+    href: "/case-studies",
+    label: "Case studies",
+    note: "Approved proof across EveShop, Bayam Jewelry, Rebel Bunny, Kirazev, and Clohi.",
+  },
+] as const;
+
 export default function HomePage() {
   return (
     <>
@@ -374,6 +402,23 @@ export default function HomePage() {
 
         <HydrogenBuildPackages />
         <TwoKBuildBoundarySection />
+
+        <section className="surface-card space-y-6">
+          <SectionHeader
+            eyebrow="Commercial paths"
+            title="Choose the Hydrogen path that matches the buying question."
+            description="Developer, expert, SEO, agency-alternative, and proof pages are linked here so searchers and crawlers can move from the homepage into the right commercial route."
+          />
+          <div className="authority-links">
+            {commercialPathLinks.map((item) => (
+              <Link key={item.href} href={item.href} className="authority-link-card">
+                <p className="authority-link-card__label">HydrogenExpert</p>
+                <h3 className="authority-link-card__title">{item.label}</h3>
+                <p className="authority-link-card__body">{item.note}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
 
         <LogoWall
           logos={clientLogos}

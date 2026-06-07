@@ -15,6 +15,11 @@ export const LEGACY_PERMANENT_REDIRECTS = new Map([
   ["/blog/storefront-mcp-vs-shopify-dev-mcp", "/resources"],
   ["/blog/what-ucp-means-for-shopify-merchants", "/resources"],
   ["/blog/is-hydrogen-ready-for-ai-shopping-agents", "/shopify-hydrogen-seo"],
+  ["/case-studies/bayam-jewelry", "/case-studies/bayam-jewelry-shopify-hydrogen"],
+  ["/case-studies/rebel-bunny", "/case-studies/rebel-bunny-shopify-hydrogen"],
+  ["/blog/shopify-hydrogen-seo", "/shopify-hydrogen-seo"],
+  ["/shopify-headless-commerce", "/headless-shopify-agency"],
+  ["/shopify-storefront-api-developer", "/shopify-hydrogen-developer"],
 ]);
 
 export function normalizeRedirectPathname(pathname: string) {

@@ -245,9 +245,9 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
     ],
     internalLinks: [
       {
-        href: "/shopify-hydrogen-performance-optimization",
-        label: "Hydrogen performance optimization",
-        note: "Use this when homepage media, scripts, and interaction timing need production cleanup.",
+        href: "/shopify-hydrogen-developer",
+        label: "Shopify Hydrogen developer",
+        note: "Use this when carousel behavior, media timing, and storefront UI logic need direct senior implementation.",
       },
       {
         href: "/custom-shopify-hydrogen-storefront",
@@ -255,9 +255,9 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
         note: "The service path for custom storefront UI patterns that need careful behavior and maintainability.",
       },
       {
-        href: "/blog/cut-homepage-load-time-from-5s-to-2s-shopify-hydrogen",
-        label: "Hydrogen homepage performance note",
-        note: "A related production note about homepage behavior, initial rendering, and practical frontend tradeoffs.",
+        href: "/shopify-hydrogen-expert",
+        label: "Senior Shopify Hydrogen expert",
+        note: "Use this when the real need is one accountable specialist to trace storefront edge cases.",
       },
     ],
     externalLinks: [
@@ -914,23 +914,23 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
     internalLinks: [
       {
         href: "/shopify-hydrogen-seo",
-        label: "Shopify Hydrogen SEO guide",
+        label: "Shopify Hydrogen SEO",
         note: "Use this for the broader crawl, metadata, canonical, sitemap, and structured-data checklist.",
       },
       {
-        href: "/blog/cut-homepage-load-time-from-5s-to-2s-shopify-hydrogen",
-        label: "Hydrogen homepage SSR case note",
-        note: "A related production note about moving primary homepage data out of client-side effects.",
+        href: "/shopify-hydrogen-developer",
+        label: "Hire a Shopify Hydrogen developer",
+        note: "Use this when product content, Storefront API data, and initial HTML need implementation ownership.",
       },
       {
-        href: "/shopify-hydrogen-performance-optimization",
-        label: "Hydrogen performance, SEO, and UX optimization",
-        note: "The service path for existing Hydrogen storefronts where crawlability, speed, or UX has drifted.",
+        href: "/shopify-hydrogen-expert",
+        label: "Senior Shopify Hydrogen expert",
+        note: "Use this when SSR, product schema, and migration-risk decisions need senior review.",
       },
       {
-        href: "/hire-me",
-        label: "Work with Emre",
-        note: "The direct route if your storefront needs senior Hydrogen implementation with focused ownership.",
+        href: "/headless-shopify-agency",
+        label: "Headless Shopify agency alternative",
+        note: "Use this when crawlability issues are part of a larger headless storefront path.",
       },
     ],
     externalLinks: [
@@ -988,23 +988,23 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
     internalLinks: [
       {
         href: "/shopify-hydrogen-seo",
-        label: "Shopify Hydrogen SEO guide",
+        label: "Shopify Hydrogen SEO",
         note: "Use this when page-specific content needs to stay crawlable, canonical, and structured.",
       },
       {
-        href: "/custom-shopify-hydrogen-storefront",
-        label: "Shopify Hydrogen services",
-        note: "Use this when merchant-editable content is part of a broader custom storefront build.",
+        href: "/shopify-hydrogen-developer",
+        label: "Hire a Shopify Hydrogen developer",
+        note: "Use this when merchant-editable content models need to become stable Hydrogen components.",
+      },
+      {
+        href: "/headless-shopify-agency",
+        label: "Headless Shopify agency alternative",
+        note: "Use this when the metaobject work is part of a broader headless Shopify decision.",
       },
       {
         href: "/case-studies/bayam-jewelry-shopify-hydrogen",
         label: "Bayam Jewelry case study",
         note: "The broader context for luxury catalog and showroom-led Hydrogen storefront work.",
-      },
-      {
-        href: "/hire-me",
-        label: "Work with Emre",
-        note: "The direct route if your storefront needs senior Hydrogen implementation with focused ownership.",
       },
     ],
     externalLinks: [
@@ -1076,14 +1076,19 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
         note: "Use this when variant URLs, canonicals, structured data, and rendered product state need to agree.",
       },
       {
-        href: "/custom-shopify-hydrogen-storefront",
-        label: "Custom Hydrogen storefront development",
-        note: "Use this when product option behavior is part of a broader custom buying journey.",
+        href: "/shopify-hydrogen-developer",
+        label: "Shopify Hydrogen developer",
+        note: "Use this when variant resolver logic, product options, and URL state need implementation support.",
       },
       {
-        href: "/shopify-hydrogen-audit",
-        label: "Hydrogen storefront audit",
-        note: "Use this when variant behavior needs to be reviewed before more feature work ships.",
+        href: "/shopify-hydrogen-expert",
+        label: "Senior Shopify Hydrogen expert",
+        note: "Use this when the safer next step is expert review before more PDP work ships.",
+      },
+      {
+        href: "/custom-shopify-hydrogen-storefront",
+        label: "Custom Shopify Hydrogen storefront",
+        note: "Use this when product option behavior is part of a broader custom buying journey.",
       },
     ],
     externalLinks: [
@@ -1140,29 +1145,24 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
     ogImage: "/og-post.svg",
     internalLinks: [
       {
-        href: "/shopify-hydrogen-performance-optimization",
-        label: "Hydrogen performance optimization",
-        note: "Use this when a live Hydrogen storefront needs SSR, data-loading, media, or API-query cleanup.",
+        href: "/shopify-hydrogen-developer",
+        label: "Shopify Hydrogen developer",
+        note: "Use this when SSR, data loading, and storefront performance fixes need direct implementation.",
       },
       {
-        href: "/shopify-hydrogen-cost",
-        label: "Shopify Hydrogen cost",
-        note: "Use this when you need the commercial range behind a more serious storefront discussion.",
+        href: "/shopify-hydrogen-seo",
+        label: "Shopify Hydrogen SEO",
+        note: "Use this when the performance issue also affects crawlable content and route-level search signals.",
+      },
+      {
+        href: "/headless-shopify-agency",
+        label: "Headless Shopify agency alternative",
+        note: "Use this when the homepage bottleneck is part of a wider headless Shopify decision.",
       },
       {
         href: "/case-studies/eveshop-shopify-hydrogen",
-        label: "Production case studies",
-        note: "See where Hydrogen was used on real storefronts with different catalogs, teams, and constraints.",
-      },
-      {
-        href: "/hire-me",
-        label: "Work with Emre",
-        note: "The direct route if your storefront is already hitting the same delivery bottlenecks.",
-      },
-      {
-        href: "/should-i-use-it",
-        label: "Should you use Hydrogen?",
-        note: "A practical decision filter if the technical fix looks real but the business case still needs checking.",
+        label: "Production Shopify Hydrogen storefront work",
+        note: "See where Hydrogen was used on a production retail storefront with real operating constraints.",
       },
     ],
     externalLinks: [
