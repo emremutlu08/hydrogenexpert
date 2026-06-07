@@ -17,7 +17,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 - PR: [#80 Improve commercial SEO internal linking](https://github.com/emremutlu08/hydrogenexpert/pull/80)
 - Branch: `codex/gsc-internal-linking-commercial-seo`
-- Deployment: Not deployed; the request explicitly scoped this sprint to PR/diff-ready work with no production deployment.
+- Deployment: Production deployment verified at [hydrogenexpert.co](https://hydrogenexpert.co), deployment `https://hydrogenexpert-qs0xanpxl-emremutlu8s-projects.vercel.app` (`dpl_9VM3JeNA9iro8Z1kCCAWxwWMfnpi`).
 - Summary:
   - Added commercial-path internal links from ranking Hydrogen blog notes to developer, expert, SEO, headless-agency, and proof pages.
   - Strengthened case-study index and detail links toward production Shopify Hydrogen development, senior expert, headless Shopify support, and SEO-safe implementation paths.
@@ -47,8 +47,12 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - `INTERNAL_LINK_BASE_URL=http://localhost:3000 NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:internal-links`: passed against local production server, 67 sitemap URLs and 82 internal URLs.
   - `COMMERCIAL_LAUNCH_BASE_URL=http://localhost:3000 NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:commercial-launch`: passed against local production server.
   - Manual local checks: commercial targets returned 200; requested redirects returned 308 to expected destinations; requested blog, case-study, and homepage pages contained expected normal `href` anchors.
+  - Production deploy completed with `READY` state and was aliased to `https://hydrogenexpert.co`.
+  - `COMMERCIAL_LAUNCH_BASE_URL=https://hydrogenexpert.co NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:commercial-launch`: passed.
+  - `INTERNAL_LINK_BASE_URL=https://hydrogenexpert.co NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:internal-links`: passed with 67 sitemap URLs and 82 internal URLs.
+  - Live HTTP checks confirmed touched commercial targets returned 200, `/sitemap.xml` and `/robots.txt` returned 200, requested legacy redirects returned 308 to expected destinations, and requested blog, case-study, and homepage pages contained expected normal `href` anchors.
 - Manual follow-up:
-  - Review PR #80. Production deployment intentionally not performed in this sprint.
+  - Optional: resubmit `/sitemap.xml` in Google Search Console and request indexing for stale high-intent URLs after Google recrawls the updated internal links.
 
 ## 2026-05-28
 
