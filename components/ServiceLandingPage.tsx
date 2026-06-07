@@ -8,6 +8,7 @@ import {
   AuditOfferSection,
   ContextualProofSection,
   DecisionLogicSection,
+  HireFitSection,
   OfferSnapshotSection,
   PricingRowsSection,
   ProofNotesSection,
@@ -122,6 +123,7 @@ export function ServiceLandingPage({ service }: ServiceLandingPageProps) {
         <UniqueServiceSection service={service} />
         <HydrogenSeoAuditChecklistSection service={service} />
         <DeveloperHiringDecisionSection service={service} />
+        <HireFitSection service={service} />
         <DecisionLogicSection service={service} />
         <WrongFitSection service={service} />
         <ProofNotesSection service={service} />

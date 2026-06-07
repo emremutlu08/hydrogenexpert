@@ -246,8 +246,8 @@ export const CONTENT_RELATIONS = [
     related: [
       { href: "/shopify-hydrogen-issues#seo", label: "SEO issue library", note: "Related crawlability symptoms." },
       { href: "/shopify-hydrogen-templates#pdp-requirements", label: "PDP requirements", note: "Checklist for product content state." },
-      { href: "/shopify-hydrogen-seo", label: "Hydrogen SEO", note: "Broader crawl and structured-data path." },
-      { href: "/shopify-hydrogen-seo", label: "Product content SSR", note: "Related SEO guide." },
+      { href: "/shopify-hydrogen-seo", label: "Shopify Hydrogen SEO", note: "Commercial path for crawl, schema, and SSR content fixes." },
+      { href: "/shopify-hydrogen-developer", label: "Hire a Shopify Hydrogen developer", note: "Direct implementation path when product content needs to move into initial HTML." },
     ],
   },
   {
@@ -259,8 +259,8 @@ export const CONTENT_RELATIONS = [
     related: [
       { href: "/shopify-hydrogen-issues#pdp", label: "PDP issue library", note: "Related variant and product-page symptoms." },
       { href: "/shopify-hydrogen-templates#pdp-requirements", label: "PDP requirements", note: "Checklist for option state and schema." },
-      { href: "/shopify-hydrogen-seo", label: "Variant URLs and SEO", note: "Related route-state guide." },
-      { href: "/custom-shopify-hydrogen-storefront", label: "Custom storefront", note: "When PDP behavior is part of a wider build." },
+      { href: "/shopify-hydrogen-seo", label: "Variant URLs and SEO", note: "Commercial path for canonical and route-state cleanup." },
+      { href: "/shopify-hydrogen-developer", label: "Shopify Hydrogen developer", note: "Implementation path for product option behavior and URL state." },
     ],
   },
   {
@@ -272,8 +272,8 @@ export const CONTENT_RELATIONS = [
     related: [
       { href: "/shopify-hydrogen-issues#performance", label: "Performance issue library", note: "Related SSR and speed symptoms." },
       { href: "/shopify-hydrogen-templates#launch-qa-checklist", label: "Launch QA checklist", note: "Checklist for production checks." },
-      { href: "/shopify-hydrogen-performance-optimization", label: "Performance optimization", note: "Service path for live storefront cleanup." },
-      { href: "/shopify-hydrogen-performance-optimization", label: "Performance checklist", note: "Related performance guide." },
+      { href: "/shopify-hydrogen-developer", label: "Shopify Hydrogen developer", note: "Direct path for SSR and data-loading implementation cleanup." },
+      { href: "/headless-shopify-agency", label: "Headless Shopify agency alternative", note: "Commercial path when performance pressure is part of a larger storefront decision." },
     ],
   },
   {
@@ -285,8 +285,8 @@ export const CONTENT_RELATIONS = [
     related: [
       { href: "/shopify-hydrogen-issues#metaobjects", label: "Metaobjects issue library", note: "Related content-model symptoms." },
       { href: "/shopify-hydrogen-templates#content-model-brief", label: "Content model brief", note: "Checklist for field ownership." },
-      { href: "/custom-shopify-hydrogen-storefront", label: "Custom storefront", note: "Service path for merchant-editable content." },
-      { href: "/blog/shopify-hydrogen-hero-title-mobile-desktop-metaobject-mismatch", label: "Hero title mismatch", note: "Related metaobject note." },
+      { href: "/shopify-hydrogen-developer", label: "Hire a Shopify Hydrogen developer", note: "Direct path for merchant-editable Hydrogen section work." },
+      { href: "/headless-shopify-agency", label: "Headless Shopify agency alternative", note: "Commercial path when content modeling is part of a broader headless decision." },
     ],
   },
   {

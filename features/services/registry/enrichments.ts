@@ -70,15 +70,36 @@ export const SERVICE_PAGE_ENRICHMENTS = {
     ],
     contextualLinks: [
       {
+        href: "/case-studies/eveshop-shopify-hydrogen",
+        label: "Production Shopify Hydrogen storefront work",
+        note: "A national retail Hydrogen context with large-catalog and production constraints.",
+      },
+      {
+        href: "/case-studies/bayam-jewelry-shopify-hydrogen",
+        label: "Bayam Jewelry proof",
+        note: "Luxury catalog and showroom-led Hydrogen storefront context.",
+      },
+      {
         href: "/when-not-to-use-hydrogen",
         label: "When not to use Hydrogen",
         note: "The fastest way to stop a headless decision from becoming default.",
       },
       {
-        href: "/shopify-hydrogen-vs-liquid",
-        label: "Hydrogen vs Liquid",
-        note: "Plain-English tradeoffs for merchant-side stakeholders.",
+        href: "/case-studies/rebel-bunny-shopify-hydrogen",
+        label: "Rebel Bunny proof",
+        note: "DTC, education, product, and partner paths inside one Hydrogen storefront.",
       },
+    ],
+    hireFitNotes: [
+      "Hire me when headless Shopify is being considered because the current theme blocks product discovery, content-commerce, custom UX, or maintainable feature delivery.",
+      "Hire me when the team needs a senior Shopify Hydrogen perspective before a headless agency scope becomes expensive.",
+      "Hire me when SEO, analytics, route continuity, or post-launch ownership need to be reviewed before build work starts.",
+    ],
+    wrongFitNotes: [
+      "The current Liquid theme can solve the problem with a focused cleanup.",
+      "The brand needs a full agency team for creative, paid media, content, and engineering in parallel.",
+      "Stakeholders want headless because competitors mention it, but no business constraint has been named.",
+      "There is no plan for maintaining a custom storefront after launch.",
     ],
   },
   "shopify-hydrogen-developer": {
@@ -110,6 +131,16 @@ export const SERVICE_PAGE_ENRICHMENTS = {
     ],
     contextualLinks: [
       {
+        href: "/case-studies/eveshop-shopify-hydrogen",
+        label: "Production Shopify Hydrogen storefront work",
+        note: "A national retail Hydrogen context with large-catalog and production constraints.",
+      },
+      {
+        href: "/case-studies/bayam-jewelry-shopify-hydrogen",
+        label: "Bayam Jewelry proof",
+        note: "Luxury catalog and showroom-led Hydrogen storefront context.",
+      },
+      {
         href: "/case-studies/rebel-bunny-shopify-hydrogen",
         label: "Rebel Bunny case",
         note: "DTC, education, product, and partner paths inside one storefront.",
@@ -129,6 +160,17 @@ export const SERVICE_PAGE_ENRICHMENTS = {
         label: "Performance production note",
         note: "Where senior implementation often shows up after launch.",
       },
+    ],
+    hireFitNotes: [
+      "Hire me when the project needs a senior Shopify Hydrogen developer to own routes, Storefront API data, product flow, cart behavior, and SEO-safe implementation.",
+      "Hire me when an existing Hydrogen storefront has fragile PDP, collection, performance, or analytics behavior and the team needs direct implementation help.",
+      "Hire me when the buyer wants experienced Shopify Hydrogen development without a broad agency layer between the commercial problem and the code.",
+    ],
+    wrongFitNotes: [
+      "The work is a small Liquid theme edit or app configuration task.",
+      "The team only needs junior production capacity and already has senior Hydrogen architecture covered.",
+      "The project requires brand, creative, paid media, and multiple delivery teams more than storefront implementation.",
+      "The business case for Hydrogen has not been tested and the safer first step is a scope review.",
     ],
   },
   "shopify-hydrogen-expert": {
@@ -160,6 +202,21 @@ export const SERVICE_PAGE_ENRICHMENTS = {
     ],
     contextualLinks: [
       {
+        href: "/case-studies/eveshop-shopify-hydrogen",
+        label: "Production Shopify Hydrogen storefront work",
+        note: "A national retail Hydrogen context with large-catalog and production constraints.",
+      },
+      {
+        href: "/case-studies/bayam-jewelry-shopify-hydrogen",
+        label: "Bayam Jewelry proof",
+        note: "Luxury catalog and showroom-led Hydrogen storefront context.",
+      },
+      {
+        href: "/case-studies/rebel-bunny-shopify-hydrogen",
+        label: "Rebel Bunny proof",
+        note: "DTC, education, product, and partner paths inside one Hydrogen storefront.",
+      },
+      {
         href: "/shopify-hydrogen-experts",
         label: "Broader expert comparison",
         note: "Use this when stakeholders are still comparing experts, agencies, and marketplace options.",
@@ -174,6 +231,11 @@ export const SERVICE_PAGE_ENRICHMENTS = {
         label: "Start with an audit",
         note: "Use a diagnostic when the right expert path depends on fit, risk, and budget clarity.",
       },
+    ],
+    hireFitNotes: [
+      "Hire me when the main risk is senior judgment across Hydrogen architecture, implementation, SEO continuity, cart behavior, and launch readiness.",
+      "Hire me when stakeholders need one accountable Shopify Hydrogen expert rather than a general agency or vendor bench.",
+      "Hire me when the team wants an expert who can still recommend Liquid cleanup, an audit, or no rebuild when that is the safer answer.",
     ],
     wrongFitNotes: [
       "The project needs brand, content, paid media, and several delivery pods more than senior storefront ownership.",

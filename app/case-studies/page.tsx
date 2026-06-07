@@ -164,13 +164,23 @@ export default function CaseStudiesPage() {
             {[
               {
                 href: "/shopify-hydrogen-developer",
-                label: "Hire a Shopify Hydrogen Developer",
+                label: "Production Shopify Hydrogen storefront work",
                 note: "Use this when the next step is direct senior implementation support.",
               },
               {
-                href: "/shopify-hydrogen-packages",
-                label: "View Build Packages",
-                note: "Map this proof to Starter, Standard, Growth, Custom, or Liquid scope.",
+                href: "/shopify-hydrogen-expert",
+                label: "Senior Shopify Hydrogen development",
+                note: "Use this when the project needs one accountable specialist before scope expands.",
+              },
+              {
+                href: "/headless-shopify-agency",
+                label: "Headless Shopify storefront support",
+                note: "Use this when stakeholders are comparing a headless agency path with senior direct ownership.",
+              },
+              {
+                href: "/shopify-hydrogen-seo",
+                label: "Shopify Hydrogen SEO-safe implementation",
+                note: "Use this when crawlable content, metadata, schema, and route continuity matter.",
               },
               {
                 href: "/contact",
