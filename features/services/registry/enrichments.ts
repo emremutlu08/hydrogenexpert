@@ -46,7 +46,7 @@ export const SERVICE_PAGE_ENRICHMENTS = {
       eyebrow: "Decision tree",
       title: "Headless should be a decision tree, not a default upgrade.",
       body: [
-        "Headless Shopify starts as a business constraint, not a technology preference. If the current Liquid theme blocks a core product journey, slows feature work, or cannot support the brand's content and merchandising model, a custom storefront may be worth studying. If the pressure is mostly visual polish, app cleanup, or a handful of sections, Liquid may still be the smarter path.",
+        "Headless Shopify commerce starts as a business constraint, not a technology preference. If the current Liquid theme blocks a core product journey, slows feature work, or cannot support the brand's content and merchandising model, a custom storefront may be worth studying. If the pressure is mostly visual polish, app cleanup, or a handful of sections, Liquid may still be the smarter path.",
         "Hydrogen is Shopify's custom storefront path for teams that want a React application connected to Shopify commerce data. That is powerful, but it also moves the storefront into application ownership. The buyer should ask whether the brand has the budget, development support, QA discipline, and launch runway to maintain that application after launch.",
         "The honest decision tree is: keep Liquid if it solves the constraint, refactor Liquid if the current theme is messy but salvageable, move to Hydrogen when custom storefront flexibility earns its cost, or delay the rebuild when the operating model is not ready.",
       ],
@@ -107,7 +107,7 @@ export const SERVICE_PAGE_ENRICHMENTS = {
       eyebrow: "Senior ownership",
       title: "What senior Hydrogen ownership actually covers.",
       body: [
-        "A senior Hydrogen developer is not only writing React components. The useful ownership covers React Router route design, Storefront API query shape, server-rendered product content, cart and checkout handoff, analytics behavior, metadata, canonical logic, performance tradeoffs, and the launch details that decide whether a custom storefront is safe to run.",
+        "A senior Hydrogen developer is not only writing React components. The useful ownership covers React Router route design, Shopify Storefront API developer work, server-rendered product content, cart and checkout handoff, analytics behavior, metadata, canonical logic, performance tradeoffs, and the launch details that decide whether a custom storefront is safe to run.",
         "Hydrogen work sits between commerce architecture and frontend implementation. A developer needs to understand Shopify data, the buyer journey, how crawlers see the page, and how the merchant team will maintain the code after launch. That is why this service is framed around judgment as much as throughput.",
         "The right output can be implementation, but it can also be a smaller recommendation: fix the current Hydrogen store, delay a migration, tighten a Liquid theme, or run a fit audit before committing rebuild budget.",
       ],
@@ -425,6 +425,16 @@ export const SERVICE_PAGE_ENRICHMENTS = {
         href: "/blog/shopify-hydrogen-variant-selection-fallback",
         label: "Variant fallback note",
         note: "Related variant-state and URL behavior.",
+      },
+      {
+        href: "/case-studies/bayam-jewelry-shopify-hydrogen",
+        label: "Bayam Jewelry proof",
+        note: "Luxury catalog context where collection copy, discovery, and crawlable content mattered.",
+      },
+      {
+        href: "/case-studies/rebel-bunny-shopify-hydrogen",
+        label: "Rebel Bunny proof",
+        note: "Content-commerce context where product, education, and partner routes needed one storefront.",
       },
     ],
   },

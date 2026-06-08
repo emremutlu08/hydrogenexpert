@@ -164,9 +164,9 @@ export const SERVICE_PACKAGE_BASES = [
       "Headless Shopify agency alternative for brands evaluating Hydrogen, custom storefront architecture, Liquid tradeoffs, SEO risk, and launch support.",
     heroTitle: "Headless Shopify agency alternative for teams comparing serious storefront paths",
     summary:
-      "A practical headless Shopify agency alternative for brands researching Hydrogen, custom storefront architecture, and whether a headless build is justified at all.",
+      "A practical headless Shopify agency alternative for brands researching headless Shopify commerce, Hydrogen, custom storefront architecture, and whether a headless build is justified at all.",
     commercialIntent:
-      "For teams comparing a headless Shopify agency, a Shopify Hydrogen agency, senior specialist support, and lower-risk Liquid alternatives before committing to custom storefront architecture.",
+      "For teams comparing headless Shopify commerce options, a headless Shopify agency, a Shopify Hydrogen agency, senior specialist support, and lower-risk Liquid alternatives before committing to custom storefront architecture.",
     bestFor:
       "Teams with theme limits, custom UX demands, integration pressure, or performance goals that may justify headless Shopify, but still need the decision tested against cost and maintenance reality.",
     deliverables: [
@@ -180,6 +180,7 @@ export const SERVICE_PACKAGE_BASES = [
       "Headless is treated as a storefront architecture decision, not a default upgrade.",
       "Hydrogen remains the preferred custom Shopify path when headless is justified, but Liquid stays valid when it solves the real constraint.",
       "The work avoids full-service agency language and keeps the buyer close to the technical decision.",
+      "Relevant proof is tied to real storefront constraints such as Bayam Jewelry's luxury catalog discovery and Rebel Bunny's content-commerce paths.",
     ],
     faq: [
       {
@@ -220,6 +221,11 @@ export const SERVICE_PACKAGE_BASES = [
         note: "Use this when the decision has already narrowed to Hydrogen.",
       },
       {
+        href: "/custom-shopify-hydrogen-storefront",
+        label: "Custom Shopify Hydrogen storefront",
+        note: "Use this when the headless decision is ready to become a scoped build.",
+      },
+      {
         href: "/shopify-hydrogen-cost",
         label: "Shopify Hydrogen cost",
         note: "Use this to connect headless ambition to realistic budget ranges.",
@@ -238,7 +244,7 @@ export const SERVICE_PACKAGE_BASES = [
     summary:
       "Hire a Shopify Hydrogen developer when your store needs experienced, dedicated support across custom React storefront routes, Storefront API data, SEO-safe product pages, cart logic, analytics, and launch support.",
     commercialIntent:
-      "For teams searching for experienced Shopify Hydrogen developers or a dedicated senior developer rather than a generic Shopify agency or broad ecommerce vendor.",
+      "For teams searching for experienced Shopify Hydrogen developers, Shopify Storefront API developer support, or a dedicated senior developer rather than a generic Shopify agency or broad ecommerce vendor.",
     bestFor:
       "Brands that know Hydrogen is likely part of the answer and need senior help with architecture, components, Storefront API work, SEO, performance, migration details, or post-launch feature delivery.",
     deliverables: [
@@ -252,6 +258,7 @@ export const SERVICE_PACKAGE_BASES = [
       "The page keeps /hire-me as the broader proof profile while this URL serves developer search intent directly.",
       "The work is framed around senior execution and judgment, not anonymous team capacity.",
       "Hydrogen development is offered alongside audit and fit checks so the build does not outrun the business case.",
+      "Production proof is linked through EveShop, Bayam Jewelry, and Rebel Bunny case studies instead of unsupported portfolio language.",
     ],
     faq: [
       {
@@ -315,6 +322,11 @@ export const SERVICE_PACKAGE_BASES = [
         href: "/shopify-hydrogen-seo",
         label: "Shopify Hydrogen SEO",
         note: "Use this when crawlability, route state, metadata, and rendered HTML are part of the implementation scope.",
+      },
+      {
+        href: "/custom-shopify-hydrogen-storefront",
+        label: "Custom Shopify Hydrogen storefront",
+        note: "Use this when direct developer support should become a bounded custom storefront build.",
       },
       {
         href: "/case-studies",
@@ -617,7 +629,7 @@ export const SERVICE_PACKAGE_BASES = [
       "Shopify Hydrogen SEO support for metadata, canonicals, JSON-LD, variant URLs, sitemap, robots, SSR content, and crawl consistency.",
     heroTitle: "Shopify Hydrogen SEO for custom storefronts that need clean crawl signals",
     summary:
-      "SEO review and implementation support for Hydrogen storefronts where route metadata, canonical choices, product state, structured data, and rendered HTML need to agree.",
+      "SEO review and implementation support for Hydrogen storefronts where route metadata, canonical choices, product state, structured data, sitemap output, and rendered HTML need to agree.",
     commercialIntent:
       "For Shopify teams searching for Hydrogen SEO help after launch, during migration planning, or before a custom storefront goes live.",
     bestFor:
@@ -633,6 +645,7 @@ export const SERVICE_PACKAGE_BASES = [
       "Hydrogen SEO is treated as engineering work: the URL, rendered state, structured data, and performance pattern need to line up.",
       "The work avoids keyword stuffing and focuses on merchant-readable content, crawl consistency, and buying-critical HTML.",
       "SEO review connects naturally to audit, migration, and performance cleanup instead of living as a disconnected checklist.",
+      "Case-study proof stays close to the service path so crawl fixes are tied to real storefront constraints, not abstract SEO claims.",
     ],
     faq: [
       {
@@ -666,6 +679,16 @@ export const SERVICE_PACKAGE_BASES = [
         href: "/liquid-to-hydrogen-migration",
         label: "Liquid to Hydrogen migration",
         note: "Use this when SEO preservation is part of a move away from Liquid.",
+      },
+      {
+        href: "/case-studies",
+        label: "Production case studies",
+        note: "Review storefront proof before turning SEO findings into implementation scope.",
+      },
+      {
+        href: "/shopify-hydrogen-developer",
+        label: "Shopify Hydrogen developer",
+        note: "Use this when SEO findings require route, data, or rendering implementation.",
       },
     ],
   },

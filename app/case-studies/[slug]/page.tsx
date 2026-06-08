@@ -356,6 +356,11 @@ function getCaseStudyLinks(studyId: CaseStudyId) {
         note: "Route, crawlability, and collection-copy path for premium storefronts.",
       },
       {
+        href: "/custom-shopify-hydrogen-storefront",
+        label: "Custom Shopify Hydrogen storefront",
+        note: "Build path for premium catalog UX when a theme surface is too limiting.",
+      },
+      {
         href: "/shopify-hydrogen-expert",
         label: "Senior Shopify Hydrogen expert",
         note: "Use this when one specialist should own the storefront tradeoffs.",
@@ -381,6 +386,11 @@ function getCaseStudyLinks(studyId: CaseStudyId) {
         href: "/shopify-hydrogen-seo",
         label: "Shopify Hydrogen SEO-safe implementation",
         note: "Technical SEO path when content, products, and partner pages need crawlable structure.",
+      },
+      {
+        href: "/custom-shopify-hydrogen-storefront",
+        label: "Custom Shopify Hydrogen storefront",
+        note: "Build path when commerce, education, and partner flows need one custom storefront surface.",
       },
     ],
     kirazev: [
