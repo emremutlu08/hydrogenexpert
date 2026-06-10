@@ -17,7 +17,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 - PR: [#82 Update safe dependency set](https://github.com/emremutlu08/hydrogenexpert/pull/82)
 - Branch: `codex/safe-dependency-refresh-2026-06-10`
-- Deployment: Pending production deployment and live verification.
+- Deployment: Production deployment verified at [hydrogenexpert.co](https://hydrogenexpert.co), deployment `https://hydrogenexpert-3qeyqr6gu-emremutlu8s-projects.vercel.app` (`dpl_E9F85QEByX7ayfEcm8HvcJY4dSVC`).
 - Summary:
   - Refreshed safe patch/minor dependency updates for Next, React, Supabase, sanitize-html, tooling, and the PostCSS override.
   - Kept `@types/node` on the Node 24 line, kept `eslint` on 9.x, and deferred the newer `@anthropic-ai/sdk` 0.x minor line for a separate compatibility review.
@@ -38,6 +38,10 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - `npm run audit:shopify-claims`: passed with no `Needs review` rows.
   - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed, 85 static pages generated.
   - `npm outdated --json --long`: only deliberate deferrals remain: `@anthropic-ai/sdk@0.104.1`, `@types/node@25.x`, and `eslint@10.x`.
+  - Production deploy completed with `READY` state and was aliased to `https://hydrogenexpert.co`.
+  - `COMMERCIAL_LAUNCH_BASE_URL=https://hydrogenexpert.co NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:commercial-launch`: passed.
+  - `INTERNAL_LINK_BASE_URL=https://hydrogenexpert.co NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:internal-links`: passed with 67 sitemap URLs and 82 internal URLs.
+  - Live HTTP checks confirmed `/`, `/shopify-hydrogen-packages`, `/contact`, `/sitemap.xml`, `/robots.txt`, `/llms.txt`, and `/feed.xml` returned 200.
 - Manual follow-up:
   - Review `@anthropic-ai/sdk@0.104.1`, `@types/node@25.x`, and `eslint@10.x` separately when the surrounding ecosystem supports those jumps.
 
