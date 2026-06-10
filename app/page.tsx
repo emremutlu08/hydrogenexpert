@@ -309,6 +309,11 @@ const commercialPathLinks = [
     note: "Direct senior implementation for Hydrogen routes, product flow, cart behavior, SEO-safe launch work, and support.",
   },
   {
+    href: "/custom-shopify-hydrogen-storefront",
+    label: "Custom Shopify Hydrogen Storefront",
+    note: "Fixed-scope custom storefront builds for teams that need core ecommerce flow before custom scope expands.",
+  },
+  {
     href: "/shopify-hydrogen-expert",
     label: "Shopify Hydrogen Expert",
     note: "One senior specialist for architecture, storefront risk, migration judgment, and implementation ownership.",

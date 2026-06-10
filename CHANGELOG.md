@@ -13,6 +13,41 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 - Verification:
 - Manual follow-up:
 
+## 2026-06-10
+
+- PR: [#81 Strengthen commercial SEO links and redirect coverage](https://github.com/emremutlu08/hydrogenexpert/pull/81)
+- Branch: `codex/seo-commercial-linking-redirects`
+- Deployment: Production deployment verified at [hydrogenexpert.co](https://hydrogenexpert.co), deployment `https://hydrogenexpert-g9rxuid37-emremutlu8s-projects.vercel.app` (`dpl_3hYJa7kxEzvwaeWyZq9LYJsi44pG`).
+- Summary:
+  - Locked requested permanent redirect mappings with focused Next config coverage.
+  - Added crawlable homepage and case-study links toward custom storefront, developer, expert, SEO, and headless commercial service pages.
+  - Strengthened headless, developer, and SEO service copy with query-aligned proof context while avoiding unsupported performance or revenue claims.
+  - Routed technical blog and article relations toward relevant commercial implementation paths.
+- Files changed:
+  - `app/case-studies/[slug]/page.tsx`
+  - `app/page.tsx`
+  - `features/content-relations/index.ts`
+  - `features/services/registry/base.ts`
+  - `features/services/registry/enrichments.ts`
+  - `tests/next-config-redirects.test.ts`
+  - `tests/services.test.ts`
+  - `tests/traffic-foundation.test.ts`
+  - `CHANGELOG.md`
+- Verification:
+  - `git diff --check`: passed.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed with no `Needs review` rows.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm test`: passed, 25 test files and 101 tests.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed.
+  - Production deploy completed with `READY` state and was aliased to `https://hydrogenexpert.co`.
+  - `COMMERCIAL_LAUNCH_BASE_URL=https://hydrogenexpert.co NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:commercial-launch`: passed.
+  - `INTERNAL_LINK_BASE_URL=https://hydrogenexpert.co NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:internal-links`: passed with 67 sitemap URLs and 82 internal URLs.
+  - Live HTTP checks confirmed touched commercial targets returned 200, `/sitemap.xml`, `/robots.txt`, and `/llms.txt` returned 200, requested legacy redirects returned 308 to expected destinations, and requested blog, article, case-study, and homepage pages contained expected normal `href` anchors.
+- Manual follow-up:
+  - Optional: resubmit `/sitemap.xml` in Google Search Console and request indexing for stale high-intent URLs after Google recrawls the updated internal links.
+
 ## 2026-06-07
 
 - PR: [#80 Improve commercial SEO internal linking](https://github.com/emremutlu08/hydrogenexpert/pull/80)

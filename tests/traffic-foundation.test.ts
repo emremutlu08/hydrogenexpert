@@ -85,4 +85,21 @@ describe("traffic foundation content", () => {
       expect(relation.related.length).toBeGreaterThanOrEqual(3);
     }
   });
+
+  it("routes technical blog notes to commercial service paths", () => {
+    const commercialServicePaths = new Set([
+      "/headless-shopify-agency",
+      "/shopify-hydrogen-developer",
+      "/shopify-hydrogen-performance-optimization",
+      "/shopify-hydrogen-seo",
+    ]);
+    const productionBlogRelations = getAllContentRelations().filter(
+      (relation) => relation.path.startsWith("/blog/"),
+    );
+
+    expect(productionBlogRelations.length).toBeGreaterThanOrEqual(5);
+    for (const relation of productionBlogRelations) {
+      expect(relation.related.some((link) => commercialServicePaths.has(link.href))).toBe(true);
+    }
+  });
 });
