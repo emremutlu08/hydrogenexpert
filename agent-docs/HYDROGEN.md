@@ -1,7 +1,7 @@
 # HydrogenExpert Implementation Notes
 
 Status: Active
-Last updated: 2026-05-25
+Last updated: 2026-06-10
 Owner: Agent
 Source of truth: `package.json`, current code, agent analysis
 
@@ -40,6 +40,7 @@ Use `package.json` for exact scripts. Current important scripts include:
 
 - Keep `@types/node` on the Node 24 line while Vercel is configured for Node 24.x.
 - Keep `eslint` on version 9 until the Next-managed ESLint plugin chain supports ESLint 10 without invalid peer dependencies.
+- The 2026-06-10 safe refresh kept `@types/node` on 24.x, kept `eslint` on 9.x, and deferred the newer `@anthropic-ai/sdk` 0.x minor line for a separate compatibility review.
 
 ## Implementation Rules
 
