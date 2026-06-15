@@ -13,6 +13,39 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 - Verification:
 - Manual follow-up:
 
+## 2026-06-15
+
+- PR: [#83 Refresh safe package set](https://github.com/emremutlu08/hydrogenexpert/pull/83)
+- Branch: `codex/safe-package-refresh-2026-06-15-run2`
+- Deployment: Production deployment verified at [hydrogenexpert.co](https://hydrogenexpert.co), deployment `https://hydrogenexpert-mdgwj2vgi-emremutlu8s-projects.vercel.app` (`dpl_EAb2s9CWhxiEavTvDBPhQ57wz7Q6`).
+- Summary:
+  - Refreshed safe dependency updates for Supabase, Tailwind, Node types, Playwright, and Vitest without changing the Next/React stack.
+  - Pinned `esbuild` to `0.28.1` through `overrides` to clear the transitive audit finding.
+  - Updated `agent-docs/HYDROGEN.md` with the current safe refresh boundary and deliberate deferrals.
+- Files changed:
+  - `agent-docs/HYDROGEN.md`
+  - `package.json`
+  - `package-lock.json`
+  - `CHANGELOG.md`
+- Verification:
+  - `git diff --check`: passed.
+  - `npm audit --audit-level=moderate`: passed with 0 vulnerabilities.
+  - `npm audit signatures`: passed with 437 verified registry signatures and 95 verified attestations.
+  - `npm ls --depth=0`: passed.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run test`: passed, 25 test files and 101 tests.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed with no `Needs review` rows.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed.
+  - `npm outdated --json --long`: only deliberate deferrals remain: `@anthropic-ai/sdk@0.104.1`, `@types/node@25.x`, and `eslint@10.x`.
+  - Production deploy completed with `READY` state and was aliased to `https://hydrogenexpert.co`.
+  - `COMMERCIAL_LAUNCH_BASE_URL=https://hydrogenexpert.co NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:commercial-launch`: passed.
+  - `INTERNAL_LINK_BASE_URL=https://hydrogenexpert.co NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:internal-links`: passed with 67 sitemap URLs and 82 internal URLs.
+  - Live HTTP checks confirmed `/`, `/shopify-hydrogen-packages`, `/contact`, `/sitemap.xml`, `/robots.txt`, `/llms.txt`, and `/feed.xml` returned 200.
+- Manual follow-up:
+  - Review `@anthropic-ai/sdk@0.104.1`, `@types/node@25.x`, and `eslint@10.x` separately when the surrounding ecosystem supports those jumps.
+
 ## 2026-06-10
 
 - PR: [#82 Update safe dependency set](https://github.com/emremutlu08/hydrogenexpert/pull/82)
