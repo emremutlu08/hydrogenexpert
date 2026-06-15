@@ -13,6 +13,35 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 - Verification:
 - Manual follow-up:
 
+## 2026-06-15
+
+- PR: [#83 Refresh safe package set](https://github.com/emremutlu08/hydrogenexpert/pull/83)
+- Branch: `codex/safe-package-refresh-2026-06-15-run2`
+- Deployment: PR opened; production deployment pending GitHub/Vercel checks and release verification.
+- Summary:
+  - Refreshed safe dependency updates for Supabase, Tailwind, Node types, Playwright, and Vitest without changing the Next/React stack.
+  - Pinned `esbuild` to `0.28.1` through `overrides` to clear the transitive audit finding.
+  - Updated `agent-docs/HYDROGEN.md` with the current safe refresh boundary and deliberate deferrals.
+- Files changed:
+  - `agent-docs/HYDROGEN.md`
+  - `package.json`
+  - `package-lock.json`
+  - `CHANGELOG.md`
+- Verification:
+  - `git diff --check`: passed.
+  - `npm audit --audit-level=moderate`: passed with 0 vulnerabilities.
+  - `npm audit signatures`: passed with 437 verified registry signatures and 95 verified attestations.
+  - `npm ls --depth=0`: passed.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run test`: passed, 25 test files and 101 tests.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed with no `Needs review` rows.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed.
+  - `npm outdated --json --long`: only deliberate deferrals remain: `@anthropic-ai/sdk@0.104.1`, `@types/node@25.x`, and `eslint@10.x`.
+- Manual follow-up:
+  - Wait for PR checks, production deployment, live verification, and merge closeout.
+
 ## 2026-06-10
 
 - PR: [#82 Update safe dependency set](https://github.com/emremutlu08/hydrogenexpert/pull/82)
