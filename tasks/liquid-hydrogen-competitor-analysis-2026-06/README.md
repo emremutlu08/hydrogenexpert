@@ -12,6 +12,7 @@ This guide is the quick title-only map for the competitor analysis workstream.
 ## Files
 
 - Competitor Profiles
+- Competitor Summary Table
 - Task Backlog
 - Completion Checklist
 - Off-Site Authority Checklist
@@ -64,6 +65,7 @@ This guide is the quick title-only map for the competitor analysis workstream.
 - US and UK Buyer Trust
 - GEO and AI Search Extractability
 - Source-Grounded Shopify Claims
+- Concise 22-competitor comparison table
 
 ## Implementation Sequence
 

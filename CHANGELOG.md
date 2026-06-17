@@ -13,6 +13,25 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 - Verification:
 - Manual follow-up:
 
+## 2026-06-17
+
+- PR: [#85 Add Liquid competitor summary table](https://github.com/emremutlu08/hydrogenexpert/pull/85)
+- Branch: `codex/liquid-competitor-summary-table`
+- Deployment: Not deployed; documentation-only competitor research follow-up with no rendered app behavior change.
+- Summary:
+  - Added a concise 22-competitor comparison table for the Liquid/Hydrogen research workstream.
+  - Linked the summary table from the task guide so the quick competitor answer is durable inside the repo.
+- Files changed:
+  - `tasks/liquid-hydrogen-competitor-analysis-2026-06/README.md`
+  - `tasks/liquid-hydrogen-competitor-analysis-2026-06/competitor-summary-table.md`
+  - `CHANGELOG.md`
+- Verification:
+  - `git diff --check`: passed.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed.
+- Manual follow-up:
+  - None.
+
 ## 2026-06-15
 
 - PR: [#83 Refresh safe package set](https://github.com/emremutlu08/hydrogenexpert/pull/83)
