@@ -8,7 +8,7 @@ export const SERVICE_PAGE_ENRICHMENTS = {
       body: [
         "A traditional ecommerce agency can be the right answer when the brand needs a large multi-discipline team, paid media, brand work, creative production, and ongoing account structure. HydrogenExpert is intentionally narrower. The useful comparison is not agency good, solo bad. It is whether the real risk is coordination or judgment.",
         "Hydrogen projects often fail before code because the scope is sold before the operating model is tested. A senior operator is useful when the brand needs someone who can read the commercial pressure, inspect the storefront constraints, understand Hydrogen, and still say that Liquid or a smaller refactor is the better move. That direct line matters when the decision affects SEO, analytics, migration risk, and maintenance cost.",
-        "This page keeps agency search intent, but the delivery model is different: fewer layers, tighter scope, and direct ownership of the technical tradeoffs. The point is to reduce translation between strategy and implementation so the brand can decide what to ship, what to delay, and what not to buy.",
+        "This page keeps agency search intent, but the delivery model is different: fewer layers, tighter scope, and direct ownership of the technical tradeoffs. Choose a full agency when the project needs many disciplines in parallel. Choose the senior specialist path when the decision, architecture, and implementation risk should stay close together.",
       ],
     },
     decisionTable: [
@@ -48,7 +48,7 @@ export const SERVICE_PAGE_ENRICHMENTS = {
       body: [
         "Headless Shopify commerce starts as a business constraint, not a technology preference. If the current Liquid theme blocks a core product journey, slows feature work, or cannot support the brand's content and merchandising model, a custom storefront may be worth studying. If the pressure is mostly visual polish, app cleanup, or a handful of sections, Liquid may still be the smarter path.",
         "Hydrogen is Shopify's custom storefront path for teams that want a React application connected to Shopify commerce data. That is powerful, but it also moves the storefront into application ownership. The buyer should ask whether the brand has the budget, development support, QA discipline, and launch runway to maintain that application after launch.",
-        "The honest decision tree is: keep Liquid if it solves the constraint, refactor Liquid if the current theme is messy but salvageable, move to Hydrogen when custom storefront flexibility earns its cost, or delay the rebuild when the operating model is not ready.",
+        "The honest decision tree is: keep Liquid if it solves the constraint, refactor Liquid if the current theme is messy but salvageable, move to Hydrogen when custom storefront flexibility earns its cost, use a broader headless path only when Shopify is part of a wider application, or delay the rebuild when the operating model is not ready.",
       ],
     },
     decisionTable: [
@@ -355,7 +355,7 @@ export const SERVICE_PAGE_ENRICHMENTS = {
       body: [
         "A Liquid to Hydrogen migration is not just a theme rebuild in React. The fragile parts are the commercial surfaces that already exist: routes, product URLs, collection logic, canonical decisions, structured data, analytics, consent behavior, app dependencies, and the moment the customer moves from storefront cart to Shopify checkout.",
         "The safest migration starts with an inventory of what must not break. Which URLs already earn search traffic? Which product states create indexable pages? Which apps inject storefront behavior today? Which events does the business rely on for reporting? Which checkout assumptions came from the theme and need to be rebuilt deliberately?",
-        "Hydrogen can be the right move when the current theme cannot support the required UX or feature velocity. But migration should preserve the store's map before it changes the storefront's look.",
+        "The phased path is simple: map the current Liquid store, decide what must stay Liquid or move to Hydrogen, build the smallest safe storefront, QA routes and analytics in preview, then cut over only when redirects, canonicals, sitemap, robots, JSON-LD, and checkout handoff are verified. Hydrogen can be the right move when the current theme cannot support the required UX or feature velocity, but migration should preserve the store's map before it changes the storefront's look.",
       ],
     },
     decisionTable: [
@@ -373,6 +373,11 @@ export const SERVICE_PAGE_ENRICHMENTS = {
         signal: "Checkout and analytics are business-critical.",
         strongerMove: "QA cart, checkout handoff, consent, and tracking before launch.",
         caution: "A visually complete storefront can still be commercially broken.",
+      },
+      {
+        signal: "The theme still handles the core buying journey.",
+        strongerMove: "Keep Liquid or run a smaller cleanup before migration.",
+        caution: "A migration should not be approved only because competitors talk about headless.",
       },
     ],
     contextualLinks: [
@@ -445,7 +450,7 @@ export const SERVICE_PAGE_ENRICHMENTS = {
       body: [
         "Pricing is based on project scope, not traffic, pageviews, or store size. A lean Hydrogen storefront can start around $2,000 when the scope is clear: core pages, product flow, cart drawer, Shopify checkout handoff, and basic account entry.",
         "More complex work increases the price when it adds custom filters, integrations, content models, migration risk, analytics, SEO preservation, or post-launch support.",
-        "A $2K Hydrogen build is not a full replatforming project. It is a focused storefront launch with a limited number of routes and features. If the project requires migration planning, advanced filtering, custom search, subscriptions, B2B, multiple apps, or SEO-risky URL changes, the scope moves into the $3K-$5K or custom range.",
+        "A $2K Hydrogen build is not a full replatforming project. It is a focused storefront launch with a limited number of routes and features. If the project requires migration planning, advanced filtering, custom search, subscriptions, B2B, multiple apps, ERP/POS/WMS boundaries, or SEO-risky URL changes, the scope moves into the $3K-$5K or custom range.",
       ],
     },
     decisionTable: [
@@ -497,7 +502,7 @@ export const SERVICE_PAGE_ENRICHMENTS = {
       body: [
         "The first version should prove the storefront direction before the project becomes a full migration. Starter and Standard builds keep the first launch focused. Growth and Custom scopes add complexity only when the business case is clear.",
         "A lean custom storefront can cover the core ecommerce flow: landing page, collection listing, product detail page, cart drawer, checkout handoff, account entry, and basic SEO. That is the right entry point when the brand needs more control than a theme but does not need enterprise scope.",
-        "For advanced search, custom filters, B2B, subscriptions, complex content models, or SEO-risky migration, the project becomes a custom scope.",
+        "For advanced search, custom filters, B2B, subscriptions, complex content models, ERP/POS/WMS dependencies, custom app replacement, or SEO-risky migration, the project becomes a custom scope.",
       ],
     },
     decisionTable: [

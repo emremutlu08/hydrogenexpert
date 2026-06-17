@@ -21,6 +21,8 @@ Needed pages:
 - Account entry
 Must-have features:
 Apps that must stay:
+Important URLs or SEO traffic:
+Who owns updates after launch?:
 Launch deadline:
 Budget range:`,
   },
@@ -37,6 +39,8 @@ Filters needed?:
 Content pages needed:
 Reviews app:
 Analytics/GTM needed?:
+Subscriptions, loyalty, or account needs?:
+Important URLs or redirects:
 Current pain:
 Budget range:`,
   },
@@ -48,11 +52,29 @@ Budget range:`,
 Design status:
 Catalog complexity:
 Needed integrations:
+ERP/POS/WMS/PIM or custom app dependencies:
 Metaobjects/CMS needs:
 Marketing landing needs:
 SEO or route migration risk:
 Analytics events:
 Post-launch support needed?:
+Budget range:`,
+  },
+  {
+    id: "migration",
+    title: "Migration risk template",
+    description: "Use this when the current Liquid store already has URLs, traffic, apps, or analytics that must be protected.",
+    body: `Store URL:
+Current theme:
+Why Liquid may no longer be enough:
+Important product/collection URLs:
+Known organic traffic pages:
+Redirect or canonical concerns:
+Apps that affect PDP/cart/search/reviews/subscriptions:
+Analytics/GTM/consent requirements:
+Checkout/account assumptions:
+Internal owner after launch:
+Timeline:
 Budget range:`,
   },
 ] as const;
@@ -77,7 +99,7 @@ export function ScopeReviewBriefTemplates() {
         description="Pick the closest template and send only the facts you already know. Clear scope keeps fixed-scope work commercial instead of risky."
         className="max-w-5xl"
       />
-      <div className="grid gap-4 lg:grid-cols-3">
+      <div className="grid gap-4 lg:grid-cols-2 xl:grid-cols-4">
         {BRIEF_TEMPLATES.map((template) => (
           <article
             key={template.id}

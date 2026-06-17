@@ -4,9 +4,15 @@ import {
   EnterpriseScopeBoundarySection,
   HydrogenToolingDecisionSection,
   HydrogenBuildPackages,
+  HydrogenOwnershipCostSection,
+  IntegrationComplexityBoundarySection,
   LiquidHydrogenDecisionSection,
+  MigrationSeoRiskChecklistSection,
+  PackageReadinessSection,
   PriceDriversSection,
   PricingFaqSection,
+  ScopeReviewInputsSection,
+  SeniorSpecialistAgencyComparisonSection,
   TwoKBuildBoundarySection,
 } from "@/components/HydrogenPackages";
 import { LiquidCleanupMiniOffer } from "@/components/LiquidCleanupMiniOffer";
@@ -19,10 +25,19 @@ export function PackageServiceSections({ service }: { service: ServicePackage })
     service.slug === "custom-hydrogen-storefront-development";
   const isCostPage = service.slug === "shopify-hydrogen-cost";
   const isCustomBuildPage = service.slug === "custom-hydrogen-storefront-development";
+  const isAgencyComparisonPage =
+    service.slug === "shopify-hydrogen-agency-alternative" ||
+    service.slug === "headless-shopify-agency-alternative";
+  const isMigrationPage = service.slug === "liquid-to-hydrogen-migration";
+  const isSeoPage = service.slug === "shopify-hydrogen-seo";
+  const isAuditPage = service.slug === "hydrogen-strategy-fit-audit";
+  const isSupportPage = service.slug === "hydrogen-support-retainer";
 
   return (
     <>
       {service.slug === "hydrogen-strategy-fit-audit" ? <AuditScopeReviewSection /> : null}
+
+      {isAgencyComparisonPage ? <SeniorSpecialistAgencyComparisonSection /> : null}
 
       {isPackageCommercialPage ? (
         <HydrogenBuildPackages
@@ -39,13 +54,20 @@ export function PackageServiceSections({ service }: { service: ServicePackage })
         />
       ) : null}
 
+      {isAuditPage || isMigrationPage ? <ScopeReviewInputsSection /> : null}
+
+      {isMigrationPage || isSeoPage ? <MigrationSeoRiskChecklistSection /> : null}
+
       {isCostPage ? (
         <>
           <PriceDriversSection />
+          <PackageReadinessSection />
           <TwoKBuildBoundarySection />
           <EnterpriseScopeBoundarySection />
           <HydrogenToolingDecisionSection />
           <LiquidHydrogenDecisionSection />
+          <HydrogenOwnershipCostSection />
+          <IntegrationComplexityBoundarySection />
           <LiquidCleanupMiniOffer />
           <ScopeReviewBriefTemplates />
           <AiAssistedWorkflowSection />
@@ -56,12 +78,16 @@ export function PackageServiceSections({ service }: { service: ServicePackage })
       {isCustomBuildPage ? (
         <>
           <TwoKBuildBoundarySection />
+          <PackageReadinessSection />
           <EnterpriseScopeBoundarySection />
           <HydrogenToolingDecisionSection />
+          <IntegrationComplexityBoundarySection />
           <AiAssistedWorkflowSection />
           <PricingFaqSection />
         </>
       ) : null}
+
+      {isSupportPage ? <HydrogenOwnershipCostSection /> : null}
     </>
   );
 }

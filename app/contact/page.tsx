@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { HydrogenBuildPackages } from "@/components/HydrogenPackages";
+import { HydrogenBuildPackages, ScopeReviewInputsSection } from "@/components/HydrogenPackages";
 import { JsonLd } from "@/components/JsonLd";
 import { LeadCaptureForm } from "@/components/LeadCaptureForm";
 import { LiquidCleanupMiniOffer } from "@/components/LiquidCleanupMiniOffer";
@@ -116,6 +116,7 @@ export default function ContactPage() {
         description="The form filters by real project requirements: design readiness, product count, feature needs, budget range, timeline, integrations, and migration risk."
         compact
       />
+      <ScopeReviewInputsSection />
       <ScopeReviewBriefTemplates />
       <LiquidCleanupMiniOffer />
       </div>

@@ -7,13 +7,19 @@ import {
   AI_WORKFLOW_COPY,
   AUDIT_REVIEW_OPTIONS,
   HYDROGEN_BUILD_PACKAGES,
+  HYDROGEN_OWNERSHIP_COST_FACTORS,
   HYDROGEN_TOOLING_DECISIONS,
+  INTEGRATION_COMPLEXITY_BOUNDARIES,
   LIQUID_VS_HYDROGEN_DECISION,
+  MIGRATION_SEO_RISK_CHECKLIST,
   PACKAGE_PRICING_PRINCIPLE,
+  PACKAGE_READINESS_FACTORS,
   PACKAGE_SCOPE_BOUNDARY_COMPARISON,
   PACKAGE_SCOPE_COPY,
   PRICE_DRIVER_ITEMS,
   PRICING_FAQS,
+  SCOPE_REVIEW_INPUTS,
+  SENIOR_SPECIALIST_AGENCY_COMPARISON,
   TWO_K_BUILD_IS,
   TWO_K_BUILD_IS_NOT,
 } from "@/lib/hydrogen-packages";
@@ -283,6 +289,171 @@ export function LiquidHydrogenDecisionSection() {
                 </li>
               ))}
             </ul>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+export function ScopeReviewInputsSection() {
+  return (
+    <section className="surface-card space-y-6">
+      <SectionHeader
+        eyebrow="Fit review inputs"
+        title="What to send so the recommendation can be useful."
+        description="The review is designed to choose between Starter, Standard, Growth, Custom, Liquid cleanup, support, or no rebuild. These facts keep the answer practical instead of generic."
+        className="max-w-5xl"
+      />
+      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
+        {SCOPE_REVIEW_INPUTS.map((input) => (
+          <article key={input.label} className="rounded-[1.15rem] border border-black/8 bg-white p-5">
+            <p className="text-[0.68rem] font-bold uppercase tracking-[0.2em] text-[#10b981]">
+              {input.label}
+            </p>
+            <p className="mt-3 text-sm leading-7 text-neutral-700">{input.detail}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+export function PackageReadinessSection() {
+  return (
+    <section className="surface-card space-y-6">
+      <SectionHeader
+        eyebrow="Package readiness"
+        title="What makes fixed scope ready, and what moves it to custom."
+        description="The $2K-$5K path works only when the first launch is bounded. These signals keep integration-heavy or SEO-risky work out of the wrong package."
+        className="max-w-5xl"
+      />
+      <div className="overflow-x-auto rounded-[1.2rem] border border-black/8 bg-white">
+        <table className="min-w-full border-collapse text-left text-sm">
+          <thead className="bg-[#f7f7f7]">
+            <tr>
+              <th className="px-5 py-4 font-bold uppercase tracking-[0.16em] text-[#0f8a5d]">
+                Factor
+              </th>
+              <th className="px-5 py-4 font-bold uppercase tracking-[0.16em] text-[#0f8a5d]">
+                Fixed-scope signal
+              </th>
+              <th className="px-5 py-4 font-bold uppercase tracking-[0.16em] text-[#0f8a5d]">
+                Custom / agency signal
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {PACKAGE_READINESS_FACTORS.map((row) => (
+              <tr key={row.factor} className="border-t border-black/8 align-top">
+                <td className="min-w-[13rem] px-5 py-4 font-semibold leading-7 text-neutral-800">
+                  {row.factor}
+                </td>
+                <td className="min-w-[18rem] px-5 py-4 leading-7 text-neutral-700">
+                  {row.starter}
+                </td>
+                <td className="min-w-[18rem] px-5 py-4 leading-7 text-neutral-700">
+                  {row.custom}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  );
+}
+
+export function MigrationSeoRiskChecklistSection() {
+  return (
+    <section className="surface-card space-y-6">
+      <SectionHeader
+        eyebrow="Migration SEO risk"
+        title="Liquid to Hydrogen migration needs a route and crawlability checklist."
+        description="This is a risk checklist, not a ranking guarantee. The goal is to preserve important signals and catch migration problems before production launch."
+        className="max-w-5xl"
+      />
+      <div className="grid gap-3 md:grid-cols-2">
+        {MIGRATION_SEO_RISK_CHECKLIST.map((item) => (
+          <div
+            key={item}
+            className="rounded-[1rem] border border-black/8 bg-white px-4 py-3 text-sm font-semibold leading-6 text-neutral-700"
+          >
+            {item}
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+export function SeniorSpecialistAgencyComparisonSection() {
+  return (
+    <section className="surface-card space-y-6">
+      <SectionHeader
+        eyebrow="Specialist vs agency"
+        title="Choose the vendor shape around the real risk."
+        description="A traditional agency can be the right answer. A direct senior specialist can also be the better answer when the problem is scoped Hydrogen judgment and implementation."
+        className="max-w-5xl"
+      />
+      <div className="grid gap-4 lg:grid-cols-3">
+        {SENIOR_SPECIALIST_AGENCY_COMPARISON.map((row) => (
+          <article key={row.path} className="rounded-[1.15rem] border border-black/8 bg-white p-5">
+            <h3 className="text-xl font-semibold leading-7 text-[#171717]">{row.path}</h3>
+            <p className="mt-4 text-sm leading-7 text-neutral-700">{row.bestWhen}</p>
+            <p className="mt-4 rounded-[1rem] bg-[#f6f7f7] p-4 text-sm leading-7 text-neutral-600">
+              {row.caution}
+            </p>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+export function HydrogenOwnershipCostSection() {
+  return (
+    <section className="surface-card space-y-6">
+      <SectionHeader
+        eyebrow="Maintenance model"
+        title="Hydrogen maintenance is application ownership."
+        description="Build cost and maintenance cost are different decisions. A custom storefront needs an owner after launch, while Liquid may remain cheaper when the operating model is simple."
+        className="max-w-5xl"
+      />
+      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        {HYDROGEN_OWNERSHIP_COST_FACTORS.map((factor) => (
+          <article key={factor.area} className="rounded-[1.15rem] border border-black/8 bg-white p-5">
+            <div className="h-1 w-10 rounded-full bg-[#10b981]" />
+            <h3 className="mt-4 text-lg font-semibold leading-7 text-[#171717]">
+              {factor.area}
+            </h3>
+            <p className="mt-3 text-sm leading-7 text-neutral-700">{factor.detail}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+export function IntegrationComplexityBoundarySection() {
+  return (
+    <section className="surface-card space-y-6">
+      <SectionHeader
+        eyebrow="Integration boundary"
+        title="Some integration work should not be squeezed into package scope."
+        description="ERP, POS, WMS, B2B, wholesale, subscriptions, loyalty, and account-state work can change the architecture. The fit review should catch that before a fixed package is quoted."
+        className="max-w-5xl"
+      />
+      <div className="grid gap-4 lg:grid-cols-3">
+        {INTEGRATION_COMPLEXITY_BOUNDARIES.map((row) => (
+          <article key={row.signal} className="rounded-[1.15rem] border border-black/8 bg-white p-5">
+            <p className="text-[0.68rem] font-bold uppercase tracking-[0.2em] text-[#10b981]">
+              Signal
+            </p>
+            <h3 className="mt-3 text-lg font-semibold leading-7 text-[#171717]">
+              {row.signal}
+            </h3>
+            <p className="mt-4 text-sm leading-7 text-neutral-700">{row.scopeMove}</p>
           </article>
         ))}
       </div>

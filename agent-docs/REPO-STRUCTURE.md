@@ -1,7 +1,7 @@
 # Repo Structure
 
 Status: Active
-Last updated: 2026-05-25
+Last updated: 2026-06-17
 Owner: Agent
 Source of truth: Current repo and user-approved architecture plan
 
@@ -33,7 +33,7 @@ This file maps the repository structure and placement rules. Update it whenever 
 | `public/` | Static public assets. |
 | `scripts/` | Operational validation, reporting, generation, and indexing scripts. |
 | `supabase/` | Supabase migrations and local metadata. |
-| `tasks/` | Historical task/PRD notes. |
+| `tasks/` | Historical task/PRD notes and scoped research or implementation task workstreams. |
 | `tests/` | Vitest tests and guardrails. |
 | `CHANGELOG.md` | PR/deploy/verification paper trail. |
 | `package.json` | Source of truth for scripts and dependency versions. |
@@ -82,5 +82,6 @@ Use compatibility re-exports during migrations when it keeps call sites stable a
 - Large domain registries should move toward `features/<domain>/`.
 - Compatibility re-export modules are allowed during staged refactors, but should not become permanent parallel sources of truth.
 - Do not add new root-level agent docs; add canonical docs to `agent-docs/` and route from `AGENTS.md`.
+- Place non-canonical competitive research, PRD, and implementation task backlogs under `tasks/<topic>/` when they are working artifacts rather than durable routing docs.
 - Do not create abstractions that only wrap constant behavior.
 - Do not extract a shared page renderer for direct-composed pages unless at least two pages share both data shape and behavior. Similar card styling alone is not enough.

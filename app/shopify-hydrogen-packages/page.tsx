@@ -7,7 +7,10 @@ import {
   EnterpriseScopeBoundarySection,
   HydrogenToolingDecisionSection,
   HydrogenBuildPackages,
+  HydrogenOwnershipCostSection,
+  IntegrationComplexityBoundarySection,
   LiquidHydrogenDecisionSection,
+  PackageReadinessSection,
   PriceDriversSection,
   PricingFaqSection,
   TwoKBuildBoundarySection,
@@ -62,6 +65,8 @@ const packageListSchema = {
 const internalLinks = [
   { href: "/shopify-hydrogen-cost", label: "Cost" },
   { href: "/custom-shopify-hydrogen-storefront", label: "Custom storefront" },
+  { href: "/liquid-to-hydrogen-migration", label: "Migration" },
+  { href: "/shopify-hydrogen-fit-audit", label: "Scope Review" },
   { href: "/when-not-to-use-hydrogen", label: "When Not to Use Hydrogen" },
   { href: "/articles/shopify-hydrogen-developer-vs-agency", label: "Developer vs agency" },
   { href: "/case-studies", label: "Proof" },
@@ -156,11 +161,14 @@ export default function ShopifyHydrogenPackagesPage() {
           </div>
         </section>
         <PriceDriversSection />
+        <PackageReadinessSection />
         <ScopeReviewBriefTemplates />
         <TwoKBuildBoundarySection />
         <EnterpriseScopeBoundarySection />
         <HydrogenToolingDecisionSection />
         <LiquidHydrogenDecisionSection />
+        <HydrogenOwnershipCostSection />
+        <IntegrationComplexityBoundarySection />
         <AiAssistedWorkflowSection />
 
         <section className="surface-card space-y-6">
