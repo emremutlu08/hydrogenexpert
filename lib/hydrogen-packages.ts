@@ -199,6 +199,7 @@ export const PRICE_DRIVER_ITEMS = [
   "Cart UX",
   "Customer accounts",
   "App integrations",
+  "ERP / POS / WMS boundaries",
   "SEO migration",
   "Analytics events",
   "CMS / metaobjects",
@@ -270,11 +271,12 @@ export const LIQUID_VS_HYDROGEN_DECISION = [
     title: "Choose Liquid when",
     items: [
       "You only need theme polish",
-      "You need 2-3 sections",
+      "You need 2-3 merchant-editable sections",
       "The catalog is simple",
       "The team wants theme editor control",
       "Checkout is the real problem",
       "Budget must go to ads, retention, or photography",
+      "The team cannot maintain a custom storefront yet",
     ],
   },
   {
@@ -285,6 +287,7 @@ export const LIQUID_VS_HYDROGEN_DECISION = [
       "You can accept fixed scope",
       "You want core ecommerce pages first",
       "You are comfortable with developer-owned changes",
+      "SEO and analytics risk are low or already mapped",
     ],
   },
   {
@@ -295,7 +298,149 @@ export const LIQUID_VS_HYDROGEN_DECISION = [
       "Cart UX matters",
       "Metaobjects or custom components matter",
       "The storefront must support future iteration",
+      "The team can fund post-launch application ownership",
     ],
+  },
+] as const;
+
+export const LIQUID_CLEANUP_SCOPE = {
+  includes: [
+    "Focused theme sections or template improvements",
+    "Homepage, collection, PDP, or landing page UX cleanup",
+    "Basic performance and app-bloat review",
+    "Merchant-editable content structure inside the current theme",
+    "A recommendation to stay on Liquid when Hydrogen would be overkill",
+  ],
+  excludes: [
+    "Tiny one-off CSS fixes",
+    "Full brand, CRO, or creative agency work",
+    "Complex app replacement",
+    "Custom checkout",
+    "Large migration or headless rebuild scope",
+  ],
+} as const;
+
+export const SCOPE_REVIEW_INPUTS = [
+  {
+    label: "Current store",
+    detail: "Store URL, current Shopify setup, and whether the storefront is Liquid, Hydrogen, or another headless stack.",
+  },
+  {
+    label: "Commercial pressure",
+    detail: "What feels slow, limiting, expensive, hard to edit, or risky to launch.",
+  },
+  {
+    label: "Scope facts",
+    detail: "Design status, product count, required pages, must-have features, and content readiness.",
+  },
+  {
+    label: "Risk signals",
+    detail: "Important URLs, SEO traffic, analytics events, app dependencies, account behavior, and checkout assumptions.",
+  },
+  {
+    label: "Operating model",
+    detail: "Timeline, budget range, internal owner, post-launch support needs, and whether a full agency team is required.",
+  },
+] as const;
+
+export const PACKAGE_READINESS_FACTORS = [
+  {
+    factor: "Design status",
+    starter: "Existing design or light direction is enough.",
+    custom: "New UX system, brand work, or unclear design ownership.",
+  },
+  {
+    factor: "Product and catalog shape",
+    starter: "Simple catalog and predictable product templates.",
+    custom: "Large catalog, complex variants, search, filters, or merchandising rules.",
+  },
+  {
+    factor: "Integrations",
+    starter: "None or 1-2 simple frontend integrations.",
+    custom: "ERP, POS, WMS, subscriptions, B2B, loyalty, advanced reviews, or custom app behavior.",
+  },
+  {
+    factor: "SEO and analytics risk",
+    starter: "Low-risk new build or approved route map.",
+    custom: "Existing organic traffic, redirects, schema, analytics, consent, or migration pressure.",
+  },
+  {
+    factor: "Post-launch ownership",
+    starter: "Clear owner and limited first-release backlog.",
+    custom: "No support model, frequent campaigns, or multiple teams changing storefront behavior.",
+  },
+] as const;
+
+export const MIGRATION_SEO_RISK_CHECKLIST = [
+  "Route and redirect map for important Liquid URLs",
+  "Canonical rules for products, collections, variants, filters, and search parameters",
+  "Metadata and Open Graph output for commercial pages",
+  "JSON-LD that matches rendered product and article content",
+  "Server-rendered product, collection, and policy content before JavaScript finishes",
+  "Sitemap and robots output on the final production domain",
+  "Internal links from case studies, services, articles, and core navigation",
+  "Analytics, consent, cart, checkout handoff, and launch-monitoring QA",
+] as const;
+
+export const SENIOR_SPECIALIST_AGENCY_COMPARISON = [
+  {
+    path: "Direct senior specialist",
+    bestWhen:
+      "The main risk is Hydrogen judgment, route/API implementation, SEO-safe launch, performance cleanup, or a bounded fixed-scope build.",
+    caution:
+      "Not the right container for brand strategy, paid media, large creative production, or many delivery pods in parallel.",
+  },
+  {
+    path: "Full Shopify agency",
+    bestWhen:
+      "The brand needs strategy, UX, creative, copy, CRO, PM, QA, retention, integrations, and engineering moving together.",
+    caution:
+      "Can add overhead if the actual blocker is a narrow technical storefront decision.",
+  },
+  {
+    path: "Liquid cleanup or no rebuild",
+    bestWhen:
+      "The theme can solve the commercial problem with smaller sections, app cleanup, performance work, or clearer content.",
+    caution:
+      "Should not be framed as a downgrade when it protects budget and maintenance capacity.",
+  },
+] as const;
+
+export const HYDROGEN_OWNERSHIP_COST_FACTORS = [
+  {
+    area: "Code ownership",
+    detail:
+      "Hydrogen behaves like an application: routes, components, data loading, dependencies, and releases need an owner.",
+  },
+  {
+    area: "Content editing",
+    detail:
+      "Merchant editing needs a deliberate model: Liquid sections, Shopify metaobjects, a visual Hydrogen builder, or custom components.",
+  },
+  {
+    area: "Commerce integrations",
+    detail:
+      "Reviews, subscriptions, loyalty, search, analytics, consent, and account behavior need headless-compatible paths.",
+  },
+  {
+    area: "Launch safety",
+    detail:
+      "SEO, sitemap, robots, analytics, checkout handoff, and rollback checks belong in the scope before launch week.",
+  },
+] as const;
+
+export const INTEGRATION_COMPLEXITY_BOUNDARIES = [
+  {
+    signal: "Reviews, email popup, or simple analytics only",
+    scopeMove: "Usually Standard or Growth if the app has a clear frontend path.",
+  },
+  {
+    signal: "Subscriptions, loyalty, search, B2B, wholesale, or customer-account logic",
+    scopeMove: "Treat as custom scope until product state, account state, cart behavior, and checkout handoff are proven.",
+  },
+  {
+    signal: "ERP, POS, WMS, PIM, custom middleware, or multi-system inventory",
+    scopeMove: "Plan a larger integration review or bring in a specialist partner instead of squeezing it into a package.",
   },
 ] as const;
 

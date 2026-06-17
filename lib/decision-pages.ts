@@ -61,6 +61,7 @@ export const DECISION_PAGES = {
         body: [
           "The first useful step is not a sales deck. It is the store URL, current storefront stack, what feels expensive or slow to change, and which commercial decision needs support.",
           "Strong fits usually need a Starter, Standard, Growth, or Custom Hydrogen build, Liquid to Hydrogen migration review, performance or SEO cleanup, Oxygen/deployment confidence, or ongoing support for an existing Hydrogen storefront.",
+          "The same model works for UK and other English-speaking buyers when async scoping, written decisions, clear USD pricing, and direct senior delivery matter more than a local-office claim.",
         ],
       },
       {
@@ -82,6 +83,11 @@ export const DECISION_PAGES = {
         signal: "Stakeholders need USD budget sanity before rebuild approval.",
         move: "Start with $2K-$5K package review.",
         caution: "Avoid wide rebuild ranges with undefined SEO, app, and analytics risk.",
+      },
+      {
+        signal: "The buyer is comparing US or UK agencies with specialist support.",
+        move: "Compare agency scope against direct senior Hydrogen ownership.",
+        caution: "Do not infer local office, partner status, or team capacity that is not claimed.",
       },
       {
         signal: "The project needs daily local office presence.",
@@ -131,7 +137,8 @@ export const DECISION_PAGES = {
         title: "What you receive.",
         body: [
           "Free first-pass recommendation on Starter, Standard, Growth, Custom, Liquid cleanup, or no rebuild based on store URL, desired pages, current setup, and required features.",
-          "Optional paid Scope & Risk Review at $300-$750 when SEO, app dependencies, analytics, migration, or unclear requirements could change the build estimate.",
+          "Optional paid Scope & Risk Review at $300-$750 when SEO, app dependencies, analytics, migration, integrations, or unclear requirements could change the build estimate.",
+          "The best first message includes current stack, product count, design status, required integrations, important URLs, timeline, and whether the team can maintain a custom storefront after launch.",
         ],
       },
       {
@@ -201,7 +208,8 @@ export const DECISION_PAGES = {
         title: "Hydrogen needs a real owner after launch.",
         body: [
           "Liquid themes can often be maintained through theme settings, app configuration, and smaller developer tasks. Hydrogen shifts more of the storefront into an application layer. That gives more control, but it also creates ongoing responsibility for code quality, data loading, route behavior, dependencies, and deployment.",
-          "Maintenance cost depends on the pace of changes, app integrations, content model, product complexity, SEO monitoring, analytics needs, and how much internal capability the brand already has.",
+          "Maintenance cost depends on the pace of changes, app integrations, content model, product complexity, SEO monitoring, analytics needs, release QA, and how much internal capability the brand already has.",
+          "The buyer should separate first-build cost from ownership cost. A cheap custom storefront can become expensive if nobody owns dependencies, releases, content editing, analytics, and app behavior after launch.",
         ],
       },
       {
@@ -272,6 +280,7 @@ export const DECISION_PAGES = {
         body: [
           "Liquid keeps the storefront close to Shopify's theme model. It is often the fastest path for standard commerce needs and a better fit when the team needs low operational overhead.",
           "Hydrogen is a custom storefront approach built around a React application connected to Shopify. It can support more ambitious UX, data loading, routing, and presentation patterns, but it asks the brand to own more software.",
+          "A broader headless path may make sense when Shopify is part of a larger product or content application. For most Shopify-first storefront decisions, the practical comparison is still Liquid cleanup, Hydrogen, or no rebuild.",
         ],
       },
       {
@@ -358,6 +367,7 @@ export const DECISION_PAGES = {
         title: "Jewelry and watches ask different questions.",
         body: [
           "Bayam Jewelry had to support fine jewelry, diamonds, and watches in one premium storefront surface. Jewelry shoppers often browse by style and occasion. Watch shoppers often compare brand, model, condition, and detail. A custom storefront can make those paths feel intentional instead of forcing them into one flat menu.",
+          "Premium catalog Hydrogen is strongest when discovery, showroom trust, mobile detail pages, and collection context need a designed system. It is weak when the request is only surface-level visual polish.",
         ],
       },
       {
@@ -378,6 +388,11 @@ export const DECISION_PAGES = {
         signal: "The catalog has distinct buyer mindsets.",
         move: "Design separate discovery pathways.",
         caution: "Avoid one-size-fits-all collection logic.",
+      },
+      {
+        signal: "Showroom trust, product detail, and premium browsing need one system.",
+        move: "Scope Growth or Custom Hydrogen surfaces.",
+        caution: "Do not invent luxury proof beyond the Bayam context.",
       },
       {
         signal: "The brand only needs visual refinement.",
@@ -421,7 +436,8 @@ export const DECISION_PAGES = {
         eyebrow: "EveShop context",
         title: "High-SKU catalog work is about clarity.",
         body: [
-          "The EveShop context matters because the pressure was not just page speed. It was browsing, campaigns, category clarity, and reusable patterns for a national beauty and personal care retailer.",
+          "The EveShop context matters because the pressure was not just page speed. It was browsing, campaigns, category clarity, mobile product flow, and reusable patterns for a national beauty and personal care retailer.",
+          "Large-catalog Hydrogen should be scoped around product discovery, crawlable collection content, route structure, internal links, SSR product information, and launch QA. SKU count alone is not enough.",
         ],
       },
       {
@@ -442,6 +458,11 @@ export const DECISION_PAGES = {
         signal: "Catalog navigation is the main conversion friction.",
         move: "Evaluate custom discovery UX.",
         caution: "Do not rebuild before mapping product and collection behavior.",
+      },
+      {
+        signal: "Filtered or campaign paths may affect organic discovery.",
+        move: "Map crawlable routes, canonicals, and internal links before build.",
+        caution: "Avoid making every filter state an accidental landing page.",
       },
       {
         signal: "The theme handles catalog operations well.",
@@ -486,6 +507,7 @@ export const DECISION_PAGES = {
         title: "Commerce, education, and partner acquisition in one surface.",
         body: [
           "Rebel Bunny's storefront pressure was not only selling matcha. The site needed DTC shopping, partner interest, and Matchacation education content to work together instead of feeling like disconnected landing pages.",
+          "Hydrogen becomes easier to justify when education changes product understanding, partner paths support the commercial model, and the same storefront has to keep product, story, cart, and lead paths coherent.",
         ],
       },
       {
@@ -506,6 +528,11 @@ export const DECISION_PAGES = {
         signal: "Partner acquisition and DTC shopping share the same brand journey.",
         move: "Design one coherent storefront system.",
         caution: "Avoid disconnected tools that fragment maintenance.",
+      },
+      {
+        signal: "Education content affects product choice before checkout.",
+        move: "Scope content-commerce routes and reusable education sections.",
+        caution: "Do not claim performance impact without approved evidence.",
       },
       {
         signal: "The brand only needs a few content pages.",

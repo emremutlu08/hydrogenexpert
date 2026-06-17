@@ -34,6 +34,8 @@ interface LeadCaptureFormProps {
 const SHORT_BRIEF_ITEMS = [
   "Store URL or brand",
   "What feels blocked",
+  "Current stack and product count",
+  "Design status and must-have integrations",
   "Budget and timeline, if you know them",
 ] as const;
 
@@ -168,7 +170,7 @@ export function LeadCaptureForm({
           Request a Hydrogen Scope Review
         </h3>
         <p className="text-sm leading-7 text-neutral-300">
-          Send the required fields first. Add design status, product count, budget, and timeline only if they are already clear.
+          Send the required fields first. Add design status, product count, integrations, SEO risk, budget, and timeline only if they are already clear.
         </p>
         <p className="lead-form-note">
           I do not sell Hydrogen if Liquid is the better move.

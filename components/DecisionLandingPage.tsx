@@ -5,7 +5,14 @@ import { CTASection } from "@/components/CTASection";
 import { FaqSection } from "@/components/FaqSection";
 import {
   AuditScopeReviewSection,
+  HydrogenOwnershipCostSection,
   HydrogenBuildPackages,
+  IntegrationComplexityBoundarySection,
+  LiquidHydrogenDecisionSection,
+  MigrationSeoRiskChecklistSection,
+  PackageReadinessSection,
+  ScopeReviewInputsSection,
+  SeniorSpecialistAgencyComparisonSection,
 } from "@/components/HydrogenPackages";
 import { JsonLd } from "@/components/JsonLd";
 import { PageIntroSection } from "@/components/PageIntroSection";
@@ -121,7 +128,44 @@ export function DecisionLandingPage({
         ) : null}
 
         {page.path === "/shopify-hydrogen-fit-audit" ? (
-          <AuditScopeReviewSection />
+          <>
+            <AuditScopeReviewSection />
+            <ScopeReviewInputsSection />
+            <PackageReadinessSection />
+          </>
+        ) : null}
+
+        {page.path === "/shopify-hydrogen-agency-usa" ? (
+          <SeniorSpecialistAgencyComparisonSection />
+        ) : null}
+
+        {page.path === "/shopify-hydrogen-vs-liquid" ? (
+          <>
+            <LiquidHydrogenDecisionSection />
+            <HydrogenOwnershipCostSection />
+            <ScopeReviewInputsSection />
+          </>
+        ) : null}
+
+        {page.path === "/shopify-hydrogen-maintenance-cost" ? (
+          <>
+            <HydrogenOwnershipCostSection />
+            <LiquidHydrogenDecisionSection />
+          </>
+        ) : null}
+
+        {page.path === "/shopify-hydrogen-for-large-catalog-retail" ? (
+          <MigrationSeoRiskChecklistSection />
+        ) : null}
+
+        {page.path === "/shopify-hydrogen-for-dtc-education-brands" ||
+        page.path === "/shopify-hydrogen-for-luxury-jewelry" ? (
+          <PackageReadinessSection />
+        ) : null}
+
+        {page.path === "/shopify-hydrogen-for-large-catalog-retail" ||
+        page.path === "/shopify-hydrogen-for-dtc-education-brands" ? (
+          <IntegrationComplexityBoundarySection />
         ) : null}
 
         <section className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">

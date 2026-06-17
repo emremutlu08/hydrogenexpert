@@ -88,6 +88,31 @@ export default function CaseStudiesPage() {
           <SelectedWorkGrid />
         </section>
 
+        <section className="surface-card space-y-6">
+          <SectionHeader
+            eyebrow="Decision proof"
+            title="What each case helps decide."
+            description="Hydrogen and Liquid proof are intentionally separated so buyers can map the work to Starter, Growth, Custom, Liquid cleanup, or no-rebuild decisions without inflated claims."
+            className="max-w-5xl"
+          />
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
+            {CASE_STUDIES.map((study) => (
+              <Link
+                key={study.id}
+                href={`/case-studies/${study.slug}`}
+                className="rounded-[1.15rem] border border-black/8 bg-white p-5 transition hover:border-[#10b981]"
+              >
+                <p className="text-[0.68rem] font-bold uppercase tracking-[0.2em] text-[#10b981]">
+                  {study.clientName}
+                </p>
+                <p className="mt-3 text-sm leading-7 text-neutral-700">
+                  {CASE_STUDY_PACKAGE_RELEVANCE[study.id]}
+                </p>
+              </Link>
+            ))}
+          </div>
+        </section>
+
         <section className="grid gap-8">
           {CASE_STUDIES.map((study, index) => (
             <article id={study.id} key={study.id} className="card scroll-mt-32 space-y-8">

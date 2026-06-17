@@ -100,6 +100,7 @@ export const SERVICE_PACKAGE_BASES = [
     deliverables: [
       "Hydrogen fit and scope review",
       "Migration, custom build, SEO, or optimization recommendation",
+      "Liquid cleanup or no-rebuild recommendation when that protects the business",
       "Senior implementation planning",
       "Storefront architecture and launch-risk review",
       "Clear next step: audit, migration, build, optimization, support, or no rebuild",
@@ -152,6 +153,11 @@ export const SERVICE_PACKAGE_BASES = [
         label: "Shopify Hydrogen audit",
         note: "Use this before choosing an agency path when the business case still needs proof.",
       },
+      {
+        href: "/shopify-hydrogen-vs-liquid",
+        label: "Hydrogen vs Liquid",
+        note: "Use this when the safest decision might be a stronger theme path.",
+      },
     ],
   },
   {
@@ -174,6 +180,7 @@ export const SERVICE_PACKAGE_BASES = [
       "Hydrogen vs Liquid tradeoff review",
       "Architecture, SEO, analytics, and integration risk notes",
       "Migration and launch-path recommendation",
+      "Agency, senior specialist, Liquid cleanup, or no-rebuild recommendation",
       "Budget-aware next-step scope",
     ],
     proofNotes: [
@@ -573,6 +580,7 @@ export const SERVICE_PACKAGE_BASES = [
       "Growth-stage Shopify brands with a clear business case for Hydrogen and a need to protect route structure, product discovery, cart flow, and launch stability.",
     deliverables: [
       "Route, SEO, and canonical planning",
+      "Redirect, metadata, sitemap, robots, and JSON-LD migration checklist",
       "Product and collection mapping",
       "Cart flow and checkout handoff implementation",
       "Storefront API implementation",
@@ -588,7 +596,7 @@ export const SERVICE_PACKAGE_BASES = [
       {
         question: "What usually breaks during a Liquid to Hydrogen migration?",
         answer:
-          "The common risks are route changes, product and collection URL drift, analytics gaps, missing structured data, app replacement surprises, and checkout handoff details that were implicit in the theme.",
+          "The common risks are route changes, product and collection URL drift, redirect gaps, canonical drift, metadata gaps, missing structured data, app replacement surprises, analytics drift, and checkout handoff details that were implicit in the theme.",
       },
       {
         question: "Can a Liquid theme and Hydrogen storefront overlap during migration?",
@@ -616,6 +624,11 @@ export const SERVICE_PACKAGE_BASES = [
         href: "/case-studies",
         label: "Production case studies",
         note: "See how different storefront pressures shaped real Hydrogen work.",
+      },
+      {
+        href: "/shopify-hydrogen-fit-audit",
+        label: "Migration scope review",
+        note: "Use this before finalizing route, SEO, app, and analytics risk.",
       },
     ],
   },
@@ -780,6 +793,7 @@ export const SERVICE_PACKAGE_BASES = [
       "Product flow, add to cart, cart drawer, and Shopify checkout handoff",
       "Basic account entry and SEO baseline",
       "Metaobjects, integrations, migration, and QA when the selected package includes them",
+      "Integration boundary review for app, account, ERP, POS, WMS, B2B, or subscription risk",
       "Clear scope boundaries before advanced custom work starts",
     ],
     proofNotes: [
@@ -801,7 +815,7 @@ export const SERVICE_PACKAGE_BASES = [
       {
         question: "When does this become custom scope?",
         answer:
-          "Advanced search, custom filters, B2B, subscriptions, complex content models, large catalog migration, app replacement, SEO-risky URL changes, or custom product logic move the project into custom scope.",
+          "Advanced search, custom filters, B2B, subscriptions, complex content models, large catalog migration, app replacement, ERP, POS, WMS, SEO-risky URL changes, or custom product logic move the project into custom scope.",
       },
     ],
     relatedLinks: [
@@ -950,12 +964,13 @@ export const SERVICE_PACKAGE_BASES = [
 ] as const satisfies readonly ServicePackageBase[];
 
 export const SECONDARY_SERVICE = {
-  title: "Shopify Liquid development is still on the table",
+  title: "Shopify Liquid cleanup is a real decision path",
   body:
-    "Hydrogen is not always the right move. If a stronger Liquid theme, a targeted UX refactor, or cleaner app setup is faster, safer, and better for the business, that should be the recommendation.",
+    "Hydrogen is not always the right move. If a stronger Liquid theme, a targeted UX refactor, cleaner app setup, or no rebuild is faster, safer, and better for the business, that should be the recommendation before custom storefront scope is sold.",
   bullets: [
     "Liquid theme improvements when Hydrogen is overkill",
     "Figma to Liquid implementation for focused sections",
-    "Performance and UX refactors inside the current theme",
+    "Performance, UX, and app-bloat cleanup inside the current theme",
+    "No-rebuild recommendation when budget should go elsewhere",
   ],
 } as const;
