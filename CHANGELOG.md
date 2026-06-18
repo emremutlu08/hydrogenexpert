@@ -15,6 +15,35 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-06-18
 
+- PR: [#87 Refresh audit-safe package lock](https://github.com/emremutlu08/hydrogenexpert/pull/87)
+- Branch: `codex/safe-package-refresh-2026-06-18`
+- Deployment: Production deployment verified at [hydrogenexpert.co](https://hydrogenexpert.co), deployment `https://hydrogenexpert-mdwpha11n-emremutlu8s-projects.vercel.app` (`dpl_3vBAgPdbs7gi3z2xUPA9RD64Rk7K`).
+- Summary:
+  - Refreshed only the safe transitive lockfile entries in `package-lock.json` to clear the current audit findings without changing direct package metadata.
+  - Upgraded the Babel toolchain subtree from `7.29.0`/`7.29.3`/`7.28.6` variants to `7.29.7` where required by the lockfile refresh.
+  - Updated `js-yaml` from `4.1.1` to `4.2.0` and refreshed the related `node-releases` and `electron-to-chromium` lockfile entries pulled by the audit-safe resolution.
+- Files changed:
+  - `package-lock.json`
+  - `CHANGELOG.md`
+- Verification:
+  - `git diff --check`: passed.
+  - `npm audit --audit-level=moderate`: passed with 0 vulnerabilities after the lockfile refresh.
+  - `npm audit signatures`: passed with 437 verified registry signatures and 112 verified attestations.
+  - `npm ls --depth=0`: passed.
+  - `npm outdated --json --long`: only deliberate deferrals remain: `@anthropic-ai/sdk@0.104.2`, `@types/node@25.9.3`, and `eslint@10.5.0`.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run test`: passed, 25 test files and 101 tests.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed with no `Needs review` rows.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed.
+  - `vercel inspect hydrogenexpert.co`: passed; production alias resolved to `dpl_3vBAgPdbs7gi3z2xUPA9RD64Rk7K`.
+  - `COMMERCIAL_LAUNCH_BASE_URL=https://hydrogenexpert.co NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:commercial-launch`: passed after deployment.
+  - `INTERNAL_LINK_BASE_URL=https://hydrogenexpert.co NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:internal-links`: passed after deployment with 67 sitemap URLs and 82 internal URLs.
+  - Live HTTP checks confirmed `/`, `/shopify-hydrogen-packages`, `/contact`, `/sitemap.xml`, `/robots.txt`, `/llms.txt`, and `/feed.xml` returned `200`.
+- Manual follow-up:
+  - None.
+
 - PR: [#86 Add explicit llms about/contact discovery sections](https://github.com/emremutlu08/hydrogenexpert/pull/86)
 - Branch: `codex/llms-geo-discovery-fix`
 - Deployment: Production deployment verified at [hydrogenexpert.co](https://hydrogenexpert.co), deployment `https://hydrogenexpert-8geik2j5v-emremutlu8s-projects.vercel.app` (`dpl_6ASKaq5nvXdurB3ox7pkKX3WvBrD`).
