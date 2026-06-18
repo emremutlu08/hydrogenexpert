@@ -13,6 +13,32 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 - Verification:
 - Manual follow-up:
 
+## 2026-06-18
+
+- PR: [#86 Add explicit llms about/contact discovery sections](https://github.com/emremutlu08/hydrogenexpert/pull/86)
+- Branch: `codex/llms-geo-discovery-fix`
+- Deployment: Production deployment verified at [hydrogenexpert.co](https://hydrogenexpert.co), deployment `https://hydrogenexpert-8geik2j5v-emremutlu8s-projects.vercel.app` (`dpl_6ASKaq5nvXdurB3ox7pkKX3WvBrD`).
+- Summary:
+  - Added explicit `Key facts`, `About`, and `Contact` sections to both `llms.txt` and `llms-full.txt`.
+  - Added `/about` and `/contact` to the llms core discovery page index so public entity and scope-review routes are directly represented in AI-readable discovery output.
+  - Kept llms proof and positioning grounded in the existing site constants and public proof surfaces.
+- Files changed:
+  - `features/public-discovery/manifest.ts`
+  - `lib/llms.ts`
+  - `CHANGELOG.md`
+- Verification:
+  - `git diff --check`: passed.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed with no `Needs review` rows.
+  - `COMMERCIAL_LAUNCH_BASE_URL=https://hydrogenexpert.co NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:commercial-launch`: passed before and after deployment.
+  - `INTERNAL_LINK_BASE_URL=https://hydrogenexpert.co NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:internal-links`: passed against `67` sitemap URLs and `82` internal URLs before deployment.
+  - Live checks confirmed `https://hydrogenexpert.co/llms.txt` and `https://hydrogenexpert.co/llms-full.txt` returned `200` and now expose `## Key facts`, `## About`, and `## Contact` with `/about` and `/contact` links.
+- Manual follow-up:
+  - Optional: request recrawl for `llms.txt` and `llms-full.txt` in any external GEO tooling that caches these files.
+
 ## 2026-06-17
 
 - PR: [#85 Add Liquid competitor summary table](https://github.com/emremutlu08/hydrogenexpert/pull/85)

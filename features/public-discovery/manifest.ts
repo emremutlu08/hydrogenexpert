@@ -117,6 +117,12 @@ export const LLMS_CORE_PAGE_ENTRIES: readonly LlmsPageEntry[] = [
       "Senior-led Shopify Hydrogen services, proof, case studies, and fit guidance.",
   },
   {
+    title: "About",
+    path: "/about",
+    description:
+      "Founder profile, public proof, and verified entity links for Emre Mutlu.",
+  },
+  {
     title: "Packages",
     path: PACKAGE_ROUTE,
     description:
@@ -163,6 +169,12 @@ export const LLMS_CORE_PAGE_ENTRIES: readonly LlmsPageEntry[] = [
     path: "/hire-me",
     description:
       "Direct hiring page for a senior Shopify Hydrogen developer and advisor.",
+  },
+  {
+    title: "Contact",
+    path: "/contact",
+    description:
+      "Scope review entry point with the project brief form, LinkedIn, Upwork, and case-study paths.",
   },
   {
     title: "Articles",

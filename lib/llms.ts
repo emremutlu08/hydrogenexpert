@@ -36,6 +36,66 @@ function buildSummary() {
   ].join("\n");
 }
 
+function buildKeyFactsSection() {
+  return [
+    "## Key facts",
+    "",
+    `- Founder: ${OWNER.name}`,
+    `- Role: ${OWNER.title}`,
+    `- Positioning: ${OWNER.headline}`,
+    `- Delivery proof: ${UPWORK_PROFILE.badge}, ${UPWORK_PROFILE.jobSuccessScore} Job Success Score, ${UPWORK_PROFILE.totalHoursLabel} hours delivered on Upwork`,
+    "- Focus: Fixed-scope Hydrogen builds, migrations, custom storefronts, performance, SEO, and support",
+    "- Canonical discovery surfaces: homepage, packages, services, case studies, articles, blog, about, and contact",
+    "",
+  ].join("\n");
+}
+
+function buildAboutSection() {
+  return [
+    "## About",
+    "",
+    llmsLink(
+      "About Emre Mutlu",
+      "/about",
+      "Founder profile with public proof, verified entity links, and Hydrogen delivery context.",
+    ),
+    llmsLink(
+      "Personal site",
+      OWNER.personalSite,
+      "Owned personal authority hub that connects broader Shopify proof back to HydrogenExpert.",
+    ),
+    llmsLink(
+      "LinkedIn",
+      OWNER.linkedIn,
+      "Primary professional profile and audience signal for Emre Mutlu.",
+    ),
+    "",
+  ].join("\n");
+}
+
+function buildContactSection() {
+  return [
+    "## Contact",
+    "",
+    llmsLink(
+      "Request a Hydrogen scope review",
+      "/contact",
+      "Best starting point for a store URL, main storefront problem, and the next build or cleanup decision.",
+    ),
+    llmsLink(
+      "Upwork profile",
+      OWNER.upwork,
+      "Public freelance profile for starting an engagement through Upwork.",
+    ),
+    llmsLink(
+      "LinkedIn profile",
+      OWNER.linkedIn,
+      "Direct professional contact path once the storefront context is clear.",
+    ),
+    "",
+  ].join("\n");
+}
+
 function llmsLink(title: string, pathOrUrl: string, description: string) {
   const url = pathOrUrl.startsWith("http") ? pathOrUrl : absoluteUrl(pathOrUrl);
 
@@ -85,6 +145,9 @@ export function buildLlmsTxt() {
   return [
     buildHeader(),
     buildSummary(),
+    buildKeyFactsSection(),
+    buildAboutSection(),
+    buildContactSection(),
     buildPageIndex(),
     "## Guidance",
     "",
@@ -145,6 +208,9 @@ export async function buildLlmsFullTxt({
   return [
     buildHeader(),
     buildSummary(),
+    buildKeyFactsSection(),
+    buildAboutSection(),
+    buildContactSection(),
     "## Expertise",
     "",
     "- Shopify Hydrogen strategy",
