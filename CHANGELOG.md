@@ -17,7 +17,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 - PR: [#87 Refresh audit-safe package lock](https://github.com/emremutlu08/hydrogenexpert/pull/87)
 - Branch: `codex/safe-package-refresh-2026-06-18`
-- Deployment: Pending production deploy after PR validation.
+- Deployment: Production deployment verified at [hydrogenexpert.co](https://hydrogenexpert.co), deployment `https://hydrogenexpert-mdwpha11n-emremutlu8s-projects.vercel.app` (`dpl_3vBAgPdbs7gi3z2xUPA9RD64Rk7K`).
 - Summary:
   - Refreshed only the safe transitive lockfile entries in `package-lock.json` to clear the current audit findings without changing direct package metadata.
   - Upgraded the Babel toolchain subtree from `7.29.0`/`7.29.3`/`7.28.6` variants to `7.29.7` where required by the lockfile refresh.
@@ -37,8 +37,12 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - `npm run validate:content`: passed.
   - `npm run audit:shopify-claims`: passed with no `Needs review` rows.
   - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed.
+  - `vercel inspect hydrogenexpert.co`: passed; production alias resolved to `dpl_3vBAgPdbs7gi3z2xUPA9RD64Rk7K`.
+  - `COMMERCIAL_LAUNCH_BASE_URL=https://hydrogenexpert.co NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:commercial-launch`: passed after deployment.
+  - `INTERNAL_LINK_BASE_URL=https://hydrogenexpert.co NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:internal-links`: passed after deployment with 67 sitemap URLs and 82 internal URLs.
+  - Live HTTP checks confirmed `/`, `/shopify-hydrogen-packages`, `/contact`, `/sitemap.xml`, `/robots.txt`, `/llms.txt`, and `/feed.xml` returned `200`.
 - Manual follow-up:
-  - Complete production deploy, live verification, merge, and remote branch cleanup after PR checks finish.
+  - None.
 
 - PR: [#86 Add explicit llms about/contact discovery sections](https://github.com/emremutlu08/hydrogenexpert/pull/86)
 - Branch: `codex/llms-geo-discovery-fix`
