@@ -17,7 +17,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 - PR: [#89 Refresh safe transitive package lock](https://github.com/emremutlu08/hydrogenexpert/pull/89)
 - Branch: `codex/safe-package-refresh-2026-06-25-run2`
-- Deployment: PR opened; production deployment pending validation/check completion.
+- Deployment: Production deployment verified at [hydrogenexpert.co](https://hydrogenexpert.co), deployment `https://hydrogenexpert-qpq5mi5p1-emremutlu8s-projects.vercel.app` (`dpl_4bggEP2n6y7euCofmz5QEqrb2JD9`).
 - Summary:
   - Refreshed safe transitive patch/minor lockfile resolutions within the existing `package.json` ranges.
   - Kept `package.json` unchanged because direct package metadata did not need to change.
@@ -39,6 +39,10 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - `npm run validate:content`: passed.
   - `npm run audit:shopify-claims`: passed with no `Needs review` rows.
   - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed, 76 static pages generated.
+  - `vercel inspect hydrogenexpert.co`: passed; production alias resolved to `dpl_4bggEP2n6y7euCofmz5QEqrb2JD9`.
+  - `COMMERCIAL_LAUNCH_BASE_URL=https://hydrogenexpert.co NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:commercial-launch`: passed after deployment.
+  - `INTERNAL_LINK_BASE_URL=https://hydrogenexpert.co NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:internal-links`: passed after deployment with 67 sitemap URLs and 82 internal URLs.
+  - Live HTTP checks confirmed `/`, `/shopify-hydrogen-packages`, `/contact`, `/sitemap.xml`, `/robots.txt`, `/llms.txt`, and `/feed.xml` returned `200`.
 - Manual follow-up:
   - Review `@anthropic-ai/sdk@0.106.0`, `@types/node@26.0.1`, and `eslint@10.5.0` separately when the surrounding ecosystem supports those jumps.
 
