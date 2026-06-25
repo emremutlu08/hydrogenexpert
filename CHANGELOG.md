@@ -15,6 +15,37 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-06-25
 
+- PR: [#89 Refresh safe transitive package lock](https://github.com/emremutlu08/hydrogenexpert/pull/89)
+- Branch: `codex/safe-package-refresh-2026-06-25-run2`
+- Deployment: Production deployment verified at [hydrogenexpert.co](https://hydrogenexpert.co), deployment `https://hydrogenexpert-qpq5mi5p1-emremutlu8s-projects.vercel.app` (`dpl_4bggEP2n6y7euCofmz5QEqrb2JD9`).
+- Summary:
+  - Refreshed safe transitive patch/minor lockfile resolutions within the existing `package.json` ranges.
+  - Kept `package.json` unchanged because direct package metadata did not need to change.
+  - Updated lockfile-resolved toolchain/runtime entries including `vite` `8.0.16` to `8.1.0`, `typescript-eslint` `8.59.2` to `8.62.0`, `@supabase/phoenix` `0.4.2` to `0.4.4`, `browserslist` `4.28.2` to `4.28.4`, `caniuse-lite` `1.0.30001792` to `1.0.30001799`, and related optional platform bindings.
+  - Deferred `@anthropic-ai/sdk@0.106.0`, `@types/node@26.0.1`, and `eslint@10.5.0` per repo dependency rules.
+- Files changed:
+  - `package-lock.json`
+  - `CHANGELOG.md`
+- Verification:
+  - `git diff --check`: passed.
+  - `npm ci`: passed.
+  - `npm audit --audit-level=moderate`: passed with 0 vulnerabilities.
+  - `npm audit signatures`: passed with 429 verified registry signatures and 115 verified attestations.
+  - `npm ls --depth=0`: passed.
+  - `npm outdated --json --long`: only deliberate deferrals remain: `@anthropic-ai/sdk@0.106.0`, `@types/node@26.0.1`, and `eslint@10.5.0`.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run test`: passed, 25 test files and 101 tests.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed with no `Needs review` rows.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed, 76 static pages generated.
+  - `vercel inspect hydrogenexpert.co`: passed; production alias resolved to `dpl_4bggEP2n6y7euCofmz5QEqrb2JD9`.
+  - `COMMERCIAL_LAUNCH_BASE_URL=https://hydrogenexpert.co NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:commercial-launch`: passed after deployment.
+  - `INTERNAL_LINK_BASE_URL=https://hydrogenexpert.co NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:internal-links`: passed after deployment with 67 sitemap URLs and 82 internal URLs.
+  - Live HTTP checks confirmed `/`, `/shopify-hydrogen-packages`, `/contact`, `/sitemap.xml`, `/robots.txt`, `/llms.txt`, and `/feed.xml` returned `200`.
+- Manual follow-up:
+  - Review `@anthropic-ai/sdk@0.106.0`, `@types/node@26.0.1`, and `eslint@10.5.0` separately when the surrounding ecosystem supports those jumps.
+
 - PR: [#88 Safe package refresh: Playwright patch](https://github.com/emremutlu08/hydrogenexpert/pull/88)
 - Branch: `codex/safe-package-refresh-2026-06-25`
 - Deployment: Production deployment verified at [hydrogenexpert.co](https://hydrogenexpert.co), deployment `https://hydrogenexpert-6k3n3bqse-emremutlu8s-projects.vercel.app` (`dpl_CfkM6SBhD4WvvhztM1KuxAhKcxST`).
