@@ -17,7 +17,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 - PR: [#88 Safe package refresh: Playwright patch](https://github.com/emremutlu08/hydrogenexpert/pull/88)
 - Branch: `codex/safe-package-refresh-2026-06-25`
-- Deployment: Pending PR validation and production verification.
+- Deployment: Production deployment verified at [hydrogenexpert.co](https://hydrogenexpert.co), deployment `https://hydrogenexpert-6k3n3bqse-emremutlu8s-projects.vercel.app` (`dpl_CfkM6SBhD4WvvhztM1KuxAhKcxST`).
 - Summary:
   - Refreshed only the Playwright lockfile entries from `1.61.0` to `1.61.1`.
   - Kept `package.json` unchanged because the existing `^1.61.0` range already allows the safe patch.
@@ -38,6 +38,10 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - `npm run validate:content`: passed.
   - `npm run audit:shopify-claims`: passed with no `Needs review` rows.
   - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed.
+  - `vercel inspect hydrogenexpert.co`: passed; production alias resolved to `dpl_CfkM6SBhD4WvvhztM1KuxAhKcxST`.
+  - `COMMERCIAL_LAUNCH_BASE_URL=https://hydrogenexpert.co NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:commercial-launch`: passed after deployment.
+  - `INTERNAL_LINK_BASE_URL=https://hydrogenexpert.co NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:internal-links`: passed after deployment with 67 sitemap URLs and 82 internal URLs.
+  - Live HTTP checks confirmed `/`, `/shopify-hydrogen-packages`, `/contact`, `/sitemap.xml`, `/robots.txt`, `/llms.txt`, and `/feed.xml` returned `200`.
 - Manual follow-up:
   - Review `@anthropic-ai/sdk@0.106.0`, `@types/node@26.0.1`, and `eslint@10.5.0` separately when the surrounding ecosystem supports those jumps.
 
