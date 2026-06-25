@@ -13,6 +13,34 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 - Verification:
 - Manual follow-up:
 
+## 2026-06-25
+
+- PR: [#88 Safe package refresh: Playwright patch](https://github.com/emremutlu08/hydrogenexpert/pull/88)
+- Branch: `codex/safe-package-refresh-2026-06-25`
+- Deployment: Pending PR validation and production verification.
+- Summary:
+  - Refreshed only the Playwright lockfile entries from `1.61.0` to `1.61.1`.
+  - Kept `package.json` unchanged because the existing `^1.61.0` range already allows the safe patch.
+  - Deferred `@anthropic-ai/sdk@0.106.0`, `@types/node@26.0.1`, and `eslint@10.5.0` per repo dependency rules.
+- Files changed:
+  - `package-lock.json`
+  - `CHANGELOG.md`
+- Verification:
+  - `git diff --check`: passed.
+  - `npm ci`: passed.
+  - `npm audit --audit-level=moderate`: passed with 0 vulnerabilities.
+  - `npm audit signatures`: passed with 437 verified registry signatures and 112 verified attestations.
+  - `npm ls --depth=0`: passed; `playwright@1.61.1` is installed.
+  - `npm outdated --json --long`: only deliberate deferrals remain: `@anthropic-ai/sdk@0.106.0`, `@types/node@26.0.1`, and `eslint@10.5.0`.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run test`: passed, 25 test files and 101 tests.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed with no `Needs review` rows.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed.
+- Manual follow-up:
+  - Review `@anthropic-ai/sdk@0.106.0`, `@types/node@26.0.1`, and `eslint@10.5.0` separately when the surrounding ecosystem supports those jumps.
+
 ## 2026-06-18
 
 - PR: [#87 Refresh audit-safe package lock](https://github.com/emremutlu08/hydrogenexpert/pull/87)
