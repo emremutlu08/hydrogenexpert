@@ -1,6 +1,6 @@
 import { cache } from "react";
 
-import { TRAFFIC_GAP_ARTICLES } from "../features/articles/traffic-gap-articles";
+import { TRAFFIC_GAP_ARTICLES } from "../features/articles/traffic-gap";
 import { OWNER } from "./site";
 
 export const ARTICLE_CATEGORIES = [

@@ -1,5 +1,5 @@
 import { SectionHeader } from "@/components/SectionHeader";
-import type { ServicePackage } from "@/lib/services";
+import type { ServicePackage } from "@/features/services/registry";
 
 const HYDROGEN_SEO_AUDIT_CHECKPOINTS = [
   {

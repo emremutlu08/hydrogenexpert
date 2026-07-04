@@ -1,7 +1,7 @@
 # HydrogenExpert Implementation Notes
 
 Status: Active
-Last updated: 2026-06-15
+Last updated: 2026-07-04
 Owner: Agent
 Source of truth: `package.json`, current code, agent analysis
 
@@ -63,6 +63,6 @@ Use `package.json` for exact scripts. Current important scripts include:
 ## Architecture Direction
 
 - `components/ServiceLandingPage.tsx` should become a thin shell over focused service page sections.
-- `lib/services.ts` should become a compatibility surface over `features/services/registry/`.
+- The canonical service registry is `features/services/registry/`; import it directly (the `lib/services.ts` compatibility surface was removed on 2026-07-04).
 - Large content registries should move toward feature/domain folders.
-- Compatibility re-exports are acceptable during staged migrations.
+- Compatibility re-exports are acceptable during staged migrations, but must be removed once imports stabilize.

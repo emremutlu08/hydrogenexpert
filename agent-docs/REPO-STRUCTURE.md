@@ -1,7 +1,7 @@
 # Repo Structure
 
 Status: Active
-Last updated: 2026-06-17
+Last updated: 2026-07-04
 Owner: Agent
 Source of truth: Current repo and user-approved architecture plan
 
@@ -25,7 +25,7 @@ This file maps the repository structure and placement rules. Update it whenever 
 | `features/traffic-foundation/` | Canonical resource hub, examples, issues, templates, and course companion registries. |
 | `features/public-discovery/` | Canonical public discovery manifest for sitemap, llms, package SEO, and commercial verification route membership. |
 | `features/lead-capture/` | Lead capture request parsing, validation, fallback payloads, and Supabase insert mapping. |
-| `lib/` | Shared runtime helpers, adapters, registries, and compatibility exports. |
+| `lib/` | Shared runtime helpers, adapters, and registries. |
 | `features/` | Target home for domain modules and large registries as architecture cleanup progresses. |
 | `data/` | Static structured project data such as case studies and logos. |
 | `content/` | Content templates, source packs, internal reports, and outreach notes. |
@@ -72,7 +72,7 @@ features/
 └── generated-posts/
 ```
 
-Use compatibility re-exports during migrations when it keeps call sites stable and lowers risk. `lib/services.ts`, `lib/content-sources.ts`, `lib/content-relations.ts`, `lib/post-enhancements.ts`, and `lib/traffic-foundation.ts` are compatibility exports for canonical `features/` modules.
+Use compatibility re-exports during migrations when it keeps call sites stable and lowers risk. The registry-move compatibility exports (`lib/services.ts`, `lib/content-sources.ts`, `lib/content-relations.ts`, `lib/post-enhancements.ts`, `lib/traffic-foundation.ts`) were removed on 2026-07-04; all call sites now import the canonical `features/` modules directly.
 
 ## Placement Rules
 

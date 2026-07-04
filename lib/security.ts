@@ -6,6 +6,39 @@ import type { Database } from "@/lib/database.types";
 
 const RATE_LIMIT_BUCKETS = new Map<string, number[]>();
 
+// Bounds the in-memory fallback so a scan with many unique client IPs cannot
+// grow the map for the lifetime of the server instance.
+const MAX_RATE_LIMIT_BUCKETS = 2000;
+const MAX_RATE_LIMIT_BUCKET_AGE_MS = 60 * 60 * 1000;
+
+function newestHit(hits: readonly number[]) {
+  return hits[hits.length - 1] ?? 0;
+}
+
+function enforceRateLimitBucketBound(now: number) {
+  if (RATE_LIMIT_BUCKETS.size < MAX_RATE_LIMIT_BUCKETS) {
+    return;
+  }
+
+  for (const [key, hits] of RATE_LIMIT_BUCKETS) {
+    if (newestHit(hits) <= now - MAX_RATE_LIMIT_BUCKET_AGE_MS) {
+      RATE_LIMIT_BUCKETS.delete(key);
+    }
+  }
+
+  if (RATE_LIMIT_BUCKETS.size < MAX_RATE_LIMIT_BUCKETS) {
+    return;
+  }
+
+  const oldestFirst = [...RATE_LIMIT_BUCKETS.entries()].sort(
+    (a, b) => newestHit(a[1]) - newestHit(b[1]),
+  );
+
+  for (const [key] of oldestFirst.slice(0, Math.ceil(oldestFirst.length / 2))) {
+    RATE_LIMIT_BUCKETS.delete(key);
+  }
+}
+
 const TRUSTED_ORIGINS = new Set([
   "https://hydrogenexpert.co",
   "https://www.hydrogenexpert.co",
@@ -39,6 +72,8 @@ export function isRateLimited(key: string, limit: number, windowMs: number) {
   const now = Date.now();
   const windowStart = now - windowMs;
   const recentHits = (RATE_LIMIT_BUCKETS.get(key) || []).filter((timestamp) => timestamp > windowStart);
+
+  enforceRateLimitBucketBound(now);
 
   recentHits.push(now);
   RATE_LIMIT_BUCKETS.set(key, recentHits);
@@ -123,6 +158,10 @@ export async function checkRateLimitDurable({
   });
 
   if (error || typeof data !== "number") {
+    console.warn(
+      `Durable rate limit backend unavailable for scope "${scope}"; applying "${fallbackPolicy}" fallback.`,
+    );
+
     return fallbackPolicy === "memory"
       ? memoryRateLimitResult({ key: memoryKey, limit, windowMs })
       : unavailableRateLimitResult();

@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import type { Article } from "@/lib/articles";
-import type { ServicePackage } from "@/lib/services";
+import type { ServicePackage } from "@/features/services/registry";
 
 function isArticle(article: Article | null): article is Article {
   return article !== null;

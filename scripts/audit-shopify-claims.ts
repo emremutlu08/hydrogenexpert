@@ -9,7 +9,7 @@ import {
 } from "../features/content-sources";
 import { getAllArticles } from "../lib/articles";
 import { DECISION_PAGES } from "../lib/decision-pages";
-import { SERVICE_PACKAGES } from "../lib/services";
+import { SERVICE_PACKAGES } from "../features/services/registry";
 
 const SHOPIFY_CLAIM_TERMS = [
   "Shopify",

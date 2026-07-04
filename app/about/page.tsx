@@ -230,7 +230,7 @@ export default function AboutPage() {
                         href={profile.href}
                         target="_blank"
                         rel="noreferrer"
-                        className="transition hover:text-[#10b981]"
+                        className="inline-flex min-h-11 items-center transition hover:text-[#10b981]"
                       >
                         {profile.label}
                       </Link>

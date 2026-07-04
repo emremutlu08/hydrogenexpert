@@ -5,6 +5,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 
 import {
   checkRateLimitDurable,
+  isRateLimited,
   isTrustedOrigin,
   safeCompare,
   verifyTurnstileToken,
@@ -135,6 +136,23 @@ describe("checkRateLimitDurable", () => {
       backend: "supabase",
       degraded: false,
     });
+  });
+});
+
+describe("isRateLimited", () => {
+  it("bounds the in-memory bucket store when flooded with unique keys", () => {
+    const victimKey = `victim:${crypto.randomUUID()}`;
+
+    isRateLimited(victimKey, 2, 60_000);
+    isRateLimited(victimKey, 2, 60_000);
+    isRateLimited(victimKey, 2, 60_000);
+    expect(isRateLimited(victimKey, 2, 60_000)).toBe(true);
+
+    for (let index = 0; index < 2100; index += 1) {
+      isRateLimited(`flood:${index}:${crypto.randomUUID()}`, 2, 60_000);
+    }
+
+    expect(isRateLimited(victimKey, 2, 60_000)).toBe(false);
   });
 });
 

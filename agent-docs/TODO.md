@@ -1,7 +1,7 @@
 # TODO
 
 Status: Active
-Last updated: 2026-05-25
+Last updated: 2026-07-04
 Owner: Agent
 Source of truth: User-approved architecture plan and current repo analysis
 
@@ -11,9 +11,16 @@ This file tracks prioritized follow-ups and architecture cleanup tasks.
 
 ## Active Backlog
 
-1. Remove compatibility re-exports after imports have stabilized and a dedicated validation pass confirms no public behavior changed.
-2. Watch direct-composed pages during future additions; extract shared renderers only when multiple pages share data shape and behavior.
-3. Revisit ESLint 10 after `eslint-config-next` and its bundled `eslint-plugin-import`, `eslint-plugin-jsx-a11y`, and `eslint-plugin-react` dependency chain supports ESLint 10 without invalid peers.
+1. Watch direct-composed pages during future additions; extract shared renderers only when multiple pages share data shape and behavior.
+2. Revisit ESLint 10 after `eslint-config-next` and its bundled `eslint-plugin-import`, `eslint-plugin-jsx-a11y`, and `eslint-plugin-react` dependency chain supports ESLint 10 without invalid peers.
+3. External GEO follow-ups that need Emre: Bing Webmaster Tools domain verification, third-party HydrogenExpert brand entity signals, and client-approved case-study outcome metrics.
+
+## Completed On 2026-07-04
+
+- Removed the `lib/` compatibility re-exports (`services`, `content-sources`, `content-relations`, `post-enhancements`, `traffic-foundation`); all call sites now import canonical `features/` modules directly. Validated with lint, typecheck, tests, content validation, and build.
+- Bounded the in-memory rate-limit fallback bucket store in `lib/security.ts` and added a guardrail test.
+- Raised small mobile touch targets to a 44px minimum on trust bar badges, homepage proof title links, footer link lists, and About verified-profile links.
+- Split `features/articles/traffic-gap-articles.ts` into per-article modules under `features/articles/traffic-gap/`.
 
 ## Completed On 2026-05-25
 
