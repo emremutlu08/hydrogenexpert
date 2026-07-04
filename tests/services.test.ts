@@ -5,7 +5,7 @@ import {
   getServicePackageBySlug,
   requireServicePackageByPagePath,
   SERVICE_PACKAGES,
-} from "../lib/services";
+} from "../features/services/registry";
 
 const targetCommercialRoutes = [
   "/shopify-hydrogen-agency",

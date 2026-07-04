@@ -34,7 +34,7 @@ import {
 import { getServiceCta } from "@/components/service-landing/ServiceLandingUtils";
 import { HydrogenSeoAuditChecklistSection } from "@/components/service-landing/SeoServiceSections";
 import { getPublicArticleBySlugForDate } from "@/lib/articles";
-import type { ServicePackage } from "@/lib/services";
+import type { ServicePackage } from "@/features/services/registry";
 import { absoluteUrl, getSchemaIds } from "@/lib/site";
 import {
   asSchemaArray,

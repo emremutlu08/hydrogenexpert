@@ -5,7 +5,7 @@ import { describe, expect, it } from "vitest";
 
 import { PACKAGE_PAGE_DISCOVERY } from "../features/public-discovery/manifest";
 import { buildLlmsTxt } from "../lib/llms";
-import { SERVICE_PACKAGES } from "../lib/services";
+import { SERVICE_PACKAGES } from "../features/services/registry";
 import { getStaticSitemapRoutes } from "../lib/sitemap-entries";
 
 const repoRoot = process.cwd();

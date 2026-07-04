@@ -1,7 +1,7 @@
 # Content Production Playbook
 
 Status: Active
-Last updated: 2026-05-28
+Last updated: 2026-07-04
 Owner: Agent
 Source of truth: Current repo, `agent-docs/CONTENT-GOVERNANCE.md`, Shopify source-grounding rules, HydrogenExpert proof rules, named content/SEO/GEO skills
 
@@ -133,12 +133,12 @@ Re-verify drift-prone proof before increasing or restating exact values such as 
 | Surface | Canonical files and registries | Rules |
 | --- | --- | --- |
 | Supabase-backed blog posts | `app/blog/page.tsx`, `app/blog/[slug]/page.tsx`, `lib/posts.ts`, `lib/post-content.ts`, `features/post-enhancements/index.ts`, `features/content-sources/index.ts` | Do not publish without explicit article-specific Emre approval and real source material. Keep private notes out of public content. |
-| Articles | `app/articles/page.tsx`, `app/articles/[slug]/page.tsx`, `lib/articles.ts`, `features/articles/traffic-gap-articles.ts`, `content/blog-clusters/shopify-authority-clusters.json`, `features/content-sources/index.ts` | Evergreen guides need keyword, intent, source metadata, public status, internal links, Article schema, sitemap, and `llms-full.txt` coverage when published. |
-| Service and landing pages | `app/*/page.tsx`, `features/services/registry/`, `components/ServiceLandingPage.tsx`, `components/service-landing/`, `lib/services.ts` | Keep package/service positioning fixed-scope, senior-led, and honest about when Hydrogen is not right. |
+| Articles | `app/articles/page.tsx`, `app/articles/[slug]/page.tsx`, `lib/articles.ts`, `features/articles/traffic-gap/`, `content/blog-clusters/shopify-authority-clusters.json`, `features/content-sources/index.ts` | Evergreen guides need keyword, intent, source metadata, public status, internal links, Article schema, sitemap, and `llms-full.txt` coverage when published. |
+| Service and landing pages | `app/*/page.tsx`, `features/services/registry/`, `components/ServiceLandingPage.tsx`, `components/service-landing/` | Keep package/service positioning fixed-scope, senior-led, and honest about when Hydrogen is not right. |
 | Case studies | `app/case-studies/page.tsx`, `app/case-studies/[slug]/page.tsx`, `data/caseStudies.ts`, `data/clientLogos.ts`, `lib/brand-client-assets.ts`, `docs/hydrogenexpert-v1/proof-registry.md` | Preserve EveShop, Bayam, Rebel Bunny, Kirazev, and Clohi where approved. Do not invent results, testimonials, logos, or metrics. |
 | Commercial/public pages | `app/page.tsx`, `app/about/page.tsx`, `app/contact/page.tsx`, `app/hire-me/page.tsx`, `app/services/page.tsx`, `app/cost/page.tsx`, `app/shopify-hydrogen-*`, `lib/decision-pages.ts` | Keep buyer-stage clarity, proof safety, CTA fit, metadata, schema, and internal links aligned. |
 | Public discovery | `app/llms.txt/route.ts`, `app/llms-full.txt/route.ts`, `lib/llms.ts`, `app/sitemap.ts`, `lib/sitemap-entries.ts`, `app/robots.ts`, `features/public-discovery/manifest.ts`, `lib/structured-data.ts` | Route membership, summaries, sitemap entries, robots behavior, and schema must describe the same public truth. |
-| Content registries and compatibility exports | `features/content-sources/`, `features/public-discovery/`, `features/content-relations/`, `features/post-enhancements/`, `features/traffic-foundation/`, `lib/content-sources.ts`, `lib/content-relations.ts`, `lib/post-enhancements.ts`, `lib/traffic-foundation.ts` | Update canonical `features/` modules first. Keep `lib/` compatibility exports as routing surfaces, not second sources of truth. |
+| Content registries | `features/content-sources/`, `features/public-discovery/`, `features/content-relations/`, `features/post-enhancements/`, `features/traffic-foundation/` | Update canonical `features/` modules directly; the `lib/` compatibility exports were removed on 2026-07-04. |
 
 ## HydrogenExpert Improvement Plan
 

@@ -17,7 +17,11 @@ export function TrustBar() {
     const href = TRUST_LINKS[item];
 
     if (!href) {
-      return <span className="text-center">{item}</span>;
+      return (
+        <span className="inline-flex min-h-11 w-full items-center justify-center text-center">
+          {item}
+        </span>
+      );
     }
 
     return (
@@ -26,7 +30,7 @@ export function TrustBar() {
         label={item}
         sourceKind="trust_bar"
         external
-        className="text-center transition hover:text-[#10b981]"
+        className="inline-flex min-h-11 w-full items-center justify-center text-center transition hover:text-[#10b981]"
       >
         {item}
       </TrackedProofLink>

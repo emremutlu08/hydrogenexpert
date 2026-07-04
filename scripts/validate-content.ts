@@ -9,7 +9,7 @@ import {
   STATIC_PAGE_SOURCE_METADATA,
 } from "../features/content-sources";
 import { DECISION_PAGES } from "../lib/decision-pages";
-import { SERVICE_PACKAGES } from "../lib/services";
+import { SERVICE_PACKAGES } from "../features/services/registry";
 import { getStaticSitemapRoutes, NOINDEX_STATIC_ROUTES } from "../lib/sitemap-entries";
 
 const repoRoot = process.cwd();
@@ -361,8 +361,6 @@ for (const cluster of blogClusterManifest.clusters) {
   "OPERATING_RULES.md",
   "features/content-sources/index.ts",
   "features/services/registry/base.ts",
-  "lib/content-sources.ts",
-  "lib/services.ts",
   "data/caseStudies.ts",
   "content/blog-clusters/shopify-authority-clusters.json",
   "content/source-packs/shopify-hydrogen.json",

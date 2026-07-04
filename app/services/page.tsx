@@ -6,7 +6,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { PageIntroSection } from "@/components/PageIntroSection";
 import { SectionHeader } from "@/components/SectionHeader";
 import { buildMetadata } from "@/lib/seo";
-import { SECONDARY_SERVICE, SERVICE_PACKAGES } from "@/lib/services";
+import { SECONDARY_SERVICE, SERVICE_PACKAGES } from "@/features/services/registry";
 import { absoluteUrl, getSchemaIds } from "@/lib/site";
 import {
   asSchemaArray,

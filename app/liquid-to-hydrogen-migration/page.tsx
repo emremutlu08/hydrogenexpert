@@ -1,7 +1,7 @@
 import { ServiceLandingPage } from "@/components/ServiceLandingPage";
 import { getOgImageForRoute } from "@/lib/og-images";
 import { buildMetadata } from "@/lib/seo";
-import { requireServicePackageByPagePath } from "@/lib/services";
+import { requireServicePackageByPagePath } from "@/features/services/registry";
 import { absoluteUrl } from "@/lib/site";
 
 const service = requireServicePackageByPagePath("/liquid-to-hydrogen-migration");

@@ -1,6 +1,6 @@
 import { ServiceLandingPage } from "@/components/ServiceLandingPage";
 import { buildMetadata } from "@/lib/seo";
-import { requireServicePackageByPagePath } from "@/lib/services";
+import { requireServicePackageByPagePath } from "@/features/services/registry";
 
 const service = requireServicePackageByPagePath("/shopify-hydrogen-seo");
 

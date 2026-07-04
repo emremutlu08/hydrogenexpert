@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { SectionHeader } from "@/components/SectionHeader";
-import type { ServicePackage } from "@/lib/services";
+import type { ServicePackage } from "@/features/services/registry";
 
 function formatShortAnswerAudience(bestFor: string) {
   const normalized = bestFor.trim().replace(/\.$/, "");

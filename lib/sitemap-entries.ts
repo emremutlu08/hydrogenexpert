@@ -8,7 +8,7 @@ import {
 } from "../features/public-discovery/manifest";
 import type { Article } from "./articles";
 import type { PostSummary } from "./posts";
-import { SERVICE_PACKAGES } from "./services";
+import { SERVICE_PACKAGES } from "../features/services/registry";
 
 export { NOINDEX_STATIC_ROUTES } from "../features/public-discovery/manifest";
 

@@ -1,4 +1,4 @@
-import type { ServicePackage } from "@/lib/services";
+import type { ServicePackage } from "@/features/services/registry";
 import { OWNER } from "@/lib/site";
 
 export function getServiceCta(service: ServicePackage) {

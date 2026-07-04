@@ -17,7 +17,7 @@ import {
 } from "@/components/HydrogenPackages";
 import { LiquidCleanupMiniOffer } from "@/components/LiquidCleanupMiniOffer";
 import { ScopeReviewBriefTemplates } from "@/components/ScopeReviewBriefTemplates";
-import type { ServicePackage } from "@/lib/services";
+import type { ServicePackage } from "@/features/services/registry";
 
 export function PackageServiceSections({ service }: { service: ServicePackage }) {
   const isPackageCommercialPage =

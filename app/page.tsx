@@ -192,7 +192,7 @@ const proofCards = [
         label={UPWORK_PROFILE.badge}
         sourceKind="homepage_proof"
         external
-        className="transition hover:text-[#10b981]"
+        className="inline-flex min-h-11 items-center transition hover:text-[#10b981]"
       >
         {UPWORK_PROFILE.badge}
       </TrackedProofLink>
@@ -209,7 +209,7 @@ const proofCards = [
         label={`${UPWORK_PROFILE.jobSuccessScore} Job Success Score`}
         sourceKind="homepage_proof"
         external
-        className="transition hover:text-[#10b981]"
+        className="inline-flex min-h-11 items-center transition hover:text-[#10b981]"
       >
         {UPWORK_PROFILE.jobSuccessScore} Job Success Score
       </TrackedProofLink>
@@ -223,7 +223,7 @@ const proofCards = [
     title: (
       <Link
         href="/case-studies/rebel-bunny-shopify-hydrogen"
-        className="transition hover:text-[#10b981]"
+        className="inline-flex min-h-11 items-center transition hover:text-[#10b981]"
       >
         {DELIVERY_PROOF.rebelBunnyFeedback}
       </Link>
@@ -240,7 +240,7 @@ const proofCards = [
         label={DELIVERY_PROOF.udemyCourseClaim}
         sourceKind="homepage_proof"
         external
-        className="transition hover:text-[#10b981]"
+        className="inline-flex min-h-11 items-center transition hover:text-[#10b981]"
       >
         {DELIVERY_PROOF.udemyCourseClaim}
       </TrackedProofLink>

@@ -2,7 +2,7 @@ import { CASE_STUDIES } from "../data/caseStudies";
 import { LLMS_CORE_PAGE_ENTRIES } from "../features/public-discovery/manifest";
 import { getPublicArticles, type Article } from "./articles";
 import { getPublishedPostListResult, type PostSummary } from "./posts";
-import { SERVICE_PACKAGES } from "./services";
+import { SERVICE_PACKAGES } from "../features/services/registry";
 import { DELIVERY_PROOF, OWNER, UPWORK_PROFILE, absoluteUrl, getSiteUrl } from "./site";
 
 function buildHeader() {

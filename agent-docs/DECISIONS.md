@@ -1,7 +1,7 @@
 # Decisions
 
 Status: Active
-Last updated: 2026-05-28
+Last updated: 2026-07-04
 Owner: Agent
 Source of truth: Current repo, user instruction, prior release workflow, agent analysis
 
@@ -29,8 +29,7 @@ This file records durable decisions so future agents do not re-litigate settled 
 - Keep compatibility exports during large registry moves when it reduces risk.
 - Prefer feature/domain folders for large registries and page-specific sections.
 - Keep the public service page interface as `<ServiceLandingPage service={service} />`; internal service landing sections may live in `components/service-landing/` while the route import surface stays stable.
-- Keep `lib/services.ts` as a compatibility re-export while the canonical service registry lives in `features/services/registry/`.
-- Keep `lib/content-sources.ts`, `lib/content-relations.ts`, `lib/post-enhancements.ts`, and `lib/traffic-foundation.ts` as compatibility re-exports while canonical content registries live under `features/`.
-- Keep `lib/` for stable adapters, shared helpers, security, metadata, and compatibility modules.
+- Import canonical registries from `features/` directly; the temporary `lib/services.ts`, `lib/content-sources.ts`, `lib/content-relations.ts`, `lib/post-enhancements.ts`, and `lib/traffic-foundation.ts` compatibility re-exports were removed on 2026-07-04 after imports stabilized and validation confirmed no public behavior change.
+- Keep `lib/` for stable adapters, shared helpers, security, and metadata modules; temporary compatibility modules are allowed only during active migrations.
 - Do not split files only to satisfy size preferences; split when locality, leverage, testing, or DRY/KISS improves.
 - Keep direct-composed resource, article, blog, and traffic-foundation pages local unless two or more pages share the same data shape and behavior. The 2026-05-25 final architecture pass found no useful generic renderer to extract without adding indirection.

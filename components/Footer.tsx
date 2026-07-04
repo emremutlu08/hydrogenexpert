@@ -102,7 +102,7 @@ function FooterCard({
               href={item.href}
               target={item.external ? "_blank" : undefined}
               rel={item.external ? "noreferrer" : undefined}
-              className="inline-flex min-h-8 items-center transition-colors hover:text-[#10b981]"
+              className="inline-flex min-h-11 items-center transition-colors hover:text-[#10b981] md:min-h-8"
             >
               {item.label}
             </Link>

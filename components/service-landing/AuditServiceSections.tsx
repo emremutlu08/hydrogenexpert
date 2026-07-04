@@ -1,5 +1,5 @@
 import { SectionHeader } from "@/components/SectionHeader";
-import type { ServicePackage } from "@/lib/services";
+import type { ServicePackage } from "@/features/services/registry";
 
 export function AuditScopeOutcomeSections({ service }: { service: ServicePackage }) {
   if (service.slug !== "hydrogen-strategy-fit-audit") {
