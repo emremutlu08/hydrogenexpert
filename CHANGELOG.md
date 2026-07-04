@@ -13,6 +13,43 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 - Verification:
 - Manual follow-up:
 
+## 2026-07-04
+
+- PR: [#90 Improve project weak points: rate-limit hardening, mobile touch targets, compat re-export removal, article registry split](https://github.com/emremutlu08/hydrogenexpert/pull/90)
+- Branch: `codex/weak-point-improvements-2026-07-04`
+- Deployment: Production deployment verified at [hydrogenexpert.co](https://hydrogenexpert.co), deployment `https://hydrogenexpert-cqqcc7iw3-emremutlu8s-projects.vercel.app` (`dpl_5JtQVwApFE7KLJPsFyfr313UKnBA`).
+- Summary:
+  - Bounded the in-memory rate-limit fallback bucket store in `lib/security.ts` (age-based pruning plus oldest-half eviction at 2000 keys), added a fallback-activation warning log, and locked the bound with a new guardrail test.
+  - Raised small mobile touch targets to the 44px design minimum on trust bar badge links, homepage proof title links, footer link lists (mobile only), and About verified-profile table links (GEO audit low-priority item).
+  - Removed the `lib/` compatibility re-exports (`services`, `content-sources`, `content-relations`, `post-enhancements`, `traffic-foundation`); all call sites now import canonical `features/` modules directly (agent-docs TODO item 1).
+  - Split `features/articles/traffic-gap-articles.ts` into per-article modules under `features/articles/traffic-gap/` with byte-identical assembled output, verified by JSON diff against a pre-refactor baseline.
+  - Audited schema `@id` consolidation and confirmed it already complete at every call site; no change needed.
+  - Synced `agent-docs/` (REPO-STRUCTURE, CURRENT-STATE, DECISIONS, HYDROGEN, CONTENT-PRODUCTION-PLAYBOOK, TODO) with the new state and recorded external GEO follow-ups in TODO.
+  - Image optimization stays intentionally disabled per Emre's cost decision.
+- Files changed:
+  - `lib/security.ts`, `tests/security.test.ts`
+  - `components/TrustBar.tsx`, `components/Footer.tsx`, `app/page.tsx`, `app/about/page.tsx`
+  - Removed `lib/services.ts`, `lib/content-sources.ts`, `lib/content-relations.ts`, `lib/post-enhancements.ts`, `lib/traffic-foundation.ts`; import updates across 13 app pages, 8 service-landing components, `lib/llms.ts`, `lib/sitemap-entries.ts`, `lib/articles.ts`, 3 tests, and 2 scripts
+  - Replaced `features/articles/traffic-gap-articles.ts` with `features/articles/traffic-gap/` (12 modules)
+  - `agent-docs/REPO-STRUCTURE.md`, `agent-docs/CURRENT-STATE.md`, `agent-docs/DECISIONS.md`, `agent-docs/HYDROGEN.md`, `agent-docs/CONTENT-PRODUCTION-PLAYBOOK.md`, `agent-docs/TODO.md`
+  - `CHANGELOG.md`
+- Verification:
+  - `git diff --check`: passed.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run test`: passed, 25 test files and 102 tests.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed with no `Needs review` rows.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed.
+  - `npm run verify:internal-links` against a local production server: passed with 67 sitemap URLs and 82 internal URLs.
+  - Traffic-gap article output equality: `JSON.stringify` diff against pre-refactor baseline is empty.
+  - Live verification: homepage, `/about`, `/contact`, `/blog`, `/articles/shopify-hydrogen-nextjs`, `/llms.txt`, and `/feed.xml` return 200; `/sitemap.xml` serves 67 URLs including recovery routes; `/robots.txt` references the sitemap; Person `@id` schema present in rendered homepage HTML.
+- Manual follow-up:
+  - Bing Webmaster Tools domain verification (Emre).
+  - Third-party HydrogenExpert brand entity signals (Emre).
+  - Client-approved case-study outcome metrics for deeper proof (Emre).
+  - IndexNow ping and Search Console resubmission were not run because no public content or URL set changed.
+
 ## 2026-06-25
 
 - PR: [#89 Refresh safe transitive package lock](https://github.com/emremutlu08/hydrogenexpert/pull/89)
