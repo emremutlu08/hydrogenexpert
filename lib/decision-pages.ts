@@ -31,6 +31,13 @@ export interface DecisionPageData {
     subtext: string;
     sourceKind: string;
   };
+  comparisonRows?: readonly {
+    dimension: string;
+    liquid: string;
+    hydrogen: string;
+    decisionRule: string;
+  }[];
+  reviewedAt?: string;
 }
 
 export const DECISION_PAGES = {
@@ -264,47 +271,113 @@ export const DECISION_PAGES = {
   "/shopify-hydrogen-vs-liquid": {
     path: "/shopify-hydrogen-vs-liquid",
     navLabel: "Hydrogen vs Liquid",
-    metaTitle: "Shopify Hydrogen vs Liquid | Emre Mutlu",
+    metaTitle: "Shopify Hydrogen vs Liquid: When Headless Is Worth It",
     metaDescription:
-      "Shopify Hydrogen vs Liquid comparison for merchants covering cost, maintenance, SEO, UX flexibility, apps, migration risk, and when to stay on Liquid.",
+      "Shopify Hydrogen vs Liquid comparison with a practical decision framework, Headless Readiness Scorecard, and guidance on when to stay on Liquid.",
     eyebrow: "Decision comparison",
-    title: "Shopify Hydrogen vs Liquid",
+    title: "Shopify Hydrogen vs Liquid: which should you actually build on?",
     description:
-      "A merchant-friendly comparison for teams deciding whether a custom storefront earns its cost.",
+      "Liquid is the correct default for most merchants. Hydrogen earns its cost only when a specific storefront constraint is expensive enough to justify custom application ownership.",
     body:
-      "Liquid is usually cheaper and easier to operate. Hydrogen gives more control when the storefront has outgrown theme constraints. The decision should come from the commercial constraint, not the architecture label.",
+      "This is not a Hydrogen-good, Liquid-bad comparison. The useful question is whether the current Shopify theme is actually blocking the buying journey, content model, product discovery, SEO control, or feature velocity in a way a cleaner Liquid path cannot solve.",
+    reviewedAt: "2026-07-05",
     sections: [
       {
-        eyebrow: "Plain English",
-        title: "Liquid is theme-first. Hydrogen is application-first.",
+        eyebrow: "30-second answer",
+        title: "Stay on Liquid unless Hydrogen has a job to do.",
         body: [
-          "Liquid keeps the storefront close to Shopify's theme model. It is often the fastest path for standard commerce needs and a better fit when the team needs low operational overhead.",
-          "Hydrogen is a custom storefront approach built around a React application connected to Shopify. It can support more ambitious UX, data loading, routing, and presentation patterns, but it asks the brand to own more software.",
-          "A broader headless path may make sense when Shopify is part of a larger product or content application. For most Shopify-first storefront decisions, the practical comparison is still Liquid cleanup, Hydrogen, or no rebuild.",
+          "Liquid keeps the storefront close to Shopify's theme model and theme editor. For standard ecommerce needs, that usually means lower operating overhead, faster iteration, and fewer engineering dependencies.",
+          "Hydrogen is Shopify's React Router-based headless stack for custom storefronts. It can give a team more control over routing, data loading, presentation, and application structure, but that control moves more responsibility into a codebase that needs an owner.",
+          "The practical decision is not theme versus modern architecture. It is Liquid cleanup, no rebuild, fixed-scope Hydrogen, or custom Hydrogen based on the constraint the business can prove.",
         ],
       },
       {
-        eyebrow: "Practical opinion",
-        title: "Stay on Liquid until Hydrogen earns the cost.",
+        eyebrow: "Headless Readiness Scorecard",
+        title: "Score the constraint before you budget the rebuild.",
         body: [
-          "My default recommendation is conservative: use Liquid if it solves the problem. Consider Hydrogen when the current storefront blocks growth-stage UX, performance, merchandising, content, or feature velocity in ways a theme cannot solve cleanly.",
+          "Give Hydrogen a point only when the current theme is blocking a real commercial requirement: custom product discovery, complex content-commerce journeys, app replacement, SEO-safe migration control, application-like storefront behavior, or a team that can maintain a React storefront after launch.",
+          "Subtract points when the need is mostly visual polish, a few merchant-editable sections, app cleanup, a faster short-term launch, or a team that would need a developer for every routine marketing change.",
+          "If the score is unclear, the safer first step is a Hydrogen fit audit or scope review. The answer can still be Liquid cleanup or no rebuild.",
         ],
+      },
+      {
+        eyebrow: "Migration path",
+        title: "The move does not have to be all-or-nothing.",
+        body: [
+          "A serious comparison can produce a smaller path: repair the Liquid theme, rebuild only the constrained journeys, prototype Hydrogen around a narrow product flow, or delay headless until content, analytics, apps, and maintenance ownership are ready.",
+          "That staged approach is usually safer than using Hydrogen as a status purchase. It also keeps SEO, analytics, app behavior, and editor workflow in the scope before production traffic depends on the new storefront.",
+        ],
+      },
+    ],
+    comparisonRows: [
+      {
+        dimension: "Merchant editing",
+        liquid: "Theme editor sections and blocks usually keep everyday changes close to the Shopify admin.",
+        hydrogen:
+          "Editable content is possible, but the model needs to be designed through metaobjects, a visual builder, CMS tooling, or custom components.",
+        decisionRule:
+          "Stay on Liquid when marketing needs frequent section-level control and the current theme can support it.",
+      },
+      {
+        dimension: "Development skillset",
+        liquid: "A Shopify theme developer can usually own Liquid templates, sections, app embeds, and theme settings.",
+        hydrogen:
+          "The storefront behaves more like a React application with routes, loaders, data queries, releases, and dependencies.",
+        decisionRule:
+          "Choose Hydrogen only when the team can fund senior React/Shopify ownership after launch.",
+      },
+      {
+        dimension: "SEO responsibility",
+        liquid: "Shopify themes start closer to Shopify's normal storefront assumptions.",
+        hydrogen:
+          "Hydrogen can support strong SEO, but metadata, canonicals, sitemap, robots, rendered content, JSON-LD, and redirects need deliberate implementation.",
+        decisionRule:
+          "Do not migrate without a route, crawlability, structured data, and analytics checklist.",
+      },
+      {
+        dimension: "Custom UX",
+        liquid: "Best when the buying journey fits theme-native product, collection, content, and cart patterns.",
+        hydrogen:
+          "Useful when product discovery, content-led commerce, account-aware flows, or application-like interactions outgrow theme patterns.",
+        decisionRule:
+          "Hydrogen earns cost when the custom journey affects revenue, conversion quality, or operating speed.",
+      },
+      {
+        dimension: "Performance claims",
+        liquid: "A clean Liquid theme can be enough; app bloat and poor implementation can hurt either stack.",
+        hydrogen:
+          "Hydrogen gives more implementation control, but speed is build-dependent and should not be promised by stack choice alone.",
+        decisionRule:
+          "Treat performance as a scoped implementation and measurement problem, not a guaranteed platform outcome.",
+      },
+      {
+        dimension: "Total ownership cost",
+        liquid: "Usually lower when the store has standard commerce needs and a lean operating team.",
+        hydrogen:
+          "Higher ownership can be justified when custom control solves a constraint that Liquid cannot handle cleanly.",
+        decisionRule:
+          "Approve Hydrogen only when the business case survives build cost, maintenance cost, launch QA, and future change ownership.",
       },
     ],
     decisionRows: [
       {
-        signal: "Budget and maintenance capacity are limited.",
+        signal: "The store needs normal product pages, collections, content pages, and editable marketing sections.",
         move: "Stay on Liquid or refactor the theme.",
-        caution: "Hydrogen can create a more expensive operating model.",
+        caution: "Do not turn a theme cleanup into an application rebuild.",
       },
       {
-        signal: "The buying journey needs custom product discovery or content-led commerce.",
-        move: "Evaluate Hydrogen.",
-        caution: "Scope SEO, analytics, and app replacement before build.",
+        signal: "The buying journey needs custom product discovery, content-commerce paths, or application-like behavior.",
+        move: "Evaluate fixed-scope or custom Hydrogen.",
+        caution: "Scope SEO, analytics, app compatibility, and post-launch ownership before build.",
       },
       {
-        signal: "The project exists only because headless sounds modern.",
-        move: "Delay and audit first.",
+        signal: "The team already has React ownership and a clear storefront roadmap.",
+        move: "Hydrogen becomes easier to justify.",
+        caution: "The first launch still needs bounded scope, route QA, and merchant editing decisions.",
+      },
+      {
+        signal: "The project exists because headless sounds modern or competitors mention it.",
+        move: "Delay and run the readiness scorecard first.",
         caution: "Architecture fashion is not a business case.",
       },
     ],
@@ -312,12 +385,12 @@ export const DECISION_PAGES = {
       {
         href: "/should-i-use-it",
         label: "Should I use Hydrogen?",
-        note: "A guided fit check.",
+        note: "A guided fit check before rebuild budget moves.",
       },
       {
         href: "/shopify-hydrogen-fit-audit",
-        label: "Scope Review",
-        note: "Use this before committing rebuild money.",
+        label: "Hydrogen fit audit",
+        note: "Use this as the Headless Readiness Scorecard path.",
       },
       {
         href: "/shopify-hydrogen-cost",
@@ -329,7 +402,7 @@ export const DECISION_PAGES = {
       {
         question: "Is Shopify Liquid usually cheaper than Hydrogen?",
         answer:
-          "Yes. Liquid is usually cheaper to launch and maintain because it stays closer to Shopify's theme model. Hydrogen is worth considering when the buying journey, performance needs, or custom storefront logic has outgrown theme constraints.",
+          "Usually, yes. Liquid stays closer to Shopify's theme model and often needs less ongoing engineering ownership. Hydrogen is worth considering when the buying journey, content model, product discovery, or custom storefront logic has outgrown theme constraints.",
       },
       {
         question: "Does Hydrogen automatically improve SEO?",
@@ -341,11 +414,16 @@ export const DECISION_PAGES = {
         answer:
           "Start with a scope review: current theme limits, product flow, app dependencies, analytics, SEO risk, design readiness, and maintenance ownership. If Liquid still solves the problem, do not rebuild.",
       },
+      {
+        question: "What should be on a Headless Readiness Scorecard?",
+        answer:
+          "Score the actual constraint, team ownership, app compatibility, SEO migration risk, content editing model, analytics requirements, budget, and launch QA. Hydrogen should win only when the custom storefront value is stronger than the added ownership cost.",
+      },
     ],
     cta: {
-      headline: "Want the honest Hydrogen vs Liquid answer for your store?",
+      headline: "Use the Headless Readiness Scorecard before you rebuild.",
       subtext:
-        "Send your current theme, store URL, and what feels limiting. I will tell you whether Hydrogen is justified or Liquid is still smarter.",
+        "Send your current theme, store URL, and what feels limiting. I will tell you whether the safer next step is Liquid cleanup, no rebuild, a fit audit, or a Hydrogen storefront scope.",
       sourceKind: "hydrogen_vs_liquid_cta",
     },
   },
