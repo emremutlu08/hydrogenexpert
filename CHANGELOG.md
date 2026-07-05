@@ -13,6 +13,32 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 - Verification:
 - Manual follow-up:
 
+## 2026-07-05
+
+- PR: [#91 Update Hydrogen vs Liquid decision page](https://github.com/emremutlu08/hydrogenexpert/pull/91)
+- Branch: `codex/hydrogen-vs-liquid-scorecard`
+- Deployment: Vercel preview passed; production deployment pending merge/live verification.
+- Summary:
+  - Refreshed `/shopify-hydrogen-vs-liquid` with Liquid-first decision framing and a Headless Readiness Scorecard angle.
+  - Added practical comparison-table support, expanded decision rows, FAQ entries, and CTA copy toward the fit-audit/scope-review path.
+  - Updated source metadata, public discovery summary, and sitemap override for the route.
+  - Avoided unverified speed, hosting, fake proof, metrics, testimonials, or logo claims.
+- Files changed:
+  - `components/DecisionLandingPage.tsx`
+  - `features/content-sources/index.ts`
+  - `features/public-discovery/manifest.ts`
+  - `lib/decision-pages.ts`
+  - `CHANGELOG.md`
+- Verification:
+  - `git diff --check`
+  - `npm run lint`
+  - `npm run typecheck`
+  - `npm run test`
+  - `node --import tsx scripts/validate-content.ts`
+  - `node --import tsx scripts/audit-shopify-claims.ts`
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`
+- Manual follow-up: Verify the production page after merge and deployment.
+
 ## 2026-07-04
 
 - PR: [#90 Improve project weak points: rate-limit hardening, mobile touch targets, compat re-export removal, article registry split](https://github.com/emremutlu08/hydrogenexpert/pull/90)
