@@ -16,6 +16,7 @@ export interface LlmsPageEntry {
 }
 
 export const LAST_SIGNIFICANT_UPDATE = new Date("2026-05-27T00:00:00.000Z");
+export const SHOPIFY_HYDROGEN_VS_LIQUID_UPDATE = new Date("2026-07-05T00:00:00.000Z");
 
 export const PACKAGE_PAGE_DISCOVERY = {
   ...PACKAGE_PAGE_SEO,
@@ -107,6 +108,11 @@ export const STATIC_ROUTE_SITEMAP_OVERRIDES: Record<
     changeFrequency: "weekly",
     priority: 0.86,
   },
+  "/shopify-hydrogen-vs-liquid": {
+    lastModified: SHOPIFY_HYDROGEN_VS_LIQUID_UPDATE,
+    changeFrequency: "weekly",
+    priority: 0.86,
+  },
 };
 
 export const LLMS_CORE_PAGE_ENTRIES: readonly LlmsPageEntry[] = [
@@ -151,6 +157,12 @@ export const LLMS_CORE_PAGE_ENTRIES: readonly LlmsPageEntry[] = [
     path: "/should-i-use-it",
     description:
       "Merchant decision guide for when Hydrogen is or is not commercially justified.",
+  },
+  {
+    title: "Hydrogen vs Liquid",
+    path: "/shopify-hydrogen-vs-liquid",
+    description:
+      "Shopify Hydrogen vs Liquid decision framework with a Headless Readiness Scorecard and Liquid-first guidance.",
   },
   {
     title: "Cost",

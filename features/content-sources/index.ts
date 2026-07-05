@@ -17,6 +17,7 @@ export type SourceTopic =
   | "automation"
   | "seo"
   | "analytics"
+  | "themes"
   | "storefront_mcp"
   | "ucp"
   | "app_compatibility"
@@ -63,6 +64,15 @@ export const SOURCE_PACKS = {
     retrievedAt: SHOPIFY_CONTENT_LAST_VERIFIED,
     usedFor:
       "Hydrogen, React Router, custom storefront, and Oxygen positioning claims.",
+  },
+  onlineStore20ThemeEditor: {
+    label: "Shopify: Online Store 2.0",
+    sourceType: "shopify_official",
+    topic: "themes",
+    url: "https://shopify.dev/docs/storefronts/themes/os20",
+    retrievedAt: "2026-07-05",
+    usedFor:
+      "Liquid theme model, sections, blocks, and merchant-editable storefront claims.",
   },
   hydrogenUpdates: {
     label: "Shopify Hydrogen updates",
@@ -1274,13 +1284,19 @@ export const STATIC_PAGE_SOURCE_METADATA = {
     ],
   },
   "/shopify-hydrogen-vs-liquid": {
-    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    lastVerified: "2026-07-05",
     claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
     sourceMap: [
+      SOURCE_PACKS.onlineStore20ThemeEditor,
       SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.headlessBuildOptions,
       SOURCE_PACKS.hydrogenSeo,
       SOURCE_PACKS.emreProductionExperience,
     ],
+    targetKeyword: "Shopify Hydrogen vs Liquid",
+    searchIntent: "Evaluate whether to stay on Liquid or move to Shopify Hydrogen",
+    reviewedBy: "Claude-reviewed Hermes brief plus Codex source-grounded implementation",
+    contentType: "Decision landing page",
   },
   "/shopify-hydrogen-for-luxury-jewelry": {
     lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,

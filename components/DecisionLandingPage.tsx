@@ -81,7 +81,7 @@ export function DecisionLandingPage({
           title={page.title}
           description={page.description}
           body={page.body}
-          reviewedAt="2026-05-25"
+          reviewedAt={page.reviewedAt ?? "2026-05-25"}
         />
 
         <section className="surface-card space-y-3">
@@ -152,6 +152,55 @@ export function DecisionLandingPage({
             <HydrogenOwnershipCostSection />
             <LiquidHydrogenDecisionSection />
           </>
+        ) : null}
+
+        {page.comparisonRows?.length ? (
+          <section className="surface-card space-y-6">
+            <SectionHeader
+              eyebrow="Practical comparison"
+              title="The differences that should change the decision."
+              description="Use the comparison as a readiness filter. Liquid remains the default until a specific storefront constraint makes custom application ownership worth it."
+              className="max-w-5xl"
+            />
+            <div className="overflow-x-auto rounded-[1.2rem] border border-black/8 bg-white">
+              <table className="min-w-full border-collapse text-left text-sm">
+                <thead className="bg-[#f7f7f7]">
+                  <tr>
+                    <th className="px-5 py-4 font-bold uppercase tracking-[0.16em] text-[#0f8a5d]">
+                      Dimension
+                    </th>
+                    <th className="px-5 py-4 font-bold uppercase tracking-[0.16em] text-[#0f8a5d]">
+                      Liquid default
+                    </th>
+                    <th className="px-5 py-4 font-bold uppercase tracking-[0.16em] text-[#0f8a5d]">
+                      Hydrogen tradeoff
+                    </th>
+                    <th className="px-5 py-4 font-bold uppercase tracking-[0.16em] text-[#0f8a5d]">
+                      Decision rule
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {page.comparisonRows.map((row) => (
+                    <tr key={row.dimension} className="border-t border-black/8 align-top">
+                      <td className="min-w-[12rem] px-5 py-4 font-semibold leading-7 text-neutral-800">
+                        {row.dimension}
+                      </td>
+                      <td className="min-w-[16rem] px-5 py-4 leading-7 text-neutral-700">
+                        {row.liquid}
+                      </td>
+                      <td className="min-w-[16rem] px-5 py-4 leading-7 text-neutral-700">
+                        {row.hydrogen}
+                      </td>
+                      <td className="min-w-[18rem] px-5 py-4 leading-7 text-neutral-700">
+                        {row.decisionRule}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
         ) : null}
 
         {page.path === "/shopify-hydrogen-for-large-catalog-retail" ? (
