@@ -91,7 +91,7 @@ const developerSearchIntentRows = [
     answer:
       "Training helps an internal team learn the stack. Production ownership still needs judgment across Shopify data, SEO, analytics, deployment, and maintenance.",
     links: [
-      { href: OWNER.udemyUrl, label: "Hydrogen course", external: true },
+      { href: OWNER.udemyUrl, label: "View the Hydrogen course on Udemy", external: true },
       { href: "/articles/how-to-hire-shopify-hydrogen-developer", label: "Hiring guide" },
     ],
   },
