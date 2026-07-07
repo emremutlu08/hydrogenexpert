@@ -311,9 +311,9 @@ export const SERVICE_PACKAGE_BASES = [
         note: "Use this when the search has moved from research into evaluation criteria.",
       },
       {
-        href: "/shopify-hydrogen-audit",
-        label: "Request a scope review",
-        note: "Use this when the business case or launch risk needs proof before implementation.",
+        href: "/contact#fit-review-form",
+        label: "Contact for a scope review",
+        note: "Send the current store URL and implementation pressure before choosing a build path.",
       },
       {
         href: "/shopify-hydrogen-cost",

@@ -26,12 +26,18 @@ export const SERVICE_SOURCE_METADATA = {
   },
   "shopify-hydrogen-developer": {
     lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
-    claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
+    claimTypes: [
+      "official_shopify_fact",
+      "emre_experience",
+      "commercial_opinion",
+      "case_study_fact",
+    ],
     sourceMap: [
       SOURCE_PACKS.hydrogenFundamentals,
       SOURCE_PACKS.hydrogenDataFetching,
       SOURCE_PACKS.hydrogenSeo,
       SOURCE_PACKS.customerAccountApi,
+      SOURCE_PACKS.caseStudyEvidence,
       SOURCE_PACKS.emreProductionExperience,
     ],
   },
