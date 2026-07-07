@@ -13,6 +13,35 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 - Verification:
 - Manual follow-up:
 
+## 2026-07-07
+
+- PR: [#92 Polish Shopify Hydrogen developer SEO links](https://github.com/emremutlu08/hydrogenexpert/pull/92)
+- Branch: `codex/seo-developer-polish`
+- Deployment: PR opened; production deployment pending merge/live verification.
+- Summary:
+  - Polished `/shopify-hydrogen-developer` without adding new claims or broad copy rewrites.
+  - Added a direct `/contact#fit-review-form` related path for scope-review conversion from the developer service page.
+  - Changed the Udemy course anchor text to the neutral label `View the Hydrogen course on Udemy` after cron HTTP checks returned a likely anti-bot 403.
+  - Added case-study evidence metadata to the developer service source map because the page uses approved EveShop, Bayam Jewelry, and Rebel Bunny proof paths.
+- Files changed:
+  - `components/service-landing/DeveloperServiceSections.tsx`
+  - `features/services/registry/base.ts`
+  - `features/services/registry/source-metadata.ts`
+  - `CHANGELOG.md`
+- Verification:
+  - `git diff --check`: passed.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed with no `Needs review` rows.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run test`: passed, 25 test files and 102 tests.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed.
+  - `INTERNAL_LINK_BASE_URL=https://hydrogenexpert.co NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run verify:internal-links`: passed with 67 sitemap URLs and 82 internal URLs.
+  - Local smoke after build/start confirmed `/shopify-hydrogen-developer` returns 200 and includes the expected H1, CTA, neutral Udemy label, and `/contact#fit-review-form`.
+- Manual follow-up:
+  - Verify production `/shopify-hydrogen-developer` after merge/deploy.
+  - Browser-check the Udemy URL manually if the anti-bot 403 persists in automated checks.
+
 ## 2026-07-05
 
 - PR: [#91 Update Hydrogen vs Liquid decision page](https://github.com/emremutlu08/hydrogenexpert/pull/91)
