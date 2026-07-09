@@ -15,7 +15,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-07-09
 
-- PR: TBD
+- PR: [#93 Refresh Shopify Hydrogen SEO checklist](https://github.com/emremutlu08/hydrogenexpert/pull/93)
 - Branch: `codex/seo-checklist-refresh-2026-07-09`
 - Deployment: Not deployed yet; local build and route smoke passed. Production deploy/live verification pending PR merge/deploy.
 - Summary:
