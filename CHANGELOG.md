@@ -13,6 +13,40 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 - Verification:
 - Manual follow-up:
 
+## 2026-07-09
+
+- PR: [#93 Refresh Shopify Hydrogen SEO checklist](https://github.com/emremutlu08/hydrogenexpert/pull/93)
+- Branch: `codex/seo-checklist-refresh-2026-07-09`
+- Deployment: Not deployed yet; local build and route smoke passed. Production deploy/live verification pending PR merge/deploy.
+- Summary:
+  - Refreshed `/articles/shopify-hydrogen-seo-checklist` with stricter source-grounded Hydrogen SEO guidance, updated metadata text, a stronger practical checklist, expanded FAQ, and explicit claim-safety language.
+  - Corrected sitemap, robots, canonical, and Oxygen framing so the article treats them as implementation and verification responsibilities rather than automatic Hydrogen guarantees.
+  - Tightened llms.txt and llms-full language so they are described as this site's AI-readable discovery convention, not an official ranking factor or guaranteed indexing signal.
+  - Added Google JavaScript SEO as source metadata for rendered HTML checks and updated the selected article's source verification/dateModified without refreshing unrelated traffic-gap articles.
+- Files changed:
+  - `features/articles/traffic-gap/shopify-hydrogen-seo-checklist.ts`
+  - `features/articles/traffic-gap/index.ts`
+  - `features/articles/traffic-gap/shared.ts`
+  - `features/content-sources/index.ts`
+  - `scripts/validate-content.ts`
+  - `tests/articles.test.ts`
+  - `CHANGELOG.md`
+- Verification:
+  - `git diff --check`: passed.
+  - Article data smoke: passed; selected article has `updatedAt` `2026-07-09T10:00:00+03:00`, 11 sections, 5 FAQ entries, all required acceptance links, and official Shopify/Google source links.
+  - Sitemap/llms smoke: passed; `/articles/shopify-hydrogen-seo-checklist` is present in generated sitemap entries and `llms-full` output.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed with no `Needs review` rows.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run test`: passed, 25 test files and 102 tests.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed.
+  - Local production smoke after build/start: `/articles/shopify-hydrogen-seo-checklist` returned HTTP 200 and rendered the expected H1, checklist heading, FAQ text, Article/FAQ JSON-LD, and required internal links.
+  - Local `/sitemap.xml` smoke was not used as a regression signal because this route can return 500 without Supabase env in local production; live/preview sitemap verification remains required after deploy.
+- Manual follow-up:
+  - After PR merge/deploy, verify live `/articles/shopify-hydrogen-seo-checklist` HTTP 200 and HTML contains Article/FAQ schema, checklist content, and the four required internal links.
+  - Verify live `/sitemap.xml` and `/llms-full.txt` include `/articles/shopify-hydrogen-seo-checklist`.
+
 ## 2026-07-07
 
 - PR: [#92 Polish Shopify Hydrogen developer SEO links](https://github.com/emremutlu08/hydrogenexpert/pull/92)

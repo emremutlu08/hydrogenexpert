@@ -11,6 +11,7 @@ export const scopeReviewLinks = [
 ] as const;
 
 export interface ArticleQualityRefresh {
+  updatedAt?: Article["updatedAt"];
   summary: NonNullable<Article["summary"]>;
   takeaways: NonNullable<Article["takeaways"]>;
   sections: readonly ArticleSection[];

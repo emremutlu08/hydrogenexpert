@@ -22,6 +22,8 @@ const TRAFFIC_GAP_ARTICLE_SLUGS = [
 ] as const;
 
 const TRAFFIC_GAP_REFRESH_DATE = "2026-05-27T23:30:00+03:00";
+const SEO_CHECKLIST_REFRESH_DATE = "2026-07-09T10:00:00+03:00";
+const SEO_CHECKLIST_SOURCE_LAST_VERIFIED = "2026-07-09";
 
 function getArticleWordCount(article: ReturnType<typeof getAllArticles>[number]) {
   const text = [
@@ -82,9 +84,17 @@ describe("scheduled articles", () => {
     for (const slug of TRAFFIC_GAP_ARTICLE_SLUGS) {
       const article = publicArticles.find((item) => item.slug === slug);
       const sourceMetadata = getArticleSourceMetadata(slug);
+      const expectedUpdatedAt =
+        slug === "shopify-hydrogen-seo-checklist"
+          ? SEO_CHECKLIST_REFRESH_DATE
+          : TRAFFIC_GAP_REFRESH_DATE;
+      const expectedLastVerified =
+        slug === "shopify-hydrogen-seo-checklist"
+          ? SEO_CHECKLIST_SOURCE_LAST_VERIFIED
+          : "2026-05-27";
 
       expect(publicSlugs).toContain(slug);
-      expect(article?.updatedAt).toBe(TRAFFIC_GAP_REFRESH_DATE);
+      expect(article?.updatedAt).toBe(expectedUpdatedAt);
       expect(article?.summary?.length).toBeGreaterThanOrEqual(2);
       expect(article?.takeaways?.length).toBeGreaterThanOrEqual(3);
       expect(article?.sections.length).toBeGreaterThanOrEqual(8);
@@ -92,7 +102,7 @@ describe("scheduled articles", () => {
       expect(article ? getArticleWordCount(article) : 0).toBeGreaterThanOrEqual(550);
       expect(article?.sources?.length).toBeGreaterThan(0);
       expect(sourceMetadata?.sourceMap.length).toBeGreaterThan(0);
-      expect(sourceMetadata?.lastVerified).toBe("2026-05-27");
+      expect(sourceMetadata?.lastVerified).toBe(expectedLastVerified);
     }
   });
 });

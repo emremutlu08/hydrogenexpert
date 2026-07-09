@@ -30,6 +30,11 @@ const trafficGapArticleSlugList = [
 ] as const;
 const trafficGapArticleSlugs = new Set<string>(trafficGapArticleSlugList);
 const trafficGapRefreshDate = "2026-05-27T23:30:00+03:00";
+const trafficGapArticleRefreshDates: Partial<
+  Record<(typeof trafficGapArticleSlugList)[number], string>
+> = {
+  "shopify-hydrogen-seo-checklist": "2026-07-09T10:00:00+03:00",
+};
 
 function fail(message: string) {
   failures.push(message);
@@ -270,7 +275,11 @@ for (const article of getAllArticles()) {
     continue;
   }
 
-  if (article.updatedAt !== trafficGapRefreshDate) {
+  const expectedTrafficGapRefreshDate =
+    trafficGapArticleRefreshDates[article.slug as (typeof trafficGapArticleSlugList)[number]] ??
+    trafficGapRefreshDate;
+
+  if (article.updatedAt !== expectedTrafficGapRefreshDate) {
     fail(`/articles/${article.slug} is missing the latest quality refresh timestamp.`);
   }
 
