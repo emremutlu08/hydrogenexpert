@@ -54,6 +54,7 @@ export interface ContentSourceMetadata {
 }
 
 export const SHOPIFY_CONTENT_LAST_VERIFIED = "2026-05-05";
+export const SEO_CHECKLIST_SOURCE_LAST_VERIFIED = "2026-07-09";
 
 export const SOURCE_PACKS = {
   hydrogenFundamentals: {
@@ -295,7 +296,7 @@ export const SOURCE_PACKS = {
     sourceType: "shopify_official",
     topic: "seo",
     url: "https://shopify.dev/docs/storefronts/headless/hydrogen/seo",
-    retrievedAt: SHOPIFY_CONTENT_LAST_VERIFIED,
+    retrievedAt: SEO_CHECKLIST_SOURCE_LAST_VERIFIED,
     usedFor:
       "Hydrogen metadata, canonical URL, JSON-LD, sitemap.xml, robots.txt, and Oxygen robots behavior claims.",
   },
@@ -484,7 +485,7 @@ export const SOURCE_PACKS = {
     sourceType: "google_official",
     topic: "seo",
     url: "https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data",
-    retrievedAt: "2026-05-27",
+    retrievedAt: SEO_CHECKLIST_SOURCE_LAST_VERIFIED,
     usedFor:
       "Structured data purpose, JSON-LD, and search appearance guidance.",
   },
@@ -493,9 +494,18 @@ export const SOURCE_PACKS = {
     sourceType: "google_official",
     topic: "seo",
     url: "https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview",
-    retrievedAt: "2026-05-27",
+    retrievedAt: SEO_CHECKLIST_SOURCE_LAST_VERIFIED,
     usedFor:
       "Sitemap discovery and crawl guidance for public SEO checklist content.",
+  },
+  googleJavaScriptSeo: {
+    label: "Google Search Central: JavaScript SEO basics",
+    sourceType: "google_official",
+    topic: "seo",
+    url: "https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics",
+    retrievedAt: SEO_CHECKLIST_SOURCE_LAST_VERIFIED,
+    usedFor:
+      "Rendered HTML, JavaScript rendering, and Search Console verification guidance for Hydrogen SEO checks.",
   },
   googleLocalizedVersions: {
     label: "Google Search Central: Localized versions",
@@ -1038,12 +1048,13 @@ export const ARTICLE_SOURCE_METADATA = {
     contentType: "evergreen_article",
   },
   "shopify-hydrogen-seo-checklist": {
-    lastVerified: "2026-05-27",
+    lastVerified: SEO_CHECKLIST_SOURCE_LAST_VERIFIED,
     claimTypes: ["official_shopify_fact", "seo_hypothesis", "emre_experience"],
     sourceMap: [
       SOURCE_PACKS.hydrogenSeo,
       SOURCE_PACKS.googleStructuredData,
       SOURCE_PACKS.googleSitemaps,
+      SOURCE_PACKS.googleJavaScriptSeo,
       SOURCE_PACKS.emreProductionExperience,
     ],
     targetKeyword: "shopify hydrogen seo checklist",

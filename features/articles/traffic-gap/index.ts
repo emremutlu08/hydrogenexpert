@@ -28,7 +28,7 @@ const TRAFFIC_GAP_ARTICLE_MODULES = [
 export const TRAFFIC_GAP_ARTICLES = TRAFFIC_GAP_ARTICLE_MODULES.map(({ draft, refresh }) => {
   return {
     ...draft,
-    updatedAt: REFRESH_DATE,
+    updatedAt: "updatedAt" in refresh ? refresh.updatedAt : REFRESH_DATE,
     summary: refresh.summary,
     takeaways: refresh.takeaways,
     sections: [...draft.sections, ...refresh.sections],
