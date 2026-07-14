@@ -13,6 +13,35 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 - Verification:
 - Manual follow-up:
 
+## 2026-07-14
+
+- PR: [#94 Refresh developer vs agency decision guide](https://github.com/emremutlu08/hydrogenexpert/pull/94)
+- Branch: `codex/seo-developer-vs-agency-refresh`
+- Deployment: PR opened; production deployment and live verification pending.
+- Summary:
+  - Refreshed `/articles/shopify-hydrogen-developer-vs-agency` around comparison and delivery-model decision intent without retargeting the dedicated developer-hiring query.
+  - Added answer-first guidance, an accessible comparison table, a seven-question buyer checklist, concrete Liquid/no-rebuild criteria, four visible FAQs, and a direct scope-review path.
+  - Added an optional shared article comparison-table shape plus validation and regression coverage for rendered comparison content and FAQ schema parity.
+  - Preserved existing source verification metadata and added no invented prices, metrics, testimonials, client proof, partner claims, or team claims.
+- Files changed:
+  - `app/articles/[slug]/page.tsx`
+  - `lib/articles.ts`
+  - `scripts/validate-content.ts`
+  - `tests/articles.test.ts`
+  - `CHANGELOG.md`
+- Verification:
+  - Claude Code final review: passed with quality score 92/100, authority score 85/100, and no blocking issues.
+  - `git diff --check`: passed.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed with no review blockers.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run test`: passed, 25 test files and 103 tests.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed; 76 static pages generated.
+  - Local production smoke: HTTP 200 with expected title, H1, comparison table, Liquid/no-rebuild guidance, checklist, FAQPage schema, canonical URL, hiring-guide link, and scope-review CTA.
+- Manual follow-up:
+  - After deployment, verify the production article, sitemap membership, `llms-full.txt` coverage, and live-base internal-link validation.
+
 ## 2026-07-09
 
 - PR: [#93 Refresh Shopify Hydrogen SEO checklist](https://github.com/emremutlu08/hydrogenexpert/pull/93)
