@@ -78,6 +78,13 @@ function countArticleWords(article: ReturnType<typeof getAllArticles>[number]) {
       ...(section.body ?? []),
       ...(section.bullets ?? []),
       ...(section.ordered ?? []),
+      ...(section.comparison
+        ? [
+            section.comparison.caption,
+            ...section.comparison.columns,
+            ...section.comparison.rows.flatMap((row) => [row.label, ...row.values]),
+          ]
+        : []),
     ]),
     ...(article.faq ?? []).flatMap((item) => [item.question, item.answer]),
     article.conclusion,

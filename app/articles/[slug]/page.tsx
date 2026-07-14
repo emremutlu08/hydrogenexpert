@@ -195,6 +195,36 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                 {section.body?.map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
                 ))}
+                {section.comparison ? (
+                  <div className="article-table-wrap">
+                    <table>
+                      <caption className="sr-only">{section.comparison.caption}</caption>
+                      <thead>
+                        <tr>
+                          {section.comparison.columns.map((column) => (
+                            <th key={column} scope="col">
+                              {column}
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {section.comparison.rows.map((row) => (
+                          <tr key={row.label} className="align-top">
+                            <th scope="row" className="min-w-40 leading-6">
+                              {row.label}
+                            </th>
+                            {row.values.map((value) => (
+                              <td key={value} className="min-w-52 leading-6">
+                                {value}
+                              </td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                ) : null}
                 {section.bullets ? (
                   <ul>
                     {section.bullets.map((item) => (

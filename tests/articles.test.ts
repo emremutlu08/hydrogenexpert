@@ -7,6 +7,7 @@ import {
   getPublicArticlesForDate,
 } from "../lib/articles";
 import { getArticleSourceMetadata } from "../features/content-sources";
+import { buildFaqPageSchema } from "../lib/structured-data";
 
 const TRAFFIC_GAP_ARTICLE_SLUGS = [
   "shopify-hydrogen-nextjs",
@@ -36,6 +37,13 @@ function getArticleWordCount(article: ReturnType<typeof getAllArticles>[number])
       ...(section.body ?? []),
       ...(section.bullets ?? []),
       ...(section.ordered ?? []),
+      ...(section.comparison
+        ? [
+            section.comparison.caption,
+            ...section.comparison.columns,
+            ...section.comparison.rows.flatMap((row) => [row.label, ...row.values]),
+          ]
+        : []),
     ]),
     ...(article.faq ?? []).flatMap((item) => [item.question, item.answer]),
     article.conclusion,
@@ -74,6 +82,65 @@ describe("scheduled articles", () => {
   it("keeps article source files separate from Supabase-backed blog posts", () => {
     expect(getAllArticles().every((article) => article.slug.length > 0)).toBe(true);
     expect(getAllArticles().every((article) => ["published", "scheduled"].includes(article.status))).toBe(true);
+  });
+
+  it("keeps the developer-vs-agency guide focused on delivery-model decisions", () => {
+    const article = getAllArticles().find(
+      (item) => item.slug === "shopify-hydrogen-developer-vs-agency",
+    );
+
+    expect(article).toBeDefined();
+    expect(article?.metaTitle).toBe(
+      "Shopify Hydrogen Developer vs Agency: How to Decide",
+    );
+    expect(article?.metaDescription).toBe(
+      "Compare a senior Shopify Hydrogen developer with a full agency: scope, ownership, and risk — plus a decision checklist before you buy capacity.",
+    );
+    expect(article?.h1).toBe("Shopify Hydrogen developer vs. agency: how to decide");
+    expect(article?.intro[0]).toContain("scope is already technical and defined");
+
+    const comparison = article?.sections.find((section) => section.comparison)?.comparison;
+    expect(comparison?.rows.map((row) => row.label)).toEqual([
+      "Technical scope clarity",
+      "Brand, UX, and content needs",
+      "Delivery ownership",
+      "Stakeholder and project management",
+      "Post-launch ownership",
+      "SEO migration and canonical risk",
+      "Commercial engagement shape",
+    ]);
+
+    const checklist = article?.sections.find((section) =>
+      section.title.startsWith("Buyer decision checklist"),
+    );
+    expect(checklist?.ordered?.length).toBeGreaterThanOrEqual(5);
+    expect(checklist?.ordered?.length).toBeLessThanOrEqual(7);
+
+    const liquidGuidance = article?.sections.find(
+      (section) => section.title === "When Liquid improvement or no rebuild is safer",
+    );
+    expect(liquidGuidance?.bullets?.length).toBeGreaterThanOrEqual(4);
+    expect(liquidGuidance?.body?.[0]).toContain("custom storefront is not the right investment");
+
+    expect(article?.faq?.length).toBeGreaterThanOrEqual(3);
+    const faqSchema = buildFaqPageSchema(article?.faq ?? []);
+    expect(
+      faqSchema.mainEntity.map((entry) => ({
+        question: entry.name,
+        answer: entry.acceptedAnswer.text,
+      })),
+    ).toEqual(article?.faq);
+
+    expect(article?.links.map((link) => link.href)).toEqual(
+      expect.arrayContaining([
+        "/shopify-hydrogen-developer",
+        "/shopify-hydrogen-agency",
+        "/articles/how-to-hire-shopify-hydrogen-developer",
+        "/shopify-hydrogen-audit",
+        "/case-studies",
+        "/contact#fit-review-form",
+      ]),
+    );
   });
 
   it("publishes traffic-gap articles on May 27 with English source references", () => {
