@@ -35,6 +35,23 @@ describe("commercial launch copy guard", () => {
     });
   });
 
+  it("requires the cost route to separate service pricing from adjacent buyer intents", () => {
+    const costRule = COMMERCIAL_COPY_RULES.find(
+      (rule) => rule.route === "/shopify-hydrogen-cost",
+    );
+
+    expect(costRule?.required).toEqual(
+      expect.arrayContaining([
+        "not official Shopify or Oxygen platform pricing",
+        "total project budget logic",
+        "package feature and deliverable comparison",
+        "ongoing maintenance cost",
+        "Liquid",
+        "no rebuild",
+      ]),
+    );
+  });
+
   it("allows higher pricing only in custom or enterprise context", () => {
     expect(
       checkCommercialCopy(

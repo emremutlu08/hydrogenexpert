@@ -709,56 +709,66 @@ export const SERVICE_PACKAGE_BASES = [
     slug: "shopify-hydrogen-cost",
     pagePath: "/shopify-hydrogen-cost",
     name: "Shopify Hydrogen Cost",
-    title: "Shopify Hydrogen storefront pricing by project requirements",
-    metaTitle: "Shopify Hydrogen Storefront Pricing | $2K-$5K Builds",
+    title: "Estimate a first-launch Hydrogen budget by scope",
+    metaTitle: "Shopify Hydrogen Pricing Guide: $2K-$5K by Scope",
     metaDescription:
-      "Shopify Hydrogen storefront pricing from $2K-$5K for fixed-scope Starter, Standard, and Growth builds priced by requirements, not traffic or pageviews.",
-    heroTitle: "Shopify Hydrogen storefront pricing: $2K-$5K fixed-scope builds",
+      "Estimate your Shopify Hydrogen storefront budget ($2K-$5K) by scope, not traffic or pageviews — see what drives cost before requesting a scope review.",
+    heroTitle: "Shopify Hydrogen pricing: $2K-$5K by project scope",
     summary:
-      "A lean Hydrogen storefront does not need to start at agency pricing. If the scope is clear, the first version can be priced around core pages, product flow, cart behavior, checkout handoff, SEO baseline, and launch QA.",
+      "HydrogenExpert's own fixed-scope Shopify Hydrogen service pricing is $2K-$5K, based on project requirements: routes, templates, features, integrations, migration risk, SEO, analytics, and launch QA—not traffic or pageviews.",
     commercialIntent:
-      "For budget-aware leads searching Shopify Hydrogen cost, pricing, packages, and fixed-scope build options before they are ready to scope implementation.",
+      "These are HydrogenExpert service prices, not official Shopify or Oxygen platform pricing. Use the range to qualify a first-launch budget before requesting a scope review.",
     bestFor:
-      "Brands that want a fixed-scope Hydrogen build priced by page templates, components, features, integrations, migration risk, analytics, SEO preservation, and launch support.",
+      "Brands estimating a first-launch Hydrogen budget and deciding whether the requirements fit a fixed-scope build, custom scope, Liquid cleanup, or no rebuild.",
     deliverables: [
-      "Starter, Standard, Growth, or Custom scope review",
-      "Package comparison and budget driver review",
-      "Feature, template, integration, and migration-risk notes",
-      "Liquid vs Hydrogen package recommendation",
+      "First-build budget range and cost-driver review",
+      "Route, template, feature, integration, and migration-risk notes",
+      "Fixed-scope, custom, Liquid cleanup, or no-rebuild recommendation",
+      "Clear handoff to package deliverable comparison or ongoing maintenance guidance",
       "Recommendation for free scope review, paid risk review, build, Liquid cleanup, or no rebuild",
     ],
     proofNotes: [
+      "The $2K-$5K range is HydrogenExpert's own fixed-scope service pricing, not Shopify or Oxygen platform pricing.",
       "Cost is framed around storefront scope and operating reality, not around traffic, pageviews, or the word headless alone.",
       "The first budget question is whether the project fits Starter, Standard, Growth, Custom, Liquid cleanup, or no rebuild.",
-      "The output should help teams understand why a project is $2K, $3K-$3.5K, $4.5K-$5K, or custom.",
     ],
     faq: [
       {
-        question: "Why can a Hydrogen storefront start around $2,000?",
+        question: "Is $2K-$5K official Shopify or Oxygen pricing?",
         answer:
-          "Because the Starter scope is limited to the core shopping path: home or landing page, listing page, product detail page, add to cart, cart drawer, Shopify checkout handoff, basic account entry, header, footer, one reusable content template, SEO baseline, and Oxygen guidance.",
+          "No. It is HydrogenExpert's own fixed-scope service pricing for a bounded storefront build. It is not a Shopify plan price, Oxygen hosting price, or official platform estimate.",
       },
       {
-        question: "What makes a Hydrogen build move toward $5K or custom?",
+        question: "What makes a Hydrogen project move from $2K toward $5K or custom?",
         answer:
           "Price increases when the project adds more page templates, PDP complexity, filtering, search, app integrations, analytics events, metaobjects, design complexity, SEO migration, redirect planning, launch QA, or post-launch support.",
       },
       {
-        question: "Is this priced by traffic or monthly visitors?",
+        question: "Where should I compare package features and deliverables?",
         answer:
-          "No. Pricing is based on project requirements: page templates, features, integrations, design complexity, migration risk, analytics, and launch support.",
+          "Use the Shopify Hydrogen packages page to compare Starter, Standard, Growth, and Custom inclusions and exclusions. This pricing guide stays focused on total first-build budget logic and cost drivers.",
       },
       {
-        question: "Is a $2K-$5K package the same as a full agency replatform?",
+        question: "Does the $2K-$5K range include ongoing Hydrogen maintenance?",
         answer:
-          "No. The package range is for a bounded first Hydrogen storefront launch. Use a full agency program when the project needs brand strategy, UX, copy, CRO, project management, QA, retention, integrations, and multiple delivery teams in parallel.",
+          "No. The range qualifies the initial fixed-scope build. Use the Shopify Hydrogen maintenance cost guide to plan ongoing code ownership, dependency updates, integrations, analytics, SEO monitoring, release QA, and support.",
+      },
+      {
+        question: "When is Liquid or no rebuild the better budget decision?",
+        answer:
+          "Stay on Liquid when the real need is theme polish, two or three merchant-editable sections, simpler content or merchandising, app cleanup, or focused performance work. Do not fund a Hydrogen rebuild unless a specific product, content, or mobile buying constraint justifies custom application ownership.",
       },
     ],
     relatedLinks: [
       {
         href: "/shopify-hydrogen-packages",
         label: "Shopify Hydrogen packages",
-        note: "Review the Starter, Standard, Growth, and Custom package path.",
+        note: "Compare Starter, Standard, Growth, and Custom features, deliverables, and exclusions.",
+      },
+      {
+        href: "/shopify-hydrogen-maintenance-cost",
+        label: "Shopify Hydrogen maintenance cost",
+        note: "Plan ongoing application ownership separately from the first-build budget.",
       },
       {
         href: "/custom-shopify-hydrogen-storefront",

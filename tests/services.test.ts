@@ -82,4 +82,32 @@ describe("SERVICE_PACKAGES", () => {
       }
     }
   });
+
+  it("keeps the cost guide focused on HydrogenExpert pricing and adjacent intent boundaries", () => {
+    const costGuide = requireServicePackageByPagePath("/shopify-hydrogen-cost");
+
+    expect(costGuide.metaTitle).toBe("Shopify Hydrogen Pricing Guide: $2K-$5K by Scope");
+    expect(costGuide.metaTitle.length).toBeLessThanOrEqual(60);
+    expect(costGuide.metaDescription).toBe(
+      "Estimate your Shopify Hydrogen storefront budget ($2K-$5K) by scope, not traffic or pageviews — see what drives cost before requesting a scope review.",
+    );
+    expect(costGuide.metaDescription.length).toBeLessThanOrEqual(155);
+    expect(costGuide.heroTitle).toContain("Shopify Hydrogen pricing");
+    expect(costGuide.summary).toContain("HydrogenExpert's own fixed-scope");
+    expect(costGuide.commercialIntent).toContain(
+      "not official Shopify or Oxygen platform pricing",
+    );
+    expect(costGuide.relatedLinks.map((link) => link.href)).toEqual(
+      expect.arrayContaining([
+        "/shopify-hydrogen-packages",
+        "/shopify-hydrogen-maintenance-cost",
+      ]),
+    );
+    expect(costGuide.faq.some((item) => item.question.includes("official Shopify or Oxygen"))).toBe(
+      true,
+    );
+    expect(costGuide.faq.some((item) => item.question.includes("Liquid or no rebuild"))).toBe(true);
+    expect(costGuide.targetKeyword).toBe("shopify hydrogen pricing");
+    expect(costGuide.searchIntent).toContain("first-build service budget");
+  });
 });
