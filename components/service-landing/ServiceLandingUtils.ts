@@ -70,9 +70,9 @@ export function getServiceCta(service: ServicePackage) {
 
   if (service.slug === "shopify-hydrogen-cost") {
     return {
-      headline: "Need a realistic fixed-scope Hydrogen price before scope expands?",
+      headline: "Need to qualify a $2K-$5K first-build budget before scope expands?",
       subtext:
-        "Send the current store URL, product count, design status, needed pages, and must-have features. I will tell you whether the project fits Starter, Standard, Growth, Custom, Liquid cleanup, or no rebuild.",
+        "Send the current store URL, budget range, product count, design status, needed pages, and must-have features. I will tell you whether the project fits Starter, Standard, Growth, Custom, Liquid cleanup, or no rebuild.",
       primaryLabel: "Request Scope Review",
       srOnly:
         "Emre Mutlu provides Shopify Hydrogen package pricing, scope review, rebuild planning, and senior storefront advisory for Shopify brands.",

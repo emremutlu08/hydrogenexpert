@@ -104,12 +104,12 @@ export const SERVICE_SOURCE_METADATA = {
     sourceMap: [
       SOURCE_PACKS.hydrogenFundamentals,
       SOURCE_PACKS.headlessBuildOptions,
-      SOURCE_PACKS.packDigitalHydrogen,
-      SOURCE_PACKS.weaverseHydrogen,
       SOURCE_PACKS.hydrogenSeo,
-      SOURCE_PACKS.caseStudyEvidence,
       SOURCE_PACKS.emreProductionExperience,
     ],
+    targetKeyword: "shopify hydrogen pricing",
+    searchIntent: "Estimate a first-build service budget and understand cost drivers before scope review",
+    contentType: "Commercial pricing guide",
   },
   "custom-hydrogen-storefront-development": {
     lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,

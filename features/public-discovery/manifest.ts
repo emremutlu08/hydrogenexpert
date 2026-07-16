@@ -168,7 +168,7 @@ export const LLMS_CORE_PAGE_ENTRIES: readonly LlmsPageEntry[] = [
     title: "Cost",
     path: "/shopify-hydrogen-cost",
     description:
-      "Hydrogen package pricing, scope drivers, and maintenance-cost guidance.",
+      "HydrogenExpert fixed-scope service pricing, first-build budget drivers, and Liquid or no-rebuild qualification.",
   },
   {
     title: "Case Studies",

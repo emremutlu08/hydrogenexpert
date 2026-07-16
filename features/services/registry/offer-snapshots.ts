@@ -53,7 +53,7 @@ export const SERVICE_OFFER_SNAPSHOTS = {
     entryPoint: "Free scope review for Starter, Standard, Growth, or Custom fit",
     typicalTimeline: "Depends on route count, design readiness, integrations, migration risk, and launch QA",
     expectedOutput: "Package fit, budget drivers, risk notes, and recommended next step",
-    qualification: "Best when stakeholders need to understand why a build is $2K, $3K-$3.5K, $4.5K-$5K, or custom.",
+    qualification: "Best when stakeholders need to understand how HydrogenExpert would scope a first build at $2K, $3K-$3.5K, $4.5K-$5K, or custom.",
   },
   "custom-hydrogen-storefront-development": {
     entryPoint: "Starter, Standard, Growth, or Custom build scope",

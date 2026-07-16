@@ -445,12 +445,12 @@ export const SERVICE_PAGE_ENRICHMENTS = {
   },
   "shopify-hydrogen-cost": {
     uniqueSection: {
-      eyebrow: "Pricing by scope",
-      title: "Pricing is based on project scope, not traffic.",
+      eyebrow: "First-build budget",
+      title: "Estimate the work, not the audience size.",
       body: [
-        "Pricing is based on project scope, not traffic, pageviews, or store size. A lean Hydrogen storefront can start around $2,000 when the scope is clear: core pages, product flow, cart drawer, Shopify checkout handoff, and basic account entry.",
-        "More complex work increases the price when it adds custom filters, integrations, content models, migration risk, analytics, SEO preservation, or post-launch support.",
-        "A $2K Hydrogen build is not a full replatforming project. It is a focused storefront launch with a limited number of routes and features. If the project requires migration planning, advanced filtering, custom search, subscriptions, B2B, multiple apps, ERP/POS/WMS boundaries, or SEO-risky URL changes, the scope moves into the $3K-$5K or custom range.",
+        "HydrogenExpert prices the initial build by what must be designed, built, integrated, migrated, tested, and launched. Traffic, pageviews, and store size do not set the service range.",
+        "A focused first launch can start around $2,000 when it stays on the core shopping path. More templates, product logic, filters, search, apps, analytics, content models, SEO migration, redirect planning, and launch QA move the budget toward $5K or custom.",
+        "A $2K Hydrogen build is not a full replatforming project. If the requirements include subscriptions, B2B, multiple app replacements, ERP/POS/WMS boundaries, advanced search, or SEO-risky URL changes, the estimate needs custom scope rather than a compressed package.",
       ],
     },
     decisionTable: [
@@ -468,6 +468,11 @@ export const SERVICE_PAGE_ENRICHMENTS = {
         signal: "Migration risk, advanced search, B2B, subscriptions, app replacement, or custom product logic appears.",
         strongerMove: "Custom Hydrogen Scope.",
         caution: "Do not force complex projects into a $2K fixed-scope package.",
+      },
+      {
+        signal: "The need is theme polish, two or three merchant-editable sections, app cleanup, or focused performance work.",
+        strongerMove: "Keep Shopify Liquid, use a smaller cleanup, or choose no rebuild.",
+        caution: "Do not add custom application ownership without a specific product, content, or mobile buying constraint.",
       },
     ],
     contextualLinks: [

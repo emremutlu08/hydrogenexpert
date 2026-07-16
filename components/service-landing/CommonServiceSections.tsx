@@ -10,6 +10,53 @@ function formatShortAnswerAudience(bestFor: string) {
 }
 
 export function ShortAnswerSection({ service }: { service: ServicePackage }) {
+  if (service.slug === "shopify-hydrogen-cost") {
+    return (
+      <section className="surface-card space-y-5">
+        <div className="max-w-4xl space-y-3">
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#10b981]">
+            Budget answer
+          </p>
+          <p className="text-lg leading-8 text-neutral-700">
+            Use this page for total project budget logic and the requirements that move a first
+            Hydrogen launch from $2K toward $5K or custom. Use the dedicated paths below when the
+            next decision is package composition or post-launch ownership.
+          </p>
+        </div>
+        <div className="grid gap-4 md:grid-cols-2">
+          <Link
+            href="/shopify-hydrogen-packages"
+            className="rounded-[1.1rem] border border-black/8 bg-white p-5 transition hover:border-[#10b981]"
+          >
+            <span className="text-[0.68rem] font-bold uppercase tracking-[0.2em] text-[#0f8a5d]">
+              Package boundary
+            </span>
+            <span className="mt-3 block text-lg font-semibold text-[#171717]">
+              Package feature and deliverable comparison
+            </span>
+            <span className="mt-2 block text-sm leading-7 text-neutral-600">
+              Compare Starter, Standard, Growth, and Custom inclusions and exclusions.
+            </span>
+          </Link>
+          <Link
+            href="/shopify-hydrogen-maintenance-cost"
+            className="rounded-[1.1rem] border border-black/8 bg-white p-5 transition hover:border-[#10b981]"
+          >
+            <span className="text-[0.68rem] font-bold uppercase tracking-[0.2em] text-[#0f8a5d]">
+              Ownership boundary
+            </span>
+            <span className="mt-3 block text-lg font-semibold text-[#171717]">
+              Ongoing maintenance cost
+            </span>
+            <span className="mt-2 block text-sm leading-7 text-neutral-600">
+              Plan application ownership after the initial storefront launch.
+            </span>
+          </Link>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="surface-card space-y-3">
       <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#10b981]">
@@ -89,7 +136,7 @@ export function PricingRowsSection({ service }: { service: ServicePackage }) {
       <SectionHeader
         eyebrow="Budget ranges"
         title="Start the cost conversation with a real range."
-        description="Ranges are planning guidance for early qualification, not a final quote. The actual scope depends on design complexity, catalog behavior, integrations, SEO risk, analytics, QA, and launch support."
+        description="These are HydrogenExpert service ranges for early budget qualification, not Shopify or Oxygen platform pricing and not a final quote. The actual scope depends on design complexity, catalog behavior, integrations, SEO risk, analytics, QA, and launch support."
         className="max-w-5xl"
       />
       <div className="overflow-hidden rounded-[1.2rem] border border-black/8 bg-white">

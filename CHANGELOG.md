@@ -13,6 +13,42 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 - Verification:
 - Manual follow-up:
 
+## 2026-07-16
+
+- PR: [#95 Refresh Shopify Hydrogen pricing guide](https://github.com/emremutlu08/hydrogenexpert/pull/95)
+- Branch: `codex/shopify-hydrogen-cost-ctr-refresh`
+- Deployment: Not deployed; production deployment and live verification remain with the parent agent.
+- Summary:
+  - Refreshed `/shopify-hydrogen-cost` around the directional `shopify hydrogen pricing` query opportunity with a concise pricing-guide title, meta description, H1, and answer-first first-build budget statement.
+  - Clarified that the existing $2K-$5K range is HydrogenExpert's own fixed-scope service pricing, not official Shopify or Oxygen platform pricing, and connected `Request Scope Review` to budget qualification.
+  - Narrowed the route to total project-budget logic, cost drivers, fixed-scope boundaries, and concrete Liquid/no-rebuild guidance while handing package deliverable comparison and ongoing ownership costs to their canonical pages.
+  - Kept Service, FAQPage, and BreadcrumbList schema assembly on the shared service renderer; refreshed the visible FAQ data that feeds FAQPage schema and added cost-route regression guardrails.
+  - Rechecked the route source map, removed sources tied to sections no longer rendered, and preserved existing source verification/access dates because official Shopify sources could not be live-verified in the local environment.
+- Files changed:
+  - `features/services/registry/base.ts`
+  - `features/services/registry/enrichments.ts`
+  - `features/services/registry/offer-snapshots.ts`
+  - `features/services/registry/source-metadata.ts`
+  - `components/service-landing/CommonServiceSections.tsx`
+  - `components/service-landing/PackageServiceSections.tsx`
+  - `components/service-landing/ServiceLandingUtils.ts`
+  - `features/public-discovery/manifest.ts`
+  - `lib/commercial-launch-guard.ts`
+  - `tests/services.test.ts`
+  - `tests/commercial-launch-guard.test.ts`
+  - `CHANGELOG.md`
+- Verification:
+  - `git diff --check`: passed.
+  - Focused Vitest run: passed, 2 test files and 12 tests.
+  - `node --import ./node_modules/tsx/dist/loader.mjs scripts/validate-content.ts`: passed (`Content validation passed.`); the Node loader form was used because the sandbox blocks the `tsx` CLI IPC pipe.
+  - `node --import ./node_modules/tsx/dist/loader.mjs scripts/audit-shopify-claims.ts`: passed with no `Needs review` rows.
+  - Targeted ESLint across changed TypeScript and TSX files: passed.
+  - `tsc --noEmit`: passed.
+  - Server-rendered cost-route smoke: passed with the expected H1, pricing disclaimer, 2 package links, 3 maintenance links, scope-review CTA, Service/BreadcrumbList/FAQPage schema, 5 visible FAQ entries matching 5 FAQPage schema entries, no commercial-copy violations, and the removed package/maintenance detail sections absent.
+  - Shopify Hydrogen skill validator: valid; no Shopify Hydrogen UI components were present in the Next.js marketing component.
+- Manual follow-up:
+  - Parent agent to run full validation, preview/live verification, deploy, and Search Console follow-up.
+
 ## 2026-07-14
 
 - PR: [#94 Refresh developer vs agency decision guide](https://github.com/emremutlu08/hydrogenexpert/pull/94)
