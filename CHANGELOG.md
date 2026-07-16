@@ -15,7 +15,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## 2026-07-16
 
-- PR: Pending - parent agent will update after PR creation.
+- PR: [#95 Refresh Shopify Hydrogen pricing guide](https://github.com/emremutlu08/hydrogenexpert/pull/95)
 - Branch: `codex/shopify-hydrogen-cost-ctr-refresh`
 - Deployment: Not deployed; production deployment and live verification remain with the parent agent.
 - Summary:
@@ -47,7 +47,6 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - Server-rendered cost-route smoke: passed with the expected H1, pricing disclaimer, 2 package links, 3 maintenance links, scope-review CTA, Service/BreadcrumbList/FAQPage schema, 5 visible FAQ entries matching 5 FAQPage schema entries, no commercial-copy violations, and the removed package/maintenance detail sections absent.
   - Shopify Hydrogen skill validator: valid; no Shopify Hydrogen UI components were present in the Next.js marketing component.
 - Manual follow-up:
-  - After PR creation, replace the pending PR placeholder with the real PR number and URL.
   - Parent agent to run full validation, preview/live verification, deploy, and Search Console follow-up.
 
 ## 2026-07-14
