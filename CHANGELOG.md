@@ -13,6 +13,37 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 - Verification:
 - Manual follow-up:
 
+## Unreleased
+
+- Date: 2026-07-21
+- PR: Not opened; GitHub operations are outside this bounded local task.
+- Branch: `codex/agency-intent-owner-refresh-20260721`
+- Deployment: Not deployed; deployment is outside scope.
+- Summary:
+  - Made `/shopify-hydrogen-agency` the clear agency-intent owner through homepage, footer, and plural-experts comparison inbound links without changing adjacent route bodies or intent boundaries.
+  - Added the exact agency route to indexing-recovery and commercial-verification coverage and assigned its weekly high-intent sitemap override to the existing significant-update date.
+  - Added focused guards for internal-link and discovery authority wiring, plus the supplied 2026-06-21 through 2026-07-18 GSC evidence and 7/14/28-day follow-up plan.
+- Files changed:
+  - `app/page.tsx`
+  - `components/Footer.tsx`
+  - `features/services/registry/base.ts`
+  - `features/public-discovery/manifest.ts`
+  - `lib/commercial-launch-guard.ts`
+  - `tests/agency-intent-authority.test.ts`
+  - `tests/commercial-launch-guard.test.ts`
+  - `tests/sitemap-entries.test.ts`
+  - `docs/seo-gsc-commercial-intent-changelog.md`
+  - `CHANGELOG.md`
+- Verification:
+  - `git diff --check`: passed.
+  - `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed with no `Needs review` rows.
+  - `npm run lint`: passed.
+  - `npm run typecheck`: passed.
+  - `npm run test`: passed, 26 test files and 110 tests.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed; 76 static pages generated.
+- Manual follow-up: Recheck the `shopify hydrogen agency` query-to-page mapping after 7, 14, and 28 days following release.
+
 ## 2026-07-16
 
 - PR: [#95 Refresh Shopify Hydrogen pricing guide](https://github.com/emremutlu08/hydrogenexpert/pull/95)

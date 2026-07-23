@@ -16,6 +16,7 @@ import { TrustBar } from "@/components/TrustBar";
 import { TrackedCTALink, TrackedProofLink } from "@/components/TrackedInternalLink";
 import { UdemyCourseCard } from "@/components/UdemyCourseCard";
 import { clientLogos } from "@/data/clientLogos";
+import { requireServicePackageByPagePath } from "@/features/services/registry";
 import { FOUNDER_STORY } from "@/lib/founder";
 import { buildMetadata } from "@/lib/seo";
 import {
@@ -37,6 +38,7 @@ import {
 
 const LAST_UPDATED = "2026-05-25";
 const schemaIds = getSchemaIds();
+const agencyService = requireServicePackageByPagePath("/shopify-hydrogen-agency");
 
 export const metadata = buildMetadata({
   title: "Shopify Hydrogen Storefronts from $2K-$5K | HydrogenExpert",
@@ -303,6 +305,11 @@ const processSteps = [
 ] as const;
 
 const commercialPathLinks = [
+  {
+    href: agencyService.pagePath,
+    label: agencyService.name,
+    note: agencyService.summary,
+  },
   {
     href: "/shopify-hydrogen-developer",
     label: "Shopify Hydrogen Developer",

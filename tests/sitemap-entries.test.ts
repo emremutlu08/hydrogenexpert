@@ -134,6 +134,17 @@ describe("buildSitemapEntries", () => {
     expect(developerEntry?.lastModified).toEqual(LAST_SIGNIFICANT_UPDATE);
   });
 
+  it("gives the Shopify Hydrogen agency owner high-intent discovery metadata", () => {
+    const entries = buildSitemapEntries({ siteUrl, posts });
+    const agencyEntry = entries.find(
+      (entry) => new URL(entry.url).pathname === "/shopify-hydrogen-agency",
+    );
+
+    expect(agencyEntry?.changeFrequency).toBe("weekly");
+    expect(agencyEntry?.priority).toBe(0.9);
+    expect(agencyEntry?.lastModified).toEqual(LAST_SIGNIFICANT_UPDATE);
+  });
+
   it("keeps the GSC indexing recovery URL list discoverable in sitemap output", () => {
     const paths = buildSitemapEntries({
       siteUrl,
