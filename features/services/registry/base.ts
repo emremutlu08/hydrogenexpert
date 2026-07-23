@@ -470,6 +470,11 @@ export const SERVICE_PACKAGE_BASES = [
     ],
     relatedLinks: [
       {
+        href: "/shopify-hydrogen-agency",
+        label: "Shopify Hydrogen agency alternative",
+        note: "Use this when the comparison has narrowed to Hydrogen agency delivery versus direct senior ownership.",
+      },
+      {
         href: "/articles/shopify-hydrogen-experts-production-experience",
         label: "How to evaluate Shopify Hydrogen experts",
         note: "The supporting article for proof, questions, and production-experience checks.",

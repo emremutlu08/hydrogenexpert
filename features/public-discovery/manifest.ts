@@ -53,6 +53,7 @@ export const PUBLIC_DISCOVERY_ROUTES: readonly PublicDiscoveryRoute[] = [
 ] as const;
 
 export const INDEXING_RECOVERY_ROUTES = [
+  "/shopify-hydrogen-agency",
   "/shopify-hydrogen-developer",
   "/shopify-hydrogen-expert",
   "/shopify-hydrogen-experts",
@@ -84,6 +85,11 @@ export const STATIC_ROUTE_SITEMAP_OVERRIDES: Record<
   Pick<MetadataRoute.Sitemap[number], "changeFrequency" | "lastModified" | "priority">
 > = {
   [PACKAGE_ROUTE]: {
+    lastModified: LAST_SIGNIFICANT_UPDATE,
+    changeFrequency: "weekly",
+    priority: 0.9,
+  },
+  "/shopify-hydrogen-agency": {
     lastModified: LAST_SIGNIFICANT_UPDATE,
     changeFrequency: "weekly",
     priority: 0.9,
@@ -205,6 +211,7 @@ export const LLMS_CORE_PAGE_ENTRIES: readonly LlmsPageEntry[] = [
 export const COMMERCIAL_VERIFICATION_ROUTES = [
   "/",
   PACKAGE_ROUTE,
+  "/shopify-hydrogen-agency",
   "/shopify-hydrogen-cost",
   "/custom-shopify-hydrogen-storefront",
   "/shopify-hydrogen-audit",

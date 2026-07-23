@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import { COMMERCIAL_VERIFICATION_ROUTES } from "../features/public-discovery/manifest";
+import { requireServicePackageByPagePath } from "../features/services/registry";
 import {
   COMMERCIAL_COPY_RULES,
   checkCommercialCopy,
@@ -12,6 +13,7 @@ describe("commercial launch copy guard", () => {
       COMMERCIAL_VERIFICATION_ROUTES,
     );
     expect(COMMERCIAL_VERIFICATION_ROUTES).toContain("/hire-me");
+    expect(COMMERCIAL_VERIFICATION_ROUTES).toContain("/shopify-hydrogen-agency");
   });
 
   it("fails with route and phrase details when required copy disappears", () => {
@@ -20,6 +22,24 @@ describe("commercial launch copy guard", () => {
       phrase: "$2K-$5K",
       reason: "required commercial copy is missing",
     });
+  });
+
+  it("accepts the current agency page's canonical no-rebuild recommendation", () => {
+    const agency = requireServicePackageByPagePath("/shopify-hydrogen-agency");
+    const canonicalRecommendation = agency.deliverables.find((deliverable) =>
+      deliverable.includes("no-rebuild"),
+    );
+
+    expect(canonicalRecommendation).toBeDefined();
+
+    const currentAgencyContent = [
+      agency.heroTitle,
+      agency.summary,
+      canonicalRecommendation,
+      "Request Scope Review",
+    ].join(" ");
+
+    expect(checkCommercialCopy(agency.pagePath, currentAgencyContent)).toEqual([]);
   });
 
   it("rejects legacy premium agency pricing language", () => {
