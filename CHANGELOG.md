@@ -16,8 +16,8 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 ## Unreleased
 
 - Date: 2026-07-21
-- PR: [#96 Clarify Shopify Hydrogen agency intent ownership](https://github.com/emremutlu08/hydrogenexpert/pull/96)
-- Branch: `codex/agency-intent-owner-refresh-20260721`
+- PR: [#97 Clarify Shopify Hydrogen agency intent ownership](https://github.com/emremutlu08/hydrogenexpert/pull/97)
+- Branch: `codex/agency-intent-owner-refresh-20260723`
 - Deployment: Pending PR checks, merge, and production verification.
 - Summary:
   - Made `/shopify-hydrogen-agency` the clear agency-intent owner through homepage, footer, and plural-experts comparison inbound links without changing adjacent route bodies or intent boundaries.
