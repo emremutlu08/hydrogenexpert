@@ -41,6 +41,13 @@ const COMMERCIAL_REQUIRED_COPY_BY_ROUTE: Record<
       "visual builder",
       "Request Scope Review",
     ],
+  "/shopify-hydrogen-agency": [
+      "Shopify Hydrogen agency alternative",
+      "senior",
+      "Liquid",
+      "no-rebuild",
+      "Request Scope Review",
+    ],
   "/shopify-hydrogen-cost": [
       "$2K-$5K",
       "fixed-scope",

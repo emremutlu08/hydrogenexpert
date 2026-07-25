@@ -39,6 +39,7 @@ interface FooterProps {
 const SERVICE_ITEMS = [
   { href: "/shopify-hydrogen-packages", label: "Hydrogen Build Packages" },
   { href: "/shopify-hydrogen-cost", label: "Hydrogen Cost" },
+  { href: "/shopify-hydrogen-agency", label: "Shopify Hydrogen Agency Alternative" },
   { href: "/shopify-hydrogen-developer", label: "Shopify Hydrogen Developer" },
   { href: "/custom-shopify-hydrogen-storefront", label: "Custom Hydrogen Storefront" },
   { href: "/shopify-hydrogen-audit", label: "Hydrogen Scope Review" },

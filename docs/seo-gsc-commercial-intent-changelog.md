@@ -225,3 +225,25 @@ Next Search Console follow-up:
 - Day 7: confirm `/shopify-hydrogen-developer` remains indexed and has page-level impressions.
 - Day 14: if indexed with impressions but low CTR, review title/meta/snippet copy; if indexed with no impressions, add external mentions and profile links.
 - Day 28: if homepage still receives developer-query impressions, open another internal-routing PR; if `/shopify-hydrogen-developer` enters top 20, strengthen the cluster around the developer page.
+
+## 2026-07-21 Shopify Hydrogen agency intent-owner response
+
+Observed from Google Search Console for 2026-06-21 through 2026-07-18:
+- The query `shopify hydrogen agency` produced 121 impressions, 0 clicks, and an average position of 15.1 on `/shopify-hydrogen-experts`.
+- The exact intent owner `/shopify-hydrogen-agency` was absent from the bounded top rows.
+
+Diagnosis:
+- Internal-link and discovery authority was routed too weakly toward the exact agency page, allowing the plural experts comparison page to receive agency-query impressions.
+- The issue was treated as link-graph and discovery misrouting, not duplicate body copy. The distinct agency, plural experts, singular expert, developer-versus-agency article, USA agency, and headless agency intents remain unchanged.
+
+Bounded changes:
+- Added the exact agency owner to the homepage commercial path cluster using its canonical service-registry fields.
+- Added the exact agency owner to the sitewide footer services list.
+- Added a contextual link from `/shopify-hydrogen-experts` to `/shopify-hydrogen-agency`; the singular expert page was left unchanged to avoid duplicating its existing agency-comparison path.
+- Added the exact agency owner to indexing-recovery and commercial-verification coverage, with a weekly `0.9` sitemap override using the existing `LAST_SIGNIFICANT_UPDATE` value.
+- Added focused regression coverage for homepage, footer, expert-comparison, discovery, verification, and sitemap authority wiring.
+
+Next Search Console follow-up:
+- Day 7: inspect `/shopify-hydrogen-agency` and `/shopify-hydrogen-experts`; confirm the exact agency owner remains indexable and begins receiving query-level impressions.
+- Day 14: recheck the query-to-page mapping for `shopify hydrogen agency`; compare impressions, clicks, CTR, and average position for the agency owner and plural experts page.
+- Day 28: confirm `/shopify-hydrogen-agency` is the primary page receiving the query; if misrouting persists, review external authority and snippet alignment without merging the distinct intent pages.
