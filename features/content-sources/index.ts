@@ -1216,11 +1216,17 @@ export const STATIC_PAGE_SOURCE_METADATA = {
   },
   "/what-is-hydrogen": {
     lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
-    claimTypes: ["official_shopify_fact", "commercial_opinion"],
+    claimTypes: ["official_shopify_fact"],
     sourceMap: [
+      SOURCE_PACKS.onlineStore20ThemeEditor,
       SOURCE_PACKS.hydrogenFundamentals,
-      SOURCE_PACKS.emreProductionExperience,
+      SOURCE_PACKS.headlessBuildOptions,
+      SOURCE_PACKS.hydrogenDataFetching,
     ],
+    targetKeyword: "what is Shopify Hydrogen",
+    searchIntent: "Understand the definition and architecture of Shopify Hydrogen",
+    reviewedBy: "Claude pre-review plus Codex source-grounded implementation",
+    contentType: "Definition and architecture guide",
   },
   "/shopify-hydrogen-seo-guide": {
     lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,

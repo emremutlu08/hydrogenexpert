@@ -15,6 +15,29 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## Unreleased
 
+- Date: 2026-07-28
+- PR: [#98 Refresh Shopify Hydrogen definition and architecture guide](https://github.com/emremutlu08/hydrogenexpert/pull/98)
+- Branch: `codex/what-is-shopify-hydrogen-refresh-2026-07-28`
+- Deployment: Pending PR checks, merge, and production verification.
+- Summary:
+  - Refreshed `/what-is-hydrogen` as the answer-first definition and architecture owner for Shopify Hydrogen queries.
+  - Added the Shopify Admin → Storefront API → Hydrogen storefront → Shopify Checkout data flow and definition-focused FAQs.
+  - Removed Shopify Plus-only framing, adoption-intent overlap, and the former service-qualification CTA; routed fit and deep comparison intent to their canonical pages.
+  - Aligned official source metadata and public AI discovery copy, with focused intent-ownership regression guards.
+- Files changed:
+  - `app/what-is-hydrogen/page.tsx`
+  - `features/content-sources/index.ts`
+  - `features/public-discovery/manifest.ts`
+  - `tests/what-is-hydrogen-intent.test.ts`
+  - `CHANGELOG.md`
+- Verification:
+  - Claude pre-review required revision; Claude final review passed at 88/100 with no blockers.
+  - `git diff --check`, `npm run lint`, `npm run typecheck`, `npm run validate:content`, and `npm run audit:shopify-claims`: passed.
+  - `npm run test`: passed, 27 test files and 115 tests.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed; 76 static pages generated.
+  - Local production smoke verified title, H1, self-canonical, four-stage flow, FAQPage/BreadcrumbList schema, intent-owner links, and removed adoption/sales copy.
+- Manual follow-up: Verify production HTTP/HTML, sitemap, `llms-full.txt`, robots sitemap reference, and live internal links after merge/deploy; measure GSC only after a mature post-deploy window.
+
 - Date: 2026-07-21
 - PR: [#97 Clarify Shopify Hydrogen agency intent ownership](https://github.com/emremutlu08/hydrogenexpert/pull/97)
 - Branch: `codex/agency-intent-owner-refresh-20260723`
