@@ -150,7 +150,7 @@ export const LLMS_CORE_PAGE_ENTRIES: readonly LlmsPageEntry[] = [
     title: "What Is Hydrogen",
     path: "/what-is-hydrogen",
     description:
-      "Plain-English explanation of Shopify Hydrogen for Shopify Plus and growth-stage brands.",
+      "Definition and architecture of Shopify Hydrogen, including the Shopify Admin, Storefront API, Hydrogen storefront, and Shopify Checkout data flow.",
   },
   {
     title: "News on Shopify Hydrogen",
