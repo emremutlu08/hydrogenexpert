@@ -165,7 +165,7 @@ const faqs = [
     question: "Where should I go for direct Hydrogen developer support?",
     answer:
       "Use the dedicated developer service page when the scope is clear and you need direct help with Hydrogen routes, Storefront API data, SEO-safe launch work, product flow, cart behavior, and launch QA. If the scope is unclear, start with a free scope review before buying a full audit.",
-    linkHref: "/shopify-hydrogen-developer",
+    linkHref: "/shopify-hydrogen-expert",
     linkLabel: "Review direct developer support.",
   },
   {
@@ -304,7 +304,7 @@ const processSteps = [
 
 const commercialPathLinks = [
   {
-    href: "/shopify-hydrogen-developer",
+    href: "/shopify-hydrogen-expert",
     label: "Shopify Hydrogen Developer",
     note: "Direct senior implementation for Hydrogen routes, product flow, cart behavior, SEO-safe launch work, and support.",
   },

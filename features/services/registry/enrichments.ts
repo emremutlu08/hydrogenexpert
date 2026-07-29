@@ -35,7 +35,7 @@ export const SERVICE_PAGE_ENRICHMENTS = {
         note: "A national retail context where Hydrogen needed operating discipline.",
       },
       {
-        href: "/shopify-hydrogen-developer",
+        href: "/shopify-hydrogen-expert",
         label: "Senior developer path",
         note: "Useful when stakeholders are comparing direct execution with agency delivery.",
       },
@@ -146,7 +146,7 @@ export const SERVICE_PAGE_ENRICHMENTS = {
         note: "DTC, education, product, and partner paths inside one storefront.",
       },
       {
-        href: "/shopify-hydrogen-experts",
+        href: "/shopify-hydrogen-expert",
         label: "Shopify Hydrogen experts",
         note: "Use this when the buyer is comparing proof, expert claims, agencies, and direct senior support.",
       },
@@ -217,7 +217,7 @@ export const SERVICE_PAGE_ENRICHMENTS = {
         note: "DTC, education, product, and partner paths inside one Hydrogen storefront.",
       },
       {
-        href: "/shopify-hydrogen-experts",
+        href: "/shopify-hydrogen-expert",
         label: "Broader expert comparison",
         note: "Use this when stakeholders are still comparing experts, agencies, and marketplace options.",
       },

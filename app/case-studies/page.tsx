@@ -188,7 +188,7 @@ export default function CaseStudiesPage() {
           <div className="authority-links">
             {[
               {
-                href: "/shopify-hydrogen-developer",
+                href: "/shopify-hydrogen-expert",
                 label: "Production Shopify Hydrogen storefront work",
                 note: "Use this when the next step is direct senior implementation support.",
               },

@@ -319,7 +319,7 @@ function getCaseStudyLinks(studyId: CaseStudyId) {
   const links = {
     eveshop: [
       {
-        href: "/shopify-hydrogen-developer",
+        href: "/shopify-hydrogen-expert",
         label: "Production Shopify Hydrogen storefront work",
         note: "Direct implementation path for storefronts with real catalog and launch constraints.",
       },
@@ -341,7 +341,7 @@ function getCaseStudyLinks(studyId: CaseStudyId) {
     ],
     bayam: [
       {
-        href: "/shopify-hydrogen-developer",
+        href: "/shopify-hydrogen-expert",
         label: "Senior Shopify Hydrogen development",
         note: "Direct implementation path for premium catalog and custom storefront UX.",
       },
@@ -368,7 +368,7 @@ function getCaseStudyLinks(studyId: CaseStudyId) {
     ],
     "rebel-bunny": [
       {
-        href: "/shopify-hydrogen-developer",
+        href: "/shopify-hydrogen-expert",
         label: "Production Shopify Hydrogen storefront work",
         note: "Direct implementation path for content-commerce and DTC storefront systems.",
       },

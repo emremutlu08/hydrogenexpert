@@ -13,7 +13,7 @@ const repoRoot = process.cwd();
 const criticalRouteFiles = [
   ["/", "app/page.tsx"],
   [PACKAGE_PAGE_DISCOVERY.path, "app/shopify-hydrogen-packages/page.tsx"],
-  ["/shopify-hydrogen-developer", "app/shopify-hydrogen-developer/page.tsx"],
+  ["/shopify-hydrogen-expert", "app/shopify-hydrogen-expert/page.tsx"],
   ["/custom-shopify-hydrogen-storefront", "app/custom-shopify-hydrogen-storefront/page.tsx"],
   ["/resources", "app/resources/page.tsx"],
   ["/contact", "app/contact/page.tsx"],

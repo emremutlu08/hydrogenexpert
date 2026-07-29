@@ -6,6 +6,7 @@ import {
   PACKAGE_PAGE_DISCOVERY,
 } from "../features/public-discovery/manifest";
 import { getPublicArticlesForDate } from "../lib/articles";
+import { isRedirectSource } from "../lib/legacy-redirects";
 import type { PostSummary } from "../lib/posts";
 import { buildSitemapEntries, NOINDEX_STATIC_ROUTES } from "../lib/sitemap-entries";
 
@@ -49,9 +50,9 @@ describe("buildSitemapEntries", () => {
     expect(paths).toContain("/udemy-shopify-hydrogen-course-resources");
     expect(paths).toContain("/shopify-hydrogen-agency");
     expect(paths).toContain("/headless-shopify-agency");
-    expect(paths).toContain("/shopify-hydrogen-developer");
     expect(paths).toContain("/shopify-hydrogen-expert");
-    expect(paths).toContain("/shopify-hydrogen-experts");
+    expect(paths).not.toContain("/shopify-hydrogen-developer");
+    expect(paths).not.toContain("/shopify-hydrogen-experts");
     expect(paths).toContain("/shopify-hydrogen-audit");
     expect(paths).toContain("/liquid-to-hydrogen-migration");
     expect(paths).toContain("/shopify-hydrogen-seo");
@@ -123,15 +124,34 @@ describe("buildSitemapEntries", () => {
     expect(paths).not.toContain("/articles/future-scheduled-article");
   });
 
-  it("gives the Shopify Hydrogen developer page fresh discovery metadata", () => {
+  it("gives the canonical Shopify Hydrogen expert page fresh discovery metadata", () => {
     const entries = buildSitemapEntries({ siteUrl, posts });
-    const developerEntry = entries.find(
-      (entry) => new URL(entry.url).pathname === "/shopify-hydrogen-developer",
+    const expertEntry = entries.find(
+      (entry) => new URL(entry.url).pathname === "/shopify-hydrogen-expert",
     );
 
-    expect(developerEntry?.changeFrequency).toBe("weekly");
-    expect(developerEntry?.priority).toBe(0.9);
-    expect(developerEntry?.lastModified).toEqual(LAST_SIGNIFICANT_UPDATE);
+    expect(expertEntry?.changeFrequency).toBe("weekly");
+    expect(expertEntry?.priority).toBe(0.95);
+    expect(expertEntry?.lastModified).toEqual(LAST_SIGNIFICANT_UPDATE);
+  });
+
+  it("never advertises a 301 source in the sitemap", () => {
+    const entries = buildSitemapEntries({
+      siteUrl,
+      posts,
+      articles: [
+        {
+          slug: "past-public-article",
+          updatedAt: "2026-01-01T00:00:00.000Z",
+        } as never,
+      ],
+    });
+
+    const advertisedRedirectSources = entries
+      .map((entry) => new URL(entry.url).pathname)
+      .filter((pathname) => isRedirectSource(pathname));
+
+    expect(advertisedRedirectSources).toEqual([]);
   });
 
   it("keeps the GSC indexing recovery URL list discoverable in sitemap output", () => {

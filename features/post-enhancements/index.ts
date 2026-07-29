@@ -245,7 +245,7 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
     ],
     internalLinks: [
       {
-        href: "/shopify-hydrogen-developer",
+        href: "/shopify-hydrogen-expert",
         label: "Shopify Hydrogen developer",
         note: "Use this when carousel behavior, media timing, and storefront UI logic need direct senior implementation.",
       },
@@ -829,7 +829,7 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
     ogImage: "/og-post.svg",
     internalLinks: [
       {
-        href: "/shopify-hydrogen-developer",
+        href: "/shopify-hydrogen-expert",
         label: "Hire a Shopify Hydrogen developer",
         note: "The direct hiring path when the store needs senior Hydrogen implementation ownership.",
       },
@@ -918,7 +918,7 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
         note: "Use this for the broader crawl, metadata, canonical, sitemap, and structured-data checklist.",
       },
       {
-        href: "/shopify-hydrogen-developer",
+        href: "/shopify-hydrogen-expert",
         label: "Hire a Shopify Hydrogen developer",
         note: "Use this when product content, Storefront API data, and initial HTML need implementation ownership.",
       },
@@ -992,7 +992,7 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
         note: "Use this when page-specific content needs to stay crawlable, canonical, and structured.",
       },
       {
-        href: "/shopify-hydrogen-developer",
+        href: "/shopify-hydrogen-expert",
         label: "Hire a Shopify Hydrogen developer",
         note: "Use this when merchant-editable content models need to become stable Hydrogen components.",
       },
@@ -1076,7 +1076,7 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
         note: "Use this when variant URLs, canonicals, structured data, and rendered product state need to agree.",
       },
       {
-        href: "/shopify-hydrogen-developer",
+        href: "/shopify-hydrogen-expert",
         label: "Shopify Hydrogen developer",
         note: "Use this when variant resolver logic, product options, and URL state need implementation support.",
       },
@@ -1145,7 +1145,7 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
     ogImage: "/og-post.svg",
     internalLinks: [
       {
-        href: "/shopify-hydrogen-developer",
+        href: "/shopify-hydrogen-expert",
         label: "Shopify Hydrogen developer",
         note: "Use this when SSR, data loading, and storefront performance fixes need direct implementation.",
       },

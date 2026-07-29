@@ -19,8 +19,13 @@ export const LEGACY_PERMANENT_REDIRECTS = new Map([
   ["/case-studies/rebel-bunny", "/case-studies/rebel-bunny-shopify-hydrogen"],
   ["/blog/shopify-hydrogen-seo", "/shopify-hydrogen-seo"],
   ["/shopify-headless-commerce", "/headless-shopify-agency"],
-  ["/shopify-storefront-api-developer", "/shopify-hydrogen-developer"],
+  ["/shopify-storefront-api-developer", "/shopify-hydrogen-expert"],
+  ["/shopify-hydrogen-experts", "/shopify-hydrogen-expert"],
+  ["/shopify-hydrogen-developer", "/shopify-hydrogen-expert"],
+  ["/blog/how-to-find-shopify-hydrogen-expert", "/shopify-hydrogen-expert"],
 ]);
+
+export const CANONICAL_HIRING_PAGE = "/shopify-hydrogen-expert";
 
 export function normalizeRedirectPathname(pathname: string) {
   if (pathname !== "/" && pathname.endsWith("/")) {
@@ -32,4 +37,23 @@ export function normalizeRedirectPathname(pathname: string) {
 
 export function getLegacyPermanentRedirect(pathname: string) {
   return LEGACY_PERMANENT_REDIRECTS.get(normalizeRedirectPathname(pathname)) ?? null;
+}
+
+export function isRedirectSource(pathname: string) {
+  return LEGACY_PERMANENT_REDIRECTS.has(normalizeRedirectPathname(pathname));
+}
+
+/**
+ * A 301 whose destination is itself a 301 source costs an extra hop and dilutes
+ * the consolidated signal. Consolidation only pays off if every source lands on
+ * a final URL in one jump.
+ */
+export function findRedirectChains() {
+  return [...LEGACY_PERMANENT_REDIRECTS.entries()]
+    .filter(([, destination]) => isRedirectSource(destination))
+    .map(([source, destination]) => ({
+      source,
+      destination,
+      finalDestination: LEGACY_PERMANENT_REDIRECTS.get(normalizeRedirectPathname(destination)),
+    }));
 }

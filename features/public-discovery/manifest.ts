@@ -53,9 +53,7 @@ export const PUBLIC_DISCOVERY_ROUTES: readonly PublicDiscoveryRoute[] = [
 ] as const;
 
 export const INDEXING_RECOVERY_ROUTES = [
-  "/shopify-hydrogen-developer",
   "/shopify-hydrogen-expert",
-  "/shopify-hydrogen-experts",
   "/articles/how-to-hire-shopify-hydrogen-developer",
   "/articles/shopify-hydrogen-developer-vs-agency",
   "/articles/shopify-hydrogen-experts-production-experience",
@@ -88,20 +86,10 @@ export const STATIC_ROUTE_SITEMAP_OVERRIDES: Record<
     changeFrequency: "weekly",
     priority: 0.9,
   },
-  "/shopify-hydrogen-developer": {
-    lastModified: LAST_SIGNIFICANT_UPDATE,
-    changeFrequency: "weekly",
-    priority: 0.9,
-  },
   "/shopify-hydrogen-expert": {
     lastModified: LAST_SIGNIFICANT_UPDATE,
     changeFrequency: "weekly",
-    priority: 0.9,
-  },
-  "/shopify-hydrogen-experts": {
-    lastModified: LAST_SIGNIFICANT_UPDATE,
-    changeFrequency: "weekly",
-    priority: 0.88,
+    priority: 0.95,
   },
   "/case-studies": {
     lastModified: LAST_SIGNIFICANT_UPDATE,

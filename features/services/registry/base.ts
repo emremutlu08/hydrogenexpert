@@ -134,12 +134,12 @@ export const SERVICE_PACKAGE_BASES = [
         note: "Use this when the search is broader than Hydrogen but still about headless Shopify architecture.",
       },
       {
-        href: "/shopify-hydrogen-developer",
+        href: "/shopify-hydrogen-expert",
         label: "Shopify Hydrogen developer",
         note: "Use this when the immediate need is senior implementation rather than agency comparison.",
       },
       {
-        href: "/shopify-hydrogen-experts",
+        href: "/shopify-hydrogen-expert",
         label: "Shopify Hydrogen experts",
         note: "Use this when stakeholders are comparing expert proof, agency options, and senior support paths.",
       },
@@ -208,7 +208,7 @@ export const SERVICE_PACKAGE_BASES = [
     ],
     relatedLinks: [
       {
-        href: "/shopify-hydrogen-developer",
+        href: "/shopify-hydrogen-expert",
         label: "Shopify Hydrogen developer",
         note: "Use this when the headless decision has become direct implementation work.",
       },
@@ -393,12 +393,12 @@ export const SERVICE_PACKAGE_BASES = [
     ],
     relatedLinks: [
       {
-        href: "/shopify-hydrogen-experts",
+        href: "/shopify-hydrogen-expert",
         label: "Compare Shopify Hydrogen experts",
         note: "Use this when stakeholders want a broader expert and agency comparison path.",
       },
       {
-        href: "/shopify-hydrogen-developer",
+        href: "/shopify-hydrogen-expert",
         label: "Hire a Shopify Hydrogen developer",
         note: "Use this when the need has already become implementation work.",
       },
@@ -480,7 +480,7 @@ export const SERVICE_PACKAGE_BASES = [
         note: "Use this when the buyer wants one senior expert rather than a broad comparison.",
       },
       {
-        href: "/shopify-hydrogen-developer",
+        href: "/shopify-hydrogen-expert",
         label: "Hire a Shopify Hydrogen developer",
         note: "Use this when the search turns into direct senior implementation support.",
       },
@@ -699,7 +699,7 @@ export const SERVICE_PACKAGE_BASES = [
         note: "Review storefront proof before turning SEO findings into implementation scope.",
       },
       {
-        href: "/shopify-hydrogen-developer",
+        href: "/shopify-hydrogen-expert",
         label: "Shopify Hydrogen developer",
         note: "Use this when SEO findings require route, data, or rendering implementation.",
       },

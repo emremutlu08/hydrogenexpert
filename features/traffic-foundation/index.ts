@@ -275,7 +275,7 @@ export const RESOURCE_CLUSTERS = [
         note: "What a senior Hydrogen developer should own.",
       },
       {
-        href: "/shopify-hydrogen-developer",
+        href: "/shopify-hydrogen-expert",
         label: "Developer service",
         note: "The direct path from learning to scoped work.",
       },

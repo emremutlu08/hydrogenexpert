@@ -80,7 +80,22 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/shopify-storefront-api-developer",
-        destination: "/shopify-hydrogen-developer",
+        destination: "/shopify-hydrogen-expert",
+        permanent: true,
+      },
+      {
+        source: "/shopify-hydrogen-experts",
+        destination: "/shopify-hydrogen-expert",
+        permanent: true,
+      },
+      {
+        source: "/shopify-hydrogen-developer",
+        destination: "/shopify-hydrogen-expert",
+        permanent: true,
+      },
+      {
+        source: "/blog/how-to-find-shopify-hydrogen-expert",
+        destination: "/shopify-hydrogen-expert",
         permanent: true,
       },
     ];

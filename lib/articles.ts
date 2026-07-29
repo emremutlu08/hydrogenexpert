@@ -137,7 +137,7 @@ const ARTICLES = [
     conclusion:
       "If you are deciding whether to hire a Shopify Hydrogen developer, start with a direct scope review before rebuild budget moves.",
     links: [
-      { href: "/shopify-hydrogen-developer", label: "Hire a Shopify Hydrogen Developer" },
+      { href: "/shopify-hydrogen-expert", label: "Hire a Shopify Hydrogen Developer" },
       { href: "/shopify-hydrogen-audit", label: "Request Scope Review" },
       { href: "/case-studies", label: "See Production Proof" },
       { href: "/shopify-hydrogen-cost", label: "Review Hydrogen cost ranges" },
@@ -205,7 +205,7 @@ const ARTICLES = [
     conclusion:
       "The best choice is the one that matches the real scope. If the work is not clear yet, clarify risk before buying capacity.",
     links: [
-      { href: "/shopify-hydrogen-developer", label: "Hire a Shopify Hydrogen Developer" },
+      { href: "/shopify-hydrogen-expert", label: "Hire a Shopify Hydrogen Developer" },
       { href: "/shopify-hydrogen-agency", label: "Shopify Hydrogen agency alternative" },
       { href: "/shopify-hydrogen-audit", label: "Request Scope Review" },
       { href: "/case-studies", label: "See Production Proof" },
@@ -242,7 +242,7 @@ const ARTICLES = [
     conclusion:
       "Experienced Hydrogen developers should protect the storefront as a system, not just complete tickets in a React codebase.",
     links: [
-      { href: "/shopify-hydrogen-developer", label: "Hire a Shopify Hydrogen Developer" },
+      { href: "/shopify-hydrogen-expert", label: "Hire a Shopify Hydrogen Developer" },
       { href: "/case-studies", label: "See Production Proof" },
       { href: "/shopify-hydrogen-seo", label: "Review Hydrogen SEO" },
       { href: "/shopify-hydrogen-maintenance-cost", label: "Understand maintenance cost" },
@@ -286,8 +286,8 @@ const ARTICLES = [
       "Evaluate Shopify Hydrogen expertise by proof, judgment, and maintenance realism before choosing a rebuild path.",
     links: [
       { href: "/", label: "HydrogenExpert" },
-      { href: "/shopify-hydrogen-experts", label: "Shopify Hydrogen Experts" },
-      { href: "/shopify-hydrogen-developer", label: "Hire a Shopify Hydrogen Developer" },
+      { href: "/shopify-hydrogen-expert", label: "Shopify Hydrogen Experts" },
+      { href: "/shopify-hydrogen-expert", label: "Hire a Shopify Hydrogen Developer" },
       { href: "/shopify-hydrogen-audit", label: "Request Scope Review" },
       { href: "/case-studies", label: "See Production Proof" },
       { href: "/contact", label: "Request Scope Review" },
@@ -324,7 +324,7 @@ const ARTICLES = [
     links: [
       { href: "/shopify-hydrogen-cost", label: "Review Hydrogen cost ranges" },
       { href: "/shopify-hydrogen-audit", label: "Request Scope Review" },
-      { href: "/shopify-hydrogen-developer", label: "Hire a Shopify Hydrogen Developer" },
+      { href: "/shopify-hydrogen-expert", label: "Hire a Shopify Hydrogen Developer" },
       { href: "/case-studies", label: "See Production Proof" },
       { href: "/contact", label: "Request Scope Review" },
     ],
