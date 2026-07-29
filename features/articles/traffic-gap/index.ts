@@ -25,6 +25,27 @@ const TRAFFIC_GAP_ARTICLE_MODULES = [
   shopifyHydrogenSeoChecklist,
 ] as const;
 
+/**
+ * These ten articles hold the best Search Console positions on the site
+ * (roughly 6 to 10), while the commercial pages sit near 20. None of them
+ * linked to the hiring owner, so the strongest pages passed their
+ * authority nowhere. Guarantee the link at assembly time.
+ */
+const CANONICAL_HIRING_LINK = {
+  href: "/shopify-hydrogen-expert",
+  label: "Hire a senior Shopify Hydrogen expert",
+} as const;
+
+function withCanonicalHiringLink(links: readonly Article["links"][number][]) {
+  const deduped = links.filter(
+    (link, index) => links.findIndex((candidate) => candidate.href === link.href) === index,
+  );
+
+  return deduped.some((link) => link.href === CANONICAL_HIRING_LINK.href)
+    ? deduped
+    : [...deduped, CANONICAL_HIRING_LINK];
+}
+
 export const TRAFFIC_GAP_ARTICLES = TRAFFIC_GAP_ARTICLE_MODULES.map(({ draft, refresh }) => {
   return {
     ...draft,
@@ -33,5 +54,6 @@ export const TRAFFIC_GAP_ARTICLES = TRAFFIC_GAP_ARTICLE_MODULES.map(({ draft, re
     takeaways: refresh.takeaways,
     sections: [...draft.sections, ...refresh.sections],
     faq: refresh.faq,
+    links: withCanonicalHiringLink(draft.links),
   };
 }) satisfies readonly Article[];
