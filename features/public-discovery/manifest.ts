@@ -180,7 +180,7 @@ export const LLMS_CORE_PAGE_ENTRIES: readonly LlmsPageEntry[] = [
     title: "Articles",
     path: "/articles",
     description:
-      "Evergreen merchant guides for Hydrogen stack, CMS, app, analytics, AI commerce, B2B, launch, markets, search, SEO, hiring, cost, migration, and fit decisions.",
+      "Evergreen merchant guides for Hydrogen stack, CMS, app, analytics, AI commerce, B2B, launch, markets, search, SEO, migration, and fit decisions.",
   },
   {
     title: "Blog",
