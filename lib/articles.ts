@@ -286,8 +286,7 @@ const ARTICLES = [
       "Evaluate Shopify Hydrogen expertise by proof, judgment, and maintenance realism before choosing a rebuild path.",
     links: [
       { href: "/", label: "HydrogenExpert" },
-      { href: "/shopify-hydrogen-expert", label: "Shopify Hydrogen Experts" },
-      { href: "/shopify-hydrogen-expert", label: "Hire a Shopify Hydrogen Developer" },
+      { href: "/shopify-hydrogen-expert", label: "Hire a Shopify Hydrogen Expert" },
       { href: "/shopify-hydrogen-audit", label: "Request Scope Review" },
       { href: "/case-studies", label: "See Production Proof" },
       { href: "/contact", label: "Request Scope Review" },

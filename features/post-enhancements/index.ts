@@ -1254,11 +1254,37 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
   },
 };
 
+/**
+ * Production notes are the pages Search Console ranks best (positions 6-8),
+ * while the commercial pages sit far lower. That trust only transfers if every
+ * note actually links to the one canonical hiring page, so guarantee it here
+ * rather than depending on each entry remembering to add it.
+ */
+const CANONICAL_HIRING_LINK: PostReferenceLink = {
+  href: "/shopify-hydrogen-expert",
+  label: "Senior Shopify Hydrogen expert",
+  note: "Use this when the storefront problem in this note needs senior implementation ownership.",
+};
+
+function withCanonicalHiringLink(links: PostReferenceLink[]): PostReferenceLink[] {
+  // Consolidating several service pages into one collapsed distinct links into
+  // duplicates pointing at the same URL. Keep the first label for each href.
+  const deduped = links.filter(
+    (link, index) => links.findIndex((candidate) => candidate.href === link.href) === index,
+  );
+
+  if (deduped.some((link) => link.href === CANONICAL_HIRING_LINK.href)) {
+    return deduped;
+  }
+
+  return [...deduped, CANONICAL_HIRING_LINK];
+}
+
 export function getPostEnhancement(slug: string) {
   const enhancement = POST_ENHANCEMENTS[slug] ?? { heroVisual: { type: "none" as const } };
 
   return {
     ...enhancement,
-    internalLinks: enhancement.internalLinks ?? DEFAULT_INTERNAL_LINKS,
+    internalLinks: withCanonicalHiringLink(enhancement.internalLinks ?? DEFAULT_INTERNAL_LINKS),
   };
 }
