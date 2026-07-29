@@ -16,10 +16,14 @@ import {
 
 export const revalidate = 3600;
 
+// This hub is an index, not a commercial landing page. Hiring and cost wording
+// here made it surface for "hire shopify hydrogen developers" and "shopify
+// hydrogen experts" at positions 76-97, competing with the pages that are
+// supposed to answer those queries. Keep the description on library scope.
 export const metadata = buildMetadata({
-  title: "Shopify Hydrogen Articles | Hiring, Cost, SEO & Migration Guides",
+  title: "Shopify Hydrogen Articles | Implementation & Decision Guides",
   description:
-    "Evergreen Shopify Hydrogen articles for merchants evaluating developer hiring, agency alternatives, migration risk, SEO, cost, and fit decisions.",
+    "Evergreen Shopify Hydrogen guides on migration risk, SEO, analytics, apps, B2B, markets, search, and launch readiness.",
   path: "/articles",
 });
 
