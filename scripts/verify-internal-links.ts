@@ -1,3 +1,5 @@
+export {};
+
 const DEFAULT_BASE_URL = "http://localhost:3000";
 const DEFAULT_SITE_URL = "https://hydrogenexpert.co";
 const INTERNAL_HOSTS = new Set(["hydrogenexpert.co", "www.hydrogenexpert.co"]);
