@@ -121,6 +121,13 @@ async function fetchPageSpeed(path = "/") {
   const key = process.env.GOOGLE_API_KEY ?? process.env.PAGESPEED_API_KEY;
   if (key) url.searchParams.set("key", key);
   const response = await fetch(url);
+  if (response.status === 429 && !key) {
+    // Unkeyed PageSpeed calls share a tiny public quota, so 429 here is a
+    // missing-credential problem rather than a transient one worth retrying.
+    throw new Error(
+      "PageSpeed HTTP 429 with no API key set. Core Web Vitals have never been captured. Set GOOGLE_API_KEY or PAGESPEED_API_KEY.",
+    );
+  }
   if (!response.ok) throw new Error(`PageSpeed HTTP ${response.status}`);
   const data = await response.json() as {
     lighthouseResult?: {
@@ -136,21 +143,105 @@ async function fetchPageSpeed(path = "/") {
   ];
 }
 
-async function optionalSection(title: string, fn: () => Promise<string[]>) {
+type SourceStatus = "ok" | "empty" | "blocked" | "not-configured";
+
+interface SourceReport {
+  name: string;
+  status: SourceStatus;
+  detail: string;
+  fix?: string;
+}
+
+const sourceReports: SourceReport[] = [];
+
+function recordSource(report: SourceReport) {
+  sourceReports.push(report);
+  return report;
+}
+
+/**
+ * Three consecutive reports rendered "manual" and "Blocked:" without anything
+ * downstream noticing, which reads as measurement while carrying no data. Every
+ * section now reports its own status and the run says so on stderr.
+ */
+async function optionalSection(
+  title: string,
+  name: string,
+  fn: () => Promise<string[]>,
+  fix: string,
+) {
   try {
     const rows = await fn();
-    return `## ${title}\n\n${rows.length ? rows.join("\n") : "- No rows returned."}`;
+
+    if (!rows.length) {
+      recordSource({ name, status: "empty", detail: "query succeeded, returned no rows", fix });
+      return `## ${title}\n\n- No rows returned.`;
+    }
+
+    recordSource({ name, status: "ok", detail: `${rows.length} rows` });
+    return `## ${title}\n\n${rows.join("\n")}`;
   } catch (error) {
-    return `## ${title}\n\n- Blocked: ${error instanceof Error ? error.message : String(error)}`;
+    const detail = error instanceof Error ? error.message : String(error);
+    recordSource({ name, status: "blocked", detail, fix });
+    return `## ${title}\n\n- Blocked: ${detail}`;
   }
 }
 
+function recordOwnedAnalytics(input: TrafficInput) {
+  const hasAny =
+    typeof input.last7Days?.sessions === "number" || typeof input.last30Days?.sessions === "number";
+
+  recordSource({
+    name: "GA4 / Vercel Analytics (sessions, users, top pages)",
+    status: hasAny ? "ok" : "not-configured",
+    detail: hasAny
+      ? "snapshot supplied"
+      : `no ${INPUT_PATH.replace(process.cwd() + "/", "")}; every owned-analytics slot renders as "manual"`,
+    fix: "Enable the Analytics Admin API for the OAuth project, or write content/internal/traffic-snapshot.json from a GA4 export.",
+  });
+}
+
+function renderDataHealth() {
+  const icon: Record<SourceStatus, string> = {
+    ok: "ok",
+    empty: "empty",
+    blocked: "BLOCKED",
+    "not-configured": "NOT CONFIGURED",
+  };
+
+  const rows = sourceReports.map((report) => {
+    const fix = report.fix ? ` Fix: ${report.fix}` : "";
+    const detail = report.detail.replace(/\.$/, "");
+    return `- **${icon[report.status]}** ${report.name}: ${detail}.${fix}`;
+  });
+
+  const degraded = sourceReports.filter((report) => report.status !== "ok");
+  const headline = degraded.length
+    ? `${degraded.length} of ${sourceReports.length} data sources are not reporting. Treat the numbers below as partial.`
+    : `All ${sourceReports.length} data sources reported.`;
+
+  return `## Data Health\n\n${headline}\n\n${rows.join("\n")}`;
+}
+
 async function renderReport(input: TrafficInput, now: Date) {
-  const gscSection = await optionalSection("GSC Quick Wins (auto)", fetchGscQuickWins);
-  const psiSection = await optionalSection("PageSpeed / Lighthouse Snapshot (auto)", () => fetchPageSpeed("/"));
+  recordOwnedAnalytics(input);
+  const gscSection = await optionalSection(
+    "GSC Quick Wins (auto)",
+    "Google Search Console",
+    fetchGscQuickWins,
+    "Grant the webmasters.readonly OAuth scope for the property.",
+  );
+  const psiSection = await optionalSection(
+    "PageSpeed / Lighthouse Snapshot (auto)",
+    "PageSpeed / Core Web Vitals",
+    () => fetchPageSpeed("/"),
+    "Set GOOGLE_API_KEY or PAGESPEED_API_KEY in .env.local.",
+  );
   return `# Weekly Traffic Report
 
 Generated: ${input.generatedAt ?? now.toISOString()}
+
+${renderDataHealth()}
 
 ## Date Windows
 
@@ -210,12 +301,29 @@ ${input.gscNotes?.length ? input.gscNotes.map(note => `- ${note}`).join("\n") : 
 }
 
 async function main() {
+  const strict = process.argv.includes("--strict");
   const input = readInput();
   const now = new Date();
   mkdirSync(REPORT_DIR, { recursive: true });
   const outputPath = join(REPORT_DIR, `traffic-${isoDate(now)}.md`);
   writeFileSync(outputPath, await renderReport(input, now));
   console.log(outputPath);
+
+  const degraded = sourceReports.filter((report) => report.status !== "ok");
+
+  if (degraded.length) {
+    console.error(
+      `\n${degraded.length} of ${sourceReports.length} data sources did not report:`,
+    );
+    for (const report of degraded) {
+      console.error(`  - ${report.name}: ${report.detail}`);
+      if (report.fix) console.error(`      fix: ${report.fix}`);
+    }
+    if (strict) {
+      console.error("\n--strict set: failing because the report is not fully backed by data.");
+      process.exit(1);
+    }
+  }
 }
 
 main().catch(error => {
