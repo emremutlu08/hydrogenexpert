@@ -19,6 +19,7 @@
     "related:fill": "tsx scripts/fill-related-links.ts",
     "og:generate": "tsx scripts/generate-og-images.ts",
     "validate:structured-data": "tsx scripts/validate-structured-data.ts",
+    "seo:cannibalization": "tsx scripts/measure-cannibalization.ts",
     "seo:measurement": "npm run report:traffic && npm run validate:structured-data"
   },
   "dependencies": {
