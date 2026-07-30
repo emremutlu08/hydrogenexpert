@@ -1,18 +1,36 @@
 # Cannibalization Map
 
 Source: Search Console, 90 days to 2026-07-26, queries with at least 15 impressions.
-Baseline is the **live site**, so `/shopify-hydrogen-developer` and `/shopify-hydrogen-experts`
-still appear. PR #99 retires both, and they participate in almost every cluster below,
-so each cluster is smaller than the raw numbers suggest.
+This is a **diagnosis**, not an approved plan. The treatment depends on an open
+strategy question described below.
 
-Do not act on this before PR #99 has been live for 4 to 6 weeks. Consolidating a second
-cluster while the first is still being reprocessed makes the result unreadable.
+## The open question
+
+Two incompatible strategies address the same problem, and one of them is currently live.
+
+**Distinct owners (#97, merged 2026-07-25).** Keep `/shopify-hydrogen-agency`,
+`/shopify-hydrogen-experts`, `/shopify-hydrogen-expert`, and `/shopify-hydrogen-developer`
+as separate pages, and route internal links so each intent has one clear owner.
+Explicitly no redirects and no canonical consolidation.
+
+**Consolidation (PR #99, open, not merged).** Search Console shows 20 distinct URLs
+competing for `shopify hydrogen experts` and 8 for `hire shopify hydrogen developers`,
+and the same URLs rotate across `agency`, `expert`, `developer`, and `services company`.
+That pattern says Google reads these as one intent, so the pages should be one page.
+
+The data in this document **cannot settle it**: the window ends 2026-07-26 and #97
+merged 2026-07-25, so these numbers show the site essentially before #97 took effect.
+
+**Give #97 until roughly 2026-09-05 before judging it.** Acting on any cluster below
+in the meantime changes two variables at once and makes both unreadable. The one metric
+that answers the question is the competing-URL count per query, not clicks.
 
 ## Priority 1: agency
 
 **501 impressions at stake.** Queries: `shopify hydrogen agency` (372), `shopify hydrogen agency "` (68), `hydrogen shopify agency` (34), `shopify hydrogen agentur` (27).
 
-Ten distinct URLs compete on the main query. After PR #99 removes two of them:
+Ten distinct URLs compete on the main query. Excluding the two that PR #99 would retire,
+so the table reads the same under either strategy:
 
 | URL | Impressions | Best position |
 | --- | --- | --- |
@@ -28,22 +46,23 @@ Two findings, and the second changes the obvious answer.
 
 **The page named `/shopify-hydrogen-agency` does not appear among the ten URLs ranking for `shopify hydrogen agency`.** Across all 90 days it draws 10 impressions in total, at position 79, and both of its queries are `shopify hydrogen experts` variants rather than agency wording. It has no equity to consolidate into.
 
-**The equity for agency queries currently sits on `/shopify-hydrogen-experts`** (184 impressions at position 16.7), which PR #99 retires into `/shopify-hydrogen-expert`. So the hiring page is likely to absorb agency queries on its own, without a second migration.
+**The equity for agency queries currently sits on `/shopify-hydrogen-experts`** (184 impressions at position 16.7), not on the agency page. Under #97 that page keeps its equity and routes visitors onward; under PR #99 it hands that equity to `/shopify-hydrogen-expert`. Either way, `/shopify-hydrogen-agency` is not where the agency signal lives today.
 
 That reframes the question. Google treats `agency`, `expert`, `developer`, and `services company` as one intent: the same URLs rotate across all of them. The site currently answers that one intent with a hiring page, an agency page, a US agency page, and a services hub.
 
-**Recommendation: decide after PR #99, not before.** Two outcomes are possible and they call for opposite actions.
+**Recommendation: decide once #97 has been measured.** Three outcomes, three different actions.
 
-- If `/shopify-hydrogen-expert` starts ranking for agency queries, retire `/shopify-hydrogen-agency` and `/shopify-hydrogen-agency-usa` into it. One page owns "who do I hire", which is what the query data actually describes.
-- If it does not, rebuild `/shopify-hydrogen-agency` as a genuinely distinct answer to "should I use an agency or an individual" rather than a keyword variant of the hiring page.
+- If `/shopify-hydrogen-agency` starts appearing for agency queries, #97 worked. Leave the cluster alone and apply the same link-routing treatment to the next cluster.
+- If the competing-URL count stays near ten and `/shopify-hydrogen-agency` stays absent, link routing was not enough. Consolidate, and PR #99 becomes the template.
+- If `/shopify-hydrogen-agency` stays absent but the count drops, keep the page and rewrite it as a real answer to "agency or individual" rather than a keyword variant of the hiring page.
 
-Building out `/shopify-hydrogen-agency` now, before that signal exists, repeats the mistake this whole exercise is correcting.
+Building out `/shopify-hydrogen-agency` before that signal exists repeats the mistake this whole exercise is correcting.
 
 `/shopify-hydrogen-agency-usa` is retirable either way: 21 impressions at position 76 is a geo variant splitting a term, not reaching a US audience.
 
-**Do not touch `/headless-shopify-agency`.** It is the only single-URL intent on the site (115 impressions, position 17.6) and it is the evidence consolidation works. It also holds position 7.5 on `shopify hydrogen agency`, the best of any URL, which suggests it is the page Google trusts for agency wording even though it rarely surfaces.
+**Do not touch `/headless-shopify-agency`.** It is the only single-URL intent on the site (115 impressions, position 17.6) and it is the evidence that single ownership works, whichever way that ownership is enforced. It also holds position 7.5 on `shopify hydrogen agency`, the best of any URL, which suggests it is the page Google trusts for agency wording even though it rarely surfaces.
 
-Stop `/services` and `/` from targeting agency wording, the same fix applied to `/articles` in PR #99.
+Stop `/services` and `/` from targeting agency wording, the same metadata fix already applied to `/articles`.
 
 ## Priority 2: definitional and decision
 
@@ -68,7 +87,7 @@ Stop `/services` and `/` from targeting agency wording, the same fix applied to 
 
 `/services` (position 36 to 57) competes with `/articles/shopify-hydrogen-development-cost-developer-agency-audit` (position 34) and `/articles/shopify-hydrogen-nextjs` (position 72.8).
 
-This is a hub problem, not a duplicate-page problem. `/services` is an index that also targets commercial wording, exactly what `/articles` was doing before PR #99.
+This is a hub problem, not a duplicate-page problem. `/services` is an index that also targets commercial wording, exactly what `/articles` was doing before its metadata was narrowed.
 
 **Recommendation.** Metadata only. No redirects. Decide whether `/services` is an index or a commercial page and let it target one of the two.
 
@@ -84,8 +103,8 @@ This is a hub problem, not a duplicate-page problem. `/services` is an index tha
 
 One cluster at a time, each with 4 to 6 weeks of observation. Two consolidations in flight cannot be told apart in the data.
 
-1. PR #99, hiring cluster. Merged, observing.
-2. Agency, 501 impressions.
+1. #97, agency intent via link routing. Merged 2026-07-25, under observation until roughly 2026-09-05.
+2. Resolve the strategy question above using that result.
 3. Definitional and decision, 294 impressions.
 4. Services metadata, 158 impressions.
 
