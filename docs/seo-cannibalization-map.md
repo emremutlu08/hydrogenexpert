@@ -13,10 +13,14 @@ Two incompatible strategies address the same problem, and one of them is current
 as separate pages, and route internal links so each intent has one clear owner.
 Explicitly no redirects and no canonical consolidation.
 
-**Consolidation (PR #99, open, not merged).** Search Console shows 20 distinct URLs
-competing for `shopify hydrogen experts` and 8 for `hire shopify hydrogen developers`,
-and the same URLs rotate across `agency`, `expert`, `developer`, and `services company`.
-That pattern says Google reads these as one intent, so the pages should be one page.
+**Consolidation (PR #99, open, not merged).** Over this 90-day window Search Console
+rotates 36 distinct URLs for `shopify hydrogen experts`, 26 for `shopify hydrogen
+development experts`, and 14 for `hire shopify hydrogen developers`, and the same URLs
+recur across `agency`, `expert`, `developer`, and `services company`. That pattern says
+Google reads these as one intent, so the pages should be one page.
+
+(Earlier notes quoted 20 and 8 for the first two. Those were the 28-day figures; the
+90-day window used throughout this document is worse.)
 
 The data in this document **cannot settle it**: the window ends 2026-07-26 and #97
 merged 2026-07-25, so these numbers show the site essentially before #97 took effect.
@@ -24,6 +28,10 @@ merged 2026-07-25, so these numbers show the site essentially before #97 took ef
 **Give #97 until roughly 2026-09-05 before judging it.** Acting on any cluster below
 in the meantime changes two variables at once and makes both unreadable. The one metric
 that answers the question is the competing-URL count per query, not clicks.
+
+Measure it with `npm run seo:cannibalization`, which diffs against the baseline in
+`content/internal/cannibalization-baseline.json`. It needs the local Google token, so it
+cannot run in CI or a cloud session.
 
 ## Priority 1: agency
 
