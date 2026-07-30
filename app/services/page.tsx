@@ -14,8 +14,13 @@ import {
   buildServiceSchema,
 } from "@/lib/structured-data";
 
+// "Agency Alternative" in the title put this page in the results for
+// `shopify hydrogen agency` and three of its variants, 79 impressions across 90
+// days, competing with /shopify-hydrogen-agency which owns that intent. The
+// page keeps its own term, `shopify hydrogen services`, and the body still
+// explains how the offer differs from an agency and links to the agency owner.
 export const metadata = buildMetadata({
-  title: "Shopify Hydrogen Services and Agency Alternative | HydrogenExpert",
+  title: "Shopify Hydrogen Services | Audit, Migration, Build, Support",
   description:
     "Senior-led Shopify Hydrogen services for audits, Liquid to Hydrogen migrations, custom storefront development, performance, SEO, UX, and support retainers.",
   path: "/services",
