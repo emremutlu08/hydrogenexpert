@@ -21,7 +21,7 @@ describe("llms files", () => {
     const llms = buildLlmsTxt();
 
     expect(llms).toContain(
-      `- [Articles](${siteUrl}/articles): Evergreen merchant guides for Hydrogen stack, CMS, app, analytics, AI commerce, B2B, launch, markets, search, SEO, hiring, cost, migration, and fit decisions.`,
+      `- [Articles](${siteUrl}/articles): Evergreen merchant guides for Hydrogen stack, CMS, app, analytics, AI commerce, B2B, launch, markets, search, SEO, migration, and fit decisions.`,
     );
     expect(llms).toContain(
       `- [News on Shopify Hydrogen](${siteUrl}/news-on-shopify-hydrogen): Monthly official Hydrogen update notes translated into merchant impact and end-user benefit.`,
