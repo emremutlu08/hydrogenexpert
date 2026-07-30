@@ -99,11 +99,19 @@ Stop `/services` and `/` from targeting agency wording, the same metadata fix al
 
 **158 impressions at stake.** Queries: `shopify hydrogen development` (63), `shopify hydrogen services` (62), `shopify hydrogen solutions` (33).
 
-`/services` (position 36 to 57) competes with `/articles/shopify-hydrogen-development-cost-developer-agency-audit` (position 34) and `/articles/shopify-hydrogen-nextjs` (position 72.8).
+**Done 2026-07-30, metadata only.** Measuring the page first showed its 500 impressions split three ways:
 
-This is a hub problem, not a duplicate-page problem. `/services` is an index that also targets commercial wording, exactly what `/articles` was doing before its metadata was narrowed.
+| Source | Impressions | Note |
+| --- | --- | --- |
+| Hiring queries | 306 | symptom of the unresolved hiring cluster |
+| Agency queries | 79 | poached from `/shopify-hydrogen-agency` |
+| Its own terms | 73 | `shopify hydrogen services`, `shopify hydrogen solutions` |
 
-**Recommendation.** Metadata only. No redirects. Decide whether `/services` is an index or a commercial page and let it target one of the two.
+The title read "Shopify Hydrogen Services and Agency Alternative", which is why the page appeared for `shopify hydrogen agency` and three variants against the owner #97 designated. The title now reads "Shopify Hydrogen Services | Audit, Migration, Build, Support" and targets only the page's own term. This supports #97 rather than conflicting with it.
+
+Body copy was left alone deliberately. Of the four remaining mentions, two are differentiating position ("this is not a broad Shopify agency service list", "how this differs from a generic agency page") and two are navigation labels routing agency intent to its owner. All four are wanted under #97's model.
+
+The 306 hiring-query impressions are not fixable here. They are the same rotation across 36 URLs described above, and they should resolve when the hiring cluster gets a single owner.
 
 ## No action needed
 
