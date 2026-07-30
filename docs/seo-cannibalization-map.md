@@ -83,11 +83,17 @@ Stop `/services` and `/` from targeting agency wording, the same metadata fix al
 | `/shopify-hydrogen-vs-liquid` | own term only | 27.3 |
 | `/when-not-to-use-hydrogen` | own angle | 65.4 |
 
-`/what-is-hydrogen` is consistently the strongest and should stay canonical for definitional intent.
+`/what-is-hydrogen` is consistently the strongest and should stay canonical for definitional intent. PR #98 (merged 2026-07-28) formalised that and assigned `/should-i-use-it` the adoption intent, enforced by `tests/what-is-hydrogen-intent.test.ts`.
 
-`/should-i-use-it` is the problem. It appears in six separate queries and wins none of them, always trailing a better page. It is a generalist that shadows three more specific pages.
+**Correction, 2026-07-30.** An earlier draft of this section recommended retiring `/should-i-use-it` into `/shopify-hydrogen-vs-liquid`. Measuring the page directly shows that is wrong on three counts.
 
-**Recommendation.** Retire `/should-i-use-it` into `/shopify-hydrogen-vs-liquid`, which is the decision framework with its own query. Keep `/when-not-to-use-hydrogen`: it is nav-linked, holds a distinct contrarian angle, and is a genuine differentiator against agencies that recommend a rebuild by default.
+**There is no adoption search demand to own.** Across 90 days the property returns no query of the form "should I use", "is it worth it", or "do I need". The only near matches are `what is hydrogen shopify` (10 impressions) and `what is hydrogen in shopify` (1), both definitional and both already owned by `/what-is-hydrogen`. #98 assigned an owner to an intent nobody searches.
+
+**This page is not in the definitional cluster; it is in the hiring cluster.** Of its 463 impressions, 127 come from `shopify hydrogen experts` (77, position 65.8) and `shopify hydrogen development experts` (50, position 59.0). `/when-not-to-use-hydrogen` behaves the same way: 201 impressions, and its single largest query is `shopify hydrogen experts` at position 93.3. Acting on either page changes the hiring cluster and confounds the #97 measurement.
+
+**Nothing at the page level explains it.** `/should-i-use-it` contains the word "expert" zero times, "hire" zero times, and "agency" zero times. It still surfaces for `shopify hydrogen experts`. That is not a targeting error that metadata can fix; it is Google rotating through 36 URLs because no page clearly owns the query. The `/articles` metadata fix worked because that hub really did carry "Hiring" in its title. There is no equivalent lever here.
+
+**Recommendation.** Leave both pages alone. Their hiring-query appearances are a symptom of the unresolved hiring cluster and should disappear when that cluster gets a single owner, whichever way the #97 versus #99 question is settled. Re-measure them after that, not before. If a genuine adoption query cluster ever appears, revisit whether `/should-i-use-it` earns its place.
 
 ## Priority 3: services and solutions
 
