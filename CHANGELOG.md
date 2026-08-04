@@ -25,6 +25,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - Added matching `FAQPage` schema for visible blog FAQs and a one-minute refresh window for Supabase-backed blog pages.
   - Hardened the public posts RLS policy so anonymous reads require both published status and a due publication date.
 - Files changed:
+  - `.vercelignore`
   - `app/blog/page.tsx`
   - `app/blog/[slug]/page.tsx`
   - `features/content-sources/index.ts`
