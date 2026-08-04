@@ -338,6 +338,16 @@ function getCaseStudyLinks(studyId: CaseStudyId) {
         label: "Shopify Hydrogen SEO-safe implementation",
         note: "Technical SEO path for route, crawlability, schema, and rendered-content safety.",
       },
+      {
+        href: "/shopify-hydrogen-for-large-catalog-retail",
+        label: "Shopify Hydrogen for large-catalog retail",
+        note: "Decision guidance for catalog discovery, campaign pressure, and maintainable custom patterns.",
+      },
+      {
+        href: "/shopify-hydrogen-for-beauty-brands",
+        label: "Shopify Hydrogen for beauty brands",
+        note: "Beauty retail guidance grounded in the approved EveShop cosmetics and personal care context.",
+      },
     ],
     bayam: [
       {
