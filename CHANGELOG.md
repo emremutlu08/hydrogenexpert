@@ -18,7 +18,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 - Date: 2026-08-04
 - PR: [#107 Publish August 2026 Hydrogen production notes](https://github.com/emremutlu08/hydrogenexpert/pull/107)
 - Branch: `codex/hydrogen-august-2026-posts`
-- Deployment: Pending ready-PR checks, preview QA, production publication, and live verification.
+- Deployment: Vercel production deployment `dpl_2ahr1gHjVxMR53FNKzf6wbM3g2EE` is live and verified on `hydrogenexpert.co`.
 - Summary:
   - Prepared two source-grounded Supabase production notes covering Oxygen deployments on development stores and the July 30 Hydrogen developer-preview update.
   - Added official Shopify source metadata, visible FAQs, internal and external links, and flow visuals for both posts.
@@ -38,7 +38,10 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed; 85 pages generated.
   - Local production internal-link verification passed for 67 sitemap URLs and 81 internal URLs.
   - Browser QA confirmed the canonical, visible FAQ-to-`FAQPage` schema parity, and no horizontal overflow at 390px.
-- Manual follow-up: Apply the single RLS migration safely, publish both Supabase drafts, verify the two live URLs and discovery surfaces, ping IndexNow, merge the PR, and remove the remote branch.
+  - Both published posts return HTTP 200 with self-canonicals, visible FAQs, matching `FAQPage` schema, official references, and formatted code examples.
+  - Live internal-link verification passed for 69 sitemap URLs and 85 internal URLs; the blog index, sitemap, `llms-full.txt`, and RSS feed include both posts.
+  - IndexNow accepted the two post URLs plus the blog, sitemap, and feed URLs with HTTP 200.
+- Manual follow-up: Resubmit `/sitemap.xml` in Google Search Console when account access is available.
 
 - Date: 2026-08-04
 - PR: [#105 Apply safe dependency security updates](https://github.com/emremutlu08/hydrogenexpert/pull/105)
