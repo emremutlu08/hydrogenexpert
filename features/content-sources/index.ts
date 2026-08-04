@@ -1262,6 +1262,18 @@ export const STATIC_PAGE_SOURCE_METADATA = {
       SOURCE_PACKS.emreProductionExperience,
     ],
   },
+  "/case-studies/eveshop-shopify-hydrogen": {
+    lastVerified: "2026-08-04",
+    claimTypes: ["case_study_fact", "emre_experience", "commercial_opinion"],
+    sourceMap: [
+      SOURCE_PACKS.caseStudyEvidence,
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+    targetKeyword: "EveShop Shopify Hydrogen case study",
+    searchIntent: "Evaluate production Shopify Hydrogen experience for large-catalog beauty retail",
+    contentType: "Case study",
+  },
   "/hire-me": {
     lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
     claimTypes: ["emre_experience", "case_study_fact", "commercial_opinion"],
