@@ -164,6 +164,162 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
       },
     ],
   },
+  "deploy-hydrogen-oxygen-development-store": {
+    heroVisual: {
+      type: "flow-diagram-svg",
+      caption:
+        "A development store now covers the Oxygen deployment loop, but the resulting environment remains login-protected.",
+      steps: [
+        {
+          label: "Development store",
+          body: "Install the Hydrogen channel and create or select the storefront.",
+        },
+        {
+          label: "Hydrogen build",
+          body: "Connect the supported Hydrogen project and its environment variables.",
+        },
+        {
+          label: "Oxygen deploy",
+          body: "Use GitHub deployment or the Hydrogen CLI to create an immutable preview.",
+        },
+        {
+          label: "Authenticated QA",
+          body: "Sign in to validate data, cart, checkout handoff, runtime behavior, and logs.",
+        },
+      ],
+    },
+    faq: [
+      {
+        question: "Can a Shopify development store deploy Hydrogen to Oxygen?",
+        answer:
+          "Yes. As of August 3, 2026, Shopify development stores can deploy Hydrogen storefronts to Oxygen without first moving to a paid plan.",
+      },
+      {
+        question: "Can an Oxygen deployment from a development store be a public demo?",
+        answer:
+          "No. Development stores do not include public environments, so every deployment URL requires a store login. Use it for development and technical validation, not an anonymous customer demo.",
+      },
+      {
+        question: "Does a development-store deployment prove production readiness?",
+        answer:
+          "No. It can prove the Oxygen build, environment, data, cart, and checkout path. Production still needs its own domain, public-environment behavior, analytics, crawler checks, redirects, and launch QA.",
+      },
+    ],
+    internalLinks: [
+      {
+        href: "/articles/hydrogen-deployment-checklist-oxygen-preview-production-qa",
+        label: "Hydrogen deployment checklist",
+        note: "Use the evergreen launch checklist when the authenticated prototype is ready to move toward production.",
+      },
+      {
+        href: "/shopify-hydrogen-audit",
+        label: "Shopify Hydrogen audit",
+        note: "Use a focused audit to turn prototype evidence into a safer build, migration, or no-rebuild decision.",
+      },
+      {
+        href: "/shopify-hydrogen-packages",
+        label: "Shopify Hydrogen packages",
+        note: "See the fixed-scope service paths that can follow a validated feasibility prototype.",
+      },
+    ],
+    externalLinks: [
+      {
+        href: "https://shopify.dev/changelog/oxygen-is-now-available-on-development-stores",
+        label: "Oxygen on development stores",
+        note: "Official Shopify announcement and the login-only environment limitation.",
+      },
+      {
+        href: "https://shopify.dev/docs/storefronts/headless/hydrogen/deployments/index",
+        label: "Hydrogen deployments",
+        note: "Official deployment, CLI, immutability, sharing, rollback, and retention guidance.",
+      },
+      {
+        href: "https://shopify.dev/docs/storefronts/headless/hydrogen/fundamentals#supported-plans",
+        label: "Hydrogen and Oxygen supported plans",
+        note: "Official plan availability and development-store environment rules.",
+      },
+    ],
+    closingPitch:
+      "A useful feasibility prototype should end with evidence and a decision: continue with Hydrogen, narrow the scope, or keep the store on Liquid until the business case is stronger.",
+  },
+  "hydrogen-developer-preview-july-2026": {
+    heroVisual: {
+      type: "flow-diagram-svg",
+      caption:
+        "Treat the July Hydrogen developer preview as an isolated evidence-building loop, not as an automatic production migration.",
+      steps: [
+        {
+          label: "Isolated branch",
+          body: "Keep the preview package away from the current production storefront.",
+        },
+        {
+          label: "Preview setup",
+          body: "Install the package, skills, credentials, and one chosen framework binding.",
+        },
+        {
+          label: "Feature tests",
+          body: "Prove typed GraphQL, scripts, consent, Inbox, cart behavior, and streaming separately.",
+        },
+        {
+          label: "Adoption gate",
+          body: "Wait for stable APIs and migration guidance before promising a production move.",
+        },
+      ],
+    },
+    faq: [
+      {
+        question: "Is the new Hydrogen developer preview production-ready?",
+        answer:
+          "Shopify describes it as a developer preview whose APIs can change. Current Hydrogen with React Router remains the fully supported production path, so test the preview in an isolated project or branch.",
+      },
+      {
+        question: "Does the Vue binding mean an existing Hydrogen store should migrate to Vue?",
+        answer:
+          "No. The Vue entrypoint expands the experiment surface, but it is not a migration requirement or proof that a production rewrite is commercially justified.",
+      },
+      {
+        question: "How do you check GraphQL queries in the Hydrogen developer preview?",
+        answer:
+          "Add the bundled @shopify/hydrogen/ts-plugin to tsconfig for editor autocomplete and type errors, then run hydrogen gql check --fail-on-warn in CI to catch schema drift headlessly.",
+      },
+    ],
+    internalLinks: [
+      {
+        href: "/custom-shopify-hydrogen-storefront",
+        label: "Custom Shopify Hydrogen storefront",
+        note: "Use this for the supported production build path after the architecture decision is proven.",
+      },
+      {
+        href: "/shopify-hydrogen-performance-optimization",
+        label: "Hydrogen performance optimization",
+        note: "Use a measured performance review before treating cart streaming as a universal fix.",
+      },
+      {
+        href: "/shopify-hydrogen-audit",
+        label: "Shopify Hydrogen audit",
+        note: "Compare current storefront constraints with preview capabilities before choosing a migration path.",
+      },
+    ],
+    externalLinks: [
+      {
+        href: "https://shopify.dev/changelog/hydrogen-developer-preview-update-july-30",
+        label: "Hydrogen developer preview update",
+        note: "Official Shopify summary of the July 30 capabilities.",
+      },
+      {
+        href: "https://shopify.dev/docs/storefronts/headless/developer-preview",
+        label: "Hydrogen developer preview documentation",
+        note: "Official setup, framework, credential, and commerce-primitive guidance.",
+      },
+      {
+        href: "https://hydrogen.shopify.dev/update/developer-preview-release-notes-july-30-2026",
+        label: "July 30 developer-preview release notes",
+        note: "Official implementation details, changed APIs, removals, and migration diff.",
+      },
+    ],
+    closingPitch:
+      "The valuable output from a preview lab is not a rewrite promise. It is a short evidence set showing which capability solves a real storefront constraint and which parts are still too unstable to sell as production scope.",
+  },
   "liquid-to-hydrogen-migration-checklist": {
     heroVisual: {
       type: "code-card",

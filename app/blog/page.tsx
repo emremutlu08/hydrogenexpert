@@ -20,6 +20,8 @@ export const metadata = buildMetadata({
   path: "/blog",
 });
 
+export const revalidate = 60;
+
 interface BlogPageProps {
   searchParams: Promise<{ page?: string }>;
 }
