@@ -41,6 +41,8 @@ Use `package.json` for exact scripts. Current important scripts include:
 - Keep `@types/node` on the Node 24 line while Vercel is configured for Node 24.x.
 - Keep `eslint` on version 9 until the Next-managed ESLint plugin chain supports ESLint 10 without invalid peer dependencies.
 - The 2026-06-15 safe refresh moved `@supabase/supabase-js` to `2.108.2`, `@tailwindcss/postcss` and `tailwindcss` to `4.3.1`, `@types/node` to `24.13.2`, `playwright` to `1.61.0`, `vitest` to `4.1.9`, and pinned `esbuild` to `0.28.1` through `overrides` to clear the transitive audit finding.
+- The 2026-08-04 security refresh moved Next.js, `@next/third-parties`, and `eslint-config-next` to `16.3.0`, React and React DOM to `19.2.8`, and the PostCSS override to `8.5.25`; the lockfile also carries the fixed `brace-expansion` and `js-yaml` transitives required for a clean audit.
+- Keep `sanitize-html` at `2.17.5` until the declared Node range is compatible with its newer `>=22.12.0` engine requirement.
 - Keep deferring the newer `@anthropic-ai/sdk` 0.x minor line for a separate compatibility review.
 
 ## Implementation Rules
