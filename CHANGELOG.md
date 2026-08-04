@@ -16,6 +16,26 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 ## Unreleased
 
 - Date: 2026-08-04
+- PR: [#105 Apply safe dependency security updates](https://github.com/emremutlu08/hydrogenexpert/pull/105)
+- Branch: `codex/daily-safe-dependencies-2026-08-04`
+- Deployment: Vercel preview validation is required before squash merge; production follows the validated merge without a separate manual deploy.
+- Summary:
+  - Updated Next.js, `@next/third-parties`, and `eslint-config-next` from `16.2.9` to `16.3.0` and React/React DOM from `19.2.7` to `19.2.8`.
+  - Updated the PostCSS override from `8.5.15` to `8.5.25` and refreshed vulnerable `brace-expansion` and `js-yaml` transitives.
+  - Kept newly published, engine-incompatible, broad-churn, and major updates deferred for smaller compatibility reviews.
+- Files changed:
+  - `package.json`
+  - `package-lock.json`
+  - `agent-docs/HYDROGEN.md`
+  - `CHANGELOG.md`
+- Verification:
+  - `npm ci`, `npm audit`, `npm audit signatures`, `npm ls --all`, and `git diff --check`: passed; audit reports 0 vulnerabilities.
+  - `npm run lint`, `npm run typecheck`, `npm run validate:content`, and `npm run audit:shopify-claims`: passed.
+  - `npm run test`: passed, 29 test files and 122 tests.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed; 76 pages generated.
+- Manual follow-up: None.
+
+- Date: 2026-08-04
 - PR: [#104 Refresh EveShop authority case study](https://github.com/emremutlu08/hydrogenexpert/pull/104)
 - Branch: `codex/eveshop-authority-refresh`
 - Deployment: Pending PR checks, merge, and production verification.
