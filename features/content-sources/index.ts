@@ -210,6 +210,42 @@ export const SOURCE_PACKS = {
     usedFor:
       "Oxygen deployment, preview, production, redeploy, and environment variable launch checks.",
   },
+  oxygenDevelopmentStoresChangelog: {
+    label: "Shopify changelog: Oxygen on development stores",
+    sourceType: "shopify_official",
+    topic: "oxygen",
+    url: "https://shopify.dev/changelog/oxygen-is-now-available-on-development-stores",
+    retrievedAt: "2026-08-04",
+    usedFor:
+      "Oxygen availability on development stores and the login-only deployment URL limitation.",
+  },
+  hydrogenDeveloperPreviewDocs: {
+    label: "Shopify: Hydrogen developer preview",
+    sourceType: "shopify_official",
+    topic: "hydrogen",
+    url: "https://shopify.dev/docs/storefronts/headless/developer-preview",
+    retrievedAt: "2026-08-04",
+    usedFor:
+      "Developer-preview setup, framework support, credentials, typed Storefront API client, cart primitives, and supported-path guidance.",
+  },
+  hydrogenDeveloperPreviewJulyChangelog: {
+    label: "Shopify changelog: Hydrogen developer preview update, July 30, 2026",
+    sourceType: "shopify_official",
+    topic: "hydrogen",
+    url: "https://shopify.dev/changelog/hydrogen-developer-preview-update-july-30",
+    retrievedAt: "2026-08-04",
+    usedFor:
+      "Vue bindings, bundled GraphQL TypeScript tooling, ShopifyScripts, Inbox, and Suspense cart-read release claims.",
+  },
+  hydrogenDeveloperPreviewJulyReleaseNotes: {
+    label: "Shopify Hydrogen: Developer preview release notes, July 30, 2026",
+    sourceType: "shopify_official",
+    topic: "hydrogen",
+    url: "https://hydrogen.shopify.dev/update/developer-preview-release-notes-july-30-2026",
+    retrievedAt: "2026-08-04",
+    usedFor:
+      "Preview implementation details, package entrypoints, TypeScript plugin configuration, Inbox requirements, cart streaming, and migration caveats.",
+  },
   hydrogenDeployCli: {
     label: "Shopify CLI: hydrogen deploy",
     sourceType: "shopify_official",
@@ -637,6 +673,34 @@ export const BLOG_SOURCE_METADATA = {
     ],
     targetKeyword: "how to find shopify hydrogen expert",
     searchIntent: "hiring evaluation",
+    reviewedBy: "Emre Mutlu",
+    contentType: "source_grounded_blog_post",
+  },
+  "deploy-hydrogen-oxygen-development-store": {
+    lastVerified: "2026-08-04",
+    claimTypes: ["official_shopify_fact", "commercial_opinion"],
+    sourceMap: [
+      SOURCE_PACKS.oxygenDevelopmentStoresChangelog,
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.hydrogenDeployments,
+      SOURCE_PACKS.hydrogenDeployCli,
+    ],
+    targetKeyword: "Oxygen development store",
+    searchIntent: "Deploy and validate a Hydrogen prototype on a Shopify development store",
+    reviewedBy: "Emre Mutlu",
+    contentType: "source_grounded_blog_post",
+  },
+  "hydrogen-developer-preview-july-2026": {
+    lastVerified: "2026-08-04",
+    claimTypes: ["official_shopify_fact", "commercial_opinion"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogenDeveloperPreviewDocs,
+      SOURCE_PACKS.hydrogenDeveloperPreviewJulyChangelog,
+      SOURCE_PACKS.hydrogenDeveloperPreviewJulyReleaseNotes,
+    ],
+    targetKeyword: "Hydrogen developer preview",
+    searchIntent:
+      "Set up an isolated lab and test the July 2026 Hydrogen developer-preview capabilities",
     reviewedBy: "Emre Mutlu",
     contentType: "source_grounded_blog_post",
   },

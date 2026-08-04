@@ -16,6 +16,34 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 ## Unreleased
 
 - Date: 2026-08-04
+- PR: [#107 Publish August 2026 Hydrogen production notes](https://github.com/emremutlu08/hydrogenexpert/pull/107)
+- Branch: `codex/hydrogen-august-2026-posts`
+- Deployment: Vercel production deployment `dpl_2ahr1gHjVxMR53FNKzf6wbM3g2EE` is live and verified on `hydrogenexpert.co`.
+- Summary:
+  - Prepared two source-grounded Supabase production notes covering Oxygen deployments on development stores and the July 30 Hydrogen developer-preview update.
+  - Added official Shopify source metadata, visible FAQs, internal and external links, and flow visuals for both posts.
+  - Added matching `FAQPage` schema for visible blog FAQs and a one-minute refresh window for Supabase-backed blog pages.
+  - Hardened the public posts RLS policy so anonymous reads require both published status and a due publication date.
+- Files changed:
+  - `.vercelignore`
+  - `app/blog/page.tsx`
+  - `app/blog/[slug]/page.tsx`
+  - `features/content-sources/index.ts`
+  - `features/post-enhancements/index.ts`
+  - `supabase/migrations/20260804190000_restrict_public_post_reads.sql`
+  - `CHANGELOG.md`
+- Verification:
+  - `git diff --check`, `npm run lint`, `npm run typecheck`, `npm run validate:content`, and `npm run audit:shopify-claims`: passed.
+  - `npm run test`: passed, 29 test files and 122 tests.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed; 85 pages generated.
+  - Local production internal-link verification passed for 67 sitemap URLs and 81 internal URLs.
+  - Browser QA confirmed the canonical, visible FAQ-to-`FAQPage` schema parity, and no horizontal overflow at 390px.
+  - Both published posts return HTTP 200 with self-canonicals, visible FAQs, matching `FAQPage` schema, official references, and formatted code examples.
+  - Live internal-link verification passed for 69 sitemap URLs and 85 internal URLs; the blog index, sitemap, `llms-full.txt`, and RSS feed include both posts.
+  - IndexNow accepted the two post URLs plus the blog, sitemap, and feed URLs with HTTP 200.
+- Manual follow-up: Resubmit `/sitemap.xml` in Google Search Console when account access is available.
+
+- Date: 2026-08-04
 - PR: [#105 Apply safe dependency security updates](https://github.com/emremutlu08/hydrogenexpert/pull/105)
 - Branch: `codex/daily-safe-dependencies-2026-08-04`
 - Deployment: Vercel preview validation is required before squash merge; production follows the validated merge without a separate manual deploy.

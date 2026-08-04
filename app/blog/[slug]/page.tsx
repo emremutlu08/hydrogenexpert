@@ -30,12 +30,15 @@ import {
 import {
   asSchemaArray,
   buildBreadcrumbListSchema,
+  buildFaqPageSchema,
   buildPublisherSchema,
 } from "@/lib/structured-data";
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
 }
+
+export const revalidate = 60;
 
 const BLOG_METADATA_TITLE_OVERRIDES: Record<string, string> = {
   "shopify-hydrogen-product-description-ssr-seo":
@@ -199,6 +202,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       url: absoluteUrl(item.href),
     })),
   );
+  const faqSchema = visibleFaq?.length ? buildFaqPageSchema(visibleFaq) : null;
 
   const formattedContent = formatPostContent(post.content);
   const markdownVersion = buildPostMarkdown(post, {
@@ -210,7 +214,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <>
-      <JsonLd data={asSchemaArray(articleSchema, breadcrumbSchema, personSchema, organizationSchema)} />
+      <JsonLd
+        data={asSchemaArray(
+          articleSchema,
+          breadcrumbSchema,
+          faqSchema,
+          personSchema,
+          organizationSchema,
+        )}
+      />
       <div className="page-shell">
         <article className="mx-auto max-w-4xl">
           <Breadcrumbs items={breadcrumbs} />
