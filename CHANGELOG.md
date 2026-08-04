@@ -15,6 +15,30 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## Unreleased
 
+- Date: 2026-08-04
+- PR: [#104 Refresh EveShop authority case study](https://github.com/emremutlu08/hydrogenexpert/pull/104)
+- Branch: `codex/eveshop-authority-refresh`
+- Deployment: Pending PR checks, merge, and production verification.
+- Summary:
+  - Tightened the EveShop case study around senior-led large-catalog delivery, reusable frontend standards, and mentoring without adding metrics, outcomes, or proof claims.
+  - Added per-route source metadata for `/case-studies/eveshop-shopify-hydrogen`.
+  - Added reciprocal large-catalog retail and beauty-brand decision links while preserving the protected hiring and agency link set.
+  - Added focused regression coverage for source metadata, protected title/H1 source fields, and EveShop link order.
+- Files changed:
+  - `app/case-studies/[slug]/page.tsx`
+  - `data/caseStudies.ts`
+  - `features/content-sources/index.ts`
+  - `tests/eveshop-case-study-refresh.test.ts`
+  - `CHANGELOG.md`
+- Verification:
+  - Claude pre-review: bounded GO; Claude final changed-file review: PASS.
+  - Hermes quality gate: 96/100 (`publish-ready`); authority gate: 97/100 (`strong`).
+  - `git diff --check`, `npm run lint`, `npm run typecheck`, `npm run validate:content`, and `npm run audit:shopify-claims`: passed.
+  - `npm run test`: passed, 29 test files and 122 tests.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed; 76 pages generated.
+  - `npm run seo:cannibalization`: read-only run passed; all tracked URL counts were unchanged from the saved baseline.
+- Manual follow-up: Verify production HTTP/HTML, self-canonical, sitemap and `llms-full.txt` membership, schema, and live internal links after merge/deploy.
+
 - Date: 2026-07-28
 - PR: [#98 Refresh Shopify Hydrogen definition and architecture guide](https://github.com/emremutlu08/hydrogenexpert/pull/98)
 - Branch: `codex/what-is-shopify-hydrogen-refresh-2026-07-28`
