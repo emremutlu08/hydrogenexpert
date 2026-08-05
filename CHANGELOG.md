@@ -15,6 +15,26 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## Unreleased
 
+- Date: 2026-08-05
+- PR: [#108 Update Supabase client to 2.112.0](https://github.com/emremutlu08/hydrogenexpert/pull/108)
+- Branch: `codex/deps-supabase-2-112-0-20260805`
+- Deployment: Vercel preview validation is required before squash merge; production follows the validated merge without a separate manual deploy.
+- Summary:
+  - Updated `@supabase/supabase-js` and its aligned client packages from `2.108.2` to `2.112.0`.
+  - Kept the existing Node `>=22 <25` contract and limited lockfile churn to the Supabase package family.
+  - Deferred engine-incompatible `sanitize-html` and the broader `@anthropic-ai/sdk` 0.x compatibility review.
+- Files changed:
+  - `package.json`
+  - `package-lock.json`
+  - `agent-docs/HYDROGEN.md`
+  - `CHANGELOG.md`
+- Verification:
+  - `npm ci`, `npm audit --json`, dependency-tree inspection, and `git diff --check`: passed; audit reports 0 vulnerabilities.
+  - `npm run lint` and `npm run typecheck`: passed.
+  - `npm run test`: passed, 29 test files and 122 tests.
+  - `npm run build`: passed; 76 static pages generated.
+- Manual follow-up: None.
+
 - Date: 2026-08-04
 - PR: [#107 Publish August 2026 Hydrogen production notes](https://github.com/emremutlu08/hydrogenexpert/pull/107)
 - Branch: `codex/hydrogen-august-2026-posts`
