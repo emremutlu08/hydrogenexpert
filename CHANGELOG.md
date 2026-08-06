@@ -15,6 +15,25 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## Unreleased
 
+- Date: 2026-08-06
+- PR: [#109 Update Node and React type packages](https://github.com/emremutlu08/hydrogenexpert/pull/109)
+- Branch: `codex/deps-types-20260806`
+- Deployment: Vercel preview validation is required before squash merge; production follows the validated merge without a separate manual deploy.
+- Summary:
+  - Updated `@types/node` from `24.13.2` to `24.13.3`, `@types/react` from `19.2.17` to `19.2.18`, and `@types/react-dom` from `19.2.3` to `19.2.4`.
+  - Kept the Node 24 and React 19 lines unchanged and limited lockfile churn to the three type packages.
+  - Deferred unrelated tooling, styling, engine-incompatible, and 0.x SDK updates to independent reviews.
+- Files changed:
+  - `package.json`
+  - `package-lock.json`
+  - `CHANGELOG.md`
+- Verification:
+  - `npm ci`, `npm audit --json`, dependency-tree inspection, and `git diff --check`: passed; audit reports 0 vulnerabilities.
+  - `npm run lint` and `npm run typecheck`: passed.
+  - `npm run test`: passed, 29 test files and 122 tests.
+  - `npm run build`: passed; 76 static pages generated.
+- Manual follow-up: None.
+
 - Date: 2026-08-05
 - PR: [#108 Update Supabase client to 2.112.0](https://github.com/emremutlu08/hydrogenexpert/pull/108)
 - Branch: `codex/deps-supabase-2-112-0-20260805`
