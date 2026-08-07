@@ -15,6 +15,26 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## Unreleased
 
+- Date: 2026-08-07
+- PR: [#111 Update Supabase client to 2.112.2](https://github.com/emremutlu08/hydrogenexpert/pull/111)
+- Branch: `codex/deps-supabase-2-112-2`
+- Deployment: Vercel preview validation is required before squash merge; production follows the validated merge without a separate manual deploy.
+- Summary:
+  - Updated `@supabase/supabase-js` and its aligned client packages from `2.112.0` to `2.112.2`.
+  - Preserved the Node `>=22 <25` contract and limited lockfile churn to the six-package Supabase client family.
+  - Deferred styling, test-tooling, engine-incompatible, major, and 0.x SDK updates to independent reviews.
+- Files changed:
+  - `package.json`
+  - `package-lock.json`
+  - `agent-docs/HYDROGEN.md`
+  - `CHANGELOG.md`
+- Verification:
+  - `npm ci`, `npm audit --json`, dependency-tree inspection, install-script review, and `git diff --check`: passed; audit reports 0 vulnerabilities.
+  - `npm run lint`, `npm run typecheck`, `npm run validate:content`, and `npm run audit:shopify-claims`: passed.
+  - `npm run test`: passed, 29 test files and 122 tests.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed; 76 static pages generated.
+- Manual follow-up: None.
+
 - Date: 2026-08-06
 - PR: [#109 Update Node and React type packages](https://github.com/emremutlu08/hydrogenexpert/pull/109)
 - Branch: `codex/deps-types-20260806`
