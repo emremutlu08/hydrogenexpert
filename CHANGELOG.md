@@ -18,7 +18,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 - Date: 2026-08-07
 - PR: [#111 Update Supabase client to 2.112.2](https://github.com/emremutlu08/hydrogenexpert/pull/111)
 - Branch: `codex/deps-supabase-2-112-2`
-- Deployment: Vercel preview validation is required before squash merge; production follows the validated merge without a separate manual deploy.
+- Deployment: [Vercel preview](https://hydrogenexpert-git-codex-deps-supab-816898-emremutlu8s-projects.vercel.app) passed protected smoke QA; production follows the validated squash merge without a separate manual deploy.
 - Summary:
   - Updated `@supabase/supabase-js` and its aligned client packages from `2.112.0` to `2.112.2`.
   - Preserved the Node `>=22 <25` contract and limited lockfile churn to the six-package Supabase client family.
