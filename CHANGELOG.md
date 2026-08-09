@@ -15,6 +15,26 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## Unreleased
 
+- Date: 2026-08-09
+- PR: [#113 Update ESLint to 9.39.5](https://github.com/emremutlu08/hydrogenexpert/pull/113)
+- Branch: `codex/deps-eslint-9-39-5-20260809`
+- Deployment: Vercel preview validation is required before squash merge; production follows the validated merge without a separate manual deploy.
+- Summary:
+  - Updated ESLint from `9.39.4` to stable `9.39.5` on the existing Next-compatible ESLint 9 line.
+  - Aligned `@eslint/js` to `9.39.5` and `@eslint/eslintrc` to `3.3.6` without changing the existing `acorn` or install-script package set.
+  - Deferred unrelated test tooling, engine-incompatible, major, and broader Anthropic SDK updates to independent reviews.
+- Files changed:
+  - `package.json`
+  - `package-lock.json`
+  - `agent-docs/HYDROGEN.md`
+  - `CHANGELOG.md`
+- Verification:
+  - `npm ci`, `npm audit --json`, dependency-tree inspection, install-script review, and `git diff --check`: passed; audit reports 0 vulnerabilities.
+  - `npm run lint`, `npm run typecheck`, `npm run validate:content`, and `npm run audit:shopify-claims`: passed.
+  - `npm run test`: passed, 29 test files and 122 tests.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build -- --webpack`: passed; 76 static pages generated. The Vercel preview remains the default Turbopack validation gate because the local sandbox blocks Turbopack's process port binding.
+- Manual follow-up: None.
+
 - Date: 2026-08-08
 - PR: [#112 Update Tailwind tooling to 4.3.3](https://github.com/emremutlu08/hydrogenexpert/pull/112)
 - Branch: `codex/deps-tailwind-4-3-3-20260808`
