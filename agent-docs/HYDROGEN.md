@@ -1,7 +1,7 @@
 # HydrogenExpert Implementation Notes
 
 Status: Active
-Last updated: 2026-08-05
+Last updated: 2026-08-09
 Owner: Agent
 Source of truth: `package.json`, current code, agent analysis
 
@@ -45,6 +45,7 @@ Use `package.json` for exact scripts. Current important scripts include:
 - The 2026-08-05 safe refresh moved `@supabase/supabase-js` and its aligned client packages from `2.108.2` to `2.112.0`; the new Node `>=22.0.0` requirement remains inside the repository's declared runtime range.
 - The 2026-08-07 safe refresh moved `@supabase/supabase-js` and its aligned client packages from `2.112.0` to `2.112.2`.
 - The 2026-08-08 safe styling-toolchain refresh moved `@tailwindcss/postcss` and `tailwindcss` from `4.3.1` to `4.3.3` while keeping the existing Tailwind 4 line and PostCSS override unchanged.
+- The 2026-08-09 safe refresh moved ESLint from `9.39.4` to `9.39.5` while keeping the Next-compatible ESLint 9 line and aligned `@eslint/js` and `@eslint/eslintrc` packages.
 - Keep `sanitize-html` at `2.17.5` until the declared Node range is compatible with its newer `>=22.12.0` engine requirement.
 - Keep deferring the newer `@anthropic-ai/sdk` 0.x minor line for a separate compatibility review.
 
