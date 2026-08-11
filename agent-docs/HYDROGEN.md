@@ -47,6 +47,7 @@ Use `package.json` for exact scripts. Current important scripts include:
 - The 2026-08-08 safe styling-toolchain refresh moved `@tailwindcss/postcss` and `tailwindcss` from `4.3.1` to `4.3.3` while keeping the existing Tailwind 4 line and PostCSS override unchanged.
 - The 2026-08-09 safe refresh moved ESLint from `9.39.4` to `9.39.5` while keeping the Next-compatible ESLint 9 line and aligned `@eslint/js` and `@eslint/eslintrc` packages.
 - The 2026-08-10 safe test-tooling refresh moved `playwright` and `playwright-core` from `1.61.1` to `1.62.1` without changing the install-script set or any other transitive package.
+- The 2026-08-11 safe tooling refresh moved `tsx` from `4.22.4` to `4.23.12` without changing its Node `>=18.0.0` or `esbuild ~0.28.0` compatibility boundary.
 - Keep `sanitize-html` at `2.17.5` until the declared Node range is compatible with its newer `>=22.12.0` engine requirement.
 - Keep deferring the newer `@anthropic-ai/sdk` 0.x minor line for a separate compatibility review.
 
