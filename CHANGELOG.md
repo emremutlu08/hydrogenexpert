@@ -15,6 +15,26 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## Unreleased
 
+- Date: 2026-08-11
+- PR: [#115 Update tsx to 4.23.12](https://github.com/emremutlu08/hydrogenexpert/pull/115)
+- Branch: `codex/deps-tsx-4-23-12-20260811`
+- Deployment: Vercel preview validation is required before squash merge; production follows the validated merge without a separate manual deploy.
+- Summary:
+  - Updated `tsx` from `4.22.4` to stable `4.23.12` while preserving its Node `>=18.0.0` and `esbuild ~0.28.0` compatibility boundaries.
+  - Limited the lockfile delta to `tsx`; the install-script set and every other direct and transitive package remain unchanged.
+  - Deferred Vitest `4.1.10` because of an active runner regression report, `sanitize-html` `2.17.6` because of its Node-floor and HTML-parser changes, and the broader Anthropic SDK 0.x line to separate compatibility reviews.
+- Files changed:
+  - `package.json`
+  - `package-lock.json`
+  - `agent-docs/HYDROGEN.md`
+  - `CHANGELOG.md`
+- Verification:
+  - `npm ci`, `npm audit --json`, dependency-tree inspection, install-script review, and `git diff --check`: passed; audit reports 0 vulnerabilities.
+  - `npm run lint`, `npm run typecheck`, `npm run validate:content`, `npm run audit:shopify-claims`, and `npm run validate:structured-data`: passed.
+  - `npm run test`: passed, 29 test files and 122 tests.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build -- --webpack`: passed; 76 static pages generated. The Vercel preview remains the default Turbopack validation gate because the local sandbox blocks Turbopack's process port binding.
+- Manual follow-up: None.
+
 - Date: 2026-08-10
 - PR: [#114 Update Playwright to 1.62.1](https://github.com/emremutlu08/hydrogenexpert/pull/114)
 - Branch: `codex/deps-playwright-1-62-1-20260810`
