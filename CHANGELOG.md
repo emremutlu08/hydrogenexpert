@@ -16,7 +16,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 ## Unreleased
 
 - Date: 2026-08-11
-- PR: Pending.
+- PR: [#116 Refresh Shopify Hydrogen examples discovery](https://github.com/emremutlu08/hydrogenexpert/pull/116)
 - Branch: `codex/shopify-hydrogen-examples-refresh-20260811`
 - Deployment: Vercel preview validation is required before squash merge; production follows the validated merge.
 - Summary:
