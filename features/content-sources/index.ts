@@ -1237,7 +1237,7 @@ export const STATIC_PAGE_SOURCE_METADATA = {
     contentType: "official_update_digest",
   },
   "/shopify-hydrogen-examples": {
-    lastVerified: "2026-05-24",
+    lastVerified: "2026-08-11",
     claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
     sourceMap: [
       SOURCE_PACKS.hydrogenFundamentals,

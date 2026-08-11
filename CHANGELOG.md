@@ -16,6 +16,28 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 ## Unreleased
 
 - Date: 2026-08-11
+- PR: Pending.
+- Branch: `codex/shopify-hydrogen-examples-refresh-20260811`
+- Deployment: Vercel preview validation is required before squash merge; production follows the validated merge.
+- Summary:
+  - Refreshed the Shopify Hydrogen examples directory source verification date and displayed the same freshness in its existing page intro.
+  - Replaced the version-pinned Hydrogen Video example URL with Shopify's latest Video component documentation URL.
+  - Added the sourced examples and pattern directory, with its practical takeaways, to both generated `llms` discovery surfaces.
+- Files changed:
+  - `app/shopify-hydrogen-examples/page.tsx`
+  - `features/content-sources/index.ts`
+  - `features/public-discovery/manifest.ts`
+  - `features/traffic-foundation/index.ts`
+  - `tests/shopify-hydrogen-examples.test.tsx`
+  - `CHANGELOG.md`
+- Verification:
+  - `npm ci`, `git diff --check`, `npm run lint`, and `npm run typecheck`: passed.
+  - Focused test: passed, 1 test file and 2 tests. Full `npm run test`: passed, 30 test files and 124 tests.
+  - `npm run validate:content` and `npm run audit:shopify-claims`: passed; the claim audit reported no pages needing review.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed; 76 static pages generated, including `/shopify-hydrogen-examples`.
+- Manual follow-up: Recheck the mature Google Search Console window; the current query volume is too small for an early ranking verdict.
+
+- Date: 2026-08-11
 - PR: [#115 Update tsx to 4.23.12](https://github.com/emremutlu08/hydrogenexpert/pull/115)
 - Branch: `codex/deps-tsx-4-23-12-20260811`
 - Deployment: Vercel preview validation is required before squash merge; production follows the validated merge without a separate manual deploy.
