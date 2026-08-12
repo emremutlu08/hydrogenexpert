@@ -15,6 +15,26 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## Unreleased
 
+- Date: 2026-08-12
+- PR: [#117 Update Supabase client to 2.112.3](https://github.com/emremutlu08/hydrogenexpert/pull/117)
+- Branch: `codex/deps-supabase-2-112-3-20260812`
+- Deployment: Vercel preview validation is required before squash merge; production follows the validated merge without a separate manual deploy.
+- Summary:
+  - Updated `@supabase/supabase-js` and its five aligned client packages from `2.112.2` to stable `2.112.3`.
+  - Preserved the Node `>=22.0.0` package requirement and limited the lockfile delta to the six-package Supabase client family without changing the install-script set.
+  - Excluded unrelated Tailwind WASI lock normalization; deferred engine-incompatible `sanitize-html` `2.17.6` and the broader Anthropic SDK 0.x line to separate reviews.
+- Files changed:
+  - `package.json`
+  - `package-lock.json`
+  - `agent-docs/HYDROGEN.md`
+  - `CHANGELOG.md`
+- Verification:
+  - `npm ci`, `npm audit --json`, dependency-tree inspection, install-script review, and `git diff --check`: passed; audit reports 0 vulnerabilities.
+  - `npm run lint`, `npm run typecheck`, `npm run validate:content`, `npm run audit:shopify-claims`, and `npm run validate:structured-data`: passed.
+  - `npm run test`: passed, 29 test files and 122 tests.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed with Turbopack; 76 static pages generated.
+- Manual follow-up: None.
+
 - Date: 2026-08-11
 - PR: [#115 Update tsx to 4.23.12](https://github.com/emremutlu08/hydrogenexpert/pull/115)
 - Branch: `codex/deps-tsx-4-23-12-20260811`
