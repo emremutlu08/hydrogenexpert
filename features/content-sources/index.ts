@@ -349,7 +349,7 @@ export const SOURCE_PACKS = {
     label: "Shopify: Hydrogen Video component",
     sourceType: "shopify_official",
     topic: "hydrogen",
-    url: "https://shopify.dev/docs/api/hydrogen/2025-05/components/media/video",
+    url: "https://shopify.dev/docs/api/hydrogen/latest/components/media/video",
     retrievedAt: "2026-05-10",
     usedFor:
       "Hydrogen video media rendering reference for the hero carousel timing production note.",
@@ -1237,7 +1237,7 @@ export const STATIC_PAGE_SOURCE_METADATA = {
     contentType: "official_update_digest",
   },
   "/shopify-hydrogen-examples": {
-    lastVerified: "2026-05-24",
+    lastVerified: "2026-08-11",
     claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
     sourceMap: [
       SOURCE_PACKS.hydrogenFundamentals,

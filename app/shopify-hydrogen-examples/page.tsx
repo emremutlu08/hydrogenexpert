@@ -6,11 +6,12 @@ import { PageIntroSection } from "@/components/PageIntroSection";
 import { RelatedLinks } from "@/components/RelatedLinks";
 import { SectionHeader } from "@/components/SectionHeader";
 import { getRelatedLinksForPath } from "@/features/content-relations";
+import { STATIC_PAGE_SOURCE_METADATA } from "@/features/content-sources";
+import { HYDROGEN_EXAMPLES } from "@/features/traffic-foundation";
 import { getOgImageForRoute } from "@/lib/og-images";
 import { buildMetadata } from "@/lib/seo";
 import { OWNER, absoluteUrl, getSchemaIds } from "@/lib/site";
 import { asSchemaArray, buildBreadcrumbListSchema } from "@/lib/structured-data";
-import { HYDROGEN_EXAMPLES } from "@/features/traffic-foundation";
 
 export const metadata = buildMetadata({
   title: "Shopify Hydrogen Examples | Patterns, Sources & Takeaways",
@@ -25,6 +26,7 @@ const breadcrumbs = [
   { label: "Resources", href: "/resources" },
   { label: "Hydrogen examples", href: "/shopify-hydrogen-examples" },
 ] as const;
+const pageSourceMetadata = STATIC_PAGE_SOURCE_METADATA["/shopify-hydrogen-examples"];
 
 export default function ShopifyHydrogenExamplesPage() {
   const schemaIds = getSchemaIds();
@@ -60,6 +62,7 @@ export default function ShopifyHydrogenExamplesPage() {
           title="Shopify Hydrogen examples worth studying before a build."
           description="Ten practical Hydrogen examples and patterns, each tied to a source, a lesson, and the closest HydrogenExpert follow-up."
           body="This page is not a generic inspiration gallery. It is a working reference map for routes, data, SEO, PDP state, collections, content models, deployment, and production judgment."
+          reviewedAt={pageSourceMetadata.lastVerified}
         />
 
         <section className="surface-card space-y-6">

@@ -433,7 +433,7 @@ export const HYDROGEN_EXAMPLES = [
     takeaway:
       "Only the active video should control video-slide completion.",
     source: {
-      href: "https://shopify.dev/docs/api/hydrogen/2025-05/components/media/video",
+      href: "https://shopify.dev/docs/api/hydrogen/latest/components/media/video",
       label: "Hydrogen Video component",
       note: "Official media component reference.",
       external: true,

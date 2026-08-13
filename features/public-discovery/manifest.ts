@@ -159,6 +159,12 @@ export const LLMS_CORE_PAGE_ENTRIES: readonly LlmsPageEntry[] = [
       "Monthly official Hydrogen update notes translated into merchant impact and end-user benefit.",
   },
   {
+    title: "Shopify Hydrogen Examples",
+    path: "/shopify-hydrogen-examples",
+    description:
+      "Sourced Shopify Hydrogen examples and pattern directory with practical takeaways for routes, data, SEO, content models, deployment, and production behavior.",
+  },
+  {
     title: "Should I Use It",
     path: "/should-i-use-it",
     description:
