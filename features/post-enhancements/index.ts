@@ -1,3 +1,5 @@
+import { SOURCE_PACKS } from "../content-sources";
+
 export interface PostFaqItem {
   question: string;
   answer: string;
@@ -418,7 +420,7 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
     ],
     externalLinks: [
       {
-        href: "https://shopify.dev/docs/api/hydrogen/2025-05/components/media/video",
+        href: SOURCE_PACKS.hydrogenVideoComponent.url,
         label: "Shopify Hydrogen Video component",
         note: "Official Shopify reference for rendering Shopify video media in Hydrogen storefronts.",
       },

@@ -349,7 +349,7 @@ export const SOURCE_PACKS = {
     label: "Shopify: Hydrogen Video component",
     sourceType: "shopify_official",
     topic: "hydrogen",
-    url: "https://shopify.dev/docs/api/hydrogen/2025-05/components/media/video",
+    url: "https://shopify.dev/docs/api/hydrogen/latest/components/media/video",
     retrievedAt: "2026-05-10",
     usedFor:
       "Hydrogen video media rendering reference for the hero carousel timing production note.",

@@ -3,7 +3,8 @@ import { join } from "node:path";
 
 import { describe, expect, it } from "vitest";
 
-import { STATIC_PAGE_SOURCE_METADATA } from "../features/content-sources";
+import { SOURCE_PACKS, STATIC_PAGE_SOURCE_METADATA } from "../features/content-sources";
+import { POST_ENHANCEMENTS } from "../features/post-enhancements";
 import { LLMS_CORE_PAGE_ENTRIES } from "../features/public-discovery/manifest";
 import { HYDROGEN_EXAMPLES } from "../features/traffic-foundation";
 import { buildLlmsFullTxt, buildLlmsTxt } from "../lib/llms";
@@ -23,9 +24,16 @@ function readRepoFile(path: string) {
 describe("Shopify Hydrogen examples refresh", () => {
   it("uses the latest Video docs source and the canonical verified date in the page intro", () => {
     const videoExample = HYDROGEN_EXAMPLES.find((example) => example.id === "hydrogen-video-media");
+    const videoPostSource = POST_ENHANCEMENTS[
+      "shopify-hydrogen-hero-video-carousel-onended"
+    ].externalLinks?.find((link) => link.label === "Shopify Hydrogen Video component");
     const pageSource = readRepoFile("app/shopify-hydrogen-examples/page.tsx");
 
-    expect(videoExample?.source.href).toBe(videoSourceUrl);
+    expect([
+      videoExample?.source.href,
+      SOURCE_PACKS.hydrogenVideoComponent.url,
+      videoPostSource?.href,
+    ]).toEqual([videoSourceUrl, videoSourceUrl, videoSourceUrl]);
     expect(STATIC_PAGE_SOURCE_METADATA[route].lastVerified).toBe(verifiedAt);
     expect(pageSource).toContain(
       'const pageSourceMetadata = STATIC_PAGE_SOURCE_METADATA["/shopify-hydrogen-examples"]',
