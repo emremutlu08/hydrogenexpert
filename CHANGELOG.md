@@ -15,6 +15,27 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## Unreleased
 
+- Date: 2026-08-15
+- PR: [#118 Apply safe dependency security patches](https://github.com/emremutlu08/hydrogenexpert/pull/118)
+- Branch: `codex/daily-safe-dependencies-2026-08-15`
+- Deployment: Vercel preview validation is required before squash merge; production follows the validated merge without a separate manual deploy.
+- Summary:
+  - Updated Next.js, `@next/third-parties`, and `eslint-config-next` from `16.3.0` to stable `16.3.1`.
+  - Updated the PostCSS override from `8.5.25` to `8.5.26` and resolved the high-severity `nanoid` advisory by moving the transitive package from `3.3.17` to `3.3.18`.
+  - Deferred Vitest `4.1.10` after it produced a 626-line Vite/Rolldown/Lightning CSS lockfile delta; also deferred engine-incompatible, broader 0.x SDK, and major updates to separate reviews.
+- Files changed:
+  - `package.json`
+  - `package-lock.json`
+  - `agent-docs/HYDROGEN.md`
+  - `CHANGELOG.md`
+- Verification:
+  - `npm ci`, `npm audit --json`, dependency-tree inspection, install-script review, and `git diff --check`: passed; audit reports 0 vulnerabilities.
+  - `npm run lint`, `npm run typecheck`, `npm run validate:content`, `npm run audit:shopify-claims`, `npm run validate:structured-data`, and `npm run verify:public-images`: passed.
+  - `npm run test`: passed, 30 test files and 124 tests.
+  - `npm run build`: passed with Next.js `16.3.1`; 76 static pages generated.
+  - Live commercial-launch and internal-link verification passed for 69 sitemap URLs and 85 internal URLs; Vercel preview remains the protected-runtime validation gate.
+- Manual follow-up: None.
+
 - Date: 2026-08-12
 - PR: [#117 Update Supabase client to 2.112.3](https://github.com/emremutlu08/hydrogenexpert/pull/117)
 - Branch: `codex/deps-supabase-2-112-3-20260812`
