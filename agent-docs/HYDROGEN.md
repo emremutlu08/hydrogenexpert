@@ -50,6 +50,7 @@ Use `package.json` for exact scripts. Current important scripts include:
 - The 2026-08-11 safe tooling refresh moved `tsx` from `4.22.4` to `4.23.12` without changing its Node `>=18.0.0` or `esbuild ~0.28.0` compatibility boundary.
 - The 2026-08-12 safe refresh moved `@supabase/supabase-js` and its five aligned client packages from `2.112.2` to `2.112.3` while keeping the Node `>=22.0.0` requirement and install-script set unchanged.
 - The 2026-08-15 security refresh moved Next.js, `@next/third-parties`, and `eslint-config-next` from `16.3.0` to `16.3.1`, updated the PostCSS override from `8.5.25` to `8.5.26`, and resolved the `nanoid` high-severity advisory by moving the transitive package from `3.3.17` to `3.3.18`.
+- The 2026-08-18 safe patch refresh moved the `esbuild` override from `0.28.1` to `0.28.2` for upstream TypeScript, JavaScript, and CSS correctness fixes.
 - Keep `sanitize-html` at `2.17.5` until the declared Node range is compatible with its newer `>=22.12.0` engine requirement.
 - Keep deferring the newer `@anthropic-ai/sdk` 0.x minor line for a separate compatibility review.
 

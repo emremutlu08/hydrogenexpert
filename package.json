@@ -48,7 +48,7 @@
     "vitest": "^4.1.9"
   },
   "overrides": {
-    "esbuild": "0.28.1",
+    "esbuild": "0.28.2",
     "postcss": "8.5.26"
   },
   "engines": {
