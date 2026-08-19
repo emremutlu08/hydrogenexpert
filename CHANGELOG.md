@@ -15,6 +15,26 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## Unreleased
 
+- Date: 2026-08-19
+- PR: [#120 Update Vitest to 4.1.11](https://github.com/emremutlu08/hydrogenexpert/pull/120)
+- Branch: `codex/deps-vitest-4-1-11-20260819`
+- Deployment: Vercel preview validation is required before squash merge; production follows the validated merge without a separate manual deploy.
+- Summary:
+  - Updated stable Vitest and its seven version-coupled `@vitest/*` packages from `4.1.9` to `4.1.11`.
+  - Rejected the broad npm resolver refresh and preserved Vite `8.1.0`, Rolldown `1.1.3`, Lightning CSS `1.32.0`, the Node range, peer dependencies, and install-script set.
+  - Deferred engine-incompatible `sanitize-html` `2.17.7`, the broader Anthropic SDK 0.x line, and major tooling updates to separate compatibility reviews.
+- Files changed:
+  - `package.json`
+  - `package-lock.json`
+  - `agent-docs/HYDROGEN.md`
+  - `CHANGELOG.md`
+- Verification:
+  - `npm ci`, `npm audit --json`, dependency-tree inspection, install-script review, and `git diff --check`: passed; audit reports 0 vulnerabilities across 555 packages.
+  - `npm run lint`, `npm run typecheck`, `npm run validate:content`, and `npm run audit:shopify-claims`: passed.
+  - `npm run test`: passed, 30 test files and 124 tests.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed; 76 static pages generated.
+- Manual follow-up: None.
+
 - Date: 2026-08-18
 - PR: [#119 Update esbuild override to 0.28.2](https://github.com/emremutlu08/hydrogenexpert/pull/119)
 - Branch: `codex/deps-esbuild-0-28-2-20260818`
