@@ -15,6 +15,25 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## Unreleased
 
+- Date: 2026-08-20
+- PR: [#121 Update Babel transitive patches](https://github.com/emremutlu08/hydrogenexpert/pull/121)
+- Branch: `codex/update-babel-transitives-20260820`
+- Deployment: Vercel preview validation is required before squash merge; production follows the validated merge without a separate manual deploy.
+- Summary:
+  - Updated transitive `@babel/generator`, `@babel/parser`, `@babel/traverse`, and `@babel/types` from stable `7.29.7` to `7.29.8` within the existing Babel 7 dependency ranges.
+  - Limited the lockfile delta to the four version-coupled Babel packages without adding packages, peer problems, deprecated dependencies, duplicate runtimes, or install scripts.
+  - Deferred engine-incompatible `sanitize-html` `2.17.7`, the broader Anthropic SDK 0.x line, ESLint 10, TypeScript 7, and Node types 26 to separate compatibility reviews.
+- Files changed:
+  - `package-lock.json`
+  - `CHANGELOG.md`
+- Verification:
+  - Node `24.19.0`, npm `11.18.0`, `npm ci`, `npm audit --json`, dependency-tree inspection, install-script review, and `git diff --check`: passed; audit reports 0 vulnerabilities across 555 packages.
+  - `npm run lint`, `npm run typecheck`, `npm run validate:content`, and `npm run audit:shopify-claims`: passed.
+  - `npm run test`: passed, 30 test files and 124 tests.
+  - `npm run verify:public-images` and `npm run validate:structured-data`: passed with no broken images or schema errors.
+  - `npm run build`: passed; 76 static pages generated.
+- Manual follow-up: None.
+
 - Date: 2026-08-19
 - PR: [#120 Update Vitest to 4.1.11](https://github.com/emremutlu08/hydrogenexpert/pull/120)
 - Branch: `codex/deps-vitest-4-1-11-20260819`
