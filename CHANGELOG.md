@@ -15,6 +15,25 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## Unreleased
 
+- Date: 2026-08-21
+- PR: [#122 Update picomatch to 4.0.5](https://github.com/emremutlu08/hydrogenexpert/pull/122)
+- Branch: `codex/update-picomatch-4-0-5`
+- Deployment: Vercel preview validation is required before squash merge; production follows the validated merge without a separate manual deploy.
+- Summary:
+  - Updated the three Vitest/Vite/tinyglobby lockfile instances of stable `picomatch` from `4.0.4` to `4.0.5` within the existing semver ranges.
+  - Limited the lockfile delta to those three records without changing direct dependencies, package count, peer dependencies, deprecated dependencies, duplicate runtimes, Node compatibility, or install scripts.
+  - Rejected the broad npm resolver refresh and deferred engine-incompatible `sanitize-html` `2.17.7`, the broader Anthropic SDK 0.x line, ESLint 10, TypeScript 7, and Node types 26 to separate compatibility reviews.
+- Files changed:
+  - `package-lock.json`
+  - `CHANGELOG.md`
+- Verification:
+  - Node `24.19.0`, npm `11.19.0`, `npm ci`, `npm audit --json`, dependency-tree inspection, install-script review, and `git diff --check`: passed; audit reports 0 vulnerabilities across 555 packages.
+  - `npm run lint`, `npm run typecheck`, `npm run validate:content`, and `npm run audit:shopify-claims`: passed.
+  - `npm run test`: passed, 30 test files and 124 tests.
+  - `npm run verify:public-images` and `npm run validate:structured-data`: passed with no broken images or schema errors.
+  - `npm run build`: passed; 76 static pages generated.
+- Manual follow-up: None.
+
 - Date: 2026-08-20
 - PR: [#121 Update Babel transitive patches](https://github.com/emremutlu08/hydrogenexpert/pull/121)
 - Branch: `codex/update-babel-transitives-20260820`
