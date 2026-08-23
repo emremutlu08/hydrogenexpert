@@ -1,7 +1,7 @@
 # HydrogenExpert Implementation Notes
 
 Status: Active
-Last updated: 2026-08-19
+Last updated: 2026-08-23
 Owner: Agent
 Source of truth: `package.json`, current code, agent analysis
 
@@ -52,6 +52,7 @@ Use `package.json` for exact scripts. Current important scripts include:
 - The 2026-08-15 security refresh moved Next.js, `@next/third-parties`, and `eslint-config-next` from `16.3.0` to `16.3.1`, updated the PostCSS override from `8.5.25` to `8.5.26`, and resolved the `nanoid` high-severity advisory by moving the transitive package from `3.3.17` to `3.3.18`.
 - The 2026-08-18 safe patch refresh moved the `esbuild` override from `0.28.1` to `0.28.2` for upstream TypeScript, JavaScript, and CSS correctness fixes.
 - The 2026-08-19 safe test-tooling refresh moved Vitest and its seven version-coupled `@vitest/*` packages from `4.1.9` to `4.1.11`. The lockfile intentionally keeps Vite `8.1.0`, Rolldown `1.1.3`, and Lightning CSS `1.32.0` until their broader resolver update receives a separate compatibility review.
+- The 2026-08-23 safe patch refresh moved Next.js, `@next/third-parties`, and `eslint-config-next` from `16.3.1` to stable `16.3.2`, a non-prerelease bug-fix backport, while preserving React `19.2.8` and the declared Node range.
 - Keep `sanitize-html` at `2.17.5` until the declared Node range is compatible with its newer `>=22.12.0` engine requirement.
 - Keep deferring the newer `@anthropic-ai/sdk` 0.x minor line for a separate compatibility review.
 
