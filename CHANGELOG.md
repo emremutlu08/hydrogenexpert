@@ -15,6 +15,26 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## Unreleased
 
+- Date: 2026-08-24
+- PR: [#124 Update React DOM types to 19.2.5](https://github.com/emremutlu08/hydrogenexpert/pull/124)
+- Branch: `codex/deps-react-dom-types-19-2-5-20260824`
+- Deployment: Vercel preview validation is required before squash merge; production follows the validated merge without a separate manual deploy.
+- Summary:
+  - Updated stable `@types/react-dom` from `19.2.4` to `19.2.5`, adding the upstream optional diagnostic argument for the React canary `browser()` type.
+  - Limited the lockfile delta to the single direct dev dependency record without changing runtime React, dependencies, peer requirements, package count, or install scripts.
+  - Deferred engine-incompatible `sanitize-html` `2.17.7`, the broader Anthropic SDK 0.x line, ESLint 10, TypeScript 7, and Node types 26 to separate compatibility reviews.
+- Files changed:
+  - `package.json`
+  - `package-lock.json`
+  - `agent-docs/HYDROGEN.md`
+  - `CHANGELOG.md`
+- Verification:
+  - Node `24.19.0`, npm `11.18.0`, `npm ci`, `npm audit`, package-diff inspection, install-script review, and `git diff --check`: passed; audit reports 0 vulnerabilities.
+  - `npm run lint`, `npm run typecheck`, `npm run validate:content`, and `npm run audit:shopify-claims`: passed.
+  - `npm run test`: passed, 30 test files and 124 tests.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed with 76 static pages generated.
+- Manual follow-up: None.
+
 - Date: 2026-08-23
 - PR: [#123 Update Next.js to 16.3.2](https://github.com/emremutlu08/hydrogenexpert/pull/123)
 - Branch: `codex/daily-deps-20260823`
