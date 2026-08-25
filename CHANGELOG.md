@@ -16,6 +16,29 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 ## Unreleased
 
 - Date: 2026-08-25
+- PR: [#126 Restore sitemap and llms-full resilience](https://github.com/emremutlu08/hydrogenexpert/pull/126)
+- Branch: `codex/discovery-resilience-20260825`
+- Deployment: Vercel preview and exact merge-SHA production verification are required before closeout.
+- Summary:
+  - Kept `/sitemap.xml` and `/llms-full.txt` available when Supabase published-post reads are unavailable by degrading only DB-backed posts to an empty list.
+  - Preserved static commercial routes, case studies, and repository-backed articles while retaining the existing failure boundary for independent article or rendering errors.
+  - Added actual source-unavailable composition coverage plus DB-up, uniqueness, article-preservation, and unexpected-failure regression tests.
+- Files changed:
+  - `app/sitemap.ts`
+  - `lib/llms.ts`
+  - `tests/public-discovery-resilience.test.ts`
+  - `tests/public-discovery-source-unavailable.test.ts`
+  - `vitest.config.ts`
+  - `CHANGELOG.md`
+- Verification:
+  - `git diff --check`, `npm run lint`, `npm run typecheck`, `npm run validate:content`, and `npm run audit:shopify-claims`: passed.
+  - `npm run test`: passed, 32 test files and 132 tests.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed with 76 static pages generated.
+  - Local production smoke without Supabase configuration returned HTTP 200 for `/sitemap.xml`, `/llms-full.txt`, and `/robots.txt`; representative commercial, case-study, and repository-article URLs were present and unique.
+  - Claude Code final changed-file review: PASS, 94/100, no blockers.
+- Manual follow-up: Verify repeated production HTTP 200 responses and body signatures after the exact merge SHA deploys.
+
+- Date: 2026-08-25
 - PR: [#125 Update Supabase JS to 2.112.4](https://github.com/emremutlu08/hydrogenexpert/pull/125)
 - Branch: `codex/supabase-patch-20260825`
 - Deployment: Vercel preview deployment passed; squash merge publishes through the existing Git integration without a separate manual production deploy.
