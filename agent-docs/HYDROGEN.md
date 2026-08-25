@@ -54,6 +54,7 @@ Use `package.json` for exact scripts. Current important scripts include:
 - The 2026-08-19 safe test-tooling refresh moved Vitest and its seven version-coupled `@vitest/*` packages from `4.1.9` to `4.1.11`. The lockfile intentionally keeps Vite `8.1.0`, Rolldown `1.1.3`, and Lightning CSS `1.32.0` until their broader resolver update receives a separate compatibility review.
 - The 2026-08-23 safe patch refresh moved Next.js, `@next/third-parties`, and `eslint-config-next` from `16.3.1` to stable `16.3.2`, a non-prerelease bug-fix backport, while preserving React `19.2.8` and the declared Node range.
 - The 2026-08-24 type refresh moved `@types/react-dom` from `19.2.4` to `19.2.5`; runtime React and React DOM remain on `19.2.8`.
+- The 2026-08-25 safe refresh moved `@supabase/supabase-js` and its five aligned client packages from `2.112.3` to `2.112.4` while keeping the Node `>=22.0.0` requirement and install-script set unchanged.
 - Keep `sanitize-html` at `2.17.5` until the declared Node range is compatible with its newer `>=22.12.0` engine requirement.
 - Keep deferring the newer `@anthropic-ai/sdk` 0.x minor line for a separate compatibility review.
 

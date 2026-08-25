@@ -15,6 +15,27 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## Unreleased
 
+- Date: 2026-08-25
+- PR: [#125 Update Supabase JS to 2.112.4](https://github.com/emremutlu08/hydrogenexpert/pull/125)
+- Branch: `codex/supabase-patch-20260825`
+- Deployment: Vercel preview validation is required before squash merge; production follows the validated merge without a separate manual deploy.
+- Summary:
+  - Updated stable `@supabase/supabase-js` and its five aligned client packages from `2.112.3` to `2.112.4`.
+  - Limited the lockfile delta to the six-package Supabase client family without changing peer requirements, duplicate runtimes, deprecated packages, or the install-script set.
+  - Deferred engine-incompatible `sanitize-html` `2.17.7`, the broader Anthropic SDK 0.x line, ESLint 10, TypeScript 7, and Node types 26 to separate compatibility reviews.
+- Files changed:
+  - `package.json`
+  - `package-lock.json`
+  - `agent-docs/HYDROGEN.md`
+  - `CHANGELOG.md`
+- Verification:
+  - Node `24.19.0`, npm `11.17.0`, `npm ci`, `npm audit --audit-level=low`, dependency-tree inspection, install-script review, and `git diff --check`: passed; audit reports 0 vulnerabilities.
+  - `npm run lint`, `npm run typecheck`, `npm run validate:content`, and `npm run audit:shopify-claims`: passed.
+  - `npm run test`: passed, 30 test files and 124 tests.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed with 76 static pages generated.
+  - Local production server returned HTTP 200 and structured-data validation passed; sitemap-backed checks remain for the credentialed Vercel preview.
+- Manual follow-up: None.
+
 - Date: 2026-08-24
 - PR: [#124 Update React DOM types to 19.2.5](https://github.com/emremutlu08/hydrogenexpert/pull/124)
 - Branch: `codex/deps-react-dom-types-19-2-5-20260824`
