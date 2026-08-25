@@ -1,7 +1,7 @@
 import { CASE_STUDIES } from "../data/caseStudies";
 import { LLMS_CORE_PAGE_ENTRIES } from "../features/public-discovery/manifest";
 import { getPublicArticles, type Article } from "./articles";
-import { getPublishedPostListResult, type PostSummary } from "./posts";
+import { getPublishedPosts, type PostSummary } from "./posts";
 import { SERVICE_PACKAGES } from "../features/services/registry";
 import { DELIVERY_PROOF, OWNER, UPWORK_PROFILE, absoluteUrl, getSiteUrl } from "./site";
 
@@ -165,18 +165,12 @@ export async function buildLlmsFullTxt({
 }: {
   posts?: readonly PostSummary[];
 } = {}) {
-  const [postResult, articles] = await Promise.all([
+  const [posts, articles] = await Promise.all([
     providedPosts
-      ? Promise.resolve({ status: "ok" as const, posts: providedPosts })
-      : getPublishedPostListResult(),
+      ? Promise.resolve(providedPosts)
+      : getPublishedPosts(),
     getPublicArticles(),
   ]);
-
-  if (postResult.status === "source_unavailable") {
-    throw new Error(postResult.error);
-  }
-
-  const posts = postResult.posts;
 
   const postLines =
     posts.length > 0
