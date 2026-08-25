@@ -18,7 +18,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 - Date: 2026-08-25
 - PR: [#125 Update Supabase JS to 2.112.4](https://github.com/emremutlu08/hydrogenexpert/pull/125)
 - Branch: `codex/supabase-patch-20260825`
-- Deployment: Vercel preview validation is required before squash merge; production follows the validated merge without a separate manual deploy.
+- Deployment: Vercel preview deployment passed; squash merge publishes through the existing Git integration without a separate manual production deploy.
 - Summary:
   - Updated stable `@supabase/supabase-js` and its five aligned client packages from `2.112.3` to `2.112.4`.
   - Limited the lockfile delta to the six-package Supabase client family without changing peer requirements, duplicate runtimes, deprecated packages, or the install-script set.
@@ -33,8 +33,9 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - `npm run lint`, `npm run typecheck`, `npm run validate:content`, and `npm run audit:shopify-claims`: passed.
   - `npm run test`: passed, 30 test files and 124 tests.
   - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed with 76 static pages generated.
-  - Local production server returned HTTP 200 and structured-data validation passed; sitemap-backed checks remain for the credentialed Vercel preview.
-- Manual follow-up: None.
+  - Local production server returned HTTP 200 and structured-data validation passed; the authenticated Vercel preview home also returned HTTP 200.
+  - Preview `/sitemap.xml` returned HTTP 500, matching the current production route and confirming a pre-existing site issue outside this dependency delta.
+- Manual follow-up: Investigate the existing production and preview `/sitemap.xml` HTTP 500 separately.
 
 - Date: 2026-08-24
 - PR: [#124 Update React DOM types to 19.2.5](https://github.com/emremutlu08/hydrogenexpert/pull/124)
