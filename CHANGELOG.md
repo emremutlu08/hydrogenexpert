@@ -15,6 +15,27 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## Unreleased
 
+- Date: 2026-08-26
+- PR: [#127 Update Next.js to 16.3.3 security release](https://github.com/emremutlu08/hydrogenexpert/pull/127)
+- Branch: `codex/deps-next-16-3-3-20260826`
+- Deployment: Vercel preview validation is required before squash merge; production follows the validated merge through the existing Git integration without a separate manual deploy.
+- Summary:
+  - Updated Next.js, `@next/third-parties`, and `eslint-config-next` from `16.3.2` to stable `16.3.3` for the official Windows-hosted server and AVIF image-optimization critical RCE fixes.
+  - Limited the lockfile delta to 13 version-coupled Next.js records without changing package counts, React, the declared Node range, peer dependencies, duplicate runtimes, deprecated records, or install scripts.
+  - Deferred engine-incompatible `sanitize-html` `2.17.7`, the broader Anthropic SDK 0.x line, ESLint 10, TypeScript 7, and Node types 26 to separate compatibility reviews.
+- Files changed:
+  - `package.json`
+  - `package-lock.json`
+  - `agent-docs/HYDROGEN.md`
+  - `CHANGELOG.md`
+- Verification:
+  - Node `24.19.0`, npm `11.18.0`, clean `npm ci`, `npm audit --audit-level=low`, dependency-tree inspection, install-script review, and `git diff --check`: passed; audit reports 0 vulnerabilities.
+  - `npm run lint`, `npm run typecheck`, `npm run validate:content`, and `npm run audit:shopify-claims`: passed.
+  - `npm run test`: passed, 32 test files and 132 tests.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed with Next.js `16.3.3`; 76 static pages generated.
+  - Local production smoke returned HTTP 200 for `/`, `/robots.txt`, `/sitemap.xml`, and `/llms-full.txt`.
+- Manual follow-up: None.
+
 - Date: 2026-08-25
 - PR: [#126 Restore sitemap and llms-full resilience](https://github.com/emremutlu08/hydrogenexpert/pull/126)
 - Branch: `codex/discovery-resilience-20260825`
