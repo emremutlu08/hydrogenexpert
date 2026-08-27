@@ -15,6 +15,24 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## Unreleased
 
+- Date: 2026-08-27
+- PR: [#128 Refresh Rebel Bunny proof accuracy](https://github.com/emremutlu08/hydrogenexpert/pull/128)
+- Branch: `codex/rebel-bunny-proof-refresh-20260827`
+- Deployment: Vercel preview validation is required before merge; production follows the exact merge SHA through the Git integration.
+- Summary:
+  - Added route-specific Rebel Bunny case-study source metadata using the approved May 3, 2026 Upwork evidence date.
+  - Made the contract wording time-neutral and led the outcome with a self-contained operator lesson without adding metrics or proof.
+  - Added regression coverage for source metadata, approved testimonial proof, outcome wording, and the unchanged five-link set.
+- Files changed:
+  - `features/content-sources/index.ts`
+  - `data/caseStudies.ts`
+  - `tests/rebel-bunny-case-study-refresh.test.ts`
+  - `CHANGELOG.md`
+- Verification:
+  - Focused regression test passed: 1 file and 4 tests.
+  - On Node 22.22.3, `git diff --check`, lint, typecheck, full test suite (33 files and 136 tests), content validation, Shopify claim audit, and the production build (76 static pages) passed.
+- Manual follow-up: Verify the exact merge SHA in production, then record live acceptance evidence in PR #128.
+
 - Date: 2026-08-26
 - PR: [#127 Update Next.js to 16.3.3 security release](https://github.com/emremutlu08/hydrogenexpert/pull/127)
 - Branch: `codex/deps-next-16-3-3-20260826`
