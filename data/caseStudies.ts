@@ -255,7 +255,7 @@ export const CASE_STUDIES: readonly CaseStudyEntry[] = [
       "Commerce, education, and partner acquisition had to live together coherently.",
       "Custom product templates and promotional surfaces needed to support conversion without flattening the brand.",
       "The case study could show approved storefront context, but not invented metrics or quotes.",
-      "Public Upwork feedback is available for the ongoing Shopify Hydrogen storefront contract.",
+      "Public Upwork feedback is available for the Shopify Hydrogen storefront contract.",
     ],
     technicalDecisions: [
       "Use Shopify Hydrogen, React, Remix, TypeScript, GraphQL, and JavaScript for a custom storefront system.",
@@ -272,12 +272,12 @@ export const CASE_STUDIES: readonly CaseStudyEntry[] = [
     implementation:
       "The implementation covered custom storefront development, mobile and desktop presentation, promotional surfaces, product templates, cart and checkout flows, and branded content paths inside one Hydrogen-powered commerce experience.",
     outcome:
-      "The outcome is a storefront that supports both near-term conversion and longer-term brand building. The live store carries shopping, partner interest, and Matchacation content in one branded surface instead of splitting those journeys across disconnected landing pages. As a case study, Rebel Bunny shows Hydrogen at its most useful for social-first DTC: one system handling commerce, education, and partnership growth without turning the experience into a stack of disconnected tools.",
+      "When commerce, education, and partner acquisition must work as one system, keep those journeys in a coherent Hydrogen storefront rather than disconnected tools. Rebel Bunny carries shopping, partner interest, and Matchacation content in one branded surface, making it a useful example of Hydrogen for social-first DTC.",
     results: [
       "One branded storefront surface for DTC shopping, partner interest, and education.",
       "Custom product and promotional surfaces shaped around social-first discovery.",
       "A strong example of Hydrogen supporting commerce and brand storytelling together.",
-      "5.0 Upwork feedback for the ongoing custom Hydrogen storefront work.",
+      "5.0 Upwork feedback for the custom Hydrogen storefront work.",
     ],
     metrics: [
       {

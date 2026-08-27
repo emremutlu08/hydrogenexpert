@@ -1338,6 +1338,19 @@ export const STATIC_PAGE_SOURCE_METADATA = {
     searchIntent: "Evaluate production Shopify Hydrogen experience for large-catalog beauty retail",
     contentType: "Case study",
   },
+  "/case-studies/rebel-bunny-shopify-hydrogen": {
+    lastVerified: "2026-05-03",
+    claimTypes: ["case_study_fact", "emre_experience", "commercial_opinion"],
+    sourceMap: [
+      SOURCE_PACKS.caseStudyEvidence,
+      SOURCE_PACKS.hydrogenFundamentals,
+      SOURCE_PACKS.emreProductionExperience,
+    ],
+    targetKeyword: "Rebel Bunny Shopify Hydrogen case study",
+    searchIntent:
+      "Evaluate production Shopify Hydrogen experience for social-first DTC, education, and partner acquisition",
+    contentType: "Case study",
+  },
   "/hire-me": {
     lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
     claimTypes: ["emre_experience", "case_study_fact", "commercial_opinion"],
