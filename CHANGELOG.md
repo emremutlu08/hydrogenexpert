@@ -15,6 +15,24 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## Unreleased
 
+- Date: 2026-08-29
+- PR: [#129 Update standardwebhooks to 1.1.1](https://github.com/emremutlu08/hydrogenexpert/pull/129)
+- Branch: `codex/standardwebhooks-1-1-1-20260829`
+- Deployment: Vercel preview validation is required before squash merge; production follows the validated merge through the existing Git integration without a separate manual deploy.
+- Summary:
+  - Updated the Anthropic SDK transitive `standardwebhooks` package from stable `1.0.0` to `1.1.1` within the existing `^1.0.0` range.
+  - Limited the lockfile delta to one package record without adding packages, peer requirements, duplicate runtimes, deprecated packages, or install scripts.
+  - Rejected the broader Sharp patch because it introduced an additional nested runtime record; continued to defer engine-incompatible `sanitize-html` `2.17.7` and major tooling or SDK lines.
+- Files changed:
+  - `package-lock.json`
+  - `CHANGELOG.md`
+- Verification:
+  - Node `22.22.3`, npm `11.18.0`, clean `npm ci`, `npm audit --audit-level=low`, dependency-tree inspection, install-script review, and `git diff --check`: passed; audit reports 0 vulnerabilities.
+  - Focused webhook sign/verify round-trip, lint, typecheck, content validation, and Shopify claim audit: passed.
+  - `npm run test`: passed, 33 test files and 136 tests.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed with 76 static pages generated.
+- Manual follow-up: None.
+
 - Date: 2026-08-27
 - PR: [#128 Refresh Rebel Bunny proof accuracy](https://github.com/emremutlu08/hydrogenexpert/pull/128)
 - Branch: `codex/rebel-bunny-proof-refresh-20260827`
