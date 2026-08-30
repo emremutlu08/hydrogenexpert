@@ -15,6 +15,24 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## Unreleased
 
+- Date: 2026-08-30
+- PR: [#130 Update Browserslist data packages](https://github.com/emremutlu08/hydrogenexpert/pull/130)
+- Branch: `codex/deps-browserslist-data-20260830`
+- Deployment: Vercel preview validation is required before squash merge; production follows the validated merge through the existing Git integration without a separate manual deploy.
+- Summary:
+  - Updated stable `browserslist` from `4.28.4` to `4.28.8` and refreshed its existing metadata chain: `baseline-browser-mapping` `2.10.40` to `2.11.20`, `caniuse-lite` `1.0.30001799` to `1.0.30001810`, `electron-to-chromium` `1.5.378` to `1.5.416`, `node-releases` `2.0.50` to `2.0.54`, and `update-browserslist-db` `1.2.3` to `1.3.2`.
+  - Limited the lockfile delta to six existing browser-target metadata records without changing application code, direct runtime dependencies, package count, peer requirements, deprecated packages, or install scripts.
+  - Deferred the newly published `tsx` `4.23.13`, engine-incompatible `sanitize-html` `2.17.7`, the broader Anthropic SDK `0.x` line, ESLint 10, TypeScript 7, and Node types 26.
+- Files changed:
+  - `package-lock.json`
+  - `CHANGELOG.md`
+- Verification:
+  - Node `22.22.3`, npm `11.18.0`, clean `npm ci`, `npm audit --audit-level=low`, dependency-tree inspection, deprecated-package inspection, install-script review, and `git diff --check`: passed; audit reports 0 vulnerabilities.
+  - `npm run lint`, `npm run typecheck`, `npm run validate:content`, and `npm run audit:shopify-claims`: passed.
+  - `npm run test`: passed, 33 test files and 136 tests.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed with 76 static pages generated.
+- Manual follow-up: None.
+
 - Date: 2026-08-29
 - PR: [#129 Update standardwebhooks to 1.1.1](https://github.com/emremutlu08/hydrogenexpert/pull/129)
 - Branch: `codex/standardwebhooks-1-1-1-20260829`
