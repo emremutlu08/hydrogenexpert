@@ -84,7 +84,7 @@ Use `package.json` for exact scripts. Current important scripts include:
 - Use one canonical event for each lead-funnel step: `lead_form_view`, `lead_form_start`, `lead_form_submit_success`, and `lead_form_submit_error`.
 - Use `scope_review_cta_click` for internal or package scope-review intent and `external_contact_click` for LinkedIn or Upwork destinations.
 - Never send names, email addresses, store URLs, message text, or other direct identifiers as analytics parameters. Use `source_kind`, `source_path`, `cta_destination`, and `package_name` for attribution context.
-- `npm run report:traffic` reads GA4, Search Console, production health, Supabase aggregate lead counts when available, and PageSpeed/CrUX when quota is available. It must label unavailable sources explicitly and must not substitute invented or manually entered metrics. Use `--strict` for the weekly core-source gate and add `--require-pagespeed` during the performance phase.
+- `npm run report:traffic` reads GA4, Search Console, production health, Supabase aggregate lead counts when available, and PageSpeed/CrUX when quota is available. It must label unavailable sources explicitly and must not substitute invented or manually entered metrics. Use `--strict` for the weekly core-source gate, `--defer-supabase` only after an explicit user deferral, and `--require-pagespeed` during the performance phase.
 
 ## Architecture Direction
 

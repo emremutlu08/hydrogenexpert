@@ -520,20 +520,24 @@ async function fetchSupabaseLeadCount(
   return Number(total);
 }
 
-async function fetchLeadSection(now: Date) {
+async function fetchLeadSection(now: Date, deferSupabase: boolean) {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL?.trim();
   const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY?.trim();
   const windows = comparableWindows(30, 1, now);
 
   if (!supabaseUrl || !serviceRoleKey) {
+    const status = deferSupabase ? "deferred" : "blocked";
     recordSource({
       name: "Supabase lead count",
-      status: "deferred",
-      detail: "deferred by user; production lead storage is not configured",
+      status,
+      detail: deferSupabase
+        ? "deferred by explicit flag; production lead storage is not configured"
+        : "production lead storage is not configured",
+      fix: deferSupabase ? undefined : "Configure Supabase or rerun with --defer-supabase after an explicit user decision.",
     });
     return `## Owned Lead Count
 
-- Deferred by user. Supabase is not available, so there is no authoritative stored-lead count.`;
+- ${deferSupabase ? "Deferred by explicit flag" : "Blocked"}. Supabase is not available, so there is no authoritative stored-lead count.`;
   }
 
   try {
@@ -552,15 +556,20 @@ async function fetchLeadSection(now: Date) {
 - Current 30 days: ${formatInteger(current)} stored leads.
 - Previous 30 days: ${formatInteger(previous)} stored leads.
 - Change: ${formatChange(current, previous)}.`;
-  } catch {
+  } catch (error) {
+    const reason = error instanceof Error ? error.message : String(error);
+    const status = deferSupabase ? "deferred" : "blocked";
     recordSource({
       name: "Supabase lead count",
-      status: "deferred",
-      detail: "deferred by user; the configured Supabase source is unavailable",
+      status,
+      detail: deferSupabase
+        ? `deferred by explicit flag; configured source failed: ${reason}`
+        : `configured source failed: ${reason}`,
+      fix: deferSupabase ? undefined : "Restore the configured Supabase source or rerun with --defer-supabase after an explicit user decision.",
     });
     return `## Owned Lead Count
 
-- Deferred by user. The configured Supabase source is unavailable, so no stored-lead count is claimed.`;
+- ${deferSupabase ? "Deferred by explicit flag" : "Blocked"}. The configured Supabase source failed (${reason}), so no stored-lead count is claimed.`;
   }
 }
 
@@ -698,7 +707,10 @@ async function renderReport(now: Date) {
     () => fetchGscSection(now),
     "Confirm property access and the webmasters.readonly OAuth scope.",
   );
-  const leadSection = await fetchLeadSection(now);
+  const leadSection = await fetchLeadSection(
+    now,
+    process.argv.includes("--defer-supabase"),
+  );
   const healthSection = await optionalSection(
     "Production Health",
     "Production public health",

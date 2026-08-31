@@ -1,12 +1,13 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import { TurnstileField } from "@/components/TurnstileField";
 import { QuizQuestion } from "@/components/quiz/QuizQuestion";
 import { QuizResult } from "@/components/quiz/QuizResult";
 import { QuizScoreDisplay } from "@/components/quiz/QuizScoreDisplay";
 import { trackLeadStart, trackLeadSubmit, trackQuizResult } from "@/lib/analytics";
+import { ANALYTICS_READY_EVENT } from "@/lib/analytics-consent";
 
 interface QuizItem {
   title: string;
@@ -20,6 +21,8 @@ interface HydrogenFitQuizProps {
 type AnswerValue = "yes" | "no" | null;
 
 const EMAIL_GATE_ID = "quiz-email-gate";
+const QUIZ_SOURCE_KIND = "hydrogen_quiz_result";
+const QUIZ_SOURCE_PATH = "/should-i-use-it";
 
 export function HydrogenFitQuiz({ questions }: HydrogenFitQuizProps) {
   const [answers, setAnswers] = useState<AnswerValue[]>(() => questions.map(() => null));
@@ -28,12 +31,40 @@ export function HydrogenFitQuiz({ questions }: HydrogenFitQuizProps) {
   const [email, setEmail] = useState("");
   const [confirmation, setConfirmation] = useState<string | null>(null);
   const [emailStatus, setEmailStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const hasAttemptedEmailSubmit = useRef(false);
+  const hasTrackedEmailStart = useRef(false);
 
   const yesCount = useMemo(
     () => answers.filter((answer) => answer === "yes").length,
     [answers],
   );
   const allAnswered = answers.every((answer) => answer !== null);
+
+  useEffect(() => {
+    function retryPendingEmailStart() {
+      if (
+        hasAttemptedEmailSubmit.current &&
+        !hasTrackedEmailStart.current &&
+        trackLeadStart(QUIZ_SOURCE_KIND, QUIZ_SOURCE_PATH)
+      ) {
+        hasTrackedEmailStart.current = true;
+      }
+    }
+
+    window.addEventListener(ANALYTICS_READY_EVENT, retryPendingEmailStart);
+    return () => window.removeEventListener(ANALYTICS_READY_EVENT, retryPendingEmailStart);
+  }, []);
+
+  function markEmailStart() {
+    hasAttemptedEmailSubmit.current = true;
+
+    if (
+      !hasTrackedEmailStart.current &&
+      trackLeadStart(QUIZ_SOURCE_KIND, QUIZ_SOURCE_PATH)
+    ) {
+      hasTrackedEmailStart.current = true;
+    }
+  }
 
   function handleAnswerChange(index: number, nextValue: "yes" | "no") {
     setAnswers((current) => current.map((value, valueIndex) => (valueIndex === index ? nextValue : value)));
@@ -61,7 +92,7 @@ export function HydrogenFitQuiz({ questions }: HydrogenFitQuizProps) {
 
     setEmailStatus("submitting");
     setConfirmation(null);
-    trackLeadStart("hydrogen_quiz_result");
+    markEmailStart();
 
     const formData = new FormData(event.currentTarget);
     formData.set("name", "Hydrogen quiz result");
@@ -90,7 +121,7 @@ export function HydrogenFitQuiz({ questions }: HydrogenFitQuizProps) {
       if (!response.ok || !payload.ok) {
         setEmailStatus("error");
         setConfirmation(payload.error || "Something went wrong. Please try again.");
-        trackLeadSubmit("hydrogen_quiz_result", "error");
+        trackLeadSubmit(QUIZ_SOURCE_KIND, "error", {}, QUIZ_SOURCE_PATH);
         return;
       }
 
@@ -98,11 +129,11 @@ export function HydrogenFitQuiz({ questions }: HydrogenFitQuizProps) {
       setConfirmation("Thanks. Your quiz summary was sent, and I will reply with a practical next step.");
       setEmail("");
       setWantsEmailSummary(false);
-      trackLeadSubmit("hydrogen_quiz_result", "success");
+      trackLeadSubmit(QUIZ_SOURCE_KIND, "success", {}, QUIZ_SOURCE_PATH);
     } catch {
       setEmailStatus("error");
       setConfirmation("Something went wrong. Please try again.");
-      trackLeadSubmit("hydrogen_quiz_result", "error");
+      trackLeadSubmit(QUIZ_SOURCE_KIND, "error", {}, QUIZ_SOURCE_PATH);
     }
   }
 
