@@ -24,11 +24,11 @@ const cookieGroups = [
   },
   {
     title: "Analytics and performance",
-    body: "Vercel Analytics and Speed Insights may measure traffic and page performance. Google Analytics loads only when a valid real measurement ID is configured.",
+    body: "Vercel Analytics and Speed Insights provide aggregate, cookie-free traffic and performance measurement. Google Analytics is optional and does not load until you select Allow analytics.",
   },
   {
-    title: "Browser controls",
-    body: "You can block or delete cookies and tracking storage through your browser settings. Blocking some services may affect analytics or form verification.",
+    title: "Your analytics choice",
+    body: "The site stores granted or denied under hydrogenexpert.analyticsConsent.v1 in local browser storage. Use Privacy settings to change the choice. Withdrawing consent stops new Google Analytics events and removes accessible first-party Google Analytics cookies.",
   },
 ] as const;
 const breadcrumbs = [
@@ -54,7 +54,7 @@ export default function CookiesPage() {
           description="HydrogenExpert uses a small set of services for security, form protection, analytics, and performance measurement."
           body="There is no advertising retargeting setup described here. The current intent is site measurement and inquiry protection."
         />
-        <p className="text-sm font-medium text-neutral-500">Last updated: May 7, 2026</p>
+        <p className="text-sm font-medium text-neutral-500">Last updated: September 1, 2026</p>
 
       <section className="surface-card space-y-6">
         <SectionHeader

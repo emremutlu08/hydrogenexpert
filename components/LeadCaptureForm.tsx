@@ -49,6 +49,8 @@ export function LeadCaptureForm({
   const [message, setMessage] = useState<string | null>(null);
   const [fallback, setFallback] = useState<LeadCaptureApiResponse["fallback"] | null>(null);
   const hasStarted = useRef(false);
+  const formSectionRef = useRef<HTMLElement>(null);
+  const viewedContexts = useRef(new Set<string>());
   const sourcePath = pathname || "/";
 
   const formClassName = useMemo(
@@ -60,7 +62,27 @@ export function LeadCaptureForm({
   );
 
   useEffect(() => {
-    trackLeadFormView(sourceKind, sourcePath);
+    const section = formSectionRef.current;
+    const contextKey = `${sourceKind}:${sourcePath}`;
+
+    if (!section || typeof IntersectionObserver === "undefined") {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting) && !viewedContexts.current.has(contextKey)) {
+          viewedContexts.current.add(contextKey);
+          trackLeadFormView(sourceKind, sourcePath);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.25 },
+    );
+
+    observer.observe(section);
+
+    return () => observer.disconnect();
   }, [sourceKind, sourcePath]);
 
   function markFormStarted() {
@@ -156,7 +178,7 @@ export function LeadCaptureForm({
   }
 
   return (
-    <section data-nosnippet aria-label="Project inquiry form">
+    <section ref={formSectionRef} data-nosnippet aria-label="Project inquiry form">
       <form
         id="fit-review-form"
         onFocusCapture={markFormStarted}

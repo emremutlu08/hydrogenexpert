@@ -25,3 +25,14 @@ export function getValidGaMeasurementId(
 
   return candidate.toUpperCase();
 }
+
+export function getProductionGaMeasurementId(
+  value = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID,
+  deploymentEnvironment = process.env.VERCEL_ENV,
+) {
+  if (deploymentEnvironment !== "production") {
+    return null;
+  }
+
+  return getValidGaMeasurementId(value);
+}

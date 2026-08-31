@@ -3,11 +3,12 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import {
   trackAnchorCTA,
   trackBlogCardClick,
+  trackBlogView,
   trackChecklistCopy,
   trackCTA,
-  trackLeadStart,
-  trackLeadSelection,
   trackLeadFormView,
+  trackLeadSelection,
+  trackLeadStart,
   trackLeadSubmit,
   trackPackageCtaClick,
   trackProofLinkClicked,
@@ -15,386 +16,165 @@ import {
   trackQuizResult,
 } from "../lib/analytics";
 
+function setupAnalytics(preference: "granted" | "denied" = "granted") {
+  const gtag = vi.fn();
+  const localStorage = {
+    getItem: vi.fn(() => preference),
+    setItem: vi.fn(),
+  };
+
+  vi.stubGlobal("window", { gtag, localStorage });
+
+  return gtag;
+}
+
 function eventCalls(gtag: ReturnType<typeof vi.fn>) {
   return gtag.mock.calls.map((call) => ({
-    command: call[0],
     eventName: call[1],
     params: call[2],
   }));
 }
 
-describe("analytics events", () => {
+describe("canonical analytics events", () => {
   afterEach(() => {
     vi.unstubAllGlobals();
   });
 
-  it("tracks dedicated external CTA events with context", () => {
-    const gtag = vi.fn();
-    vi.stubGlobal("window", { gtag });
+  it("does not emit events without granted analytics consent", () => {
+    const gtag = setupAnalytics("denied");
+
+    trackCTA("linkedin", { sourceKind: "hero", sourcePath: "/" });
+    trackLeadStart("contact_page", "/contact");
+
+    expect(gtag).not.toHaveBeenCalled();
+  });
+
+  it("emits one external-contact event with non-reserved context", () => {
+    const gtag = setupAnalytics();
 
     trackCTA("upwork", {
       sourceKind: "service:shopify-hydrogen-seo",
       sourcePath: "/shopify-hydrogen-seo",
+      ctaLabel: "Hire on Upwork",
     });
 
     expect(eventCalls(gtag)).toEqual([
       {
-        command: "event",
-        eventName: "cta_click",
+        eventName: "external_contact_click",
         params: {
-          destination: "upwork",
-          route: "/shopify-hydrogen-seo",
-          source: "service:shopify-hydrogen-seo",
+          cta_destination: "upwork",
+          cta_label: "Hire on Upwork",
+          source_kind: "service:shopify-hydrogen-seo",
           source_path: "/shopify-hydrogen-seo",
-          source_section: "service:shopify-hydrogen-seo",
-        },
-      },
-      {
-        command: "event",
-        eventName: "cta_click_upwork",
-        params: {
-          destination: "upwork",
-          route: "/shopify-hydrogen-seo",
-          source: "service:shopify-hydrogen-seo",
-          source_path: "/shopify-hydrogen-seo",
-          source_section: "service:shopify-hydrogen-seo",
-        },
-      },
-      {
-        command: "event",
-        eventName: "upwork_click",
-        params: {
-          destination: "upwork",
-          route: "/shopify-hydrogen-seo",
-          source: "service:shopify-hydrogen-seo",
-          source_path: "/shopify-hydrogen-seo",
-          source_section: "service:shopify-hydrogen-seo",
-        },
-      },
-      {
-        command: "event",
-        eventName: "upwork_clicked",
-        params: {
-          destination: "upwork",
-          route: "/shopify-hydrogen-seo",
-          source: "service:shopify-hydrogen-seo",
-          source_path: "/shopify-hydrogen-seo",
-          source_section: "service:shopify-hydrogen-seo",
-        },
-      },
-      {
-        command: "event",
-        eventName: "service_page_cta_click",
-        params: {
-          destination: "upwork",
-          route: "/shopify-hydrogen-seo",
-          source: "service:shopify-hydrogen-seo",
-          source_path: "/shopify-hydrogen-seo",
-          source_section: "service:shopify-hydrogen-seo",
         },
       },
     ]);
+    expect(Object.keys(eventCalls(gtag)[0]?.params ?? {})).not.toContain("source");
   });
 
-  it("tracks lead form view and submit without empty params", () => {
-    const gtag = vi.fn();
-    vi.stubGlobal("window", { gtag });
-
-    trackLeadFormView("contact_page", "/contact");
-    trackLeadSubmit("contact_page", "success", {
-      budget_range: "",
-      engagement_type: "fit_audit",
-    });
-
-    expect(eventCalls(gtag)).toEqual([
-      {
-        command: "event",
-        eventName: "lead_form_view",
-        params: {
-          route: "/contact",
-          source: "contact_page",
-          source_path: "/contact",
-          source_section: "contact_page",
-        },
-      },
-      {
-        command: "event",
-        eventName: "lead_form_submit",
-        params: {
-          source: "contact_page",
-          source_section: "contact_page",
-          status: "success",
-          engagement_type: "fit_audit",
-        },
-      },
-      {
-        command: "event",
-        eventName: "lead_form_submit_success",
-        params: {
-          source: "contact_page",
-          source_section: "contact_page",
-          status: "success",
-          engagement_type: "fit_audit",
-        },
-      },
-      {
-        command: "event",
-        eventName: "contact_form_submitted",
-        params: {
-          source: "contact_page",
-          source_section: "contact_page",
-          status: "success",
-          engagement_type: "fit_audit",
-        },
-      },
-    ]);
-  });
-
-  it("tracks contact form start as a funnel event", () => {
-    const gtag = vi.fn();
-    vi.stubGlobal("window", { gtag });
-
-    trackLeadStart("contact_page", "/contact");
-
-    expect(eventCalls(gtag)).toEqual([
-      {
-        command: "event",
-        eventName: "lead_form_start",
-        params: {
-          route: "/contact",
-          source: "contact_page",
-          source_path: "/contact",
-          source_section: "contact_page",
-        },
-      },
-      {
-        command: "event",
-        eventName: "contact_form_started",
-        params: {
-          route: "/contact",
-          source: "contact_page",
-          source_path: "/contact",
-          source_section: "contact_page",
-        },
-      },
-    ]);
-  });
-
-  it("supports explicit internal CTA event tracking", () => {
-    const gtag = vi.fn();
-    vi.stubGlobal("window", { gtag });
+  it("normalizes internal and package CTAs to one scope-review event each", () => {
+    const gtag = setupAnalytics();
 
     trackAnchorCTA("audit_cta_click", {
       sourceKind: "fit_audit_cta",
       sourcePath: "/shopify-hydrogen-fit-audit",
-      target: "/contact",
-    });
-
-    expect(eventCalls(gtag)).toEqual([
-      {
-        command: "event",
-        eventName: "audit_cta_click",
-        params: {
-          route: "/shopify-hydrogen-fit-audit",
-          source: "fit_audit_cta",
-          source_path: "/shopify-hydrogen-fit-audit",
-          source_section: "fit_audit_cta",
-          target: "/contact",
-        },
-      },
-      {
-        command: "event",
-        eventName: "cta_click_fit_audit",
-        params: {
-          route: "/shopify-hydrogen-fit-audit",
-          source: "fit_audit_cta",
-          source_path: "/shopify-hydrogen-fit-audit",
-          source_section: "fit_audit_cta",
-          target: "/contact",
-        },
-      },
-    ]);
-  });
-
-  it("tracks email brief, quiz, and content card events", () => {
-    const gtag = vi.fn();
-    vi.stubGlobal("window", { gtag });
-
-    trackAnchorCTA("cta_click_email_brief", {
-      sourceKind: "footer_start_here",
-      sourcePath: "/",
       target: "/contact#fit-review-form",
+      ctaLabel: "Request scope review",
     });
-    trackQuizAnswer({ questionNumber: 2, answer: "yes", sourcePath: "/should-i-use-it" });
-    trackQuizResult({ score: 4, total: 5, sourcePath: "/should-i-use-it" });
-    trackBlogCardClick({
-      slug: "shopify-hydrogen-product-description-ssr-seo",
-      contentType: "blog",
-      sourcePath: "/blog",
-    });
-
-    expect(eventCalls(gtag)).toEqual([
-      {
-        command: "event",
-        eventName: "cta_click_email_brief",
-        params: {
-          route: "/",
-          source: "footer_start_here",
-          source_path: "/",
-          source_section: "footer_start_here",
-          target: "/contact#fit-review-form",
-        },
-      },
-      {
-        command: "event",
-        eventName: "scope_review_cta_click",
-        params: {
-          route: "/",
-          source: "footer_start_here",
-          source_path: "/",
-          source_section: "footer_start_here",
-          target: "/contact#fit-review-form",
-        },
-      },
-      {
-        command: "event",
-        eventName: "quiz_answer_click",
-        params: {
-          question_number: "2",
-          answer: "yes",
-          source_path: "/should-i-use-it",
-        },
-      },
-      {
-        command: "event",
-        eventName: "quiz_result_view",
-        params: {
-          score: "4",
-          total: "5",
-          source_path: "/should-i-use-it",
-        },
-      },
-      {
-        command: "event",
-        eventName: "blog_card_click",
-        params: {
-          content_slug: "shopify-hydrogen-product-description-ssr-seo",
-          content_type: "blog",
-          source_path: "/blog",
-        },
-      },
-    ]);
-  });
-
-  it("tracks package CTAs, form selections, and proof links without PII", () => {
-    const gtag = vi.fn();
-    vi.stubGlobal("window", { gtag });
-
     trackPackageCtaClick({
       packageName: "Hydrogen Starter Storefront",
       ctaLabel: "Request Scope Review",
       sourceKind: "package_cards",
       sourcePath: "/shopify-hydrogen-packages",
     });
-    trackLeadSelection("budget_selected", {
-      sourceKind: "contact_page",
-      sourcePath: "/contact",
-      value: "starter_2k",
-    });
-    trackLeadSelection("feature_selected", {
-      sourceKind: "contact_page",
-      sourcePath: "/contact",
-      value: "cart_drawer",
-      selectedFeaturesCount: 3,
-    });
-    trackProofLinkClicked({
-      proofLabel: "Top Rated Plus",
-      href: "https://example.com/upwork",
-      sourceKind: "trust_bar",
-      sourcePath: "/",
-    });
 
     expect(eventCalls(gtag)).toEqual([
       {
-        command: "event",
-        eventName: "package_cta_click",
+        eventName: "scope_review_cta_click",
         params: {
-          cta_label: "Request Scope Review",
-          package_name: "Hydrogen Starter Storefront",
-          route: "/shopify-hydrogen-packages",
-          source: "package_cards",
-          source_path: "/shopify-hydrogen-packages",
-          source_section: "package_cards",
+          cta_destination: "/contact#fit-review-form",
+          cta_kind: "audit_cta_click",
+          cta_label: "Request scope review",
+          source_kind: "fit_audit_cta",
+          source_path: "/shopify-hydrogen-fit-audit",
         },
       },
       {
-        command: "event",
         eventName: "scope_review_cta_click",
         params: {
           cta_label: "Request Scope Review",
           package_name: "Hydrogen Starter Storefront",
-          route: "/shopify-hydrogen-packages",
-          source: "package_cards",
+          source_kind: "package_cards",
           source_path: "/shopify-hydrogen-packages",
-          source_section: "package_cards",
-        },
-      },
-      {
-        command: "event",
-        eventName: "budget_selected",
-        params: {
-          budget_range: "starter_2k",
-          route: "/contact",
-          source: "contact_page",
-          source_path: "/contact",
-          source_section: "contact_page",
-        },
-      },
-      {
-        command: "event",
-        eventName: "feature_selected",
-        params: {
-          feature: "cart_drawer",
-          route: "/contact",
-          selected_features_count: "3",
-          source: "contact_page",
-          source_path: "/contact",
-          source_section: "contact_page",
-        },
-      },
-      {
-        command: "event",
-        eventName: "proof_link_clicked",
-        params: {
-          proof_label: "Top Rated Plus",
-          route: "/",
-          source: "trust_bar",
-          source_path: "/",
-          source_section: "trust_bar",
-          target: "https://example.com/upwork",
         },
       },
     ]);
   });
 
-  it("tracks checklist copy events without personal data", () => {
-    const gtag = vi.fn();
-    vi.stubGlobal("window", { gtag });
+  it("emits one event for each lead funnel state", () => {
+    const gtag = setupAnalytics();
 
-    trackChecklistCopy({
-      templateId: "launch-qa-checklist",
-      templateTitle: "Launch QA checklist",
-    });
+    trackLeadFormView("contact_page", "/contact");
+    trackLeadStart("contact_page", "/contact");
+    trackLeadSubmit(
+      "contact_page",
+      "success",
+      { budget_range: "starter_2k", engagement_type: "fit_audit" },
+      "/contact",
+    );
+    trackLeadSubmit("contact_page", "error", {}, "/contact");
 
-    expect(eventCalls(gtag)).toEqual([
-      {
-        command: "event",
-        eventName: "checklist_copy",
-        params: {
-          template_id: "launch-qa-checklist",
-          template_title: "Launch QA checklist",
-        },
-      },
+    expect(eventCalls(gtag).map((call) => call.eventName)).toEqual([
+      "lead_form_view",
+      "lead_form_start",
+      "lead_form_submit_success",
+      "lead_form_submit_error",
     ]);
+    expect(eventCalls(gtag)[2]?.params).toEqual({
+      budget_range: "starter_2k",
+      engagement_type: "fit_audit",
+      source_kind: "contact_page",
+      source_path: "/contact",
+    });
+  });
+
+  it("keeps useful content and qualification events singular and PII-free", () => {
+    const gtag = setupAnalytics();
+
+    trackLeadSelection("budget_selected", {
+      sourceKind: "contact_page",
+      sourcePath: "/contact",
+      value: "starter_2k",
+    });
+    trackProofLinkClicked({
+      proofLabel: "Upwork profile",
+      href: "https://example.com/upwork",
+      sourceKind: "trust_bar",
+      sourcePath: "/",
+    });
+    trackBlogView("production-note");
+    trackQuizAnswer({ questionNumber: 2, answer: "yes", sourcePath: "/should-i-use-it" });
+    trackQuizResult({ score: 4, total: 5, sourcePath: "/should-i-use-it" });
+    trackBlogCardClick({
+      slug: "production-note",
+      contentType: "blog",
+      sourcePath: "/blog",
+    });
+    trackChecklistCopy({ templateId: "launch-qa", templateTitle: "Launch QA" });
+
+    expect(eventCalls(gtag).map((call) => call.eventName)).toEqual([
+      "budget_selected",
+      "proof_link_clicked",
+      "blog_view",
+      "quiz_answer_click",
+      "quiz_result_view",
+      "blog_card_click",
+      "checklist_copy",
+    ]);
+    expect(eventCalls(gtag)[1]?.params).toMatchObject({
+      cta_destination: "https://example.com/upwork",
+      source_kind: "trust_bar",
+      source_path: "/",
+    });
   });
 });

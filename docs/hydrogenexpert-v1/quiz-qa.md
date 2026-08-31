@@ -26,7 +26,7 @@ Last updated: May 7, 2026
 | Keyboard | Native buttons and checkbox/input are keyboard reachable. | Done |
 | Mobile | Layout uses responsive cards and wrapping button rows. | Needs browser review |
 | No-JS fallback | Static explanation and questions remain readable; only scoring/email submission requires JS. | Done |
-| Analytics | Answer clicks emit `quiz_answer_click`; first result reveal emits `quiz_result_view`; email CTA emits `cta_click_email_brief`. | Done |
+| Analytics | Answer clicks emit `quiz_answer_click`; first result reveal emits `quiz_result_view`; the email CTA emits canonical `scope_review_cta_click` with static CTA context. | Done |
 
 ## Manual Browser Checklist
 

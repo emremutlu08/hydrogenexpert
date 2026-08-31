@@ -1,149 +1,22 @@
-export {};
-
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { homedir } from "node:os";
 import { join } from "node:path";
 
-interface TrafficRow {
-  label: string;
-  value: number;
-  change?: number;
-}
+import {
+  detectTrafficAnomalies,
+  formatChange,
+  type DailyTrafficPoint,
+} from "../lib/traffic-report";
 
-interface TrafficInput {
-  generatedAt?: string;
-  last7Days?: {
-    sessions?: number;
-    users?: number;
-    topPages?: TrafficRow[];
-    internalClicks?: TrafficRow[];
-    outboundClicks?: TrafficRow[];
-  };
-  last30Days?: {
-    sessions?: number;
-    users?: number;
-    topPages?: TrafficRow[];
-    internalClicks?: TrafficRow[];
-    outboundClicks?: TrafficRow[];
-  };
-  gscNotes?: string[];
-}
-
-const REPORT_DIR = join(process.cwd(), "content/internal/reports");
-const INPUT_PATH = join(process.cwd(), "content/internal/traffic-snapshot.json");
-const GOOGLE_TOKEN_PATH = "/Users/emremutlu/.hermes/google_token.json";
-const SITE_URL = process.env.GSC_SITE_URL ?? "https://hydrogenexpert.co/";
-const BASE_URL = process.env.SEO_BASE_URL ?? "https://hydrogenexpert.co";
-
-function isoDate(date: Date) {
-  return date.toISOString().slice(0, 10);
-}
-
-function formatRange(days: number, now: Date) {
-  const start = new Date(now);
-  start.setUTCDate(start.getUTCDate() - days + 1);
-
-  return `${isoDate(start)} to ${isoDate(now)}`;
-}
-
-function readInput(): TrafficInput {
-  if (!existsSync(INPUT_PATH)) return {};
-  return JSON.parse(readFileSync(INPUT_PATH, "utf8")) as TrafficInput;
-}
-
-function formatNumber(value?: number) {
-  return typeof value === "number" ? value.toLocaleString("en-US") : "manual";
-}
-
-function rowLine(row: TrafficRow) {
-  const change = typeof row.change === "number" ? ` (${row.change >= 0 ? "+" : ""}${row.change}%)` : "";
-  return `- ${row.label}: ${row.value.toLocaleString("en-US")}${change}`;
-}
-
-function sectionRows(rows?: TrafficRow[]) {
-  if (!rows?.length) return "- Manual slot: paste GA4, Vercel Analytics, or Search Console export values here.";
-  return rows.map(rowLine).join("\n");
-}
-
-function tokenScopes() {
-  if (!existsSync(GOOGLE_TOKEN_PATH)) return [] as string[];
-  const data = JSON.parse(readFileSync(GOOGLE_TOKEN_PATH, "utf8"));
-  const raw = data.scopes ?? data.scope ?? [];
-  if (typeof raw === "string") return raw.split(/\s+/).filter(Boolean);
-  return Array.isArray(raw) ? raw : [];
-}
-
-async function googleAccessToken(requiredScope: string) {
-  if (!existsSync(GOOGLE_TOKEN_PATH)) throw new Error("google_token.json missing");
-  const data = JSON.parse(readFileSync(GOOGLE_TOKEN_PATH, "utf8"));
-  if (!tokenScopes().includes(requiredScope)) throw new Error(`missing OAuth scope: ${requiredScope}`);
-  const params = new URLSearchParams({
-    client_id: data.client_id,
-    client_secret: data.client_secret,
-    refresh_token: data.refresh_token,
-    grant_type: "refresh_token",
-  });
-  const response = await fetch(data.token_uri, { method: "POST", body: params });
-  if (!response.ok) throw new Error(`token refresh failed: HTTP ${response.status}`);
-  const body = await response.json() as { access_token?: string };
-  if (!body.access_token) throw new Error("token refresh returned no access_token");
-  return body.access_token;
-}
-
-async function fetchGscQuickWins() {
-  const scope = "https://www.googleapis.com/auth/webmasters.readonly";
-  const token = await googleAccessToken(scope);
-  const end = new Date();
-  end.setUTCDate(end.getUTCDate() - 2);
-  const start = new Date(end);
-  start.setUTCDate(start.getUTCDate() - 27);
-  const body = {
-    startDate: isoDate(start),
-    endDate: isoDate(end),
-    dimensions: ["query", "page"],
-    rowLimit: 250,
-  };
-  const url = `https://www.googleapis.com/webmasters/v3/sites/${encodeURIComponent(SITE_URL)}/searchAnalytics/query`;
-  const response = await fetch(url, { method: "POST", headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" }, body: JSON.stringify(body) });
-  if (!response.ok) throw new Error(`GSC Search Analytics HTTP ${response.status}`);
-  const data = await response.json() as { rows?: Array<{ keys?: string[]; clicks?: number; impressions?: number; ctr?: number; position?: number }> };
-  return (data.rows ?? [])
-    .filter(row => typeof row.position === "number" && row.position >= 5 && row.position <= 30 && (row.impressions ?? 0) >= 10)
-    .slice(0, 20)
-    .map(row => `- ${row.keys?.[0] ?? "(query)"} → ${row.keys?.[1] ?? "(page)"}: ${row.impressions ?? 0} impr, ${row.clicks ?? 0} clicks, pos ${row.position?.toFixed(1)}, CTR ${(((row.ctr ?? 0) * 100)).toFixed(1)}%`);
-}
-
-async function fetchPageSpeed(path = "/") {
-  const target = new URL(path, BASE_URL).toString();
-  const url = new URL("https://www.googleapis.com/pagespeedonline/v5/runPagespeed");
-  url.searchParams.set("url", target);
-  url.searchParams.set("strategy", "mobile");
-  for (const category of ["performance", "seo", "accessibility"]) url.searchParams.append("category", category);
-  const key = process.env.GOOGLE_API_KEY ?? process.env.PAGESPEED_API_KEY;
-  if (key) url.searchParams.set("key", key);
-  const response = await fetch(url);
-  if (response.status === 429 && !key) {
-    // Unkeyed PageSpeed calls share a tiny public quota, so 429 here is a
-    // missing-credential problem rather than a transient one worth retrying.
-    throw new Error(
-      "PageSpeed HTTP 429 with no API key set. Core Web Vitals have never been captured. Set GOOGLE_API_KEY or PAGESPEED_API_KEY.",
-    );
+try {
+  process.loadEnvFile(join(process.cwd(), ".env.local"));
+} catch (error) {
+  if ((error as NodeJS.ErrnoException).code !== "ENOENT") {
+    throw error;
   }
-  if (!response.ok) throw new Error(`PageSpeed HTTP ${response.status}`);
-  const data = await response.json() as {
-    lighthouseResult?: {
-      categories?: Record<string, { score?: number } | undefined>;
-      audits?: Record<string, { displayValue?: string } | undefined>;
-    };
-  };
-  const categories = data.lighthouseResult?.categories ?? {};
-  const audits = data.lighthouseResult?.audits ?? {};
-  return [
-    `- ${target}: performance ${Math.round((categories.performance?.score ?? 0) * 100)}, SEO ${Math.round((categories.seo?.score ?? 0) * 100)}, accessibility ${Math.round((categories.accessibility?.score ?? 0) * 100)}`,
-    `  - LCP ${audits["largest-contentful-paint"]?.displayValue ?? "n/a"}; TBT ${audits["total-blocking-time"]?.displayValue ?? "n/a"}; CLS ${audits["cumulative-layout-shift"]?.displayValue ?? "n/a"}`,
-  ];
 }
 
-type SourceStatus = "ok" | "empty" | "blocked" | "not-configured";
+type SourceStatus = "ok" | "empty" | "blocked" | "deferred";
 
 interface SourceReport {
   name: string;
@@ -152,181 +25,741 @@ interface SourceReport {
   fix?: string;
 }
 
+interface DateWindow {
+  start: string;
+  end: string;
+}
+
+interface GaReportResponse {
+  dimensionHeaders?: Array<{ name?: string }>;
+  metricHeaders?: Array<{ name?: string }>;
+  rows?: Array<{
+    dimensionValues?: Array<{ value?: string }>;
+    metricValues?: Array<{ value?: string }>;
+  }>;
+}
+
+interface GaSummary {
+  sessions: number;
+  users: number;
+  views: number;
+  engagedSessions: number;
+  keyEvents: number;
+}
+
+interface GscSummary {
+  clicks: number;
+  impressions: number;
+  ctr: number;
+  position: number;
+}
+
+const REPORT_DIR = join(process.cwd(), "content/internal/reports");
+const GOOGLE_TOKEN_PATH =
+  process.env.GOOGLE_TOKEN_PATH ?? join(homedir(), ".hermes/google_token.json");
+const SITE_URL = process.env.GSC_SITE_URL ?? "https://hydrogenexpert.co/";
+const BASE_URL = (process.env.SEO_BASE_URL ?? "https://hydrogenexpert.co").replace(/\/$/, "");
+const PRODUCTION_HOSTNAME = new URL(BASE_URL).hostname;
+const CANONICAL_EVENTS = [
+  "scope_review_cta_click",
+  "external_contact_click",
+  "lead_form_view",
+  "lead_form_start",
+  "lead_form_submit_success",
+  "lead_form_submit_error",
+] as const;
 const sourceReports: SourceReport[] = [];
+
+function isoDate(date: Date) {
+  return date.toISOString().slice(0, 10);
+}
+
+function shiftDate(date: Date, days: number) {
+  const shifted = new Date(date);
+  shifted.setUTCDate(shifted.getUTCDate() + days);
+  return shifted;
+}
+
+function comparableWindows(days: number, lagDays: number, now = new Date()) {
+  const currentEnd = shiftDate(now, -lagDays);
+  const currentStart = shiftDate(currentEnd, -days + 1);
+  const previousEnd = shiftDate(currentStart, -1);
+  const previousStart = shiftDate(previousEnd, -days + 1);
+
+  return {
+    current: { start: isoDate(currentStart), end: isoDate(currentEnd) },
+    previous: { start: isoDate(previousStart), end: isoDate(previousEnd) },
+  };
+}
+
+function asNumber(value?: string) {
+  const parsed = Number(value ?? 0);
+  return Number.isFinite(parsed) ? parsed : 0;
+}
+
+function formatInteger(value: number) {
+  return Math.round(value).toLocaleString("en-US");
+}
+
+function formatPercent(value: number) {
+  return `${(value * 100).toFixed(1)}%`;
+}
 
 function recordSource(report: SourceReport) {
   sourceReports.push(report);
-  return report;
 }
 
-/**
- * Three consecutive reports rendered "manual" and "Blocked:" without anything
- * downstream noticing, which reads as measurement while carrying no data. Every
- * section now reports its own status and the run says so on stderr.
- */
-async function optionalSection(
-  title: string,
-  name: string,
-  fn: () => Promise<string[]>,
-  fix: string,
-) {
-  try {
-    const rows = await fn();
+function parseGoogleScopes(data: Record<string, unknown>) {
+  const raw = data.scopes ?? data.scope ?? [];
 
-    if (!rows.length) {
-      recordSource({ name, status: "empty", detail: "query succeeded, returned no rows", fix });
-      return `## ${title}\n\n- No rows returned.`;
+  if (typeof raw === "string") {
+    return raw.split(/\s+/).filter(Boolean);
+  }
+
+  return Array.isArray(raw) ? raw.filter((value): value is string => typeof value === "string") : [];
+}
+
+let googleAccessTokenPromise: Promise<string> | null = null;
+
+async function googleAccessToken(requiredScopes: readonly string[]) {
+  if (!existsSync(GOOGLE_TOKEN_PATH)) {
+    throw new Error("Google OAuth token file is missing.");
+  }
+
+  const data = JSON.parse(readFileSync(GOOGLE_TOKEN_PATH, "utf8")) as Record<string, string | string[]>;
+  const grantedScopes = parseGoogleScopes(data);
+  const missingScopes = requiredScopes.filter((scope) => !grantedScopes.includes(scope));
+
+  if (missingScopes.length > 0) {
+    throw new Error(`Google OAuth is missing scope: ${missingScopes.join(", ")}`);
+  }
+
+  googleAccessTokenPromise ??= (async () => {
+    const params = new URLSearchParams({
+      client_id: String(data.client_id),
+      client_secret: String(data.client_secret),
+      refresh_token: String(data.refresh_token),
+      grant_type: "refresh_token",
+    });
+    const response = await fetch(String(data.token_uri), { method: "POST", body: params });
+
+    if (!response.ok) {
+      throw new Error(`Google token refresh returned HTTP ${response.status}.`);
     }
 
-    recordSource({ name, status: "ok", detail: `${rows.length} rows` });
-    return `## ${title}\n\n${rows.join("\n")}`;
-  } catch (error) {
-    const detail = error instanceof Error ? error.message : String(error);
-    recordSource({ name, status: "blocked", detail, fix });
-    return `## ${title}\n\n- Blocked: ${detail}`;
+    const body = (await response.json()) as { access_token?: string };
+
+    if (!body.access_token) {
+      throw new Error("Google token refresh returned no access token.");
+    }
+
+    return body.access_token;
+  })();
+
+  return googleAccessTokenPromise;
+}
+
+async function googleJson<T>(url: string, token: string, init: RequestInit = {}) {
+  const response = await fetch(url, {
+    ...init,
+    headers: {
+      Authorization: `Bearer ${token}`,
+      ...(init.body ? { "Content-Type": "application/json" } : {}),
+      ...init.headers,
+    },
+  });
+
+  if (!response.ok) {
+    const body = (await response.json().catch(() => null)) as { error?: { message?: string } } | null;
+    throw new Error(body?.error?.message ?? `Google API returned HTTP ${response.status}.`);
+  }
+
+  return (await response.json()) as T;
+}
+
+async function discoverGaPropertyId(token: string) {
+  const configured = process.env.GA4_PROPERTY_ID?.trim();
+
+  if (configured) {
+    return configured.replace(/^properties\//, "");
+  }
+
+  const data = await googleJson<{
+    accountSummaries?: Array<{
+      propertySummaries?: Array<{ property?: string; displayName?: string }>;
+    }>;
+  }>("https://analyticsadmin.googleapis.com/v1beta/accountSummaries?pageSize=200", token);
+  const summaries = (data.accountSummaries ?? []).flatMap(
+    (account) => account.propertySummaries ?? [],
+  );
+  const hostnameMatch = summaries.find(
+    (summary) => summary.displayName?.toLowerCase() === PRODUCTION_HOSTNAME.toLowerCase(),
+  );
+
+  if (hostnameMatch?.property) {
+    return hostnameMatch.property.replace(/^properties\//, "");
+  }
+
+  const measurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim().toUpperCase();
+
+  if (measurementId) {
+    for (const summary of summaries) {
+      if (!summary.property) continue;
+      const streams = await googleJson<{
+        dataStreams?: Array<{ webStreamData?: { measurementId?: string; defaultUri?: string } }>;
+      }>(`https://analyticsadmin.googleapis.com/v1beta/${summary.property}/dataStreams?pageSize=200`, token);
+      const matches = streams.dataStreams?.some(
+        (stream) => stream.webStreamData?.measurementId?.toUpperCase() === measurementId,
+      );
+
+      if (matches) {
+        return summary.property.replace(/^properties\//, "");
+      }
+    }
+  }
+
+  throw new Error(`No GA4 property matched ${PRODUCTION_HOSTNAME}.`);
+}
+
+function gaRows(data: GaReportResponse) {
+  const dimensions = data.dimensionHeaders?.map((header) => header.name ?? "dimension") ?? [];
+  const metrics = data.metricHeaders?.map((header) => header.name ?? "metric") ?? [];
+
+  return (data.rows ?? []).map((row) => {
+    const values: Record<string, string> = {};
+
+    dimensions.forEach((name, index) => {
+      values[name] = row.dimensionValues?.[index]?.value ?? "";
+    });
+    metrics.forEach((name, index) => {
+      values[name] = row.metricValues?.[index]?.value ?? "0";
+    });
+
+    return values;
+  });
+}
+
+function gaHostnameFilter() {
+  return {
+    filter: {
+      fieldName: "hostName",
+      stringFilter: { matchType: "EXACT", value: PRODUCTION_HOSTNAME, caseSensitive: false },
+    },
+  };
+}
+
+function gaDateRange(window: DateWindow) {
+  return { startDate: window.start, endDate: window.end };
+}
+
+async function gaRunReport(
+  propertyId: string,
+  token: string,
+  body: Record<string, unknown>,
+) {
+  return googleJson<GaReportResponse>(
+    `https://analyticsdata.googleapis.com/v1beta/properties/${propertyId}:runReport`,
+    token,
+    { method: "POST", body: JSON.stringify(body) },
+  );
+}
+
+async function gaSummary(propertyId: string, token: string, window: DateWindow) {
+  const data = await gaRunReport(propertyId, token, {
+    dateRanges: [gaDateRange(window)],
+    metrics: ["sessions", "totalUsers", "screenPageViews", "engagedSessions", "keyEvents"].map(
+      (name) => ({ name }),
+    ),
+    dimensionFilter: gaHostnameFilter(),
+  });
+  const row = gaRows(data)[0] ?? {};
+
+  return {
+    sessions: asNumber(row.sessions),
+    users: asNumber(row.totalUsers),
+    views: asNumber(row.screenPageViews),
+    engagedSessions: asNumber(row.engagedSessions),
+    keyEvents: asNumber(row.keyEvents),
+  } satisfies GaSummary;
+}
+
+async function fetchGa4Section(now: Date) {
+  const scope = "https://www.googleapis.com/auth/analytics.readonly";
+  const token = await googleAccessToken([scope]);
+  const propertyId = await discoverGaPropertyId(token);
+  const windows30 = comparableWindows(30, 1, now);
+  const window7 = comparableWindows(7, 1, now).current;
+  const [current, previous, sevenDay, pagesData, sourcesData, eventsData, dailyData] =
+    await Promise.all([
+      gaSummary(propertyId, token, windows30.current),
+      gaSummary(propertyId, token, windows30.previous),
+      gaSummary(propertyId, token, window7),
+      gaRunReport(propertyId, token, {
+        dateRanges: [gaDateRange(windows30.current)],
+        dimensions: [{ name: "pagePath" }],
+        metrics: ["sessions", "screenPageViews", "engagedSessions"].map((name) => ({ name })),
+        dimensionFilter: gaHostnameFilter(),
+        orderBys: [{ metric: { metricName: "sessions" }, desc: true }],
+        limit: 10,
+      }),
+      gaRunReport(propertyId, token, {
+        dateRanges: [gaDateRange(windows30.current)],
+        dimensions: [{ name: "sessionSourceMedium" }],
+        metrics: ["sessions", "engagedSessions"].map((name) => ({ name })),
+        dimensionFilter: gaHostnameFilter(),
+        orderBys: [{ metric: { metricName: "sessions" }, desc: true }],
+        limit: 10,
+      }),
+      gaRunReport(propertyId, token, {
+        dateRanges: [gaDateRange(windows30.current)],
+        dimensions: [{ name: "eventName" }],
+        metrics: [{ name: "eventCount" }, { name: "keyEvents" }],
+        dimensionFilter: {
+          andGroup: {
+            expressions: [
+              gaHostnameFilter(),
+              {
+                filter: {
+                  fieldName: "eventName",
+                  inListFilter: { values: CANONICAL_EVENTS, caseSensitive: true },
+                },
+              },
+            ],
+          },
+        },
+        orderBys: [{ metric: { metricName: "eventCount" }, desc: true }],
+      }),
+      gaRunReport(propertyId, token, {
+        dateRanges: [gaDateRange(windows30.current)],
+        dimensions: [{ name: "date" }],
+        metrics: ["sessions", "engagedSessions", "screenPageViews"].map((name) => ({ name })),
+        dimensionFilter: gaHostnameFilter(),
+        orderBys: [{ dimension: { dimensionName: "date" } }],
+      }),
+    ]);
+  const pageRows = gaRows(pagesData);
+  const sourceRows = gaRows(sourcesData);
+  const eventRows = gaRows(eventsData);
+  const dailyPoints = gaRows(dailyData).map<DailyTrafficPoint>((row) => ({
+    date: row.date ?? "",
+    sessions: asNumber(row.sessions),
+    engagedSessions: asNumber(row.engagedSessions),
+    views: asNumber(row.screenPageViews),
+  }));
+  const anomalies = detectTrafficAnomalies(dailyPoints);
+  const engagementRate = current.sessions ? current.engagedSessions / current.sessions : 0;
+  const previousEngagementRate = previous.sessions
+    ? previous.engagedSessions / previous.sessions
+    : 0;
+  const comparisonNote =
+    previous.sessions === 0
+      ? "The prior window has no GA4 sessions. Treat period deltas as non-comparable until at least 14 continuous post-release days are available."
+      : "The two GA4 windows contain data; keep anomaly days in view when interpreting the deltas.";
+
+  recordSource({
+    name: "GA4 Data API",
+    status: "ok",
+    detail: `property ${propertyId}; production hostname filter; ${windows30.current.start} to ${windows30.current.end}`,
+  });
+
+  return `## GA4 — Consented Traffic
+
+Property: ${propertyId}
+
+Current 30 days: ${windows30.current.start} to ${windows30.current.end}
+
+Previous 30 days: ${windows30.previous.start} to ${windows30.previous.end}
+
+${comparisonNote}
+
+| Metric | Current | Previous | Change |
+| --- | ---: | ---: | ---: |
+| Sessions | ${formatInteger(current.sessions)} | ${formatInteger(previous.sessions)} | ${formatChange(current.sessions, previous.sessions)} |
+| Users | ${formatInteger(current.users)} | ${formatInteger(previous.users)} | ${formatChange(current.users, previous.users)} |
+| Views | ${formatInteger(current.views)} | ${formatInteger(previous.views)} | ${formatChange(current.views, previous.views)} |
+| Engaged sessions | ${formatInteger(current.engagedSessions)} | ${formatInteger(previous.engagedSessions)} | ${formatChange(current.engagedSessions, previous.engagedSessions)} |
+| Engagement rate | ${formatPercent(engagementRate)} | ${formatPercent(previousEngagementRate)} | ${formatChange(engagementRate, previousEngagementRate)} |
+| Key events | ${formatInteger(current.keyEvents)} | ${formatInteger(previous.keyEvents)} | ${formatChange(current.keyEvents, previous.keyEvents)} |
+
+Last 7 days: ${formatInteger(sevenDay.sessions)} sessions, ${formatInteger(sevenDay.users)} users, ${formatInteger(sevenDay.engagedSessions)} engaged sessions.
+
+### Top Pages
+
+${pageRows.length ? pageRows.map((row) => `- ${row.pagePath}: ${formatInteger(asNumber(row.sessions))} sessions, ${formatInteger(asNumber(row.screenPageViews))} views, ${formatInteger(asNumber(row.engagedSessions))} engaged`).join("\n") : "- No rows returned."}
+
+### Acquisition
+
+${sourceRows.length ? sourceRows.map((row) => `- ${row.sessionSourceMedium}: ${formatInteger(asNumber(row.sessions))} sessions, ${formatInteger(asNumber(row.engagedSessions))} engaged`).join("\n") : "- No rows returned."}
+
+### Canonical Funnel Events
+
+${eventRows.length ? eventRows.map((row) => `- ${row.eventName}: ${formatInteger(asNumber(row.eventCount))} events, ${formatInteger(asNumber(row.keyEvents))} key events`).join("\n") : "- No canonical funnel events reported in this window."}
+
+### Traffic Anomalies
+
+${anomalies.length ? anomalies.map((point) => `- ${point.date.replace(/^(\d{4})(\d{2})(\d{2})$/, "$1-$2-$3")}: ${point.sessions} sessions, ${formatPercent(point.engagementRate)} engagement, ${point.viewsPerSession.toFixed(2)} views/session`).join("\n") : "- No high-volume, low-quality daily spike crossed the anomaly threshold."}`;
+}
+
+async function gscQuery(token: string, body: Record<string, unknown>) {
+  return googleJson<{
+    rows?: Array<{
+      keys?: string[];
+      clicks?: number;
+      impressions?: number;
+      ctr?: number;
+      position?: number;
+    }>;
+  }>(
+    `https://www.googleapis.com/webmasters/v3/sites/${encodeURIComponent(SITE_URL)}/searchAnalytics/query`,
+    token,
+    { method: "POST", body: JSON.stringify(body) },
+  );
+}
+
+async function gscSummary(token: string, window: DateWindow) {
+  const data = await gscQuery(token, { startDate: window.start, endDate: window.end });
+  const row = data.rows?.[0];
+
+  return {
+    clicks: row?.clicks ?? 0,
+    impressions: row?.impressions ?? 0,
+    ctr: row?.ctr ?? 0,
+    position: row?.position ?? 0,
+  } satisfies GscSummary;
+}
+
+async function fetchGscSection(now: Date) {
+  const scope = "https://www.googleapis.com/auth/webmasters.readonly";
+  const token = await googleAccessToken([scope]);
+  const windows = comparableWindows(28, 2, now);
+  const [current, previous, opportunitiesData, countriesData] = await Promise.all([
+    gscSummary(token, windows.current),
+    gscSummary(token, windows.previous),
+    gscQuery(token, {
+      startDate: windows.current.start,
+      endDate: windows.current.end,
+      dimensions: ["query", "page"],
+      rowLimit: 500,
+    }),
+    gscQuery(token, {
+      startDate: windows.current.start,
+      endDate: windows.current.end,
+      dimensions: ["country"],
+      rowLimit: 250,
+    }),
+  ]);
+  const opportunities = (opportunitiesData.rows ?? [])
+    .filter(
+      (row) =>
+        (row.position ?? 0) >= 4 &&
+        (row.position ?? 0) <= 20 &&
+        (row.impressions ?? 0) >= 10,
+    )
+    .sort((left, right) => (right.impressions ?? 0) - (left.impressions ?? 0))
+    .slice(0, 20);
+  const usa = countriesData.rows?.find((row) => row.keys?.[0] === "usa");
+
+  recordSource({
+    name: "Google Search Console",
+    status: "ok",
+    detail: `${SITE_URL}; ${windows.current.start} to ${windows.current.end}`,
+  });
+
+  return `## Google Search Console
+
+Current 28 days: ${windows.current.start} to ${windows.current.end}
+
+Previous 28 days: ${windows.previous.start} to ${windows.previous.end}
+
+| Metric | Current | Previous | Change |
+| --- | ---: | ---: | ---: |
+| Clicks | ${formatInteger(current.clicks)} | ${formatInteger(previous.clicks)} | ${formatChange(current.clicks, previous.clicks)} |
+| Impressions | ${formatInteger(current.impressions)} | ${formatInteger(previous.impressions)} | ${formatChange(current.impressions, previous.impressions)} |
+| CTR | ${formatPercent(current.ctr)} | ${formatPercent(previous.ctr)} | ${formatChange(current.ctr, previous.ctr)} |
+| Average position | ${current.position.toFixed(1)} | ${previous.position.toFixed(1)} | ${(current.position - previous.position).toFixed(1)} positions |
+
+United States: ${formatInteger(usa?.impressions ?? 0)} impressions, ${formatInteger(usa?.clicks ?? 0)} clicks, ${formatPercent(usa?.ctr ?? 0)} CTR, position ${(usa?.position ?? 0).toFixed(1)}.
+
+### Position 4–20 CTR Opportunities
+
+${opportunities.length ? opportunities.map((row) => `- ${row.keys?.[0] ?? "(query)"} → ${row.keys?.[1] ?? "(page)"}: ${formatInteger(row.impressions ?? 0)} impressions, ${formatInteger(row.clicks ?? 0)} clicks, ${formatPercent(row.ctr ?? 0)} CTR, position ${(row.position ?? 0).toFixed(1)}`).join("\n") : "- No query/page pair crossed the opportunity threshold."}`;
+}
+
+function supabaseLeadHeaders(serviceRoleKey: string) {
+  return {
+    apikey: serviceRoleKey,
+    Authorization: `Bearer ${serviceRoleKey}`,
+    Prefer: "count=exact",
+    Range: "0-0",
+  };
+}
+
+async function fetchSupabaseLeadCount(
+  supabaseUrl: string,
+  serviceRoleKey: string,
+  window: DateWindow,
+) {
+  const url = new URL("/rest/v1/lead_submissions", supabaseUrl);
+  url.searchParams.set("select", "id");
+  url.searchParams.set("created_at", `gte.${window.start}T00:00:00.000Z`);
+  url.searchParams.append("created_at", `lte.${window.end}T23:59:59.999Z`);
+  const response = await fetch(url, {
+    headers: supabaseLeadHeaders(serviceRoleKey),
+  });
+
+  if (!response.ok) {
+    throw new Error(`lead count returned HTTP ${response.status}`);
+  }
+
+  const total = response.headers.get("content-range")?.split("/")[1];
+
+  if (!total || total === "*") {
+    throw new Error("lead count response omitted an exact count");
+  }
+
+  return Number(total);
+}
+
+async function fetchLeadSection(now: Date) {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL?.trim();
+  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY?.trim();
+  const windows = comparableWindows(30, 1, now);
+
+  if (!supabaseUrl || !serviceRoleKey) {
+    recordSource({
+      name: "Supabase lead count",
+      status: "deferred",
+      detail: "deferred by user; production lead storage is not configured",
+    });
+    return `## Owned Lead Count
+
+- Deferred by user. Supabase is not available, so there is no authoritative stored-lead count.`;
+  }
+
+  try {
+    const [current, previous] = await Promise.all([
+      fetchSupabaseLeadCount(supabaseUrl, serviceRoleKey, windows.current),
+      fetchSupabaseLeadCount(supabaseUrl, serviceRoleKey, windows.previous),
+    ]);
+
+    recordSource({
+      name: "Supabase lead count",
+      status: "ok",
+      detail: "service-role count only; no lead fields were fetched",
+    });
+    return `## Owned Lead Count
+
+- Current 30 days: ${formatInteger(current)} stored leads.
+- Previous 30 days: ${formatInteger(previous)} stored leads.
+- Change: ${formatChange(current, previous)}.`;
+  } catch {
+    recordSource({
+      name: "Supabase lead count",
+      status: "deferred",
+      detail: "deferred by user; the configured Supabase source is unavailable",
+    });
+    return `## Owned Lead Count
+
+- Deferred by user. The configured Supabase source is unavailable, so no stored-lead count is claimed.`;
   }
 }
 
-function recordOwnedAnalytics(input: TrafficInput) {
-  const hasAny =
-    typeof input.last7Days?.sessions === "number" || typeof input.last30Days?.sessions === "number";
+async function fetchProductionHealthSection() {
+  const corePaths = ["/", "/sitemap.xml", "/robots.txt", "/llms.txt"] as const;
+  const deferredPaths = ["/blog", "/feed.xml"] as const;
+  const paths = [...corePaths, ...deferredPaths];
+  const rows = await Promise.all(
+    paths.map(async (path) => {
+      try {
+        const response = await fetch(new URL(path, BASE_URL), {
+          redirect: "follow",
+          headers: { "User-Agent": "HydrogenExpert traffic report" },
+          signal: AbortSignal.timeout(15_000),
+        });
+        return { path, status: response.status };
+      } catch {
+        return { path, status: 0 };
+      }
+    }),
+  );
+  const coreFailures = rows.filter(
+    (row) => corePaths.includes(row.path as (typeof corePaths)[number]) && row.status !== 200,
+  );
+  const deferredFailures = rows.filter(
+    (row) => deferredPaths.includes(row.path as (typeof deferredPaths)[number]) && row.status !== 200,
+  );
 
   recordSource({
-    name: "GA4 / Vercel Analytics (sessions, users, top pages)",
-    status: hasAny ? "ok" : "not-configured",
-    detail: hasAny
-      ? "snapshot supplied"
-      : `no ${INPUT_PATH.replace(process.cwd() + "/", "")}; every owned-analytics slot renders as "manual"`,
-    fix: "Enable the Analytics Admin API for the OAuth project, or write content/internal/traffic-snapshot.json from a GA4 export.",
+    name: "Production public health",
+    status: coreFailures.length ? "blocked" : "ok",
+    detail: coreFailures.length
+      ? `${coreFailures.length} critical non-database route(s) failed`
+      : deferredFailures.length
+        ? `core routes healthy; ${deferredFailures.length} Supabase-dependent route failure(s) remain deferred`
+        : "all checked routes returned HTTP 200",
   });
+
+  return `## Production Health
+
+${rows.map((row) => `- ${row.path}: HTTP ${row.status || "request failed"}${deferredFailures.some((failure) => failure.path === row.path) ? " — Supabase dependency deferred" : ""}`).join("\n")}`;
+}
+
+async function fetchPageSpeedSection() {
+  const target = new URL("/", BASE_URL).toString();
+  const url = new URL("https://www.googleapis.com/pagespeedonline/v5/runPagespeed");
+  url.searchParams.set("url", target);
+  url.searchParams.set("strategy", "mobile");
+  for (const category of ["performance", "seo", "accessibility"]) {
+    url.searchParams.append("category", category);
+  }
+  const key = process.env.GOOGLE_API_KEY ?? process.env.PAGESPEED_API_KEY;
+  if (key) url.searchParams.set("key", key);
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error(
+      response.status === 429 && !key
+        ? "PageSpeed quota exhausted without GOOGLE_API_KEY or PAGESPEED_API_KEY."
+        : `PageSpeed returned HTTP ${response.status}.`,
+    );
+  }
+
+  const data = (await response.json()) as {
+    lighthouseResult?: {
+      categories?: Record<string, { score?: number } | undefined>;
+      audits?: Record<string, { displayValue?: string } | undefined>;
+    };
+    loadingExperience?: {
+      metrics?: Record<string, { percentile?: number; category?: string } | undefined>;
+      overall_category?: string;
+    };
+  };
+  const categories = data.lighthouseResult?.categories ?? {};
+  const audits = data.lighthouseResult?.audits ?? {};
+  const fieldMetrics = data.loadingExperience?.metrics ?? {};
+  const fieldLcp = fieldMetrics.LARGEST_CONTENTFUL_PAINT_MS;
+  const fieldInp = fieldMetrics.INTERACTION_TO_NEXT_PAINT;
+  const fieldCls = fieldMetrics.CUMULATIVE_LAYOUT_SHIFT_SCORE;
+
+  recordSource({
+    name: "PageSpeed Insights",
+    status: "ok",
+    detail: `${target}; mobile Lighthouse and available field data`,
+  });
+
+  return `## PageSpeed / Core Web Vitals
+
+- Mobile Lighthouse: performance ${Math.round((categories.performance?.score ?? 0) * 100)}, SEO ${Math.round((categories.seo?.score ?? 0) * 100)}, accessibility ${Math.round((categories.accessibility?.score ?? 0) * 100)}.
+- Lab: LCP ${audits["largest-contentful-paint"]?.displayValue ?? "n/a"}; TBT ${audits["total-blocking-time"]?.displayValue ?? "n/a"}; CLS ${audits["cumulative-layout-shift"]?.displayValue ?? "n/a"}.
+- Field (${data.loadingExperience?.overall_category ?? "not enough data"}): LCP ${fieldLcp?.percentile ?? "n/a"} ms (${fieldLcp?.category ?? "n/a"}); INP ${fieldInp?.percentile ?? "n/a"} ms (${fieldInp?.category ?? "n/a"}); CLS ${fieldCls?.percentile ?? "n/a"} (${fieldCls?.category ?? "n/a"}).`;
+}
+
+async function optionalSection(
+  title: string,
+  name: string,
+  fn: () => Promise<string>,
+  fix: string,
+  unavailableStatus: Extract<SourceStatus, "blocked" | "deferred"> = "blocked",
+) {
+  try {
+    return await fn();
+  } catch (error) {
+    const detail = error instanceof Error ? error.message : String(error);
+    recordSource({ name, status: unavailableStatus, detail, fix });
+    const label = unavailableStatus === "blocked" ? "Blocked" : "Deferred";
+    return `## ${title}\n\n- ${label}: ${detail}`;
+  }
 }
 
 function renderDataHealth() {
-  const icon: Record<SourceStatus, string> = {
-    ok: "ok",
-    empty: "empty",
+  const labels: Record<SourceStatus, string> = {
+    ok: "OK",
+    empty: "EMPTY",
     blocked: "BLOCKED",
-    "not-configured": "NOT CONFIGURED",
+    deferred: "DEFERRED",
   };
 
-  const rows = sourceReports.map((report) => {
-    const fix = report.fix ? ` Fix: ${report.fix}` : "";
-    const detail = report.detail.replace(/\.$/, "");
-    return `- **${icon[report.status]}** ${report.name}: ${detail}.${fix}`;
-  });
+  return `## Data Health
 
-  const degraded = sourceReports.filter((report) => report.status !== "ok");
-  const headline = degraded.length
-    ? `${degraded.length} of ${sourceReports.length} data sources are not reporting. Treat the numbers below as partial.`
-    : `All ${sourceReports.length} data sources reported.`;
-
-  return `## Data Health\n\n${headline}\n\n${rows.join("\n")}`;
+${sourceReports.map((report) => `- **${labels[report.status]}** ${report.name}: ${report.detail.replace(/\.$/, "")}.${report.fix ? ` Fix: ${report.fix}` : ""}`).join("\n")}`;
 }
 
-async function renderReport(input: TrafficInput, now: Date) {
-  recordOwnedAnalytics(input);
+async function renderReport(now: Date) {
+  sourceReports.length = 0;
+  const ga4Section = await optionalSection(
+    "GA4 — Consented Traffic",
+    "GA4 Data API",
+    () => fetchGa4Section(now),
+    "Confirm Analytics Admin/Data API access and the analytics.readonly OAuth scope.",
+  );
   const gscSection = await optionalSection(
-    "GSC Quick Wins (auto)",
     "Google Search Console",
-    fetchGscQuickWins,
-    "Grant the webmasters.readonly OAuth scope for the property.",
+    "Google Search Console",
+    () => fetchGscSection(now),
+    "Confirm property access and the webmasters.readonly OAuth scope.",
   );
-  const psiSection = await optionalSection(
-    "PageSpeed / Lighthouse Snapshot (auto)",
+  const leadSection = await fetchLeadSection(now);
+  const healthSection = await optionalSection(
+    "Production Health",
+    "Production public health",
+    fetchProductionHealthSection,
+    "Check the production deployment and DNS.",
+  );
+  const pageSpeedSection = await optionalSection(
     "PageSpeed / Core Web Vitals",
-    () => fetchPageSpeed("/"),
-    "Set GOOGLE_API_KEY or PAGESPEED_API_KEY in .env.local.",
+    "PageSpeed Insights",
+    fetchPageSpeedSection,
+    "Set GOOGLE_API_KEY or PAGESPEED_API_KEY when public quota is exhausted.",
+    process.argv.includes("--require-pagespeed") ? "blocked" : "deferred",
   );
-  return `# Weekly Traffic Report
 
-Generated: ${input.generatedAt ?? now.toISOString()}
+  return `# Weekly Traffic and Measurement Report
+
+Generated: ${now.toISOString()}
+
+Only GA4 traffic for hostname ${PRODUCTION_HOSTNAME} is included. After the privacy-first release, GA4 represents consented traffic; windows that predate that deployment remain historical pre-change data. Vercel Analytics remains the cookie-free baseline.
 
 ${renderDataHealth()}
 
-## Date Windows
-
-- Last 7 days: ${formatRange(7, now)}
-- Last 30 days: ${formatRange(30, now)}
-
-## Last 7 Days
-
-- Sessions: ${formatNumber(input.last7Days?.sessions)}
-- Users: ${formatNumber(input.last7Days?.users)}
-
-### Top Pages
-
-${sectionRows(input.last7Days?.topPages)}
-
-### Internal Clicks
-
-${sectionRows(input.last7Days?.internalClicks)}
-
-### Outbound Clicks
-
-${sectionRows(input.last7Days?.outboundClicks)}
-
-## Last 30 Days
-
-- Sessions: ${formatNumber(input.last30Days?.sessions)}
-- Users: ${formatNumber(input.last30Days?.users)}
-
-### Top Pages
-
-${sectionRows(input.last30Days?.topPages)}
-
-### Internal Clicks
-
-${sectionRows(input.last30Days?.internalClicks)}
-
-### Outbound Clicks
-
-${sectionRows(input.last30Days?.outboundClicks)}
+${ga4Section}
 
 ${gscSection}
 
-${psiSection}
+${leadSection}
 
-## Manual Search Console Slot
+${healthSection}
 
-${input.gscNotes?.length ? input.gscNotes.map(note => `- ${note}`).join("\n") : "- Optional manual notes. Auto GSC is used when `webmasters.readonly` OAuth scope is available."}
-
-## Traffic Foundation Routes To Watch
-
-- /resources
-- /shopify-hydrogen-examples
-- /shopify-hydrogen-issues
-- /shopify-hydrogen-templates
-- /udemy-shopify-hydrogen-course-resources
+${pageSpeedSection}
 `;
 }
 
 async function main() {
   const strict = process.argv.includes("--strict");
-  const input = readInput();
   const now = new Date();
+  const report = await renderReport(now);
   mkdirSync(REPORT_DIR, { recursive: true });
   const outputPath = join(REPORT_DIR, `traffic-${isoDate(now)}.md`);
-  writeFileSync(outputPath, await renderReport(input, now));
+  writeFileSync(outputPath, report);
   console.log(outputPath);
 
-  const degraded = sourceReports.filter((report) => report.status !== "ok");
+  const blockingSources = sourceReports.filter(
+    (source) => source.status === "blocked",
+  );
 
-  if (degraded.length) {
-    console.error(
-      `\n${degraded.length} of ${sourceReports.length} data sources did not report:`,
-    );
-    for (const report of degraded) {
-      console.error(`  - ${report.name}: ${report.detail}`);
-      if (report.fix) console.error(`      fix: ${report.fix}`);
+  if (blockingSources.length > 0) {
+    console.error(`\n${blockingSources.length} required data source(s) did not report:`);
+    for (const source of blockingSources) {
+      console.error(`  - ${source.name}: ${source.detail}`);
+      if (source.fix) console.error(`      fix: ${source.fix}`);
     }
+
     if (strict) {
-      console.error("\n--strict set: failing because the report is not fully backed by data.");
       process.exit(1);
     }
   }
 }
 
-main().catch(error => {
-  console.error(error);
+main().catch((error) => {
+  console.error(error instanceof Error ? error.message : error);
   process.exit(1);
 });

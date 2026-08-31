@@ -34,15 +34,15 @@ const sections = [
   },
   {
     title: "Storage and processors",
-    body: "Lead submissions are stored in Supabase when the backend is configured. The site runs on Vercel and may use Vercel Analytics and Speed Insights. Google Analytics loads only when a real measurement ID is configured.",
+    body: "Lead submissions are stored in Supabase when the backend is configured. The site runs on Vercel and uses its cookie-free Analytics and Speed Insights services for aggregate traffic and performance measurement. Google Analytics loads only after an explicit analytics choice.",
   },
   {
     title: "Analytics",
-    body: "Analytics may measure page views, performance, CTA clicks, lead form status, blog views, and blog reading depth. The site code prevents placeholder Google Analytics IDs from loading.",
+    body: "When you allow Google Analytics, it may measure page views, CTA clicks, lead-form funnel status, content interactions, and reading depth. Event parameters are limited to page, content, package, destination, and non-identifying qualification categories; names, emails, store URLs, and message text are not sent as analytics parameters.",
   },
   {
     title: "Your choices",
-    body: "You can avoid the form and contact through LinkedIn or Upwork instead. You can also manage browser-level cookie and tracking settings from your browser.",
+    body: "Google Analytics is off until you choose Allow analytics. The choice is stored in your browser under hydrogenexpert.analyticsConsent.v1. Use the persistent Privacy settings control to grant or withdraw consent at any time; withdrawal reloads the page without Google Analytics. You can also avoid the form and contact through LinkedIn or Upwork.",
   },
 ] as const;
 const breadcrumbs = [
@@ -68,7 +68,7 @@ export default function PrivacyPage() {
           description="A practical explanation of how this site handles project inquiry data, analytics, and security services."
           body="This notice is written for a small professional services site. It is not a formal legal opinion, but it explains the data handling choices built into HydrogenExpert."
         />
-        <p className="text-sm font-medium text-neutral-500">Last updated: May 7, 2026</p>
+        <p className="text-sm font-medium text-neutral-500">Last updated: September 1, 2026</p>
 
       <section className="surface-card space-y-6">
         <SectionHeader

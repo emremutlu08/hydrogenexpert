@@ -1,3 +1,5 @@
+import { hasAnalyticsConsent } from "./analytics-consent";
+
 type AnalyticsValue = string | null | undefined;
 type AnalyticsParams = Record<string, AnalyticsValue>;
 type ExternalDestination = "linkedin" | "upwork";
@@ -26,42 +28,16 @@ function cleanParams(params: AnalyticsParams = {}) {
 }
 
 function sendEvent(eventName: string, params: AnalyticsParams = {}) {
-  if (typeof window !== "undefined" && window.gtag) {
+  if (typeof window !== "undefined" && window.gtag && hasAnalyticsConsent()) {
     window.gtag("event", eventName, cleanParams(params));
   }
 }
 
 function routeParams(context: { sourceKind?: string; sourcePath?: string } = {}) {
   return {
-    source: context.sourceKind,
+    source_kind: context.sourceKind,
     source_path: context.sourcePath,
-    source_section: context.sourceKind,
-    route: context.sourcePath,
   };
-}
-
-function contextualCtaEvent(sourceKind?: string) {
-  if (!sourceKind) {
-    return null;
-  }
-
-  if (sourceKind.includes("audit") || sourceKind.includes("fit_audit")) {
-    return "audit_cta_click";
-  }
-
-  if (sourceKind.includes("cost")) {
-    return "cost_page_cta_click";
-  }
-
-  if (sourceKind.startsWith("service:")) {
-    return "service_page_cta_click";
-  }
-
-  if (sourceKind.startsWith("case_study:") || sourceKind.includes("case_studies")) {
-    return "case_study_click";
-  }
-
-  return null;
 }
 
 export function trackCTA(
@@ -69,21 +45,12 @@ export function trackCTA(
   context: { sourceKind?: string; sourcePath?: string; ctaLabel?: string } = {},
 ) {
   const params = {
-    destination,
+    cta_destination: destination,
     ...routeParams(context),
     cta_label: context.ctaLabel,
   };
 
-  sendEvent("cta_click", params);
-  sendEvent(`cta_click_${destination}`, params);
-  sendEvent(`${destination}_click`, params);
-  sendEvent(`${destination}_clicked`, params);
-
-  const contextualEvent = contextualCtaEvent(context.sourceKind);
-
-  if (contextualEvent) {
-    sendEvent(contextualEvent, params);
-  }
+  sendEvent("external_contact_click", params);
 }
 
 export function trackAnchorCTA(
@@ -98,27 +65,13 @@ export function trackAnchorCTA(
 ) {
   const params = {
     ...routeParams(context),
-    target: context.target,
+    cta_destination: context.target,
     cta_label: context.ctaLabel,
+    cta_kind: eventName,
     package_name: context.packageName,
   };
 
-  sendEvent(eventName, params);
-
-  if (
-    eventName === "cta_click_fit_audit" ||
-    eventName === "cta_click_email_brief"
-  ) {
-    sendEvent("scope_review_cta_click", params);
-  }
-
-  if (eventName === "audit_cta_click") {
-    sendEvent("cta_click_fit_audit", params);
-  }
-
-  if (eventName === "case_study_click") {
-    sendEvent("cta_click_case_studies", params);
-  }
+  sendEvent("scope_review_cta_click", params);
 }
 
 export function trackLeadFormView(source: string, sourcePath?: string) {
@@ -129,7 +82,6 @@ export function trackLeadStart(source: string, sourcePath?: string) {
   const params = routeParams({ sourceKind: source, sourcePath });
 
   sendEvent("lead_form_start", params);
-  sendEvent("contact_form_started", params);
 }
 
 export function trackLeadSubmit(
@@ -138,11 +90,9 @@ export function trackLeadSubmit(
   details: AnalyticsParams = {},
   sourcePath?: string,
 ) {
-  const params = { ...routeParams({ sourceKind: source, sourcePath }), status, ...details };
+  const params = { ...routeParams({ sourceKind: source, sourcePath }), ...details };
 
-  sendEvent("lead_form_submit", params);
   sendEvent(status === "success" ? "lead_form_submit_success" : "lead_form_submit_error", params);
-  sendEvent("contact_form_submitted", params);
 }
 
 export function trackPackageCtaClick(
@@ -154,7 +104,6 @@ export function trackPackageCtaClick(
     cta_label: context.ctaLabel,
   };
 
-  sendEvent("package_cta_click", params);
   sendEvent("scope_review_cta_click", params);
 }
 
@@ -189,7 +138,7 @@ export function trackProofLinkClicked(
   sendEvent("proof_link_clicked", {
     ...routeParams(context),
     proof_label: context.proofLabel,
-    target: context.href,
+    cta_destination: context.href,
   });
 }
 

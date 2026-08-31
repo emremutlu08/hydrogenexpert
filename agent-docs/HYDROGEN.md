@@ -1,7 +1,7 @@
 # HydrogenExpert Implementation Notes
 
 Status: Active
-Last updated: 2026-08-24
+Last updated: 2026-09-01
 Owner: Agent
 Source of truth: `package.json`, current code, agent analysis
 
@@ -35,6 +35,7 @@ Use `package.json` for exact scripts. Current important scripts include:
 - `npm run verify:commercial-launch`
 - `npm run verify:internal-links`
 - `npm run indexnow:ping`
+- `npm run report:traffic`
 
 ## Dependency Notes
 
@@ -76,6 +77,14 @@ Use `package.json` for exact scripts. Current important scripts include:
 - Use shared security helpers from `lib/security.ts`.
 - Lead capture and cron-style endpoints should use durable rate limiting where available, with in-memory fallback only as backup.
 - Cloudflare Turnstile is active only when both `NEXT_PUBLIC_TURNSTILE_SITE_KEY` and `TURNSTILE_SECRET_KEY` are configured.
+
+## Analytics And Reporting Rules
+
+- Google Analytics is opt-in. Do not load it until `hydrogenexpert.analyticsConsent.v1` is `granted`; Vercel Analytics and Speed Insights remain the cookie-free baseline.
+- Use one canonical event for each lead-funnel step: `lead_form_view`, `lead_form_start`, `lead_form_submit_success`, and `lead_form_submit_error`.
+- Use `scope_review_cta_click` for internal or package scope-review intent and `external_contact_click` for LinkedIn or Upwork destinations.
+- Never send names, email addresses, store URLs, message text, or other direct identifiers as analytics parameters. Use `source_kind`, `source_path`, `cta_destination`, and `package_name` for attribution context.
+- `npm run report:traffic` reads GA4, Search Console, production health, Supabase aggregate lead counts when available, and PageSpeed/CrUX when quota is available. It must label unavailable sources explicitly and must not substitute invented or manually entered metrics. Use `--strict` for the weekly core-source gate and add `--require-pagespeed` during the performance phase.
 
 ## Architecture Direction
 
