@@ -7,7 +7,9 @@ import {
   formatChange,
   parseExactContentRangeTotal,
   requireLighthouseCategoryScores,
+  summarizeSearchConsoleRow,
   type DailyTrafficPoint,
+  type SearchConsoleAggregateRow,
 } from "../lib/traffic-report";
 
 try {
@@ -47,13 +49,6 @@ interface GaSummary {
   views: number;
   engagedSessions: number;
   keyEvents: number;
-}
-
-interface GscSummary {
-  clicks: number;
-  impressions: number;
-  ctr: number;
-  position: number;
 }
 
 const REPORT_DIR = join(process.cwd(), "content/internal/reports");
@@ -105,6 +100,28 @@ function formatInteger(value: number) {
 
 function formatPercent(value: number) {
   return `${(value * 100).toFixed(1)}%`;
+}
+
+function formatOptionalInteger(value: number | null) {
+  return value === null ? "n/a" : formatInteger(value);
+}
+
+function formatOptionalPercent(value: number | null) {
+  return value === null ? "n/a" : formatPercent(value);
+}
+
+function formatOptionalChange(current: number | null, previous: number | null) {
+  return current === null || previous === null ? "not comparable" : formatChange(current, previous);
+}
+
+function formatOptionalPosition(value: number | null | undefined) {
+  return typeof value === "number" && Number.isFinite(value) ? value.toFixed(1) : "n/a";
+}
+
+function formatPositionChange(current: number | null, previous: number | null) {
+  return current === null || previous === null
+    ? "not comparable"
+    : `${(current - previous).toFixed(1)} positions`;
 }
 
 function recordSource(report: SourceReport) {
@@ -404,12 +421,8 @@ ${anomalies.length ? anomalies.map((point) => `- ${point.date.replace(/^(\d{4})(
 
 async function gscQuery(token: string, body: Record<string, unknown>) {
   return googleJson<{
-    rows?: Array<{
+    rows?: Array<SearchConsoleAggregateRow & {
       keys?: string[];
-      clicks?: number;
-      impressions?: number;
-      ctr?: number;
-      position?: number;
     }>;
   }>(
     `https://www.googleapis.com/webmasters/v3/sites/${encodeURIComponent(SITE_URL)}/searchAnalytics/query`,
@@ -420,14 +433,7 @@ async function gscQuery(token: string, body: Record<string, unknown>) {
 
 async function gscSummary(token: string, window: DateWindow) {
   const data = await gscQuery(token, { startDate: window.start, endDate: window.end });
-  const row = data.rows?.[0];
-
-  return {
-    clicks: row?.clicks ?? 0,
-    impressions: row?.impressions ?? 0,
-    ctr: row?.ctr ?? 0,
-    position: row?.position ?? 0,
-  } satisfies GscSummary;
+  return summarizeSearchConsoleRow(data.rows?.[0]);
 }
 
 async function fetchGscSection(now: Date) {
@@ -452,10 +458,12 @@ async function fetchGscSection(now: Date) {
   ]);
   const opportunities = (opportunitiesData.rows ?? [])
     .filter(
-      (row) =>
-        (row.position ?? 0) >= 4 &&
-        (row.position ?? 0) <= 20 &&
-        (row.impressions ?? 0) >= 10,
+      (row): row is typeof row & { position: number; impressions: number } =>
+        typeof row.position === "number" &&
+        row.position >= 4 &&
+        row.position <= 20 &&
+        typeof row.impressions === "number" &&
+        row.impressions >= 10,
     )
     .sort((left, right) => (right.impressions ?? 0) - (left.impressions ?? 0))
     .slice(0, 20);
@@ -463,8 +471,10 @@ async function fetchGscSection(now: Date) {
 
   recordSource({
     name: "Google Search Console",
-    status: "ok",
-    detail: `${SITE_URL}; ${windows.current.start} to ${windows.current.end}`,
+    status: current.hasData ? "ok" : "empty",
+    detail: current.hasData
+      ? `${SITE_URL}; ${windows.current.start} to ${windows.current.end}`
+      : `${SITE_URL}; no aggregate row for ${windows.current.start} to ${windows.current.end}`,
   });
 
   return `## Google Search Console
@@ -475,16 +485,16 @@ Previous 28 days: ${windows.previous.start} to ${windows.previous.end}
 
 | Metric | Current | Previous | Change |
 | --- | ---: | ---: | ---: |
-| Clicks | ${formatInteger(current.clicks)} | ${formatInteger(previous.clicks)} | ${formatChange(current.clicks, previous.clicks)} |
-| Impressions | ${formatInteger(current.impressions)} | ${formatInteger(previous.impressions)} | ${formatChange(current.impressions, previous.impressions)} |
-| CTR | ${formatPercent(current.ctr)} | ${formatPercent(previous.ctr)} | ${formatChange(current.ctr, previous.ctr)} |
-| Average position | ${current.position.toFixed(1)} | ${previous.position.toFixed(1)} | ${(current.position - previous.position).toFixed(1)} positions |
+| Clicks | ${formatOptionalInteger(current.clicks)} | ${formatOptionalInteger(previous.clicks)} | ${formatOptionalChange(current.clicks, previous.clicks)} |
+| Impressions | ${formatOptionalInteger(current.impressions)} | ${formatOptionalInteger(previous.impressions)} | ${formatOptionalChange(current.impressions, previous.impressions)} |
+| CTR | ${formatOptionalPercent(current.ctr)} | ${formatOptionalPercent(previous.ctr)} | ${formatOptionalChange(current.ctr, previous.ctr)} |
+| Average position | ${formatOptionalPosition(current.position)} | ${formatOptionalPosition(previous.position)} | ${formatPositionChange(current.position, previous.position)} |
 
-United States: ${formatInteger(usa?.impressions ?? 0)} impressions, ${formatInteger(usa?.clicks ?? 0)} clicks, ${formatPercent(usa?.ctr ?? 0)} CTR, position ${(usa?.position ?? 0).toFixed(1)}.
+${usa ? `United States: ${formatOptionalInteger(usa.impressions ?? null)} impressions, ${formatOptionalInteger(usa.clicks ?? null)} clicks, ${formatOptionalPercent(usa.ctr ?? null)} CTR, position ${formatOptionalPosition(usa.position)}.` : "United States: no row returned for this window."}
 
 ### Position 4–20 CTR Opportunities
 
-${opportunities.length ? opportunities.map((row) => `- ${row.keys?.[0] ?? "(query)"} → ${row.keys?.[1] ?? "(page)"}: ${formatInteger(row.impressions ?? 0)} impressions, ${formatInteger(row.clicks ?? 0)} clicks, ${formatPercent(row.ctr ?? 0)} CTR, position ${(row.position ?? 0).toFixed(1)}`).join("\n") : "- No query/page pair crossed the opportunity threshold."}`;
+${opportunities.length ? opportunities.map((row) => `- ${row.keys?.[0] ?? "(query)"} → ${row.keys?.[1] ?? "(page)"}: ${formatInteger(row.impressions)} impressions, ${formatInteger(row.clicks ?? 0)} clicks, ${formatPercent(row.ctr ?? 0)} CTR, position ${row.position.toFixed(1)}`).join("\n") : "- No query/page pair crossed the opportunity threshold."}`;
 }
 
 function supabaseLeadHeaders(serviceRoleKey: string) {

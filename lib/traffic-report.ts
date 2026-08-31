@@ -10,6 +10,13 @@ export interface TrafficAnomaly extends DailyTrafficPoint {
   viewsPerSession: number;
 }
 
+export interface SearchConsoleAggregateRow {
+  clicks?: number;
+  impressions?: number;
+  ctr?: number;
+  position?: number;
+}
+
 const LIGHTHOUSE_CATEGORY_NAMES = ["performance", "seo", "accessibility"] as const;
 
 type LighthouseCategoryName = (typeof LIGHTHOUSE_CATEGORY_NAMES)[number];
@@ -58,6 +65,20 @@ export function parseExactContentRangeTotal(contentRange: string | null) {
   }
 
   return parsed;
+}
+
+function finiteNumberOrNull(value: number | undefined) {
+  return typeof value === "number" && Number.isFinite(value) ? value : null;
+}
+
+export function summarizeSearchConsoleRow(row?: SearchConsoleAggregateRow) {
+  return {
+    clicks: finiteNumberOrNull(row?.clicks),
+    impressions: finiteNumberOrNull(row?.impressions),
+    ctr: finiteNumberOrNull(row?.ctr),
+    position: finiteNumberOrNull(row?.position),
+    hasData: Boolean(row),
+  };
 }
 
 export function percentChange(current: number, previous: number) {

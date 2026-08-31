@@ -6,6 +6,7 @@ import {
   parseExactContentRangeTotal,
   percentChange,
   requireLighthouseCategoryScores,
+  summarizeSearchConsoleRow,
 } from "../lib/traffic-report";
 
 describe("traffic report calculations", () => {
@@ -82,5 +83,22 @@ describe("traffic report calculations", () => {
     expect(() => parseExactContentRangeTotal(null)).toThrow(
       "lead count response omitted an exact count",
     );
+  });
+
+  it("preserves absent Search Console aggregate positions as unavailable", () => {
+    expect(summarizeSearchConsoleRow()).toEqual({
+      clicks: null,
+      impressions: null,
+      ctr: null,
+      position: null,
+      hasData: false,
+    });
+    expect(summarizeSearchConsoleRow({ clicks: 0, impressions: 0 })).toEqual({
+      clicks: 0,
+      impressions: 0,
+      ctr: null,
+      position: null,
+      hasData: true,
+    });
   });
 });
