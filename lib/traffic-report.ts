@@ -87,6 +87,20 @@ export function normalizeCruxClsPercentile(percentile: number | undefined) {
     : null;
 }
 
+export function formatSearchPositionChange(current: number | null, previous: number | null) {
+  if (current === null || previous === null) {
+    return "not comparable";
+  }
+
+  const delta = current - previous;
+
+  if (delta === 0) {
+    return "unchanged";
+  }
+
+  return `${Math.abs(delta).toFixed(1)} positions ${delta < 0 ? "better" : "worse"}`;
+}
+
 export function percentChange(current: number, previous: number) {
   if (previous === 0) {
     return current === 0 ? 0 : null;

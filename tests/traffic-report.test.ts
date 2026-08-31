@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest";
 import {
   detectTrafficAnomalies,
   formatChange,
+  formatSearchPositionChange,
   normalizeCruxClsPercentile,
   parseExactContentRangeTotal,
   percentChange,
@@ -107,5 +108,12 @@ describe("traffic report calculations", () => {
       position: null,
       hasData: true,
     });
+  });
+
+  it("labels Search Console position changes with the correct direction", () => {
+    expect(formatSearchPositionChange(12.4, 18.7)).toBe("6.3 positions better");
+    expect(formatSearchPositionChange(47.8, 22.6)).toBe("25.2 positions worse");
+    expect(formatSearchPositionChange(10, 10)).toBe("unchanged");
+    expect(formatSearchPositionChange(null, 10)).toBe("not comparable");
   });
 });

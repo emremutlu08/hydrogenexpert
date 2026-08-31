@@ -5,6 +5,7 @@ import { join } from "node:path";
 import {
   detectTrafficAnomalies,
   formatChange,
+  formatSearchPositionChange,
   normalizeCruxClsPercentile,
   parseExactContentRangeTotal,
   requireLighthouseCategoryScores,
@@ -117,12 +118,6 @@ function formatOptionalChange(current: number | null, previous: number | null) {
 
 function formatOptionalPosition(value: number | null | undefined) {
   return typeof value === "number" && Number.isFinite(value) ? value.toFixed(1) : "n/a";
-}
-
-function formatPositionChange(current: number | null, previous: number | null) {
-  return current === null || previous === null
-    ? "not comparable"
-    : `${(current - previous).toFixed(1)} positions`;
 }
 
 function recordSource(report: SourceReport) {
@@ -489,7 +484,7 @@ Previous 28 days: ${windows.previous.start} to ${windows.previous.end}
 | Clicks | ${formatOptionalInteger(current.clicks)} | ${formatOptionalInteger(previous.clicks)} | ${formatOptionalChange(current.clicks, previous.clicks)} |
 | Impressions | ${formatOptionalInteger(current.impressions)} | ${formatOptionalInteger(previous.impressions)} | ${formatOptionalChange(current.impressions, previous.impressions)} |
 | CTR | ${formatOptionalPercent(current.ctr)} | ${formatOptionalPercent(previous.ctr)} | ${formatOptionalChange(current.ctr, previous.ctr)} |
-| Average position | ${formatOptionalPosition(current.position)} | ${formatOptionalPosition(previous.position)} | ${formatPositionChange(current.position, previous.position)} |
+| Average position | ${formatOptionalPosition(current.position)} | ${formatOptionalPosition(previous.position)} | ${formatSearchPositionChange(current.position, previous.position)} |
 
 ${usa ? `United States: ${formatOptionalInteger(usa.impressions ?? null)} impressions, ${formatOptionalInteger(usa.clicks ?? null)} clicks, ${formatOptionalPercent(usa.ctr ?? null)} CTR, position ${formatOptionalPosition(usa.position)}.` : "United States: no row returned for this window."}
 
