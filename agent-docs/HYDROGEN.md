@@ -56,6 +56,7 @@ Use `package.json` for exact scripts. Current important scripts include:
 - The 2026-08-24 type refresh moved `@types/react-dom` from `19.2.4` to `19.2.5`; runtime React and React DOM remain on `19.2.8`.
 - The 2026-08-25 safe refresh moved `@supabase/supabase-js` and its five aligned client packages from `2.112.3` to `2.112.4` while keeping the Node `>=22.0.0` requirement and install-script set unchanged.
 - The 2026-08-26 security refresh moved Next.js, `@next/third-parties`, and `eslint-config-next` from `16.3.2` to stable `16.3.3` to include the official critical RCE fixes for Windows-hosted servers and AVIF image optimization.
+- The 2026-08-31 safe tooling refresh moved `tsx` from `4.23.12` to `4.23.13` to bound the shared transform cache without changing its Node `>=18.0.0` or `esbuild ~0.28.0` compatibility boundary.
 - Keep `sanitize-html` at `2.17.5` until the declared Node range is compatible with its newer `>=22.12.0` engine requirement.
 - Keep deferring the newer `@anthropic-ai/sdk` 0.x minor line for a separate compatibility review.
 
