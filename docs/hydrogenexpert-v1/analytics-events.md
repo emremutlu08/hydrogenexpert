@@ -27,7 +27,7 @@ Google Analytics loads only on the Vercel production deployment, after `hydrogen
 
 `lead_form_submit_success` is the primary GA4 key event. Scope-review and external-contact clicks are micro-conversions. Package browsing remains a separate navigation event and is not counted as scope-review intent. Legacy duplicate CTA and lead-submit event names are not emitted.
 
-PII-free form view, form start, and terminal lead events that occur before the first privacy choice remain only in memory and flush once if analytics is later granted, including after client-side success navigation. Explicitly denied interactions are not queued. When consent is already granted but the GA runtime is still loading, canonical CTA events also wait for the analytics-ready signal and flush once; CTA interactions are not queued before consent.
+PII-free form view, form start, and terminal lead events that occur before the first privacy choice remain only in memory and flush once if analytics is later granted, including after client-side success navigation. Explicitly denied interactions are not queued. When consent is already granted but the GA runtime is still loading, canonical CTA events and the initial blog view also wait for the analytics-ready signal and flush once; CTA and blog interactions are not queued before consent.
 
 ## QA Notes
 

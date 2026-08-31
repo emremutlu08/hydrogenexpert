@@ -130,6 +130,33 @@ describe("canonical analytics events", () => {
     expect(windowStub.addEventListener).not.toHaveBeenCalled();
   });
 
+  it("retries an initial blog view for a returning consented visitor", () => {
+    const listeners = new Map<string, EventListener>();
+    const gtag = vi.fn();
+    const windowStub = {
+      gtag: undefined as typeof gtag | undefined,
+      localStorage: { getItem: vi.fn(() => "granted"), setItem: vi.fn() },
+      addEventListener: vi.fn((name: string, listener: EventListener) => {
+        listeners.set(name, listener);
+      }),
+      removeEventListener: vi.fn((name: string) => {
+        listeners.delete(name);
+      }),
+    };
+    vi.stubGlobal("window", windowStub);
+
+    expect(trackBlogView("production-note")).toBe(true);
+    expect(gtag).not.toHaveBeenCalled();
+
+    windowStub.gtag = gtag;
+    listeners.get(ANALYTICS_READY_EVENT)?.(new Event(ANALYTICS_READY_EVENT));
+    listeners.get(ANALYTICS_READY_EVENT)?.(new Event(ANALYTICS_READY_EVENT));
+
+    expect(eventCalls(gtag)).toEqual([
+      { eventName: "blog_view", params: { post_slug: "production-note" } },
+    ]);
+  });
+
   it("separates package browsing from genuine scope-review events", () => {
     const gtag = setupAnalytics();
 

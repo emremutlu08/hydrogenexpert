@@ -240,7 +240,13 @@ export function trackProofLinkClicked(
 }
 
 export function trackBlogView(slug: string) {
-  sendEvent("blog_view", { post_slug: slug });
+  const params = { post_slug: slug };
+
+  if (sendEvent("blog_view", params)) {
+    return true;
+  }
+
+  return queueRetryEvent("blog_view", params);
 }
 
 export function trackQuizAnswer(
