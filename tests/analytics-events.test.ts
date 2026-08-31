@@ -1,9 +1,6 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 
-import {
-  ANALYTICS_CONSENT_CHANGE_EVENT,
-  ANALYTICS_READY_EVENT,
-} from "../lib/analytics-consent";
+import { ANALYTICS_READY_EVENT } from "../lib/analytics-consent";
 
 import {
   trackAnchorCTA,
@@ -102,7 +99,7 @@ describe("canonical analytics events", () => {
     });
 
     expect(gtag).not.toHaveBeenCalled();
-    expect(windowStub.addEventListener).toHaveBeenCalledTimes(2);
+    expect(windowStub.addEventListener).toHaveBeenCalledTimes(3);
 
     windowStub.gtag = gtag;
     listeners.get(ANALYTICS_READY_EVENT)?.(new Event(ANALYTICS_READY_EVENT));
@@ -346,9 +343,7 @@ describe("canonical analytics events", () => {
     expect(trackLeadStart("denied_contact", "/contact")).toBe(true);
 
     localStorage.getItem.mockReturnValue("denied");
-    listeners.get(ANALYTICS_CONSENT_CHANGE_EVENT)?.(
-      new Event(ANALYTICS_CONSENT_CHANGE_EVENT),
-    );
+    listeners.get("storage")?.(new Event("storage"));
     localStorage.getItem.mockReturnValue("granted");
     windowStub.gtag = gtag;
     listeners.get(ANALYTICS_READY_EVENT)?.(new Event(ANALYTICS_READY_EVENT));

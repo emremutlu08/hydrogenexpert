@@ -48,6 +48,7 @@ export function parseGaReportRows(
     | undefined;
   const dimensionNames = dimensions ?? [];
   const metricNames = metrics ?? [];
+  const requiredDimensionNames = new Set(options.requiredDimensions ?? []);
   const missingDimensions = (options.requiredDimensions ?? []).filter(
     (name) => !dimensionNames.includes(name),
   );
@@ -67,7 +68,13 @@ export function parseGaReportRows(
     const values: Record<string, string> = {};
 
     dimensionNames.forEach((name, index) => {
-      values[name] = row.dimensionValues?.[index]?.value ?? "";
+      const value = row.dimensionValues?.[index]?.value ?? "";
+
+      if (requiredDimensionNames.has(name) && value.trim() === "") {
+        throw new Error(`GA report returned an invalid ${name} dimension value.`);
+      }
+
+      values[name] = value;
     });
     metricNames.forEach((name, index) => {
       const value = row.metricValues?.[index]?.value;

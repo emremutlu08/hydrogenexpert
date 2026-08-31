@@ -59,6 +59,7 @@ function detachRetryListeners() {
 
   if (consentChangeListenerAttached) {
     window.removeEventListener(ANALYTICS_CONSENT_CHANGE_EVENT, clearPendingEventsAfterDenial);
+    window.removeEventListener("storage", clearPendingEventsAfterDenial);
     consentChangeListenerAttached = false;
   }
 }
@@ -116,6 +117,7 @@ function queueRetryEvent(
 
   if (!consentChangeListenerAttached) {
     window.addEventListener(ANALYTICS_CONSENT_CHANGE_EVENT, clearPendingEventsAfterDenial);
+    window.addEventListener("storage", clearPendingEventsAfterDenial);
     consentChangeListenerAttached = true;
   }
 

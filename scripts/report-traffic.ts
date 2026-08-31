@@ -476,12 +476,25 @@ async function fetchGscSection(now: Date) {
   ]);
   const opportunities = (opportunitiesData.rows ?? [])
     .filter(
-      (row): row is typeof row & { position: number; impressions: number } =>
+      (
+        row,
+      ): row is typeof row & {
+        position: number;
+        impressions: number;
+        clicks: number;
+        ctr: number;
+      } =>
         typeof row.position === "number" &&
+        Number.isFinite(row.position) &&
         row.position >= 4 &&
         row.position <= 20 &&
         typeof row.impressions === "number" &&
-        row.impressions >= 10,
+        Number.isFinite(row.impressions) &&
+        row.impressions >= 10 &&
+        typeof row.clicks === "number" &&
+        Number.isFinite(row.clicks) &&
+        typeof row.ctr === "number" &&
+        Number.isFinite(row.ctr),
     )
     .sort((left, right) => (right.impressions ?? 0) - (left.impressions ?? 0))
     .slice(0, 20);
@@ -512,7 +525,7 @@ ${usa ? `United States: ${formatOptionalInteger(usa.impressions ?? null)} impres
 
 ### Position 4–20 CTR Opportunities
 
-${opportunities.length ? opportunities.map((row) => `- ${row.keys?.[0] ?? "(query)"} → ${row.keys?.[1] ?? "(page)"}: ${formatInteger(row.impressions)} impressions, ${formatInteger(row.clicks ?? 0)} clicks, ${formatPercent(row.ctr ?? 0)} CTR, position ${row.position.toFixed(1)}`).join("\n") : "- No query/page pair crossed the opportunity threshold."}`;
+${opportunities.length ? opportunities.map((row) => `- ${row.keys?.[0] ?? "(query)"} → ${row.keys?.[1] ?? "(page)"}: ${formatInteger(row.impressions)} impressions, ${formatInteger(row.clicks)} clicks, ${formatPercent(row.ctr)} CTR, position ${row.position.toFixed(1)}`).join("\n") : "- No query/page pair crossed the opportunity threshold."}`;
 }
 
 function supabaseLeadHeaders(serviceRoleKey: string) {

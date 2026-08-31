@@ -154,5 +154,15 @@ describe("traffic report calculations", () => {
         { requiredMetrics: ["sessions"] },
       ),
     ).toThrow("GA report returned an invalid sessions metric value.");
+    expect(() =>
+      parseGaReportRows(
+        {
+          dimensionHeaders: [{ name: "eventName" }],
+          metricHeaders: [{ name: "eventCount" }],
+          rows: [{ dimensionValues: [], metricValues: [{ value: "1" }] }],
+        },
+        { requiredDimensions: ["eventName"], requiredMetrics: ["eventCount"] },
+      ),
+    ).toThrow("GA report returned an invalid eventName dimension value.");
   });
 });
