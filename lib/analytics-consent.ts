@@ -41,3 +41,10 @@ export function writeAnalyticsConsent(
 export function hasAnalyticsConsent() {
   return readAnalyticsConsent() === "granted";
 }
+
+export function shouldReloadAfterConsentChange(
+  previous: AnalyticsConsentPreference | null,
+  next: AnalyticsConsentPreference | null,
+) {
+  return previous === "granted" && next === "denied";
+}

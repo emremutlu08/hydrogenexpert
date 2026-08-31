@@ -3,6 +3,7 @@ import { describe, expect, it, vi } from "vitest";
 import {
   ANALYTICS_CONSENT_STORAGE_KEY,
   readAnalyticsConsent,
+  shouldReloadAfterConsentChange,
   writeAnalyticsConsent,
 } from "../lib/analytics-consent";
 
@@ -40,5 +41,12 @@ describe("analytics consent storage", () => {
 
     expect(readAnalyticsConsent(storage)).toBeNull();
     expect(writeAnalyticsConsent("denied", storage)).toBe(false);
+  });
+
+  it("reloads only when granted consent is withdrawn", () => {
+    expect(shouldReloadAfterConsentChange("granted", "denied")).toBe(true);
+    expect(shouldReloadAfterConsentChange(null, "denied")).toBe(false);
+    expect(shouldReloadAfterConsentChange("denied", "denied")).toBe(false);
+    expect(shouldReloadAfterConsentChange("granted", "granted")).toBe(false);
   });
 });

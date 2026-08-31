@@ -1,12 +1,13 @@
 "use client";
 
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 
 import {
   ANALYTICS_CONSENT_CHANGE_EVENT,
   ANALYTICS_READY_EVENT,
   readAnalyticsConsent,
+  shouldReloadAfterConsentChange,
   writeAnalyticsConsent,
   type AnalyticsConsentPreference,
 } from "@/lib/analytics-consent";
@@ -58,11 +59,19 @@ export function AnalyticsConsent({ gaId }: AnalyticsConsentProps) {
     getConsentServerSnapshot,
   );
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const previousPreferenceRef = useRef<AnalyticsConsentPreference | null>(null);
   const isOpen = preference === null || isSettingsOpen;
 
   useEffect(() => {
+    const previousPreference = previousPreferenceRef.current;
+    previousPreferenceRef.current = preference;
+
     if (preference === "denied") {
       updateGoogleConsent("denied");
+
+      if (shouldReloadAfterConsentChange(previousPreference, preference)) {
+        window.location.reload();
+      }
     }
   }, [preference]);
 
@@ -87,17 +96,10 @@ export function AnalyticsConsent({ gaId }: AnalyticsConsentProps) {
   }, [preference]);
 
   function choosePreference(nextPreference: AnalyticsConsentPreference) {
-    const shouldReloadWithoutGoogleAnalytics =
-      preference === "granted" && nextPreference === "denied";
-
     writeAnalyticsConsent(nextPreference);
     window.dispatchEvent(new Event(ANALYTICS_CONSENT_CHANGE_EVENT));
     setIsSettingsOpen(false);
     updateGoogleConsent(nextPreference);
-
-    if (shouldReloadWithoutGoogleAnalytics) {
-      window.location.reload();
-    }
   }
 
   return (
