@@ -130,7 +130,7 @@ describe("canonical analytics events", () => {
     expect(windowStub.addEventListener).not.toHaveBeenCalled();
   });
 
-  it("normalizes internal and package CTAs to one scope-review event each", () => {
+  it("separates package browsing from genuine scope-review events", () => {
     const gtag = setupAnalytics();
 
     trackAnchorCTA("audit_cta_click", {
@@ -144,6 +144,13 @@ describe("canonical analytics events", () => {
       ctaLabel: "Request Scope Review",
       sourceKind: "package_cards",
       sourcePath: "/shopify-hydrogen-packages",
+    });
+    trackAnchorCTA("package_cta_click", {
+      sourceKind: "homepage_hero",
+      sourcePath: "/",
+      target: "/shopify-hydrogen-packages",
+      ctaLabel: "View Build Packages",
+      packageName: "All Hydrogen packages",
     });
 
     expect(eventCalls(gtag)).toEqual([
@@ -164,6 +171,17 @@ describe("canonical analytics events", () => {
           package_name: "Hydrogen Starter Storefront",
           source_kind: "package_cards",
           source_path: "/shopify-hydrogen-packages",
+        },
+      },
+      {
+        eventName: "package_browse_click",
+        params: {
+          cta_destination: "/shopify-hydrogen-packages",
+          cta_kind: "package_cta_click",
+          cta_label: "View Build Packages",
+          package_name: "All Hydrogen packages",
+          source_kind: "homepage_hero",
+          source_path: "/",
         },
       },
     ]);

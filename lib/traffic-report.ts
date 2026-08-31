@@ -40,6 +40,26 @@ export function requireLighthouseCategoryScores(
   return scores;
 }
 
+export function parseExactContentRangeTotal(contentRange: string | null) {
+  const total = contentRange?.split("/")[1];
+
+  if (!total || total === "*") {
+    throw new Error("lead count response omitted an exact count");
+  }
+
+  if (!/^\d+$/.test(total)) {
+    throw new Error(`lead count response returned an invalid exact count: ${total}`);
+  }
+
+  const parsed = Number(total);
+
+  if (!Number.isSafeInteger(parsed) || parsed < 0) {
+    throw new Error(`lead count response returned an invalid exact count: ${total}`);
+  }
+
+  return parsed;
+}
+
 export function percentChange(current: number, previous: number) {
   if (previous === 0) {
     return current === 0 ? 0 : null;

@@ -5,6 +5,7 @@ import { join } from "node:path";
 import {
   detectTrafficAnomalies,
   formatChange,
+  parseExactContentRangeTotal,
   requireLighthouseCategoryScores,
   type DailyTrafficPoint,
 } from "../lib/traffic-report";
@@ -512,13 +513,7 @@ async function fetchSupabaseLeadCount(
     throw new Error(`lead count returned HTTP ${response.status}`);
   }
 
-  const total = response.headers.get("content-range")?.split("/")[1];
-
-  if (!total || total === "*") {
-    throw new Error("lead count response omitted an exact count");
-  }
-
-  return Number(total);
+  return parseExactContentRangeTotal(response.headers.get("content-range"));
 }
 
 async function fetchLeadSection(now: Date, deferSupabase: boolean) {

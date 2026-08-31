@@ -119,9 +119,11 @@ export function trackAnchorCTA(
     cta_kind: eventName,
     package_name: context.packageName,
   };
+  const analyticsEvent =
+    eventName === "package_cta_click" ? "package_browse_click" : "scope_review_cta_click";
 
-  if (!sendEvent("scope_review_cta_click", params)) {
-    queueRetryEvent("scope_review_cta_click", params);
+  if (!sendEvent(analyticsEvent, params)) {
+    queueRetryEvent(analyticsEvent, params);
   }
 }
 

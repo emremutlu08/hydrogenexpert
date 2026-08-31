@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest";
 import {
   detectTrafficAnomalies,
   formatChange,
+  parseExactContentRangeTotal,
   percentChange,
   requireLighthouseCategoryScores,
 } from "../lib/traffic-report";
@@ -63,6 +64,23 @@ describe("traffic report calculations", () => {
       }),
     ).toThrow(
       "PageSpeed returned incomplete Lighthouse category scores: performance, accessibility.",
+    );
+  });
+
+  it("parses finite nonnegative Supabase content-range totals", () => {
+    expect(parseExactContentRangeTotal("0-0/12")).toBe(12);
+    expect(parseExactContentRangeTotal("*/0")).toBe(0);
+  });
+
+  it("rejects malformed Supabase content-range totals", () => {
+    expect(() => parseExactContentRangeTotal("0-0/not-a-number")).toThrow(
+      "lead count response returned an invalid exact count: not-a-number",
+    );
+    expect(() => parseExactContentRangeTotal("0-0/*")).toThrow(
+      "lead count response omitted an exact count",
+    );
+    expect(() => parseExactContentRangeTotal(null)).toThrow(
+      "lead count response omitted an exact count",
     );
   });
 });
