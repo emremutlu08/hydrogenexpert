@@ -26,6 +26,8 @@ Google Analytics loads only on the Vercel production deployment, after `hydrogen
 
 `lead_form_submit_success` is the primary GA4 key event. CTA clicks are micro-conversions. Legacy duplicate CTA and lead-submit event names are not emitted.
 
+When consent is already granted but the GA runtime is still loading, canonical CTA and terminal lead events wait for the analytics-ready signal and flush once. CTA interactions are not queued before consent.
+
 ## QA Notes
 
 - `tests/analytics-consent.test.ts` covers fail-closed consent storage.

@@ -5,6 +5,7 @@ import { join } from "node:path";
 import {
   detectTrafficAnomalies,
   formatChange,
+  requireLighthouseCategoryScores,
   type DailyTrafficPoint,
 } from "../lib/traffic-report";
 
@@ -644,7 +645,7 @@ async function fetchPageSpeedSection() {
 
   const data = (await response.json()) as {
     lighthouseResult?: {
-      categories?: Record<string, { score?: number } | undefined>;
+      categories?: Record<string, { score?: number | null } | undefined>;
       audits?: Record<string, { displayValue?: string } | undefined>;
     };
     loadingExperience?: {
@@ -653,6 +654,7 @@ async function fetchPageSpeedSection() {
     };
   };
   const categories = data.lighthouseResult?.categories ?? {};
+  const categoryScores = requireLighthouseCategoryScores(categories);
   const audits = data.lighthouseResult?.audits ?? {};
   const fieldMetrics = data.loadingExperience?.metrics ?? {};
   const fieldLcp = fieldMetrics.LARGEST_CONTENTFUL_PAINT_MS;
@@ -667,7 +669,7 @@ async function fetchPageSpeedSection() {
 
   return `## PageSpeed / Core Web Vitals
 
-- Mobile Lighthouse: performance ${Math.round((categories.performance?.score ?? 0) * 100)}, SEO ${Math.round((categories.seo?.score ?? 0) * 100)}, accessibility ${Math.round((categories.accessibility?.score ?? 0) * 100)}.
+- Mobile Lighthouse: performance ${Math.round(categoryScores.performance * 100)}, SEO ${Math.round(categoryScores.seo * 100)}, accessibility ${Math.round(categoryScores.accessibility * 100)}.
 - Lab: LCP ${audits["largest-contentful-paint"]?.displayValue ?? "n/a"}; TBT ${audits["total-blocking-time"]?.displayValue ?? "n/a"}; CLS ${audits["cumulative-layout-shift"]?.displayValue ?? "n/a"}.
 - Field (${data.loadingExperience?.overall_category ?? "not enough data"}): LCP ${fieldLcp?.percentile ?? "n/a"} ms (${fieldLcp?.category ?? "n/a"}); INP ${fieldInp?.percentile ?? "n/a"} ms (${fieldInp?.category ?? "n/a"}); CLS ${fieldCls?.percentile ?? "n/a"} (${fieldCls?.category ?? "n/a"}).`;
 }

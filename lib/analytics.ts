@@ -25,8 +25,8 @@ type PendingAnalyticsEvent = {
   params: AnalyticsParams;
 };
 
-const pendingTerminalEvents = new Map<string, PendingAnalyticsEvent>();
-let terminalRetryListenerAttached = false;
+const pendingRetryEvents = new Map<string, PendingAnalyticsEvent>();
+let retryListenerAttached = false;
 
 function cleanParams(params: AnalyticsParams = {}) {
   return Object.fromEntries(
@@ -43,31 +43,41 @@ function sendEvent(eventName: string, params: AnalyticsParams = {}) {
   return false;
 }
 
-function flushPendingTerminalEvents() {
-  for (const [key, pending] of pendingTerminalEvents) {
+function flushPendingEvents() {
+  for (const [key, pending] of pendingRetryEvents) {
     if (sendEvent(pending.eventName, pending.params)) {
-      pendingTerminalEvents.delete(key);
+      pendingRetryEvents.delete(key);
     }
   }
 
-  if (pendingTerminalEvents.size === 0 && terminalRetryListenerAttached) {
-    window.removeEventListener(ANALYTICS_READY_EVENT, flushPendingTerminalEvents);
-    terminalRetryListenerAttached = false;
+  if (pendingRetryEvents.size === 0 && retryListenerAttached) {
+    window.removeEventListener(ANALYTICS_READY_EVENT, flushPendingEvents);
+    retryListenerAttached = false;
   }
 }
 
-function queueTerminalEvent(eventName: string, params: AnalyticsParams) {
+function queueRetryEvent(
+  eventName: string,
+  params: AnalyticsParams,
+  options: { allowBeforeConsent?: boolean } = {},
+) {
   if (typeof window === "undefined") {
-    return;
+    return false;
   }
 
-  const key = [eventName, params.source_kind, params.source_path].join(":");
-  pendingTerminalEvents.set(key, { eventName, params });
-
-  if (!terminalRetryListenerAttached) {
-    window.addEventListener(ANALYTICS_READY_EVENT, flushPendingTerminalEvents);
-    terminalRetryListenerAttached = true;
+  if (!options.allowBeforeConsent && !hasAnalyticsConsent()) {
+    return false;
   }
+
+  const key = [eventName, JSON.stringify(cleanParams(params))].join(":");
+  pendingRetryEvents.set(key, { eventName, params });
+
+  if (!retryListenerAttached) {
+    window.addEventListener(ANALYTICS_READY_EVENT, flushPendingEvents);
+    retryListenerAttached = true;
+  }
+
+  return true;
 }
 
 function routeParams(context: { sourceKind?: string; sourcePath?: string } = {}) {
@@ -87,7 +97,9 @@ export function trackCTA(
     cta_label: context.ctaLabel,
   };
 
-  sendEvent("external_contact_click", params);
+  if (!sendEvent("external_contact_click", params)) {
+    queueRetryEvent("external_contact_click", params);
+  }
 }
 
 export function trackAnchorCTA(
@@ -108,7 +120,9 @@ export function trackAnchorCTA(
     package_name: context.packageName,
   };
 
-  sendEvent("scope_review_cta_click", params);
+  if (!sendEvent("scope_review_cta_click", params)) {
+    queueRetryEvent("scope_review_cta_click", params);
+  }
 }
 
 export function trackLeadFormView(source: string, sourcePath?: string) {
@@ -134,7 +148,7 @@ export function trackLeadSubmit(
     return true;
   }
 
-  queueTerminalEvent(eventName, params);
+  queueRetryEvent(eventName, params, { allowBeforeConsent: true });
   return false;
 }
 
@@ -147,7 +161,9 @@ export function trackPackageCtaClick(
     cta_label: context.ctaLabel,
   };
 
-  sendEvent("scope_review_cta_click", params);
+  if (!sendEvent("scope_review_cta_click", params)) {
+    queueRetryEvent("scope_review_cta_click", params);
+  }
 }
 
 export function trackLeadSelection(

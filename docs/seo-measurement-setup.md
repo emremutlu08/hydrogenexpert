@@ -1,76 +1,90 @@
 # SEO Measurement Setup
 
-`npm run report:traffic` writes a weekly report to `content/internal/reports/`.
-Its **Data Health** section states, per source, whether the numbers below it are
-real. Two sources are currently not reporting, and both need an action in a
-Google console that cannot be scripted from this repo.
+`npm run report:traffic` collects the weekly measurement report directly from the
+configured services and writes it to `content/internal/reports/`. The report does
+not accept manually entered traffic snapshots or substitute zeroes for unavailable
+sources.
 
-Run `npm run report:traffic -- --strict` in CI to fail when any source is down.
+## Report sources and gates
 
-## Current state
-
-| Source | Status | Cause |
+| Source | Default strict gate | Current configuration |
 | --- | --- | --- |
-| Google Search Console | reporting | `webmasters.readonly` scope granted, `https://hydrogenexpert.co/` owned |
-| GA4 / Vercel Analytics | not configured | Analytics Admin API disabled for the OAuth project |
-| PageSpeed / Core Web Vitals | blocked | no API key, so calls hit the shared unkeyed quota and return HTTP 429 |
+| GA4 Data API | required | Reporting from the production hostname only |
+| Google Search Console | required | Reporting from `https://hydrogenexpert.co/` |
+| Supabase successful leads | required | Explicitly deferred while the project is unavailable |
+| Production public health | required | Core routes required; Supabase-dependent routes may be explicitly deferred |
+| PageSpeed / CrUX | deferred | Public quota returns HTTP 429; require it during the performance phase |
 
-Core Web Vitals have never been captured in a report. Every owned-analytics slot
-has rendered as `manual` since the first report.
+GA4 represents consented traffic after the privacy-first analytics release.
+Vercel Analytics remains the cookie-free baseline. The generated report also
+includes comparable periods, anomaly days, US search visibility, CTR opportunities,
+and the canonical consented funnel events.
 
-## 1. Enable the Analytics Admin API
+## Commands
 
-The OAuth token already carries `https://www.googleapis.com/auth/analytics.readonly`,
-so no re-consent is needed. The API itself is off for the project:
-
-```
-Google Analytics Admin API has not been used in project 956889074498 before or it is disabled.
-```
-
-Enable it here, then wait a few minutes for propagation:
-
-https://console.developers.google.com/apis/api/analyticsadmin.googleapis.com/overview?project=956889074498
-
-Also enable the Analytics **Data** API, which serves the session and page rows:
-
-https://console.developers.google.com/apis/api/analyticsdata.googleapis.com/overview?project=956889074498
-
-### Fallback without the API
-
-Write `content/internal/traffic-snapshot.json` from a GA4 export. The report
-reads this shape:
-
-```json
-{
-  "last7Days": { "sessions": 0, "users": 0, "topPages": [{ "label": "/", "value": 0 }] },
-  "last30Days": { "sessions": 0, "users": 0 }
-}
-```
-
-## 2. Add a PageSpeed API key
-
-Create an API key in the same project, restrict it to the PageSpeed Insights API,
-and put it in `.env.local`:
-
-```
-GOOGLE_API_KEY=...
-```
-
-The script reads `GOOGLE_API_KEY` or `PAGESPEED_API_KEY`. Without a key the call
-shares a small public quota, which is why it has returned 429 on every run rather
-than failing transiently.
-
-## 3. Verify the Search Console domain property
-
-`sc-domain:hydrogenexpert.co` is currently `siteUnverifiedUser`. Only the URL-prefix
-property `https://hydrogenexpert.co/` is owned, so it is the one reporting. Verifying
-the domain property would also capture `www`, `http`, and any subdomain variants in
-one place.
-
-## Checking it worked
+Run the report with its normal core-source gate:
 
 ```bash
 npm run report:traffic -- --strict
 ```
 
-Exit code 0 and a Data Health section reading `All 3 data sources reported.`
+When Supabase recovery has been explicitly deferred, make that exception visible
+in the command and report:
+
+```bash
+npm run report:traffic -- --strict --defer-supabase
+```
+
+`--defer-supabase` is the only mode that downgrades the Supabase lead source and
+the known `/blog` and `/feed.xml` dependency failures. Without it, those failures
+remain blocking.
+
+During the performance phase, require PageSpeed as well:
+
+```bash
+npm run report:traffic -- --strict --require-pagespeed
+```
+
+Flags can be combined only when the corresponding deferral has been approved.
+
+## Google access
+
+The OAuth token must include both read-only scopes:
+
+- `https://www.googleapis.com/auth/analytics.readonly`
+- `https://www.googleapis.com/auth/webmasters.readonly`
+
+The Google Analytics Admin and Data APIs must be enabled for the OAuth project.
+Set `GA4_PROPERTY_ID` only when automatic discovery cannot match the production
+hostname or `NEXT_PUBLIC_GA_MEASUREMENT_ID`.
+
+`GSC_SITE_URL` defaults to `https://hydrogenexpert.co/`. The URL-prefix property
+is currently the verified reporting property; verifying `sc-domain:hydrogenexpert.co`
+would extend coverage to protocol and subdomain variants.
+
+## Supabase access
+
+The script reads the configured project URL and server-side service-role key only
+to request an aggregate successful-lead count. It does not write leads or include
+personal data in the report. A configured source that cannot be queried is blocked
+unless `--defer-supabase` is present.
+
+## PageSpeed and Core Web Vitals
+
+Set a PageSpeed Insights API key in `.env.local` when the shared public quota is
+exhausted:
+
+```text
+GOOGLE_API_KEY=...
+```
+
+`PAGESPEED_API_KEY` is also supported. Restrict the key to the PageSpeed Insights
+API. A successful HTTP response is accepted only when performance, SEO, and
+accessibility category scores are all present and valid; incomplete responses are
+reported as unavailable.
+
+## Success criteria
+
+Exit code 0 means no source required by the selected flags is blocked. Always read
+the generated **Data Health** section: deferred sources are explicitly labeled and
+are not evidence that those services are healthy.

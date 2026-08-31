@@ -4,6 +4,7 @@ import {
   detectTrafficAnomalies,
   formatChange,
   percentChange,
+  requireLighthouseCategoryScores,
 } from "../lib/traffic-report";
 
 describe("traffic report calculations", () => {
@@ -42,5 +43,26 @@ describe("traffic report calculations", () => {
     ];
 
     expect(detectTrafficAnomalies(points)).toEqual([]);
+  });
+
+  it("accepts complete PageSpeed category scores", () => {
+    expect(
+      requireLighthouseCategoryScores({
+        performance: { score: 0.91 },
+        seo: { score: 1 },
+        accessibility: { score: 0.97 },
+      }),
+    ).toEqual({ performance: 0.91, seo: 1, accessibility: 0.97 });
+  });
+
+  it("rejects incomplete PageSpeed responses instead of inventing zero scores", () => {
+    expect(() =>
+      requireLighthouseCategoryScores({
+        performance: { score: null },
+        seo: { score: 1 },
+      }),
+    ).toThrow(
+      "PageSpeed returned incomplete Lighthouse category scores: performance, accessibility.",
+    );
   });
 });

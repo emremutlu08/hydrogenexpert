@@ -10,6 +10,36 @@ export interface TrafficAnomaly extends DailyTrafficPoint {
   viewsPerSession: number;
 }
 
+const LIGHTHOUSE_CATEGORY_NAMES = ["performance", "seo", "accessibility"] as const;
+
+type LighthouseCategoryName = (typeof LIGHTHOUSE_CATEGORY_NAMES)[number];
+
+export function requireLighthouseCategoryScores(
+  categories?: Record<string, { score?: number | null } | undefined>,
+) {
+  const missing: LighthouseCategoryName[] = [];
+  const scores = {} as Record<LighthouseCategoryName, number>;
+
+  for (const name of LIGHTHOUSE_CATEGORY_NAMES) {
+    const score = categories?.[name]?.score;
+
+    if (typeof score !== "number" || !Number.isFinite(score) || score < 0 || score > 1) {
+      missing.push(name);
+      continue;
+    }
+
+    scores[name] = score;
+  }
+
+  if (missing.length > 0) {
+    throw new Error(
+      `PageSpeed returned incomplete Lighthouse category scores: ${missing.join(", ")}.`,
+    );
+  }
+
+  return scores;
+}
+
 export function percentChange(current: number, previous: number) {
   if (previous === 0) {
     return current === 0 ? 0 : null;

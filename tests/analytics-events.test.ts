@@ -75,6 +75,61 @@ describe("canonical analytics events", () => {
     expect(Object.keys(eventCalls(gtag)[0]?.params ?? {})).not.toContain("source");
   });
 
+  it("retries consented CTA events once when the analytics runtime becomes ready", () => {
+    const listeners = new Map<string, EventListener>();
+    const gtag = vi.fn();
+    const localStorage = { getItem: vi.fn(() => "granted"), setItem: vi.fn() };
+    const windowStub = {
+      gtag: undefined as typeof gtag | undefined,
+      localStorage,
+      addEventListener: vi.fn((name: string, listener: EventListener) => {
+        listeners.set(name, listener);
+      }),
+      removeEventListener: vi.fn((name: string) => {
+        listeners.delete(name);
+      }),
+    };
+    vi.stubGlobal("window", windowStub);
+
+    trackCTA("linkedin", { sourceKind: "hero", sourcePath: "/" });
+    trackAnchorCTA("scope_review_cta_click", {
+      sourceKind: "hero",
+      sourcePath: "/",
+      target: "/contact",
+    });
+
+    expect(gtag).not.toHaveBeenCalled();
+    expect(windowStub.addEventListener).toHaveBeenCalledTimes(1);
+
+    windowStub.gtag = gtag;
+    listeners.get(ANALYTICS_READY_EVENT)?.(new Event(ANALYTICS_READY_EVENT));
+    listeners.get(ANALYTICS_READY_EVENT)?.(new Event(ANALYTICS_READY_EVENT));
+
+    expect(eventCalls(gtag).map((call) => call.eventName)).toEqual([
+      "external_contact_click",
+      "scope_review_cta_click",
+    ]);
+    expect(windowStub.removeEventListener).toHaveBeenCalledWith(
+      ANALYTICS_READY_EVENT,
+      expect.any(Function),
+    );
+  });
+
+  it("does not queue CTA events before analytics consent", () => {
+    const gtag = vi.fn();
+    const windowStub = {
+      gtag: undefined as typeof gtag | undefined,
+      localStorage: { getItem: vi.fn(() => "denied"), setItem: vi.fn() },
+      addEventListener: vi.fn(),
+    };
+    vi.stubGlobal("window", windowStub);
+
+    trackCTA("upwork", { sourceKind: "hero", sourcePath: "/" });
+
+    expect(gtag).not.toHaveBeenCalled();
+    expect(windowStub.addEventListener).not.toHaveBeenCalled();
+  });
+
   it("normalizes internal and package CTAs to one scope-review event each", () => {
     const gtag = setupAnalytics();
 
