@@ -34,6 +34,7 @@ Use `package.json` for exact scripts. Current important scripts include:
 - `npm run audit:shopify-claims`
 - `npm run verify:commercial-launch`
 - `npm run verify:internal-links`
+- `npm run verify:production-health`
 - `npm run indexnow:ping`
 
 ## Dependency Notes
@@ -76,6 +77,7 @@ Use `package.json` for exact scripts. Current important scripts include:
 - Use shared security helpers from `lib/security.ts`.
 - Lead capture and cron-style endpoints should use durable rate limiting where available, with in-memory fallback only as backup.
 - Cloudflare Turnstile is active only when both `NEXT_PUBLIC_TURNSTILE_SITE_KEY` and `TURNSTILE_SECRET_KEY` are configured.
+- `npm run verify:production-health` checks the critical public routes without handling PII. When release verification has the public Supabase environment variables available, add `-- --require-supabase` to require the published-post REST read as well.
 
 ## Architecture Direction
 

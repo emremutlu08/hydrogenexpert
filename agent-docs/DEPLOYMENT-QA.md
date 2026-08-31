@@ -33,6 +33,7 @@ Source of truth: Current repo, Vercel workflow, deployment QA checklist
 - `npm run audit:shopify-claims` passes after Shopify-related content changes.
 - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build` passes after code/content-rendering changes.
 - `npm run verify:internal-links` passes against preview, local production server, or live URL when routes/internal links changed.
+- `npm run verify:production-health -- --require-supabase` passes with the target environment variables after Supabase or production dependency changes.
 
 ## Production Verification
 
