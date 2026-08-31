@@ -66,7 +66,7 @@ export function AnalyticsConsent({ gaId }: AnalyticsConsentProps) {
     const previousPreference = previousPreferenceRef.current;
     previousPreferenceRef.current = preference;
 
-    if (preference === "denied") {
+    if (preference !== "granted") {
       updateGoogleConsent("denied");
 
       if (shouldReloadAfterConsentChange(previousPreference, preference)) {

@@ -102,13 +102,18 @@ describe("traffic report calculations", () => {
       position: null,
       hasData: false,
     });
-    expect(summarizeSearchConsoleRow({ clicks: 0, impressions: 0 })).toEqual({
+    expect(
+      summarizeSearchConsoleRow({ clicks: 0, impressions: 0, ctr: 0, position: 0 }),
+    ).toEqual({
       clicks: 0,
       impressions: 0,
-      ctr: null,
-      position: null,
+      ctr: 0,
+      position: 0,
       hasData: true,
     });
+    expect(() => summarizeSearchConsoleRow({ clicks: 0, impressions: 0 })).toThrow(
+      "Search Console aggregate row has invalid metric(s): ctr, position.",
+    );
   });
 
   it("labels Search Console position changes with the correct direction", () => {

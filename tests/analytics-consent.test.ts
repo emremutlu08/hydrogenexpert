@@ -45,6 +45,7 @@ describe("analytics consent storage", () => {
 
   it("reloads only when granted consent is withdrawn", () => {
     expect(shouldReloadAfterConsentChange("granted", "denied")).toBe(true);
+    expect(shouldReloadAfterConsentChange("granted", null)).toBe(true);
     expect(shouldReloadAfterConsentChange(null, "denied")).toBe(false);
     expect(shouldReloadAfterConsentChange("denied", "denied")).toBe(false);
     expect(shouldReloadAfterConsentChange("granted", "granted")).toBe(false);

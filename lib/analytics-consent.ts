@@ -46,5 +46,5 @@ export function shouldReloadAfterConsentChange(
   previous: AnalyticsConsentPreference | null,
   next: AnalyticsConsentPreference | null,
 ) {
-  return previous === "granted" && next === "denied";
+  return previous === "granted" && next !== "granted";
 }

@@ -135,13 +135,33 @@ function finiteNumberOrNull(value: number | undefined) {
 }
 
 export function summarizeSearchConsoleRow(row?: SearchConsoleAggregateRow) {
-  return {
-    clicks: finiteNumberOrNull(row?.clicks),
-    impressions: finiteNumberOrNull(row?.impressions),
-    ctr: finiteNumberOrNull(row?.ctr),
-    position: finiteNumberOrNull(row?.position),
-    hasData: Boolean(row),
+  if (!row) {
+    return {
+      clicks: null,
+      impressions: null,
+      ctr: null,
+      position: null,
+      hasData: false,
+    };
+  }
+
+  const summary = {
+    clicks: finiteNumberOrNull(row.clicks),
+    impressions: finiteNumberOrNull(row.impressions),
+    ctr: finiteNumberOrNull(row.ctr),
+    position: finiteNumberOrNull(row.position),
   };
+  const invalidMetrics = Object.entries(summary)
+    .filter(([, value]) => value === null)
+    .map(([name]) => name);
+
+  if (invalidMetrics.length > 0) {
+    throw new Error(
+      `Search Console aggregate row has invalid metric(s): ${invalidMetrics.join(", ")}.`,
+    );
+  }
+
+  return { ...summary, hasData: true };
 }
 
 export function normalizeCruxClsPercentile(percentile: number | undefined) {
