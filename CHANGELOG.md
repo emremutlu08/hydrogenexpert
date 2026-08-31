@@ -15,6 +15,26 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## Unreleased
 
+- Date: 2026-08-31
+- PR: [#131 Update tsx to 4.23.13](https://github.com/emremutlu08/hydrogenexpert/pull/131)
+- Branch: `codex/update-tsx-4-23-13-20260831`
+- Deployment: Vercel preview validation is required before squash merge; production follows the validated merge through the existing Git integration without a separate manual deploy.
+- Summary:
+  - Updated stable `tsx` from `4.23.12` to `4.23.13` for the upstream shared transform-cache memory bound.
+  - Limited the delta to one direct development dependency without changing application code, runtime dependencies, package count, peer requirements, or install scripts.
+  - Deferred engine-incompatible `sanitize-html` `2.17.7`, the broader Anthropic SDK `0.x` line, ESLint 10, TypeScript 7, and Node types 26.
+- Files changed:
+  - `package.json`
+  - `package-lock.json`
+  - `agent-docs/HYDROGEN.md`
+  - `CHANGELOG.md`
+- Verification:
+  - Node `22.22.3`, npm `11.18.0`, clean `npm ci`, `npm audit --audit-level=low`, full dependency-tree inspection, install-script review, and `git diff --check`: passed; audit reports 0 vulnerabilities.
+  - `npm run lint`, `npm run typecheck`, `npm run validate:content`, `npm run audit:shopify-claims`, production commercial-launch verification, public-image verification, and structured-data validation: passed.
+  - `npm test`: passed, 33 test files and 136 tests.
+  - `npm run build`: passed with 76 static pages generated.
+- Manual follow-up: Track the pre-existing production `/blog` HTTP 500 and `/feed.xml` HTTP 503 responses separately from this tooling-only update.
+
 - Date: 2026-08-30
 - PR: [#130 Update Browserslist data packages](https://github.com/emremutlu08/hydrogenexpert/pull/130)
 - Branch: `codex/deps-browserslist-data-20260830`
