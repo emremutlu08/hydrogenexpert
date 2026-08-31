@@ -18,7 +18,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 - Date: 2026-08-31
 - PR: [#133 Add production dependency health checks](https://github.com/emremutlu08/hydrogenexpert/pull/133)
 - Branch: `codex/recover-supabase-and-lead-path`
-- Deployment: Vercel preview review is pending. Production must remain blocked until a replacement Supabase project is available and the strict health check passes.
+- Deployment: [Vercel preview](https://hydrogenexpert-git-codex-recover-su-41f0fc-emremutlu8s-projects.vercel.app) is ready and its six public health checks pass. Production must remain blocked until a replacement Supabase project is available and the strict health check passes.
 - Summary:
   - Added a non-PII production health verifier for the homepage, blog, sitemap, robots, llms, RSS feed, and optional direct Supabase published-post read.
   - Added daily GitHub monitoring and focused regression coverage for public failures, Supabase reads, and credential-safe error reporting.
