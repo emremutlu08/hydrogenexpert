@@ -1,4 +1,4 @@
-import { hasAnalyticsConsent } from "./analytics-consent";
+import { ANALYTICS_READY_EVENT, hasAnalyticsConsent } from "./analytics-consent";
 
 type AnalyticsValue = string | null | undefined;
 type AnalyticsParams = Record<string, AnalyticsValue>;
@@ -20,6 +20,13 @@ type LeadSelectionEvent =
   | "design_status_selected"
   | "product_count_selected"
   | "feature_selected";
+type PendingAnalyticsEvent = {
+  eventName: string;
+  params: AnalyticsParams;
+};
+
+const pendingTerminalEvents = new Map<string, PendingAnalyticsEvent>();
+let terminalRetryListenerAttached = false;
 
 function cleanParams(params: AnalyticsParams = {}) {
   return Object.fromEntries(
@@ -34,6 +41,33 @@ function sendEvent(eventName: string, params: AnalyticsParams = {}) {
   }
 
   return false;
+}
+
+function flushPendingTerminalEvents() {
+  for (const [key, pending] of pendingTerminalEvents) {
+    if (sendEvent(pending.eventName, pending.params)) {
+      pendingTerminalEvents.delete(key);
+    }
+  }
+
+  if (pendingTerminalEvents.size === 0 && terminalRetryListenerAttached) {
+    window.removeEventListener(ANALYTICS_READY_EVENT, flushPendingTerminalEvents);
+    terminalRetryListenerAttached = false;
+  }
+}
+
+function queueTerminalEvent(eventName: string, params: AnalyticsParams) {
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  const key = [eventName, params.source_kind, params.source_path].join(":");
+  pendingTerminalEvents.set(key, { eventName, params });
+
+  if (!terminalRetryListenerAttached) {
+    window.addEventListener(ANALYTICS_READY_EVENT, flushPendingTerminalEvents);
+    terminalRetryListenerAttached = true;
+  }
 }
 
 function routeParams(context: { sourceKind?: string; sourcePath?: string } = {}) {
@@ -94,8 +128,14 @@ export function trackLeadSubmit(
   sourcePath?: string,
 ) {
   const params = { ...routeParams({ sourceKind: source, sourcePath }), ...details };
+  const eventName = status === "success" ? "lead_form_submit_success" : "lead_form_submit_error";
 
-  sendEvent(status === "success" ? "lead_form_submit_success" : "lead_form_submit_error", params);
+  if (sendEvent(eventName, params)) {
+    return true;
+  }
+
+  queueTerminalEvent(eventName, params);
+  return false;
 }
 
 export function trackPackageCtaClick(

@@ -573,7 +573,7 @@ async function fetchLeadSection(now: Date, deferSupabase: boolean) {
   }
 }
 
-async function fetchProductionHealthSection() {
+async function fetchProductionHealthSection(deferSupabase: boolean) {
   const corePaths = ["/", "/sitemap.xml", "/robots.txt", "/llms.txt"] as const;
   const deferredPaths = ["/blog", "/feed.xml"] as const;
   const paths = [...corePaths, ...deferredPaths];
@@ -600,17 +600,26 @@ async function fetchProductionHealthSection() {
 
   recordSource({
     name: "Production public health",
-    status: coreFailures.length ? "blocked" : "ok",
+    status:
+      coreFailures.length || (deferredFailures.length && !deferSupabase)
+        ? "blocked"
+        : "ok",
     detail: coreFailures.length
       ? `${coreFailures.length} critical non-database route(s) failed`
       : deferredFailures.length
-        ? `core routes healthy; ${deferredFailures.length} Supabase-dependent route failure(s) remain deferred`
+        ? deferSupabase
+          ? `core routes healthy; ${deferredFailures.length} Supabase-dependent route failure(s) deferred by explicit flag`
+          : `${deferredFailures.length} Supabase-dependent public route(s) failed`
         : "all checked routes returned HTTP 200",
+    fix:
+      deferredFailures.length && !deferSupabase
+        ? "Restore the public routes or rerun with --defer-supabase after an explicit user decision."
+        : undefined,
   });
 
   return `## Production Health
 
-${rows.map((row) => `- ${row.path}: HTTP ${row.status || "request failed"}${deferredFailures.some((failure) => failure.path === row.path) ? " — Supabase dependency deferred" : ""}`).join("\n")}`;
+${rows.map((row) => `- ${row.path}: HTTP ${row.status || "request failed"}${deferSupabase && deferredFailures.some((failure) => failure.path === row.path) ? " — Supabase dependency deferred by explicit flag" : ""}`).join("\n")}`;
 }
 
 async function fetchPageSpeedSection() {
@@ -695,6 +704,7 @@ ${sourceReports.map((report) => `- **${labels[report.status]}** ${report.name}: 
 
 async function renderReport(now: Date) {
   sourceReports.length = 0;
+  const deferSupabase = process.argv.includes("--defer-supabase");
   const ga4Section = await optionalSection(
     "GA4 — Consented Traffic",
     "GA4 Data API",
@@ -707,14 +717,11 @@ async function renderReport(now: Date) {
     () => fetchGscSection(now),
     "Confirm property access and the webmasters.readonly OAuth scope.",
   );
-  const leadSection = await fetchLeadSection(
-    now,
-    process.argv.includes("--defer-supabase"),
-  );
+  const leadSection = await fetchLeadSection(now, deferSupabase);
   const healthSection = await optionalSection(
     "Production Health",
     "Production public health",
-    fetchProductionHealthSection,
+    () => fetchProductionHealthSection(deferSupabase),
     "Check the production deployment and DNS.",
   );
   const pageSpeedSection = await optionalSection(

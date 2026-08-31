@@ -1,5 +1,7 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 
+import { ANALYTICS_READY_EVENT } from "../lib/analytics-consent";
+
 import {
   trackAnchorCTA,
   trackBlogCardClick,
@@ -137,6 +139,47 @@ describe("canonical analytics events", () => {
       source_kind: "contact_page",
       source_path: "/contact",
     });
+  });
+
+  it("delivers a pending terminal event once when consented analytics becomes ready", () => {
+    const listeners = new Map<string, EventListener>();
+    const gtag = vi.fn();
+    const localStorage = { getItem: vi.fn(() => "granted"), setItem: vi.fn() };
+    const windowStub = {
+      gtag: undefined as typeof gtag | undefined,
+      localStorage,
+      addEventListener: vi.fn((name: string, listener: EventListener) => {
+        listeners.set(name, listener);
+      }),
+      removeEventListener: vi.fn((name: string) => {
+        listeners.delete(name);
+      }),
+    };
+    vi.stubGlobal("window", windowStub);
+
+    expect(
+      trackLeadSubmit("contact_page", "success", { budget_range: "starter_2k" }, "/contact"),
+    ).toBe(false);
+    expect(gtag).not.toHaveBeenCalled();
+
+    windowStub.gtag = gtag;
+    listeners.get(ANALYTICS_READY_EVENT)?.(new Event(ANALYTICS_READY_EVENT));
+    listeners.get(ANALYTICS_READY_EVENT)?.(new Event(ANALYTICS_READY_EVENT));
+
+    expect(eventCalls(gtag)).toEqual([
+      {
+        eventName: "lead_form_submit_success",
+        params: {
+          budget_range: "starter_2k",
+          source_kind: "contact_page",
+          source_path: "/contact",
+        },
+      },
+    ]);
+    expect(windowStub.removeEventListener).toHaveBeenCalledWith(
+      ANALYTICS_READY_EVENT,
+      expect.any(Function),
+    );
   });
 
   it("keeps useful content and qualification events singular and PII-free", () => {
