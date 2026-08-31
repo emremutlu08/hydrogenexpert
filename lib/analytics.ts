@@ -1,4 +1,8 @@
-import { ANALYTICS_READY_EVENT, hasAnalyticsConsent } from "./analytics-consent";
+import {
+  ANALYTICS_READY_EVENT,
+  hasAnalyticsConsent,
+  readAnalyticsConsent,
+} from "./analytics-consent";
 
 type AnalyticsValue = string | null | undefined;
 type AnalyticsParams = Record<string, AnalyticsValue>;
@@ -23,9 +27,11 @@ type LeadSelectionEvent =
 type PendingAnalyticsEvent = {
   eventName: string;
   params: AnalyticsParams;
+  deliveryKey?: string;
 };
 
 const pendingRetryEvents = new Map<string, PendingAnalyticsEvent>();
+const deliveredOneShotEvents = new Set<string>();
 let retryListenerAttached = false;
 
 function cleanParams(params: AnalyticsParams = {}) {
@@ -46,6 +52,10 @@ function sendEvent(eventName: string, params: AnalyticsParams = {}) {
 function flushPendingEvents() {
   for (const [key, pending] of pendingRetryEvents) {
     if (sendEvent(pending.eventName, pending.params)) {
+      if (pending.deliveryKey) {
+        deliveredOneShotEvents.add(pending.deliveryKey);
+      }
+
       pendingRetryEvents.delete(key);
     }
   }
@@ -59,18 +69,23 @@ function flushPendingEvents() {
 function queueRetryEvent(
   eventName: string,
   params: AnalyticsParams,
-  options: { allowBeforeConsent?: boolean } = {},
+  options: { allowBeforeConsent?: boolean; deliveryKey?: string } = {},
 ) {
   if (typeof window === "undefined") {
     return false;
   }
 
-  if (!options.allowBeforeConsent && !hasAnalyticsConsent()) {
+  const preference = readAnalyticsConsent();
+
+  if (
+    !hasAnalyticsConsent() &&
+    (!options.allowBeforeConsent || preference === "denied")
+  ) {
     return false;
   }
 
   const key = [eventName, JSON.stringify(cleanParams(params))].join(":");
-  pendingRetryEvents.set(key, { eventName, params });
+  pendingRetryEvents.set(key, { eventName, params, deliveryKey: options.deliveryKey });
 
   if (!retryListenerAttached) {
     window.addEventListener(ANALYTICS_READY_EVENT, flushPendingEvents);
@@ -85,6 +100,29 @@ function routeParams(context: { sourceKind?: string; sourcePath?: string } = {})
     source_kind: context.sourceKind,
     source_path: context.sourcePath,
   };
+}
+
+function trackOneShotLeadStage(
+  eventName: "lead_form_view" | "lead_form_start",
+  source: string,
+  sourcePath?: string,
+) {
+  const params = routeParams({ sourceKind: source, sourcePath });
+  const deliveryKey = [eventName, JSON.stringify(cleanParams(params))].join(":");
+
+  if (deliveredOneShotEvents.has(deliveryKey)) {
+    return true;
+  }
+
+  if (sendEvent(eventName, params)) {
+    deliveredOneShotEvents.add(deliveryKey);
+    return true;
+  }
+
+  return queueRetryEvent(eventName, params, {
+    allowBeforeConsent: true,
+    deliveryKey,
+  });
 }
 
 export function trackCTA(
@@ -128,13 +166,11 @@ export function trackAnchorCTA(
 }
 
 export function trackLeadFormView(source: string, sourcePath?: string) {
-  return sendEvent("lead_form_view", routeParams({ sourceKind: source, sourcePath }));
+  return trackOneShotLeadStage("lead_form_view", source, sourcePath);
 }
 
 export function trackLeadStart(source: string, sourcePath?: string) {
-  const params = routeParams({ sourceKind: source, sourcePath });
-
-  return sendEvent("lead_form_start", params);
+  return trackOneShotLeadStage("lead_form_start", source, sourcePath);
 }
 
 export function trackLeadSubmit(

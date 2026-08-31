@@ -1,13 +1,12 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 
 import { TurnstileField } from "@/components/TurnstileField";
 import { QuizQuestion } from "@/components/quiz/QuizQuestion";
 import { QuizResult } from "@/components/quiz/QuizResult";
 import { QuizScoreDisplay } from "@/components/quiz/QuizScoreDisplay";
 import { trackLeadStart, trackLeadSubmit, trackQuizResult } from "@/lib/analytics";
-import { ANALYTICS_READY_EVENT } from "@/lib/analytics-consent";
 
 interface QuizItem {
   title: string;
@@ -31,7 +30,6 @@ export function HydrogenFitQuiz({ questions }: HydrogenFitQuizProps) {
   const [email, setEmail] = useState("");
   const [confirmation, setConfirmation] = useState<string | null>(null);
   const [emailStatus, setEmailStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
-  const hasAttemptedEmailSubmit = useRef(false);
   const hasTrackedEmailStart = useRef(false);
 
   const yesCount = useMemo(
@@ -40,24 +38,7 @@ export function HydrogenFitQuiz({ questions }: HydrogenFitQuizProps) {
   );
   const allAnswered = answers.every((answer) => answer !== null);
 
-  useEffect(() => {
-    function retryPendingEmailStart() {
-      if (
-        hasAttemptedEmailSubmit.current &&
-        !hasTrackedEmailStart.current &&
-        trackLeadStart(QUIZ_SOURCE_KIND, QUIZ_SOURCE_PATH)
-      ) {
-        hasTrackedEmailStart.current = true;
-      }
-    }
-
-    window.addEventListener(ANALYTICS_READY_EVENT, retryPendingEmailStart);
-    return () => window.removeEventListener(ANALYTICS_READY_EVENT, retryPendingEmailStart);
-  }, []);
-
   function markEmailStart() {
-    hasAttemptedEmailSubmit.current = true;
-
     if (
       !hasTrackedEmailStart.current &&
       trackLeadStart(QUIZ_SOURCE_KIND, QUIZ_SOURCE_PATH)

@@ -7,10 +7,12 @@ import {
   formatChange,
   formatSearchPositionChange,
   normalizeCruxClsPercentile,
+  parseGaReportRows,
   parseExactContentRangeTotal,
   requireLighthouseCategoryScores,
   summarizeSearchConsoleRow,
   type DailyTrafficPoint,
+  type GaReportData,
   type SearchConsoleAggregateRow,
 } from "../lib/traffic-report";
 
@@ -36,21 +38,13 @@ interface DateWindow {
   end: string;
 }
 
-interface GaReportResponse {
-  dimensionHeaders?: Array<{ name?: string }>;
-  metricHeaders?: Array<{ name?: string }>;
-  rows?: Array<{
-    dimensionValues?: Array<{ value?: string }>;
-    metricValues?: Array<{ value?: string }>;
-  }>;
-}
-
 interface GaSummary {
-  sessions: number;
-  users: number;
-  views: number;
-  engagedSessions: number;
-  keyEvents: number;
+  sessions: number | null;
+  users: number | null;
+  views: number | null;
+  engagedSessions: number | null;
+  keyEvents: number | null;
+  hasData: boolean;
 }
 
 const REPORT_DIR = join(process.cwd(), "content/internal/reports");
@@ -92,8 +86,13 @@ function comparableWindows(days: number, lagDays: number, now = new Date()) {
 }
 
 function asNumber(value?: string) {
-  const parsed = Number(value ?? 0);
-  return Number.isFinite(parsed) ? parsed : 0;
+  const parsed = Number(value);
+
+  if (value === undefined || value.trim() === "" || !Number.isFinite(parsed)) {
+    throw new Error("GA report metric value is unavailable.");
+  }
+
+  return parsed;
 }
 
 function formatInteger(value: number) {
@@ -236,24 +235,6 @@ async function discoverGaPropertyId(token: string) {
   throw new Error(`No GA4 property matched ${PRODUCTION_HOSTNAME}.`);
 }
 
-function gaRows(data: GaReportResponse) {
-  const dimensions = data.dimensionHeaders?.map((header) => header.name ?? "dimension") ?? [];
-  const metrics = data.metricHeaders?.map((header) => header.name ?? "metric") ?? [];
-
-  return (data.rows ?? []).map((row) => {
-    const values: Record<string, string> = {};
-
-    dimensions.forEach((name, index) => {
-      values[name] = row.dimensionValues?.[index]?.value ?? "";
-    });
-    metrics.forEach((name, index) => {
-      values[name] = row.metricValues?.[index]?.value ?? "0";
-    });
-
-    return values;
-  });
-}
-
 function gaHostnameFilter() {
   return {
     filter: {
@@ -272,7 +253,7 @@ async function gaRunReport(
   token: string,
   body: Record<string, unknown>,
 ) {
-  return googleJson<GaReportResponse>(
+  return googleJson<GaReportData>(
     `https://analyticsdata.googleapis.com/v1beta/properties/${propertyId}:runReport`,
     token,
     { method: "POST", body: JSON.stringify(body) },
@@ -280,14 +261,30 @@ async function gaRunReport(
 }
 
 async function gaSummary(propertyId: string, token: string, window: DateWindow) {
+  const requiredMetrics = [
+    "sessions",
+    "totalUsers",
+    "screenPageViews",
+    "engagedSessions",
+    "keyEvents",
+  ] as const;
   const data = await gaRunReport(propertyId, token, {
     dateRanges: [gaDateRange(window)],
-    metrics: ["sessions", "totalUsers", "screenPageViews", "engagedSessions", "keyEvents"].map(
-      (name) => ({ name }),
-    ),
+    metrics: requiredMetrics.map((name) => ({ name })),
     dimensionFilter: gaHostnameFilter(),
   });
-  const row = gaRows(data)[0] ?? {};
+  const row = parseGaReportRows(data, { requiredMetrics })[0];
+
+  if (!row) {
+    return {
+      sessions: null,
+      users: null,
+      views: null,
+      engagedSessions: null,
+      keyEvents: null,
+      hasData: false,
+    } satisfies GaSummary;
+  }
 
   return {
     sessions: asNumber(row.sessions),
@@ -295,6 +292,7 @@ async function gaSummary(propertyId: string, token: string, window: DateWindow) 
     views: asNumber(row.screenPageViews),
     engagedSessions: asNumber(row.engagedSessions),
     keyEvents: asNumber(row.keyEvents),
+    hasData: true,
   } satisfies GaSummary;
 }
 
@@ -352,29 +350,53 @@ async function fetchGa4Section(now: Date) {
         orderBys: [{ dimension: { dimensionName: "date" } }],
       }),
     ]);
-  const pageRows = gaRows(pagesData);
-  const sourceRows = gaRows(sourcesData);
-  const eventRows = gaRows(eventsData);
-  const dailyPoints = gaRows(dailyData).map<DailyTrafficPoint>((row) => ({
+  const pageRows = parseGaReportRows(pagesData, {
+    requiredDimensions: ["pagePath"],
+    requiredMetrics: ["sessions", "screenPageViews", "engagedSessions"],
+  });
+  const sourceRows = parseGaReportRows(sourcesData, {
+    requiredDimensions: ["sessionSourceMedium"],
+    requiredMetrics: ["sessions", "engagedSessions"],
+  });
+  const eventRows = parseGaReportRows(eventsData, {
+    requiredDimensions: ["eventName"],
+    requiredMetrics: ["eventCount", "keyEvents"],
+  });
+  const dailyPoints = parseGaReportRows(dailyData, {
+    requiredDimensions: ["date"],
+    requiredMetrics: ["sessions", "engagedSessions", "screenPageViews"],
+  }).map<DailyTrafficPoint>((row) => ({
     date: row.date ?? "",
     sessions: asNumber(row.sessions),
     engagedSessions: asNumber(row.engagedSessions),
     views: asNumber(row.screenPageViews),
   }));
   const anomalies = detectTrafficAnomalies(dailyPoints);
-  const engagementRate = current.sessions ? current.engagedSessions / current.sessions : 0;
-  const previousEngagementRate = previous.sessions
-    ? previous.engagedSessions / previous.sessions
-    : 0;
+  const engagementRate =
+    current.sessions === null || current.engagedSessions === null
+      ? null
+      : current.sessions === 0
+        ? 0
+        : current.engagedSessions / current.sessions;
+  const previousEngagementRate =
+    previous.sessions === null || previous.engagedSessions === null
+      ? null
+      : previous.sessions === 0
+        ? 0
+        : previous.engagedSessions / previous.sessions;
   const comparisonNote =
-    previous.sessions === 0
+    previous.sessions === null
+      ? "The prior window returned no aggregate GA4 row, so period deltas are not comparable."
+      : previous.sessions === 0
       ? "The prior window has no GA4 sessions. Treat period deltas as non-comparable until at least 14 continuous post-release days are available."
       : "The two GA4 windows contain data; keep anomaly days in view when interpreting the deltas.";
 
   recordSource({
     name: "GA4 Data API",
-    status: "ok",
-    detail: `property ${propertyId}; production hostname filter; ${windows30.current.start} to ${windows30.current.end}`,
+    status: current.hasData ? "ok" : "empty",
+    detail: current.hasData
+      ? `property ${propertyId}; production hostname filter; ${windows30.current.start} to ${windows30.current.end}`
+      : `property ${propertyId}; no aggregate row for ${windows30.current.start} to ${windows30.current.end}`,
   });
 
   return `## GA4 — Consented Traffic
@@ -389,14 +411,14 @@ ${comparisonNote}
 
 | Metric | Current | Previous | Change |
 | --- | ---: | ---: | ---: |
-| Sessions | ${formatInteger(current.sessions)} | ${formatInteger(previous.sessions)} | ${formatChange(current.sessions, previous.sessions)} |
-| Users | ${formatInteger(current.users)} | ${formatInteger(previous.users)} | ${formatChange(current.users, previous.users)} |
-| Views | ${formatInteger(current.views)} | ${formatInteger(previous.views)} | ${formatChange(current.views, previous.views)} |
-| Engaged sessions | ${formatInteger(current.engagedSessions)} | ${formatInteger(previous.engagedSessions)} | ${formatChange(current.engagedSessions, previous.engagedSessions)} |
-| Engagement rate | ${formatPercent(engagementRate)} | ${formatPercent(previousEngagementRate)} | ${formatChange(engagementRate, previousEngagementRate)} |
-| Key events | ${formatInteger(current.keyEvents)} | ${formatInteger(previous.keyEvents)} | ${formatChange(current.keyEvents, previous.keyEvents)} |
+| Sessions | ${formatOptionalInteger(current.sessions)} | ${formatOptionalInteger(previous.sessions)} | ${formatOptionalChange(current.sessions, previous.sessions)} |
+| Users | ${formatOptionalInteger(current.users)} | ${formatOptionalInteger(previous.users)} | ${formatOptionalChange(current.users, previous.users)} |
+| Views | ${formatOptionalInteger(current.views)} | ${formatOptionalInteger(previous.views)} | ${formatOptionalChange(current.views, previous.views)} |
+| Engaged sessions | ${formatOptionalInteger(current.engagedSessions)} | ${formatOptionalInteger(previous.engagedSessions)} | ${formatOptionalChange(current.engagedSessions, previous.engagedSessions)} |
+| Engagement rate | ${formatOptionalPercent(engagementRate)} | ${formatOptionalPercent(previousEngagementRate)} | ${formatOptionalChange(engagementRate, previousEngagementRate)} |
+| Key events | ${formatOptionalInteger(current.keyEvents)} | ${formatOptionalInteger(previous.keyEvents)} | ${formatOptionalChange(current.keyEvents, previous.keyEvents)} |
 
-Last 7 days: ${formatInteger(sevenDay.sessions)} sessions, ${formatInteger(sevenDay.users)} users, ${formatInteger(sevenDay.engagedSessions)} engaged sessions.
+Last 7 days: ${formatOptionalInteger(sevenDay.sessions)} sessions, ${formatOptionalInteger(sevenDay.users)} users, ${formatOptionalInteger(sevenDay.engagedSessions)} engaged sessions.
 
 ### Top Pages
 

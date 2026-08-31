@@ -5,6 +5,7 @@ import {
   formatChange,
   formatSearchPositionChange,
   normalizeCruxClsPercentile,
+  parseGaReportRows,
   parseExactContentRangeTotal,
   percentChange,
   requireLighthouseCategoryScores,
@@ -115,5 +116,38 @@ describe("traffic report calculations", () => {
     expect(formatSearchPositionChange(47.8, 22.6)).toBe("25.2 positions worse");
     expect(formatSearchPositionChange(10, 10)).toBe("unchanged");
     expect(formatSearchPositionChange(null, 10)).toBe("not comparable");
+  });
+
+  it("validates GA metric headers and values without inventing zeroes", () => {
+    expect(
+      parseGaReportRows(
+        {
+          metricHeaders: [{ name: "sessions" }],
+          rows: [{ metricValues: [{ value: "12" }] }],
+        },
+        { requiredMetrics: ["sessions"] },
+      ),
+    ).toEqual([{ sessions: "12" }]);
+    expect(
+      parseGaReportRows(
+        { rows: [] },
+        { requiredMetrics: ["sessions"] },
+      ),
+    ).toEqual([]);
+    expect(() =>
+      parseGaReportRows(
+        { metricHeaders: [{ name: "users" }], rows: [{ metricValues: [{ value: "12" }] }] },
+        { requiredMetrics: ["sessions"] },
+      ),
+    ).toThrow("GA report omitted requested metric header(s): sessions.");
+    expect(() =>
+      parseGaReportRows(
+        {
+          metricHeaders: [{ name: "sessions" }],
+          rows: [{ metricValues: [{ value: "not-a-number" }] }],
+        },
+        { requiredMetrics: ["sessions"] },
+      ),
+    ).toThrow("GA report returned an invalid sessions metric value.");
   });
 });

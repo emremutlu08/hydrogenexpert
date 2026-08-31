@@ -17,9 +17,72 @@ export interface SearchConsoleAggregateRow {
   position?: number;
 }
 
+export interface GaReportData {
+  dimensionHeaders?: Array<{ name?: string }>;
+  metricHeaders?: Array<{ name?: string }>;
+  rows?: Array<{
+    dimensionValues?: Array<{ value?: string }>;
+    metricValues?: Array<{ value?: string }>;
+  }>;
+}
+
 const LIGHTHOUSE_CATEGORY_NAMES = ["performance", "seo", "accessibility"] as const;
 
 type LighthouseCategoryName = (typeof LIGHTHOUSE_CATEGORY_NAMES)[number];
+
+export function parseGaReportRows(
+  data: GaReportData,
+  options: { requiredDimensions?: readonly string[]; requiredMetrics?: readonly string[] } = {},
+) {
+  const rows = data.rows ?? [];
+
+  if (rows.length === 0) {
+    return [];
+  }
+
+  const dimensions = data.dimensionHeaders?.map((header) => header.name).filter(Boolean) as
+    | string[]
+    | undefined;
+  const metrics = data.metricHeaders?.map((header) => header.name).filter(Boolean) as
+    | string[]
+    | undefined;
+  const dimensionNames = dimensions ?? [];
+  const metricNames = metrics ?? [];
+  const missingDimensions = (options.requiredDimensions ?? []).filter(
+    (name) => !dimensionNames.includes(name),
+  );
+  const missingMetrics = (options.requiredMetrics ?? []).filter(
+    (name) => !metricNames.includes(name),
+  );
+
+  if (missingDimensions.length > 0) {
+    throw new Error(`GA report omitted requested dimension header(s): ${missingDimensions.join(", ")}.`);
+  }
+
+  if (missingMetrics.length > 0) {
+    throw new Error(`GA report omitted requested metric header(s): ${missingMetrics.join(", ")}.`);
+  }
+
+  return rows.map((row) => {
+    const values: Record<string, string> = {};
+
+    dimensionNames.forEach((name, index) => {
+      values[name] = row.dimensionValues?.[index]?.value ?? "";
+    });
+    metricNames.forEach((name, index) => {
+      const value = row.metricValues?.[index]?.value;
+      const parsed = Number(value);
+
+      if (value === undefined || value.trim() === "" || !Number.isFinite(parsed)) {
+        throw new Error(`GA report returned an invalid ${name} metric value.`);
+      }
+
+      values[name] = value;
+    });
+
+    return values;
+  });
+}
 
 export function requireLighthouseCategoryScores(
   categories?: Record<string, { score?: number | null } | undefined>,
