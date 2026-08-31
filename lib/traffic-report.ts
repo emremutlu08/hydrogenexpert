@@ -81,6 +81,12 @@ export function summarizeSearchConsoleRow(row?: SearchConsoleAggregateRow) {
   };
 }
 
+export function normalizeCruxClsPercentile(percentile: number | undefined) {
+  return typeof percentile === "number" && Number.isFinite(percentile)
+    ? percentile / 100
+    : null;
+}
+
 export function percentChange(current: number, previous: number) {
   if (previous === 0) {
     return current === 0 ? 0 : null;

@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest";
 import {
   detectTrafficAnomalies,
   formatChange,
+  normalizeCruxClsPercentile,
   parseExactContentRangeTotal,
   percentChange,
   requireLighthouseCategoryScores,
@@ -55,6 +56,12 @@ describe("traffic report calculations", () => {
         accessibility: { score: 0.97 },
       }),
     ).toEqual({ performance: 0.91, seo: 1, accessibility: 0.97 });
+  });
+
+  it("normalizes the CrUX field CLS percentile from the API scale", () => {
+    expect(normalizeCruxClsPercentile(12)).toBe(0.12);
+    expect(normalizeCruxClsPercentile(0)).toBe(0);
+    expect(normalizeCruxClsPercentile(undefined)).toBeNull();
   });
 
   it("rejects incomplete PageSpeed responses instead of inventing zero scores", () => {

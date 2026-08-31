@@ -36,7 +36,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - privacy, cookie, analytics, deployment, report, and test documentation/files
 - Verification:
   - `git diff --check`, lint, typecheck, content validation, Shopify claim audit, structured-data validation, commercial-launch validation, and strict traffic reporting with the explicit user-approved Supabase deferral flag: passed.
-  - `npm run test`: passed, 35 test files and 150 tests.
+  - `npm run test`: passed, 35 test files and 151 tests.
   - Production-mode build passed with 76 routes generated; non-Supabase internal-link validation passed for 57 sitemap URLs and 80 internal URLs.
   - Desktop/mobile browser QA confirmed zero GA requests before consent or after denial, single canonical interactions, clean withdrawal, accessible controls, and no mobile overflow.
 - Manual follow-up: Keep Supabase recovery and its `/blog`/`/feed.xml` failures deferred by user; require PageSpeed API access in the performance phase; activate the GA4 internal-traffic filter only after its IP rule is verified.

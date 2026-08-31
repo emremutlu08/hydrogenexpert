@@ -5,6 +5,7 @@ import { join } from "node:path";
 import {
   detectTrafficAnomalies,
   formatChange,
+  normalizeCruxClsPercentile,
   parseExactContentRangeTotal,
   requireLighthouseCategoryScores,
   summarizeSearchConsoleRow,
@@ -665,6 +666,7 @@ async function fetchPageSpeedSection() {
   const fieldLcp = fieldMetrics.LARGEST_CONTENTFUL_PAINT_MS;
   const fieldInp = fieldMetrics.INTERACTION_TO_NEXT_PAINT;
   const fieldCls = fieldMetrics.CUMULATIVE_LAYOUT_SHIFT_SCORE;
+  const fieldClsValue = normalizeCruxClsPercentile(fieldCls?.percentile);
 
   recordSource({
     name: "PageSpeed Insights",
@@ -676,7 +678,7 @@ async function fetchPageSpeedSection() {
 
 - Mobile Lighthouse: performance ${Math.round(categoryScores.performance * 100)}, SEO ${Math.round(categoryScores.seo * 100)}, accessibility ${Math.round(categoryScores.accessibility * 100)}.
 - Lab: LCP ${audits["largest-contentful-paint"]?.displayValue ?? "n/a"}; TBT ${audits["total-blocking-time"]?.displayValue ?? "n/a"}; CLS ${audits["cumulative-layout-shift"]?.displayValue ?? "n/a"}.
-- Field (${data.loadingExperience?.overall_category ?? "not enough data"}): LCP ${fieldLcp?.percentile ?? "n/a"} ms (${fieldLcp?.category ?? "n/a"}); INP ${fieldInp?.percentile ?? "n/a"} ms (${fieldInp?.category ?? "n/a"}); CLS ${fieldCls?.percentile ?? "n/a"} (${fieldCls?.category ?? "n/a"}).`;
+- Field (${data.loadingExperience?.overall_category ?? "not enough data"}): LCP ${fieldLcp?.percentile ?? "n/a"} ms (${fieldLcp?.category ?? "n/a"}); INP ${fieldInp?.percentile ?? "n/a"} ms (${fieldInp?.category ?? "n/a"}); CLS ${fieldClsValue ?? "n/a"} (${fieldCls?.category ?? "n/a"}).`;
 }
 
 async function optionalSection(
