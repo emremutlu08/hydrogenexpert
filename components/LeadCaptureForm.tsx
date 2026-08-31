@@ -9,6 +9,7 @@ import {
   trackLeadStart,
   trackLeadSubmit,
 } from "@/lib/analytics";
+import { ANALYTICS_READY_EVENT } from "@/lib/analytics-consent";
 import type { LeadCaptureApiResponse } from "@/features/lead-capture/server";
 import {
   BUDGET_RANGE_OPTIONS,
@@ -48,9 +49,11 @@ export function LeadCaptureForm({
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [message, setMessage] = useState<string | null>(null);
   const [fallback, setFallback] = useState<LeadCaptureApiResponse["fallback"] | null>(null);
-  const hasStarted = useRef(false);
+  const hasInteracted = useRef(false);
+  const hasTrackedStart = useRef(false);
   const formSectionRef = useRef<HTMLElement>(null);
   const viewedContexts = useRef(new Set<string>());
+  const isFormVisible = useRef(false);
   const sourcePath = pathname || "/";
 
   const formClassName = useMemo(
@@ -71,27 +74,58 @@ export function LeadCaptureForm({
 
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries.some((entry) => entry.isIntersecting) && !viewedContexts.current.has(contextKey)) {
+        isFormVisible.current = entries.some((entry) => entry.isIntersecting);
+
+        if (
+          isFormVisible.current &&
+          !viewedContexts.current.has(contextKey) &&
+          trackLeadFormView(sourceKind, sourcePath)
+        ) {
           viewedContexts.current.add(contextKey);
-          trackLeadFormView(sourceKind, sourcePath);
           observer.disconnect();
         }
       },
       { threshold: 0, rootMargin: "0px 0px -20% 0px" },
     );
 
-    observer.observe(section);
+    function retryPendingFunnelEvents() {
+      if (
+        isFormVisible.current &&
+        !viewedContexts.current.has(contextKey) &&
+        trackLeadFormView(sourceKind, sourcePath)
+      ) {
+        viewedContexts.current.add(contextKey);
+        observer.disconnect();
+      }
 
-    return () => observer.disconnect();
+      if (
+        hasInteracted.current &&
+        !hasTrackedStart.current &&
+        trackLeadStart(sourceKind, sourcePath)
+      ) {
+        hasTrackedStart.current = true;
+      }
+    }
+
+    observer.observe(section);
+    window.addEventListener(ANALYTICS_READY_EVENT, retryPendingFunnelEvents);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener(ANALYTICS_READY_EVENT, retryPendingFunnelEvents);
+    };
   }, [sourceKind, sourcePath]);
 
   function markFormStarted() {
-    if (hasStarted.current) {
+    hasInteracted.current = true;
+
+    if (hasTrackedStart.current) {
       return;
     }
 
-    hasStarted.current = true;
-    trackLeadStart(sourceKind, sourcePath);
+    if (trackLeadStart(sourceKind, sourcePath)) {
+      hasTrackedStart.current = true;
+    }
   }
 
   function handleFieldChange(event: React.ChangeEvent<HTMLFormElement>) {

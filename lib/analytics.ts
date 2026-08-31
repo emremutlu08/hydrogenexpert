@@ -30,7 +30,10 @@ function cleanParams(params: AnalyticsParams = {}) {
 function sendEvent(eventName: string, params: AnalyticsParams = {}) {
   if (typeof window !== "undefined" && window.gtag && hasAnalyticsConsent()) {
     window.gtag("event", eventName, cleanParams(params));
+    return true;
   }
+
+  return false;
 }
 
 function routeParams(context: { sourceKind?: string; sourcePath?: string } = {}) {
@@ -75,13 +78,13 @@ export function trackAnchorCTA(
 }
 
 export function trackLeadFormView(source: string, sourcePath?: string) {
-  sendEvent("lead_form_view", routeParams({ sourceKind: source, sourcePath }));
+  return sendEvent("lead_form_view", routeParams({ sourceKind: source, sourcePath }));
 }
 
 export function trackLeadStart(source: string, sourcePath?: string) {
   const params = routeParams({ sourceKind: source, sourcePath });
 
-  sendEvent("lead_form_start", params);
+  return sendEvent("lead_form_start", params);
 }
 
 export function trackLeadSubmit(

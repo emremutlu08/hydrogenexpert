@@ -1,4 +1,6 @@
 export const ANALYTICS_CONSENT_STORAGE_KEY = "hydrogenexpert.analyticsConsent.v1";
+export const ANALYTICS_CONSENT_CHANGE_EVENT = "hydrogenexpert:analytics-consent-change";
+export const ANALYTICS_READY_EVENT = "hydrogenexpert:analytics-ready";
 
 export type AnalyticsConsentPreference = "granted" | "denied";
 

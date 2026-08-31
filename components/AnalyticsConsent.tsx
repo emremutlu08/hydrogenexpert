@@ -4,6 +4,8 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import { useEffect, useState, useSyncExternalStore } from "react";
 
 import {
+  ANALYTICS_CONSENT_CHANGE_EVENT,
+  ANALYTICS_READY_EVENT,
   readAnalyticsConsent,
   writeAnalyticsConsent,
   type AnalyticsConsentPreference,
@@ -13,15 +15,13 @@ interface AnalyticsConsentProps {
   gaId: string | null;
 }
 
-const CONSENT_CHANGE_EVENT = "hydrogenexpert:analytics-consent-change";
-
 function subscribeToConsent(callback: () => void) {
   window.addEventListener("storage", callback);
-  window.addEventListener(CONSENT_CHANGE_EVENT, callback);
+  window.addEventListener(ANALYTICS_CONSENT_CHANGE_EVENT, callback);
 
   return () => {
     window.removeEventListener("storage", callback);
-    window.removeEventListener(CONSENT_CHANGE_EVENT, callback);
+    window.removeEventListener(ANALYTICS_CONSENT_CHANGE_EVENT, callback);
   };
 }
 
@@ -66,12 +66,32 @@ export function AnalyticsConsent({ gaId }: AnalyticsConsentProps) {
     }
   }, [preference]);
 
+  useEffect(() => {
+    if (preference !== "granted") {
+      return;
+    }
+
+    let attempts = 0;
+    const interval = window.setInterval(() => {
+      attempts += 1;
+
+      if (window.gtag) {
+        window.clearInterval(interval);
+        window.dispatchEvent(new Event(ANALYTICS_READY_EVENT));
+      } else if (attempts >= 50) {
+        window.clearInterval(interval);
+      }
+    }, 100);
+
+    return () => window.clearInterval(interval);
+  }, [preference]);
+
   function choosePreference(nextPreference: AnalyticsConsentPreference) {
     const shouldReloadWithoutGoogleAnalytics =
       preference === "granted" && nextPreference === "denied";
 
     writeAnalyticsConsent(nextPreference);
-    window.dispatchEvent(new Event(CONSENT_CHANGE_EVENT));
+    window.dispatchEvent(new Event(ANALYTICS_CONSENT_CHANGE_EVENT));
     setIsSettingsOpen(false);
     updateGoogleConsent(nextPreference);
 

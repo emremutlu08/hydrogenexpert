@@ -44,9 +44,10 @@ describe("canonical analytics events", () => {
     const gtag = setupAnalytics("denied");
 
     trackCTA("linkedin", { sourceKind: "hero", sourcePath: "/" });
-    trackLeadStart("contact_page", "/contact");
+    const delivered = trackLeadStart("contact_page", "/contact");
 
     expect(gtag).not.toHaveBeenCalled();
+    expect(delivered).toBe(false);
   });
 
   it("emits one external-contact event with non-reserved context", () => {
@@ -114,8 +115,8 @@ describe("canonical analytics events", () => {
   it("emits one event for each lead funnel state", () => {
     const gtag = setupAnalytics();
 
-    trackLeadFormView("contact_page", "/contact");
-    trackLeadStart("contact_page", "/contact");
+    expect(trackLeadFormView("contact_page", "/contact")).toBe(true);
+    expect(trackLeadStart("contact_page", "/contact")).toBe(true);
     trackLeadSubmit(
       "contact_page",
       "success",
