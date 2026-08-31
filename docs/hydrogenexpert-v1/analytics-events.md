@@ -14,7 +14,7 @@ Google Analytics loads only on the Vercel production deployment, after `hydrogen
 | `page_view` | Vercel Analytics page view | Vercel-managed | `@vercel/analytics` |
 | `scope_review_cta_click` | Internal scope-review or package CTA click | `source_kind`, `source_path`, `cta_destination`, `package_name`, static CTA context | shared tracked links |
 | `external_contact_click` | LinkedIn or Upwork CTA click | `source_kind`, `source_path`, `cta_destination`, static CTA label | `TrackedCTAButton` |
-| `lead_form_view` | At least 25% of the lead form enters the viewport, once | `source_kind`, `source_path` | `LeadCaptureForm` |
+| `lead_form_view` | The lead form enters the visible reading area, once | `source_kind`, `source_path` | `LeadCaptureForm` |
 | `lead_form_start` | First real focus/change/submit interaction, once | `source_kind`, `source_path` | `LeadCaptureForm`, quiz email flow |
 | `lead_form_submit_success` | Successful submit | `source_kind`, `source_path`, non-identifying qualification categories | `trackLeadSubmit` |
 | `lead_form_submit_error` | Failed submit | `source_kind`, `source_path`, non-identifying qualification categories | `trackLeadSubmit` |
