@@ -16,6 +16,29 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 ## Unreleased
 
 - Date: 2026-08-31
+- PR: [#133 Add production dependency health checks](https://github.com/emremutlu08/hydrogenexpert/pull/133)
+- Branch: `codex/recover-supabase-and-lead-path`
+- Deployment: Vercel preview review is pending. Production must remain blocked until a replacement Supabase project is available and the strict health check passes.
+- Summary:
+  - Added a non-PII production health verifier for the homepage, blog, sitemap, robots, llms, RSS feed, and optional direct Supabase published-post read.
+  - Added daily GitHub monitoring and focused regression coverage for public failures, Supabase reads, and credential-safe error reporting.
+  - Documented the new Supabase-aware release gate.
+- Files changed:
+  - `.github/workflows/production-health.yml`
+  - `lib/production-health.ts`
+  - `scripts/verify-production-health.ts`
+  - `tests/production-health.test.ts`
+  - `package.json`
+  - `agent-docs/HYDROGEN.md`
+  - `agent-docs/DEPLOYMENT-QA.md`
+  - `CHANGELOG.md`
+- Verification:
+  - `git diff --check`, lint, typecheck, content validation, Shopify claim audit, and the production build passed.
+  - Full tests passed: 34 files and 139 tests.
+  - The live health gate correctly reports the existing `/blog` HTTP 500 and `/feed.xml` HTTP 503 incident.
+- Manual follow-up: The removed Supabase project has no accessible backup. Provide an additional active Supabase project slot through an account upgrade or an explicitly approved project-capacity change, then apply migrations, rotate Vercel environment variables, verify a protected lead write, and rerun the strict health gate.
+
+- Date: 2026-08-31
 - PR: [#131 Update tsx to 4.23.13](https://github.com/emremutlu08/hydrogenexpert/pull/131)
 - Branch: `codex/update-tsx-4-23-13-20260831`
 - Deployment: Vercel preview validation is required before squash merge; production follows the validated merge through the existing Git integration without a separate manual deploy.
