@@ -18,7 +18,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 - Date: 2026-09-01
 - PR: [#134 Add privacy-first analytics and automated reporting](https://github.com/emremutlu08/hydrogenexpert/pull/134)
 - Branch: `codex/privacy-first-analytics`
-- Deployment: Vercel preview deployment `dpl_6ML8Sm4HPVdaAF6aYeF8ckAVSvm3` passed at [the protected preview URL](https://hydrogenexpert-git-codex-privacy-fi-54b95c-emremutlu8s-projects.vercel.app); production follows the validated squash merge through the existing Git integration.
+- Deployment: The protected [Vercel branch preview](https://hydrogenexpert-git-codex-privacy-fi-54b95c-emremutlu8s-projects.vercel.app) passed; production follows the validated squash merge through the existing Git integration.
 - Summary:
   - Added explicit `granted | denied` analytics consent, production-only GA loading, an accessible persistent privacy control, and a clean reload when consent is withdrawn.
   - Replaced duplicate CTA and lead-submit events with the canonical PII-safe funnel contract, and made lead-form view/start events visibility and first-interaction based.
