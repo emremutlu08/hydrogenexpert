@@ -1,6 +1,9 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 
-import { ANALYTICS_READY_EVENT } from "../lib/analytics-consent";
+import {
+  ANALYTICS_CONSENT_CHANGE_EVENT,
+  ANALYTICS_READY_EVENT,
+} from "../lib/analytics-consent";
 
 import {
   trackAnchorCTA,
@@ -99,7 +102,7 @@ describe("canonical analytics events", () => {
     });
 
     expect(gtag).not.toHaveBeenCalled();
-    expect(windowStub.addEventListener).toHaveBeenCalledTimes(1);
+    expect(windowStub.addEventListener).toHaveBeenCalledTimes(2);
 
     windowStub.gtag = gtag;
     listeners.get(ANALYTICS_READY_EVENT)?.(new Event(ANALYTICS_READY_EVENT));
@@ -318,6 +321,43 @@ describe("canonical analytics events", () => {
     expect(trackLeadFormView("contact_navigation", "/contact")).toBe(true);
     expect(trackLeadStart("contact_navigation", "/contact")).toBe(true);
     expect(eventCalls(gtag)).toHaveLength(3);
+  });
+
+  it("clears pre-consent funnel events when analytics is denied", () => {
+    const listeners = new Map<string, EventListener>();
+    const gtag = vi.fn();
+    const localStorage = {
+      getItem: vi.fn<() => string | null>(() => null),
+      setItem: vi.fn(),
+    };
+    const windowStub = {
+      gtag: undefined as typeof gtag | undefined,
+      localStorage,
+      addEventListener: vi.fn((name: string, listener: EventListener) => {
+        listeners.set(name, listener);
+      }),
+      removeEventListener: vi.fn((name: string) => {
+        listeners.delete(name);
+      }),
+    };
+    vi.stubGlobal("window", windowStub);
+
+    expect(trackLeadFormView("denied_contact", "/contact")).toBe(true);
+    expect(trackLeadStart("denied_contact", "/contact")).toBe(true);
+
+    localStorage.getItem.mockReturnValue("denied");
+    listeners.get(ANALYTICS_CONSENT_CHANGE_EVENT)?.(
+      new Event(ANALYTICS_CONSENT_CHANGE_EVENT),
+    );
+    localStorage.getItem.mockReturnValue("granted");
+    windowStub.gtag = gtag;
+    listeners.get(ANALYTICS_READY_EVENT)?.(new Event(ANALYTICS_READY_EVENT));
+
+    expect(gtag).not.toHaveBeenCalled();
+    expect(windowStub.removeEventListener).toHaveBeenCalledWith(
+      ANALYTICS_READY_EVENT,
+      expect.any(Function),
+    );
   });
 
   it("keeps useful content and qualification events singular and PII-free", () => {

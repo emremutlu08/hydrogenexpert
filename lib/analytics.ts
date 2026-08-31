@@ -1,4 +1,5 @@
 import {
+  ANALYTICS_CONSENT_CHANGE_EVENT,
   ANALYTICS_READY_EVENT,
   hasAnalyticsConsent,
   readAnalyticsConsent,
@@ -33,6 +34,7 @@ type PendingAnalyticsEvent = {
 const pendingRetryEvents = new Map<string, PendingAnalyticsEvent>();
 const deliveredOneShotEvents = new Set<string>();
 let retryListenerAttached = false;
+let consentChangeListenerAttached = false;
 
 function cleanParams(params: AnalyticsParams = {}) {
   return Object.fromEntries(
@@ -49,6 +51,27 @@ function sendEvent(eventName: string, params: AnalyticsParams = {}) {
   return false;
 }
 
+function detachRetryListeners() {
+  if (retryListenerAttached) {
+    window.removeEventListener(ANALYTICS_READY_EVENT, flushPendingEvents);
+    retryListenerAttached = false;
+  }
+
+  if (consentChangeListenerAttached) {
+    window.removeEventListener(ANALYTICS_CONSENT_CHANGE_EVENT, clearPendingEventsAfterDenial);
+    consentChangeListenerAttached = false;
+  }
+}
+
+function clearPendingEventsAfterDenial() {
+  if (readAnalyticsConsent() !== "denied") {
+    return;
+  }
+
+  pendingRetryEvents.clear();
+  detachRetryListeners();
+}
+
 function flushPendingEvents() {
   for (const [key, pending] of pendingRetryEvents) {
     if (sendEvent(pending.eventName, pending.params)) {
@@ -60,9 +83,8 @@ function flushPendingEvents() {
     }
   }
 
-  if (pendingRetryEvents.size === 0 && retryListenerAttached) {
-    window.removeEventListener(ANALYTICS_READY_EVENT, flushPendingEvents);
-    retryListenerAttached = false;
+  if (pendingRetryEvents.size === 0) {
+    detachRetryListeners();
   }
 }
 
@@ -90,6 +112,11 @@ function queueRetryEvent(
   if (!retryListenerAttached) {
     window.addEventListener(ANALYTICS_READY_EVENT, flushPendingEvents);
     retryListenerAttached = true;
+  }
+
+  if (!consentChangeListenerAttached) {
+    window.addEventListener(ANALYTICS_CONSENT_CHANGE_EVENT, clearPendingEventsAfterDenial);
+    consentChangeListenerAttached = true;
   }
 
   return true;

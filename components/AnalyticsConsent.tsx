@@ -80,17 +80,12 @@ export function AnalyticsConsent({ gaId }: AnalyticsConsentProps) {
       return;
     }
 
-    let attempts = 0;
     const interval = window.setInterval(() => {
-      attempts += 1;
-
       if (window.gtag) {
         window.clearInterval(interval);
         window.dispatchEvent(new Event(ANALYTICS_READY_EVENT));
-      } else if (attempts >= 50) {
-        window.clearInterval(interval);
       }
-    }, 100);
+    }, 250);
 
     return () => window.clearInterval(interval);
   }, [preference]);
