@@ -11,6 +11,7 @@ import {
   parseExactContentRangeTotal,
   requireLighthouseCategoryScores,
   summarizeSearchConsoleRow,
+  validatePublicHealthResult,
   type DailyTrafficPoint,
   type GaReportData,
   type SearchConsoleAggregateRow,
@@ -611,28 +612,56 @@ async function fetchLeadSection(now: Date, deferSupabase: boolean) {
 }
 
 async function fetchProductionHealthSection(deferSupabase: boolean) {
-  const corePaths = ["/", "/sitemap.xml", "/robots.txt", "/llms.txt"] as const;
-  const deferredPaths = ["/blog", "/feed.xml"] as const;
-  const paths = [...corePaths, ...deferredPaths];
+  const coreChecks = [
+    { path: "/", contentTypes: ["text/html"] },
+    { path: "/sitemap.xml", contentTypes: ["application/xml", "text/xml"] },
+    { path: "/robots.txt", contentTypes: ["text/plain"] },
+    { path: "/llms.txt", contentTypes: ["text/plain"] },
+  ] as const;
+  const deferredChecks = [
+    { path: "/blog", contentTypes: ["text/html"] },
+    {
+      path: "/feed.xml",
+      contentTypes: ["application/rss+xml", "application/xml", "text/xml"],
+    },
+  ] as const;
+  const checks = [...coreChecks, ...deferredChecks];
   const rows = await Promise.all(
-    paths.map(async (path) => {
+    checks.map(async ({ path, contentTypes }) => {
+      const requestedUrl = new URL(path, BASE_URL).toString();
+
       try {
-        const response = await fetch(new URL(path, BASE_URL), {
+        const response = await fetch(requestedUrl, {
           redirect: "follow",
           headers: { "User-Agent": "HydrogenExpert traffic report" },
           signal: AbortSignal.timeout(15_000),
         });
-        return { path, status: response.status };
+
+        return {
+          path,
+          status: response.status,
+          error: validatePublicHealthResult({
+            requestedUrl,
+            finalUrl: response.url,
+            status: response.status,
+            contentType: response.headers.get("content-type"),
+            expectedContentTypes: contentTypes,
+          }),
+        };
       } catch {
-        return { path, status: 0 };
+        return { path, status: 0, error: "request failed" };
       }
     }),
   );
   const coreFailures = rows.filter(
-    (row) => corePaths.includes(row.path as (typeof corePaths)[number]) && row.status !== 200,
+    (row) =>
+      coreChecks.some((check) => check.path === row.path) &&
+      row.error !== null,
   );
   const deferredFailures = rows.filter(
-    (row) => deferredPaths.includes(row.path as (typeof deferredPaths)[number]) && row.status !== 200,
+    (row) =>
+      deferredChecks.some((check) => check.path === row.path) &&
+      row.error !== null,
   );
 
   recordSource({
@@ -656,7 +685,7 @@ async function fetchProductionHealthSection(deferSupabase: boolean) {
 
   return `## Production Health
 
-${rows.map((row) => `- ${row.path}: HTTP ${row.status || "request failed"}${deferSupabase && deferredFailures.some((failure) => failure.path === row.path) ? " — Supabase dependency deferred by explicit flag" : ""}`).join("\n")}`;
+${rows.map((row) => `- ${row.path}: HTTP ${row.status || "request failed"}${row.error && row.status === 200 ? ` — ${row.error}` : ""}${deferSupabase && deferredFailures.some((failure) => failure.path === row.path) ? " — Supabase dependency deferred by explicit flag" : ""}`).join("\n")}`;
 }
 
 async function fetchPageSpeedSection() {

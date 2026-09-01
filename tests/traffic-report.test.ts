@@ -10,6 +10,7 @@ import {
   percentChange,
   requireLighthouseCategoryScores,
   summarizeSearchConsoleRow,
+  validatePublicHealthResult,
 } from "../lib/traffic-report";
 
 describe("traffic report calculations", () => {
@@ -120,7 +121,41 @@ describe("traffic report calculations", () => {
     expect(formatSearchPositionChange(12.4, 18.7)).toBe("6.3 positions better");
     expect(formatSearchPositionChange(47.8, 22.6)).toBe("25.2 positions worse");
     expect(formatSearchPositionChange(10, 10)).toBe("unchanged");
+    expect(formatSearchPositionChange(10.04, 10)).toBe("unchanged");
+    expect(formatSearchPositionChange(9.96, 10)).toBe("unchanged");
     expect(formatSearchPositionChange(null, 10)).toBe("not comparable");
+  });
+
+  it("accepts only healthy public artifacts at the requested path and type", () => {
+    const baseResult = {
+      requestedUrl: "https://hydrogenexpert.co/sitemap.xml",
+      finalUrl: "https://hydrogenexpert.co/sitemap.xml",
+      status: 200,
+      contentType: "application/xml; charset=utf-8",
+      expectedContentTypes: ["application/xml", "text/xml"],
+    };
+
+    expect(validatePublicHealthResult(baseResult)).toBeNull();
+    expect(
+      validatePublicHealthResult({
+        ...baseResult,
+        requestedUrl: "http://www.hydrogenexpert.co/sitemap.xml",
+      }),
+    ).toBeNull();
+    expect(
+      validatePublicHealthResult({
+        ...baseResult,
+        finalUrl: "https://hydrogenexpert.co/",
+        contentType: "text/html; charset=utf-8",
+      }),
+    ).toContain("unexpected final URL");
+    expect(
+      validatePublicHealthResult({
+        ...baseResult,
+        contentType: "text/html; charset=utf-8",
+      }),
+    ).toBe("unexpected content type text/html; charset=utf-8");
+    expect(validatePublicHealthResult({ ...baseResult, status: 503 })).toBe("HTTP 503");
   });
 
   it("validates GA metric headers and values without inventing zeroes", () => {

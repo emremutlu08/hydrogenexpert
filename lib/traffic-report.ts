@@ -26,6 +26,14 @@ export interface GaReportData {
   }>;
 }
 
+interface PublicHealthResult {
+  requestedUrl: string;
+  finalUrl: string;
+  status: number;
+  contentType: string | null;
+  expectedContentTypes: readonly string[];
+}
+
 const LIGHTHOUSE_CATEGORY_NAMES = ["performance", "seo", "accessibility"] as const;
 
 type LighthouseCategoryName = (typeof LIGHTHOUSE_CATEGORY_NAMES)[number];
@@ -182,13 +190,57 @@ export function formatSearchPositionChange(current: number | null, previous: num
     return "not comparable";
   }
 
-  const delta = current - previous;
+  const delta = Math.round((current - previous) * 10) / 10;
 
   if (delta === 0) {
     return "unchanged";
   }
 
   return `${Math.abs(delta).toFixed(1)} positions ${delta < 0 ? "better" : "worse"}`;
+}
+
+function canonicalHostname(hostname: string) {
+  return hostname.toLowerCase().replace(/^www\./, "");
+}
+
+export function validatePublicHealthResult({
+  requestedUrl,
+  finalUrl,
+  status,
+  contentType,
+  expectedContentTypes,
+}: PublicHealthResult) {
+  if (status !== 200) {
+    return `HTTP ${status || "request failed"}`;
+  }
+
+  let requested: URL;
+  let final: URL;
+
+  try {
+    requested = new URL(requestedUrl);
+    final = new URL(finalUrl);
+  } catch {
+    return "invalid response URL";
+  }
+
+  if (
+    canonicalHostname(requested.hostname) !== canonicalHostname(final.hostname) ||
+    requested.pathname !== final.pathname ||
+    requested.search !== final.search ||
+    (requested.protocol === "https:" && final.protocol !== "https:")
+  ) {
+    return `unexpected final URL ${final.toString()}`;
+  }
+
+  const normalizedContentType = contentType?.split(";", 1)[0]?.trim().toLowerCase() ?? "";
+  const allowedContentTypes = expectedContentTypes.map((value) => value.toLowerCase());
+
+  if (!allowedContentTypes.includes(normalizedContentType)) {
+    return `unexpected content type ${contentType || "missing"}`;
+  }
+
+  return null;
 }
 
 export function percentChange(current: number, previous: number) {
