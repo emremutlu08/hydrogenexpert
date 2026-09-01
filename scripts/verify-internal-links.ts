@@ -37,6 +37,11 @@ function isSkippableHref(href: string) {
   );
 }
 
+function isSupabaseDependentPath(href: string) {
+  const pathname = href.split("?", 1)[0];
+  return pathname === "/blog" || pathname === "/feed.xml" || pathname?.startsWith("/blog/");
+}
+
 function extractInternalHrefs({
   html,
   pagePath,
@@ -77,6 +82,7 @@ function extractInternalHrefs({
 async function main() {
   const baseUrl = getBaseUrl();
   const siteUrl = getCanonicalSiteUrl();
+  const deferSupabase = process.argv.includes("--defer-supabase");
   const sitemapResponse = await fetch(`${baseUrl}/sitemap.xml`);
 
   if (!sitemapResponse.ok) {
@@ -92,6 +98,10 @@ async function main() {
   const broken: BrokenLink[] = [];
 
   for (const path of sitemapPaths) {
+    if (deferSupabase && isSupabaseDependentPath(path)) {
+      continue;
+    }
+
     const response = await fetch(toLocalUrl(baseUrl, path), { redirect: "follow" });
 
     if (response.status >= 400) {
@@ -113,6 +123,10 @@ async function main() {
   }
 
   for (const href of internalHrefs) {
+    if (deferSupabase && isSupabaseDependentPath(href)) {
+      continue;
+    }
+
     const response = await fetch(toLocalUrl(baseUrl, href), { redirect: "follow" });
 
     if (response.status >= 400) {
@@ -129,7 +143,7 @@ async function main() {
   }
 
   console.log(
-    `Internal link verification passed against ${baseUrl}: ${sitemapPaths.length} sitemap URL(s), ${internalHrefs.size} internal URL(s).`,
+    `Internal link verification passed against ${baseUrl}: ${sitemapPaths.length} sitemap URL(s), ${internalHrefs.size} internal URL(s)${deferSupabase ? "; Supabase-dependent blog/feed routes deferred by user" : ""}.`,
   );
   process.exit(0);
 }

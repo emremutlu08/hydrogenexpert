@@ -759,6 +759,44 @@ select {
   @apply mt-2 text-sm leading-7 text-neutral-600;
 }
 
+.analytics-consent {
+  @apply fixed bottom-4 left-4 right-4 z-[70] mx-auto grid max-w-4xl gap-5 rounded-[1.45rem] border border-white/12 bg-[#171717] p-5 text-white shadow-[0_28px_80px_-28px_rgba(0,0,0,0.65)] md:bottom-6 md:grid-cols-[1fr_auto] md:items-end md:p-6;
+}
+
+.analytics-consent__eyebrow {
+  @apply text-[0.7rem] font-bold uppercase tracking-[0.18em] text-[#8df1cb];
+}
+
+.analytics-consent__title {
+  @apply mt-2 text-xl font-semibold tracking-[-0.035em] text-white;
+}
+
+.analytics-consent__body {
+  @apply mt-2 max-w-2xl text-sm leading-6 text-neutral-300;
+}
+
+.analytics-consent__actions {
+  @apply flex flex-wrap gap-3;
+}
+
+.analytics-consent__allow,
+.analytics-consent__deny,
+.analytics-consent__settings {
+  @apply inline-flex min-h-11 items-center justify-center rounded-full px-5 py-3 text-sm font-semibold outline-none transition-colors focus-visible:ring-2 focus-visible:ring-[#8df1cb] focus-visible:ring-offset-2;
+}
+
+.analytics-consent__allow {
+  @apply bg-[#10b981] text-white hover:bg-white hover:text-[#171717] focus-visible:ring-offset-[#171717];
+}
+
+.analytics-consent__deny {
+  @apply border border-white/18 text-white hover:border-[#8df1cb] hover:text-[#8df1cb] focus-visible:ring-offset-[#171717];
+}
+
+.analytics-consent__settings {
+  @apply fixed bottom-4 right-4 z-[65] border border-black/12 bg-white text-[#171717] shadow-lg hover:border-[#10b981] hover:text-[#047857] focus-visible:ring-offset-white;
+}
+
 .nav-scroll {
   scrollbar-width: none;
 }

@@ -7,7 +7,7 @@ Last updated: May 7, 2026
 - Header hides `Articles` until at least one evergreen article is public.
 - Footer primary services are: Shopify Hydrogen Audit, Liquid to Hydrogen Migration, Custom Hydrogen Storefront, Shopify Hydrogen SEO, Hydrogen Performance Optimization, Hydrogen Support Retainer, Hydrogen Cost.
 - Agency alternative, headless agency, and developer pages remain reachable from `/services`, contextual links, and sitemap.
-- Email brief CTAs point to `/contact#fit-review-form` or the local form anchor and emit `cta_click_email_brief`.
+- Email brief CTAs point to `/contact#fit-review-form` or the local form anchor and emit canonical `scope_review_cta_click` with static CTA context.
 
 ## Reachability
 

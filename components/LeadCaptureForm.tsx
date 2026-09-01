@@ -4,7 +4,6 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 
 import {
-  trackLeadFormView,
   trackLeadSelection,
   trackLeadStart,
   trackLeadSubmit,
@@ -25,6 +24,7 @@ import {
   parseLeadQualification,
 } from "@/lib/lead-qualification";
 import { TurnstileField } from "@/components/TurnstileField";
+import { useLeadFormViewTracking } from "@/components/useLeadFormViewTracking";
 
 interface LeadCaptureFormProps {
   sourceKind: string;
@@ -48,8 +48,19 @@ export function LeadCaptureForm({
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [message, setMessage] = useState<string | null>(null);
   const [fallback, setFallback] = useState<LeadCaptureApiResponse["fallback"] | null>(null);
-  const hasStarted = useRef(false);
+  const hasTrackedStart = useRef(false);
+  const formSectionRef = useRef<HTMLElement>(null);
   const sourcePath = pathname || "/";
+
+  const visitId = useLeadFormViewTracking({
+    elementRef: formSectionRef,
+    sourceKind,
+    sourcePath,
+  });
+
+  useEffect(() => {
+    hasTrackedStart.current = false;
+  }, [visitId]);
 
   const formClassName = useMemo(
     () =>
@@ -59,17 +70,14 @@ export function LeadCaptureForm({
     [compact],
   );
 
-  useEffect(() => {
-    trackLeadFormView(sourceKind, sourcePath);
-  }, [sourceKind, sourcePath]);
-
   function markFormStarted() {
-    if (hasStarted.current) {
+    if (hasTrackedStart.current) {
       return;
     }
 
-    hasStarted.current = true;
-    trackLeadStart(sourceKind, sourcePath);
+    if (trackLeadStart(sourceKind, sourcePath, visitId)) {
+      hasTrackedStart.current = true;
+    }
   }
 
   function handleFieldChange(event: React.ChangeEvent<HTMLFormElement>) {
@@ -156,7 +164,7 @@ export function LeadCaptureForm({
   }
 
   return (
-    <section data-nosnippet aria-label="Project inquiry form">
+    <section ref={formSectionRef} data-nosnippet aria-label="Project inquiry form">
       <form
         id="fit-review-form"
         onFocusCapture={markFormStarted}

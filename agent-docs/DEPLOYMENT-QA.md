@@ -1,7 +1,7 @@
 # Deployment QA
 
 Status: Active
-Last updated: 2026-05-25
+Last updated: 2026-09-01
 Owner: Agent
 Source of truth: Current repo, Vercel workflow, deployment QA checklist
 
@@ -18,9 +18,10 @@ Source of truth: Current repo, Vercel workflow, deployment QA checklist
 9. Add the custom domain in the Vercel dashboard and point it to `hydrogenexpert.co`.
 10. Verify Google Search Console using the `GOOGLE_SITE_VERIFICATION` meta tag value.
 11. Create a GA4 property, copy the Measurement ID, and update `NEXT_PUBLIC_GA_MEASUREMENT_ID` in Vercel.
-12. Mark the `cta_click` GA4 event as a conversion.
-13. Apply the latest Supabase migration for durable request rate limiting before production traffic.
-14. After deployment is live and verified, merge or close the pull request and delete the corresponding remote branch unless Emre explicitly asks for a different release flow.
+12. Keep Google Analytics disabled until `hydrogenexpert.analyticsConsent.v1` is explicitly set to `granted`; verify that no Google Analytics request is made before that choice.
+13. Mark only `lead_form_submit_success` as the primary GA4 key event. Do not use CTA clicks, `purchase`, `close_convert_lead`, or `qualify_lead` as lead-conversion key events.
+14. Apply the latest Supabase migration for durable request rate limiting before production traffic.
+15. After deployment is live and verified, merge or close the pull request and delete the corresponding remote branch unless Emre explicitly asks for a different release flow.
 
 ## Required Validation
 
@@ -33,6 +34,7 @@ Source of truth: Current repo, Vercel workflow, deployment QA checklist
 - `npm run audit:shopify-claims` passes after Shopify-related content changes.
 - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build` passes after code/content-rendering changes.
 - `npm run verify:internal-links` passes against preview, local production server, or live URL when routes/internal links changed.
+- When Supabase recovery is explicitly deferred, `npm run verify:internal-links -- --defer-supabase` must still pass for every non-blog route; the deferred blog/feed failures must remain visible in the traffic report.
 
 ## Production Verification
 
@@ -45,6 +47,7 @@ Source of truth: Current repo, Vercel workflow, deployment QA checklist
 - Touched pages are indexable unless intentionally noindexed.
 - Schema-bearing source is present in rendered HTML when schema changed.
 - Form submission path remains protected by Turnstile/rate limiting.
+- Google Analytics makes no request before analytics consent, canonical funnel events fire once after consent, and consent can be withdrawn from the persistent privacy control.
 - PR is merged or closed after deployment verification.
 - Remote branch is deleted after merge/close unless Emre requests otherwise.
 

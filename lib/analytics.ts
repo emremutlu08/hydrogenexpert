@@ -1,3 +1,10 @@
+import {
+  ANALYTICS_CONSENT_CHANGE_EVENT,
+  ANALYTICS_READY_EVENT,
+  hasAnalyticsConsent,
+  readEffectiveAnalyticsConsent,
+} from "./analytics-consent";
+
 type AnalyticsValue = string | null | undefined;
 type AnalyticsParams = Record<string, AnalyticsValue>;
 type ExternalDestination = "linkedin" | "upwork";
@@ -18,6 +25,17 @@ type LeadSelectionEvent =
   | "design_status_selected"
   | "product_count_selected"
   | "feature_selected";
+type PendingAnalyticsEvent = {
+  eventName: string;
+  params: AnalyticsParams;
+  deliveryKey?: string;
+};
+
+const pendingRetryEvents = new Map<string, PendingAnalyticsEvent>();
+const deliveredOneShotEvents = new Set<string>();
+let pendingEventSequence = 0;
+let retryListenerAttached = false;
+let consentChangeListenerAttached = false;
 
 function cleanParams(params: AnalyticsParams = {}) {
   return Object.fromEntries(
@@ -26,42 +44,131 @@ function cleanParams(params: AnalyticsParams = {}) {
 }
 
 function sendEvent(eventName: string, params: AnalyticsParams = {}) {
-  if (typeof window !== "undefined" && window.gtag) {
+  if (typeof window !== "undefined" && window.gtag && hasAnalyticsConsent()) {
     window.gtag("event", eventName, cleanParams(params));
+    return true;
   }
+
+  return false;
+}
+
+function detachRetryListeners() {
+  if (retryListenerAttached) {
+    window.removeEventListener(ANALYTICS_READY_EVENT, flushPendingEvents);
+    retryListenerAttached = false;
+  }
+
+  if (consentChangeListenerAttached) {
+    window.removeEventListener(ANALYTICS_CONSENT_CHANGE_EVENT, clearPendingEventsAfterDenial);
+    window.removeEventListener("storage", clearPendingEventsAfterDenial);
+    consentChangeListenerAttached = false;
+  }
+}
+
+function clearPendingEventsAfterDenial(event?: Event) {
+  const eventPreference =
+    typeof CustomEvent !== "undefined" && event instanceof CustomEvent
+      ? event.detail
+      : null;
+
+  if (eventPreference !== "denied" && readEffectiveAnalyticsConsent() !== "denied") {
+    return;
+  }
+
+  pendingRetryEvents.clear();
+  detachRetryListeners();
+}
+
+function flushPendingEvents() {
+  for (const [key, pending] of pendingRetryEvents) {
+    if (sendEvent(pending.eventName, pending.params)) {
+      if (pending.deliveryKey) {
+        deliveredOneShotEvents.add(pending.deliveryKey);
+      }
+
+      pendingRetryEvents.delete(key);
+    }
+  }
+
+  if (pendingRetryEvents.size === 0) {
+    detachRetryListeners();
+  }
+}
+
+function queueRetryEvent(
+  eventName: string,
+  params: AnalyticsParams,
+  options: { allowBeforeConsent?: boolean; deliveryKey?: string } = {},
+) {
+  if (typeof window === "undefined") {
+    return false;
+  }
+
+  const preference = readEffectiveAnalyticsConsent();
+
+  if (
+    !hasAnalyticsConsent() &&
+    (!options.allowBeforeConsent || preference === "denied")
+  ) {
+    return false;
+  }
+
+  const key =
+    options.deliveryKey ??
+    [eventName, String(++pendingEventSequence)].join(":");
+  pendingRetryEvents.set(key, { eventName, params, deliveryKey: options.deliveryKey });
+
+  if (!retryListenerAttached) {
+    window.addEventListener(ANALYTICS_READY_EVENT, flushPendingEvents);
+    retryListenerAttached = true;
+  }
+
+  if (!consentChangeListenerAttached) {
+    window.addEventListener(ANALYTICS_CONSENT_CHANGE_EVENT, clearPendingEventsAfterDenial);
+    window.addEventListener("storage", clearPendingEventsAfterDenial);
+    consentChangeListenerAttached = true;
+  }
+
+  return true;
+}
+
+function sendOrQueueConsentedEvent(
+  eventName: string,
+  params: AnalyticsParams = {},
+) {
+  return sendEvent(eventName, params) || queueRetryEvent(eventName, params);
 }
 
 function routeParams(context: { sourceKind?: string; sourcePath?: string } = {}) {
   return {
-    source: context.sourceKind,
+    source_kind: context.sourceKind,
     source_path: context.sourcePath,
-    source_section: context.sourceKind,
-    route: context.sourcePath,
   };
 }
 
-function contextualCtaEvent(sourceKind?: string) {
-  if (!sourceKind) {
-    return null;
+function trackOneShotLeadStage(
+  eventName: "lead_form_view" | "lead_form_start",
+  source: string,
+  sourcePath?: string,
+  visitId = "unscoped",
+) {
+  const params = routeParams({ sourceKind: source, sourcePath });
+  const deliveryKey = [eventName, visitId, JSON.stringify(cleanParams(params))].join(":");
+
+  if (deliveredOneShotEvents.has(deliveryKey)) {
+    deliveredOneShotEvents.delete(deliveryKey);
+    return true;
   }
 
-  if (sourceKind.includes("audit") || sourceKind.includes("fit_audit")) {
-    return "audit_cta_click";
+  if (sendEvent(eventName, params)) {
+    return true;
   }
 
-  if (sourceKind.includes("cost")) {
-    return "cost_page_cta_click";
-  }
-
-  if (sourceKind.startsWith("service:")) {
-    return "service_page_cta_click";
-  }
-
-  if (sourceKind.startsWith("case_study:") || sourceKind.includes("case_studies")) {
-    return "case_study_click";
-  }
-
-  return null;
+  queueRetryEvent(eventName, params, {
+    allowBeforeConsent: true,
+    deliveryKey,
+  });
+  return false;
 }
 
 export function trackCTA(
@@ -69,21 +176,12 @@ export function trackCTA(
   context: { sourceKind?: string; sourcePath?: string; ctaLabel?: string } = {},
 ) {
   const params = {
-    destination,
+    cta_destination: destination,
     ...routeParams(context),
     cta_label: context.ctaLabel,
   };
 
-  sendEvent("cta_click", params);
-  sendEvent(`cta_click_${destination}`, params);
-  sendEvent(`${destination}_click`, params);
-  sendEvent(`${destination}_clicked`, params);
-
-  const contextualEvent = contextualCtaEvent(context.sourceKind);
-
-  if (contextualEvent) {
-    sendEvent(contextualEvent, params);
-  }
+  sendOrQueueConsentedEvent("external_contact_click", params);
 }
 
 export function trackAnchorCTA(
@@ -98,38 +196,31 @@ export function trackAnchorCTA(
 ) {
   const params = {
     ...routeParams(context),
-    target: context.target,
+    cta_destination: context.target,
     cta_label: context.ctaLabel,
+    cta_kind: eventName,
     package_name: context.packageName,
   };
+  const analyticsEvent =
+    eventName === "package_cta_click" ? "package_browse_click" : "scope_review_cta_click";
 
-  sendEvent(eventName, params);
-
-  if (
-    eventName === "cta_click_fit_audit" ||
-    eventName === "cta_click_email_brief"
-  ) {
-    sendEvent("scope_review_cta_click", params);
-  }
-
-  if (eventName === "audit_cta_click") {
-    sendEvent("cta_click_fit_audit", params);
-  }
-
-  if (eventName === "case_study_click") {
-    sendEvent("cta_click_case_studies", params);
-  }
+  sendOrQueueConsentedEvent(analyticsEvent, params);
 }
 
-export function trackLeadFormView(source: string, sourcePath?: string) {
-  sendEvent("lead_form_view", routeParams({ sourceKind: source, sourcePath }));
+export function createLeadFormVisitId() {
+  return crypto.randomUUID();
 }
 
-export function trackLeadStart(source: string, sourcePath?: string) {
-  const params = routeParams({ sourceKind: source, sourcePath });
+export function trackLeadFormView(
+  source: string,
+  sourcePath?: string,
+  visitId?: string,
+) {
+  return trackOneShotLeadStage("lead_form_view", source, sourcePath, visitId);
+}
 
-  sendEvent("lead_form_start", params);
-  sendEvent("contact_form_started", params);
+export function trackLeadStart(source: string, sourcePath?: string, visitId?: string) {
+  return trackOneShotLeadStage("lead_form_start", source, sourcePath, visitId);
 }
 
 export function trackLeadSubmit(
@@ -138,11 +229,15 @@ export function trackLeadSubmit(
   details: AnalyticsParams = {},
   sourcePath?: string,
 ) {
-  const params = { ...routeParams({ sourceKind: source, sourcePath }), status, ...details };
+  const params = { ...routeParams({ sourceKind: source, sourcePath }), ...details };
+  const eventName = status === "success" ? "lead_form_submit_success" : "lead_form_submit_error";
 
-  sendEvent("lead_form_submit", params);
-  sendEvent(status === "success" ? "lead_form_submit_success" : "lead_form_submit_error", params);
-  sendEvent("contact_form_submitted", params);
+  if (sendEvent(eventName, params)) {
+    return true;
+  }
+
+  queueRetryEvent(eventName, params, { allowBeforeConsent: true });
+  return false;
 }
 
 export function trackPackageCtaClick(
@@ -154,8 +249,7 @@ export function trackPackageCtaClick(
     cta_label: context.ctaLabel,
   };
 
-  sendEvent("package_cta_click", params);
-  sendEvent("scope_review_cta_click", params);
+  sendOrQueueConsentedEvent("scope_review_cta_click", params);
 }
 
 export function trackLeadSelection(
@@ -180,27 +274,29 @@ export function trackLeadSelection(
         : undefined,
   };
 
-  sendEvent(eventName, params);
+  sendOrQueueConsentedEvent(eventName, params);
 }
 
 export function trackProofLinkClicked(
   context: { proofLabel: string; href: string; sourceKind?: string; sourcePath?: string },
 ) {
-  sendEvent("proof_link_clicked", {
+  sendOrQueueConsentedEvent("proof_link_clicked", {
     ...routeParams(context),
     proof_label: context.proofLabel,
-    target: context.href,
+    cta_destination: context.href,
   });
 }
 
 export function trackBlogView(slug: string) {
-  sendEvent("blog_view", { post_slug: slug });
+  const params = { post_slug: slug };
+
+  return sendOrQueueConsentedEvent("blog_view", params);
 }
 
 export function trackQuizAnswer(
   context: { questionNumber: number; answer: "yes" | "no"; sourcePath?: string },
 ) {
-  sendEvent("quiz_answer_click", {
+  sendOrQueueConsentedEvent("quiz_answer_click", {
     question_number: String(context.questionNumber),
     answer: context.answer,
     source_path: context.sourcePath,
@@ -210,7 +306,7 @@ export function trackQuizAnswer(
 export function trackQuizResult(
   context: { score: number; total: number; sourcePath?: string },
 ) {
-  sendEvent("quiz_result_view", {
+  sendOrQueueConsentedEvent("quiz_result_view", {
     score: String(context.score),
     total: String(context.total),
     source_path: context.sourcePath,
@@ -220,7 +316,7 @@ export function trackQuizResult(
 export function trackBlogCardClick(
   context: { slug: string; contentType: "blog" | "article"; sourcePath?: string },
 ) {
-  sendEvent("blog_card_click", {
+  sendOrQueueConsentedEvent("blog_card_click", {
     content_slug: context.slug,
     content_type: context.contentType,
     source_path: context.sourcePath,
@@ -228,7 +324,7 @@ export function trackBlogCardClick(
 }
 
 export function trackChecklistCopy(context: { templateId: string; templateTitle: string }) {
-  sendEvent("checklist_copy", {
+  sendOrQueueConsentedEvent("checklist_copy", {
     template_id: context.templateId,
     template_title: context.templateTitle,
   });
@@ -254,8 +350,11 @@ export function trackScrollDepth(slug: string) {
 
       if (entry?.isIntersecting && !fired) {
         fired = true;
-        sendEvent("article_read_depth", { post_slug: slug, depth: "80" });
-        sendEvent("blog_read", { post_slug: slug });
+        sendOrQueueConsentedEvent("article_read_depth", {
+          post_slug: slug,
+          depth: "80",
+        });
+        sendOrQueueConsentedEvent("blog_read", { post_slug: slug });
         observer.disconnect();
       }
     },

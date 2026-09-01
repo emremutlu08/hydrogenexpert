@@ -1,34 +1,37 @@
 # HydrogenExpert V1 Analytics Events
 
-Last updated: May 7, 2026
+Status: Active
+Last updated: 2026-09-01
+Owner: Agent
+Source of truth: `lib/analytics.ts`, `components/AnalyticsConsent.tsx`
 
 Central helper: `lib/analytics.ts`
 
-Google Analytics loads only when `getValidGaMeasurementId()` returns a non-placeholder measurement ID. Vercel Analytics and Speed Insights are loaded in `app/layout.tsx`.
+Google Analytics loads only on the Vercel production deployment, after `hydrogenexpert.analyticsConsent.v1` is explicitly set to `granted`, and when a valid measurement ID is configured. Vercel Analytics and Speed Insights remain the cookie-free baseline in `app/layout.tsx`.
 
 | Event name | Trigger | Payload fields | Used by |
 | --- | --- | --- | --- |
 | `page_view` | Vercel Analytics page view | Vercel-managed | `@vercel/analytics` |
-| `cta_click` | External CTA click | `destination`, `source`, `source_path` | `TrackedCTAButton` |
-| `cta_click_fit_audit` | Fit review form anchor click | `source`, `source_path`, `target` | `TrackedCTALink`, shared CTA |
-| `cta_click_linkedin` | LinkedIn CTA click | `destination`, `source`, `source_path` | `TrackedCTAButton` |
-| `cta_click_upwork` | Upwork CTA click | `destination`, `source`, `source_path` | `TrackedCTAButton` |
-| `cta_click_email_brief` | Email brief/form CTA click | `source`, `source_path`, `target` | `TrackedCTALink`, footer, quiz |
-| `cta_click_case_studies` | Case study CTA click via legacy helper | `source`, `source_path`, `target` | `trackAnchorCTA` |
-| `lead_form_view` | Lead form component mounts | `source`, `source_path` | `LeadCaptureForm` |
-| `lead_form_start` | Lead form submit begins | `source`, `source_path` | `LeadCaptureForm`, quiz email flow |
-| `lead_form_submit` | Lead form submit completes | `source`, `status`, qualification fields | `LeadCaptureForm`, quiz email flow |
-| `lead_form_submit_success` | Successful submit | `source`, `status`, qualification fields | `trackLeadSubmit` |
-| `lead_form_submit_error` | Failed submit | `source`, `status`, qualification fields | `trackLeadSubmit` |
+| `scope_review_cta_click` | Internal scope-review or package CTA click | `source_kind`, `source_path`, `cta_destination`, `package_name`, static CTA context | shared tracked links |
+| `external_contact_click` | LinkedIn or Upwork CTA click | `source_kind`, `source_path`, `cta_destination`, static CTA label | `TrackedCTAButton` |
+| `package_browse_click` | Navigation to the packages overview without contact intent | `source_kind`, `source_path`, `cta_destination`, `package_name`, static CTA context | homepage package link |
+| `lead_form_view` | The lead form enters the visible reading area, once | `source_kind`, `source_path` | `LeadCaptureForm` |
+| `lead_form_start` | First real focus/change/submit interaction, once | `source_kind`, `source_path` | `LeadCaptureForm`, quiz email flow |
+| `lead_form_submit_success` | Successful submit | `source_kind`, `source_path`, non-identifying qualification categories | `trackLeadSubmit` |
+| `lead_form_submit_error` | Failed submit | `source_kind`, `source_path`, non-identifying qualification categories | `trackLeadSubmit` |
 | `quiz_answer_click` | Quiz answer button click | `question_number`, `answer`, `source_path` | `QuizQuestion` |
 | `quiz_result_view` | Quiz result revealed | `score`, `total`, `source_path` | `HydrogenFitQuiz` |
 | `blog_card_click` | Blog or article card click | `content_slug`, `content_type`, `source_path` | `TrackedContentLink` |
 | `blog_view` | Blog post view | `post_slug` | `BlogAnalytics` |
 | `article_read_depth` | 80% blog-post marker intersects | `post_slug`, `depth` | `BlogAnalytics` |
 
-Compatibility events still emitted: `linkedin_click`, `upwork_click`, `audit_cta_click`, `case_study_click`, `cost_page_cta_click`, `service_page_cta_click`, and `blog_read`.
+`lead_form_submit_success` is the primary GA4 key event. Scope-review and external-contact clicks are micro-conversions. Package browsing remains a separate navigation event and is not counted as scope-review intent. Legacy duplicate CTA and lead-submit event names are not emitted.
+
+PII-free form view, form start, and terminal lead events that occur before the first privacy choice remain only in memory and flush once if analytics is later granted, including after client-side success navigation. Choosing necessary-only clears that queue, and explicitly denied interactions are not queued. When consent is already granted but the GA runtime is still loading, canonical CTA events and the initial blog view wait for the analytics-ready signal without a fixed timeout and flush once; CTA and blog interactions are not queued before consent.
 
 ## QA Notes
 
-- `tests/analytics-events.test.ts` covers external CTA events, email brief CTA, quiz events, content-card clicks, and lead success/error split events.
-- Event payloads are deliberately low-cardinality and avoid free-form message text.
+- `tests/analytics-consent.test.ts` covers fail-closed consent storage.
+- `tests/analytics-events.test.ts` covers consent gating, canonical CTA events, quiz/content events, and lead success/error split events.
+- Event payloads avoid names, emails, store URLs, message text, and other direct identifiers.
+- Preview and local deployments do not receive a Google Analytics measurement ID.

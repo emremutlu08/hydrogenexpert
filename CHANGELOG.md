@@ -15,6 +15,32 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## Unreleased
 
+- Date: 2026-09-01
+- PR: [#134 Add privacy-first analytics and automated reporting](https://github.com/emremutlu08/hydrogenexpert/pull/134)
+- Branch: `codex/privacy-first-analytics`
+- Deployment: The protected [Vercel branch preview](https://hydrogenexpert-git-codex-privacy-fi-54b95c-emremutlu8s-projects.vercel.app) passed; production follows the validated squash merge through the existing Git integration.
+- Summary:
+  - Added explicit `granted | denied` analytics consent, production-only GA loading, an accessible persistent privacy control, and a clean reload when consent is withdrawn.
+  - Replaced duplicate CTA and lead-submit events with the canonical PII-safe funnel contract, and made lead-form view/start events visibility and first-interaction based.
+  - Rebuilt `npm run report:traffic` to combine live GA4, Search Console, production health, anomaly, owned-lead, and PageSpeed/CrUX sources without manual JSON.
+  - Configured `lead_form_submit_success` as the GA4 key event, registered four reporting dimensions, and resubmitted the canonical sitemap in Bing Webmaster Tools.
+- Files changed:
+  - `components/AnalyticsConsent.tsx`
+  - `components/LeadCaptureForm.tsx`
+  - `lib/analytics.ts`
+  - `lib/analytics-consent.ts`
+  - `lib/analytics-config.ts`
+  - `lib/traffic-report.ts`
+  - `scripts/report-traffic.ts`
+  - `scripts/verify-internal-links.ts`
+  - privacy, cookie, analytics, deployment, report, and test documentation/files
+- Verification:
+  - `git diff --check`, lint, typecheck, content validation, Shopify claim audit, structured-data validation, commercial-launch validation, and strict traffic reporting with the explicit user-approved Supabase deferral flag: passed.
+  - `npm run test`: passed, 35 test files and 158 tests.
+  - Production-mode build passed with 76 routes generated; non-Supabase internal-link validation passed for 57 sitemap URLs and 80 internal URLs.
+  - Desktop/mobile browser QA confirmed zero GA requests before consent or after denial, single canonical interactions, clean withdrawal, accessible controls, and no mobile overflow.
+- Manual follow-up: Keep Supabase recovery and its `/blog`/`/feed.xml` failures deferred by user; require PageSpeed API access in the performance phase; activate the GA4 internal-traffic filter only after its IP rule is verified.
+
 - Date: 2026-08-31
 - PR: [#131 Update tsx to 4.23.13](https://github.com/emremutlu08/hydrogenexpert/pull/131)
 - Branch: `codex/update-tsx-4-23-13-20260831`

@@ -1,12 +1,17 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import { TurnstileField } from "@/components/TurnstileField";
 import { QuizQuestion } from "@/components/quiz/QuizQuestion";
 import { QuizResult } from "@/components/quiz/QuizResult";
 import { QuizScoreDisplay } from "@/components/quiz/QuizScoreDisplay";
-import { trackLeadStart, trackLeadSubmit, trackQuizResult } from "@/lib/analytics";
+import { useLeadFormViewTracking } from "@/components/useLeadFormViewTracking";
+import {
+  trackLeadStart,
+  trackLeadSubmit,
+  trackQuizResult,
+} from "@/lib/analytics";
 
 interface QuizItem {
   title: string;
@@ -20,6 +25,8 @@ interface HydrogenFitQuizProps {
 type AnswerValue = "yes" | "no" | null;
 
 const EMAIL_GATE_ID = "quiz-email-gate";
+const QUIZ_SOURCE_KIND = "hydrogen_quiz_result";
+const QUIZ_SOURCE_PATH = "/should-i-use-it";
 
 export function HydrogenFitQuiz({ questions }: HydrogenFitQuizProps) {
   const [answers, setAnswers] = useState<AnswerValue[]>(() => questions.map(() => null));
@@ -28,12 +35,34 @@ export function HydrogenFitQuiz({ questions }: HydrogenFitQuizProps) {
   const [email, setEmail] = useState("");
   const [confirmation, setConfirmation] = useState<string | null>(null);
   const [emailStatus, setEmailStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const hasTrackedEmailStart = useRef(false);
+  const emailGateRef = useRef<HTMLElement>(null);
+
+  const visitId = useLeadFormViewTracking({
+    elementRef: emailGateRef,
+    sourceKind: QUIZ_SOURCE_KIND,
+    sourcePath: QUIZ_SOURCE_PATH,
+    enabled: showResult,
+  });
+
+  useEffect(() => {
+    hasTrackedEmailStart.current = false;
+  }, [visitId]);
 
   const yesCount = useMemo(
     () => answers.filter((answer) => answer === "yes").length,
     [answers],
   );
   const allAnswered = answers.every((answer) => answer !== null);
+
+  function markEmailStart() {
+    if (
+      !hasTrackedEmailStart.current &&
+      trackLeadStart(QUIZ_SOURCE_KIND, QUIZ_SOURCE_PATH, visitId)
+    ) {
+      hasTrackedEmailStart.current = true;
+    }
+  }
 
   function handleAnswerChange(index: number, nextValue: "yes" | "no") {
     setAnswers((current) => current.map((value, valueIndex) => (valueIndex === index ? nextValue : value)));
@@ -61,7 +90,7 @@ export function HydrogenFitQuiz({ questions }: HydrogenFitQuizProps) {
 
     setEmailStatus("submitting");
     setConfirmation(null);
-    trackLeadStart("hydrogen_quiz_result");
+    markEmailStart();
 
     const formData = new FormData(event.currentTarget);
     formData.set("name", "Hydrogen quiz result");
@@ -90,7 +119,7 @@ export function HydrogenFitQuiz({ questions }: HydrogenFitQuizProps) {
       if (!response.ok || !payload.ok) {
         setEmailStatus("error");
         setConfirmation(payload.error || "Something went wrong. Please try again.");
-        trackLeadSubmit("hydrogen_quiz_result", "error");
+        trackLeadSubmit(QUIZ_SOURCE_KIND, "error", {}, QUIZ_SOURCE_PATH);
         return;
       }
 
@@ -98,11 +127,11 @@ export function HydrogenFitQuiz({ questions }: HydrogenFitQuizProps) {
       setConfirmation("Thanks. Your quiz summary was sent, and I will reply with a practical next step.");
       setEmail("");
       setWantsEmailSummary(false);
-      trackLeadSubmit("hydrogen_quiz_result", "success");
+      trackLeadSubmit(QUIZ_SOURCE_KIND, "success", {}, QUIZ_SOURCE_PATH);
     } catch {
       setEmailStatus("error");
       setConfirmation("Something went wrong. Please try again.");
-      trackLeadSubmit("hydrogen_quiz_result", "error");
+      trackLeadSubmit(QUIZ_SOURCE_KIND, "error", {}, QUIZ_SOURCE_PATH);
     }
   }
 
@@ -152,7 +181,11 @@ export function HydrogenFitQuiz({ questions }: HydrogenFitQuizProps) {
             emailAnchorId={EMAIL_GATE_ID}
           />
 
-          <section id={EMAIL_GATE_ID} className="card scroll-mt-32 space-y-5">
+          <section
+            ref={emailGateRef}
+            id={EMAIL_GATE_ID}
+            className="card scroll-mt-32 space-y-5"
+          >
             <div className="space-y-3">
               <p className="dna-kicker">Optional follow-up</p>
               <h2 className="subsection-title">Save this result for the email-summary flow</h2>
@@ -162,7 +195,13 @@ export function HydrogenFitQuiz({ questions }: HydrogenFitQuizProps) {
               </p>
             </div>
 
-            <form id="quiz-summary-form" className="space-y-4" onSubmit={handleEmailSubmit}>
+            <form
+              id="quiz-summary-form"
+              className="space-y-4"
+              onFocusCapture={markEmailStart}
+              onChange={markEmailStart}
+              onSubmit={handleEmailSubmit}
+            >
               <label className="flex items-start gap-3 text-sm leading-7 text-neutral-700">
                 <input
                   type="checkbox"
