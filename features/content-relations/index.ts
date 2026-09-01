@@ -1,4 +1,7 @@
 import type { TrafficLink } from "../traffic-foundation";
+import { COMMERCIAL_INTENT_OWNERS } from "../search-intent";
+
+const EXAMPLES_INTENT = COMMERCIAL_INTENT_OWNERS["/shopify-hydrogen-examples"];
 
 export interface ContentRelation {
   path: string;
@@ -35,7 +38,7 @@ export const CONTENT_RELATIONS = [
     persona: "merchant",
     intent: "evaluate",
     related: [
-      { href: "/shopify-hydrogen-examples", label: "Hydrogen examples", note: "Pattern directory with source links." },
+      { href: "/shopify-hydrogen-examples", label: EXAMPLES_INTENT.linkLabel, note: "Pattern directory with source links." },
       { href: "/news-on-shopify-hydrogen", label: "Hydrogen news", note: "Official updates translated into merchant impact." },
       { href: "/shopify-hydrogen-issues", label: "Issue library", note: "Symptom to fix index." },
       { href: "/shopify-hydrogen-templates", label: "Free templates", note: "Copyable launch and scope checklists." },
@@ -101,7 +104,7 @@ export const CONTENT_RELATIONS = [
     persona: "student",
     intent: "learn",
     related: [
-      { href: "/shopify-hydrogen-examples", label: "Hydrogen examples", note: "Study patterns after course lessons." },
+      { href: "/shopify-hydrogen-examples", label: EXAMPLES_INTENT.linkLabel, note: "Study patterns after course lessons." },
       { href: "/shopify-hydrogen-templates", label: "Templates", note: "Copy checklists for practice projects." },
       { href: "/what-is-hydrogen", label: "What is Hydrogen?", note: "Plain-English fundamentals." },
       { href: "/shopify-hydrogen-developer", label: "Developer service", note: "How production ownership differs from tutorials." },

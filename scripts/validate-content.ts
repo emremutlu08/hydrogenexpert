@@ -34,6 +34,7 @@ const trafficGapArticleRefreshDates: Partial<
   Record<(typeof trafficGapArticleSlugList)[number], string>
 > = {
   "shopify-hydrogen-seo-checklist": "2026-07-09T10:00:00+03:00",
+  "shopify-hydrogen-search-filters-product-discovery": "2026-09-01T10:00:00+03:00",
 };
 
 function fail(message: string) {

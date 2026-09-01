@@ -5,7 +5,7 @@ import type { ServicePackageBase } from "./base";
 
 export const SERVICE_SOURCE_METADATA = {
   "shopify-hydrogen-agency-alternative": {
-    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    lastVerified: "2026-09-01",
     claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
     sourceMap: [
       SOURCE_PACKS.hydrogenFundamentals,
@@ -15,7 +15,7 @@ export const SERVICE_SOURCE_METADATA = {
     ],
   },
   "headless-shopify-agency-alternative": {
-    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    lastVerified: "2026-09-01",
     claimTypes: ["official_shopify_fact", "commercial_opinion"],
     sourceMap: [
       SOURCE_PACKS.hydrogenFundamentals,
@@ -25,7 +25,7 @@ export const SERVICE_SOURCE_METADATA = {
     ],
   },
   "shopify-hydrogen-developer": {
-    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    lastVerified: "2026-09-01",
     claimTypes: [
       "official_shopify_fact",
       "emre_experience",
@@ -42,7 +42,7 @@ export const SERVICE_SOURCE_METADATA = {
     ],
   },
   "shopify-hydrogen-expert": {
-    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    lastVerified: "2026-09-01",
     claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
     sourceMap: [
       SOURCE_PACKS.hydrogenFundamentals,
@@ -53,7 +53,7 @@ export const SERVICE_SOURCE_METADATA = {
     ],
   },
   "shopify-hydrogen-experts": {
-    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    lastVerified: "2026-09-01",
     claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
     sourceMap: [
       SOURCE_PACKS.hydrogenFundamentals,
@@ -99,7 +99,7 @@ export const SERVICE_SOURCE_METADATA = {
     ],
   },
   "shopify-hydrogen-cost": {
-    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    lastVerified: "2026-09-01",
     claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
     sourceMap: [
       SOURCE_PACKS.hydrogenFundamentals,

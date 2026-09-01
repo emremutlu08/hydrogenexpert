@@ -4,6 +4,28 @@ Source: Search Console, 90 days to 2026-07-26, queries with at least 15 impressi
 This is a **diagnosis**, not an approved plan. The treatment depends on an open
 strategy question described below.
 
+## 2026-09-01 checkpoint
+
+The 90-day window ending 2026-08-30 was compared with the 2026-07-28 baseline.
+The measurement gate is still closed, so this checkpoint authorizes no redirect
+or consolidation.
+
+| Query | Baseline URLs | Current URLs | Intended owner | Status |
+|---|---:|---:|---|---|
+| `shopify hydrogen agency` | 10 | 12 | `/shopify-hydrogen-agency` | Owner absent; `/shopify-hydrogen-experts` leads. |
+| `hydrogen shopify agency` | 7 | 8 | `/shopify-hydrogen-agency` | Owner absent; `/headless-shopify-agency` leads. |
+| `shopify hydrogen agentur` | 6 | 6 | `/shopify-hydrogen-agency` | Owner absent. |
+| `shopify hydrogen services company` | 3 | 3 | `/shopify-hydrogen-agency` | Owner absent; `/services` leads. |
+| `headless shopify agency` | 1 | 1 | `/headless-shopify-agency` | Healthy control remains the sole owner. |
+
+If the same main-query result persists when the gate opens on 2026-09-05, it
+matches the consolidation condition: the intended agency owner is absent and
+the competing-URL count has not fallen by 30%. Any resulting consolidation must
+be a separate PR prepared from current `main`; old PR #99 remains reference only.
+The executable decision rule now lives in
+`features/search-intent/cannibalization-gate.ts` and is reported by
+`npm run seo:cannibalization`.
+
 ## The open question
 
 Two incompatible strategies address the same problem, and one of them is currently live.

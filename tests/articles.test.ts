@@ -91,12 +91,14 @@ describe("scheduled articles", () => {
 
     expect(article).toBeDefined();
     expect(article?.metaTitle).toBe(
-      "Shopify Hydrogen Developer vs Agency: How to Decide",
+      "Shopify Hydrogen Developer vs Agency: 7-Point Checklist",
     );
     expect(article?.metaDescription).toBe(
-      "Compare a senior Shopify Hydrogen developer with a full agency: scope, ownership, and risk — plus a decision checklist before you buy capacity.",
+      "Compare a senior Shopify Hydrogen developer with an agency across scope, ownership, SEO risk, QA, and post-launch support using a 7-point checklist.",
     );
-    expect(article?.h1).toBe("Shopify Hydrogen developer vs. agency: how to decide");
+    expect(article?.h1).toBe(
+      "Shopify Hydrogen developer vs. agency: a 7-point decision checklist",
+    );
     expect(article?.intro[0]).toContain("scope is already technical and defined");
 
     const comparison = article?.sections.find((section) => section.comparison)?.comparison;
@@ -154,11 +156,15 @@ describe("scheduled articles", () => {
       const expectedUpdatedAt =
         slug === "shopify-hydrogen-seo-checklist"
           ? SEO_CHECKLIST_REFRESH_DATE
-          : TRAFFIC_GAP_REFRESH_DATE;
+          : slug === "shopify-hydrogen-search-filters-product-discovery"
+            ? "2026-09-01T10:00:00+03:00"
+            : TRAFFIC_GAP_REFRESH_DATE;
       const expectedLastVerified =
         slug === "shopify-hydrogen-seo-checklist"
           ? SEO_CHECKLIST_SOURCE_LAST_VERIFIED
-          : "2026-05-27";
+          : slug === "shopify-hydrogen-search-filters-product-discovery"
+            ? "2026-09-01"
+            : "2026-05-27";
 
       expect(publicSlugs).toContain(slug);
       expect(article?.updatedAt).toBe(expectedUpdatedAt);
