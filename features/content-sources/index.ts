@@ -62,7 +62,7 @@ export const SOURCE_PACKS = {
     sourceType: "shopify_official",
     topic: "hydrogen",
     url: "https://shopify.dev/docs/storefronts/headless/hydrogen/fundamentals",
-    retrievedAt: SHOPIFY_CONTENT_LAST_VERIFIED,
+    retrievedAt: "2026-09-01",
     usedFor:
       "Hydrogen, React Router, custom storefront, and Oxygen positioning claims.",
   },
@@ -89,7 +89,7 @@ export const SOURCE_PACKS = {
     sourceType: "shopify_official",
     topic: "storefront_api",
     url: "https://shopify.dev/docs/storefronts/headless/getting-started/build-options",
-    retrievedAt: SHOPIFY_CONTENT_LAST_VERIFIED,
+    retrievedAt: "2026-09-01",
     usedFor:
       "Headless Shopify, Hydrogen, Hydrogen React, Headless channel, and Storefront API positioning claims.",
   },
@@ -296,7 +296,7 @@ export const SOURCE_PACKS = {
     sourceType: "shopify_official",
     topic: "storefront_api",
     url: "https://shopify.dev/docs/api/storefront/latest/input-objects/ProductFilter",
-    retrievedAt: "2026-05-23",
+    retrievedAt: "2026-09-01",
     usedFor:
       "Availability filter behavior and collection product filtering claims.",
   },
@@ -314,7 +314,7 @@ export const SOURCE_PACKS = {
     sourceType: "competitor_reference",
     topic: "product_discovery",
     url: "https://www.algolia.com/search-solutions/shopify/hydrogen",
-    retrievedAt: "2026-05-27",
+    retrievedAt: "2026-09-01",
     usedFor:
       "Hydrogen search, autocomplete, collection filters, and product discovery architecture context.",
   },
@@ -323,7 +323,7 @@ export const SOURCE_PACKS = {
     sourceType: "shopify_official",
     topic: "product_discovery",
     url: "https://help.shopify.com/en/manual/online-store/storefront-search/search-and-discovery-filters",
-    retrievedAt: "2026-05-27",
+    retrievedAt: "2026-09-01",
     usedFor:
       "Filter sources, behavior, limits, and custom storefront filter display claims.",
   },
@@ -332,7 +332,7 @@ export const SOURCE_PACKS = {
     sourceType: "shopify_official",
     topic: "seo",
     url: "https://shopify.dev/docs/storefronts/headless/hydrogen/seo",
-    retrievedAt: SEO_CHECKLIST_SOURCE_LAST_VERIFIED,
+    retrievedAt: "2026-09-01",
     usedFor:
       "Hydrogen metadata, canonical URL, JSON-LD, sitemap.xml, robots.txt, and Oxygen robots behavior claims.",
   },
@@ -1097,7 +1097,7 @@ export const ARTICLE_SOURCE_METADATA = {
     contentType: "evergreen_article",
   },
   "shopify-hydrogen-search-filters-product-discovery": {
-    lastVerified: "2026-05-27",
+    lastVerified: "2026-09-01",
     claimTypes: ["official_shopify_fact", "commercial_opinion", "emre_experience", "seo_hypothesis"],
     sourceMap: [
       SOURCE_PACKS.algoliaHydrogen,
@@ -1136,7 +1136,7 @@ export const ARTICLE_SOURCE_METADATA = {
     ],
   },
   "shopify-hydrogen-developer-vs-agency": {
-    lastVerified: "2026-05-27",
+    lastVerified: "2026-09-01",
     claimTypes: ["official_shopify_fact", "commercial_opinion", "emre_experience"],
     sourceMap: [
       SOURCE_PACKS.hydrogenFundamentals,

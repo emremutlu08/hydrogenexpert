@@ -3,6 +3,11 @@ export {};
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 
+import {
+  AGENCY_CANNIBALIZATION_GATE_DATE,
+  evaluateAgencyCannibalizationGate,
+} from "../features/search-intent/cannibalization-gate";
+
 /**
  * Counts how many distinct URLs compete for each tracked query in Search
  * Console, and diffs that against a saved baseline.
@@ -180,7 +185,7 @@ function formatDelta(current: number, previous: number | undefined) {
   return `${current} (${delta > 0 ? "+" : ""}${delta})`;
 }
 
-function render(snapshot: Snapshot, baseline: Snapshot | null) {
+function render(snapshot: Snapshot, baseline: Snapshot | null, asOfDate: string) {
   const lines: string[] = [];
   lines.push(`Cannibalization, ${snapshot.windowDays}-day window ending ${snapshot.capturedAt}`);
   lines.push(`Property ${snapshot.siteUrl}`);
@@ -228,6 +233,29 @@ function render(snapshot: Snapshot, baseline: Snapshot | null) {
     }
   }
 
+  const agencyResult = snapshot.results.find(
+    (result) => result.query === "shopify hydrogen agency",
+  );
+  const agencyBaseline = baseline?.results.find(
+    (result) => result.query === "shopify hydrogen agency",
+  );
+
+  if (agencyResult && agencyBaseline) {
+    const gate = evaluateAgencyCannibalizationGate({
+      asOfDate,
+      baselineUrlCount: agencyBaseline.urlCount,
+      currentUrlCount: agencyResult.urlCount,
+      ownerPresent: agencyResult.ownerPresent,
+    });
+    const urlCountDirection = gate.reductionRatio >= 0 ? "reduction" : "increase";
+    lines.push("");
+    lines.push(`Agency gate (${AGENCY_CANNIBALIZATION_GATE_DATE}): ${gate.decision.toUpperCase()}`);
+    lines.push(
+      `URL-count change: ${(Math.abs(gate.reductionRatio) * 100).toFixed(1)}% ${urlCountDirection} (${agencyBaseline.urlCount} -> ${agencyResult.urlCount}).`,
+    );
+    lines.push(gate.rationale);
+  }
+
   return lines.join("\n");
 }
 
@@ -254,7 +282,7 @@ async function main() {
     results,
   };
 
-  console.log(render(snapshot, readBaseline()));
+  console.log(render(snapshot, readBaseline(), isoDate(new Date())));
 
   if (save) {
     mkdirSync(dirname(BASELINE_PATH), { recursive: true });

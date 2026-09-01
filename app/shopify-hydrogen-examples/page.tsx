@@ -1,23 +1,27 @@
 import Link from "next/link";
 
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { CTASection } from "@/components/CTASection";
+import { IntentOwnershipSection } from "@/components/IntentOwnershipSection";
 import { JsonLd } from "@/components/JsonLd";
 import { PageIntroSection } from "@/components/PageIntroSection";
 import { RelatedLinks } from "@/components/RelatedLinks";
 import { SectionHeader } from "@/components/SectionHeader";
 import { getRelatedLinksForPath } from "@/features/content-relations";
 import { STATIC_PAGE_SOURCE_METADATA } from "@/features/content-sources";
+import { COMMERCIAL_INTENT_OWNERS } from "@/features/search-intent";
 import { HYDROGEN_EXAMPLES } from "@/features/traffic-foundation";
 import { getOgImageForRoute } from "@/lib/og-images";
 import { buildMetadata } from "@/lib/seo";
 import { OWNER, absoluteUrl, getSchemaIds } from "@/lib/site";
 import { asSchemaArray, buildBreadcrumbListSchema } from "@/lib/structured-data";
 
+const examplesIntent = COMMERCIAL_INTENT_OWNERS["/shopify-hydrogen-examples"];
+
 export const metadata = buildMetadata({
-  title: "Shopify Hydrogen Examples | Patterns, Sources & Takeaways",
-  description:
-    "A Shopify Hydrogen examples directory with source links, why each example matters, production takeaways, and related HydrogenExpert guides.",
-  path: "/shopify-hydrogen-examples",
+  title: examplesIntent.metaTitle,
+  description: examplesIntent.metaDescription,
+  path: examplesIntent.path,
   ogImage: absoluteUrl(getOgImageForRoute("/shopify-hydrogen-examples")),
 });
 
@@ -59,16 +63,18 @@ export default function ShopifyHydrogenExamplesPage() {
         <Breadcrumbs items={breadcrumbs} />
         <PageIntroSection
           eyebrow="Example directory"
-          title="Shopify Hydrogen examples worth studying before a build."
-          description="Ten practical Hydrogen examples and patterns, each tied to a source, a lesson, and the closest HydrogenExpert follow-up."
-          body="This page is not a generic inspiration gallery. It is a working reference map for routes, data, SEO, PDP state, collections, content models, deployment, and production judgment."
+          title={examplesIntent.heroTitle}
+          description={examplesIntent.heroDescription}
+          body={examplesIntent.heroBody}
           reviewedAt={pageSourceMetadata.lastVerified}
         />
+
+        <IntentOwnershipSection intentOwner={examplesIntent} />
 
         <section className="surface-card space-y-6">
           <SectionHeader
             eyebrow="Examples"
-            title="Source, takeaway, and related next step."
+            title={examplesIntent.offerTitle}
             description="Use these examples to learn what the pattern teaches, then follow the internal link when the pattern becomes a production requirement."
           />
           <div className="grid gap-5">
@@ -120,6 +126,13 @@ export default function ShopifyHydrogenExamplesPage() {
         </section>
 
         <RelatedLinks links={getRelatedLinksForPath("/shopify-hydrogen-examples")} />
+
+        <CTASection
+          headline={examplesIntent.cta.headline}
+          subtext={examplesIntent.cta.subtext}
+          sourceKind="intent:shopify-hydrogen-examples"
+          primaryLabel={examplesIntent.cta.primaryLabel}
+        />
       </div>
     </>
   );

@@ -1,37 +1,17 @@
 import type { ServicePackage } from "@/features/services/registry";
+import {
+  getCommercialIntentOwner,
+  isCommercialIntentPath,
+} from "@/features/search-intent";
 import { OWNER } from "@/lib/site";
 
 export function getServiceCta(service: ServicePackage) {
-  if (service.slug === "shopify-hydrogen-developer") {
-    return {
-      headline: "Need a senior Shopify Hydrogen developer?",
-      subtext:
-        "Send your current store URL and the commercial pressure behind the work. I will tell you whether senior Hydrogen development, scope review, Liquid cleanup, or no rebuild is the safer next step.",
-      primaryLabel: "Request Scope Review",
-      srOnly:
-        "Emre Mutlu provides senior Shopify Hydrogen development, audit, migration, SEO, and storefront optimization support for Shopify Plus and growth-stage brands.",
-    };
-  }
+  if (isCommercialIntentPath(service.pagePath)) {
+    const intentOwner = getCommercialIntentOwner(service.pagePath);
 
-  if (service.slug === "shopify-hydrogen-experts") {
     return {
-      headline: "Comparing Shopify Hydrogen experts?",
-      subtext:
-        "Send your current store URL, the expert or agency options you are comparing, and what feels risky about the rebuild. I will help you decide whether the safer next step is scope review, direct senior support, broader agency scope, Liquid cleanup, or no rebuild.",
-      primaryLabel: "Request Scope Review",
-      srOnly:
-        "Emre Mutlu helps Shopify Plus and growth-stage brands evaluate Shopify Hydrogen experts, production proof, migration risk, SEO, and implementation scope.",
-    };
-  }
-
-  if (service.slug === "shopify-hydrogen-expert") {
-    return {
-      headline: "Need one senior Shopify Hydrogen expert?",
-      subtext:
-        "Send your current store URL, what feels risky, and whether you are comparing an expert, agency, or internal build. I will help you decide whether direct senior support, scope review, Liquid cleanup, or no rebuild is the safer next step.",
-      primaryLabel: "Request Scope Review",
-      srOnly:
-        "Emre Mutlu provides senior Shopify Hydrogen expert support for custom storefront architecture, Storefront API work, SEO-safe migration, performance, and launch-risk review.",
+      ...intentOwner.cta,
+      srOnly: `${OWNER.name} provides senior Shopify Hydrogen support for ${intentOwner.intent.toLowerCase()}`,
     };
   }
 
@@ -65,17 +45,6 @@ export function getServiceCta(service: ServicePackage) {
       primaryLabel: "Request Scope Review",
       srOnly:
         "Emre Mutlu provides Liquid to Hydrogen migration planning, route mapping, SEO preservation, and senior storefront implementation support.",
-    };
-  }
-
-  if (service.slug === "shopify-hydrogen-cost") {
-    return {
-      headline: "Need to qualify a $2K-$5K first-build budget before scope expands?",
-      subtext:
-        "Send the current store URL, budget range, product count, design status, needed pages, and must-have features. I will tell you whether the project fits Starter, Standard, Growth, Custom, Liquid cleanup, or no rebuild.",
-      primaryLabel: "Request Scope Review",
-      srOnly:
-        "Emre Mutlu provides Shopify Hydrogen package pricing, scope review, rebuild planning, and senior storefront advisory for Shopify brands.",
     };
   }
 

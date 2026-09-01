@@ -5,19 +5,19 @@ import type { ArticleQualityRefresh } from "./shared";
 import { PUBLISH_DATE } from "./shared";
 
 export const draft = {
-  title: "Shopify Hydrogen Search, Filters, and Product Discovery Architecture",
+  title: "Shopify Hydrogen Search and Filters: Architecture Checklist",
   slug: "shopify-hydrogen-search-filters-product-discovery",
   description:
     "A product discovery guide for Hydrogen stores covering search, collection filters, Algolia, faceted navigation, merchandising, and SEO risk.",
   category: "Product Discovery",
   status: "published",
   publishAt: PUBLISH_DATE,
-  updatedAt: PUBLISH_DATE,
+  updatedAt: "2026-09-01T10:00:00+03:00",
   author: OWNER.name,
-  metaTitle: "Shopify Hydrogen Search and Filters | Product Discovery Guide",
+  metaTitle: "Shopify Hydrogen Search & Filters: Architecture Checklist",
   metaDescription:
-    "Plan Shopify Hydrogen search, collection filters, faceted navigation, Algolia, merchandising, and SEO-safe product discovery for large catalogs.",
-  h1: "Shopify Hydrogen search, filters, and product discovery architecture",
+    "Plan Shopify Hydrogen search, collection filters, faceted URLs, merchandising, and large-catalog product discovery with an architecture and QA checklist.",
+  h1: "Shopify Hydrogen search and filters: an architecture checklist",
   intro: [
     "Large-catalog Hydrogen work succeeds or fails on product discovery. Search, collection filters, sort rules, recommendations, merchandising, and SEO cannot be treated as separate widgets.",
     "The right architecture depends on catalog size, filter complexity, search tolerance, merchandiser control, and whether filtered views should be crawlable or purely shopper-facing.",
@@ -96,6 +96,7 @@ export const draft = {
 } as const satisfies Article;
 
 export const refresh = {
+  updatedAt: "2026-09-01T10:00:00+03:00",
   summary: [
     "Search and filtering in Hydrogen is a product-discovery architecture decision. Large catalogs need reliable indexing, crawlable collection routes, useful filters, merchandising rules, analytics, and performance budgets that survive real shopper behavior.",
     "Algolia or another search platform can help, but it does not decide the architecture by itself. The team still needs to decide which data is indexed, which filters are SEO-safe, which pages are crawlable, and how product discovery is measured.",

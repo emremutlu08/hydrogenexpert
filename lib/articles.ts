@@ -1,7 +1,11 @@
 import { cache } from "react";
 
 import { TRAFFIC_GAP_ARTICLES } from "../features/articles/traffic-gap";
+import { COMMERCIAL_INTENT_OWNERS } from "../features/search-intent";
 import { OWNER } from "./site";
+
+const DEVELOPER_INTENT = COMMERCIAL_INTENT_OWNERS["/shopify-hydrogen-developer"];
+const AGENCY_INTENT = COMMERCIAL_INTENT_OWNERS["/shopify-hydrogen-agency"];
 
 export const ARTICLE_CATEGORIES = [
   "Hiring",
@@ -155,19 +159,19 @@ const ARTICLES = [
     ],
   },
   {
-    title: "Shopify Hydrogen Developer vs Agency: How to Decide",
+    title: "Shopify Hydrogen Developer vs Agency: 7-Point Decision Checklist",
     slug: "shopify-hydrogen-developer-vs-agency",
     description:
       "A scope-based decision guide for choosing between a senior Shopify Hydrogen specialist and a full agency.",
     category: "Decision Guide",
     status: "scheduled",
     publishAt: "2026-05-11T10:00:00+03:00",
-    updatedAt: "2026-07-14T10:00:00+03:00",
+    updatedAt: "2026-09-01T10:00:00+03:00",
     author: OWNER.name,
-    metaTitle: "Shopify Hydrogen Developer vs Agency: How to Decide",
+    metaTitle: "Shopify Hydrogen Developer vs Agency: 7-Point Checklist",
     metaDescription:
-      "Compare a senior Shopify Hydrogen developer with a full agency: scope, ownership, and risk — plus a decision checklist before you buy capacity.",
-    h1: "Shopify Hydrogen developer vs. agency: how to decide",
+      "Compare a senior Shopify Hydrogen developer with an agency across scope, ownership, SEO risk, QA, and post-launch support using a 7-point checklist.",
+    h1: "Shopify Hydrogen developer vs. agency: a 7-point decision checklist",
     intro: [
       "If the scope is already technical and defined, and you want direct execution, a senior Shopify Hydrogen specialist is usually the better fit. If the work combines brand strategy, UX, content, project management, and QA across several stakeholders, an agency is usually the better fit.",
       "Start with a scope review when ownership is unclear. The right answer may also be a focused audit, a stronger Liquid path, or no rebuild rather than either delivery model.",
@@ -371,8 +375,8 @@ const ARTICLES = [
     conclusion:
       "Request a scope review before buying capacity. Share the current store, the outcome that must change, which brand and content inputs already exist, and who will own the storefront after launch; the next step can be a senior specialist, an agency brief, an audit, a Liquid improvement, or no rebuild.",
     links: [
-      { href: "/shopify-hydrogen-developer", label: "Explore direct senior Hydrogen implementation" },
-      { href: "/shopify-hydrogen-agency", label: "Shopify Hydrogen agency alternative" },
+      { href: "/shopify-hydrogen-developer", label: DEVELOPER_INTENT.linkLabel },
+      { href: "/shopify-hydrogen-agency", label: AGENCY_INTENT.linkLabel },
       {
         href: "/articles/how-to-hire-shopify-hydrogen-developer",
         label: "Use the Hydrogen developer hiring checklist",

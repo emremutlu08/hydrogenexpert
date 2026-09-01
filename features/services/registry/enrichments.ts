@@ -1,4 +1,10 @@
 import type { ServicePackageBase, ServicePageEnrichment } from "./base";
+import { COMMERCIAL_INTENT_OWNERS } from "../../search-intent";
+
+const DEVELOPER_INTENT = COMMERCIAL_INTENT_OWNERS["/shopify-hydrogen-developer"];
+const EXPERT_INTENT = COMMERCIAL_INTENT_OWNERS["/shopify-hydrogen-expert"];
+const EXPERTS_INTENT = COMMERCIAL_INTENT_OWNERS["/shopify-hydrogen-experts"];
+const COST_INTENT = COMMERCIAL_INTENT_OWNERS["/shopify-hydrogen-cost"];
 
 export const SERVICE_PAGE_ENRICHMENTS = {
   "shopify-hydrogen-agency-alternative": {
@@ -36,7 +42,7 @@ export const SERVICE_PAGE_ENRICHMENTS = {
       },
       {
         href: "/shopify-hydrogen-developer",
-        label: "Senior developer path",
+        label: DEVELOPER_INTENT.linkLabel,
         note: "Useful when stakeholders are comparing direct execution with agency delivery.",
       },
     ],
@@ -147,12 +153,12 @@ export const SERVICE_PAGE_ENRICHMENTS = {
       },
       {
         href: "/shopify-hydrogen-experts",
-        label: "Shopify Hydrogen experts",
+        label: EXPERTS_INTENT.linkLabel,
         note: "Use this when the buyer is comparing proof, expert claims, agencies, and direct senior support.",
       },
       {
         href: "/shopify-hydrogen-expert",
-        label: "Shopify Hydrogen expert",
+        label: EXPERT_INTENT.linkLabel,
         note: "Use this when the buyer wants direct senior ownership from one specialist.",
       },
       {
@@ -218,7 +224,7 @@ export const SERVICE_PAGE_ENRICHMENTS = {
       },
       {
         href: "/shopify-hydrogen-experts",
-        label: "Broader expert comparison",
+        label: EXPERTS_INTENT.linkLabel,
         note: "Use this when stakeholders are still comparing experts, agencies, and marketplace options.",
       },
       {
@@ -330,7 +336,7 @@ export const SERVICE_PAGE_ENRICHMENTS = {
       },
       {
         href: "/shopify-hydrogen-cost",
-        label: "Cost planning",
+        label: COST_INTENT.linkLabel,
         note: "Translate requirements into $2K-$5K package pricing.",
       },
     ],

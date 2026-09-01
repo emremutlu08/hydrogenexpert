@@ -1,6 +1,11 @@
 import Link from "next/link";
 
+import { IntentOwnershipSection as SharedIntentOwnershipSection } from "@/components/IntentOwnershipSection";
 import { SectionHeader } from "@/components/SectionHeader";
+import {
+  getCommercialIntentOwner,
+  isCommercialIntentPath,
+} from "@/features/search-intent";
 import type { ServicePackage } from "@/features/services/registry";
 
 function formatShortAnswerAudience(bestFor: string) {
@@ -69,6 +74,14 @@ export function ShortAnswerSection({ service }: { service: ServicePackage }) {
       </p>
     </section>
   );
+}
+
+export function IntentOwnershipSection({ service }: { service: ServicePackage }) {
+  if (!isCommercialIntentPath(service.pagePath)) {
+    return null;
+  }
+
+  return <SharedIntentOwnershipSection intentOwner={getCommercialIntentOwner(service.pagePath)} />;
 }
 
 export function ServiceInclusionSection({ service }: { service: ServicePackage }) {

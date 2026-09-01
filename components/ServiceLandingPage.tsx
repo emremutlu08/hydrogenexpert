@@ -9,6 +9,7 @@ import {
   ContextualProofSection,
   DecisionLogicSection,
   HireFitSection,
+  IntentOwnershipSection,
   OfferSnapshotSection,
   PricingRowsSection,
   ProofNotesSection,
@@ -110,10 +111,11 @@ export function ServiceLandingPage({ service }: ServiceLandingPageProps) {
           title={service.heroTitle}
           description={service.summary}
           body={service.commercialIntent}
-          reviewedAt="2026-05-25"
+          reviewedAt={service.lastVerified}
         />
 
         <ShortAnswerSection service={service} />
+        <IntentOwnershipSection service={service} />
         <PackageServiceSections service={service} />
         <DeveloperIntroSections service={service} />
         <ServiceInclusionSection service={service} />
