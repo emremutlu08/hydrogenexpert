@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import { TurnstileField } from "@/components/TurnstileField";
 import { QuizQuestion } from "@/components/quiz/QuizQuestion";
@@ -38,12 +38,16 @@ export function HydrogenFitQuiz({ questions }: HydrogenFitQuizProps) {
   const hasTrackedEmailStart = useRef(false);
   const emailGateRef = useRef<HTMLElement>(null);
 
-  useLeadFormViewTracking({
+  const visitId = useLeadFormViewTracking({
     elementRef: emailGateRef,
     sourceKind: QUIZ_SOURCE_KIND,
     sourcePath: QUIZ_SOURCE_PATH,
     enabled: showResult,
   });
+
+  useEffect(() => {
+    hasTrackedEmailStart.current = false;
+  }, [visitId]);
 
   const yesCount = useMemo(
     () => answers.filter((answer) => answer === "yes").length,
@@ -54,7 +58,7 @@ export function HydrogenFitQuiz({ questions }: HydrogenFitQuizProps) {
   function markEmailStart() {
     if (
       !hasTrackedEmailStart.current &&
-      trackLeadStart(QUIZ_SOURCE_KIND, QUIZ_SOURCE_PATH)
+      trackLeadStart(QUIZ_SOURCE_KIND, QUIZ_SOURCE_PATH, visitId)
     ) {
       hasTrackedEmailStart.current = true;
     }

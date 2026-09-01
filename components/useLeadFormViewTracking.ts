@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useRef, type RefObject } from "react";
+import { useEffect, useRef, useState, type RefObject } from "react";
 
 import {
   ANALYTICS_CONSENT_CHANGE_EVENT,
+  readEffectiveAnalyticsConsent,
 } from "@/lib/analytics-consent";
-import { trackLeadFormView } from "@/lib/analytics";
+import { createLeadFormVisitId, trackLeadFormView } from "@/lib/analytics";
 
 interface LeadFormViewTrackingOptions {
   elementRef: RefObject<HTMLElement | null>;
@@ -21,6 +22,7 @@ export function useLeadFormViewTracking({
   enabled = true,
 }: LeadFormViewTrackingOptions) {
   const viewedContexts = useRef(new Set<string>());
+  const [visitId, setVisitId] = useState(createLeadFormVisitId);
 
   useEffect(() => {
     const element = elementRef.current;
@@ -43,21 +45,37 @@ export function useLeadFormViewTracking({
       if (
         isVisible &&
         !viewedContexts.current.has(contextKey) &&
-        trackLeadFormView(sourceKind, sourcePath)
+        trackLeadFormView(sourceKind, sourcePath, visitId)
       ) {
         viewedContexts.current.add(contextKey);
         observer.disconnect();
       }
     }
 
+    function handleConsentChange(event: Event) {
+      const eventPreference =
+        typeof CustomEvent !== "undefined" && event instanceof CustomEvent
+          ? event.detail
+          : readEffectiveAnalyticsConsent();
+
+      if (eventPreference !== "granted") {
+        setVisitId(createLeadFormVisitId());
+        return;
+      }
+
+      trackVisibleForm();
+    }
+
     observer.observe(element);
-    window.addEventListener(ANALYTICS_CONSENT_CHANGE_EVENT, trackVisibleForm);
-    window.addEventListener("storage", trackVisibleForm);
+    window.addEventListener(ANALYTICS_CONSENT_CHANGE_EVENT, handleConsentChange);
+    window.addEventListener("storage", handleConsentChange);
 
     return () => {
       observer.disconnect();
-      window.removeEventListener(ANALYTICS_CONSENT_CHANGE_EVENT, trackVisibleForm);
-      window.removeEventListener("storage", trackVisibleForm);
+      window.removeEventListener(ANALYTICS_CONSENT_CHANGE_EVENT, handleConsentChange);
+      window.removeEventListener("storage", handleConsentChange);
     };
-  }, [elementRef, enabled, sourceKind, sourcePath]);
+  }, [elementRef, enabled, sourceKind, sourcePath, visitId]);
+
+  return visitId;
 }

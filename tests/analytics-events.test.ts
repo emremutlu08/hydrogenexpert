@@ -258,6 +258,24 @@ describe("canonical analytics events", () => {
     });
   });
 
+  it("tracks one-shot funnel stages once per mounted form visit", () => {
+    const gtag = setupAnalytics();
+
+    expect(trackLeadFormView("revisited_contact", "/contact", "visit-a")).toBe(true);
+    expect(trackLeadFormView("revisited_contact", "/contact", "visit-a")).toBe(true);
+    expect(trackLeadFormView("revisited_contact", "/contact", "visit-b")).toBe(true);
+    expect(trackLeadStart("revisited_contact", "/contact", "visit-a")).toBe(true);
+    expect(trackLeadStart("revisited_contact", "/contact", "visit-a")).toBe(true);
+    expect(trackLeadStart("revisited_contact", "/contact", "visit-b")).toBe(true);
+
+    expect(eventCalls(gtag).map((call) => call.eventName)).toEqual([
+      "lead_form_view",
+      "lead_form_view",
+      "lead_form_start",
+      "lead_form_start",
+    ]);
+  });
+
   it("delivers a pending terminal event once when consented analytics becomes ready", () => {
     const listeners = new Map<string, EventListener>();
     const gtag = vi.fn();

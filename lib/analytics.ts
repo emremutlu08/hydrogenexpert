@@ -112,7 +112,9 @@ function queueRetryEvent(
     return false;
   }
 
-  const key = [eventName, JSON.stringify(cleanParams(params))].join(":");
+  const key =
+    options.deliveryKey ??
+    [eventName, JSON.stringify(cleanParams(params))].join(":");
   pendingRetryEvents.set(key, { eventName, params, deliveryKey: options.deliveryKey });
 
   if (!retryListenerAttached) {
@@ -140,11 +142,13 @@ function trackOneShotLeadStage(
   eventName: "lead_form_view" | "lead_form_start",
   source: string,
   sourcePath?: string,
+  visitId = "unscoped",
 ) {
   const params = routeParams({ sourceKind: source, sourcePath });
-  const deliveryKey = [eventName, JSON.stringify(cleanParams(params))].join(":");
+  const deliveryKey = [eventName, visitId, JSON.stringify(cleanParams(params))].join(":");
 
   if (deliveredOneShotEvents.has(deliveryKey)) {
+    deliveredOneShotEvents.delete(deliveryKey);
     return true;
   }
 
@@ -200,12 +204,20 @@ export function trackAnchorCTA(
   }
 }
 
-export function trackLeadFormView(source: string, sourcePath?: string) {
-  return trackOneShotLeadStage("lead_form_view", source, sourcePath);
+export function createLeadFormVisitId() {
+  return crypto.randomUUID();
 }
 
-export function trackLeadStart(source: string, sourcePath?: string) {
-  return trackOneShotLeadStage("lead_form_start", source, sourcePath);
+export function trackLeadFormView(
+  source: string,
+  sourcePath?: string,
+  visitId?: string,
+) {
+  return trackOneShotLeadStage("lead_form_view", source, sourcePath, visitId);
+}
+
+export function trackLeadStart(source: string, sourcePath?: string, visitId?: string) {
+  return trackOneShotLeadStage("lead_form_start", source, sourcePath, visitId);
 }
 
 export function trackLeadSubmit(

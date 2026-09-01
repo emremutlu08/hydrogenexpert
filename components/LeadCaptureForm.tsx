@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 
 import {
@@ -52,11 +52,15 @@ export function LeadCaptureForm({
   const formSectionRef = useRef<HTMLElement>(null);
   const sourcePath = pathname || "/";
 
-  useLeadFormViewTracking({
+  const visitId = useLeadFormViewTracking({
     elementRef: formSectionRef,
     sourceKind,
     sourcePath,
   });
+
+  useEffect(() => {
+    hasTrackedStart.current = false;
+  }, [visitId]);
 
   const formClassName = useMemo(
     () =>
@@ -71,7 +75,7 @@ export function LeadCaptureForm({
       return;
     }
 
-    if (trackLeadStart(sourceKind, sourcePath)) {
+    if (trackLeadStart(sourceKind, sourcePath, visitId)) {
       hasTrackedStart.current = true;
     }
   }
