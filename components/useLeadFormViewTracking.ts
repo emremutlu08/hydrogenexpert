@@ -26,7 +26,7 @@ export function useLeadFormViewTracking({
 
   useEffect(() => {
     const element = elementRef.current;
-    const contextKey = `${sourceKind}:${sourcePath}`;
+    const contextKey = `${visitId}:${sourceKind}:${sourcePath}`;
 
     if (!enabled || !element || typeof IntersectionObserver === "undefined") {
       return;
