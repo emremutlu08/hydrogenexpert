@@ -16,6 +16,24 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 ## Unreleased
 
 - Date: 2026-09-01
+- PR: Pending
+- Branch: `codex/deps-tinyrainbow-3-1-1-20260901`
+- Deployment: Vercel preview validation is required before squash merge; production follows the validated merge through the existing Git integration without a separate manual deploy.
+- Summary:
+  - Updated the Vitest-only transitive `tinyrainbow` package from stable `3.1.0` to `3.1.1`; the release adds tree-shaking metadata and browser coverage without changing runtime source behavior.
+  - Limited the delta to one existing lockfile record without changing package count, peer requirements, deprecated packages, or install scripts.
+  - Deferred Next.js `16.3.4` because its required Sharp refresh currently adds a duplicate nested runtime record; also deferred the behavior-expanding `@alloc/quick-lru` minor, engine-incompatible `sanitize-html` `2.17.7`, and the broader Anthropic SDK `0.x` line.
+- Files changed:
+  - `package-lock.json`
+  - `CHANGELOG.md`
+- Verification:
+  - Node `24.20.0`, npm `11.18.0`, clean `npm ci`, `npm audit --audit-level=low`, full dependency-tree inspection, install-script review, and `git diff --check`: passed; audit reports 0 vulnerabilities.
+  - `npm run lint`, `npm run typecheck`, `npm run validate:content`, `npm run audit:shopify-claims`, commercial-launch validation, public-image validation, and structured-data validation: passed.
+  - `npm run test`: passed, 37 test files and 172 tests.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed with 76 static pages generated.
+- Manual follow-up: Re-evaluate Next.js `16.3.4` only when the Sharp chain can resolve without a duplicate runtime record.
+
+- Date: 2026-09-01
 - PR: [#134 Add privacy-first analytics and automated reporting](https://github.com/emremutlu08/hydrogenexpert/pull/134)
 - Branch: `codex/privacy-first-analytics`
 - Deployment: The protected [Vercel branch preview](https://hydrogenexpert-git-codex-privacy-fi-54b95c-emremutlu8s-projects.vercel.app) passed; production follows the validated squash merge through the existing Git integration.
