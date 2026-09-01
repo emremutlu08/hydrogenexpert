@@ -33,6 +33,7 @@ type PendingAnalyticsEvent = {
 
 const pendingRetryEvents = new Map<string, PendingAnalyticsEvent>();
 const deliveredOneShotEvents = new Set<string>();
+let pendingEventSequence = 0;
 let retryListenerAttached = false;
 let consentChangeListenerAttached = false;
 
@@ -114,7 +115,7 @@ function queueRetryEvent(
 
   const key =
     options.deliveryKey ??
-    [eventName, JSON.stringify(cleanParams(params))].join(":");
+    [eventName, String(++pendingEventSequence)].join(":");
   pendingRetryEvents.set(key, { eventName, params, deliveryKey: options.deliveryKey });
 
   if (!retryListenerAttached) {

@@ -153,6 +153,7 @@ describe("canonical analytics events", () => {
       value: "starter_2k",
     });
     trackQuizAnswer({ questionNumber: 1, answer: "yes", sourcePath: "/should-i-use-it" });
+    trackQuizAnswer({ questionNumber: 1, answer: "yes", sourcePath: "/should-i-use-it" });
     trackQuizResult({ score: 4, total: 5, sourcePath: "/should-i-use-it" });
     trackProofLinkClicked({
       proofLabel: "Case study",
@@ -169,10 +170,43 @@ describe("canonical analytics events", () => {
     expect(eventCalls(gtag).map((call) => call.eventName)).toEqual([
       "budget_selected",
       "quiz_answer_click",
+      "quiz_answer_click",
       "quiz_result_view",
       "proof_link_clicked",
       "blog_card_click",
       "checklist_copy",
+    ]);
+  });
+
+  it("preserves repeated terminal events queued before the consent choice", () => {
+    const listeners = new Map<string, EventListener>();
+    const gtag = vi.fn();
+    const localStorage = {
+      getItem: vi.fn<() => string | null>(() => null),
+      setItem: vi.fn(),
+    };
+    const windowStub = {
+      gtag: undefined as typeof gtag | undefined,
+      localStorage,
+      addEventListener: vi.fn((name: string, listener: EventListener) => {
+        listeners.set(name, listener);
+      }),
+      removeEventListener: vi.fn((name: string) => {
+        listeners.delete(name);
+      }),
+    };
+    vi.stubGlobal("window", windowStub);
+
+    expect(trackLeadSubmit("contact_page", "error", {}, "/contact")).toBe(false);
+    expect(trackLeadSubmit("contact_page", "error", {}, "/contact")).toBe(false);
+
+    localStorage.getItem.mockReturnValue("granted");
+    windowStub.gtag = gtag;
+    listeners.get(ANALYTICS_READY_EVENT)?.(new Event(ANALYTICS_READY_EVENT));
+
+    expect(eventCalls(gtag).map((call) => call.eventName)).toEqual([
+      "lead_form_submit_error",
+      "lead_form_submit_error",
     ]);
   });
 
