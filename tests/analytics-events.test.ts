@@ -132,6 +132,50 @@ describe("canonical analytics events", () => {
     );
   });
 
+  it("retries consented interaction events while the analytics runtime starts", () => {
+    const listeners = new Map<string, EventListener>();
+    const gtag = vi.fn();
+    const windowStub = {
+      gtag: undefined as typeof gtag | undefined,
+      localStorage: { getItem: vi.fn(() => "granted"), setItem: vi.fn() },
+      addEventListener: vi.fn((name: string, listener: EventListener) => {
+        listeners.set(name, listener);
+      }),
+      removeEventListener: vi.fn((name: string) => {
+        listeners.delete(name);
+      }),
+    };
+    vi.stubGlobal("window", windowStub);
+
+    trackLeadSelection("budget_selected", {
+      sourceKind: "contact_page",
+      sourcePath: "/contact",
+      value: "starter_2k",
+    });
+    trackQuizAnswer({ questionNumber: 1, answer: "yes", sourcePath: "/should-i-use-it" });
+    trackQuizResult({ score: 4, total: 5, sourcePath: "/should-i-use-it" });
+    trackProofLinkClicked({
+      proofLabel: "Case study",
+      href: "/case-studies/example",
+      sourceKind: "proof",
+      sourcePath: "/",
+    });
+    trackBlogCardClick({ slug: "example", contentType: "article", sourcePath: "/articles" });
+    trackChecklistCopy({ templateId: "launch", templateTitle: "Launch checklist" });
+
+    windowStub.gtag = gtag;
+    listeners.get(ANALYTICS_READY_EVENT)?.(new Event(ANALYTICS_READY_EVENT));
+
+    expect(eventCalls(gtag).map((call) => call.eventName)).toEqual([
+      "budget_selected",
+      "quiz_answer_click",
+      "quiz_result_view",
+      "proof_link_clicked",
+      "blog_card_click",
+      "checklist_copy",
+    ]);
+  });
+
   it("does not queue CTA events before analytics consent", () => {
     const gtag = vi.fn();
     const windowStub = {

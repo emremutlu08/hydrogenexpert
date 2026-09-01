@@ -131,6 +131,13 @@ function queueRetryEvent(
   return true;
 }
 
+function sendOrQueueConsentedEvent(
+  eventName: string,
+  params: AnalyticsParams = {},
+) {
+  return sendEvent(eventName, params) || queueRetryEvent(eventName, params);
+}
+
 function routeParams(context: { sourceKind?: string; sourcePath?: string } = {}) {
   return {
     source_kind: context.sourceKind,
@@ -173,9 +180,7 @@ export function trackCTA(
     cta_label: context.ctaLabel,
   };
 
-  if (!sendEvent("external_contact_click", params)) {
-    queueRetryEvent("external_contact_click", params);
-  }
+  sendOrQueueConsentedEvent("external_contact_click", params);
 }
 
 export function trackAnchorCTA(
@@ -198,9 +203,7 @@ export function trackAnchorCTA(
   const analyticsEvent =
     eventName === "package_cta_click" ? "package_browse_click" : "scope_review_cta_click";
 
-  if (!sendEvent(analyticsEvent, params)) {
-    queueRetryEvent(analyticsEvent, params);
-  }
+  sendOrQueueConsentedEvent(analyticsEvent, params);
 }
 
 export function createLeadFormVisitId() {
@@ -245,9 +248,7 @@ export function trackPackageCtaClick(
     cta_label: context.ctaLabel,
   };
 
-  if (!sendEvent("scope_review_cta_click", params)) {
-    queueRetryEvent("scope_review_cta_click", params);
-  }
+  sendOrQueueConsentedEvent("scope_review_cta_click", params);
 }
 
 export function trackLeadSelection(
@@ -272,13 +273,13 @@ export function trackLeadSelection(
         : undefined,
   };
 
-  sendEvent(eventName, params);
+  sendOrQueueConsentedEvent(eventName, params);
 }
 
 export function trackProofLinkClicked(
   context: { proofLabel: string; href: string; sourceKind?: string; sourcePath?: string },
 ) {
-  sendEvent("proof_link_clicked", {
+  sendOrQueueConsentedEvent("proof_link_clicked", {
     ...routeParams(context),
     proof_label: context.proofLabel,
     cta_destination: context.href,
@@ -288,17 +289,13 @@ export function trackProofLinkClicked(
 export function trackBlogView(slug: string) {
   const params = { post_slug: slug };
 
-  if (sendEvent("blog_view", params)) {
-    return true;
-  }
-
-  return queueRetryEvent("blog_view", params);
+  return sendOrQueueConsentedEvent("blog_view", params);
 }
 
 export function trackQuizAnswer(
   context: { questionNumber: number; answer: "yes" | "no"; sourcePath?: string },
 ) {
-  sendEvent("quiz_answer_click", {
+  sendOrQueueConsentedEvent("quiz_answer_click", {
     question_number: String(context.questionNumber),
     answer: context.answer,
     source_path: context.sourcePath,
@@ -308,7 +305,7 @@ export function trackQuizAnswer(
 export function trackQuizResult(
   context: { score: number; total: number; sourcePath?: string },
 ) {
-  sendEvent("quiz_result_view", {
+  sendOrQueueConsentedEvent("quiz_result_view", {
     score: String(context.score),
     total: String(context.total),
     source_path: context.sourcePath,
@@ -318,7 +315,7 @@ export function trackQuizResult(
 export function trackBlogCardClick(
   context: { slug: string; contentType: "blog" | "article"; sourcePath?: string },
 ) {
-  sendEvent("blog_card_click", {
+  sendOrQueueConsentedEvent("blog_card_click", {
     content_slug: context.slug,
     content_type: context.contentType,
     source_path: context.sourcePath,
@@ -326,7 +323,7 @@ export function trackBlogCardClick(
 }
 
 export function trackChecklistCopy(context: { templateId: string; templateTitle: string }) {
-  sendEvent("checklist_copy", {
+  sendOrQueueConsentedEvent("checklist_copy", {
     template_id: context.templateId,
     template_title: context.templateTitle,
   });
@@ -352,8 +349,11 @@ export function trackScrollDepth(slug: string) {
 
       if (entry?.isIntersecting && !fired) {
         fired = true;
-        sendEvent("article_read_depth", { post_slug: slug, depth: "80" });
-        sendEvent("blog_read", { post_slug: slug });
+        sendOrQueueConsentedEvent("article_read_depth", {
+          post_slug: slug,
+          depth: "80",
+        });
+        sendOrQueueConsentedEvent("blog_read", { post_slug: slug });
         observer.disconnect();
       }
     },
