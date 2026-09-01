@@ -1,12 +1,17 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import { TurnstileField } from "@/components/TurnstileField";
 import { QuizQuestion } from "@/components/quiz/QuizQuestion";
 import { QuizResult } from "@/components/quiz/QuizResult";
 import { QuizScoreDisplay } from "@/components/quiz/QuizScoreDisplay";
-import { trackLeadStart, trackLeadSubmit, trackQuizResult } from "@/lib/analytics";
+import {
+  trackLeadFormView,
+  trackLeadStart,
+  trackLeadSubmit,
+  trackQuizResult,
+} from "@/lib/analytics";
 
 interface QuizItem {
   title: string;
@@ -31,12 +36,39 @@ export function HydrogenFitQuiz({ questions }: HydrogenFitQuizProps) {
   const [confirmation, setConfirmation] = useState<string | null>(null);
   const [emailStatus, setEmailStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const hasTrackedEmailStart = useRef(false);
+  const hasTrackedEmailView = useRef(false);
+  const emailGateRef = useRef<HTMLElement>(null);
 
   const yesCount = useMemo(
     () => answers.filter((answer) => answer === "yes").length,
     [answers],
   );
   const allAnswered = answers.every((answer) => answer !== null);
+
+  useEffect(() => {
+    const section = emailGateRef.current;
+
+    if (!showResult || !section || typeof IntersectionObserver === "undefined") {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (
+          entries.some((entry) => entry.isIntersecting) &&
+          !hasTrackedEmailView.current &&
+          trackLeadFormView(QUIZ_SOURCE_KIND, QUIZ_SOURCE_PATH)
+        ) {
+          hasTrackedEmailView.current = true;
+          observer.disconnect();
+        }
+      },
+      { threshold: 0, rootMargin: "0px 0px -20% 0px" },
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, [showResult]);
 
   function markEmailStart() {
     if (
@@ -164,7 +196,11 @@ export function HydrogenFitQuiz({ questions }: HydrogenFitQuizProps) {
             emailAnchorId={EMAIL_GATE_ID}
           />
 
-          <section id={EMAIL_GATE_ID} className="card scroll-mt-32 space-y-5">
+          <section
+            ref={emailGateRef}
+            id={EMAIL_GATE_ID}
+            className="card scroll-mt-32 space-y-5"
+          >
             <div className="space-y-3">
               <p className="dna-kicker">Optional follow-up</p>
               <h2 className="subsection-title">Save this result for the email-summary flow</h2>
@@ -174,7 +210,13 @@ export function HydrogenFitQuiz({ questions }: HydrogenFitQuizProps) {
               </p>
             </div>
 
-            <form id="quiz-summary-form" className="space-y-4" onSubmit={handleEmailSubmit}>
+            <form
+              id="quiz-summary-form"
+              className="space-y-4"
+              onFocusCapture={markEmailStart}
+              onChange={markEmailStart}
+              onSubmit={handleEmailSubmit}
+            >
               <label className="flex items-start gap-3 text-sm leading-7 text-neutral-700">
                 <input
                   type="checkbox"
