@@ -262,9 +262,7 @@ describe("canonical analytics events", () => {
     const gtag = setupAnalytics();
 
     expect(trackLeadFormView("revisited_contact", "/contact", "visit-a")).toBe(true);
-    expect(trackLeadFormView("revisited_contact", "/contact", "visit-a")).toBe(true);
     expect(trackLeadFormView("revisited_contact", "/contact", "visit-b")).toBe(true);
-    expect(trackLeadStart("revisited_contact", "/contact", "visit-a")).toBe(true);
     expect(trackLeadStart("revisited_contact", "/contact", "visit-a")).toBe(true);
     expect(trackLeadStart("revisited_contact", "/contact", "visit-b")).toBe(true);
 

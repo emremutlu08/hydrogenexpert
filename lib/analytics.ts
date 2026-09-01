@@ -153,7 +153,6 @@ function trackOneShotLeadStage(
   }
 
   if (sendEvent(eventName, params)) {
-    deliveredOneShotEvents.add(deliveryKey);
     return true;
   }
 
