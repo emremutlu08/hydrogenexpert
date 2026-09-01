@@ -16,7 +16,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 ## Unreleased
 
 - Date: 2026-09-01
-- PR: Pending
+- PR: [#136 Update tinyrainbow to 3.1.1](https://github.com/emremutlu08/hydrogenexpert/pull/136)
 - Branch: `codex/deps-tinyrainbow-3-1-1-20260901`
 - Deployment: Vercel preview validation is required before squash merge; production follows the validated merge through the existing Git integration without a separate manual deploy.
 - Summary:
