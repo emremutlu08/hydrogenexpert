@@ -2,7 +2,7 @@ import {
   ANALYTICS_CONSENT_CHANGE_EVENT,
   ANALYTICS_READY_EVENT,
   hasAnalyticsConsent,
-  readAnalyticsConsent,
+  readEffectiveAnalyticsConsent,
 } from "./analytics-consent";
 
 type AnalyticsValue = string | null | undefined;
@@ -70,7 +70,7 @@ function clearPendingEventsAfterDenial(event?: Event) {
       ? event.detail
       : null;
 
-  if (eventPreference !== "denied" && readAnalyticsConsent() !== "denied") {
+  if (eventPreference !== "denied" && readEffectiveAnalyticsConsent() !== "denied") {
     return;
   }
 
@@ -103,7 +103,7 @@ function queueRetryEvent(
     return false;
   }
 
-  const preference = readAnalyticsConsent();
+  const preference = readEffectiveAnalyticsConsent();
 
   if (
     !hasAnalyticsConsent() &&

@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 
 import { TurnstileField } from "@/components/TurnstileField";
 import { QuizQuestion } from "@/components/quiz/QuizQuestion";
 import { QuizResult } from "@/components/quiz/QuizResult";
 import { QuizScoreDisplay } from "@/components/quiz/QuizScoreDisplay";
+import { useLeadFormViewTracking } from "@/components/useLeadFormViewTracking";
 import {
-  trackLeadFormView,
   trackLeadStart,
   trackLeadSubmit,
   trackQuizResult,
@@ -36,39 +36,20 @@ export function HydrogenFitQuiz({ questions }: HydrogenFitQuizProps) {
   const [confirmation, setConfirmation] = useState<string | null>(null);
   const [emailStatus, setEmailStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const hasTrackedEmailStart = useRef(false);
-  const hasTrackedEmailView = useRef(false);
   const emailGateRef = useRef<HTMLElement>(null);
+
+  useLeadFormViewTracking({
+    elementRef: emailGateRef,
+    sourceKind: QUIZ_SOURCE_KIND,
+    sourcePath: QUIZ_SOURCE_PATH,
+    enabled: showResult,
+  });
 
   const yesCount = useMemo(
     () => answers.filter((answer) => answer === "yes").length,
     [answers],
   );
   const allAnswered = answers.every((answer) => answer !== null);
-
-  useEffect(() => {
-    const section = emailGateRef.current;
-
-    if (!showResult || !section || typeof IntersectionObserver === "undefined") {
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (
-          entries.some((entry) => entry.isIntersecting) &&
-          !hasTrackedEmailView.current &&
-          trackLeadFormView(QUIZ_SOURCE_KIND, QUIZ_SOURCE_PATH)
-        ) {
-          hasTrackedEmailView.current = true;
-          observer.disconnect();
-        }
-      },
-      { threshold: 0, rootMargin: "0px 0px -20% 0px" },
-    );
-
-    observer.observe(section);
-    return () => observer.disconnect();
-  }, [showResult]);
 
   function markEmailStart() {
     if (

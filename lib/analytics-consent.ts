@@ -4,6 +4,8 @@ export const ANALYTICS_READY_EVENT = "hydrogenexpert:analytics-ready";
 
 export type AnalyticsConsentPreference = "granted" | "denied";
 
+let runtimeConsentPreference: AnalyticsConsentPreference | null = null;
+
 interface ConsentStorage {
   getItem(key: string): string | null;
   setItem(key: string, value: string): void;
@@ -39,7 +41,17 @@ export function writeAnalyticsConsent(
 }
 
 export function hasAnalyticsConsent() {
-  return readAnalyticsConsent() === "granted";
+  return readEffectiveAnalyticsConsent() === "granted";
+}
+
+export function readEffectiveAnalyticsConsent() {
+  return runtimeConsentPreference ?? readAnalyticsConsent();
+}
+
+export function setRuntimeAnalyticsConsent(
+  preference: AnalyticsConsentPreference | null,
+) {
+  runtimeConsentPreference = preference;
 }
 
 export function shouldReloadAfterConsentChange(
@@ -53,5 +65,5 @@ export function resolveAnalyticsConsentPreference(
   persisted: AnalyticsConsentPreference | null,
   inMemory: AnalyticsConsentPreference | null,
 ) {
-  return persisted ?? inMemory;
+  return inMemory ?? persisted;
 }

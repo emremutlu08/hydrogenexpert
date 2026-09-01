@@ -1,6 +1,9 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 
-import { ANALYTICS_READY_EVENT } from "../lib/analytics-consent";
+import {
+  ANALYTICS_READY_EVENT,
+  setRuntimeAnalyticsConsent,
+} from "../lib/analytics-consent";
 
 import {
   trackAnchorCTA,
@@ -39,7 +42,21 @@ function eventCalls(gtag: ReturnType<typeof vi.fn>) {
 
 describe("canonical analytics events", () => {
   afterEach(() => {
+    setRuntimeAnalyticsConsent(null);
     vi.unstubAllGlobals();
+  });
+
+  it("applies an unpersisted runtime choice consistently to event delivery", () => {
+    const gtag = setupAnalytics("denied");
+
+    setRuntimeAnalyticsConsent("granted");
+    expect(trackLeadStart("runtime_grant", "/contact")).toBe(true);
+
+    setRuntimeAnalyticsConsent("denied");
+    expect(trackLeadStart("runtime_denial", "/contact")).toBe(false);
+    expect(eventCalls(gtag).map((call) => call.eventName)).toEqual([
+      "lead_form_start",
+    ]);
   });
 
   it("does not emit events without granted analytics consent", () => {

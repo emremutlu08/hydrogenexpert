@@ -1,10 +1,9 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 
 import {
-  trackLeadFormView,
   trackLeadSelection,
   trackLeadStart,
   trackLeadSubmit,
@@ -25,6 +24,7 @@ import {
   parseLeadQualification,
 } from "@/lib/lead-qualification";
 import { TurnstileField } from "@/components/TurnstileField";
+import { useLeadFormViewTracking } from "@/components/useLeadFormViewTracking";
 
 interface LeadCaptureFormProps {
   sourceKind: string;
@@ -50,8 +50,13 @@ export function LeadCaptureForm({
   const [fallback, setFallback] = useState<LeadCaptureApiResponse["fallback"] | null>(null);
   const hasTrackedStart = useRef(false);
   const formSectionRef = useRef<HTMLElement>(null);
-  const viewedContexts = useRef(new Set<string>());
   const sourcePath = pathname || "/";
+
+  useLeadFormViewTracking({
+    elementRef: formSectionRef,
+    sourceKind,
+    sourcePath,
+  });
 
   const formClassName = useMemo(
     () =>
@@ -60,37 +65,6 @@ export function LeadCaptureForm({
         : "lead-form-grid lead-form-grid--paired",
     [compact],
   );
-
-  useEffect(() => {
-    const section = formSectionRef.current;
-    const contextKey = `${sourceKind}:${sourcePath}`;
-
-    if (!section || typeof IntersectionObserver === "undefined") {
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const isFormVisible = entries.some((entry) => entry.isIntersecting);
-
-        if (
-          isFormVisible &&
-          !viewedContexts.current.has(contextKey) &&
-          trackLeadFormView(sourceKind, sourcePath)
-        ) {
-          viewedContexts.current.add(contextKey);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0, rootMargin: "0px 0px -20% 0px" },
-    );
-
-    observer.observe(section);
-
-    return () => {
-      observer.disconnect();
-    };
-  }, [sourceKind, sourcePath]);
 
   function markFormStarted() {
     if (hasTrackedStart.current) {

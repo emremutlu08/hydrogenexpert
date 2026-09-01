@@ -8,6 +8,7 @@ import {
   ANALYTICS_READY_EVENT,
   readAnalyticsConsent,
   resolveAnalyticsConsentPreference,
+  setRuntimeAnalyticsConsent,
   shouldReloadAfterConsentChange,
   writeAnalyticsConsent,
   type AnalyticsConsentPreference,
@@ -100,6 +101,7 @@ export function AnalyticsConsent({ gaId }: AnalyticsConsentProps) {
   function choosePreference(nextPreference: AnalyticsConsentPreference) {
     const persisted = writeAnalyticsConsent(nextPreference);
 
+    setRuntimeAnalyticsConsent(persisted ? null : nextPreference);
     setInMemoryPreference(persisted ? null : nextPreference);
     window.dispatchEvent(
       new CustomEvent(ANALYTICS_CONSENT_CHANGE_EVENT, { detail: nextPreference }),

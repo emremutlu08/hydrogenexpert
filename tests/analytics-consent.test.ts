@@ -3,7 +3,9 @@ import { describe, expect, it, vi } from "vitest";
 import {
   ANALYTICS_CONSENT_STORAGE_KEY,
   readAnalyticsConsent,
+  readEffectiveAnalyticsConsent,
   resolveAnalyticsConsentPreference,
+  setRuntimeAnalyticsConsent,
   shouldReloadAfterConsentChange,
   writeAnalyticsConsent,
 } from "../lib/analytics-consent";
@@ -55,6 +57,23 @@ describe("analytics consent storage", () => {
   it("uses an in-memory privacy choice when storage is unavailable", () => {
     expect(resolveAnalyticsConsentPreference(null, "denied")).toBe("denied");
     expect(resolveAnalyticsConsentPreference(null, "granted")).toBe("granted");
-    expect(resolveAnalyticsConsentPreference("denied", "granted")).toBe("denied");
+    expect(resolveAnalyticsConsentPreference("denied", "granted")).toBe("granted");
+    expect(resolveAnalyticsConsentPreference("granted", "denied")).toBe("denied");
+  });
+
+  it("uses the latest runtime choice when persistence fails", () => {
+    vi.stubGlobal("window", {
+      localStorage: { getItem: vi.fn(() => "granted"), setItem: vi.fn() },
+    });
+
+    setRuntimeAnalyticsConsent("denied");
+    expect(readEffectiveAnalyticsConsent()).toBe("denied");
+
+    setRuntimeAnalyticsConsent("granted");
+    expect(readEffectiveAnalyticsConsent()).toBe("granted");
+
+    setRuntimeAnalyticsConsent(null);
+    expect(readEffectiveAnalyticsConsent()).toBe("granted");
+    vi.unstubAllGlobals();
   });
 });
