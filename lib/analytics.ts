@@ -64,8 +64,13 @@ function detachRetryListeners() {
   }
 }
 
-function clearPendingEventsAfterDenial() {
-  if (readAnalyticsConsent() !== "denied") {
+function clearPendingEventsAfterDenial(event?: Event) {
+  const eventPreference =
+    typeof CustomEvent !== "undefined" && event instanceof CustomEvent
+      ? event.detail
+      : null;
+
+  if (eventPreference !== "denied" && readAnalyticsConsent() !== "denied") {
     return;
   }
 
@@ -148,10 +153,11 @@ function trackOneShotLeadStage(
     return true;
   }
 
-  return queueRetryEvent(eventName, params, {
+  queueRetryEvent(eventName, params, {
     allowBeforeConsent: true,
     deliveryKey,
   });
+  return false;
 }
 
 export function trackCTA(

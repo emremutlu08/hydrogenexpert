@@ -7,6 +7,7 @@ import {
   ANALYTICS_CONSENT_CHANGE_EVENT,
   ANALYTICS_READY_EVENT,
   readAnalyticsConsent,
+  resolveAnalyticsConsentPreference,
   shouldReloadAfterConsentChange,
   writeAnalyticsConsent,
   type AnalyticsConsentPreference,
@@ -53,10 +54,16 @@ function updateGoogleConsent(preference: AnalyticsConsentPreference) {
 }
 
 export function AnalyticsConsent({ gaId }: AnalyticsConsentProps) {
-  const preference = useSyncExternalStore(
+  const persistedPreference = useSyncExternalStore(
     subscribeToConsent,
     readAnalyticsConsent,
     getConsentServerSnapshot,
+  );
+  const [inMemoryPreference, setInMemoryPreference] =
+    useState<AnalyticsConsentPreference | null>(null);
+  const preference = resolveAnalyticsConsentPreference(
+    persistedPreference,
+    inMemoryPreference,
   );
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const previousPreferenceRef = useRef<AnalyticsConsentPreference | null>(null);
@@ -76,7 +83,7 @@ export function AnalyticsConsent({ gaId }: AnalyticsConsentProps) {
   }, [preference]);
 
   useEffect(() => {
-    if (preference !== "granted") {
+    if (preference !== "granted" || !gaId) {
       return;
     }
 
@@ -88,11 +95,15 @@ export function AnalyticsConsent({ gaId }: AnalyticsConsentProps) {
     }, 250);
 
     return () => window.clearInterval(interval);
-  }, [preference]);
+  }, [gaId, preference]);
 
   function choosePreference(nextPreference: AnalyticsConsentPreference) {
-    writeAnalyticsConsent(nextPreference);
-    window.dispatchEvent(new Event(ANALYTICS_CONSENT_CHANGE_EVENT));
+    const persisted = writeAnalyticsConsent(nextPreference);
+
+    setInMemoryPreference(persisted ? null : nextPreference);
+    window.dispatchEvent(
+      new CustomEvent(ANALYTICS_CONSENT_CHANGE_EVENT, { detail: nextPreference }),
+    );
     setIsSettingsOpen(false);
     updateGoogleConsent(nextPreference);
   }

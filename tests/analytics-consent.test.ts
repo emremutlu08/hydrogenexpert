@@ -3,6 +3,7 @@ import { describe, expect, it, vi } from "vitest";
 import {
   ANALYTICS_CONSENT_STORAGE_KEY,
   readAnalyticsConsent,
+  resolveAnalyticsConsentPreference,
   shouldReloadAfterConsentChange,
   writeAnalyticsConsent,
 } from "../lib/analytics-consent";
@@ -49,5 +50,11 @@ describe("analytics consent storage", () => {
     expect(shouldReloadAfterConsentChange(null, "denied")).toBe(false);
     expect(shouldReloadAfterConsentChange("denied", "denied")).toBe(false);
     expect(shouldReloadAfterConsentChange("granted", "granted")).toBe(false);
+  });
+
+  it("uses an in-memory privacy choice when storage is unavailable", () => {
+    expect(resolveAnalyticsConsentPreference(null, "denied")).toBe("denied");
+    expect(resolveAnalyticsConsentPreference(null, "granted")).toBe("granted");
+    expect(resolveAnalyticsConsentPreference("denied", "granted")).toBe("denied");
   });
 });

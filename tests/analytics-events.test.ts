@@ -301,8 +301,8 @@ describe("canonical analytics events", () => {
     };
     vi.stubGlobal("window", windowStub);
 
-    expect(trackLeadFormView("contact_navigation", "/contact")).toBe(true);
-    expect(trackLeadStart("contact_navigation", "/contact")).toBe(true);
+    expect(trackLeadFormView("contact_navigation", "/contact")).toBe(false);
+    expect(trackLeadStart("contact_navigation", "/contact")).toBe(false);
     expect(trackLeadSubmit("contact_navigation", "success", {}, "/contact")).toBe(false);
 
     localStorage.getItem.mockReturnValue("granted");
@@ -339,8 +339,8 @@ describe("canonical analytics events", () => {
     };
     vi.stubGlobal("window", windowStub);
 
-    expect(trackLeadFormView("denied_contact", "/contact")).toBe(true);
-    expect(trackLeadStart("denied_contact", "/contact")).toBe(true);
+    expect(trackLeadFormView("denied_contact", "/contact")).toBe(false);
+    expect(trackLeadStart("denied_contact", "/contact")).toBe(false);
 
     localStorage.getItem.mockReturnValue("denied");
     listeners.get("storage")?.(new Event("storage"));
@@ -353,6 +353,13 @@ describe("canonical analytics events", () => {
       ANALYTICS_READY_EVENT,
       expect.any(Function),
     );
+
+    expect(trackLeadFormView("denied_contact", "/contact")).toBe(true);
+    expect(trackLeadStart("denied_contact", "/contact")).toBe(true);
+    expect(eventCalls(gtag).map((call) => call.eventName)).toEqual([
+      "lead_form_view",
+      "lead_form_start",
+    ]);
   });
 
   it("keeps useful content and qualification events singular and PII-free", () => {

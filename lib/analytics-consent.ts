@@ -48,3 +48,10 @@ export function shouldReloadAfterConsentChange(
 ) {
   return previous === "granted" && next !== "granted";
 }
+
+export function resolveAnalyticsConsentPreference(
+  persisted: AnalyticsConsentPreference | null,
+  inMemory: AnalyticsConsentPreference | null,
+) {
+  return persisted ?? inMemory;
+}
