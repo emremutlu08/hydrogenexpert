@@ -18,7 +18,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 - Date: 2026-09-01
 - PR: [#136 Update tinyrainbow to 3.1.1](https://github.com/emremutlu08/hydrogenexpert/pull/136)
 - Branch: `codex/deps-tinyrainbow-3-1-1-20260901`
-- Deployment: Vercel preview validation is required before squash merge; production follows the validated merge through the existing Git integration without a separate manual deploy.
+- Deployment: The protected [Vercel branch preview](https://hydrogenexpert-64338w2xr-emremutlu8s-projects.vercel.app) passed; production follows the validated squash merge through the existing Git integration without a separate manual deploy.
 - Summary:
   - Updated the Vitest-only transitive `tinyrainbow` package from stable `3.1.0` to `3.1.1`; the release adds tree-shaking metadata and browser coverage without changing runtime source behavior.
   - Limited the delta to one existing lockfile record without changing package count, peer requirements, deprecated packages, or install scripts.
