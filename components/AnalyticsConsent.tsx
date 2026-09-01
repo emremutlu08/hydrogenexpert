@@ -77,11 +77,17 @@ export function AnalyticsConsent({ gaId }: AnalyticsConsentProps) {
     if (preference !== "granted") {
       updateGoogleConsent("denied");
 
-      if (shouldReloadAfterConsentChange(previousPreference, preference)) {
+      if (
+        shouldReloadAfterConsentChange(
+          previousPreference,
+          preference,
+          inMemoryPreference === null,
+        )
+      ) {
         window.location.reload();
       }
     }
-  }, [preference]);
+  }, [inMemoryPreference, preference]);
 
   useEffect(() => {
     if (preference !== "granted" || !gaId) {

@@ -57,8 +57,9 @@ export function setRuntimeAnalyticsConsent(
 export function shouldReloadAfterConsentChange(
   previous: AnalyticsConsentPreference | null,
   next: AnalyticsConsentPreference | null,
+  isDurable = true,
 ) {
-  return previous === "granted" && next !== "granted";
+  return isDurable && previous === "granted" && next !== "granted";
 }
 
 export function resolveAnalyticsConsentPreference(

@@ -52,6 +52,7 @@ describe("analytics consent storage", () => {
     expect(shouldReloadAfterConsentChange(null, "denied")).toBe(false);
     expect(shouldReloadAfterConsentChange("denied", "denied")).toBe(false);
     expect(shouldReloadAfterConsentChange("granted", "granted")).toBe(false);
+    expect(shouldReloadAfterConsentChange("granted", "denied", false)).toBe(false);
   });
 
   it("uses an in-memory privacy choice when storage is unavailable", () => {
