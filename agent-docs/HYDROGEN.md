@@ -17,7 +17,7 @@ This file captures implementation rules for the HydrogenExpert Next.js site.
 - Hosting: Vercel.
 - Data: Supabase for posts, leads, and durable rate limiting.
 - Security: shared helpers in `lib/security.ts` plus headers in `next.config.ts`.
-- Node runtime: Vercel is configured for Node 24.x; GitHub scheduled validation uses Node 24; `package.json` allows Node `>=22 <25` so local Node 22 development remains supported while deployment stays on the Node 24 line.
+- Node runtime: Vercel is configured for Node 24.x; GitHub scheduled validation uses Node 24; `package.json` allows Node `>=22.12 <25` so supported local Node 22 development can load the ESM-only parser used by `sanitize-html` while deployment stays on the Node 24 line.
 
 Use `package.json` for exact versions.
 
@@ -58,7 +58,7 @@ Use `package.json` for exact scripts. Current important scripts include:
 - The 2026-08-25 safe refresh moved `@supabase/supabase-js` and its five aligned client packages from `2.112.3` to `2.112.4` while keeping the Node `>=22.0.0` requirement and install-script set unchanged.
 - The 2026-08-26 security refresh moved Next.js, `@next/third-parties`, and `eslint-config-next` from `16.3.2` to stable `16.3.3` to include the official critical RCE fixes for Windows-hosted servers and AVIF image optimization.
 - The 2026-08-31 safe tooling refresh moved `tsx` from `4.23.12` to `4.23.13` to bound the shared transform cache without changing its Node `>=18.0.0` or `esbuild ~0.28.0` compatibility boundary.
-- Keep `sanitize-html` at `2.17.5` until the declared Node range is compatible with its newer `>=22.12.0` engine requirement.
+- The 2026-09-02 security refresh moved `sanitize-html` from `2.17.5` to `2.17.7` and narrowed the supported Node range from `>=22 <25` to `>=22.12 <25` so the ESM-only `htmlparser2` 12 parser loads without flags. The patch clears the SVG animation URL-scheme bypass advisory and includes the parser-level raw-text security fixes from `2.17.6`.
 - Keep deferring the newer `@anthropic-ai/sdk` 0.x minor line for a separate compatibility review.
 
 ## Implementation Rules
