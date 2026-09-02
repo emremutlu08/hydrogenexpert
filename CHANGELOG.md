@@ -15,6 +15,26 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## Unreleased
 
+- Date: 2026-09-02
+- PR: [#137 Update sanitize-html to 2.17.7](https://github.com/emremutlu08/hydrogenexpert/pull/137)
+- Branch: `codex/sanitize-html-security-2-17-7-20260902`
+- Deployment: Vercel preview validation is required before squash merge; production follows the validated merge through the existing Git integration without a separate manual deploy.
+- Summary:
+  - Updated stable `sanitize-html` from `2.17.5` to `2.17.7` to clear the moderate SVG animation URL-scheme bypass advisory and include the parser-level raw-text security fixes from `2.17.6`.
+  - Narrowed the supported Node range from `>=22 <25` to `>=22.12 <25`, matching the first Node 22 release that can load the ESM-only `htmlparser2` 12 parser without flags.
+  - Accepted the expected six-record parser-chain expansion; runtime dependencies have no duplicate versions, deprecated packages, peer problems, or new install scripts.
+- Files changed:
+  - `package.json`
+  - `package-lock.json`
+  - `agent-docs/HYDROGEN.md`
+  - `CHANGELOG.md`
+- Verification:
+  - Node `24.20.0`, npm `11.18.0`, clean `npm ci`, `npm audit --audit-level=low`, full dependency-tree inspection, install-script review, and `git diff --check`: passed; audit reports 0 vulnerabilities.
+  - Node `22.12.0` minimum-runtime import and sanitizer smoke test, lint, typecheck, content validation, Shopify claim audit, commercial-launch validation, public-image validation, and structured-data validation: passed.
+  - `npm run test`: passed, 37 test files and 172 tests.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed with 76 static pages generated.
+- Manual follow-up: Keep Next.js `16.3.4`, Supabase `2.113.0`, broader transitive refreshes, and the Anthropic SDK `0.x` line in separate compatibility reviews.
+
 - Date: 2026-09-01
 - PR: [#136 Update tinyrainbow to 3.1.1](https://github.com/emremutlu08/hydrogenexpert/pull/136)
 - Branch: `codex/deps-tinyrainbow-3-1-1-20260901`
