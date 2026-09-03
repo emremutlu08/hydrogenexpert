@@ -16,6 +16,28 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 ## Unreleased
 
 - Date: 2026-09-03
+- PR: [#139 Restore blog resilience during source outages](https://github.com/emremutlu08/hydrogenexpert/pull/139)
+- Branch: `codex/blog-source-outage-resilience-20260901`
+- Deployment: Vercel preview validation is required before squash merge; production follows the validated merge through the existing Git integration.
+- Summary:
+  - Kept `/blog` useful during published-post source outages with an honest noindex/follow fallback that links to the repository-backed `/articles` library.
+  - Prevented empty HTTP 200 RSS output by using the existing explicit HTTP 503 no-store degraded contract when the source is unavailable or returns no posts.
+  - Added a credential-free publish-health verifier for `/blog`, `/feed.xml`, `/robots.txt`, `/sitemap.xml`, and `/llms-full.txt`, with representative discovery entries required exactly once.
+- Files changed:
+  - `app/blog/page.tsx`
+  - `app/feed.xml/route.ts`
+  - `scripts/verify-publish-health.ts`
+  - `tests/blog-publish-resilience.test.tsx`
+  - `tests/publish-health-verifier.test.ts`
+  - `package.json`
+  - `CHANGELOG.md`
+- Verification:
+  - `git diff --check`, lint, typecheck, content validation, Shopify claim audit, and the production-mode build: passed.
+  - `npm run test`: passed, 39 test files and 181 tests.
+  - Claude Code final changed-file review: `FINAL PASS`.
+- Manual follow-up: Verify the branch preview and post-merge production endpoints with `npm run verify:publish-health -- --base-url <origin>`.
+
+- Date: 2026-09-03
 - PR: [#138 Update Supabase client to 2.114.0](https://github.com/emremutlu08/hydrogenexpert/pull/138)
 - Branch: `codex/supabase-2-114-0-20260903`
 - Deployment: Vercel preview validation is required before squash merge; production follows the validated merge through the existing Git integration without a separate manual deploy.

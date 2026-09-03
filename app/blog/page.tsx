@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -13,12 +14,24 @@ import { getPublishedPostListResult } from "@/lib/posts";
 import { absoluteUrl } from "@/lib/site";
 import { buildBreadcrumbListSchema } from "@/lib/structured-data";
 
-export const metadata = buildMetadata({
+const BLOG_METADATA = {
   title: "Shopify Hydrogen Blog | Production Notes by Emre Mutlu",
   description:
     "Personal production notes, implementation lessons, and first-hand Shopify Hydrogen observations from real storefront work.",
   path: "/blog",
-});
+} as const;
+
+export async function generateMetadata(): Promise<Metadata> {
+  const postResult = await getPublishedPostListResult();
+
+  return buildMetadata({
+    ...BLOG_METADATA,
+    robots:
+      postResult.status === "source_unavailable"
+        ? { index: false, follow: true }
+        : undefined,
+  });
+}
 
 export const revalidate = 60;
 
@@ -50,9 +63,65 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
   const params = await searchParams;
   const currentPage = Math.max(1, Number.parseInt(params.page ?? "1", 10) || 1);
   const postResult = await getPublishedPostListResult();
+  const breadcrumbs = [
+    { label: "Home", href: "/" },
+    { label: "Blog", href: "/blog" },
+  ] as const;
+  const breadcrumbSchema = buildBreadcrumbListSchema(
+    breadcrumbs.map((item) => ({
+      name: item.label,
+      url: absoluteUrl(item.href),
+    })),
+  );
 
   if (postResult.status === "source_unavailable") {
-    throw new Error(postResult.error);
+    return (
+      <>
+        <JsonLd data={breadcrumbSchema} />
+        <div className="page-shell">
+          <Breadcrumbs items={breadcrumbs} />
+          <PageIntroSection
+            eyebrow="Production notes"
+            title="Shopify Hydrogen Blog"
+            description="Personal production notes, implementation lessons, and first-hand Shopify Hydrogen observations from real storefront work."
+            body={
+              <>
+                <span>
+                  For evergreen merchant guides, hiring advice, cost breakdowns, and Hydrogen decision
+                  frameworks, read the Articles section.
+                </span>{" "}
+                <Link
+                  href="/articles"
+                  className="font-medium text-[#171717] underline decoration-black/20 underline-offset-4 transition hover:text-[#10b981]"
+                >
+                  Read Shopify Hydrogen Articles
+                </Link>
+              </>
+            }
+          />
+          <section
+            data-blog-fallback="source-unavailable"
+            aria-labelledby="blog-source-unavailable"
+            className="surface-card"
+          >
+            <p className="eyebrow">Publishing status</p>
+            <h2 id="blog-source-unavailable" className="subsection-title mt-3">
+              Blog post index temporarily unavailable
+            </h2>
+            <p className="mt-4 max-w-3xl text-base leading-8 text-neutral-600">
+              The blog post index is temporarily unavailable. The repository-backed Articles
+              library remains available.
+            </p>
+            <Link
+              href="/articles"
+              className="mt-6 inline-flex min-h-11 items-center rounded-full bg-[#171717] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#10b981]"
+            >
+              Read Shopify Hydrogen Articles
+            </Link>
+          </section>
+        </div>
+      </>
+    );
   }
 
   const posts = postResult.posts;
@@ -66,16 +135,6 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
   const clampedPage = Math.min(currentPage, totalPages);
   const startIndex = (clampedPage - 1) * postsPerPage;
   const pagePosts = posts.slice(startIndex, startIndex + postsPerPage);
-  const breadcrumbs = [
-    { label: "Home", href: "/" },
-    { label: "Blog", href: "/blog" },
-  ] as const;
-  const breadcrumbSchema = buildBreadcrumbListSchema(
-    breadcrumbs.map((item) => ({
-      name: item.label,
-      url: absoluteUrl(item.href),
-    })),
-  );
 
   return (
     <>
