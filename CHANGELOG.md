@@ -15,6 +15,26 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## Unreleased
 
+- Date: 2026-09-03
+- PR: [#138 Update Supabase client to 2.114.0](https://github.com/emremutlu08/hydrogenexpert/pull/138)
+- Branch: `codex/supabase-2-114-0-20260903`
+- Deployment: Vercel preview validation is required before squash merge; production follows the validated merge through the existing Git integration without a separate manual deploy.
+- Summary:
+  - Updated stable `@supabase/supabase-js` and its five aligned client packages from `2.112.4` to `2.114.0`; the fixed-version family retains its Node `>=22.0.0` requirement.
+  - Accepted the opt-in Realtime wait and Storage object-versioning APIs plus the failed WebAuthn factor-enrollment cleanup and upstream Browserslist advisory patch without changing application code.
+  - Limited the lockfile delta to six existing Supabase records without changing package count, peer requirements, deprecated packages, or install scripts.
+- Files changed:
+  - `package.json`
+  - `package-lock.json`
+  - `agent-docs/HYDROGEN.md`
+  - `CHANGELOG.md`
+- Verification:
+  - Node `24.19.0`, npm `11.18.0`, clean `npm ci`, `npm audit --audit-level=low`, full dependency-tree inspection, Supabase client smoke test, install-script review, and `git diff --check`: passed; audit reports 0 vulnerabilities.
+  - `npm run lint`, `npm run typecheck`, content validation, Shopify claim audit, local commercial-launch validation, public-image validation, and structured-data validation: passed.
+  - `npm run test`: passed, 37 test files and 172 tests.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed with 76 static pages generated.
+- Manual follow-up: Keep Next.js `16.3.4` deferred while its Sharp `0.35.4` chain adds a duplicate nested runtime record; keep ESLint 10, TypeScript 7, Node types 26, and the newer Anthropic SDK `0.x` line in separate compatibility reviews.
+
 - Date: 2026-09-02
 - PR: [#137 Update sanitize-html to 2.17.7](https://github.com/emremutlu08/hydrogenexpert/pull/137)
 - Branch: `codex/sanitize-html-security-2-17-7-20260902`

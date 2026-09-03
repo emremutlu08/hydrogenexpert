@@ -1,7 +1,7 @@
 # HydrogenExpert Implementation Notes
 
 Status: Active
-Last updated: 2026-09-01
+Last updated: 2026-09-03
 Owner: Agent
 Source of truth: `package.json`, current code, agent analysis
 
@@ -59,6 +59,7 @@ Use `package.json` for exact scripts. Current important scripts include:
 - The 2026-08-26 security refresh moved Next.js, `@next/third-parties`, and `eslint-config-next` from `16.3.2` to stable `16.3.3` to include the official critical RCE fixes for Windows-hosted servers and AVIF image optimization.
 - The 2026-08-31 safe tooling refresh moved `tsx` from `4.23.12` to `4.23.13` to bound the shared transform cache without changing its Node `>=18.0.0` or `esbuild ~0.28.0` compatibility boundary.
 - The 2026-09-02 security refresh moved `sanitize-html` from `2.17.5` to `2.17.7` and narrowed the supported Node range from `>=22 <25` to `>=22.12 <25` so the ESM-only `htmlparser2` 12 parser loads without flags. The patch clears the SVG animation URL-scheme bypass advisory and includes the parser-level raw-text security fixes from `2.17.6`.
+- The 2026-09-03 safe refresh moved `@supabase/supabase-js` and its five aligned client packages from `2.112.4` to stable `2.114.0`. The fixed-version client family keeps its Node `>=22.0.0` requirement; the release adds opt-in Realtime wait support and Storage object-versioning APIs, fixes failed WebAuthn factor enrollment cleanup, and patches upstream Browserslist advisories without changing this repository's existing Supabase calls.
 - Keep deferring the newer `@anthropic-ai/sdk` 0.x minor line for a separate compatibility review.
 
 ## Implementation Rules
