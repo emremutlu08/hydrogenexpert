@@ -5,7 +5,7 @@ import { getSiteUrl } from "@/lib/site";
 export async function GET() {
   const postResult = await getPublishedPostListResult();
 
-  if (postResult.status === "source_unavailable") {
+  if (postResult.status === "source_unavailable" || postResult.posts.length === 0) {
     return new Response("RSS feed is temporarily unavailable.", {
       status: 503,
       headers: {
