@@ -15,6 +15,26 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## Unreleased
 
+- Date: 2026-09-04
+- PR: [#141 Update Supabase and React DOM types](https://github.com/emremutlu08/hydrogenexpert/pull/141)
+- Branch: `codex/deps-safe-refresh-20260904`
+- Deployment: Vercel preview validation is required before squash merge; production follows the validated merge through the existing Git integration without a separate manual deploy.
+- Summary:
+  - Updated stable `@supabase/supabase-js` and its five aligned client packages from `2.114.0` to `2.115.0`, adding the opt-in PostgREST `getOpenApiSpec()` API while retaining Node `>=22.0.0`.
+  - Updated the type-only `@types/react-dom` package from `19.2.5` to `19.2.7` while keeping React and React DOM on `19.2.8`.
+  - Limited the lockfile delta to seven existing records without changing package count, peer requirements, deprecated packages, or install scripts.
+- Files changed:
+  - `package.json`
+  - `package-lock.json`
+  - `agent-docs/HYDROGEN.md`
+  - `CHANGELOG.md`
+- Verification:
+  - Node `22.22.3`, npm `11.18.0`, clean `npm ci` for each risk group, `npm audit --audit-level=low`, dependency-tree inspection, Supabase client smoke test, install-script review, and `git diff --check`: passed; audit reports 0 vulnerabilities.
+  - `npm run lint`, `npm run typecheck`, content validation, Shopify claim audit, production commercial-launch validation, public-image validation, and structured-data validation: passed.
+  - `npm run test`: passed, 39 test files and 181 tests.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed with 76 static pages generated.
+- Manual follow-up: Keep Next.js `16.3.4` deferred while its Sharp `0.35.4` chain adds a duplicate nested runtime record; keep ESLint 10, TypeScript 7, Node types 26, Vitest 5, and the newer Anthropic SDK `0.x` line in separate compatibility reviews.
+
 - Date: 2026-09-03
 - PR: [#139 Restore blog resilience during source outages](https://github.com/emremutlu08/hydrogenexpert/pull/139)
 - Branch: `codex/blog-source-outage-resilience-20260901`
