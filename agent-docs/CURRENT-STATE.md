@@ -33,6 +33,7 @@ This file summarizes the current repo shape so future agents can orient quickly.
 - Homepage packages use the shared registry in compact mode; full exclusions remain on the package page.
 - The hiring page keeps the canonical experts owner and responsibilities schema; the search-query catalogue and its ItemList were intentionally removed in #145.
 - Case studies use a single delivery narrative; EveShop audience counts describe project scale. The app compatibility and framework guides include decision matrices in #146.
+- The shared inquiry form starts with four required fields and a short optional message. Native optional details retain all qualification values; API responses remain general errors without field identifiers.
 - Existing blog recovery remains separate in #144.
 
 ## Hiring Intent

@@ -16,6 +16,15 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 ## Unreleased
 
 - Date: 2026-09-05
+- PR: [#147](https://github.com/emremutlu08/hydrogenexpert/pull/147)
+- Branch: `developer/inquiry-form`
+- Deployment: release evidence tracked in [#143](https://github.com/emremutlu08/hydrogenexpert/issues/143).
+- Summary: Four required inquiry fields and a short optional message precede collapsible project details. Preserve submitted values and expose validation errors accessibly.
+- Files changed: shared LeadCaptureForm and release documentation.
+- Verification: lint, typecheck, 184 tests, content/claim audits and 72-route build passed. Controlled browser checks covered short-form visibility, keyboard disclosure, retained values, hidden validation, general server errors and success navigation.
+- Manual follow-up: Search Console sitemap submission requires webmasters write scope; blog recovery remains in #144.
+
+- Date: 2026-09-05
 - PR: [#146](https://github.com/emremutlu08/hydrogenexpert/pull/146)
 - Branch: `developer/content-evidence`
 - Deployment: release evidence tracked in [#143](https://github.com/emremutlu08/hydrogenexpert/issues/143).
