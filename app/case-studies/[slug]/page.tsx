@@ -319,14 +319,9 @@ function getCaseStudyLinks(studyId: CaseStudyId) {
   const links = {
     eveshop: [
       {
-        href: "/shopify-hydrogen-developer",
-        label: "Production Shopify Hydrogen storefront work",
-        note: "Direct implementation path for storefronts with real catalog and launch constraints.",
-      },
-      {
-        href: "/shopify-hydrogen-expert",
-        label: "Senior Shopify Hydrogen development",
-        note: "Expert path when production experience and judgment matter before the next build.",
+        href: "/shopify-hydrogen-experts",
+        label: "Senior Shopify Hydrogen expertise",
+        note: "Direct implementation and expert path for storefronts with real catalog and launch constraints.",
       },
       {
         href: "/headless-shopify-agency",
@@ -351,9 +346,9 @@ function getCaseStudyLinks(studyId: CaseStudyId) {
     ],
     bayam: [
       {
-        href: "/shopify-hydrogen-developer",
-        label: "Senior Shopify Hydrogen development",
-        note: "Direct implementation path for premium catalog and custom storefront UX.",
+        href: "/shopify-hydrogen-experts",
+        label: "Senior Shopify Hydrogen expertise",
+        note: "Direct implementation and expert path for premium catalog and custom storefront UX.",
       },
       {
         href: "/headless-shopify-agency",
@@ -370,22 +365,12 @@ function getCaseStudyLinks(studyId: CaseStudyId) {
         label: "Custom Shopify Hydrogen storefront",
         note: "Build path for premium catalog UX when a theme surface is too limiting.",
       },
-      {
-        href: "/shopify-hydrogen-expert",
-        label: "Senior Shopify Hydrogen expert",
-        note: "Use this when one specialist should own the storefront tradeoffs.",
-      },
     ],
     "rebel-bunny": [
       {
-        href: "/shopify-hydrogen-developer",
-        label: "Production Shopify Hydrogen storefront work",
-        note: "Direct implementation path for content-commerce and DTC storefront systems.",
-      },
-      {
-        href: "/shopify-hydrogen-expert",
-        label: "Senior Shopify Hydrogen development",
-        note: "Expert path when commerce, education, and partner flows need one storefront plan.",
+        href: "/shopify-hydrogen-experts",
+        label: "Senior Shopify Hydrogen expertise",
+        note: "Direct implementation and expert path when commerce, education, and partner flows need one storefront plan.",
       },
       {
         href: "/headless-shopify-agency",

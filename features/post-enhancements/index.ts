@@ -1,4 +1,9 @@
 import { SOURCE_PACKS } from "../content-sources";
+import {
+  COMMERCIAL_INTENT_OWNERS,
+  HIRING_INTENT_OWNER_PATH,
+  normalizeCommercialLinks,
+} from "../search-intent";
 
 export interface PostFaqItem {
   question: string;
@@ -1419,17 +1424,15 @@ export const POST_ENHANCEMENTS: Record<string, PostEnhancement> = {
  * rather than depending on each entry remembering to add it.
  */
 const CANONICAL_HIRING_LINK: PostReferenceLink = {
-  href: "/shopify-hydrogen-expert",
-  label: "Senior Shopify Hydrogen expert",
+  href: HIRING_INTENT_OWNER_PATH,
+  label: COMMERCIAL_INTENT_OWNERS[HIRING_INTENT_OWNER_PATH].linkLabel,
   note: "Use this when the storefront problem in this note needs senior implementation ownership.",
 };
 
 function withCanonicalHiringLink(links: PostReferenceLink[]): PostReferenceLink[] {
   // Two entries pointing at one URL under different labels read as a repeated
   // link to a crawler and waste the slot. Keep the first label for each href.
-  const deduped = links.filter(
-    (link, index) => links.findIndex((candidate) => candidate.href === link.href) === index,
-  );
+  const deduped = normalizeCommercialLinks(links);
 
   if (deduped.some((link) => link.href === CANONICAL_HIRING_LINK.href)) {
     return deduped;

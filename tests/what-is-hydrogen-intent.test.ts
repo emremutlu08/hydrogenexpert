@@ -32,7 +32,7 @@ describe("what-is-hydrogen definition intent", () => {
     for (const href of [
       "/shopify-hydrogen-vs-liquid",
       "/should-i-use-it",
-      "/shopify-hydrogen-developer",
+      "/shopify-hydrogen-experts",
       "/case-studies",
       "/contact",
     ]) {

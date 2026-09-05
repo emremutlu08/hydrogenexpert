@@ -188,14 +188,9 @@ export default function CaseStudiesPage() {
           <div className="authority-links">
             {[
               {
-                href: "/shopify-hydrogen-developer",
-                label: "Production Shopify Hydrogen storefront work",
-                note: "Use this when the next step is direct senior implementation support.",
-              },
-              {
-                href: "/shopify-hydrogen-expert",
-                label: "Senior Shopify Hydrogen development",
-                note: "Use this when the project needs one accountable specialist before scope expands.",
+                href: "/shopify-hydrogen-experts",
+                label: "Senior Shopify Hydrogen expertise",
+                note: "Use this when the next step is direct implementation or one accountable specialist.",
               },
               {
                 href: "/headless-shopify-agency",

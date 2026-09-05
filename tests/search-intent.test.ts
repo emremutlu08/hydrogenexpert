@@ -19,10 +19,7 @@ const SERVICE_INTENT_PATHS = COMMERCIAL_INTENT_PATHS.filter(
 describe("commercial intent ownership", () => {
   it("assigns exactly one owner to each approved commercial intent", () => {
     expect(COMMERCIAL_INTENT_PATHS).toEqual([
-      "/shopify-hydrogen-developer",
-      "/shopify-hydrogen-expert",
       "/shopify-hydrogen-experts",
-      "/shopify-hydrogen-agency",
       "/headless-shopify-agency",
       "/shopify-hydrogen-cost",
       "/shopify-hydrogen-examples",

@@ -1,5 +1,5 @@
 import type { TrafficLink } from "../traffic-foundation";
-import { COMMERCIAL_INTENT_OWNERS } from "../search-intent";
+import { COMMERCIAL_INTENT_OWNERS, normalizeCommercialLinks } from "../search-intent";
 
 const EXAMPLES_INTENT = COMMERCIAL_INTENT_OWNERS["/shopify-hydrogen-examples"];
 
@@ -315,9 +315,12 @@ export function getRelatedLinksForPath(path: string): readonly TrafficLink[] {
   const normalizedPath = path.replace(/\/$/, "") || "/";
   const relation = CONTENT_RELATIONS.find((item) => item.path === normalizedPath);
 
-  return relation?.related ?? DEFAULT_RELATED_LINKS;
+  return normalizeCommercialLinks(relation?.related ?? DEFAULT_RELATED_LINKS);
 }
 
 export function getAllContentRelations(): readonly ContentRelation[] {
-  return CONTENT_RELATIONS;
+  return CONTENT_RELATIONS.map((relation) => ({
+    ...relation,
+    related: normalizeCommercialLinks<TrafficLink>(relation.related),
+  }));
 }

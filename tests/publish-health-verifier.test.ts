@@ -8,7 +8,7 @@ import {
 const baseUrl = "http://127.0.0.1:3000";
 const representativePaths = [
   "/articles",
-  "/shopify-hydrogen-agency",
+  "/shopify-hydrogen-experts",
   "/case-studies/eveshop-shopify-hydrogen",
   "/articles/shopify-hydrogen-nextjs",
 ] as const;

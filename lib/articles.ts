@@ -1,11 +1,14 @@
 import { cache } from "react";
 
 import { TRAFFIC_GAP_ARTICLES } from "../features/articles/traffic-gap";
-import { COMMERCIAL_INTENT_OWNERS } from "../features/search-intent";
+import {
+  COMMERCIAL_INTENT_OWNERS,
+  HIRING_INTENT_OWNER_PATH,
+  normalizeCommercialLinks,
+} from "../features/search-intent";
 import { OWNER } from "./site";
 
-const DEVELOPER_INTENT = COMMERCIAL_INTENT_OWNERS["/shopify-hydrogen-developer"];
-const AGENCY_INTENT = COMMERCIAL_INTENT_OWNERS["/shopify-hydrogen-agency"];
+const HIRING_INTENT = COMMERCIAL_INTENT_OWNERS[HIRING_INTENT_OWNER_PATH];
 
 export const ARTICLE_CATEGORIES = [
   "Hiring",
@@ -82,7 +85,7 @@ export interface Article {
   sources?: readonly ArticleLink[];
 }
 
-const ARTICLES = [
+const ARTICLE_DRAFTS = [
   ...TRAFFIC_GAP_ARTICLES,
   {
     title: "How to Hire a Shopify Hydrogen Developer",
@@ -375,8 +378,8 @@ const ARTICLES = [
     conclusion:
       "Request a scope review before buying capacity. Share the current store, the outcome that must change, which brand and content inputs already exist, and who will own the storefront after launch; the next step can be a senior specialist, an agency brief, an audit, a Liquid improvement, or no rebuild.",
     links: [
-      { href: "/shopify-hydrogen-developer", label: DEVELOPER_INTENT.linkLabel },
-      { href: "/shopify-hydrogen-agency", label: AGENCY_INTENT.linkLabel },
+      { href: "/shopify-hydrogen-developer", label: HIRING_INTENT.linkLabel },
+      { href: "/shopify-hydrogen-agency", label: HIRING_INTENT.linkLabel },
       {
         href: "/articles/how-to-hire-shopify-hydrogen-developer",
         label: "Use the Hydrogen developer hiring checklist",
@@ -504,6 +507,11 @@ const ARTICLES = [
     ],
   },
 ] as const satisfies readonly Article[];
+
+const ARTICLES: readonly Article[] = ARTICLE_DRAFTS.map((article) => ({
+  ...article,
+  links: normalizeCommercialLinks(article.links),
+}));
 
 export function getAllArticles(): readonly Article[] {
   return ARTICLES;

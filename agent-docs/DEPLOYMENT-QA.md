@@ -42,7 +42,7 @@ Source of truth: Current repo, Vercel workflow, deployment QA checklist
 - Apex canonical URL is used.
 - `/sitemap.xml` returns expected URLs.
 - `/robots.txt` references the sitemap.
-- `/sitemap.xml` includes the indexing recovery routes: `/shopify-hydrogen-developer`, `/shopify-hydrogen-expert`, `/shopify-hydrogen-experts`, `/articles/how-to-hire-shopify-hydrogen-developer`, `/articles/shopify-hydrogen-developer-vs-agency`, `/articles/shopify-hydrogen-experts-production-experience`, `/shopify-hydrogen-packages`, and `/case-studies`.
+- `/sitemap.xml` includes the indexing recovery routes: `/shopify-hydrogen-experts`, `/articles/how-to-hire-shopify-hydrogen-developer`, `/articles/shopify-hydrogen-developer-vs-agency`, `/articles/shopify-hydrogen-experts-production-experience`, `/shopify-hydrogen-packages`, and `/case-studies`.
 - Resubmit `/sitemap.xml`, run the IndexNow ping for touched public URLs, and request indexing for stale high-intent URLs in Google Search Console after production verification.
 - Touched pages are indexable unless intentionally noindexed.
 - Schema-bearing source is present in rendered HTML when schema changed.
@@ -54,3 +54,5 @@ Source of truth: Current repo, Vercel workflow, deployment QA checklist
 ## PR Summary Notes
 
 Include the deployment URL, commit hash, validation commands, claim audit result, touched public URLs, and any manual follow-up such as Search Console submission.
+
+Hiring consolidation: retired developer, singular expert, agency, agency-usa, and storefront-api-developer URLs must redirect directly to `/shopify-hydrogen-experts`. Exclude retired URLs from sitemap and discovery links.

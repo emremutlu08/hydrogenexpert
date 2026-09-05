@@ -135,8 +135,7 @@ describe("scheduled articles", () => {
 
     expect(article?.links.map((link) => link.href)).toEqual(
       expect.arrayContaining([
-        "/shopify-hydrogen-developer",
-        "/shopify-hydrogen-agency",
+        "/shopify-hydrogen-experts",
         "/articles/how-to-hire-shopify-hydrogen-developer",
         "/shopify-hydrogen-audit",
         "/case-studies",

@@ -16,7 +16,7 @@ import { getPublishedPostListResult, getPublishedPosts } from "../lib/posts";
 import { getSiteUrl } from "../lib/site";
 
 const repositoryArticleSlug = "shopify-hydrogen-nextjs";
-const commercialPath = "/shopify-hydrogen-agency";
+const commercialPath = "/shopify-hydrogen-experts";
 const caseStudyPath = "/case-studies/eveshop-shopify-hydrogen";
 
 describe("public discovery when the database source is unavailable", () => {

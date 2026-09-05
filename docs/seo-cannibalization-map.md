@@ -1,8 +1,25 @@
 # Cannibalization Map
 
-Source: Search Console, 90 days to 2026-07-26, queries with at least 15 impressions.
-This is a **diagnosis**, not an approved plan. The treatment depends on an open
-strategy question described below.
+Status: Active
+Last updated: 2026-09-05
+Owner: Emre
+Source of truth: Search Console, current code, issue #132
+
+## 2026-09-05 decision
+
+The approved September 5 gate returned CONSOLIDATE on the 90-day window ending September 3. The canonical hiring destination is `/shopify-hydrogen-experts`, which leads both the experts and agency queries. This replaces the singular destination proposed in PR #99.
+
+| Query | Competing URLs | Impressions | Leading URL |
+| --- | ---: | ---: | --- |
+| shopify hydrogen experts | 35 | 275 | /shopify-hydrogen-experts |
+| shopify hydrogen agency | 12 | 510 | /shopify-hydrogen-experts |
+| hire shopify hydrogen developers | 14 | 729 | /articles/shopify-hydrogen-developer-vs-agency |
+| shopify hydrogen development experts | 25 | 531 | /shopify-hydrogen-expert |
+| headless shopify agency | 1 | 439 | /headless-shopify-agency |
+
+Agency URL count increased from 10 to 12 and the former agency owner remains absent. Retire developer, singular expert, agency, and agency-usa with direct permanent redirects. Keep the broader headless architecture page and educational guides separate. The older storefront-api-developer redirect must reach the final owner without a chain.
+
+The remaining sections are historical observations, not current execution instructions. Track release and follow-up in [issue #132](https://github.com/emremutlu08/hydrogenexpert/issues/132). Preserve the July baseline and compare URL counts, owner presence, impressions, clicks, and positions at 7, 14, and 28 days; no ranking outcome is guaranteed.
 
 ## 2026-09-01 checkpoint
 

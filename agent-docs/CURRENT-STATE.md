@@ -1,7 +1,7 @@
 # Current State
 
 Status: Active
-Last updated: 2026-07-04
+Last updated: 2026-09-05
 Owner: Agent
 Source of truth: Current repo, `package.json`, recent validation history, agent analysis
 
@@ -26,6 +26,12 @@ This file summarizes the current repo shape so future agents can orient quickly.
 - `features/lead-capture/` now owns lead request parsing, validation, fallback response payloads, and Supabase insert mapping while the route handler keeps security and orchestration.
 - Direct-composed resource, article, blog, and traffic-foundation pages were reviewed on 2026-05-25. No shared renderer was extracted because the remaining repetition is mostly local layout rhythm over different data shapes, while reusable pieces already exist in `PageIntroSection`, `SectionHeader`, `RelatedLinks`, `JsonLd`, and feature registries.
 - The 2026-05-25 registry-move compatibility re-exports (`lib/services.ts`, `lib/content-sources.ts`, `lib/content-relations.ts`, `lib/post-enhancements.ts`, `lib/traffic-foundation.ts`) were removed on 2026-07-04 after imports stabilized; typecheck, tests, and build confirmed no public behavior change. Future migrations may still use temporary compatibility re-exports.
+
+## Hiring Intent
+
+- The canonical hiring route is `/shopify-hydrogen-experts`; developer, singular expert, agency, and agency-usa routes redirect there.
+- Shared redirect and link normalization rules live in `features/search-intent/manifest.ts`.
+- Release and observation evidence is tracked in GitHub issue #132.
 
 ## Validation Baseline
 

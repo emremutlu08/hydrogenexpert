@@ -1,3 +1,4 @@
+import { HIRING_INTENT_OWNER_PATH } from "@/features/search-intent";
 import Link from "next/link";
 
 import { SectionHeader } from "@/components/SectionHeader";
@@ -184,7 +185,7 @@ export function buildDeveloperSearchIntentSchema() {
 }
 
 export function DeveloperIntroSections({ service }: { service: ServicePackage }) {
-  if (service.slug !== "shopify-hydrogen-developer") {
+  if (service.pagePath !== HIRING_INTENT_OWNER_PATH) {
     return null;
   }
 
@@ -358,7 +359,7 @@ export function DeveloperIntroSections({ service }: { service: ServicePackage })
 }
 
 export function DeveloperHiringDecisionSection({ service }: { service: ServicePackage }) {
-  if (service.slug !== "shopify-hydrogen-developer") {
+  if (service.pagePath !== HIRING_INTENT_OWNER_PATH) {
     return null;
   }
 
@@ -407,7 +408,7 @@ export function DeveloperProofSections({
   service: ServicePackage;
   sourceLinks: readonly ServicePackage["sourceMap"][number][];
 }) {
-  if (service.slug !== "shopify-hydrogen-developer") {
+  if (service.pagePath !== HIRING_INTENT_OWNER_PATH) {
     return null;
   }
 

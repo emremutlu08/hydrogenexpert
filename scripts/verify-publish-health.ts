@@ -5,7 +5,7 @@ const BLOG_FALLBACK_MARKER = 'data-blog-fallback="source-unavailable"';
 const RSS_DEGRADED_BODY = "RSS feed is temporarily unavailable.";
 const REPRESENTATIVE_PATHS = [
   "/articles",
-  "/shopify-hydrogen-agency",
+  "/shopify-hydrogen-experts",
   "/case-studies/eveshop-shopify-hydrogen",
   "/articles/shopify-hydrogen-nextjs",
 ] as const;

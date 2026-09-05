@@ -6,12 +6,7 @@ import { getPublicArticlesForDate } from "../lib/articles";
 
 const referenceDate = new Date("2026-07-30T00:00:00.000Z");
 
-/**
- * The singular expert page is the hiring owner these technical pages feed.
- * Agency and plural-expert intent keep their own owners, so this file
- * deliberately asserts nothing about which page answers those.
- */
-const HIRING_OWNER = "/shopify-hydrogen-expert";
+const HIRING_OWNER = "/shopify-hydrogen-experts";
 
 const COMMERCIAL_OWNERS = [
   "/shopify-hydrogen-expert",

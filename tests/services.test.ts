@@ -8,11 +8,8 @@ import {
 } from "../features/services/registry";
 
 const targetCommercialRoutes = [
-  "/shopify-hydrogen-agency",
   "/headless-shopify-agency",
-  "/shopify-hydrogen-developer",
   "/custom-shopify-hydrogen-storefront",
-  "/shopify-hydrogen-expert",
   "/shopify-hydrogen-experts",
   "/liquid-to-hydrogen-migration",
   "/shopify-hydrogen-seo",

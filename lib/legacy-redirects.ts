@@ -1,3 +1,5 @@
+import { HIRING_INTENT_REDIRECTS } from "../features/search-intent/manifest";
+
 export const LEGACY_PERMANENT_REDIRECTS = new Map([
   ["/blog/shopify-hydrogen-v2-setup-guide", "/what-is-hydrogen"],
   ["/blog/hydrogen-worth-2-million-shopify-store", "/should-i-use-it"],
@@ -19,7 +21,7 @@ export const LEGACY_PERMANENT_REDIRECTS = new Map([
   ["/case-studies/rebel-bunny", "/case-studies/rebel-bunny-shopify-hydrogen"],
   ["/blog/shopify-hydrogen-seo", "/shopify-hydrogen-seo"],
   ["/shopify-headless-commerce", "/headless-shopify-agency"],
-  ["/shopify-storefront-api-developer", "/shopify-hydrogen-developer"],
+  ...HIRING_INTENT_REDIRECTS.map(({ source, destination }): [string, string] => [source, destination]),
 ]);
 
 export function normalizeRedirectPathname(pathname: string) {

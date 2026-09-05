@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import {
   INDEXING_RECOVERY_ROUTES,
-  LAST_SIGNIFICANT_UPDATE,
+  HIRING_INTENT_CONSOLIDATION_UPDATE,
   PACKAGE_PAGE_DISCOVERY,
 } from "../features/public-discovery/manifest";
 import { getPublicArticlesForDate } from "../lib/articles";
@@ -47,10 +47,10 @@ describe("buildSitemapEntries", () => {
     expect(paths).toContain("/shopify-hydrogen-issues");
     expect(paths).toContain("/shopify-hydrogen-templates");
     expect(paths).toContain("/udemy-shopify-hydrogen-course-resources");
-    expect(paths).toContain("/shopify-hydrogen-agency");
+    expect(paths).not.toContain("/shopify-hydrogen-agency");
     expect(paths).toContain("/headless-shopify-agency");
-    expect(paths).toContain("/shopify-hydrogen-developer");
-    expect(paths).toContain("/shopify-hydrogen-expert");
+    expect(paths).not.toContain("/shopify-hydrogen-developer");
+    expect(paths).not.toContain("/shopify-hydrogen-expert");
     expect(paths).toContain("/shopify-hydrogen-experts");
     expect(paths).toContain("/shopify-hydrogen-audit");
     expect(paths).toContain("/liquid-to-hydrogen-migration");
@@ -123,26 +123,12 @@ describe("buildSitemapEntries", () => {
     expect(paths).not.toContain("/articles/future-scheduled-article");
   });
 
-  it("gives the Shopify Hydrogen developer page fresh discovery metadata", () => {
+  it("gives the consolidated hiring owner fresh discovery metadata", () => {
     const entries = buildSitemapEntries({ siteUrl, posts });
-    const developerEntry = entries.find(
-      (entry) => new URL(entry.url).pathname === "/shopify-hydrogen-developer",
-    );
-
-    expect(developerEntry?.changeFrequency).toBe("weekly");
-    expect(developerEntry?.priority).toBe(0.9);
-    expect(developerEntry?.lastModified).toEqual(LAST_SIGNIFICANT_UPDATE);
-  });
-
-  it("gives the Shopify Hydrogen agency owner high-intent discovery metadata", () => {
-    const entries = buildSitemapEntries({ siteUrl, posts });
-    const agencyEntry = entries.find(
-      (entry) => new URL(entry.url).pathname === "/shopify-hydrogen-agency",
-    );
-
-    expect(agencyEntry?.changeFrequency).toBe("weekly");
-    expect(agencyEntry?.priority).toBe(0.9);
-    expect(agencyEntry?.lastModified).toEqual(LAST_SIGNIFICANT_UPDATE);
+    const owner = entries.find((entry) => new URL(entry.url).pathname === "/shopify-hydrogen-experts");
+    expect(owner?.changeFrequency).toBe("weekly");
+    expect(owner?.priority).toBe(0.9);
+    expect(owner?.lastModified).toEqual(HIRING_INTENT_CONSOLIDATION_UPDATE);
   });
 
   it("keeps the GSC indexing recovery URL list discoverable in sitemap output", () => {

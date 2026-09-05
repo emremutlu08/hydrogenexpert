@@ -70,7 +70,7 @@ const internalLinks = [
   { href: "/when-not-to-use-hydrogen", label: "When Not to Use Hydrogen" },
   { href: "/articles/shopify-hydrogen-developer-vs-agency", label: "Developer vs agency" },
   { href: "/case-studies", label: "Proof" },
-  { href: "/shopify-hydrogen-agency-usa", label: "US-friendly collaboration" },
+  { href: "/shopify-hydrogen-experts", label: "Senior expert support" },
 ] as const;
 
 export default function ShopifyHydrogenPackagesPage() {

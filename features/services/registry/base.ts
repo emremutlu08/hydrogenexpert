@@ -1,10 +1,13 @@
 import type { ContentSourceMetadata } from "../../content-sources";
-import { COMMERCIAL_INTENT_OWNERS } from "../../search-intent";
+import {
+  COMMERCIAL_INTENT_OWNERS,
+  RETIRED_COMMERCIAL_INTENT_OWNERS,
+} from "../../search-intent";
 
-const AGENCY_INTENT = COMMERCIAL_INTENT_OWNERS["/shopify-hydrogen-agency"];
+const AGENCY_INTENT = RETIRED_COMMERCIAL_INTENT_OWNERS["/shopify-hydrogen-agency"];
 const HEADLESS_AGENCY_INTENT = COMMERCIAL_INTENT_OWNERS["/headless-shopify-agency"];
-const DEVELOPER_INTENT = COMMERCIAL_INTENT_OWNERS["/shopify-hydrogen-developer"];
-const EXPERT_INTENT = COMMERCIAL_INTENT_OWNERS["/shopify-hydrogen-expert"];
+const DEVELOPER_INTENT = RETIRED_COMMERCIAL_INTENT_OWNERS["/shopify-hydrogen-developer"];
+const EXPERT_INTENT = RETIRED_COMMERCIAL_INTENT_OWNERS["/shopify-hydrogen-expert"];
 const EXPERTS_INTENT = COMMERCIAL_INTENT_OWNERS["/shopify-hydrogen-experts"];
 const COST_INTENT = COMMERCIAL_INTENT_OWNERS["/shopify-hydrogen-cost"];
 
@@ -431,16 +434,17 @@ export const SERVICE_PACKAGE_BASES = [
     summary: EXPERTS_INTENT.heroDescription,
     commercialIntent: EXPERTS_INTENT.heroBody,
     bestFor:
-      "Teams that are researching Shopify Hydrogen experts and need to separate real production experience from generic headless sales copy before choosing audit, migration, build, optimization, or support.",
+      "Teams that need to compare Hydrogen expertise, hire direct senior implementation support, or decide between one accountable specialist and a broader agency delivery model.",
     deliverables: [
       "Expert-fit review across proof, scope, and storefront risk",
-      "Hydrogen vs Liquid vs agency path recommendation",
+      "Direct implementation scope for routes, Storefront API data, cart, SEO, analytics, and launch QA",
+      "Senior specialist vs broader agency delivery recommendation",
+      "Hydrogen vs Liquid path recommendation",
       "Production proof and case-study review",
-      "SEO, routing, Storefront API, and maintenance-risk checks",
-      "Clear next step: expert support, audit, agency scope, or no rebuild",
+      "Clear next step: implementation, expert support, audit, agency scope, Liquid cleanup, or no rebuild",
     ],
     proofNotes: [
-      "This page targets expert-search intent without pretending HydrogenExpert is a broad directory or large agency.",
+      "Compare direct senior implementation and broader agency delivery using production evidence, scope, and ownership.",
       "The decision is grounded in shipped Hydrogen storefront context, public profile proof, and technical judgment instead of generic expert claims.",
       "The page routes broad expert searches toward the right concrete next step: developer support, audit, agency alternative, case studies, or a public evaluation guide.",
     ],
@@ -463,24 +467,19 @@ export const SERVICE_PACKAGE_BASES = [
     ],
     relatedLinks: [
       {
-        href: "/shopify-hydrogen-agency",
-        label: AGENCY_INTENT.linkLabel,
-        note: "Use this when the comparison has narrowed to Hydrogen agency delivery versus direct senior ownership.",
-      },
-      {
         href: "/articles/shopify-hydrogen-experts-production-experience",
         label: "How to evaluate Shopify Hydrogen experts",
         note: "The supporting article for proof, questions, and production-experience checks.",
       },
       {
-        href: "/shopify-hydrogen-expert",
-        label: EXPERT_INTENT.linkLabel,
-        note: "Use this when the buyer wants one senior expert rather than a broad comparison.",
+        href: "/shopify-hydrogen-audit",
+        label: "Start with a Hydrogen scope review",
+        note: "Use a diagnostic when the right hiring path depends on fit, risk, and budget clarity.",
       },
       {
-        href: "/shopify-hydrogen-developer",
-        label: DEVELOPER_INTENT.linkLabel,
-        note: "Use this when the search turns into direct senior implementation support.",
+        href: "/headless-shopify-agency",
+        label: HEADLESS_AGENCY_INTENT.linkLabel,
+        note: "Use this when the decision is broader than Hydrogen and architecture still needs to be selected.",
       },
       {
         href: "/case-studies",

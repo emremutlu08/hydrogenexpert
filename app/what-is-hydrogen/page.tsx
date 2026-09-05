@@ -237,8 +237,8 @@ export default function WhatIsHydrogenPage() {
           <h2 className="subsection-title">Use the route that matches your next question.</h2>
           <p className="max-w-3xl text-base leading-8 text-neutral-600">
             For implementation details, see the{" "}
-            <Link href="/shopify-hydrogen-developer" className={textLinkClass}>
-              Shopify Hydrogen developer route
+            <Link href="/shopify-hydrogen-experts" className={textLinkClass}>
+              Shopify Hydrogen expert route
             </Link>
             . To review relevant delivery context, browse the{" "}
             <Link href="/case-studies" className={textLinkClass}>

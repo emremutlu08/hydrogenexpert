@@ -1,3 +1,4 @@
+import { HIRING_INTENT_OWNER_PATH } from "@/features/search-intent";
 import {
   AiAssistedWorkflowSection,
   AuditScopeReviewSection,
@@ -21,6 +22,7 @@ export function PackageServiceSections({ service }: { service: ServicePackage })
   const isCostPage = service.slug === "shopify-hydrogen-cost";
   const isCustomBuildPage = service.slug === "custom-hydrogen-storefront-development";
   const isAgencyComparisonPage =
+    service.pagePath === HIRING_INTENT_OWNER_PATH ||
     service.slug === "shopify-hydrogen-agency-alternative" ||
     service.slug === "headless-shopify-agency-alternative";
   const isMigrationPage = service.slug === "liquid-to-hydrogen-migration";
