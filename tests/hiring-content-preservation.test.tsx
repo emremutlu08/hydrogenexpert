@@ -13,7 +13,6 @@ describe("consolidated hiring content", () => {
       "Choose the vendor shape around the real risk.",
       "What is a Shopify Hydrogen developer?",
       "What the Hydrogen developer stack needs to cover.",
-      "When to hire Shopify Hydrogen developers instead of a general Shopify developer",
       "Shopify Hydrogen work connected to real storefronts",
       "Hiring and production-experience guides.",
     ]) expect(html).toContain(heading);
@@ -21,12 +20,14 @@ describe("consolidated hiring content", () => {
     const all = schemas.flat();
     expect(all).toEqual(expect.arrayContaining([
       expect.objectContaining({ name: "Shopify Hydrogen developer responsibilities", "@type": "ItemList" }),
-      expect.objectContaining({ name: "Shopify Hydrogen developer search intent map", "@type": "ItemList" }),
     ]));
     expect(html).toContain("/case-studies/eveshop-shopify-hydrogen");
     expect(html).toContain("/case-studies/bayam-jewelry-shopify-hydrogen");
     expect(html).toContain("/case-studies/rebel-bunny-shopify-hydrogen");
     expect(html.match(/Hiring and production-experience guides\./g)).toHaveLength(1);
     expect(html).not.toContain("Evaluation guides for expert-search intent.");
+    expect(html).not.toContain("shopify hydrogen developer github");
+    expect(html).not.toContain("Shopify Hydrogen developer search intent map");
+    expect(html.indexOf("Shopify Hydrogen work connected")).toBeLessThan(html.indexOf("What the Hydrogen developer stack"));
   });
 });

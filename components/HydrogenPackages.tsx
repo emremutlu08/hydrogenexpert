@@ -78,7 +78,7 @@ export function HydrogenBuildPackages({
               </Link>
             </div>
 
-            <div className="mt-5 grid flex-1 gap-5">
+            {!compact ? <div className="mt-5 grid flex-1 gap-5">
               <div>
                 <p className="text-[0.68rem] font-bold uppercase tracking-[0.2em] text-[#0f8a5d]">
                   Includes
@@ -106,7 +106,7 @@ export function HydrogenBuildPackages({
                   ))}
                 </ul>
               </div>
-            </div>
+            </div> : null}
 
             <TrackedPackageCTALink
               href="/contact#fit-review-form"
@@ -120,6 +120,8 @@ export function HydrogenBuildPackages({
           </article>
         ))}
       </div>
+
+      {compact ? <Link href="/shopify-hydrogen-packages" className="inline-flex min-h-11 items-center font-semibold underline">Compare full scope and exclusions</Link> : null}
 
       {!compact ? (
         <div className="grid gap-4 lg:grid-cols-2">

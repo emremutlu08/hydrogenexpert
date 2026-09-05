@@ -81,6 +81,7 @@ export const STATIC_ROUTE_SITEMAP_OVERRIDES: Record<
   string,
   Pick<MetadataRoute.Sitemap[number], "changeFrequency" | "lastModified" | "priority">
 > = {
+  "/": { lastModified: new Date("2026-09-05T00:00:00.000Z"), changeFrequency: "weekly", priority: 1 },
   [PACKAGE_ROUTE]: {
     lastModified: LAST_SIGNIFICANT_UPDATE,
     changeFrequency: "weekly",

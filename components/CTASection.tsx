@@ -27,6 +27,7 @@ export function CTASection({
           <p className="max-w-2xl text-base leading-8 text-neutral-300 md:text-lg">
             {subtext}
           </p>
+          <p className="max-w-2xl text-sm leading-7 text-neutral-300">The free first review recommends a scope. If the risks need a detailed paid review, I will explain that before you commit.</p>
           <div className="flex flex-wrap items-center gap-4 pt-3">
             <TrackedCTALink
               href="#fit-review-form"
@@ -55,7 +56,7 @@ export function CTASection({
               Send an email brief
             </TrackedCTALink>
             <p className="text-sm font-medium uppercase tracking-[0.18em] text-neutral-500">
-              Direct senior access. No fake agency layer.
+              Work directly with Emre, from scope review to launch.
             </p>
           </div>
         </div>

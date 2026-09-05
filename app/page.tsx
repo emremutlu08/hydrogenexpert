@@ -4,28 +4,20 @@ import { CTASection } from "@/components/CTASection";
 import { FaqSection } from "@/components/FaqSection";
 import { FounderCard } from "@/components/FounderCard";
 import { FreshnessNote } from "@/components/FreshnessNote";
-import { HydrogenBuildPackages, TwoKBuildBoundarySection } from "@/components/HydrogenPackages";
+import { HydrogenBuildPackages } from "@/components/HydrogenPackages";
 import { JsonLd } from "@/components/JsonLd";
-import { LogoWall } from "@/components/LogoWall";
 import { ProcessStepGrid } from "@/components/ProcessStepGrid";
-import { ProofCardGrid } from "@/components/ProofCardGrid";
 import { SelectedWorkGrid } from "@/components/SelectedWorkGrid";
 import { SectionHeader } from "@/components/SectionHeader";
-import { StatCardGrid } from "@/components/StatCardGrid";
 import { TrustBar } from "@/components/TrustBar";
 import { TrackedCTALink, TrackedProofLink } from "@/components/TrackedInternalLink";
-import { UdemyCourseCard } from "@/components/UdemyCourseCard";
-import { clientLogos } from "@/data/clientLogos";
 import { requireServicePackageByPagePath } from "@/features/services/registry";
-import { FOUNDER_STORY } from "@/lib/founder";
 import { buildMetadata } from "@/lib/seo";
 import {
-  DELIVERY_PROOF,
   FOUNDER_IMAGE_PATH,
   OWNER,
   SITE_LOGO_PATH,
   SITE_NAME,
-  UPWORK_PROFILE,
   VERIFIED_PROFILE_URLS,
   absoluteUrl,
   getSchemaIds,
@@ -36,14 +28,14 @@ import {
   buildPublisherSchema,
 } from "@/lib/structured-data";
 
-const LAST_UPDATED = "2026-05-25";
+const LAST_UPDATED = "2026-09-05";
 const schemaIds = getSchemaIds();
 const hiringService = requireServicePackageByPagePath("/shopify-hydrogen-experts");
 
 export const metadata = buildMetadata({
-  title: "Shopify Hydrogen Storefronts from $2K-$5K | HydrogenExpert",
+  title: "Shopify Hydrogen Development | Builds from $2K | HydrogenExpert",
   description:
-    "Fixed-scope Shopify Hydrogen storefront builds from $2K-$5K for growth-stage Shopify brands by Emre Mutlu.",
+    "Work directly with Emre Mutlu on custom Shopify Hydrogen builds, migrations, and storefront improvements. Fixed-scope packages start at $2K.",
   path: "/",
   ogImage: absoluteUrl("/og-home.svg"),
 });
@@ -124,7 +116,7 @@ const articleSchema = {
   },
   mainEntityOfPage: absoluteUrl("/"),
   dateModified: LAST_UPDATED,
-  datePublished: LAST_UPDATED,
+  datePublished: "2026-05-25",
 };
 
 const itemListSchema = {
@@ -184,111 +176,6 @@ const faqs = [
 
 const faqSchema = buildFaqPageSchema(faqs);
 
-const proofCards = [
-  {
-    id: "upwork",
-    eyebrow: "Upwork",
-    title: (
-      <TrackedProofLink
-        href={OWNER.upwork}
-        label={UPWORK_PROFILE.badge}
-        sourceKind="homepage_proof"
-        external
-        className="inline-flex min-h-11 items-center transition hover:text-[#10b981]"
-      >
-        {UPWORK_PROFILE.badge}
-      </TrackedProofLink>
-    ),
-    body:
-      `A practical trust signal backed by ${UPWORK_PROFILE.totalHoursLabel} Upwork hours and public client feedback.`,
-  },
-  {
-    id: "jss",
-    eyebrow: "Reputation",
-    title: (
-      <TrackedProofLink
-        href={OWNER.upwork}
-        label={`${UPWORK_PROFILE.jobSuccessScore} Job Success Score`}
-        sourceKind="homepage_proof"
-        external
-        className="inline-flex min-h-11 items-center transition hover:text-[#10b981]"
-      >
-        {UPWORK_PROFILE.jobSuccessScore} Job Success Score
-      </TrackedProofLink>
-    ),
-    body:
-      "Proof of follow-through for merchants making a more serious storefront investment.",
-  },
-  {
-    id: "rebel-bunny-feedback",
-    eyebrow: "Client feedback",
-    title: (
-      <Link
-        href="/case-studies/rebel-bunny-shopify-hydrogen"
-        className="inline-flex min-h-11 items-center transition hover:text-[#10b981]"
-      >
-        {DELIVERY_PROOF.rebelBunnyFeedback}
-      </Link>
-    ),
-    body:
-      "The ongoing custom Hydrogen storefront contract now has public Upwork feedback attached to the case study.",
-  },
-  {
-    id: "teaching",
-    eyebrow: "Teaching",
-    title: (
-      <TrackedProofLink
-        href={OWNER.udemyUrl}
-        label={DELIVERY_PROOF.udemyCourseClaim}
-        sourceKind="homepage_proof"
-        external
-        className="inline-flex min-h-11 items-center transition hover:text-[#10b981]"
-      >
-        {DELIVERY_PROOF.udemyCourseClaim}
-      </TrackedProofLink>
-    ),
-    body:
-      "Creator of the world's first English Shopify Hydrogen course on Udemy (110+ ratings).",
-  },
-  {
-    id: "turkey",
-    eyebrow: "Shipped work",
-    title: "Turkey's first production Hydrogen storefront",
-    body:
-      "Frontend Team Lead on Turkey's first production Shopify Hydrogen storefront.",
-  },
-] as const;
-
-const homepageMetrics = [
-  {
-    id: "stores",
-    value: DELIVERY_PROOF.productionHydrogenStorefronts,
-    label: "production Shopify Plus Hydrogen storefronts shipped",
-  },
-  { id: "scale", value: DELIVERY_PROOF.eveShopUsers, label: "web users on EveShop at production scale" },
-  {
-    id: "hours",
-    value: UPWORK_PROFILE.totalHoursLabel,
-    label: "hours of Upwork production delivery",
-    href: OWNER.upwork,
-    external: true,
-  },
-  {
-    id: "linkedin",
-    value: DELIVERY_PROOF.linkedInFollowers,
-    label: "LinkedIn followers",
-    href: OWNER.linkedIn,
-    external: true,
-  },
-  {
-    id: "jss",
-    value: UPWORK_PROFILE.jobSuccessScore,
-    label: "Job Success Score on Upwork",
-    href: OWNER.upwork,
-    external: true,
-  },
-] as const;
-
 const processSteps = [
   {
     title: "Review scope first",
@@ -328,7 +215,7 @@ const commercialPathLinks = [
   {
     href: "/case-studies",
     label: "Case studies",
-    note: "Approved proof across EveShop, Bayam Jewelry, Rebel Bunny, Kirazev, and Clohi.",
+    note: "Explore EveShop, Bayam Jewelry, Rebel Bunny, Kirazev, and Clohi.",
   },
 ] as const;
 
@@ -350,17 +237,17 @@ export default function HomePage() {
           <div className="mx-auto max-w-5xl space-y-7 text-center">
             <div className="space-y-3">
               <h1 className="hero-statement">
-                Senior Shopify Hydrogen storefronts from $2K-$5K
+                Shopify Hydrogen development when your theme holds you back
               </h1>
               <p className="hero-response">
-                Launch a lean custom Hydrogen storefront without agency overhead.
+                Work directly with Emre to build, improve, or migrate your storefront.
               </p>
             </div>
             <p className="mx-auto max-w-3xl page-intro">
-              I build fixed-scope Shopify Hydrogen storefronts for growth-stage
-              Shopify brands that have outgrown theme limits: core ecommerce pages,
-              product flow, cart drawer, checkout handoff, and clean performance -
-              priced by project requirements, not traffic or pageviews.
+              Get help with custom shopping experiences, difficult integrations, and
+              storefront changes your theme cannot support cleanly. Fixed-scope builds
+              start at $2K, with $2K-$5K packages for clearly bounded requirements.
+              Complex migrations need a separate scope.
             </p>
             <FreshnessNote date={LAST_UPDATED} />
             <div className="flex flex-wrap items-center justify-center gap-3">
@@ -402,63 +289,26 @@ export default function HomePage() {
           <TrustBar />
         </section>
 
-        <HydrogenBuildPackages />
-        <TwoKBuildBoundarySection />
+        <section className="surface-card space-y-6">
+          <SectionHeader eyebrow="Selected work" title="Three Hydrogen storefronts, different business needs"
+            description="Explore national retail, luxury catalog discovery, and a storefront connecting shopping with education and partner interest." />
+          <SelectedWorkGrid hydrogenOnly />
+          <Link href="/case-studies" className="font-semibold underline">View all five Shopify projects, including Liquid builds</Link>
+        </section>
+
+        <HydrogenBuildPackages compact />
 
         <section className="surface-card space-y-6">
-          <SectionHeader
-            eyebrow="Commercial paths"
-            title="Choose the Hydrogen path that matches the buying question."
-            description="Developer, expert, SEO, agency-alternative, and proof pages are linked here so searchers and crawlers can move from the homepage into the right commercial route."
-          />
+          <SectionHeader eyebrow="Find your next step" title="What does your storefront need?"
+            description="Compare a new build, help with an existing storefront, and SEO work before choosing a scope." />
           <div className="authority-links">
             {commercialPathLinks.map((item) => (
               <Link key={item.href} href={item.href} className="authority-link-card">
-                <p className="authority-link-card__label">HydrogenExpert</p>
                 <h3 className="authority-link-card__title">{item.label}</h3>
                 <p className="authority-link-card__body">{item.note}</p>
               </Link>
             ))}
           </div>
-        </section>
-
-        <LogoWall
-          logos={clientLogos}
-          title="Selected Shopify work across Hydrogen and Liquid."
-          subtitle="Hydrogen, luxury ecommerce, DTC storytelling, and fast Liquid builds shown as approved portfolio proof."
-        />
-
-        <section className="surface-card space-y-6">
-          <SectionHeader
-            eyebrow="Selected work"
-            title={`${DELIVERY_PROOF.shopifyPortfolioProjects} Shopify projects, with Hydrogen proof at the center`}
-            description={`Approved case-study context across Hydrogen and Liquid: EveShop at ${DELIVERY_PROOF.eveShopUsers} web users and ${DELIVERY_PROOF.eveShopMobileUsers} mobile users, plus smaller builds that show when a theme-native path is the better answer.`}
-          />
-          <SelectedWorkGrid />
-        </section>
-
-        <section className="surface-card space-y-6">
-          <SectionHeader
-            eyebrow="Proof"
-            title="Public trust signals for a senior-led service model."
-            description="Only public or approved proof belongs here. No fake office, no fake team, no unsupported partner badges."
-          />
-          <ProofCardGrid
-            items={proofCards}
-            columnsClassName="grid gap-5 md:grid-cols-2 xl:grid-cols-5 xl:items-stretch"
-          />
-        </section>
-
-        <section className="surface-card space-y-6">
-          <SectionHeader
-            eyebrow="Proof metrics"
-            title="Numbers used as context, not decoration."
-            description="These signals help qualify the work without turning the page into a pile of claims."
-          />
-          <StatCardGrid
-            items={homepageMetrics}
-            columnsClassName="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 xl:auto-rows-fr"
-          />
         </section>
 
         <section id="process" className="surface-card space-y-6">
@@ -477,20 +327,10 @@ export default function HomePage() {
             title="How I work with founders and ecommerce teams"
             description="The point is not to sell a headless rebuild by default. It is to help founders and ecommerce leads make the right commercial call, then ship the work with senior ownership."
           />
-          <FounderCard size="lg" showBio showCredentials>
-            {FOUNDER_STORY.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
+          <FounderCard size="lg" showBio>
+            <p>I work directly with founders and ecommerce teams, from the first scope decision to implementation. If a Liquid improvement solves the problem, I will recommend it.</p>
+            <Link href="/about" className="font-semibold underline">Read my background and teaching experience</Link>
           </FounderCard>
-        </section>
-
-        <section className="surface-card space-y-6">
-          <SectionHeader
-            eyebrow="Teaching"
-            title="Teaching Shopify Hydrogen in plain English"
-            description="I created the world's first English Shopify Hydrogen course on Udemy because the English-language path did not exist when I started."
-          />
-          <UdemyCourseCard courseUrl={OWNER.udemyUrl} />
         </section>
 
         <FaqSection

@@ -93,7 +93,7 @@ export default async function ArticlesPage() {
           <SectionHeader
             eyebrow="Merchant decision library"
             title="Hiring, evaluation, cost, migration, SEO, and fit guidance."
-            description="Only articles that have reached their publish date appear here. Scheduled guides stay hidden until publication."
+            description="Use these guides to compare your options, check implementation risks, and prepare a useful project brief."
           />
 
           {articles.length ? (

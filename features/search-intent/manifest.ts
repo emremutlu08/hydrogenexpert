@@ -102,9 +102,9 @@ const COMMERCIAL_INTENT_DEFINITIONS = {
       "Compare Shopify Hydrogen experts, direct developer support, and agency delivery by production proof, technical ownership, SEO risk, and scope fit.",
     heroTitle: "Shopify Hydrogen experts for direct senior ownership",
     heroDescription:
-      "Use this page to compare proof, hire direct implementation support, or decide whether a senior specialist, broader agency, audit, or no-rebuild path fits.",
+      "Get direct implementation support from Emre on a custom Hydrogen build, an existing storefront, or a migration that needs careful technical ownership.",
     heroBody:
-      "The decision combines comparison quality with delivery fit: what production evidence exists, who owns the code and hard tradeoffs, and whether the work needs direct senior implementation or a larger agency layer.",
+      "Start with your store and the problem you need to solve. I will recommend a focused implementation scope, a deeper review, or a Liquid improvement when a rebuild is unnecessary.",
     linkLabel: "Hire or compare Shopify Hydrogen experts",
     decisionFocus:
       "Expert proof, direct implementation ownership, and senior-led delivery versus a larger agency.",

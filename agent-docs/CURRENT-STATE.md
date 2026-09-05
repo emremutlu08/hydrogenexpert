@@ -27,6 +27,13 @@ This file summarizes the current repo shape so future agents can orient quickly.
 - Direct-composed resource, article, blog, and traffic-foundation pages were reviewed on 2026-05-25. No shared renderer was extracted because the remaining repetition is mostly local layout rhythm over different data shapes, while reusable pieces already exist in `PageIntroSection`, `SectionHeader`, `RelatedLinks`, `JsonLd`, and feature registries.
 - The 2026-05-25 registry-move compatibility re-exports (`lib/services.ts`, `lib/content-sources.ts`, `lib/content-relations.ts`, `lib/post-enhancements.ts`, `lib/traffic-foundation.ts`) were removed on 2026-07-04 after imports stabilized; typecheck, tests, and build confirmed no public behavior change. Future migrations may still use temporary compatibility re-exports.
 
+## Content Clarity Program
+
+- [#143](https://github.com/emremutlu08/hydrogenexpert/issues/143) tracks narrative, evidence and inquiry-form delivery in three sequential phases.
+- Homepage packages use the shared registry in compact mode; full exclusions remain on the package page.
+- The hiring page keeps the canonical experts owner and responsibilities schema; the search-query catalogue and its ItemList were intentionally removed in #145.
+- Existing blog recovery remains separate in #144.
+
 ## Hiring Intent
 
 - The canonical hiring route is `/shopify-hydrogen-experts`; developer, singular expert, agency, and agency-usa routes redirect there.
