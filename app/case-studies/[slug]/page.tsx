@@ -36,7 +36,7 @@ interface CaseStudyDetailPageProps {
   params: Promise<{ slug: string }>;
 }
 
-const LAST_UPDATED = "2026-05-22";
+const LAST_UPDATED = "2026-09-05";
 
 export function generateStaticParams() {
   return getAllCaseStudySlugs().map((slug) => ({ slug }));
@@ -95,7 +95,7 @@ export default async function CaseStudyDetailPage({
     description: study.metaDescription,
     authorName: OWNER.name,
     authorId: schemaIds.person,
-    datePublished: LAST_UPDATED,
+    datePublished: "2026-05-22",
     dateModified: LAST_UPDATED,
     image: study.heroImage?.src
       ? absoluteUrl(study.heroImage.src)
@@ -144,37 +144,13 @@ export default async function CaseStudyDetailPage({
             <p className="text-base leading-8 text-neutral-600">{study.context}</p>
           </section>
 
-          <section className="grid gap-6 xl:grid-cols-[0.8fr_1.2fr]">
-            <div className="rounded-[1.35rem] border border-black/8 bg-[#171717] p-6 text-white">
-              <p className="eyebrow text-[#8df1cb]">Portfolio angle</p>
-              <p className="mt-4 text-base leading-8 text-neutral-200">{study.portfolioAngle}</p>
-            </div>
-            <div className="rounded-[1.35rem] border border-black/8 bg-white p-6">
-              <p className="eyebrow">Package relevance</p>
-              <p className="mt-4 text-base leading-8 text-neutral-700">
-                {CASE_STUDY_PACKAGE_RELEVANCE[study.id]}
-              </p>
-              <p className="mt-3 text-sm leading-7 text-neutral-500">
-                {study.role} across {study.techStack.join(", ")}.
-              </p>
-              <Link
-                href={isHydrogenCaseStudy(study.id) ? "/shopify-hydrogen-packages" : "/when-not-to-use-hydrogen"}
-                className="mt-5 inline-flex min-h-11 items-center rounded-full bg-[#171717] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#10b981]"
-              >
-                {isHydrogenCaseStudy(study.id)
-                  ? "Need a leaner version of this? View Hydrogen packages from $2K-$5K."
-                  : "Not every store needs Hydrogen. Read when Liquid is the better move."}
-              </Link>
-            </div>
-          </section>
-
           <section className="grid gap-6 xl:grid-cols-2">
             <div className="rounded-[1.35rem] border border-black/8 bg-[#f6f7f7] p-6">
               <p className="eyebrow">Problem</p>
               <p className="mt-4 text-base leading-8 text-neutral-700">{study.problem}</p>
             </div>
             <div className="rounded-[1.35rem] border border-black/8 bg-white p-6">
-              <p className="eyebrow">Approach</p>
+              <h2 className="eyebrow">My responsibility and approach</h2>
               <p className="mt-4 text-base leading-8 text-neutral-700">{study.approach}</p>
             </div>
           </section>
@@ -212,7 +188,8 @@ export default async function CaseStudyDetailPage({
               <CaseStudyScreenshots screenshots={study.screenshots} />
               {study.metrics.length ? (
                 <section className="space-y-4">
-                  <p className="eyebrow">Metrics</p>
+                  <p className="eyebrow">{study.id === "eveshop" ? "Project audience context" : "Client feedback"}</p>
+                  {study.id === "eveshop" ? <p className="text-sm leading-7 text-neutral-600">Documented audience scale for the project, not a before-and-after growth measurement.</p> : null}
                   <CaseStudyMetricGrid metrics={study.metrics} />
                 </section>
               ) : null}
@@ -222,55 +199,31 @@ export default async function CaseStudyDetailPage({
 
           <CaseStudyTestimonial testimonial={study.testimonial} />
 
-          <section className="surface-card space-y-6">
-            <SectionHeader
-              eyebrow="Proof brief"
-              title="What this case proves, and what it does not prove."
-              description="The site uses case context as proof without inventing metrics, testimonials, partner status, or platform claims."
-              className="max-w-5xl"
-            />
-            <div className="grid gap-4 lg:grid-cols-3">
-              <ProofList
-                title="Before constraint"
-                items={[
-                  study.context,
-                  ...study.constraints.slice(0, 2),
-                ]}
-              />
-              <ProofList
-                title="What Emre owned"
-                items={[
-                  study.role,
-                  study.implementation,
-                ]}
-              />
-              <ProofList
-                title="What changed"
-                items={study.results.length ? study.results : [study.outcome]}
-              />
-            </div>
-            <div className="grid gap-4 lg:grid-cols-2">
-              <div className="rounded-[1.35rem] border border-black/8 bg-white p-5">
-                <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#10b981]">
-                  Commercial proof
-                </p>
-                <p className="mt-4 text-sm leading-7 text-neutral-700">{study.outcome}</p>
-              </div>
-              <div className="rounded-[1.35rem] border border-black/8 bg-white p-5">
-                <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#10b981]">
-                  What this does not prove
-                </p>
-                <p className="mt-4 text-sm leading-7 text-neutral-700">
-                  {getCaseStudyLimitation(study.id)}
-                </p>
-              </div>
+          <section>
+            <div className="rounded-[1.35rem] border border-black/8 bg-white p-6">
+              <p className="eyebrow">Is this relevant to your store?</p>
+              <p className="mt-4 text-base leading-8 text-neutral-700">
+                {CASE_STUDY_PACKAGE_RELEVANCE[study.id]}
+              </p>
+              <p className="mt-3 text-sm leading-7 text-neutral-500">
+                {study.role} across {study.techStack.join(", ")}.
+              </p>
+              <Link
+                href={isHydrogenCaseStudy(study.id) ? "/shopify-hydrogen-packages" : "/when-not-to-use-hydrogen"}
+                className="mt-5 inline-flex min-h-11 items-center rounded-full bg-[#171717] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#10b981]"
+              >
+                {isHydrogenCaseStudy(study.id)
+                  ? "Need a leaner version of this? View Hydrogen packages from $2K-$5K."
+                  : "Not every store needs Hydrogen. Read when Liquid is the better move."}
+              </Link>
             </div>
           </section>
+
 
           <section className="card-soft space-y-5">
             <div className="max-w-3xl">
               <p className="eyebrow">Relevant paths</p>
-              <h2 className="subsection-title mt-3">Turn this proof into a scoped next step.</h2>
+              <h2 className="subsection-title mt-3">Explore the services relevant to this project.</h2>
             </div>
             <div className="authority-links">
               {getCaseStudyLinks(study.id).map((item) => (
@@ -285,8 +238,8 @@ export default async function CaseStudyDetailPage({
         </article>
 
         <CTASection
-          headline="Need this kind of proof turned into an implementation plan?"
-          subtext="Send the storefront pressure, current stack, and what the business needs to prove. I can help you decide whether the next move is Liquid, Hydrogen, or no rebuild."
+          headline="Working on a similar storefront?"
+          subtext="Share your current store and the problem you need to solve. I can help you decide whether the next move is Liquid, Hydrogen, or no rebuild."
           sourceKind={`case_study:${study.slug}`}
         />
       </div>
@@ -296,23 +249,6 @@ export default async function CaseStudyDetailPage({
 
 function isHydrogenCaseStudy(studyId: CaseStudyId) {
   return studyId === "eveshop" || studyId === "bayam" || studyId === "rebel-bunny";
-}
-
-function getCaseStudyLimitation(studyId: CaseStudyId) {
-  const limitations = {
-    eveshop:
-      "It does not prove that every large catalog retailer should move to Hydrogen. It proves production experience in a complex retail context, while the fit still depends on budget, maintenance capacity, SEO risk, and the current theme constraint.",
-    bayam:
-      "It does not prove that every luxury jewelry or watch brand needs a custom storefront. It proves that Hydrogen can support premium discovery when the catalog and brand surface require more control than a generic theme path.",
-    "rebel-bunny":
-      "It does not prove that every DTC education brand needs Hydrogen. It proves that a custom storefront can be useful when commerce, education, partner interest, and mobile brand presentation need to move together.",
-    kirazev:
-      "It does not prove that Hydrogen is always the next step for a home goods catalog. It proves the opposite: when speed, simplicity, and Shopify-native operations matter most, Liquid can be the right commercial decision.",
-    clohi:
-      "It does not prove that every international apparel brand needs a custom storefront. It proves market-aware Shopify delivery, where Liquid can cover the buying journey until discovery, content, or personalization pressure outgrows the theme.",
-  } as const;
-
-  return limitations[studyId];
 }
 
 function getCaseStudyLinks(studyId: CaseStudyId) {

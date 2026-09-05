@@ -1,6 +1,7 @@
 export type SourceType =
   | "shopify_official"
   | "google_official"
+  | "platform_official"
   | "personal_experience"
   | "case_study"
   | "competitor_reference";
@@ -980,11 +981,17 @@ export const BLOG_SOURCE_METADATA = {
 
 export const ARTICLE_SOURCE_METADATA = {
   "shopify-hydrogen-nextjs": {
-    lastVerified: "2026-05-27",
+    lastVerified: "2026-09-05",
     claimTypes: ["official_shopify_fact", "commercial_opinion", "emre_experience"],
     sourceMap: [
-      SOURCE_PACKS.fluxHydrogenNextjs,
-      SOURCE_PACKS.talkShopHydrogenNextjs,
+      {
+        label: "Next.js deployment options",
+        sourceType: "platform_official",
+        topic: "deployment",
+        url: "https://nextjs.org/docs/app/getting-started/deploying",
+        retrievedAt: "2026-09-05",
+        usedFor: "Node.js deployment support and hosting choice in the framework comparison.",
+      },
       SOURCE_PACKS.hydrogenFundamentals,
       SOURCE_PACKS.emreProductionExperience,
     ],
@@ -1010,7 +1017,7 @@ export const ARTICLE_SOURCE_METADATA = {
     contentType: "evergreen_article",
   },
   "shopify-apps-in-hydrogen-compatibility-checklist": {
-    lastVerified: "2026-05-27",
+    lastVerified: "2026-09-05",
     claimTypes: ["official_shopify_fact", "commercial_opinion", "emre_experience"],
     sourceMap: [
       SOURCE_PACKS.yotpoHydrogenReviews,
@@ -1318,7 +1325,7 @@ export const STATIC_PAGE_SOURCE_METADATA = {
     ],
   },
   "/case-studies": {
-    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    lastVerified: "2026-09-05",
     claimTypes: ["case_study_fact", "emre_experience", "commercial_opinion"],
     sourceMap: [
       SOURCE_PACKS.caseStudyEvidence,
@@ -1326,8 +1333,32 @@ export const STATIC_PAGE_SOURCE_METADATA = {
       SOURCE_PACKS.emreProductionExperience,
     ],
   },
+  "/case-studies/bayam-jewelry-shopify-hydrogen": {
+    lastVerified: "2026-09-05",
+    claimTypes: ["case_study_fact", "emre_experience", "commercial_opinion"],
+    sourceMap: [SOURCE_PACKS.caseStudyEvidence, SOURCE_PACKS.emreProductionExperience],
+    targetKeyword: "Bayam Jewelry Shopify Hydrogen case study",
+    searchIntent: "Evaluate storefront delivery and implementation experience",
+    contentType: "Case study",
+  },
+  "/case-studies/kirazev-shopify-liquid": {
+    lastVerified: "2026-09-05",
+    claimTypes: ["case_study_fact", "emre_experience", "commercial_opinion"],
+    sourceMap: [SOURCE_PACKS.caseStudyEvidence, SOURCE_PACKS.emreProductionExperience],
+    targetKeyword: "Kirazev Shopify Liquid case study",
+    searchIntent: "Evaluate storefront delivery and implementation experience",
+    contentType: "Case study",
+  },
+  "/case-studies/clohi-shopify-liquid": {
+    lastVerified: "2026-09-05",
+    claimTypes: ["case_study_fact", "emre_experience", "commercial_opinion"],
+    sourceMap: [SOURCE_PACKS.caseStudyEvidence, SOURCE_PACKS.emreProductionExperience],
+    targetKeyword: "Clohi Shopify Liquid case study",
+    searchIntent: "Evaluate storefront delivery and implementation experience",
+    contentType: "Case study",
+  },
   "/case-studies/eveshop-shopify-hydrogen": {
-    lastVerified: "2026-08-04",
+    lastVerified: "2026-09-05",
     claimTypes: ["case_study_fact", "emre_experience", "commercial_opinion"],
     sourceMap: [
       SOURCE_PACKS.caseStudyEvidence,
@@ -1339,7 +1370,7 @@ export const STATIC_PAGE_SOURCE_METADATA = {
     contentType: "Case study",
   },
   "/case-studies/rebel-bunny-shopify-hydrogen": {
-    lastVerified: "2026-05-03",
+    lastVerified: "2026-09-05",
     claimTypes: ["case_study_fact", "emre_experience", "commercial_opinion"],
     sourceMap: [
       SOURCE_PACKS.caseStudyEvidence,

@@ -93,7 +93,7 @@ export const STATIC_ROUTE_SITEMAP_OVERRIDES: Record<
     priority: 0.9,
   },
   "/case-studies": {
-    lastModified: LAST_SIGNIFICANT_UPDATE,
+    lastModified: new Date("2026-09-05T00:00:00.000Z"),
     changeFrequency: "weekly",
     priority: 0.86,
   },

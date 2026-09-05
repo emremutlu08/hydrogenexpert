@@ -2,11 +2,6 @@ import Link from "next/link";
 
 import { CTASection } from "@/components/CTASection";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { CaseStudyHero } from "@/components/case-study/CaseStudyHero";
-import { CaseStudyMetricGrid } from "@/components/case-study/CaseStudyMetricGrid";
-import { CaseStudyScreenshots } from "@/components/case-study/CaseStudyScreenshots";
-import { CaseStudyTechStack } from "@/components/case-study/CaseStudyTechStack";
-import { CaseStudyTestimonial } from "@/components/case-study/CaseStudyTestimonial";
 import { FaqSection } from "@/components/FaqSection";
 import { JsonLd } from "@/components/JsonLd";
 import { PageIntroSection } from "@/components/PageIntroSection";
@@ -43,12 +38,12 @@ const faqs = [
   {
     question: "Why include Kirazev and Clohi if HydrogenExpert sells Hydrogen services?",
     answer:
-      "Because they prove Shopify judgment. Some stores need Hydrogen, while others are better served by fast, maintainable Liquid builds. Showing both makes the sales argument more honest and more useful.",
+      "Because they prove Shopify judgment. Some stores need Hydrogen, while others are better served by fast, maintainable Liquid builds. The examples show how the choice follows the catalog, customer journey, and maintenance needs.",
   },
   {
     question: "Why do some cases have testimonials and others do not?",
     answer:
-      "Because only verified or approved feedback belongs on the page. Rebel Bunny has public Upwork feedback; other cases stay focused on approved role, constraint, stack, and outcome context.",
+      "The Rebel Bunny case includes public Upwork feedback. Each project also describes my role, implementation, and storefront context, with screenshots to explore.",
   },
 ] as const;
 
@@ -75,15 +70,15 @@ export default function CaseStudiesPage() {
           eyebrow="Proof"
           title="Real stores, real constraints, real storefront decisions"
           description="One proof page, five different storefront pressures: large-scale beauty retail, luxury jewelry, social-first DTC, home goods Liquid, and international apparel Liquid."
-          body="This page uses only approved public proof: role, constraint, stack, visuals, and outcome context. Quotes, metrics, and deeper evidence stay off the page unless they are public or explicitly approved."
-          reviewedAt="2026-05-25"
+          body="Explore the business problem, my role, and the implementation behind each store. Start with the project closest to your catalog and customer journey."
+          reviewedAt="2026-09-05"
         />
 
         <section className="surface-card space-y-6">
           <SectionHeader
             eyebrow="Selected work"
             title="Find the storefront pressure closest to yours."
-            description="Each case now has a dedicated URL for deeper context, technical decisions, approved visuals, and launch constraints."
+            description="Open a project to see its technical decisions, storefront screenshots, and delivery context."
           />
           <SelectedWorkGrid />
         </section>
@@ -92,7 +87,7 @@ export default function CaseStudiesPage() {
           <SectionHeader
             eyebrow="Decision proof"
             title="What each case helps decide."
-            description="Hydrogen and Liquid proof are intentionally separated so buyers can map the work to Starter, Growth, Custom, Liquid cleanup, or no-rebuild decisions without inflated claims."
+            description="Compare the custom storefront work with the Liquid builds to see which approach fits your needs."
             className="max-w-5xl"
           />
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
@@ -113,67 +108,16 @@ export default function CaseStudiesPage() {
           </div>
         </section>
 
-        <section className="grid gap-8">
-          {CASE_STUDIES.map((study, index) => (
-            <article id={study.id} key={study.id} className="card scroll-mt-32 space-y-8">
-              <CaseStudyHero
-                clientName={study.clientName}
-                tagline={study.tagline}
-                role={study.role}
-                industry={study.industry}
-                liveUrl={study.liveUrl}
-                logo={study.logo}
-                heroImage={study.heroImage}
-              />
-              <Link
-                href={`/case-studies/${study.slug}`}
-                className="inline-flex rounded-full bg-[#171717] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#10b981]"
-              >
-                Read full case study
+        <section className="grid gap-6">
+          {CASE_STUDIES.map((study) => (
+            <article id={study.id} key={study.id} className="card scroll-mt-32 space-y-5">
+              <p className="eyebrow">{study.role}</p>
+              <h2 className="subsection-title">{study.caseStudyTitle}</h2>
+              <p className="max-w-4xl text-base leading-8 text-neutral-600">{study.context}</p>
+              <p className="max-w-4xl text-base leading-8 text-neutral-700">{study.outcome}</p>
+              <Link href={`/case-studies/${study.slug}`} className="inline-flex min-h-11 items-center rounded-full bg-[#171717] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#10b981]">
+                Read the {study.clientName} case study
               </Link>
-
-              <div className="grid gap-x-8 gap-y-10 xl:grid-cols-2 xl:items-start">
-                <div>
-                  <p className="eyebrow">Case {index + 1}</p>
-                  <h3 className="subsection-title mt-3">Problem</h3>
-                  <p className="mt-3 text-sm font-semibold uppercase tracking-[0.16em] text-[#10b981]">
-                    {study.portfolioAngle}
-                  </p>
-                  <p className="mt-3 rounded-[1rem] border border-black/8 bg-[#f6f7f7] px-4 py-3 text-sm leading-7 text-neutral-700">
-                    <strong className="text-neutral-900">Package relevance:</strong>{" "}
-                    {CASE_STUDY_PACKAGE_RELEVANCE[study.id]}
-                  </p>
-                  <p className="mt-4 text-base leading-8 text-neutral-600">{study.problem}</p>
-                </div>
-
-                <div>
-                  <p className="eyebrow">Approach</p>
-                  <h3 className="subsection-title mt-3">What I focused on</h3>
-                  <p className="mt-4 text-base leading-8 text-neutral-600">{study.approach}</p>
-                </div>
-
-                <div className="rounded-[1.5rem] border border-black/8 bg-[#f6f7f7] p-6 md:p-8">
-                  <p className="eyebrow">Outcome</p>
-                  <h3 className="subsection-title mt-3">What changed and why it matters</h3>
-                  <p className="mt-4 text-base leading-8 text-neutral-700">{study.outcome}</p>
-                </div>
-
-                <CaseStudyScreenshots screenshots={study.screenshots} />
-
-                {study.metrics.length ? (
-                  <section className="space-y-4">
-                    <div>
-                      <p className="eyebrow">Metrics</p>
-                      <h3 className="subsection-title mt-3">Supported proof points</h3>
-                    </div>
-                    <CaseStudyMetricGrid metrics={study.metrics} />
-                  </section>
-                ) : null}
-
-                <CaseStudyTechStack stack={study.techStack} />
-              </div>
-
-              <CaseStudyTestimonial testimonial={study.testimonial} />
             </article>
           ))}
         </section>

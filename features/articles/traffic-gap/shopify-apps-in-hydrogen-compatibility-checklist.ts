@@ -69,22 +69,22 @@ export const draft = {
   conclusion:
     "Treat app compatibility as migration scope, not as a post-launch cleanup list. The right answer may be Hydrogen, Liquid, or a narrower first launch.",
   links: [
-    { href: "/liquid-to-hydrogen-migration", label: "Liquid to Hydrogen migration" },
-    { href: "/shopify-hydrogen-fit-audit", label: "Hydrogen fit audit" },
-    { href: "/shopify-hydrogen-issues", label: "Hydrogen issue library" },
+    { href: "/liquid-to-hydrogen-migration", label: "Liquid to Hydrogen migration", note: "Turn the compatibility findings into a migration scope and launch sequence." },
+    { href: "/shopify-hydrogen-fit-audit", label: "Hydrogen fit audit", note: "Check whether custom storefront work is justified before replacing apps." },
+    { href: "/shopify-hydrogen-issues", label: "Hydrogen issue library", note: "Investigate storefront integration problems that may affect your audit." },
     { href: "/contact", label: "Request Scope Review" },
   ],
   sources: [
     {
       href: "https://support.yotpo.com/docs/using-yotpo-reviews-with-shopify-hydrogen",
       label: "Yotpo: Reviews with Shopify Hydrogen",
-      note: "English integration source translated into reviews-risk checks.",
+      note: "Vendor instructions for displaying reviews in Hydrogen.",
       external: true,
     },
     {
       href: "https://support.yotpo.com/docs/setting-up-yotpo-loyalty-referrals-on-a-headless-platform",
       label: "Yotpo: Loyalty on a headless platform",
-      note: "English source used for loyalty and customer identity prompts.",
+      note: "Vendor requirements for headless loyalty and customer identity.",
       external: true,
     },
     {
@@ -97,6 +97,7 @@ export const draft = {
 } as const satisfies Article;
 
 export const refresh = {
+  updatedAt: "2026-09-05",
   summary: [
     "App compatibility is one of the fastest ways a Hydrogen migration gets under-scoped. Many Shopify apps are built for Liquid theme injection, app blocks, script tags, or checkout surfaces that do not move cleanly into a custom Hydrogen storefront.",
     "The right checklist starts with revenue-critical behavior: reviews, subscriptions, loyalty, search, recommendations, analytics, consent, customer accounts, bundles, and returns. Each app needs a decision: native Hydrogen support, API integration, script embed, replacement, or removal.",
@@ -119,6 +120,136 @@ export const refresh = {
     },
   ],
   sections: [
+{
+    "title": "Example compatibility matrix",
+    "body": [
+        "Illustrative audit template, not a customer project result. Replace these examples with each installed app, its vendor-confirmed capabilities, and the person responsible."
+    ],
+    "comparison": {
+        "caption": "App behavior and integration decisions",
+        "columns": [
+            "Category",
+            "Current behavior to record",
+            "Integration path to verify",
+            "Fallback or scope decision"
+        ],
+        "rows": [
+            {
+                "label": "Reviews",
+                "values": [
+                    "Product ratings and review widget",
+                    "Check vendor Hydrogen integration or API-backed display",
+                    "Keep review data; agree a display fallback before launch"
+                ]
+            },
+            {
+                "label": "Subscriptions",
+                "values": [
+                    "One-time and recurring product choices",
+                    "Verify selling plans, cart selection, checkout and account management",
+                    "Do not migrate recurring products until the full purchase path works"
+                ]
+            },
+            {
+                "label": "Loyalty",
+                "values": [
+                    "Points balance and reward redemption",
+                    "Confirm vendor identity, balance and redemption interfaces",
+                    "Agree how existing balances remain accessible"
+                ]
+            },
+            {
+                "label": "Search",
+                "values": [
+                    "Collection filters and product search",
+                    "Choose Shopify search or a supported vendor integration",
+                    "Keep essential filters and no-result recovery in scope"
+                ]
+            },
+            {
+                "label": "Analytics and consent",
+                "values": [
+                    "Storefront events and consent controls",
+                    "Map storefront, checkout and vendor event ownership",
+                    "Block unconsented tracking and deduplicate events"
+                ]
+            },
+            {
+                "label": "Customer accounts",
+                "values": [
+                    "Login, order history and account tools",
+                    "Verify account API and vendor account integrations",
+                    "Confirm returning customers can reach required account actions"
+                ]
+            }
+        ]
+    }
+},
+{
+    "title": "Assign ownership and launch checks",
+    "body": [
+        "Illustrative audit template, not a customer project result. Replace these examples with each installed app, its vendor-confirmed capabilities, and the person responsible."
+    ],
+    "comparison": {
+        "caption": "App ownership and launch acceptance",
+        "columns": [
+            "Category",
+            "Suggested owner",
+            "QA scenario",
+            "Launch blocker"
+        ],
+        "rows": [
+            {
+                "label": "Reviews",
+                "values": [
+                    "Storefront developer + reviews vendor",
+                    "Compare ratings and review content on mobile and desktop",
+                    "Block if required trust content has no working display path"
+                ]
+            },
+            {
+                "label": "Subscriptions",
+                "values": [
+                    "Commerce developer + subscription vendor",
+                    "Select a plan, change cart quantity, complete test checkout, access management",
+                    "Block on wrong plan, price or inaccessible account management"
+                ]
+            },
+            {
+                "label": "Loyalty",
+                "values": [
+                    "Retention owner + vendor",
+                    "Sign in, compare balance, apply an eligible reward",
+                    "Block on lost balances or incorrect redemption"
+                ]
+            },
+            {
+                "label": "Search",
+                "values": [
+                    "Merchandising owner + developer",
+                    "Test important queries, combined filters and zero results",
+                    "Block when core products cannot be found"
+                ]
+            },
+            {
+                "label": "Analytics and consent",
+                "values": [
+                    "Analytics owner + developer",
+                    "Test before consent, after consent and after withdrawal",
+                    "Block on unconsented or duplicate tracking"
+                ]
+            },
+            {
+                "label": "Customer accounts",
+                "values": [
+                    "Commerce developer + support owner",
+                    "Test returning customer login and required order actions",
+                    "Block when customers cannot use required account functions"
+                ]
+            }
+        ]
+    }
+},
     {
       title: "Build the inventory before choosing the migration date",
       body: [

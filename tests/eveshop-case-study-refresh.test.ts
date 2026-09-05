@@ -42,7 +42,7 @@ describe("EveShop case study refresh", () => {
   it("keeps per-slug source metadata tied to the approved evidence packs", () => {
     const metadata = STATIC_PAGE_SOURCE_METADATA[route];
 
-    expect(metadata.lastVerified).toBe("2026-08-04");
+    expect(metadata.lastVerified).toBe("2026-09-05");
     expect(metadata.claimTypes).toEqual([
       "case_study_fact",
       "emre_experience",

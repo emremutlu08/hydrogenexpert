@@ -116,7 +116,7 @@ function buildPageIndex() {
       llmsLink(
         study.clientName,
         `/case-studies/${study.slug}`,
-        `${study.caseStudyTitle} for ${study.industry.toLowerCase()}. Portfolio angle: ${study.portfolioAngle}`,
+        `${study.role}. ${study.context} ${study.outcome}`,
       ),
   );
   const coreLines = LLMS_CORE_PAGE_ENTRIES.flatMap((entry) => {

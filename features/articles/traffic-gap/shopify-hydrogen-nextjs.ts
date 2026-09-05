@@ -74,15 +74,9 @@ export const draft = {
   ],
   sources: [
     {
-      href: "https://flux.agency/insights/hydrogen-vs-nextjs-shopify-framework-comparison",
-      label: "Flux: Hydrogen vs Next.js for Shopify",
-      note: "English comparison source translated into the merchant decision frame.",
-      external: true,
-    },
-    {
-      href: "https://www.letstalkshop.com/blog/shopify-hydrogen-vs-nextjs-for-headless-store",
-      label: "Talk Shop: Shopify Hydrogen vs Next.js",
-      note: "English headless framework comparison used for TCO and hosting prompts.",
+      href: "https://nextjs.org/docs/app/getting-started/deploying",
+      label: "Next.js: Deployment options",
+      note: "Official deployment guidance, including self-hosted Node.js.",
       external: true,
     },
     {
@@ -95,6 +89,7 @@ export const draft = {
 } as const satisfies Article;
 
 export const refresh = {
+  updatedAt: "2026-09-05",
   summary: [
     "The useful answer is usually commercial, not ideological: Hydrogen is the lower-friction route when Shopify owns commerce logic and the team wants Shopify-aligned hosting, routing, cart primitives, and deployment. Next.js is stronger when the storefront is one part of a wider product surface that already depends on Vercel, custom app routes, or non-Shopify systems.",
     "A good scope review should price the work after launch: who maintains caching, app replacements, analytics, consent, preview workflows, search, CMS editing, and checkout handoff. The framework decision is healthy only when those operating costs are visible before the build starts.",
@@ -117,6 +112,63 @@ export const refresh = {
     },
   ],
   sections: [
+{
+    "title": "Compare the work your team will own",
+    "body": [
+        "My recommendation is to compare ownership before choosing a framework. Both stacks can support custom content and non-commerce routes; the deciding factor is the integration work and the team that will maintain it. The table combines documented platform capabilities with practical scoping questions."
+    ],
+    "comparison": {
+        "caption": "Hydrogen and Next.js ownership comparison",
+        "columns": [
+            "Decision",
+            "Hydrogen",
+            "Next.js",
+            "Question before committing"
+        ],
+        "rows": [
+            {
+                "label": "Commerce integration",
+                "values": [
+                    "Shopify API clients and commerce components are provided",
+                    "Choose and maintain the Shopify integration within the application",
+                    "Who owns cart, account and API-version changes?"
+                ]
+            },
+            {
+                "label": "Content editing",
+                "values": [
+                    "Choose Shopify content or a CMS and build the editing workflow",
+                    "Choose a CMS and connect preview and publishing to the app",
+                    "Can editors preview, localize and publish without a developer?"
+                ]
+            },
+            {
+                "label": "Hosting",
+                "values": [
+                    "Oxygen offers Shopify-aligned deployment; other hosting is possible",
+                    "Vercel is one option; a Node.js server is also supported",
+                    "Who maintains environments, caches, rollbacks and incidents?"
+                ]
+            },
+            {
+                "label": "Apps",
+                "values": [
+                    "Verify headless support for each app; theme integrations still need work",
+                    "Verify the same app behavior and connect it to the chosen architecture",
+                    "Who tests subscriptions, reviews, loyalty and tracking end to end?"
+                ]
+            },
+            {
+                "label": "Team and maintenance",
+                "values": [
+                    "Budget Hydrogen, React Router and Shopify API upkeep",
+                    "Budget Next.js, Shopify API and integration upkeep",
+                    "Which team can diagnose and repair the store after launch?"
+                ]
+            }
+        ]
+    }
+},
     {
       title: "Translate the framework debate into merchant risk",
       body: [

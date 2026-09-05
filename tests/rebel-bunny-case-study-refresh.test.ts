@@ -34,7 +34,7 @@ describe("Rebel Bunny case study refresh", () => {
   it("keeps per-route source metadata tied to the approved May evidence", () => {
     const metadata = STATIC_PAGE_SOURCE_METADATA[route];
 
-    expect(metadata.lastVerified).toBe("2026-05-03");
+    expect(metadata.lastVerified).toBe("2026-09-05");
     expect(metadata.claimTypes).toEqual([
       "case_study_fact",
       "emre_experience",

@@ -43,7 +43,7 @@ export function buildSitemapEntries({
 
     return {
       url: `${normalizedSiteUrl}${route === "/" ? "" : route}`,
-      lastModified: routeOverride?.lastModified ?? LAST_SIGNIFICANT_UPDATE,
+      lastModified: routeOverride?.lastModified ?? (route.startsWith("/case-studies/") ? new Date("2026-09-05T00:00:00.000Z") : LAST_SIGNIFICANT_UPDATE),
       changeFrequency:
         routeOverride?.changeFrequency ??
         (route === "/" ? "weekly" : route === "/blog" ? "daily" : "monthly"),
