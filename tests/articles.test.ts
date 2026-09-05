@@ -153,13 +153,17 @@ describe("scheduled articles", () => {
       const article = publicArticles.find((item) => item.slug === slug);
       const sourceMetadata = getArticleSourceMetadata(slug);
       const expectedUpdatedAt =
-        slug === "shopify-hydrogen-seo-checklist"
+        ["shopify-hydrogen-nextjs", "shopify-apps-in-hydrogen-compatibility-checklist"].includes(slug)
+          ? "2026-09-05"
+          : slug === "shopify-hydrogen-seo-checklist"
           ? SEO_CHECKLIST_REFRESH_DATE
           : slug === "shopify-hydrogen-search-filters-product-discovery"
             ? "2026-09-01T10:00:00+03:00"
             : TRAFFIC_GAP_REFRESH_DATE;
       const expectedLastVerified =
-        slug === "shopify-hydrogen-seo-checklist"
+        ["shopify-hydrogen-nextjs", "shopify-apps-in-hydrogen-compatibility-checklist"].includes(slug)
+          ? "2026-09-05"
+          : slug === "shopify-hydrogen-seo-checklist"
           ? SEO_CHECKLIST_SOURCE_LAST_VERIFIED
           : slug === "shopify-hydrogen-search-filters-product-discovery"
             ? "2026-09-01"

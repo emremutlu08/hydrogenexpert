@@ -254,7 +254,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                 <Link key={item.href} href={item.href} className="authority-link-card">
                   <p className="authority-link-card__label">HydrogenExpert</p>
                   <h3 className="authority-link-card__title">{item.label}</h3>
-                  <p className="authority-link-card__body">Continue with this supporting page.</p>
+                  {item.note ? <p className="authority-link-card__body">{item.note}</p> : null}
                 </Link>
               ))}
             </div>
