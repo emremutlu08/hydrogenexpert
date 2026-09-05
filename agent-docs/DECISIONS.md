@@ -33,3 +33,12 @@ This file records durable decisions so future agents do not re-litigate settled 
 - Keep `lib/` for stable adapters, shared helpers, security, and metadata modules; temporary compatibility modules are allowed only during active migrations.
 - Do not split files only to satisfy size preferences; split when locality, leverage, testing, or DRY/KISS improves.
 - Keep direct-composed resource, article, blog, and traffic-foundation pages local unless two or more pages share the same data shape and behavior. The 2026-05-25 final architecture pass found no useful generic renderer to extract without adding indirection.
+
+## 2026-09-05: One Hydrogen hiring owner
+
+- `/shopify-hydrogen-experts` owns direct developer support, expert hiring, and Hydrogen agency comparison. The developer, singular expert, agency, and agency-usa routes retire with permanent redirects; the older storefront-api-developer redirect points directly at the final owner.
+- Evidence: GSC 90-day window ending 2026-09-03. The plural page leads the experts and agency queries; agency competing URLs increased from 10 to 12 and the former agency owner is absent. The September 5 gate returned CONSOLIDATE. This supersedes the singular target proposed in PR #99.
+- Keep `/headless-shopify-agency`, pricing, examples, and educational guides separate. Preserve direct implementation, broader agency, audit, Liquid, and no-rebuild choices.
+- Redirects and link normalization share the search-intent manifest. Sitemap, llms, source metadata, commercial QA, and measurement use the surviving owner.
+- Ranking improvement is a hypothesis, not a release gate. Compare URL counts, owner presence, impressions, clicks, and positions after 7, 14, and 28 days. Preserve the July baseline.
+- Tracking: https://github.com/emremutlu08/hydrogenexpert/issues/132

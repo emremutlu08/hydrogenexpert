@@ -27,11 +27,11 @@ Use this before production deployment and again after the live deployment is ava
 - [ ] `/sitemap.xml` returns expected URLs.
 - [ ] `/robots.txt` references the sitemap.
 - [ ] `/indexnow-key.txt` and `/.well-known/indexnow-key.txt` return the same IndexNow key.
-- [ ] `/sitemap.xml` has at least 50 URLs and includes `/shopify-hydrogen-developer`, `/shopify-hydrogen-expert`, `/shopify-hydrogen-experts`, `/articles/how-to-hire-shopify-hydrogen-developer`, `/articles/shopify-hydrogen-developer-vs-agency`, `/articles/shopify-hydrogen-experts-production-experience`, `/shopify-hydrogen-packages`, and `/case-studies`.
-- [ ] Run `npm run indexnow:ping -- / /sitemap.xml /shopify-hydrogen-developer /shopify-hydrogen-expert /shopify-hydrogen-experts /articles/how-to-hire-shopify-hydrogen-developer /articles/shopify-hydrogen-developer-vs-agency /articles/shopify-hydrogen-experts-production-experience /shopify-hydrogen-packages /case-studies` after production is live.
+- [ ] `/sitemap.xml` has at least 50 URLs and includes `/shopify-hydrogen-experts`, `/articles/how-to-hire-shopify-hydrogen-developer`, `/articles/shopify-hydrogen-developer-vs-agency`, `/articles/shopify-hydrogen-experts-production-experience`, `/shopify-hydrogen-packages`, and `/case-studies`.
+- [ ] Run `npm run indexnow:ping -- / /sitemap.xml /shopify-hydrogen-experts /articles/how-to-hire-shopify-hydrogen-developer /articles/shopify-hydrogen-developer-vs-agency /articles/shopify-hydrogen-experts-production-experience /shopify-hydrogen-packages /case-studies` after production is live.
 - [ ] Bing Webmaster verification is configured with `BING_SITE_VERIFICATION` when the account is available.
 - [ ] Resubmit `/sitemap.xml` in Google Search Console after production is live.
-- [ ] Inspect and request indexing for `/shopify-hydrogen-developer`, `/shopify-hydrogen-expert`, `/shopify-hydrogen-experts`, `/articles/how-to-hire-shopify-hydrogen-developer`, `/articles/shopify-hydrogen-developer-vs-agency`, `/articles/shopify-hydrogen-experts-production-experience`, `/shopify-hydrogen-packages`, and `/case-studies` when stale indexing or snippets need refreshing.
+- [ ] Inspect and request indexing for `/shopify-hydrogen-experts`, `/articles/how-to-hire-shopify-hydrogen-developer`, `/articles/shopify-hydrogen-developer-vs-agency`, `/articles/shopify-hydrogen-experts-production-experience`, `/shopify-hydrogen-packages`, and `/case-studies` when stale indexing or snippets need refreshing.
 - [ ] Recheck developer-query GSC mapping at 7, 14, and 28 days after deployment.
 - [ ] Touched pages are indexable unless intentionally noindexed.
 - [ ] Schema-bearing source is present in rendered HTML.
@@ -42,3 +42,5 @@ Use this before production deployment and again after the live deployment is ava
 ## PR Summary Notes
 
 Include the deployment URL, commit hash, validation commands, claim audit result, and any manual follow-up such as Search Console submission.
+
+Hiring consolidation: retired developer, singular expert, agency, agency-usa, and storefront-api-developer URLs must redirect directly to `/shopify-hydrogen-experts`. Exclude retired URLs from sitemap and discovery links.

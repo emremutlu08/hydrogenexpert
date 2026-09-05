@@ -38,7 +38,7 @@ describe("public discovery manifest", () => {
 
   it("keeps the indexing recovery route list anchored to the live sitemap floor", () => {
     expect(MINIMUM_INDEXING_RECOVERY_SITEMAP_URL_COUNT).toBeGreaterThanOrEqual(50);
-    expect(INDEXING_RECOVERY_ROUTES).toContain("/shopify-hydrogen-developer");
+    expect(INDEXING_RECOVERY_ROUTES).toContain("/shopify-hydrogen-experts");
     expect(INDEXING_RECOVERY_ROUTES).toContain("/articles/how-to-hire-shopify-hydrogen-developer");
     expect(INDEXING_RECOVERY_ROUTES).toContain(PACKAGE_PAGE_DISCOVERY.path);
     expect(INDEXING_RECOVERY_ROUTES).toContain("/case-studies");

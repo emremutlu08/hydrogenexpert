@@ -38,7 +38,7 @@ import {
 
 const LAST_UPDATED = "2026-05-25";
 const schemaIds = getSchemaIds();
-const agencyService = requireServicePackageByPagePath("/shopify-hydrogen-agency");
+const hiringService = requireServicePackageByPagePath("/shopify-hydrogen-experts");
 
 export const metadata = buildMetadata({
   title: "Shopify Hydrogen Storefronts from $2K-$5K | HydrogenExpert",
@@ -166,9 +166,9 @@ const faqs = [
   {
     question: "Where should I go for direct Hydrogen developer support?",
     answer:
-      "Use the dedicated developer service page when the scope is clear and you need direct help with Hydrogen routes, Storefront API data, SEO-safe launch work, product flow, cart behavior, and launch QA. If the scope is unclear, start with a free scope review before buying a full audit.",
-    linkHref: "/shopify-hydrogen-developer",
-    linkLabel: "Review direct developer support.",
+      "Use the expert hiring page when the scope is clear and you need direct help with Hydrogen routes, Storefront API data, SEO-safe launch work, product flow, cart behavior, and launch QA. If the scope is unclear, start with a free scope review before buying a full audit.",
+    linkHref: "/shopify-hydrogen-experts",
+    linkLabel: "Review senior Hydrogen support.",
   },
   {
     question: "Does Hydrogen help when the storefront needs AI-readable pages?",
@@ -306,24 +306,14 @@ const processSteps = [
 
 const commercialPathLinks = [
   {
-    href: agencyService.pagePath,
-    label: agencyService.name,
-    note: agencyService.summary,
-  },
-  {
-    href: "/shopify-hydrogen-developer",
-    label: "Shopify Hydrogen Developer",
-    note: "Direct senior implementation for Hydrogen routes, product flow, cart behavior, SEO-safe launch work, and support.",
+    href: hiringService.pagePath,
+    label: hiringService.name,
+    note: hiringService.summary,
   },
   {
     href: "/custom-shopify-hydrogen-storefront",
     label: "Custom Shopify Hydrogen Storefront",
     note: "Fixed-scope custom storefront builds for teams that need core ecommerce flow before custom scope expands.",
-  },
-  {
-    href: "/shopify-hydrogen-expert",
-    label: "Shopify Hydrogen Expert",
-    note: "One senior specialist for architecture, storefront risk, migration judgment, and implementation ownership.",
   },
   {
     href: "/shopify-hydrogen-seo",

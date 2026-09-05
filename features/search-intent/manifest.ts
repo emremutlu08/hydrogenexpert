@@ -1,8 +1,19 @@
-export const COMMERCIAL_INTENT_PATHS = [
+export const HIRING_INTENT_OWNER_PATH = "/shopify-hydrogen-experts" as const;
+
+export const RETIRED_COMMERCIAL_INTENT_PATHS = [
   "/shopify-hydrogen-developer",
   "/shopify-hydrogen-expert",
-  "/shopify-hydrogen-experts",
   "/shopify-hydrogen-agency",
+  "/shopify-hydrogen-agency-usa",
+] as const;
+
+export const HIRING_INTENT_REDIRECTS = [
+  ...RETIRED_COMMERCIAL_INTENT_PATHS,
+  "/shopify-storefront-api-developer",
+].map((source) => ({ source, destination: HIRING_INTENT_OWNER_PATH, permanent: true as const }));
+
+export const COMMERCIAL_INTENT_PATHS = [
+  HIRING_INTENT_OWNER_PATH,
   "/headless-shopify-agency",
   "/shopify-hydrogen-cost",
   "/shopify-hydrogen-examples",
@@ -11,7 +22,7 @@ export const COMMERCIAL_INTENT_PATHS = [
 export type CommercialIntentPath = (typeof COMMERCIAL_INTENT_PATHS)[number];
 
 export interface CommercialIntentOwner {
-  path: CommercialIntentPath;
+  path: string;
   primaryQuery: string;
   intent: string;
   offerTitle: string;
@@ -31,7 +42,7 @@ export interface CommercialIntentOwner {
   };
 }
 
-export const COMMERCIAL_INTENT_OWNERS = {
+const COMMERCIAL_INTENT_DEFINITIONS = {
   "/shopify-hydrogen-developer": {
     path: "/shopify-hydrogen-developer",
     primaryQuery: "shopify hydrogen developer",
@@ -83,25 +94,28 @@ export const COMMERCIAL_INTENT_OWNERS = {
   "/shopify-hydrogen-experts": {
     path: "/shopify-hydrogen-experts",
     primaryQuery: "shopify hydrogen experts",
-    intent: "Evaluate and compare experts using production-proof and risk criteria.",
-    offerTitle: "A proof-led evaluation path for comparing Hydrogen experts",
-    metaTitle: "Shopify Hydrogen Experts | Evaluation Checklist & Proof",
+    intent:
+      "Compare or hire senior Hydrogen expertise for implementation, technical ownership, and agency-alternative delivery.",
+    offerTitle: "One proof-led path for hiring senior Hydrogen expertise",
+    metaTitle: "Shopify Hydrogen Experts | Senior-Led Hiring Guide",
     metaDescription:
-      "Compare Shopify Hydrogen experts by production proof, Storefront API depth, SEO migration judgment, maintenance realism, and senior ownership.",
-    heroTitle: "Compare Shopify Hydrogen experts using proof, risk, and ownership",
+      "Compare Shopify Hydrogen experts, direct developer support, and agency delivery by production proof, technical ownership, SEO risk, and scope fit.",
+    heroTitle: "Shopify Hydrogen experts for direct senior ownership",
     heroDescription:
-      "Use this page to evaluate expert claims before choosing a specialist, agency, audit, or no-rebuild path.",
+      "Use this page to compare proof, hire direct implementation support, or decide whether a senior specialist, broader agency, audit, or no-rebuild path fits.",
     heroBody:
-      "The decision here is comparison quality: what counts as production evidence, which risks the expert can explain, and whether the delivery model matches the work.",
-    linkLabel: "Compare Shopify Hydrogen experts",
-    decisionFocus: "Expert comparison using production, migration, and maintenance criteria.",
-    deliverableFocus: "A vendor-path recommendation, proof review, risk questions, and the next safe buying step.",
+      "The decision combines comparison quality with delivery fit: what production evidence exists, who owns the code and hard tradeoffs, and whether the work needs direct senior implementation or a larger agency layer.",
+    linkLabel: "Hire or compare Shopify Hydrogen experts",
+    decisionFocus:
+      "Expert proof, direct implementation ownership, and senior-led delivery versus a larger agency.",
+    deliverableFocus:
+      "A proof review, implementation and risk scope, delivery-model recommendation, and next safe buying step.",
     proofFocus: "Verifiable public evidence and approved case-study context, never directory-style claims.",
     cta: {
-      headline: "Comparing Shopify Hydrogen experts?",
+      headline: "Need to hire or compare Shopify Hydrogen experts?",
       subtext:
-        "Send your current store URL, the options you are comparing, and the rebuild risk. I will help separate direct expert support, agency scope, audit, Liquid cleanup, and no rebuild.",
-      primaryLabel: "Request Expert Comparison",
+        "Send your current store URL, the work that needs ownership, the options you are comparing, and the rebuild risk. I will help separate direct implementation, senior expert support, broader agency scope, audit, Liquid cleanup, and no rebuild.",
+      primaryLabel: "Request Hiring Review",
     },
   },
   "/shopify-hydrogen-agency": {
@@ -200,7 +214,21 @@ export const COMMERCIAL_INTENT_OWNERS = {
       primaryLabel: "Request Pattern Review",
     },
   },
+} as const satisfies Record<string, CommercialIntentOwner>;
+
+export const COMMERCIAL_INTENT_OWNERS = {
+  [HIRING_INTENT_OWNER_PATH]: COMMERCIAL_INTENT_DEFINITIONS[HIRING_INTENT_OWNER_PATH],
+  "/headless-shopify-agency": COMMERCIAL_INTENT_DEFINITIONS["/headless-shopify-agency"],
+  "/shopify-hydrogen-cost": COMMERCIAL_INTENT_DEFINITIONS["/shopify-hydrogen-cost"],
+  "/shopify-hydrogen-examples": COMMERCIAL_INTENT_DEFINITIONS["/shopify-hydrogen-examples"],
 } as const satisfies Record<CommercialIntentPath, CommercialIntentOwner>;
+
+export const RETIRED_COMMERCIAL_INTENT_OWNERS = {
+  "/shopify-hydrogen-developer":
+    COMMERCIAL_INTENT_DEFINITIONS["/shopify-hydrogen-developer"],
+  "/shopify-hydrogen-expert": COMMERCIAL_INTENT_DEFINITIONS["/shopify-hydrogen-expert"],
+  "/shopify-hydrogen-agency": COMMERCIAL_INTENT_DEFINITIONS["/shopify-hydrogen-agency"],
+} as const;
 
 export function getCommercialIntentOwner(path: CommercialIntentPath) {
   return COMMERCIAL_INTENT_OWNERS[path];
@@ -208,4 +236,32 @@ export function getCommercialIntentOwner(path: CommercialIntentPath) {
 
 export function isCommercialIntentPath(path: string): path is CommercialIntentPath {
   return COMMERCIAL_INTENT_PATHS.includes(path as CommercialIntentPath);
+}
+
+export function isRetiredCommercialIntentPath(path: string) {
+  return RETIRED_COMMERCIAL_INTENT_PATHS.includes(
+    path as (typeof RETIRED_COMMERCIAL_INTENT_PATHS)[number],
+  );
+}
+
+export function resolveCommercialIntentPath(path: string) {
+  return isRetiredCommercialIntentPath(path) ? HIRING_INTENT_OWNER_PATH : path;
+}
+
+export function normalizeCommercialLinks<T extends { href: string; label: string }>(
+  links: readonly T[],
+): T[] {
+  const seen = new Set<string>();
+  return links.flatMap((link) => {
+    const href = resolveCommercialIntentPath(link.href);
+    if (seen.has(href)) return [];
+    seen.add(href);
+    return [{
+      ...link,
+      href,
+      label: href === HIRING_INTENT_OWNER_PATH && href !== link.href
+        ? COMMERCIAL_INTENT_OWNERS[HIRING_INTENT_OWNER_PATH].linkLabel
+        : link.label,
+    }];
+  });
 }

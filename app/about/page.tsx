@@ -181,10 +181,10 @@ export default function AboutPage() {
             Hydrogen routes, Storefront API work, SEO-safe launch support, cart behavior, and
             production QA is{" "}
             <Link
-              href="/shopify-hydrogen-developer"
+              href="/shopify-hydrogen-experts"
               className="font-semibold text-[#0f8a5d] underline decoration-[#10b981]/30 underline-offset-4 transition hover:text-[#10b981]"
             >
-              Shopify Hydrogen developer support
+              senior Shopify Hydrogen support
             </Link>
             .
           </p>

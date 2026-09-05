@@ -53,7 +53,7 @@ export const SERVICE_SOURCE_METADATA = {
     ],
   },
   "shopify-hydrogen-experts": {
-    lastVerified: "2026-09-01",
+    lastVerified: "2026-09-05",
     claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
     sourceMap: [
       SOURCE_PACKS.hydrogenFundamentals,

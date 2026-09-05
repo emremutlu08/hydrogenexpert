@@ -25,7 +25,7 @@ const requestedPermanentRedirects = [
   },
   {
     source: "/shopify-storefront-api-developer",
-    destination: "/shopify-hydrogen-developer",
+    destination: "/shopify-hydrogen-experts",
     permanent: true,
   },
 ] as const;

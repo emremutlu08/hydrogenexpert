@@ -70,7 +70,7 @@ describe("public discovery resilience", () => {
     const paths = sitemapPaths(await sitemap());
 
     for (const path of [
-      "/shopify-hydrogen-agency",
+      "/shopify-hydrogen-experts",
       "/case-studies/eveshop-shopify-hydrogen",
       "/articles/repository-article",
     ]) {
@@ -100,7 +100,7 @@ describe("public discovery resilience", () => {
     const body = await buildLlmsFullTxt();
 
     expect(body).toContain(
-      `- [Shopify Hydrogen Agency Alternative](${siteUrl}/shopify-hydrogen-agency):`,
+      `- [Shopify Hydrogen Experts](${siteUrl}/shopify-hydrogen-experts):`,
     );
     expect(body).toContain(`- [Repository article](${siteUrl}/articles/repository-article):`);
     expect(body).toContain("- No published posts found.");
@@ -123,7 +123,7 @@ describe("public discovery resilience", () => {
     expect(response.headers.get("Content-Type")).toBe("text/plain; charset=utf-8");
     expect(response.headers.get("X-Robots-Tag")).toBe("noindex, follow");
     expect(body).toContain(
-      `- [Shopify Hydrogen Agency Alternative](${siteUrl}/shopify-hydrogen-agency):`,
+      `- [Shopify Hydrogen Experts](${siteUrl}/shopify-hydrogen-experts):`,
     );
     expect(body).toContain(`- [Repository article](${siteUrl}/articles/repository-article):`);
     expect(body).toContain("- No published posts found.");

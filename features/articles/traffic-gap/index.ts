@@ -1,4 +1,9 @@
 import type { Article } from "../../../lib/articles";
+import {
+  COMMERCIAL_INTENT_OWNERS,
+  HIRING_INTENT_OWNER_PATH,
+  normalizeCommercialLinks,
+} from "../../search-intent";
 
 import { REFRESH_DATE } from "./shared";
 import * as shopifyHydrogenNextjs from "./shopify-hydrogen-nextjs";
@@ -32,14 +37,12 @@ const TRAFFIC_GAP_ARTICLE_MODULES = [
  * authority nowhere. Guarantee the link at assembly time.
  */
 const CANONICAL_HIRING_LINK = {
-  href: "/shopify-hydrogen-expert",
-  label: "Hire a senior Shopify Hydrogen expert",
+  href: HIRING_INTENT_OWNER_PATH,
+  label: COMMERCIAL_INTENT_OWNERS[HIRING_INTENT_OWNER_PATH].linkLabel,
 } as const;
 
 function withCanonicalHiringLink(links: readonly Article["links"][number][]) {
-  const deduped = links.filter(
-    (link, index) => links.findIndex((candidate) => candidate.href === link.href) === index,
-  );
+  const deduped = normalizeCommercialLinks(links);
 
   return deduped.some((link) => link.href === CANONICAL_HIRING_LINK.href)
     ? deduped

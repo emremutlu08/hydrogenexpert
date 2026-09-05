@@ -14,12 +14,8 @@ const repoRoot = process.cwd();
 
 const protectedLinks = [
   {
-    href: "/shopify-hydrogen-developer",
-    label: "Production Shopify Hydrogen storefront work",
-  },
-  {
-    href: "/shopify-hydrogen-expert",
-    label: "Senior Shopify Hydrogen development",
+    href: "/shopify-hydrogen-experts",
+    label: "Senior Shopify Hydrogen expertise",
   },
   {
     href: "/headless-shopify-agency",
@@ -72,7 +68,7 @@ describe("EveShop case study refresh", () => {
     );
   });
 
-  it("preserves the four existing links and appends the two decision links", () => {
+  it("consolidates hiring links and preserves proof and decision destinations", () => {
     const linkBlock = getEveShopLinkBlock();
     const hrefs = [...linkBlock.matchAll(/href: "([^"]+)"/g)].map((match) => match[1]);
 

@@ -1,8 +1,11 @@
 import type { ServicePackageBase, ServicePageEnrichment } from "./base";
-import { COMMERCIAL_INTENT_OWNERS } from "../../search-intent";
+import {
+  COMMERCIAL_INTENT_OWNERS,
+  RETIRED_COMMERCIAL_INTENT_OWNERS,
+} from "../../search-intent";
 
-const DEVELOPER_INTENT = COMMERCIAL_INTENT_OWNERS["/shopify-hydrogen-developer"];
-const EXPERT_INTENT = COMMERCIAL_INTENT_OWNERS["/shopify-hydrogen-expert"];
+const DEVELOPER_INTENT = RETIRED_COMMERCIAL_INTENT_OWNERS["/shopify-hydrogen-developer"];
+const EXPERT_INTENT = RETIRED_COMMERCIAL_INTENT_OWNERS["/shopify-hydrogen-expert"];
 const EXPERTS_INTENT = COMMERCIAL_INTENT_OWNERS["/shopify-hydrogen-experts"];
 const COST_INTENT = COMMERCIAL_INTENT_OWNERS["/shopify-hydrogen-cost"];
 

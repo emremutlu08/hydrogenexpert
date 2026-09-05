@@ -3,6 +3,8 @@ export {};
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 
+import { HIRING_INTENT_OWNER_PATH } from "../features/search-intent/manifest";
+
 import {
   AGENCY_CANNIBALIZATION_GATE_DATE,
   evaluateAgencyCannibalizationGate,
@@ -37,14 +39,14 @@ interface TrackedQuery {
 }
 
 const TRACKED_QUERIES: readonly TrackedQuery[] = [
-  { query: "shopify hydrogen experts", cluster: "hiring", owner: "/shopify-hydrogen-experts" },
-  { query: "hire shopify hydrogen developers", cluster: "hiring", owner: "/shopify-hydrogen-developer" },
-  { query: "shopify hydrogen development experts", cluster: "hiring", owner: "/shopify-hydrogen-expert" },
-  { query: "shopify hydrogen developers", cluster: "hiring", owner: "/shopify-hydrogen-developer" },
-  { query: "shopify hydrogen agency", cluster: "agency", owner: "/shopify-hydrogen-agency" },
-  { query: "hydrogen shopify agency", cluster: "agency", owner: "/shopify-hydrogen-agency" },
-  { query: "shopify hydrogen agentur", cluster: "agency", owner: "/shopify-hydrogen-agency" },
-  { query: "shopify hydrogen services company", cluster: "agency", owner: "/shopify-hydrogen-agency" },
+  { query: "shopify hydrogen experts", cluster: "hiring", owner: HIRING_INTENT_OWNER_PATH },
+  { query: "hire shopify hydrogen developers", cluster: "hiring", owner: HIRING_INTENT_OWNER_PATH },
+  { query: "shopify hydrogen development experts", cluster: "hiring", owner: HIRING_INTENT_OWNER_PATH },
+  { query: "shopify hydrogen developers", cluster: "hiring", owner: HIRING_INTENT_OWNER_PATH },
+  { query: "shopify hydrogen agency", cluster: "agency", owner: HIRING_INTENT_OWNER_PATH },
+  { query: "hydrogen shopify agency", cluster: "agency", owner: HIRING_INTENT_OWNER_PATH },
+  { query: "shopify hydrogen agentur", cluster: "agency", owner: HIRING_INTENT_OWNER_PATH },
+  { query: "shopify hydrogen services company", cluster: "agency", owner: HIRING_INTENT_OWNER_PATH },
   // The control. One URL, one intent, and the best commercial position on the
   // site. If this ever grows past one URL, something regressed.
   { query: "headless shopify agency", cluster: "control", owner: "/headless-shopify-agency" },

@@ -1,5 +1,7 @@
 import type { NextConfig } from "next";
 
+import { HIRING_INTENT_REDIRECTS } from "./features/search-intent/manifest";
+
 function buildContentSecurityPolicy() {
   return [
     "default-src 'self'",
@@ -78,11 +80,7 @@ const nextConfig: NextConfig = {
         destination: "/headless-shopify-agency",
         permanent: true,
       },
-      {
-        source: "/shopify-storefront-api-developer",
-        destination: "/shopify-hydrogen-developer",
-        permanent: true,
-      },
+      ...HIRING_INTENT_REDIRECTS,
     ];
   },
   async headers() {

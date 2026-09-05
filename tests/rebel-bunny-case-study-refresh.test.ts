@@ -13,8 +13,7 @@ const route = "/case-studies/rebel-bunny-shopify-hydrogen";
 const repoRoot = process.cwd();
 
 const protectedHrefs = [
-  "/shopify-hydrogen-developer",
-  "/shopify-hydrogen-expert",
+  "/shopify-hydrogen-experts",
   "/headless-shopify-agency",
   "/shopify-hydrogen-seo",
   "/custom-shopify-hydrogen-storefront",
@@ -77,7 +76,7 @@ describe("Rebel Bunny case study refresh", () => {
     );
   });
 
-  it("preserves the five existing internal links in the same order with no additions", () => {
+  it("consolidates hiring links and preserves the other destinations", () => {
     const hrefs = [...getRebelBunnyLinkBlock().matchAll(/href: "([^"]+)"/g)].map(
       (match) => match[1],
     );

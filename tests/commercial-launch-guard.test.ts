@@ -13,7 +13,7 @@ describe("commercial launch copy guard", () => {
       COMMERCIAL_VERIFICATION_ROUTES,
     );
     expect(COMMERCIAL_VERIFICATION_ROUTES).toContain("/hire-me");
-    expect(COMMERCIAL_VERIFICATION_ROUTES).toContain("/shopify-hydrogen-agency");
+    expect(COMMERCIAL_VERIFICATION_ROUTES).toContain("/shopify-hydrogen-experts");
   });
 
   it("fails with route and phrase details when required copy disappears", () => {
@@ -24,10 +24,10 @@ describe("commercial launch copy guard", () => {
     });
   });
 
-  it("accepts the current agency page's canonical no-rebuild recommendation", () => {
-    const agency = requireServicePackageByPagePath("/shopify-hydrogen-agency");
+  it("accepts the current hiring page's canonical no-rebuild recommendation", () => {
+    const agency = requireServicePackageByPagePath("/shopify-hydrogen-experts");
     const canonicalRecommendation = agency.deliverables.find((deliverable) =>
-      deliverable.includes("no-rebuild"),
+      deliverable.includes("no rebuild"),
     );
 
     expect(canonicalRecommendation).toBeDefined();
@@ -36,7 +36,7 @@ describe("commercial launch copy guard", () => {
       agency.heroTitle,
       agency.summary,
       canonicalRecommendation,
-      "Request Scope Review",
+      "Request Hiring Review",
     ].join(" ");
 
     expect(checkCommercialCopy(agency.pagePath, currentAgencyContent)).toEqual([]);

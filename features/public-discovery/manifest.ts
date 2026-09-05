@@ -16,6 +16,7 @@ export interface LlmsPageEntry {
 }
 
 export const LAST_SIGNIFICANT_UPDATE = new Date("2026-05-27T00:00:00.000Z");
+export const HIRING_INTENT_CONSOLIDATION_UPDATE = new Date("2026-09-05T00:00:00.000Z");
 export const SHOPIFY_HYDROGEN_VS_LIQUID_UPDATE = new Date("2026-07-05T00:00:00.000Z");
 
 export const PACKAGE_PAGE_DISCOVERY = {
@@ -42,7 +43,6 @@ export const PUBLIC_DISCOVERY_ROUTES: readonly PublicDiscoveryRoute[] = [
   { path: "/case-studies" },
   { path: "/hire-me" },
   { path: "/contact" },
-  { path: "/shopify-hydrogen-agency-usa" },
   { path: "/shopify-hydrogen-fit-audit" },
   { path: "/shopify-hydrogen-maintenance-cost" },
   { path: "/shopify-hydrogen-vs-liquid" },
@@ -53,9 +53,6 @@ export const PUBLIC_DISCOVERY_ROUTES: readonly PublicDiscoveryRoute[] = [
 ] as const;
 
 export const INDEXING_RECOVERY_ROUTES = [
-  "/shopify-hydrogen-agency",
-  "/shopify-hydrogen-developer",
-  "/shopify-hydrogen-expert",
   "/shopify-hydrogen-experts",
   "/articles/how-to-hire-shopify-hydrogen-developer",
   "/articles/shopify-hydrogen-developer-vs-agency",
@@ -89,25 +86,10 @@ export const STATIC_ROUTE_SITEMAP_OVERRIDES: Record<
     changeFrequency: "weekly",
     priority: 0.9,
   },
-  "/shopify-hydrogen-agency": {
-    lastModified: LAST_SIGNIFICANT_UPDATE,
-    changeFrequency: "weekly",
-    priority: 0.9,
-  },
-  "/shopify-hydrogen-developer": {
-    lastModified: LAST_SIGNIFICANT_UPDATE,
-    changeFrequency: "weekly",
-    priority: 0.9,
-  },
-  "/shopify-hydrogen-expert": {
-    lastModified: LAST_SIGNIFICANT_UPDATE,
-    changeFrequency: "weekly",
-    priority: 0.9,
-  },
   "/shopify-hydrogen-experts": {
-    lastModified: LAST_SIGNIFICANT_UPDATE,
+    lastModified: HIRING_INTENT_CONSOLIDATION_UPDATE,
     changeFrequency: "weekly",
-    priority: 0.88,
+    priority: 0.9,
   },
   "/case-studies": {
     lastModified: LAST_SIGNIFICANT_UPDATE,
@@ -217,11 +199,10 @@ export const LLMS_CORE_PAGE_ENTRIES: readonly LlmsPageEntry[] = [
 export const COMMERCIAL_VERIFICATION_ROUTES = [
   "/",
   PACKAGE_ROUTE,
-  "/shopify-hydrogen-agency",
+  "/shopify-hydrogen-experts",
   "/shopify-hydrogen-cost",
   "/custom-shopify-hydrogen-storefront",
   "/shopify-hydrogen-audit",
-  "/shopify-hydrogen-agency-usa",
   "/hire-me",
   "/contact",
   "/when-not-to-use-hydrogen",
