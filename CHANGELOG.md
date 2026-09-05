@@ -16,6 +16,15 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 ## Unreleased
 
 - Date: 2026-09-05
+- PR: [#145](https://github.com/emremutlu08/hydrogenexpert/pull/145)
+- Branch: `developer/content-narrative`
+- Deployment: release evidence and production deployment recorded in [#143](https://github.com/emremutlu08/hydrogenexpert/issues/143).
+- Summary: Lead with storefront problems and project evidence; shorten package and hiring narratives; remove public editorial notes from touched pages.
+- Files changed: homepage and index routes, shared package/proof/CTA components, hiring renderer and intent manifest, source/discovery summaries, related regression tests.
+- Verification: 184 tests, lint, typecheck, content and claim checks, 72-route build, commercial checks, 53 sitemap / 76 internal URLs with blog deferral, four schema pages, mobile overflow and pre-consent checks passed.
+- Manual follow-up: existing blog outage remains separately tracked in #144.
+
+- Date: 2026-09-05
 - PR: [#142 Consolidate Hydrogen hiring routes under the experts page](https://github.com/emremutlu08/hydrogenexpert/pull/142)
 - Branch: `codex/consolidate-hiring-intent`
 - Deployment: Release only from the reviewed Git-backed Vercel deployment after preview verification. Live result and deployment URL are tracked in [#132](https://github.com/emremutlu08/hydrogenexpert/issues/132).
