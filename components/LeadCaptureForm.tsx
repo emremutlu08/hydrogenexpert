@@ -31,14 +31,6 @@ interface LeadCaptureFormProps {
   compact?: boolean;
 }
 
-const SHORT_BRIEF_ITEMS = [
-  "Store URL or brand",
-  "What feels blocked",
-  "Current stack and product count",
-  "Design status and must-have integrations",
-  "Budget and timeline, if you know them",
-] as const;
-
 export function LeadCaptureForm({
   sourceKind,
   compact = false,
@@ -49,6 +41,8 @@ export function LeadCaptureForm({
   const [message, setMessage] = useState<string | null>(null);
   const [fallback, setFallback] = useState<LeadCaptureApiResponse["fallback"] | null>(null);
   const hasTrackedStart = useRef(false);
+  const optionalDetailsRef = useRef<HTMLDetailsElement>(null);
+  const errorMessageRef = useRef<HTMLParagraphElement>(null);
   const formSectionRef = useRef<HTMLElement>(null);
   const sourcePath = pathname || "/";
 
@@ -61,6 +55,10 @@ export function LeadCaptureForm({
   useEffect(() => {
     hasTrackedStart.current = false;
   }, [visitId]);
+
+  useEffect(() => {
+    if (status === "error") errorMessageRef.current?.focus();
+  }, [status, message]);
 
   const formClassName = useMemo(
     () =>
@@ -140,6 +138,9 @@ export function LeadCaptureForm({
       const payload = (await response.json()) as LeadCaptureApiResponse;
 
       if (!response.ok || !payload.ok) {
+        if (response.status === 400 && optionalDetailsRef.current) {
+          optionalDetailsRef.current.open = true;
+        }
         setStatus("error");
         setMessage(payload.error || "Something went wrong. Please try again.");
         setFallback(payload.fallback ?? null);
@@ -148,6 +149,7 @@ export function LeadCaptureForm({
       }
 
       form.reset();
+      if (optionalDetailsRef.current) optionalDetailsRef.current.open = false;
       setStatus("success");
       setMessage("Thanks. I have your note and will reply with the clearest next step.");
       trackLeadSubmit(sourceKind, "success", analyticsDetails, sourcePath);
@@ -170,35 +172,27 @@ export function LeadCaptureForm({
         onFocusCapture={markFormStarted}
         onChange={handleFieldChange}
         onSubmit={handleSubmit}
+        onInvalidCapture={(event) => {
+          const field = event.target;
+          if (optionalDetailsRef.current && field instanceof HTMLElement && field.closest("details") === optionalDetailsRef.current) {
+            optionalDetailsRef.current.open = true;
+            requestAnimationFrame(() => field.focus());
+          }
+        }}
         className="lead-form-card lead-form-layout scroll-mt-32"
       >
       <div className="lead-form-stack">
-        <p className="dna-kicker text-[#8df1cb]">Owned lead capture</p>
+        <p className="dna-kicker text-[#8df1cb]">Project inquiry</p>
         <h3 className="text-xl font-semibold leading-8 text-white md:text-[1.65rem]">
           Request a Hydrogen Scope Review
         </h3>
         <p className="text-sm leading-7 text-neutral-300">
-          Send the required fields first. Add design status, product count, integrations, SEO risk, budget, and timeline only if they are already clear.
+          Tell me about your store and the main problem. Add project details if you have them.
         </p>
         <p className="lead-form-note">
-          I do not sell Hydrogen if Liquid is the better move.
+          The first review helps identify whether Liquid, Hydrogen, or a smaller fix fits your store.
         </p>
-        <div className="rounded-[1rem] border border-white/10 bg-white/[0.06] p-4">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#8df1cb]">
-            Short brief path
-          </p>
-          <p className="mt-2 text-sm leading-6 text-neutral-300">
-            Required: name, email, store URL or brand, and main problem. Start with:
-          </p>
-          <ul className="mt-3 grid gap-2 text-sm leading-6 text-neutral-300">
-            {SHORT_BRIEF_ITEMS.map((item) => (
-              <li key={item} className="flex gap-2">
-                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#8df1cb]" />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+
       </div>
 
       <div className={formClassName}>
@@ -217,18 +211,6 @@ export function LeadCaptureForm({
         <input name="storeUrl" type="text" required autoComplete="url" placeholder="https://yourstore.com" />
       </label>
 
-      <div className={formClassName}>
-        <label className="lead-form-field">
-          <span>Current stack</span>
-          <select name="currentStack" defaultValue="">
-            <option value="">Optional</option>
-            {CURRENT_STACK_OPTIONS.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
-        </label>
         <label className="lead-form-field">
           <span>Main problem</span>
           <select name="mainProblem" required defaultValue="">
@@ -240,115 +222,136 @@ export function LeadCaptureForm({
             ))}
           </select>
         </label>
-      </div>
-
-      <div className={formClassName}>
-        <label className="lead-form-field">
-          <span>Budget range</span>
-          <select name="budgetRange" defaultValue="">
-            <option value="">Optional</option>
-            {BUDGET_RANGE_OPTIONS.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label className="lead-form-field">
-          <span>Timeline</span>
-          <select name="timeline" defaultValue="">
-            <option value="">Optional</option>
-            {TIMELINE_OPTIONS.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
-        </label>
-      </div>
-
-      <div className={formClassName}>
-        <label className="lead-form-field">
-          <span>Monthly revenue</span>
-          <select name="monthlyRevenueBand" defaultValue="">
-            <option value="">Optional</option>
-            {MONTHLY_REVENUE_OPTIONS.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label className="lead-form-field">
-          <span>Shopify Plus?</span>
-          <select name="shopifyPlusStatus" defaultValue="">
-            <option value="">Optional</option>
-            {SHOPIFY_PLUS_OPTIONS.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
-        </label>
-      </div>
 
       <label className="lead-form-field">
-        <span>What kind of help?</span>
-        <select name="engagementType" defaultValue="">
-          <option value="">Optional</option>
-          {ENGAGEMENT_TYPE_OPTIONS.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </select>
-      </label>
-
-      <div className={formClassName}>
-        <label className="lead-form-field">
-          <span>Do you already have a design?</span>
-          <select name="designStatus" defaultValue="">
-            <option value="">Optional</option>
-            {DESIGN_STATUS_OPTIONS.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label className="lead-form-field">
-          <span>How many products?</span>
-          <select name="productCount" defaultValue="">
-            <option value="">Optional</option>
-            {PRODUCT_COUNT_OPTIONS.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
-        </label>
-      </div>
-
-      <fieldset className="lead-form-field">
-        <legend>Which features are needed?</legend>
-        <div className="lead-form-choice-grid">
-          {NEEDED_FEATURE_OPTIONS.map((option) => (
-            <label key={option.value} className="lead-form-choice">
-              <input type="checkbox" name="neededFeatures" value={option.value} />
-              <span>{option.label}</span>
-            </label>
-          ))}
-        </div>
-      </fieldset>
-
-      <label className="lead-form-field">
-        <span>What is blocking growth?</span>
+        <span>Anything else? (optional)</span>
         <textarea
           name="message"
-          rows={compact ? 4 : 5}
-          placeholder="Pages needed, design source, integrations, SEO risk, app limits, launch deadline..."
+          rows={3}
+          placeholder="A short note about what you want to change..."
         />
       </label>
+
+      <details ref={optionalDetailsRef} className="rounded-[1.15rem] border border-white/15 p-4">
+        <summary className="min-h-11 cursor-pointer rounded-md py-3 text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8df1cb]">
+          Add project details (optional)
+        </summary>
+        <div className="lead-form-layout mt-5">
+          <div className={formClassName}>
+            <label className="lead-form-field">
+              <span>Current stack</span>
+              <select name="currentStack" defaultValue="">
+                <option value="">Optional</option>
+                {CURRENT_STACK_OPTIONS.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+            </label>
+
+          </div>
+
+          <div className={formClassName}>
+            <label className="lead-form-field">
+              <span>Budget range</span>
+              <select name="budgetRange" defaultValue="">
+                <option value="">Optional</option>
+                {BUDGET_RANGE_OPTIONS.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label className="lead-form-field">
+              <span>Timeline</span>
+              <select name="timeline" defaultValue="">
+                <option value="">Optional</option>
+                {TIMELINE_OPTIONS.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </div>
+
+          <div className={formClassName}>
+            <label className="lead-form-field">
+              <span>Monthly revenue</span>
+              <select name="monthlyRevenueBand" defaultValue="">
+                <option value="">Optional</option>
+                {MONTHLY_REVENUE_OPTIONS.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label className="lead-form-field">
+              <span>Shopify Plus?</span>
+              <select name="shopifyPlusStatus" defaultValue="">
+                <option value="">Optional</option>
+                {SHOPIFY_PLUS_OPTIONS.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </div>
+
+          <label className="lead-form-field">
+            <span>What kind of help?</span>
+            <select name="engagementType" defaultValue="">
+              <option value="">Optional</option>
+              {ENGAGEMENT_TYPE_OPTIONS.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+          </label>
+
+          <div className={formClassName}>
+            <label className="lead-form-field">
+              <span>Do you already have a design?</span>
+              <select name="designStatus" defaultValue="">
+                <option value="">Optional</option>
+                {DESIGN_STATUS_OPTIONS.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label className="lead-form-field">
+              <span>How many products?</span>
+              <select name="productCount" defaultValue="">
+                <option value="">Optional</option>
+                {PRODUCT_COUNT_OPTIONS.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </div>
+
+          <fieldset className="lead-form-field">
+            <legend>Which features are needed?</legend>
+            <div className="lead-form-choice-grid">
+              {NEEDED_FEATURE_OPTIONS.map((option) => (
+                <label key={option.value} className="lead-form-choice">
+                  <input type="checkbox" name="neededFeatures" value={option.value} />
+                  <span>{option.label}</span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+        </div>
+      </details>
 
       <input
         type="text"
@@ -378,6 +381,9 @@ export function LeadCaptureForm({
 
       {message ? (
         <p
+          ref={errorMessageRef}
+          role={status === "error" ? "alert" : "status"}
+          tabIndex={-1}
           className={`text-sm leading-7 ${
             status === "success" ? "text-[#8df1cb]" : "text-[#ffb4b4]"
           }`}
