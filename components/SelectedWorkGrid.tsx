@@ -23,10 +23,11 @@ function getBrandAsset(id: BrandClientId) {
   }
 }
 
-export function SelectedWorkGrid() {
+export function SelectedWorkGrid({ hydrogenOnly = false }: { hydrogenOnly?: boolean }) {
+  const items = hydrogenOnly ? SELECTED_WORK_ITEMS.filter((item) => ["eveshop", "bayam", "rebel-bunny"].includes(item.id)) : SELECTED_WORK_ITEMS;
   return (
-    <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-5">
-      {SELECTED_WORK_ITEMS.map((item) => {
+    <div className={`grid gap-5 md:grid-cols-2 ${hydrogenOnly ? "xl:grid-cols-3" : "xl:grid-cols-5"}`}>
+      {items.map((item) => {
         const logoAsset = getBrandAsset(item.id);
         const logoSrc = "logoSrc" in logoAsset ? logoAsset.logoSrc : undefined;
 

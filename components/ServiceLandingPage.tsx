@@ -22,8 +22,6 @@ import {
 } from "@/components/service-landing/CommonServiceSections";
 import {
   buildDeveloperResponsibilitiesSchema,
-  buildDeveloperSearchIntentSchema,
-  DeveloperHiringDecisionSection,
   DeveloperIntroSections,
   DeveloperProofSections,
 } from "@/components/service-landing/DeveloperServiceSections";
@@ -88,8 +86,6 @@ export function ServiceLandingPage({ service }: ServiceLandingPageProps) {
     service.pagePath === HIRING_INTENT_OWNER_PATH
       ? buildDeveloperResponsibilitiesSchema()
       : null;
-  const developerSearchIntentSchema =
-    service.pagePath === HIRING_INTENT_OWNER_PATH ? buildDeveloperSearchIntentSchema() : null;
   const sourceLinks = service.sourceMap.filter((source) => source.url);
 
   return (
@@ -100,7 +96,6 @@ export function ServiceLandingPage({ service }: ServiceLandingPageProps) {
           breadcrumbSchema,
           faqSchema,
           developerResponsibilitiesSchema,
-          developerSearchIntentSchema,
         )}
       />
       <div className="page-shell">
@@ -114,24 +109,37 @@ export function ServiceLandingPage({ service }: ServiceLandingPageProps) {
           reviewedAt={service.lastVerified}
         />
 
-        <ShortAnswerSection service={service} />
-        <IntentOwnershipSection service={service} />
-        <PackageServiceSections service={service} />
-        <DeveloperIntroSections service={service} />
-        <ServiceInclusionSection service={service} />
-        <OfferSnapshotSection service={service} />
-        <PricingRowsSection service={service} />
-        <AuditOfferSection service={service} />
-        <UniqueServiceSection service={service} />
-        <HydrogenSeoAuditChecklistSection service={service} />
-        <DeveloperHiringDecisionSection service={service} />
-        <HireFitSection service={service} />
-        <DecisionLogicSection service={service} />
-        <WrongFitSection service={service} />
-        <ProofNotesSection service={service} />
-        <ContextualProofSection service={service} />
-        <DeveloperProofSections service={service} sourceLinks={sourceLinks} />
-        <AuditScopeOutcomeSections service={service} />
+        {service.pagePath === HIRING_INTENT_OWNER_PATH ? (
+          <>
+            <ServiceInclusionSection service={service} />
+            <DeveloperProofSections service={service} sourceLinks={sourceLinks} />
+            <PackageServiceSections service={service} />
+            <OfferSnapshotSection service={service} />
+            <WrongFitSection service={service} />
+            <DeveloperIntroSections service={service} />
+          </>
+        ) : (
+          <>
+            <ShortAnswerSection service={service} />
+            <IntentOwnershipSection service={service} />
+            <PackageServiceSections service={service} />
+            <DeveloperIntroSections service={service} />
+            <ServiceInclusionSection service={service} />
+            <OfferSnapshotSection service={service} />
+            <PricingRowsSection service={service} />
+            <AuditOfferSection service={service} />
+            <UniqueServiceSection service={service} />
+            <HydrogenSeoAuditChecklistSection service={service} />
+            <HireFitSection service={service} />
+            <DecisionLogicSection service={service} />
+            <WrongFitSection service={service} />
+            <ProofNotesSection service={service} />
+            <ContextualProofSection service={service} />
+            <DeveloperProofSections service={service} sourceLinks={sourceLinks} />
+            <AuditScopeOutcomeSections service={service} />
+
+          </>
+        )}
 
         <HiringArticleLinksSection
           service={service}

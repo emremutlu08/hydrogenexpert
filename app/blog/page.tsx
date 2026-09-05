@@ -109,8 +109,8 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
               Blog post index temporarily unavailable
             </h2>
             <p className="mt-4 max-w-3xl text-base leading-8 text-neutral-600">
-              The blog post index is temporarily unavailable. The repository-backed Articles
-              library remains available.
+              The blog is temporarily unavailable. You can still browse practical Hydrogen
+              guides in the Articles library.
             </p>
             <Link
               href="/articles"

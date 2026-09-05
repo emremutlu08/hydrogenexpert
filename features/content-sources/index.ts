@@ -1177,7 +1177,7 @@ export const ARTICLE_SOURCE_METADATA = {
 
 export const STATIC_PAGE_SOURCE_METADATA = {
   "/": {
-    lastVerified: SHOPIFY_CONTENT_LAST_VERIFIED,
+    lastVerified: "2026-09-05",
     claimTypes: ["official_shopify_fact", "emre_experience", "commercial_opinion"],
     sourceMap: [
       SOURCE_PACKS.hydrogenFundamentals,

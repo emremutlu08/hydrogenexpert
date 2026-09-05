@@ -99,7 +99,7 @@ describe("blog publish resilience", () => {
 
     expect(fallback).toHaveLength(1);
     expect(getVisibleText(fallback[0])).toContain("Blog post index temporarily unavailable");
-    expect(getVisibleText(fallback[0])).toContain("The blog post index is temporarily unavailable.");
+    expect(getVisibleText(fallback[0])).toContain("The blog is temporarily unavailable.");
     expect(
       findElements(fallback[0], (element) => element.props.href === "/articles"),
     ).not.toHaveLength(0);
