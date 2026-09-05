@@ -16,6 +16,15 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 ## Unreleased
 
 - Date: 2026-09-05
+- PR: [#146](https://github.com/emremutlu08/hydrogenexpert/pull/146)
+- Branch: `developer/content-evidence`
+- Deployment: release evidence tracked in [#143](https://github.com/emremutlu08/hydrogenexpert/issues/143).
+- Summary: Consolidate five case studies and add app compatibility and framework ownership matrices to two guides. Preserve approved evidence and publication dates.
+- Files changed: case study pages and data, article renderer and two guide modules, source/discovery registries, llms summaries and validation expectations.
+- Verification: lint, typecheck, 184 tests, content/claim audits and 72-route build passed; eight schema pages and 53 sitemap / 76 internal URLs passed locally. Mobile table overflow stays contained.
+- Manual follow-up: Blog recovery remains in #144; indexing submissions require connected webmaster access.
+
+- Date: 2026-09-05
 - PR: [#145](https://github.com/emremutlu08/hydrogenexpert/pull/145)
 - Branch: `developer/content-narrative`
 - Deployment: release evidence and production deployment recorded in [#143](https://github.com/emremutlu08/hydrogenexpert/issues/143).

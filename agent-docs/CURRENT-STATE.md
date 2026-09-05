@@ -32,6 +32,7 @@ This file summarizes the current repo shape so future agents can orient quickly.
 - [#143](https://github.com/emremutlu08/hydrogenexpert/issues/143) tracks narrative, evidence and inquiry-form delivery in three sequential phases.
 - Homepage packages use the shared registry in compact mode; full exclusions remain on the package page.
 - The hiring page keeps the canonical experts owner and responsibilities schema; the search-query catalogue and its ItemList were intentionally removed in #145.
+- Case studies use a single delivery narrative; EveShop audience counts describe project scale. The app compatibility and framework guides include decision matrices in #146.
 - Existing blog recovery remains separate in #144.
 
 ## Hiring Intent
