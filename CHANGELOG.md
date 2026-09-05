@@ -21,7 +21,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 - Deployment: Release only from the reviewed Git-backed Vercel deployment after preview verification. Live result and deployment URL are tracked in [#132](https://github.com/emremutlu08/hydrogenexpert/issues/132).
 - Summary: Consolidated developer, singular expert, agency, and agency-usa routes into `/shopify-hydrogen-experts` after the September 5 GSC gate. Centralized redirect/link normalization and aligned discovery, hiring copy, and measurement. Supersedes the singular-target proposal in #99.
 - Files changed: Commercial pages, navigation/footer, search-intent and service/content registries, redirects, verification scripts, regression tests, and operational documentation.
-- Verification: Node 22.22.3; lint, typecheck, 183 tests, content validation, claim audit, 72-page production build, commercial QA, direct 308 redirects, desktop/mobile metadata and form checks passed. Internal-link QA passed for 53 sitemap URLs and 76 internal URLs with the approved Supabase deferral.
+- Verification: Node 22.22.3; lint, typecheck, 184 tests, content validation, claim audit, 72-page production build, commercial QA, direct 308 redirects, desktop/mobile metadata and form checks passed. Internal-link QA passed for 53 sitemap URLs and 76 internal URLs with the approved Supabase deferral.
 - Manual follow-up: Existing feed 503 and eight blog-detail 500 responses remain outside this release. Compare GSC URL counts and owner presence after 7, 14, and 28 days; search indexing requests depend on property permissions.
 
 - Date: 2026-09-04

@@ -1,3 +1,4 @@
+import { HIRING_INTENT_OWNER_PATH } from "@/features/search-intent";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CTASection } from "@/components/CTASection";
 import { FaqSection } from "@/components/FaqSection";
@@ -29,8 +30,7 @@ import {
 import { PackageServiceSections } from "@/components/service-landing/PackageServiceSections";
 import {
   AuditCostArticleLinkSection,
-  DeveloperArticleLinksSection,
-  ExpertArticleLinksSection,
+  HiringArticleLinksSection,
 } from "@/components/service-landing/ServiceArticleSections";
 import { getServiceCta } from "@/components/service-landing/ServiceLandingUtils";
 import { HydrogenSeoAuditChecklistSection } from "@/components/service-landing/SeoServiceSections";
@@ -85,11 +85,11 @@ export function ServiceLandingPage({ service }: ServiceLandingPageProps) {
   });
   const faqSchema = buildFaqPageSchema(service.faq);
   const developerResponsibilitiesSchema =
-    service.slug === "shopify-hydrogen-developer"
+    service.pagePath === HIRING_INTENT_OWNER_PATH
       ? buildDeveloperResponsibilitiesSchema()
       : null;
   const developerSearchIntentSchema =
-    service.slug === "shopify-hydrogen-developer" ? buildDeveloperSearchIntentSchema() : null;
+    service.pagePath === HIRING_INTENT_OWNER_PATH ? buildDeveloperSearchIntentSchema() : null;
   const sourceLinks = service.sourceMap.filter((source) => source.url);
 
   return (
@@ -133,13 +133,9 @@ export function ServiceLandingPage({ service }: ServiceLandingPageProps) {
         <DeveloperProofSections service={service} sourceLinks={sourceLinks} />
         <AuditScopeOutcomeSections service={service} />
 
-        <DeveloperArticleLinksSection
+        <HiringArticleLinksSection
           service={service}
           articles={[publicDeveloperArticle, publicExperiencedArticle, publicExpertsArticle]}
-        />
-        <ExpertArticleLinksSection
-          service={service}
-          articles={[publicExpertsArticle, publicExperiencedArticle, publicDeveloperArticle]}
         />
         <AuditCostArticleLinkSection service={service} article={publicCostArticle} />
 
