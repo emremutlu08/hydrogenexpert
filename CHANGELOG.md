@@ -15,6 +15,25 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## Unreleased
 
+- Date: 2026-09-06
+- PR: [#148 Update Playwright to 1.63.0](https://github.com/emremutlu08/hydrogenexpert/pull/148)
+- Branch: `codex/deps-playwright-1-63-0-20260906`
+- Deployment: Vercel preview validation is required before squash merge; production follows the validated merge through the existing Git integration without a separate manual deploy.
+- Summary:
+  - Updated stable `playwright` and `playwright-core` from `1.62.1` to `1.63.0` while retaining Node `>=20` compatibility.
+  - Removed Playwright's unused optional `fsevents@2.3.2` lock record without adding install scripts, deprecated packages, peer conflicts, or application-code changes.
+- Files changed:
+  - `package.json`
+  - `package-lock.json`
+  - `agent-docs/HYDROGEN.md`
+  - `CHANGELOG.md`
+- Verification:
+  - Node `22.22.3`, npm `11.18.0`, clean `npm ci`, `npm audit --audit-level=low`, dependency-tree inspection, Playwright CLI smoke test, install-script review, and `git diff --check`: passed; audit reports 0 vulnerabilities.
+  - `npm run lint`, `npm run typecheck`, content validation, Shopify claim audit, local commercial-launch validation, public-image validation, and structured-data validation: passed.
+  - `npm run test`: passed, 41 test files and 184 tests.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed with 72 static pages generated.
+- Manual follow-up: Keep Next.js `16.3.4` deferred while its Sharp `0.35.4` chain requires a separate runtime-duplication review; keep ESLint 10, TypeScript 7, Node types 26, Vitest 5, and the newer Anthropic SDK `0.x` line in separate compatibility reviews.
+
 - Date: 2026-09-05
 - PR: [#147](https://github.com/emremutlu08/hydrogenexpert/pull/147)
 - Branch: `developer/inquiry-form`
