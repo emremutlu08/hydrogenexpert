@@ -1,7 +1,7 @@
 # HydrogenExpert Implementation Notes
 
 Status: Active
-Last updated: 2026-09-06
+Last updated: 2026-09-07
 Owner: Agent
 Source of truth: `package.json`, current code, agent analysis
 
@@ -62,6 +62,7 @@ Use `package.json` for exact scripts. Current important scripts include:
 - The 2026-09-03 safe refresh moved `@supabase/supabase-js` and its five aligned client packages from `2.112.4` to stable `2.114.0`. The fixed-version client family keeps its Node `>=22.0.0` requirement; the release adds opt-in Realtime wait support and Storage object-versioning APIs, fixes failed WebAuthn factor enrollment cleanup, and patches upstream Browserslist advisories without changing this repository's existing Supabase calls.
 - The 2026-09-04 safe refresh moved `@supabase/supabase-js` and its five aligned client packages from `2.114.0` to stable `2.115.0`, adding the opt-in PostgREST `getOpenApiSpec()` API while keeping the Node `>=22.0.0` requirement. It also moved `@types/react-dom` from `19.2.5` to `19.2.7` to align the React 19.2 server-rendering declarations without changing runtime React packages.
 - The 2026-09-06 safe test-tooling refresh moved `playwright` and `playwright-core` from `1.62.1` to stable `1.63.0`. The update retains Node `>=20`, removes Playwright's unused optional `fsevents@2.3.2` record, and does not add install scripts, deprecated packages, peer conflicts, or application-code changes.
+- The 2026-09-07 safe framework refresh moved Next.js, `@next/third-parties`, and `eslint-config-next` from `16.3.3` to stable `16.3.4`. The follow-up patch re-enables AVIF image optimization and backports three bug fixes while keeping React `19.2.8`, the declared Node range, a single Sharp `0.35.4` runtime, and the existing install-script set.
 - Keep deferring the newer `@anthropic-ai/sdk` 0.x minor line for a separate compatibility review.
 
 ## Implementation Rules

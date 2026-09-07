@@ -15,6 +15,26 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## Unreleased
 
+- Date: 2026-09-07
+- PR: [#149 Update Next.js to 16.3.4](https://github.com/emremutlu08/hydrogenexpert/pull/149)
+- Branch: `codex/deps-next-16-3-4-20260907`
+- Deployment: Vercel preview validation is required before squash merge; production follows the validated merge through the existing Git integration without a separate manual deploy.
+- Summary:
+  - Updated stable `next`, `@next/third-parties`, and `eslint-config-next` from `16.3.3` to `16.3.4`.
+  - Updated the aligned Next.js, SWC, Sharp `0.35.4`, and libvips lockfile records without adding peer conflicts, duplicate runtimes, deprecated packages, or install scripts.
+  - The official follow-up patch re-enables AVIF image optimization and backports three bug fixes while preserving React `19.2.8` and the declared Node range.
+- Files changed:
+  - `package.json`
+  - `package-lock.json`
+  - `agent-docs/HYDROGEN.md`
+  - `CHANGELOG.md`
+- Verification:
+  - Node `22.22.3`, npm `11.18.0`, clean `npm ci`, `npm audit --audit-level=low`, dependency-tree inspection, install-script review, and `git diff --check`: passed; audit reports 0 vulnerabilities.
+  - `npm run lint`, `npm run typecheck`, content validation, Shopify claim audit, local commercial-launch, internal-link, publish-health, and structured-data validation: passed.
+  - `npm run test`: passed, 41 test files and 184 tests.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed with 72 static pages generated; production public-image validation passed across 53 pages and 10 unique images.
+- Manual follow-up: Keep ESLint 10, TypeScript 7, Node types 26, Vitest 5, and the newer Anthropic SDK `0.x` line in separate compatibility reviews.
+
 - Date: 2026-09-06
 - PR: [#148 Update Playwright to 1.63.0](https://github.com/emremutlu08/hydrogenexpert/pull/148)
 - Branch: `codex/deps-playwright-1-63-0-20260906`
