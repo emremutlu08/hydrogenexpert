@@ -16,6 +16,30 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 ## Unreleased
 
 - Date: 2026-09-08
+- PR: [#172 Refresh Bayam Jewelry case study guidance](https://github.com/emremutlu08/hydrogenexpert/pull/172)
+- Branch: `codex/bayam-proof-refresh-sep8`
+- Deployment: Reviewed app commit `905901a` deployed as `dpl_Huvm77Ag5Th84hBdkszC5E5Za3y1`, production Ready at https://hydrogenexpert.co. Live verification passed before merge. Release evidence: https://github.com/emremutlu08/hydrogenexpert/issues/173.
+- Summary:
+  - Reframed the Bayam Jewelry case study around the operator lesson of separating jewelry and watch discovery paths.
+  - Replaced generic result language with approved buyer guidance for collection context and financing, shipping, and returns cues without adding metrics or testimonial claims.
+  - Added the luxury jewelry decision-page link and route-specific source intent.
+  - Updated only the Bayam sitemap modification date to match the content release.
+- Files changed:
+  - `data/caseStudies.ts`
+  - `app/case-studies/[slug]/page.tsx`
+  - `features/content-sources/index.ts`
+  - `features/public-discovery/manifest.ts`
+  - `tests/bayam-case-study-refresh.test.ts`
+  - `CHANGELOG.md`
+- Verification:
+  - `git diff --check`, lint, typecheck, content validation, Shopify claim audit, and production build: passed.
+  - Full test suite passed, including five new Bayam proof and link regression tests.
+  - Node 24.20.0 clean installation; 42 test files and 189 tests passed.
+  - Preview and live Bayam HTML, canonical, sitemap date and llms-full summary passed. Live link checks passed across 53 sitemap and 77 internal URLs with existing blog/feed deferral; two schema pages passed without warnings.
+  - Live browser checks at 390px and 1440px passed: no horizontal overflow, meaningful image alt/title, zero console errors and zero Google requests before consent.
+- Manual follow-up: Blog source diagnosis remains #144. Search Console sitemap submission requires the existing missing write scope.
+
+- Date: 2026-09-08
 - PR: [#171 Update Supabase and PostCSS](https://github.com/emremutlu08/hydrogenexpert/pull/171)
 - Branch: `codex/dependency-refresh-20260908`
 - Deployment: Vercel preview validation is required before squash merge; production follows the validated merge through the existing Git integration without a separate manual deploy.

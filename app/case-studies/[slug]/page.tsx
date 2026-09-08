@@ -301,6 +301,11 @@ function getCaseStudyLinks(studyId: CaseStudyId) {
         label: "Custom Shopify Hydrogen storefront",
         note: "Build path for premium catalog UX when a theme surface is too limiting.",
       },
+      {
+        href: "/shopify-hydrogen-for-luxury-jewelry",
+        label: "Shopify Hydrogen for luxury jewelry and watches",
+        note: "Vertical decision guidance built on the Bayam premium-catalog context.",
+      },
     ],
     "rebel-bunny": [
       {

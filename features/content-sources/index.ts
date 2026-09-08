@@ -1338,7 +1338,7 @@ export const STATIC_PAGE_SOURCE_METADATA = {
     claimTypes: ["case_study_fact", "emre_experience", "commercial_opinion"],
     sourceMap: [SOURCE_PACKS.caseStudyEvidence, SOURCE_PACKS.emreProductionExperience],
     targetKeyword: "Bayam Jewelry Shopify Hydrogen case study",
-    searchIntent: "Evaluate storefront delivery and implementation experience",
+    searchIntent: "Evaluate luxury jewelry and watch storefront delivery and dual-catalog discovery",
     contentType: "Case study",
   },
   "/case-studies/kirazev-shopify-liquid": {

@@ -189,7 +189,7 @@ export const CASE_STUDIES: readonly CaseStudyEntry[] = [
       "Add sub-category pathways so jewelry, diamond, and watch browsing could stay coherent.",
     ],
     seoPerformanceRisks: [
-      "Luxury collection pages needed enough context to avoid thin category surfaces.",
+      "Jewelry and watch collections needed separately crawlable introductions that explain each catalog's distinct buying context.",
       "Product discovery had to support different search behaviors across jewelry and watches.",
       "Visual refinement could not come at the cost of mobile responsiveness or crawlable collection copy.",
     ],
@@ -198,11 +198,11 @@ export const CASE_STUDIES: readonly CaseStudyEntry[] = [
     implementation:
       "The implementation focused on the Hydrogen storefront layer, responsive UI, homepage presentation, collection context, and browse paths that make the mixed luxury catalog easier to understand.",
     outcome:
-      "Bayam's storefront presents jewelry and watches through collection introductions and sub-category browsing paths. The refreshed homepage and responsive UI carry the same luxury presentation across those product types.",
+      "When jewelry and watch buyers share a storefront, give them distinct discovery paths. Collection introductions and sub-category pathways should explain what each buyer needs to compare, while premium presentation keeps useful product context and financing, shipping, and returns cues visible.",
     results: [
-      "Stronger premium storefront presentation for a Diamond District jewelry and watch brand.",
-      "Clearer collection context and sub-category discovery paths.",
-      "A practical example of Hydrogen supporting luxury catalog nuance.",
+      "Use collection introductions and sub-category pathways to guide jewelry browsing by style and gifting, and watch comparisons by brand, condition, and model.",
+      "Keep financing, shipping, and returns cues easy to find during high-AOV buying decisions.",
+      "Carry a premium presentation across jewelry and watches without hiding useful product context.",
     ],
     metrics: [],
     techStack: [
