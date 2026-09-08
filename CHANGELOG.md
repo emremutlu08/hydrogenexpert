@@ -16,6 +16,26 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 ## Unreleased
 
 - Date: 2026-09-08
+- PR: [#172 Refresh Bayam Jewelry case study guidance](https://github.com/emremutlu08/hydrogenexpert/pull/172)
+- Branch: `codex/bayam-proof-refresh-sep8`
+- Deployment: Vercel preview validation is required before squash merge; production follows the exact merge SHA through the existing Git integration.
+- Summary:
+  - Reframed the Bayam Jewelry case study around the operator lesson of separating jewelry and watch discovery paths.
+  - Replaced generic result language with approved buyer guidance for collection context and financing, shipping, and returns cues without adding metrics or testimonial claims.
+  - Added the luxury jewelry decision-page link and route-specific source intent.
+- Files changed:
+  - `data/caseStudies.ts`
+  - `app/case-studies/[slug]/page.tsx`
+  - `features/content-sources/index.ts`
+  - `tests/bayam-case-study-refresh.test.ts`
+  - `CHANGELOG.md`
+- Verification:
+  - `git diff --check`, lint, typecheck, content validation, Shopify claim audit, and production build: passed.
+  - Full test suite passed, including five new Bayam proof and link regression tests.
+  - Claude Code final changed-file review: `PASS`, 91/100.
+- Manual follow-up: Verify the Vercel preview, exact merge SHA production deployment, live HTML, canonical, sitemap, llms-full entry, and internal links.
+
+- Date: 2026-09-08
 - PR: [#171 Update Supabase and PostCSS](https://github.com/emremutlu08/hydrogenexpert/pull/171)
 - Branch: `codex/dependency-refresh-20260908`
 - Deployment: Vercel preview validation is required before squash merge; production follows the validated merge through the existing Git integration without a separate manual deploy.
