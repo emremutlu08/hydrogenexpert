@@ -18,22 +18,24 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 - Date: 2026-09-08
 - PR: [#172 Refresh Bayam Jewelry case study guidance](https://github.com/emremutlu08/hydrogenexpert/pull/172)
 - Branch: `codex/bayam-proof-refresh-sep8`
-- Deployment: Vercel preview validation is required before squash merge; production follows the exact merge SHA through the existing Git integration.
+- Deployment: Validate the reviewed PR commit in preview, deploy that Git commit with production configuration, verify live, then squash merge. Release evidence is tracked in https://github.com/emremutlu08/hydrogenexpert/issues/173.
 - Summary:
   - Reframed the Bayam Jewelry case study around the operator lesson of separating jewelry and watch discovery paths.
   - Replaced generic result language with approved buyer guidance for collection context and financing, shipping, and returns cues without adding metrics or testimonial claims.
   - Added the luxury jewelry decision-page link and route-specific source intent.
+  - Updated only the Bayam sitemap modification date to match the content release.
 - Files changed:
   - `data/caseStudies.ts`
   - `app/case-studies/[slug]/page.tsx`
   - `features/content-sources/index.ts`
+  - `features/public-discovery/manifest.ts`
   - `tests/bayam-case-study-refresh.test.ts`
   - `CHANGELOG.md`
 - Verification:
   - `git diff --check`, lint, typecheck, content validation, Shopify claim audit, and production build: passed.
   - Full test suite passed, including five new Bayam proof and link regression tests.
-  - Claude Code final changed-file review: `PASS`, 91/100.
-- Manual follow-up: Verify the Vercel preview, exact merge SHA production deployment, live HTML, canonical, sitemap, llms-full entry, and internal links.
+  - Final changed-file review recorded in the PR; current release validation is tracked in #173.
+- Manual follow-up: Verify preview and production, live HTML, canonical, sitemap, llms-full entry, and internal links before merge; record deployment evidence in #173.
 
 - Date: 2026-09-08
 - PR: [#171 Update Supabase and PostCSS](https://github.com/emremutlu08/hydrogenexpert/pull/171)
