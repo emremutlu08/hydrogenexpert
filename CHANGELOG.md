@@ -15,6 +15,26 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## Unreleased
 
+- Date: 2026-09-08
+- PR: [#171 Update Supabase and PostCSS](https://github.com/emremutlu08/hydrogenexpert/pull/171)
+- Branch: `codex/dependency-refresh-20260908`
+- Deployment: Vercel preview validation is required before squash merge; production follows the validated merge through the existing Git integration without a separate manual deploy.
+- Summary:
+  - Updated stable `@supabase/supabase-js` and its five aligned client packages from `2.115.0` to `2.116.0` while retaining Node `>=22.0.0`.
+  - Accepted opt-in MFA recovery-code and Storage lifecycle/versioned-URL APIs plus Auth and Storage fixes without changing application code.
+  - Updated the PostCSS override from `8.5.26` to `8.5.28` for the upstream type-regression fix; the lockfile delta remains limited to seven existing records without peer conflicts, deprecated packages, or install-script changes.
+- Files changed:
+  - `package.json`
+  - `package-lock.json`
+  - `agent-docs/HYDROGEN.md`
+  - `CHANGELOG.md`
+- Verification:
+  - Node `22.22.3`, npm `11.18.0`, clean `npm ci`, `npm audit --audit-level=low`, dependency-tree inspection, install-script review, package smoke tests, and `git diff --check`: passed; audit reports 0 vulnerabilities.
+  - `npm run lint`, `npm run typecheck`, content validation, Shopify claim audit, local commercial-launch, publish-health, internal-link, and structured-data validation: passed.
+  - `npm run test`: passed, 41 test files and 184 tests.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed with 72 static pages generated; production public-image validation passed across 53 pages and 10 unique images.
+- Manual follow-up: Keep ESLint 10, TypeScript 7, Node types 26, Vitest 5, and the newer Anthropic SDK `0.x` line in separate compatibility reviews.
+
 - Date: 2026-09-07
 - PR: [#149 Update Next.js to 16.3.4](https://github.com/emremutlu08/hydrogenexpert/pull/149)
 - Branch: `codex/deps-next-16-3-4-20260907`
