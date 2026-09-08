@@ -18,7 +18,7 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 - Date: 2026-09-08
 - PR: [#172 Refresh Bayam Jewelry case study guidance](https://github.com/emremutlu08/hydrogenexpert/pull/172)
 - Branch: `codex/bayam-proof-refresh-sep8`
-- Deployment: Validate the reviewed PR commit in preview, deploy that Git commit with production configuration, verify live, then squash merge. Release evidence is tracked in https://github.com/emremutlu08/hydrogenexpert/issues/173.
+- Deployment: Reviewed app commit `905901a` deployed as `dpl_Huvm77Ag5Th84hBdkszC5E5Za3y1`, production Ready at https://hydrogenexpert.co. Live verification passed before merge. Release evidence: https://github.com/emremutlu08/hydrogenexpert/issues/173.
 - Summary:
   - Reframed the Bayam Jewelry case study around the operator lesson of separating jewelry and watch discovery paths.
   - Replaced generic result language with approved buyer guidance for collection context and financing, shipping, and returns cues without adding metrics or testimonial claims.
@@ -34,8 +34,10 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 - Verification:
   - `git diff --check`, lint, typecheck, content validation, Shopify claim audit, and production build: passed.
   - Full test suite passed, including five new Bayam proof and link regression tests.
-  - Final changed-file review recorded in the PR; current release validation is tracked in #173.
-- Manual follow-up: Verify preview and production, live HTML, canonical, sitemap, llms-full entry, and internal links before merge; record deployment evidence in #173.
+  - Node 24.20.0 clean installation; 42 test files and 189 tests passed.
+  - Preview and live Bayam HTML, canonical, sitemap date and llms-full summary passed. Live link checks passed across 53 sitemap and 77 internal URLs with existing blog/feed deferral; two schema pages passed without warnings.
+  - Live browser checks at 390px and 1440px passed: no horizontal overflow, meaningful image alt/title, zero console errors and zero Google requests before consent.
+- Manual follow-up: Blog source diagnosis remains #144. Search Console sitemap submission requires the existing missing write scope.
 
 - Date: 2026-09-08
 - PR: [#171 Update Supabase and PostCSS](https://github.com/emremutlu08/hydrogenexpert/pull/171)
