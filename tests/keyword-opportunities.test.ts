@@ -26,6 +26,15 @@ describe("SEO keyword opportunities", () => {
     ]);
   });
 
+  it("uses the conservative lower bound for search-volume ranges", () => {
+    const csv = `Keyword,Avg. monthly searches,Three month change,YoY change,Competition\nshopify hydrogen agency,10 – 100,0%,0%,Medium\nshopify hydrogen migration,0 - 10,--,--,--\n`;
+
+    expect(parseKeywordPlannerCsv(csv, "US").map((metric) => metric.averageMonthlySearches)).toEqual([
+      10,
+      0,
+    ]);
+  });
+
   it("keeps only Shopify and directly relevant headless terms", () => {
     expect(isRelevantKeyword("shopify hydrogen agency")).toBe(true);
     expect(isRelevantKeyword("headless commerce development")).toBe(true);
