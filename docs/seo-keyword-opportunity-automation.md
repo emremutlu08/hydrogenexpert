@@ -25,6 +25,8 @@ npm run seo:opportunities -- --planner-csv /absolute/path/to/keyword-planner.csv
 
 Raw Keyword Planner exports belong under `content/internal/keyword-planner/` only when a local stable path is useful. That directory's CSV files are ignored and must not be committed.
 
+When an inactive Ads account exports volume as a range such as `10 - 100`, the importer uses the lower bound. This keeps opportunity ordering conservative and avoids presenting an estimated midpoint as observed demand.
+
 Google Trends is reported as blocked until HydrogenExpert receives supported access to the limited official Trends API alpha. The Gemini web interface is not automated because it is experimental, interactive, and does not provide a stable unattended data contract.
 
 ## Required Access

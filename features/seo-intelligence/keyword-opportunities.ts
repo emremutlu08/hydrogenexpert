@@ -147,6 +147,11 @@ function parseNumber(value: string) {
   return Number.isFinite(parsed) ? (negative ? -parsed : parsed) : null;
 }
 
+function parseSearchVolume(value: string) {
+  const rangeMatch = value.trim().match(/^([\d,.]+)\s*[-–]\s*[\d,.]+$/);
+  return parseNumber(rangeMatch?.[1] ?? value);
+}
+
 function parsePercent(value: string) {
   const parsed = parseNumber(value);
   return parsed === null ? null : parsed / 100;
@@ -189,7 +194,7 @@ export function parseKeywordPlannerCsv(input: string, geo = "manual"): PlannerMe
     return [{
       keyword,
       geo,
-      averageMonthlySearches: parseNumber(cell(row, indexes.averageMonthlySearches)),
+      averageMonthlySearches: parseSearchVolume(cell(row, indexes.averageMonthlySearches)),
       threeMonthChange: parsePercent(cell(row, indexes.threeMonthChange)),
       yearOverYearChange: parsePercent(cell(row, indexes.yearOverYearChange)),
       competition: cell(row, indexes.competition) || null,
