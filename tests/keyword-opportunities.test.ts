@@ -134,4 +134,44 @@ describe("SEO keyword opportunities", () => {
     expect(opportunity.action).toBe("refresh_existing");
     expect(opportunity.searchConsole?.pages).toEqual(["/shopify-hydrogen-cost"]);
   });
+
+  it("aggregates historical rows that normalize to the same canonical page", () => {
+    const [opportunity] = buildKeywordOpportunities(
+      [
+        {
+          query: "hire shopify hydrogen developers",
+          page: "/shopify-hydrogen-experts",
+          clicks: 1,
+          impressions: 6,
+          ctr: 1 / 6,
+          position: 8,
+        },
+        {
+          query: "hire shopify hydrogen developers",
+          page: "/shopify-hydrogen-experts",
+          clicks: 0,
+          impressions: 6,
+          ctr: 0,
+          position: 12,
+        },
+        {
+          query: "hire shopify hydrogen developers",
+          page: "/incidental-article",
+          clicks: 0,
+          impressions: 3,
+          ctr: 0,
+          position: 40,
+        },
+      ],
+      [],
+    );
+
+    expect(opportunity.action).toBe("refresh_existing");
+    expect(opportunity.searchConsole).toMatchObject({
+      clicks: 1,
+      impressions: 15,
+      pages: ["/shopify-hydrogen-experts"],
+      position: 10,
+    });
+  });
 });

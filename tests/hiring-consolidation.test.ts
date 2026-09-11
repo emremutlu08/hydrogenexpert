@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import nextConfig from "../next.config";
-import { HIRING_INTENT_OWNER_PATH, HIRING_INTENT_REDIRECTS, RETIRED_COMMERCIAL_INTENT_PATHS, normalizeCommercialLinks } from "../features/search-intent";
+import { HIRING_INTENT_OWNER_PATH, HIRING_INTENT_REDIRECTS, RETIRED_COMMERCIAL_INTENT_PATHS, normalizeCommercialLinks, resolveCommercialIntentPath } from "../features/search-intent";
 import { getAllContentRelations } from "../features/content-relations";
 import { getPublicArticles } from "../lib/articles";
 import { LEGACY_PERMANENT_REDIRECTS } from "../lib/legacy-redirects";
@@ -49,5 +49,12 @@ describe("hiring consolidation", () => {
     for (const relation of getAllContentRelations()) {
       for (const link of relation.related) expect(RETIRED_COMMERCIAL_INTENT_PATHS).not.toContain(link.href);
     }
+  });
+
+  it("resolves every historical hiring redirect source to the canonical owner", () => {
+    for (const { source } of HIRING_INTENT_REDIRECTS) {
+      expect(resolveCommercialIntentPath(source)).toBe(HIRING_INTENT_OWNER_PATH);
+    }
+    expect(resolveCommercialIntentPath("/headless-shopify-agency")).toBe("/headless-shopify-agency");
   });
 });

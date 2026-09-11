@@ -247,6 +247,32 @@ function actionRank(action: OpportunityAction) {
   }[action];
 }
 
+function aggregateSearchConsoleRowsByPage(rows: readonly SearchConsoleKeywordRow[]) {
+  const byPage = new Map<string, SearchConsoleKeywordRow[]>();
+
+  for (const row of rows) {
+    byPage.set(row.page, [...(byPage.get(row.page) ?? []), row]);
+  }
+
+  return [...byPage.entries()].map(([page, pageRows]) => {
+    const impressions = pageRows.reduce((sum, row) => sum + finite(row.impressions), 0);
+    const clicks = pageRows.reduce((sum, row) => sum + finite(row.clicks), 0);
+    const weightedPosition = impressions > 0
+      ? pageRows.reduce((sum, row) => sum + finite(row.position) * finite(row.impressions), 0) /
+        impressions
+      : 0;
+
+    return {
+      query: pageRows[0]?.query ?? "",
+      page,
+      clicks,
+      impressions,
+      ctr: impressions > 0 ? clicks / impressions : 0,
+      position: weightedPosition,
+    };
+  });
+}
+
 export function buildKeywordOpportunities(
   searchConsoleRows: readonly SearchConsoleKeywordRow[],
   plannerMetrics: readonly PlannerMetric[],
@@ -271,15 +297,18 @@ export function buildKeywordOpportunities(
 
   for (const keyword of keywords) {
     const gscRows = byQuery.get(keyword) ?? [];
+    const aggregatedGscRows = aggregateSearchConsoleRowsByPage(gscRows);
     const markets = byPlannerKeyword.get(keyword) ?? [];
-    const impressions = gscRows.reduce((sum, row) => sum + finite(row.impressions), 0);
-    const clicks = gscRows.reduce((sum, row) => sum + finite(row.clicks), 0);
+    const impressions = aggregatedGscRows.reduce((sum, row) => sum + finite(row.impressions), 0);
+    const clicks = aggregatedGscRows.reduce((sum, row) => sum + finite(row.clicks), 0);
     const materialPageThreshold = Math.max(5, impressions * 0.1);
-    const materialRows = gscRows.filter((row) => row.impressions >= materialPageThreshold);
+    const materialRows = aggregatedGscRows.filter((row) => row.impressions >= materialPageThreshold);
     const pageRows = materialRows.length > 0
       ? materialRows
-      : [...gscRows].sort((left, right) => right.impressions - left.impressions).slice(0, 1);
-    const pages = [...new Set(pageRows.map((row) => row.page))];
+      : [...aggregatedGscRows]
+        .sort((left, right) => right.impressions - left.impressions)
+        .slice(0, 1);
+    const pages = pageRows.map((row) => row.page);
     const materialImpressions = pageRows.reduce((sum, row) => sum + row.impressions, 0);
     const weightedPosition = materialImpressions > 0
       ? pageRows.reduce((sum, row) => sum + row.position * row.impressions, 0) / materialImpressions

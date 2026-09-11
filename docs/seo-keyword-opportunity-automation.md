@@ -54,7 +54,9 @@ The API run uses English, Google Search only, and these separate markets:
 
 The report preserves market-level rows and labels their sum as combined target-market volume. It does not claim that Keyword Planner volume is exact organic demand.
 
-Search Console action decisions use pages that each hold at least 10% of exact-query impressions, with a five-impression floor. Reported position is weighted across that material page set so incidental one-impression URLs do not distort the recommendation.
+Search Console action decisions normalize retired commercial redirect sources to their current canonical owner before evaluating page ownership. Rows that resolve to the same page are aggregated, then pages must each hold at least 10% of exact-query impressions, with a five-impression floor. Reported position is weighted across that material page set so historical redirect rows and incidental one-impression URLs do not create false cannibalization recommendations.
+
+This normalization applies only to the keyword opportunity decision report. The raw cannibalization observation report preserves source URLs so redirect retirement and Google's index consolidation can still be measured over time.
 
 ## Decision Contract
 
