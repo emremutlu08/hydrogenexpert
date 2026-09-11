@@ -10,6 +10,7 @@ import {
   type PlannerMetric,
   type SearchConsoleKeywordRow,
 } from "../features/seo-intelligence/keyword-opportunities";
+import { resolveCommercialIntentPath } from "../features/search-intent";
 import { createGoogleAccessTokenProvider, googleJson } from "../lib/google-oauth";
 
 try {
@@ -147,13 +148,20 @@ async function fetchSearchConsoleRows(now: Date) {
       return [];
     }
 
-    return [{ query, page: toPath(page), clicks, impressions, ctr, position }];
+    return [{
+      query,
+      page: resolveCommercialIntentPath(toPath(page)),
+      clicks,
+      impressions,
+      ctr,
+      position,
+    }];
   });
 
   sourceReports.push({
     name: "Google Search Console",
     status: rows.length > 0 ? "ok" : "empty",
-    detail: `${SITE_URL}; ${isoDate(startDate)} to ${isoDate(endDate)}; ${rows.length} query/page rows`,
+    detail: `${SITE_URL}; ${isoDate(startDate)} to ${isoDate(endDate)}; ${rows.length} query/page rows; retired commercial redirects normalized to their canonical owner`,
   });
   return rows;
 }

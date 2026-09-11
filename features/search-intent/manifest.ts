@@ -245,7 +245,9 @@ export function isRetiredCommercialIntentPath(path: string) {
 }
 
 export function resolveCommercialIntentPath(path: string) {
-  return isRetiredCommercialIntentPath(path) ? HIRING_INTENT_OWNER_PATH : path;
+  return HIRING_INTENT_REDIRECTS.some(({ source }) => source === path)
+    ? HIRING_INTENT_OWNER_PATH
+    : path;
 }
 
 export function normalizeCommercialLinks<T extends { href: string; label: string }>(
