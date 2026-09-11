@@ -16,6 +16,28 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 ## Unreleased
 
 - Date: 2026-09-11
+- PR: [#177 Normalize SEO opportunity page ownership](https://github.com/emremutlu08/hydrogenexpert/pull/177)
+- Branch: `developer/seo-hiring-intent-ownership`
+- Deployment: Internal tooling only; Vercel preview and required GitHub checks must pass before merge. No separate production deployment is required for the local weekly automation.
+- Summary:
+  - Normalized historical Search Console rows for all retired hiring redirects to `/shopify-hydrogen-experts` before weekly opportunity decisions.
+  - Aggregated same-owner rows before applying the material-impression and cannibalization gates.
+  - Preserved raw source URLs in the separate cannibalization observation report.
+- Files changed:
+  - `features/search-intent/manifest.ts`
+  - `features/seo-intelligence/keyword-opportunities.ts`
+  - `scripts/seo-keyword-opportunities.ts`
+  - `tests/hiring-consolidation.test.ts`
+  - `tests/keyword-opportunities.test.ts`
+  - `docs/seo-keyword-opportunity-automation.md`
+  - `CHANGELOG.md`
+- Verification:
+  - `git diff --check`, lint, typecheck, and production build: passed.
+  - Full test suite passed: 43 test files and 197 tests.
+  - Live read-only run processed 338 Search Console rows and 12 Keyword Planner CSV rows; exact `shopify hydrogen experts` and `shopify hydrogen agency` ownership now resolves to the canonical hiring page while material article competition remains visible for broader hiring queries.
+- Manual follow-up: Continue the existing Phase 2 observation checkpoints in issue #132. Google Ads API remains account-blocked, so the ignored Keyword Planner CSV remains the active fallback; Google Trends remains blocked pending supported alpha access.
+
+- Date: 2026-09-11
 - PR: [#175 Add SEO keyword opportunity automation](https://github.com/emremutlu08/hydrogenexpert/pull/175)
 - Branch: `codex/seo-keyword-intelligence`
 - Deployment: Internal tooling only; Vercel preview and required GitHub checks must pass before merge. No separate production deployment is required for the local weekly automation.
