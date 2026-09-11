@@ -36,6 +36,7 @@ Use `package.json` for exact scripts. Current important scripts include:
 - `npm run verify:internal-links`
 - `npm run indexnow:ping`
 - `npm run report:traffic`
+- `npm run seo:opportunities`
 
 ## Dependency Notes
 
@@ -90,6 +91,8 @@ Use `package.json` for exact scripts. Current important scripts include:
 - Use `scope_review_cta_click` for internal or package scope-review intent and `external_contact_click` for LinkedIn or Upwork destinations.
 - Never send names, email addresses, store URLs, message text, or other direct identifiers as analytics parameters. Use `source_kind`, `source_path`, `cta_destination`, and `package_name` for attribution context.
 - `npm run report:traffic` reads GA4, Search Console, production health, Supabase aggregate lead counts when available, and PageSpeed/CrUX when quota is available. It must label unavailable sources explicitly and must not substitute invented or manually entered metrics. Use `--strict` for the weekly core-source gate, `--defer-supabase` only after an explicit user deferral, and `--require-pagespeed` during the performance phase.
+- `npm run seo:opportunities` combines 90-day Search Console query/page evidence with read-only Google Ads Keyword Planner metrics for the United States, United Kingdom, Canada, and Australia. It may use a manual English Keyword Planner CSV through `-- --planner-csv <path>` when API access is unavailable; raw account exports stay ignored and must not be committed.
+- The keyword opportunity report is decision support only. It may recommend refreshing, protecting, validating, or reviewing cannibalization, but it must not create ads, publish content, change indexing, or treat Google Ads competition and bids as SEO difficulty scores.
 
 ## Architecture Direction
 

@@ -15,6 +15,31 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## Unreleased
 
+- Date: 2026-09-11
+- PR: [#175 Add SEO keyword opportunity automation](https://github.com/emremutlu08/hydrogenexpert/pull/175)
+- Branch: `codex/seo-keyword-intelligence`
+- Deployment: Internal tooling only; Vercel preview and required GitHub checks must pass before merge. No separate production deployment is required for the local weekly automation.
+- Summary:
+  - Added a read-only SEO opportunity command that combines 90-day Search Console query/page evidence with Google Ads Keyword Planner API metrics or an English manual CSV export.
+  - Added deterministic relevance, clustering, material-page, cannibalization, refresh, protection, new-intent validation, and hold rules without automatic publishing or campaign mutations.
+  - Centralized Google OAuth refresh and JSON request handling shared by the existing traffic and cannibalization scripts.
+  - Documented the four English target markets, account-access boundary, ignored raw exports, and Google Trends alpha blocker.
+- Files changed:
+  - `features/seo-intelligence/keyword-opportunities.ts`
+  - `scripts/seo-keyword-opportunities.ts`
+  - `lib/google-oauth.ts`
+  - `scripts/report-traffic.ts`
+  - `scripts/measure-cannibalization.ts`
+  - `tests/keyword-opportunities.test.ts`
+  - `tests/traffic-report.test.ts`
+  - `docs/seo-keyword-opportunity-automation.md`
+  - `.gitignore`, `package.json`, and relevant `agent-docs/` files
+- Verification:
+  - `git diff --check`, lint, typecheck, content validation, Shopify claim audit, and production build: passed.
+  - Full test suite passed: 43 test files and 194 tests.
+  - Live read-only GSC proof run returned 338 query/page rows and 78 classified records; the existing 90-day cannibalization measurement still works after the OAuth refactor.
+- Manual follow-up: Add approved Google Ads API keyword-research access, a 10-digit customer ID, and an OAuth token with the `adwords` scope. Google Trends stays blocked until supported alpha access is granted. The current transitive `js-yaml` advisory remains outside this no-dependency-change PR.
+
 - Date: 2026-09-08
 - PR: [#172 Refresh Bayam Jewelry case study guidance](https://github.com/emremutlu08/hydrogenexpert/pull/172)
 - Branch: `codex/bayam-proof-refresh-sep8`

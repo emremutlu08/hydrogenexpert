@@ -25,6 +25,7 @@ This file maps the repository structure and placement rules. Update it whenever 
 | `features/traffic-foundation/` | Canonical resource hub, examples, issues, templates, and course companion registries. |
 | `features/public-discovery/` | Canonical public discovery manifest for sitemap, llms, package SEO, and commercial verification route membership. |
 | `features/lead-capture/` | Lead capture request parsing, validation, fallback payloads, and Supabase insert mapping. |
+| `features/seo-intelligence/` | Deterministic keyword normalization, Keyword Planner CSV parsing, clustering, and evidence-based SEO opportunity classification. |
 | `lib/` | Shared runtime helpers, adapters, and registries. |
 | `features/` | Target home for domain modules and large registries as architecture cleanup progresses. |
 | `data/` | Static structured project data such as case studies and logos. |
@@ -69,6 +70,7 @@ features/
 ├── traffic-foundation/
 ├── public-discovery/
 ├── lead-capture/
+├── seo-intelligence/
 └── generated-posts/
 ```
 
