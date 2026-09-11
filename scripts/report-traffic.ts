@@ -1,4 +1,4 @@
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { mkdirSync, writeFileSync } from "node:fs";
 import { homedir } from "node:os";
 import { join } from "node:path";
 
@@ -16,6 +16,7 @@ import {
   type GaReportData,
   type SearchConsoleAggregateRow,
 } from "../lib/traffic-report";
+import { createGoogleAccessTokenProvider, googleJson } from "../lib/google-oauth";
 
 try {
   process.loadEnvFile(join(process.cwd(), ".env.local"));
@@ -124,72 +125,16 @@ function recordSource(report: SourceReport) {
   sourceReports.push(report);
 }
 
-function parseGoogleScopes(data: Record<string, unknown>) {
-  const raw = data.scopes ?? data.scope ?? [];
+const googleAccessTokenProviders = new Map<string, () => Promise<string>>();
 
-  if (typeof raw === "string") {
-    return raw.split(/\s+/).filter(Boolean);
+function googleAccessToken(requiredScopes: readonly string[]) {
+  const key = [...requiredScopes].sort().join(" ");
+  let provider = googleAccessTokenProviders.get(key);
+  if (!provider) {
+    provider = createGoogleAccessTokenProvider(GOOGLE_TOKEN_PATH, requiredScopes);
+    googleAccessTokenProviders.set(key, provider);
   }
-
-  return Array.isArray(raw) ? raw.filter((value): value is string => typeof value === "string") : [];
-}
-
-let googleAccessTokenPromise: Promise<string> | null = null;
-
-async function googleAccessToken(requiredScopes: readonly string[]) {
-  if (!existsSync(GOOGLE_TOKEN_PATH)) {
-    throw new Error("Google OAuth token file is missing.");
-  }
-
-  const data = JSON.parse(readFileSync(GOOGLE_TOKEN_PATH, "utf8")) as Record<string, string | string[]>;
-  const grantedScopes = parseGoogleScopes(data);
-  const missingScopes = requiredScopes.filter((scope) => !grantedScopes.includes(scope));
-
-  if (missingScopes.length > 0) {
-    throw new Error(`Google OAuth is missing scope: ${missingScopes.join(", ")}`);
-  }
-
-  googleAccessTokenPromise ??= (async () => {
-    const params = new URLSearchParams({
-      client_id: String(data.client_id),
-      client_secret: String(data.client_secret),
-      refresh_token: String(data.refresh_token),
-      grant_type: "refresh_token",
-    });
-    const response = await fetch(String(data.token_uri), { method: "POST", body: params });
-
-    if (!response.ok) {
-      throw new Error(`Google token refresh returned HTTP ${response.status}.`);
-    }
-
-    const body = (await response.json()) as { access_token?: string };
-
-    if (!body.access_token) {
-      throw new Error("Google token refresh returned no access token.");
-    }
-
-    return body.access_token;
-  })();
-
-  return googleAccessTokenPromise;
-}
-
-async function googleJson<T>(url: string, token: string, init: RequestInit = {}) {
-  const response = await fetch(url, {
-    ...init,
-    headers: {
-      Authorization: `Bearer ${token}`,
-      ...(init.body ? { "Content-Type": "application/json" } : {}),
-      ...init.headers,
-    },
-  });
-
-  if (!response.ok) {
-    const body = (await response.json().catch(() => null)) as { error?: { message?: string } } | null;
-    throw new Error(body?.error?.message ?? `Google API returned HTTP ${response.status}.`);
-  }
-
-  return (await response.json()) as T;
+  return provider();
 }
 
 async function discoverGaPropertyId(token: string) {

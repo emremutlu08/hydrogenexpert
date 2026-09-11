@@ -9,6 +9,7 @@ import {
   AGENCY_CANNIBALIZATION_GATE_DATE,
   evaluateAgencyCannibalizationGate,
 } from "../features/search-intent/cannibalization-gate";
+import { createGoogleAccessTokenProvider } from "../lib/google-oauth";
 
 /**
  * Counts how many distinct URLs compete for each tracked query in Search
@@ -82,38 +83,9 @@ function isoDate(date: Date) {
   return date.toISOString().slice(0, 10);
 }
 
-async function googleAccessToken() {
-  if (!existsSync(GOOGLE_TOKEN_PATH)) {
-    throw new Error(
-      `google_token.json not found at ${GOOGLE_TOKEN_PATH}. This script needs the local token; it cannot run in CI or a cloud session.`,
-    );
-  }
-
-  const data = JSON.parse(readFileSync(GOOGLE_TOKEN_PATH, "utf8"));
-  const rawScopes = data.scopes ?? data.scope ?? [];
-  const scopes = typeof rawScopes === "string" ? rawScopes.split(/\s+/) : rawScopes;
-
-  if (!scopes.includes("https://www.googleapis.com/auth/webmasters.readonly")) {
-    throw new Error("token is missing the webmasters.readonly OAuth scope");
-  }
-
-  const response = await fetch(data.token_uri, {
-    method: "POST",
-    body: new URLSearchParams({
-      client_id: data.client_id,
-      client_secret: data.client_secret,
-      refresh_token: data.refresh_token,
-      grant_type: "refresh_token",
-    }),
-  });
-
-  if (!response.ok) throw new Error(`token refresh failed: HTTP ${response.status}`);
-
-  const body = (await response.json()) as { access_token?: string };
-  if (!body.access_token) throw new Error("token refresh returned no access_token");
-
-  return body.access_token;
-}
+const googleAccessToken = createGoogleAccessTokenProvider(GOOGLE_TOKEN_PATH, [
+  "https://www.googleapis.com/auth/webmasters.readonly",
+]);
 
 interface GscRow {
   keys?: string[];

@@ -1,5 +1,7 @@
 import { describe, expect, it } from "vitest";
 
+import { parseGoogleScopes } from "../lib/google-oauth";
+
 import {
   detectTrafficAnomalies,
   formatChange,
@@ -14,6 +16,17 @@ import {
 } from "../lib/traffic-report";
 
 describe("traffic report calculations", () => {
+  it("normalizes Google OAuth scope arrays and space-delimited strings", () => {
+    expect(parseGoogleScopes({ scopes: ["scope:a", "scope:b"] })).toEqual([
+      "scope:a",
+      "scope:b",
+    ]);
+    expect(parseGoogleScopes({ scope: "scope:a scope:b" })).toEqual([
+      "scope:a",
+      "scope:b",
+    ]);
+  });
+
   it("calculates comparable-period changes without inventing a baseline", () => {
     expect(percentChange(120, 100)).toBe(20);
     expect(formatChange(80, 100)).toBe("-20.0%");

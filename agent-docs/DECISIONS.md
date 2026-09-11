@@ -19,6 +19,7 @@ This file records durable decisions so future agents do not re-litigate settled 
 - HydrogenExpert content production, SEO/GEO, discovery, schema, `llms`, sitemap, and internal-link work routes through `agent-docs/CONTENT-PRODUCTION-PLAYBOOK.md`.
 - `SEO ne durumda` and similar SEO/GEO status questions require relevant SEO/GEO skills first, then status reporting against `agent-docs/SEO-GEO-AUDIT-CHECKLIST.md`.
 - Supabase-backed public blog publishing requires an explicit user request and real input/source material for the specific article.
+- Keyword research automation is read-only and evidence-gated: Search Console identifies observed query/page behavior, Keyword Planner supplies directional demand and commercial signals, and Planner-only terms require manual SERP-intent validation before any page proposal. The automation never creates campaigns or publishes content.
 - Meaningful changes require PR-first workflow, validation, deployment verification when relevant, changelog paper trail, merge/closeout, and remote branch cleanup unless Emre says otherwise.
 - Final completion replies for finished HydrogenExpert work should include a clickable PR link and clickable live environment link.
 - Architecture cleanup must preserve public behavior: URL, copy, metadata, schema, sitemap, robots, feed, llms, API response shape, form behavior, image alt/title behavior, and commercial positioning.
