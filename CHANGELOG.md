@@ -62,6 +62,24 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - Live read-only GSC proof run returned 338 query/page rows and 78 classified records; the existing 90-day cannibalization measurement still works after the OAuth refactor.
 - Manual follow-up: Add approved Google Ads API keyword-research access, a 10-digit customer ID, and an OAuth token with the `adwords` scope. Google Trends stays blocked until supported alpha access is granted. The current transitive `js-yaml` advisory remains outside this no-dependency-change PR.
 
+- Date: 2026-09-09
+- PR: [#174 Fix transitive js-yaml advisory](https://github.com/emremutlu08/hydrogenexpert/pull/174)
+- Branch: `codex/deps-js-yaml-4-3-2-20260909`
+- Deployment: Vercel preview validation is required before squash merge; production follows the validated merge through the existing Git integration without a separate manual deploy.
+- Summary:
+  - Updated the transitive ESLint dependency `js-yaml` from `4.3.1` to the fixed stable `4.3.2` release for GHSA-2883-xcg3-v3hh.
+  - Limited the lockfile delta to one existing record without changing package count, peer requirements, deprecated packages, or install scripts.
+- Files changed:
+  - `package-lock.json`
+  - `agent-docs/HYDROGEN.md`
+  - `CHANGELOG.md`
+- Verification:
+  - Node `24.21.0`, npm `11.18.0`, clean `npm ci`, `npm audit --audit-level=low`, dependency-tree inspection, install-script review, and `git diff --check`: passed; audit reports 0 vulnerabilities.
+  - `npm run lint`, `npm run typecheck`, content validation, Shopify claim audit, local commercial-launch, publish-health, and internal-link validation: passed.
+  - `npm run test`: passed, 43 test files and 197 tests.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed with 72 static pages generated; local internal-link validation passed across 53 sitemap and 76 internal URLs with the approved Supabase-dependent blog/feed deferral.
+- Manual follow-up: Keep ESLint 10, TypeScript 7, Node types 26, Vitest 5, and the newer Anthropic SDK `0.x` line in separate compatibility reviews.
+
 - Date: 2026-09-08
 - PR: [#172 Refresh Bayam Jewelry case study guidance](https://github.com/emremutlu08/hydrogenexpert/pull/172)
 - Branch: `codex/bayam-proof-refresh-sep8`
