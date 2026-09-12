@@ -1,7 +1,7 @@
 # HydrogenExpert Implementation Notes
 
 Status: Active
-Last updated: 2026-09-07
+Last updated: 2026-09-13
 Owner: Agent
 Source of truth: `package.json`, current code, agent analysis
 
@@ -66,6 +66,8 @@ Use `package.json` for exact scripts. Current important scripts include:
 - The 2026-09-07 safe framework refresh moved Next.js, `@next/third-parties`, and `eslint-config-next` from `16.3.3` to stable `16.3.4`. The follow-up patch re-enables AVIF image optimization and backports three bug fixes while keeping React `19.2.8`, the declared Node range, a single Sharp `0.35.4` runtime, and the existing install-script set.
 - The 2026-09-08 safe refresh moved `@supabase/supabase-js` and its five aligned client packages from `2.115.0` to stable `2.116.0`, adding opt-in MFA recovery-code and Storage lifecycle/versioned-URL APIs plus Auth and Storage fixes while keeping the Node `>=22.0.0` requirement. It also moved the PostCSS override from `8.5.26` to `8.5.28` to include the upstream type-regression fix without changing the existing PostCSS 8 line.
 - The 2026-09-09 security refresh moved the transitive ESLint dependency `js-yaml` from `4.3.1` to the fixed stable `4.3.2` release for GHSA-2883-xcg3-v3hh. The lockfile-only update keeps the existing ESLint 9 dependency range, package count, peer graph, deprecated-package set, and install-script set unchanged.
+- The 2026-09-13 safe refresh moved Next.js, `@next/third-parties`, and `eslint-config-next` from `16.3.4` to stable `16.3.5`, including the official image-cache, standalone adapter, CSP nonce, and `use cache` backports while retaining React `19.2.8`, Node `>=22.12 <25`, a single Sharp `0.35.4` runtime, and the existing install-script set.
+- The 2026-09-13 type refresh moved `@types/node` from `24.13.3` to `24.13.4`, plus aligned `@types/react` and `@types/react-dom` from `19.2.18` and `19.2.7` to `19.3.0`. Runtime React packages remain on `19.2.8`; the lockfile keeps the peer graph and package count stable.
 - Keep deferring the newer `@anthropic-ai/sdk` 0.x minor line for a separate compatibility review.
 
 ## Implementation Rules

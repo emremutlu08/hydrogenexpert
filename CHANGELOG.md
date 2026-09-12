@@ -15,6 +15,26 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## Unreleased
 
+- Date: 2026-09-13
+- PR: [#178 Refresh Next.js and React type packages](https://github.com/emremutlu08/hydrogenexpert/pull/178)
+- Branch: `codex/dependency-refresh-20260913`
+- Deployment: Vercel preview validation is required before squash merge; production follows the validated merge through the existing Git integration without a separate manual deploy.
+- Summary:
+  - Updated stable Next.js, `@next/third-parties`, and `eslint-config-next` from `16.3.4` to `16.3.5`, including the aligned `@next/env`, SWC, and ESLint plugin records.
+  - Updated `@types/node` from `24.13.3` to `24.13.4` and aligned `@types/react` and `@types/react-dom` to `19.3.0` while retaining runtime React `19.2.8`.
+  - Limited the lockfile delta to 16 existing records without changing package count, peer requirements, deprecated packages, or install scripts.
+- Files changed:
+  - `package.json`
+  - `package-lock.json`
+  - `agent-docs/HYDROGEN.md`
+  - `CHANGELOG.md`
+- Verification:
+  - Node `24.21.0`, npm `11.18.0`, clean `npm ci`, `npm audit --audit-level=low`, dependency-tree inspection, install-script review, and `git diff --check`: passed; audit reports 0 vulnerabilities.
+  - `npm run lint`, `npm run typecheck`, content validation, Shopify claim audit, local commercial-launch, publish-health, and internal-link validation: passed.
+  - `npm run test`: passed, 43 test files and 197 tests.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed with 72 static pages generated.
+- Manual follow-up: Keep ESLint 10, TypeScript 7, Vitest 5, and the newer Anthropic SDK `0.x` line in separate compatibility reviews.
+
 - Date: 2026-09-11
 - PR: [#177 Normalize SEO opportunity page ownership](https://github.com/emremutlu08/hydrogenexpert/pull/177)
 - Branch: `developer/seo-hiring-intent-ownership`
