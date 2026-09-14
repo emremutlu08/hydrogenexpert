@@ -15,6 +15,26 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## Unreleased
 
+- Date: 2026-09-14
+- PR: [#179 Update React runtime to 19.3.0](https://github.com/emremutlu08/hydrogenexpert/pull/179)
+- Branch: `codex/deps-react-19-3-0-20260914`
+- Deployment: Vercel preview validation is required before squash merge; production follows the validated merge through the existing Git integration without a separate manual deploy.
+- Summary:
+  - Updated stable React and React DOM from `19.2.8` to `19.3.0` and the aligned Scheduler runtime from `0.27.0` to `0.28.0`.
+  - Kept Next.js `16.3.5`, the package count, peer graph, deprecated-package set, and install-script set unchanged.
+  - Limited the lockfile delta to the three aligned runtime records and retained one React and React DOM runtime.
+- Files changed:
+  - `package.json`
+  - `package-lock.json`
+  - `agent-docs/HYDROGEN.md`
+  - `CHANGELOG.md`
+- Verification:
+  - Node `24.21.0`, npm `11.19.0`, clean `npm ci`, `npm audit --audit-level=low`, dependency-tree inspection, install-script review, and `git diff --check`: passed; audit reports 0 vulnerabilities.
+  - `npm run lint`, `npm run typecheck`, content validation, Shopify claim audit, local commercial-launch, publish-health, internal-link, and seven-route HTTP smoke validation: passed.
+  - `npm run test`: passed, 43 test files and 197 tests.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed with 72 static pages generated.
+- Manual follow-up: Keep ESLint 10, TypeScript 7, Node types 26, Vitest 5, and the newer Anthropic SDK `0.x` line in separate compatibility reviews.
+
 - Date: 2026-09-13
 - PR: [#178 Refresh Next.js and React type packages](https://github.com/emremutlu08/hydrogenexpert/pull/178)
 - Branch: `codex/dependency-refresh-20260913`
