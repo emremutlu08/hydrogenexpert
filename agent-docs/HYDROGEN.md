@@ -1,7 +1,7 @@
 # HydrogenExpert Implementation Notes
 
 Status: Active
-Last updated: 2026-09-13
+Last updated: 2026-09-14
 Owner: Agent
 Source of truth: `package.json`, current code, agent analysis
 
@@ -68,6 +68,7 @@ Use `package.json` for exact scripts. Current important scripts include:
 - The 2026-09-09 security refresh moved the transitive ESLint dependency `js-yaml` from `4.3.1` to the fixed stable `4.3.2` release for GHSA-2883-xcg3-v3hh. The lockfile-only update keeps the existing ESLint 9 dependency range, package count, peer graph, deprecated-package set, and install-script set unchanged.
 - The 2026-09-13 safe refresh moved Next.js, `@next/third-parties`, and `eslint-config-next` from `16.3.4` to stable `16.3.5`, including the official image-cache, standalone adapter, CSP nonce, and `use cache` backports while retaining React `19.2.8`, Node `>=22.12 <25`, a single Sharp `0.35.4` runtime, and the existing install-script set.
 - The 2026-09-13 type refresh moved `@types/node` from `24.13.3` to `24.13.4`, plus aligned `@types/react` and `@types/react-dom` from `19.2.18` and `19.2.7` to `19.3.0`. Runtime React packages remain on `19.2.8`; the lockfile keeps the peer graph and package count stable.
+- The 2026-09-14 runtime refresh moved React and React DOM from `19.2.8` to stable `19.3.0` and Scheduler from `0.27.0` to `0.28.0`. Next.js `16.3.5` accepts the React 19 line; the isolated lockfile delta keeps the package count, peer graph, deprecated-package set, install-script set, and single React runtime unchanged.
 - Keep deferring the newer `@anthropic-ai/sdk` 0.x minor line for a separate compatibility review.
 
 ## Implementation Rules
