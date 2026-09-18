@@ -15,6 +15,21 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## Unreleased
 
+- Date: 2026-09-18
+- PR: [#180 Update Node 24 type definitions to 24.13.5](https://github.com/emremutlu08/hydrogenexpert/pull/180)
+- Branch: `codex/deps-node-types-24-13-5-20260918`
+- Deployment: Vercel preview validation is required before squash merge; production follows the validated merge through the existing Git integration without a separate manual deploy.
+- Summary:
+  - Updated the locked `@types/node` package from `24.13.4` to stable `24.13.5`, fixing `child_process.ForkOptions` inheritance so `windowsHide` is exposed.
+  - Kept the Node 24 type line, manifest range, package count, peer graph, runtime versions, empty deprecated-package set, and install-script set unchanged.
+- Files changed: `package-lock.json`, `agent-docs/HYDROGEN.md`, `CHANGELOG.md`.
+- Verification:
+  - Node `24.19.0`, npm `11.18.0`, clean `npm ci`, `npm audit --audit-level=low`, `npm ls --all`, lockfile review, and `git diff --check`: passed; audit reports 0 vulnerabilities.
+  - `npm run lint` and `npm run typecheck`: passed.
+  - `npm run test`: passed, 43 test files and 197 tests.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed, 72 static pages generated.
+- Manual follow-up: Keep ESLint 10, TypeScript 7, Node types 26, Vitest 5, and the newer SDK `0.x` line in separate compatibility reviews.
+
 - Date: 2026-09-14
 - PR: [#179 Update React runtime to 19.3.0](https://github.com/emremutlu08/hydrogenexpert/pull/179)
 - Branch: `codex/deps-react-19-3-0-20260914`
