@@ -15,6 +15,22 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## Unreleased
 
+- Date: 2026-09-20
+- PR: [#182 Update tsx to 4.23.14](https://github.com/emremutlu08/hydrogenexpert/pull/182)
+- Branch: `codex/dependency-tsx-4-23-14-20260920`
+- Deployment: Vercel preview deployment `dpl_45KUx5WmS2bebwAqJxZmkpiS6EMj` is Ready at https://hydrogenexpert-3541b8455-emremutlu8s-projects.vercel.app; production follows the validated merge through the existing Git integration without a separate manual deploy.
+- Summary:
+  - Updated the locked `tsx` package from `4.23.13` to stable `4.23.14`.
+  - Kept the manifest range, Node engine boundary, `esbuild` dependency, optional `fsevents`, package count, peer graph, and install-script set unchanged.
+- Files changed: `package-lock.json`, `agent-docs/HYDROGEN.md`, `CHANGELOG.md`.
+- Verification:
+  - Node `24.19.0`, npm `11.19.0`, clean `npm ci`, `npm audit`, `npm ls --all`, install-script review, and `git diff --check`: passed; audit reports 0 vulnerabilities across 561 dependency records.
+  - `npm run lint` and `npm run typecheck`: passed.
+  - `npm run test`: passed, 43 test files and 197 tests.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed, 72 static pages generated.
+  - GitHub Vercel and Vercel Preview Comments checks: passed.
+- Manual follow-up: Keep ESLint 10, TypeScript 7, Node types 26, Vitest 5, and the newer Anthropic SDK `0.x` line in separate compatibility reviews.
+
 - Date: 2026-09-18
 - PR: [#180 Update Node 24 type definitions to 24.13.5](https://github.com/emremutlu08/hydrogenexpert/pull/180)
 - Branch: `codex/deps-node-types-24-13-5-20260918`
