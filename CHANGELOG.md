@@ -15,6 +15,22 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## Unreleased
 
+- Date: 2026-09-23
+- PR: [#184 Refresh Next and Supabase](https://github.com/emremutlu08/hydrogenexpert/pull/184)
+- Branch: `codex/dependency-next-16-3-6-supabase-2-117-20260923`
+- Deployment: Vercel preview deployment `dpl_4RnXvhAv5RSuCPyTiUnKs8s6By4C` is Ready at https://hydrogenexpert-6hag3cda5-emremutlu8s-projects.vercel.app; production follows the validated merge through the existing Git integration without a separate manual deploy.
+- Summary:
+  - Updated stable Next.js, `@next/third-parties`, and `eslint-config-next` from `16.3.5` to `16.3.6`.
+  - Updated `@supabase/supabase-js` and its five aligned client packages from `2.116.0` to `2.117.0`.
+  - Kept React `19.3.0`, Node `>=22.12 <25`, the peer graph, package count, and existing install-script set unchanged; no application code changed.
+- Files changed: `package.json`, `package-lock.json`, `agent-docs/HYDROGEN.md`, and `CHANGELOG.md`.
+- Verification:
+  - Node `24.19.0`, npm `11.19.0`, clean `npm ci`, lockfile consistency, `npm audit --audit-level=moderate`, dependency-tree inspection, install-script review, and `git diff --check`: passed; audit reports 0 vulnerabilities across 561 dependency records.
+  - `npm run lint`, `npm run typecheck`, and `npm run test`: passed, 43 test files and 197 tests.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed, 72 static pages generated.
+  - Vercel and Vercel Preview Comments checks passed; preview returned HTTP 200 with the expected site title.
+- Manual follow-up: Keep ESLint 10, TypeScript 7, Node types 26, Vitest 5, and the newer Anthropic SDK `0.x` line in separate compatibility reviews.
+
 - Date: 2026-09-20
 - PR: [#182 Update tsx to 4.23.14](https://github.com/emremutlu08/hydrogenexpert/pull/182)
 - Branch: `codex/dependency-tsx-4-23-14-20260920`
