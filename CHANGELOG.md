@@ -15,6 +15,21 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## Unreleased
 
+- Date: 2026-09-24
+- PR: [#186 Refresh Supabase patch release to 2.117.1](https://github.com/emremutlu08/hydrogenexpert/pull/186)
+- Branch: `codex/dependency-supabase-2-117-1-20260924`
+- Deployment: Vercel preview validation is required before squash merge; production follows the validated merge through the existing Git integration without a separate manual deploy.
+- Summary:
+  - Updated `@supabase/supabase-js` and its five aligned client packages from `2.117.0` to stable `2.117.1`.
+  - Kept the Node `>=22.12 <25` project range, six-record lockfile delta, peer graph, and existing install-script set unchanged; no application code changed.
+- Files changed: `package-lock.json`, `agent-docs/HYDROGEN.md`, and `CHANGELOG.md`.
+- Verification:
+  - Node `22.22.3`, npm `11.18.0`, clean `npm ci`, `npm audit --audit-level=moderate`, `npm ls --all`, install-script review, and `git diff --check`: passed; audit reports 0 vulnerabilities across 561 dependency records.
+  - `npm run lint` and `npm run typecheck`: passed.
+  - `npm run test`: passed, 43 test files and 197 tests.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed, 72 static pages generated.
+- Manual follow-up: Keep ESLint 10, TypeScript 7, Node types 26, Vitest 5, and the newer Anthropic SDK `0.x` line in separate compatibility reviews.
+
 - Date: 2026-09-23
 - PR: [#184 Refresh Next and Supabase](https://github.com/emremutlu08/hydrogenexpert/pull/184)
 - Branch: `codex/dependency-next-16-3-6-supabase-2-117-20260923`
