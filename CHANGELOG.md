@@ -15,6 +15,22 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## Unreleased
 
+- Date: 2026-09-26
+- PR: [#187 Refresh Supabase and Node types](https://github.com/emremutlu08/hydrogenexpert/pull/187)
+- Branch: `codex/dependency-supabase-2-117-2-node24-20260926`
+- Deployment: Vercel preview validation is required before squash merge; production follows the validated merge through the existing Git integration without a separate manual deploy.
+- Summary:
+  - Updated `@supabase/supabase-js` and its five aligned client packages from `2.117.1` to stable `2.117.2`.
+  - Updated `@types/node` from `24.13.6` to stable `24.19.0` and `undici-types` from `7.18.2` to `7.24.6` within the supported Node 24 line.
+  - Kept the Node `>=22.12 <25` range, 562 lockfile records, peer graph, deprecated-package set, and existing install-script set unchanged; no application code changed.
+- Files changed: `package.json`, `package-lock.json`, `agent-docs/HYDROGEN.md`, and `CHANGELOG.md`.
+- Verification:
+  - Node `22.22.3`, npm `11.18.0`, clean `npm ci`, `npm audit --audit-level=moderate`, `npm ls --all`, install-script review, and `git diff --check`: passed; audit reports 0 vulnerabilities.
+  - `npm run lint`, `npm run typecheck`, `npm run validate:content`, and `npm run audit:shopify-claims`: passed.
+  - `npm run test`: passed, 43 test files and 197 tests.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed, 72 static pages generated.
+- Manual follow-up: Keep ESLint 10, TypeScript 7, Node types 26, Vitest 5, and the newer Anthropic SDK `0.x` line in separate compatibility reviews.
+
 - Date: 2026-09-24
 - PR: [#186 Refresh Supabase patch release to 2.117.1](https://github.com/emremutlu08/hydrogenexpert/pull/186)
 - Branch: `codex/dependency-supabase-2-117-1-20260924`

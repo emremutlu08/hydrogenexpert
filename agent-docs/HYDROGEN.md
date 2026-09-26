@@ -1,7 +1,7 @@
 # HydrogenExpert Implementation Notes
 
 Status: Active
-Last updated: 2026-09-23
+Last updated: 2026-09-26
 Owner: Agent
 Source of truth: `package.json`, current code, agent analysis
 
@@ -73,6 +73,7 @@ Use `package.json` for exact scripts. Current important scripts include:
 - The 2026-09-20 safe test-tooling refresh moved the locked `tsx` package from `4.23.13` to stable `4.23.14`. The release keeps Node `>=18.0.0`, `esbuild ~0.28.0`, optional `fsevents ~2.3.3`, the package count, and the existing install-script set unchanged.
 - The 2026-09-23 safe refresh moved Next.js, `@next/third-parties`, and `eslint-config-next` from `16.3.5` to stable `16.3.6`, and moved `@supabase/supabase-js` plus its five aligned client packages from `2.116.0` to stable `2.117.0`. React `19.3.0`, Node `>=22.12 <25`, the peer graph, and the existing install-script set remain unchanged.
 - The 2026-09-24 safe patch refresh moved `@supabase/supabase-js` and its five aligned client packages from `2.117.0` to stable `2.117.1`. The package family remains on Node `>=22.0.0`; the six-record lockfile delta, peer graph, and existing install-script set remain unchanged, with no application-code changes.
+- The 2026-09-26 safe patch/type refresh moved `@supabase/supabase-js` and its five aligned client packages from `2.117.1` to stable `2.117.2`, and moved `@types/node` from `24.13.6` to stable `24.19.0` with `undici-types` from `7.18.2` to `7.24.6`. The Node `>=22.12 <25` range, peer graph, 562 lockfile records, deprecated-package set, and four existing install-script records remain unchanged, with no application-code changes.
 - Keep deferring the newer `@anthropic-ai/sdk` 0.x minor line for a separate compatibility review.
 
 ## Implementation Rules
