@@ -15,6 +15,23 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## Unreleased
 
+- Date: 2026-09-28
+- PR: [#188 Refresh safe transitive patches](https://github.com/emremutlu08/hydrogenexpert/pull/188)
+- Branch: `codex/dependency-transitive-patches-20260928`
+- Deployment: Vercel preview validation is required before squash merge; production follows the validated merge through the existing Git integration without a separate manual deploy.
+- Summary:
+  - Updated transitive `sharp` from `0.35.4` to stable `0.35.5` with its aligned platform binaries and libvips packages.
+  - Updated `@eslint/eslintrc` from `3.3.6` to `3.3.7` and PostCSS's transitive `nanoid` from `3.3.18` to `3.3.19`.
+  - Kept `package.json` unchanged, the Node `>=22.12 <25` range, 562 lockfile records, the peer graph, and the four existing install-script records; no application code changed.
+- Files changed: `package-lock.json`, `agent-docs/HYDROGEN.md`, and `CHANGELOG.md`.
+- Verification:
+  - Node `22.22.3`, npm `11.18.0`, clean `npm ci`, `npm audit --audit-level=moderate`, `npm ls --all`, install-script review, Sharp native runtime smoke, and `git diff --check`: passed; audit reports 0 vulnerabilities across 561 dependency records.
+  - `npm run lint`, `npm run typecheck`, and `npm run validate:content`: passed.
+  - `npm run audit:shopify-claims`: passed.
+  - `npm run test`: passed, 43 test files and 197 tests.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed, 72 static pages generated.
+- Manual follow-up: Keep ESLint 10, TypeScript 7, Node types 26, Vitest 5, and the newer Anthropic SDK `0.x` line in separate compatibility reviews.
+
 - Date: 2026-09-26
 - PR: [#187 Refresh Supabase and Node types](https://github.com/emremutlu08/hydrogenexpert/pull/187)
 - Branch: `codex/dependency-supabase-2-117-2-node24-20260926`
