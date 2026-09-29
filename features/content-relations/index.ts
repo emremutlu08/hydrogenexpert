@@ -1,12 +1,24 @@
 import type { TrafficLink } from "../traffic-foundation";
-import { COMMERCIAL_INTENT_OWNERS, normalizeCommercialLinks } from "../search-intent";
+import {
+  COMMERCIAL_INTENT_OWNERS,
+  HIRING_INTENT_OWNER_PATH,
+  normalizeCommercialLinks,
+} from "../search-intent";
 
 const EXAMPLES_INTENT = COMMERCIAL_INTENT_OWNERS["/shopify-hydrogen-examples"];
+const HIRING_INTENT = COMMERCIAL_INTENT_OWNERS[HIRING_INTENT_OWNER_PATH];
 
 export interface ContentRelation {
   path: string;
   title: string;
-  cluster: "decision" | "build" | "issues" | "templates" | "proof" | "learning" | "production";
+  cluster:
+    | "decision"
+    | "build"
+    | "issues"
+    | "templates"
+    | "proof"
+    | "learning"
+    | "production";
   persona: "merchant" | "technical" | "founder" | "student";
   intent: "evaluate" | "scope" | "troubleshoot" | "learn" | "launch";
   related: readonly TrafficLink[];
@@ -121,6 +133,40 @@ export const CONTENT_RELATIONS = [
       { href: "/when-not-to-use-hydrogen", label: "When not to use Hydrogen", note: "Use the conservative fit check before rebuilding." },
       { href: "/shopify-hydrogen-packages", label: "Build packages", note: "Turn the stack decision into fixed scope." },
       { href: "/contact", label: "Request Scope Review", note: "Send the store URL and the decision pressure." },
+    ],
+  },
+  {
+    path: "/articles/shopify-hydrogen-developer-vs-agency",
+    title: "Shopify Hydrogen developer vs agency",
+    cluster: "decision",
+    persona: "merchant",
+    intent: "evaluate",
+    related: [
+      {
+        href: HIRING_INTENT_OWNER_PATH,
+        label: HIRING_INTENT.linkLabel,
+        note: "Use the consolidated hiring path when direct senior expertise is the likely fit.",
+      },
+      {
+        href: "/articles/how-to-hire-shopify-hydrogen-developer",
+        label: "Hydrogen developer hiring guide",
+        note: "Evaluate proof and working fit when hiring a developer is already the decision.",
+      },
+      {
+        href: "/articles/shopify-hydrogen-experts-production-experience",
+        label: "Hydrogen production experience",
+        note: "Review the production contexts behind an expert's technical judgment.",
+      },
+      {
+        href: "/shopify-hydrogen-audit",
+        label: "Hydrogen scope review",
+        note: "Clarify the work and risk before choosing a delivery model.",
+      },
+      {
+        href: "/contact#fit-review-form",
+        label: "Request a delivery-model scope review",
+        note: "Compare the actual scope, ownership, and risk before committing.",
+      },
     ],
   },
   {

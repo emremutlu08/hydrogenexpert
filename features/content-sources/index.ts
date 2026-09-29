@@ -1143,7 +1143,7 @@ export const ARTICLE_SOURCE_METADATA = {
     ],
   },
   "shopify-hydrogen-developer-vs-agency": {
-    lastVerified: "2026-09-01",
+    lastVerified: "2026-09-29",
     claimTypes: ["official_shopify_fact", "commercial_opinion", "emre_experience"],
     sourceMap: [
       SOURCE_PACKS.hydrogenFundamentals,

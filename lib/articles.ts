@@ -162,21 +162,21 @@ const ARTICLE_DRAFTS = [
     ],
   },
   {
-    title: "Shopify Hydrogen Developer vs Agency: 7-Point Decision Checklist",
+    title: "Hire a Shopify Hydrogen Developer or Agency: 7-Point Checklist",
     slug: "shopify-hydrogen-developer-vs-agency",
     description:
       "A scope-based decision guide for choosing between a senior Shopify Hydrogen specialist and a full agency.",
     category: "Decision Guide",
     status: "scheduled",
     publishAt: "2026-05-11T10:00:00+03:00",
-    updatedAt: "2026-09-01T10:00:00+03:00",
+    updatedAt: "2026-09-29T10:00:00+03:00",
     author: OWNER.name,
-    metaTitle: "Shopify Hydrogen Developer vs Agency: 7-Point Checklist",
+    metaTitle: "Hire a Shopify Hydrogen Developer or Agency: 7-Point Checklist",
     metaDescription:
-      "Compare a senior Shopify Hydrogen developer with an agency across scope, ownership, SEO risk, QA, and post-launch support using a 7-point checklist.",
-    h1: "Shopify Hydrogen developer vs. agency: a 7-point decision checklist",
+      "Hire a Shopify Hydrogen developer or an agency? Compare scope, ownership, SEO/canonical risk, QA, and post-launch support with a 7-point checklist.",
+    h1: "Hire a Shopify Hydrogen developer or an agency? A 7-point decision checklist",
     intro: [
-      "If the scope is already technical and defined, and you want direct execution, a senior Shopify Hydrogen specialist is usually the better fit. If the work combines brand strategy, UX, content, project management, and QA across several stakeholders, an agency is usually the better fit.",
+      "Hiring a Shopify Hydrogen developer usually makes sense when the scope is already technical and defined and you want direct execution. Hiring an agency usually makes more sense when the work also spans brand, UX, content, and project management across several stakeholders.",
       "Start with a scope review when ownership is unclear. The right answer may also be a focused audit, a stronger Liquid path, or no rebuild rather than either delivery model.",
     ],
     summary: [
