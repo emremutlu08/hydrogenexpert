@@ -32,6 +32,23 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed, 72 static pages generated.
 - Manual follow-up: Keep ESLint 10, TypeScript 7, Node types 26, Vitest 5, and the newer Anthropic SDK `0.x` line in separate compatibility reviews.
 
+- Date: 2026-10-01
+- PR: [#190 Refresh stable framework and security patches](https://github.com/emremutlu08/hydrogenexpert/pull/190)
+- Branch: `codex/dependency-next-sanitize-security-20261001`
+- Deployment: Vercel preview validation is required before squash merge; production follows the validated merge through the existing Git integration without a separate manual deploy.
+- Summary:
+  - Updated Next.js, `@next/third-parties`, and `eslint-config-next` from stable `16.3.6` to `16.3.8`.
+  - Updated `sanitize-html` from `2.17.7` to `2.18.0` and `@types/sanitize-html` from `2.16.1` to `2.16.2`; the parser chain now uses `htmlparser2` 12 within the supported Node range.
+  - Added targeted stable `brace-expansion` overrides at `1.1.21` and `5.0.12` to clear the transitive audit advisory; React `19.3.0`, Node `>=22.12 <25`, the peer graph, and four existing install-script records remain unchanged.
+- Files changed: `package.json`, `package-lock.json`, `agent-docs/HYDROGEN.md`, and `CHANGELOG.md`.
+- Verification:
+  - Node `22.22.3`, npm `11.18.0`, clean `npm ci`, `npm audit --audit-level=moderate`, `npm ls --all`, install-script review, and `git diff --check`: passed; audit reports 0 vulnerabilities across 554 dependency records and no deprecated packages.
+  - `npm run lint`, `npm run typecheck`, `npm run validate:content`, and `npm run audit:shopify-claims`: passed.
+  - `npm run test`: passed, 43 test files and 197 tests.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed, 72 static pages generated.
+  - Local internal-link verification passed for 53 sitemap URLs and 76 internal URLs with Supabase-dependent blog/feed routes deferred because isolated worktree credentials are unavailable.
+- Manual follow-up: Keep ESLint 10, TypeScript 7, Node types 26, Vitest 5, and the newer Anthropic SDK `0.x` line in separate compatibility reviews.
+
 - Date: 2026-09-26
 - PR: [#187 Refresh Supabase and Node types](https://github.com/emremutlu08/hydrogenexpert/pull/187)
 - Branch: `codex/dependency-supabase-2-117-2-node24-20260926`
