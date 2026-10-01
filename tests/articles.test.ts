@@ -90,16 +90,26 @@ describe("scheduled articles", () => {
     );
 
     expect(article).toBeDefined();
+    expect(article?.title).toBe(
+      "Hire a Shopify Hydrogen Developer or Agency: 7-Point Checklist",
+    );
     expect(article?.metaTitle).toBe(
-      "Shopify Hydrogen Developer vs Agency: 7-Point Checklist",
+      "Hire a Shopify Hydrogen Developer or Agency: 7-Point Checklist",
     );
     expect(article?.metaDescription).toBe(
-      "Compare a senior Shopify Hydrogen developer with an agency across scope, ownership, SEO risk, QA, and post-launch support using a 7-point checklist.",
+      "Hire a Shopify Hydrogen developer or an agency? Compare scope, ownership, SEO/canonical risk, QA, and post-launch support with a 7-point checklist.",
     );
     expect(article?.h1).toBe(
-      "Shopify Hydrogen developer vs. agency: a 7-point decision checklist",
+      "Hire a Shopify Hydrogen developer or an agency? A 7-point decision checklist",
     );
-    expect(article?.intro[0]).toContain("scope is already technical and defined");
+    expect(article?.updatedAt).toBe("2026-09-29T10:00:00+03:00");
+    expect(article?.intro).toEqual([
+      "Hiring a Shopify Hydrogen developer usually makes sense when the scope is already technical and defined and you want direct execution. Hiring an agency usually makes more sense when the work also spans brand, UX, content, and project management across several stakeholders.",
+      "Start with a scope review when ownership is unclear. The right answer may also be a focused audit, a stronger Liquid path, or no rebuild rather than either delivery model.",
+    ]);
+    expect(getArticleSourceMetadata("shopify-hydrogen-developer-vs-agency")?.lastVerified).toBe(
+      "2026-09-29",
+    );
 
     const comparison = article?.sections.find((section) => section.comparison)?.comparison;
     expect(comparison?.rows.map((row) => row.label)).toEqual([

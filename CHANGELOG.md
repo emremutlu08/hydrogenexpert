@@ -15,6 +15,22 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## Unreleased
 
+- Date: 2026-10-01
+- PR: [#189 Refresh Hydrogen hiring decision guide](https://github.com/emremutlu08/hydrogenexpert/pull/189)
+- Branch: `codex/seo-hire-developers-refresh-20260929`
+- Deployment: Production deployment `dpl_9ztMgYepySsPMfEppj18z18aRN5X` is Ready and aliased to https://hydrogenexpert.co.
+- Summary:
+  - Refreshed the existing developer-versus-agency decision guide for the query `hire shopify hydrogen developers` without changing its URL or decision-comparison intent.
+  - Added explicit links to the consolidated hiring owner, hiring guide, production-experience proof, scope audit, and contact CTA while excluding retired intent routes.
+  - Updated content verification metadata and added focused article and content-relation regression coverage.
+- Files changed: `lib/articles.ts`, `features/content-relations/index.ts`, `features/content-sources/index.ts`, `tests/articles.test.ts`, `tests/content-relations.test.ts`, and `CHANGELOG.md`.
+- Verification:
+  - Focused Vitest coverage passed, 2 files and 7 tests.
+  - `npm run validate:content`, `npm run audit:shopify-claims`, `npm run lint`, `npm run typecheck`, and `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed; 72 static pages generated.
+  - Claude final read-only quality review: PASS, 91/100, no blocking issues.
+  - Production returned HTTP 200 for the page, sitemap, robots, and `llms-full.txt`; expected title, H1, canonical, discovery membership, and related links were present.
+- Manual follow-up: None.
+
 - Date: 2026-09-28
 - PR: [#188 Refresh safe transitive patches](https://github.com/emremutlu08/hydrogenexpert/pull/188)
 - Branch: `codex/dependency-transitive-patches-20260928`
