@@ -15,6 +15,22 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## Unreleased
 
+- Date: 2026-10-10
+- PR: [#191 Refresh safe dependencies](https://github.com/emremutlu08/hydrogenexpert/pull/191)
+- Branch: `codex/dependency-safe-refresh-20261010`
+- Deployment: Vercel preview validation is required before squash merge; production follows the validated merge through the existing Git integration without a separate manual deploy.
+- Summary:
+  - Updated `@supabase/supabase-js` and its five aligned client packages from `2.117.2` to stable `2.117.3`.
+  - Updated `@types/node` from `24.19.0` to `24.19.2` and Playwright plus `playwright-core` from `1.63.0` to `1.64.0`.
+  - Pinned `source-map-js` to fixed `1.2.2` through `overrides`, clearing the runtime audit finding without changing application code.
+- Files changed: `package.json`, `package-lock.json`, `agent-docs/HYDROGEN.md`, and `CHANGELOG.md`.
+- Verification:
+  - Node `22.22.3`, npm `11.18.0`, clean `npm ci --ignore-scripts`, dependency-tree review, install-script review, and `git diff --check`: passed.
+  - `npm audit --omit=dev --audit-level=moderate`: passed with 0 runtime vulnerabilities. The all-dependency audit retains five high findings in the Next ESLint chain; npm's only fix is an unsupported `eslint-config-next` `14.2.35` major downgrade, so it remains deferred.
+  - `npm run lint`, `npm run typecheck`, and `npm run test`: passed, 44 test files and 198 tests.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed, 72 static pages generated.
+- Manual follow-up: Keep Next.js `16.4.0`, ESLint 10, TypeScript 7, Node types 26, Vitest 5, and the newer Anthropic SDK `0.x` line in separate compatibility reviews.
+
 - Date: 2026-10-01
 - PR: [#189 Refresh Hydrogen hiring decision guide](https://github.com/emremutlu08/hydrogenexpert/pull/189)
 - Branch: `codex/seo-hire-developers-refresh-20260929`
