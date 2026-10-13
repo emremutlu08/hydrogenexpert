@@ -15,6 +15,22 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## Unreleased
 
+- Date: 2026-10-13
+- PR: [#192 Refresh Next.js 16.4.0](https://github.com/emremutlu08/hydrogenexpert/pull/192)
+- Branch: `codex/dependency-next-16-4-0-20261013`
+- Deployment: Vercel preview validation is required before squash merge; production follows the validated merge through the existing Git integration without a separate manual deploy.
+- Summary:
+  - Updated Next.js, `@next/third-parties`, and `eslint-config-next` from stable `16.3.8` to `16.4.0`.
+  - Kept React `19.3.0`, Node `>=22.12 <25`, the resolved peer graph, and the existing install-script set unchanged.
+  - Kept the five dev-only Next ESLint audit findings deferred because npm's suggested `eslint-config-next` `14.2.35` downgrade is unsupported for this framework line.
+- Files changed: `package.json`, `package-lock.json`, `agent-docs/HYDROGEN.md`, and `CHANGELOG.md`.
+- Verification:
+  - Node `24.21.0`, npm `11.19.0`, clean `npm ci --ignore-scripts`, `npm audit --omit=dev --audit-level=moderate`, dependency-tree review, install-script review, and `git diff --check`: passed.
+  - `npm run lint`, `npm run typecheck`, and `npm run test`: passed, 44 test files and 198 tests.
+  - `npm run validate:content` and `npm run audit:shopify-claims`: passed.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed, 72 static pages generated.
+- Manual follow-up: Keep the full audit's five dev-only Next ESLint findings, the newer Anthropic SDK `0.x` line, ESLint 10, TypeScript 7, Node types 26, and Vitest 5 in separate compatibility reviews.
+
 - Date: 2026-10-10
 - PR: [#191 Refresh safe dependencies](https://github.com/emremutlu08/hydrogenexpert/pull/191)
 - Branch: `codex/dependency-safe-refresh-20261010`
