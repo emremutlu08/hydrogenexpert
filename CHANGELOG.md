@@ -15,6 +15,23 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## Unreleased
 
+- Date: 2026-10-15
+- PR: [#193 Refresh stable patch releases](https://github.com/emremutlu08/hydrogenexpert/pull/193)
+- Branch: `codex/dependency-safe-20261015`
+- Deployment: Vercel preview validation is required before squash merge; production follows the validated merge through the existing Git integration without a separate manual deploy.
+- Summary:
+  - Updated Next.js, `@next/third-parties`, and `eslint-config-next` from stable `16.4.0` to `16.4.1`.
+  - Updated Playwright from `1.64.0` to `1.64.1` and `sanitize-html` from `2.18.0` to `2.18.1`.
+  - Kept React `19.3.0`, Node `>=22.12 <25`, the clean peer graph, and the four existing install-script records unchanged.
+- Files changed: `package.json`, `package-lock.json`, `agent-docs/HYDROGEN.md`, and `CHANGELOG.md`.
+- Verification:
+  - Node `22.22.3`, npm `11.18.0`, clean `npm ci --ignore-scripts`, `npm ls --all`, install-script review, and `git diff --check`: passed.
+  - `npm audit --omit=dev`: passed with 0 runtime vulnerabilities. The full audit retains five high dev-only findings in the Next ESLint chain; npm's suggested `eslint-config-next` `14.2.35` downgrade is unsupported and remains deferred.
+  - `npm run lint`, `npm run typecheck`, and `npm run test`: passed, 44 test files and 198 tests.
+  - `npm run validate:content` and `npm run audit:shopify-claims`: passed.
+  - `npm run build`: passed, 72 static pages generated.
+- Manual follow-up: Keep the newer Anthropic SDK `0.x` line, ESLint 10, TypeScript 7, Node types 26, and Vitest 5 in separate compatibility reviews.
+
 - Date: 2026-10-13
 - PR: [#192 Refresh Next.js 16.4.0](https://github.com/emremutlu08/hydrogenexpert/pull/192)
 - Branch: `codex/dependency-next-16-4-0-20261013`
