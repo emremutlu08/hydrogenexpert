@@ -15,6 +15,25 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## Unreleased
 
+- Date: 2026-10-17
+- PR: [#194 Refresh stable patch releases](https://github.com/emremutlu08/hydrogenexpert/pull/194)
+- Branch: `codex/dependency-refresh-20261017`
+- Deployment: Vercel Preview deployment completed successfully at `https://hydrogenexpert-oiultz9uf-emremutlu8s-projects.vercel.app`; direct content QA is blocked by Vercel project authentication, which returns the Vercel Login page for preview requests. Production follows the validated merge through the existing Git integration without a separate manual deploy.
+- Summary:
+  - Updated Next.js, `@next/third-parties`, and `eslint-config-next` from stable `16.4.1` to `16.4.2`.
+  - Updated React and React DOM from `19.3.0` to stable `19.3.1`.
+  - Updated `@supabase/supabase-js` and its five aligned client packages from `2.117.3` to stable `2.118.0`.
+  - Kept the Node `>=22.12 <25` range, clean peer graph, single React runtime, and four existing install-script records unchanged.
+- Files changed: `package.json`, `package-lock.json`, `agent-docs/HYDROGEN.md`, and `CHANGELOG.md`.
+- Verification:
+  - Node `24.21.0`, npm `11.19.0`, clean `npm ci --ignore-scripts`, `npm ls --all`, install-script comparison, and `git diff --check`: passed.
+  - `npm audit --omit=dev`: passed with 0 runtime vulnerabilities. Full audit retains five high dev-only Next ESLint findings; the unsupported `eslint-config-next` `14.2.35` downgrade remains deferred.
+  - `npm run lint`, `npm run typecheck`, and `npm run test`: passed, 44 test files and 198 tests.
+  - `npm run validate:content` and `npm run audit:shopify-claims`: passed.
+  - Local internal-link verification passed for 53 sitemap URLs and 75 internal URLs with Supabase-dependent blog/feed routes deferred.
+  - `npm run build`: passed, 72 static pages generated. Vercel and Vercel Preview Comments checks passed.
+- Manual follow-up: Keep Vitest `4.1.12`, ESLint 10, TypeScript 7, Node types 26, and the newer Anthropic SDK `0.x` line in separate compatibility reviews. Preview content QA requires access to be granted for the protected Vercel project.
+
 - Date: 2026-10-15
 - PR: [#193 Refresh stable patch releases](https://github.com/emremutlu08/hydrogenexpert/pull/193)
 - Branch: `codex/dependency-safe-20261015`
