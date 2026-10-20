@@ -41,6 +41,7 @@ describe("buildSitemapEntries", () => {
     expect(paths).toContain("/contact");
     expect(paths).toContain("/services");
     expect(paths).toContain(PACKAGE_PAGE_DISCOVERY.path);
+    expect(paths).toContain("/shopify-app-cleanup");
     expect(paths).toContain("/resources");
     expect(paths).toContain("/news-on-shopify-hydrogen");
     expect(paths).toContain("/shopify-hydrogen-examples");
