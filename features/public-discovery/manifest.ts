@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 
+import { APP_CLEANUP_ROUTE } from "../../lib/app-cleanup-package";
 import {
   PACKAGE_PAGE_SEO,
   PACKAGE_ROUTE,
@@ -32,6 +33,7 @@ export const PUBLIC_DISCOVERY_ROUTES: readonly PublicDiscoveryRoute[] = [
   { path: "/what-is-hydrogen" },
   { path: "/services" },
   { path: PACKAGE_ROUTE },
+  { path: APP_CLEANUP_ROUTE },
   { path: "/resources" },
   { path: "/news-on-shopify-hydrogen" },
   { path: "/shopify-hydrogen-examples" },
