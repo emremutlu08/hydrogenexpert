@@ -15,6 +15,24 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## Unreleased
 
+- Date: 2026-10-24
+- PR: [#196 Refresh Next security patches](https://github.com/emremutlu08/hydrogenexpert/pull/196)
+- Branch: `codex/dependency-refresh-20261024`
+- Deployment: [Vercel Preview check passed](https://vercel.com/emremutlu8s-projects/hydrogenexpert/7YDKvjyg6opMrsVXWJ87JuQB5cEV); production follows the validated merge through the existing Git integration without a separate manual deploy.
+- Summary:
+  - Updated Next.js, `@next/third-parties`, and `eslint-config-next` from stable `16.4.2` to `16.4.3`.
+  - Pinned transitive `zod` from `4.4.3` to fixed stable `4.6.6` through `overrides`.
+  - Kept React `19.3.1`, the Node `>=22.12 <25` range, a clean peer graph, the single React runtime, and the four existing install-script records.
+- Files changed: `package.json`, `package-lock.json`, `agent-docs/HYDROGEN.md`, and `CHANGELOG.md`.
+- Verification:
+  - Node `24.21.0`, npm `11.19.0`, clean `npm ci --ignore-scripts`, `npm ls --all`, install-script comparison, and `git diff --check`: passed.
+  - `npm audit --omit=dev --audit-level=moderate`: passed with 0 runtime vulnerabilities. Full audit retains three dev-toolchain findings in Vitest/Vite; the broader Vitest resolver update remains deferred.
+  - `npm run lint`, `npm run typecheck`, and `npm run test`: passed, 44 test files and 198 tests.
+  - `npm run validate:content` and `npm run audit:shopify-claims`: passed.
+  - Local production internal-link verification passed for 54 sitemap URLs and 77 internal URLs with Supabase-dependent blog/feed routes deferred.
+  - `NEXT_PUBLIC_SITE_URL=https://hydrogenexpert.co npm run build`: passed, 73 static pages generated. Vercel and Vercel Preview Comments checks passed.
+- Manual follow-up: Keep the newer Anthropic SDK `1.x` major line and the broader Vitest/Vite toolchain refresh in separate compatibility reviews.
+
 - Date: 2026-10-17
 - PR: [#194 Refresh stable patch releases](https://github.com/emremutlu08/hydrogenexpert/pull/194)
 - Branch: `codex/dependency-refresh-20261017`
