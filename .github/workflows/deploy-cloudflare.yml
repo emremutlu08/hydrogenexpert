@@ -1,0 +1,56 @@
+name: Deploy to Cloudflare
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: cloudflare-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    # Public repository: fork PRs get no secrets and must never reach the self-hosted runners.
+    if: github.event_name != pull_request || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: [self-hosted, linux, x64, ci-runner]
+    timeout-minutes: 25
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+      WRANGLER_SEND_METRICS: "false"
+      NEXT_TELEMETRY_DISABLED: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Build
+        env:
+          # Inlined by Next.js at build time. The Supabase pair is only used on the server.
+          NEXT_PUBLIC_SITE_URL: https://hydrogenexpert.co
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+          NEXT_PUBLIC_TURNSTILE_SITE_KEY: ${{ vars.NEXT_PUBLIC_TURNSTILE_SITE_KEY }}
+          NEXT_PUBLIC_GA_MEASUREMENT_ID: ${{ vars.NEXT_PUBLIC_GA_MEASUREMENT_ID }}
+        run: |
+          npm ci --no-audit --no-fund
+          npx opennextjs-cloudflare build
+      - name: Deploy production (workers.dev)
+        if: github.event_name != pull_request
+        run: npx opennextjs-cloudflare deploy
+      - name: Upload PR preview
+        if: github.event_name == pull_request
+        run: |
+          upload() { npx opennextjs-cloudflare upload --preview-alias "pr-${{ github.event.number }}" 2>&1; }
+          if ! out=$(upload); then
+            # First run only: a version can be uploaded once the Worker exists on workers.dev.
+            grep -q "does not yet exist" <<<"$out" || { echo "$out"; exit 1; }
+            npx opennextjs-cloudflare deploy
+            out=$(upload) || { echo "$out"; exit 1; }
+          fi
+          echo "$out"
+          url=$(grep -oE "https://pr-[^ ]+\.workers\.dev" <<<"$out" | tail -1)
+          echo "Preview: ${url:-see log}" >> "$GITHUB_STEP_SUMMARY"
