@@ -13,7 +13,7 @@ concurrency:
 jobs:
   deploy:
     # Public repository: fork PRs get no secrets and must never reach the self-hosted runners.
-    if: github.event_name != pull_request || github.event.pull_request.head.repo.full_name == github.repository
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
     runs-on: [self-hosted, linux, x64, ci-runner]
     timeout-minutes: 25
     env:
@@ -39,10 +39,10 @@ jobs:
           npm ci --no-audit --no-fund
           npx opennextjs-cloudflare build
       - name: Deploy production (workers.dev)
-        if: github.event_name != pull_request
+        if: github.event_name != 'pull_request'
         run: npx opennextjs-cloudflare deploy
       - name: Upload PR preview
-        if: github.event_name == pull_request
+        if: github.event_name == 'pull_request'
         run: |
           upload() { npx opennextjs-cloudflare upload --preview-alias "pr-${{ github.event.number }}" 2>&1; }
           if ! out=$(upload); then
