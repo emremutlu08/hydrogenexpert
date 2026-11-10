@@ -15,6 +15,18 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## Unreleased
 
+- Date: 2026-11-11
+- PR: [#199 Add Hydrogen 2026-10 migration guide article](https://github.com/emremutlu08/hydrogenexpert/pull/199)
+- Branch: `content/hydrogen-2026-10-migration-guide`
+- Deployment: Not merged or deployed. Vercel Preview only; production follows a validated merge through the existing Git integration.
+- Summary:
+  - Added the static article `/articles/hydrogen-2026-10-migration` for legacy Hydrogen (2026.4.x and earlier) to Hydrogen 2026-10, covering who is legacy, version pinning against caret-range build breaks, and a checklist for dependencies, the server entry and root middleware, routes and types, cart, customer accounts, analytics, CSP nonce, sitemap, and verification.
+  - Grounded every platform claim in the Shopify Hydrogen 2026-10 announcement, the "Migrate from legacy Hydrogen" guide, and the `@shopify/hydrogen` CHANGELOG (2026.10.0 to 2026.10.3), retrieved 2026-11-11, with matching source packs and article source metadata.
+  - Wired the article into the Hydrogen and Oxygen Runtime cluster manifest and content relations; sitemap, `/articles`, and `llms-full.txt` pick it up from the article registry. The article is local, not Supabase-backed.
+- Files changed: `features/articles/hydrogen-2026-10-migration.ts`, `lib/articles.ts`, `features/content-sources/index.ts`, `features/content-relations/index.ts`, `content/blog-clusters/shopify-authority-clusters.json`, `tests/hydrogen-2026-10-migration-article.test.ts`, and `CHANGELOG.md`.
+- Verification: `npm run lint`, `npm run typecheck`, `npm test`, `npm run validate:content`, `npm run audit:shopify-claims`, and `npm run build` passed locally; the local production server returned 200 for the article with the expected title, canonical, single H1, and parseable Article, BreadcrumbList, and FAQPage JSON-LD; `/sitemap.xml`, `/articles`, and `llms-full.txt` list it; local internal-link verification passed for 55 sitemap URLs and 78 internal URLs with Supabase-dependent blog/feed routes deferred.
+- Manual follow-up: Confirm `publishAt` before merge, and re-check the Shopify sources if the merge is delayed, because the 2026.10 changelog is still moving.
+
 - Date: 2026-10-24
 - PR: [#196 Refresh Next security patches](https://github.com/emremutlu08/hydrogenexpert/pull/196)
 - Branch: `codex/dependency-refresh-20261024`
