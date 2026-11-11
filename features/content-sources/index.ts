@@ -157,6 +157,33 @@ export const SOURCE_PACKS = {
     usedFor:
       "Sanity editorial workflow and composable content positioning for Hydrogen CMS decisions.",
   },
+  hydrogen202610Announcement: {
+    label: "Shopify: Hydrogen 2026-10 is now available",
+    sourceType: "shopify_official",
+    topic: "hydrogen",
+    url: "https://shopify.dev/changelog/blog/hydrogen-2026-10-is-now-available",
+    retrievedAt: "2026-11-11",
+    usedFor:
+      "Hydrogen 2026-10 GA date, library model, framework starters, and guidance that existing storefronts keep working.",
+  },
+  hydrogenLegacyMigrationGuide: {
+    label: "Shopify: Migrate from legacy Hydrogen",
+    sourceType: "shopify_official",
+    topic: "hydrogen",
+    url: "https://shopify.dev/docs/storefronts/hydrogen/migrate",
+    retrievedAt: "2026-11-11",
+    usedFor:
+      "Legacy Hydrogen definition, dependency and config steps, root middleware, cart, customer account, analytics, CSP, sitemap, and verification steps.",
+  },
+  hydrogenPackageChangelog: {
+    label: "@shopify/hydrogen package CHANGELOG",
+    sourceType: "shopify_official",
+    topic: "hydrogen",
+    url: "https://github.com/Shopify/hydrogen/blob/main/packages/hydrogen/CHANGELOG.md",
+    retrievedAt: "2026-11-11",
+    usedFor:
+      "2026.10.0 to 2026.10.3 release notes: API version bump, caret-range build break, deprecated hydrogen() export, migration skill, and CSP utilities.",
+  },
   yotpoHydrogenReviews: {
     label: "Yotpo: Using Yotpo Reviews with Shopify Hydrogen",
     sourceType: "competitor_reference",
@@ -980,6 +1007,19 @@ export const BLOG_SOURCE_METADATA = {
 } as const satisfies Record<string, ContentSourceMetadata>;
 
 export const ARTICLE_SOURCE_METADATA = {
+  "hydrogen-2026-10-migration": {
+    lastVerified: "2026-11-11",
+    claimTypes: ["official_shopify_fact", "commercial_opinion"],
+    sourceMap: [
+      SOURCE_PACKS.hydrogen202610Announcement,
+      SOURCE_PACKS.hydrogenLegacyMigrationGuide,
+      SOURCE_PACKS.hydrogenPackageChangelog,
+    ],
+    targetKeyword: "hydrogen 2026-10 migration",
+    searchIntent: "technical migration planning",
+    reviewedBy: "Emre Mutlu",
+    contentType: "evergreen_article",
+  },
   "shopify-hydrogen-nextjs": {
     lastVerified: "2026-09-05",
     claimTypes: ["official_shopify_fact", "commercial_opinion", "emre_experience"],

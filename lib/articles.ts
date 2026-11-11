@@ -1,5 +1,6 @@
 import { cache } from "react";
 
+import { HYDROGEN_2026_10_MIGRATION_ARTICLE } from "../features/articles/hydrogen-2026-10-migration";
 import { TRAFFIC_GAP_ARTICLES } from "../features/articles/traffic-gap";
 import {
   COMMERCIAL_INTENT_OWNERS,
@@ -87,6 +88,7 @@ export interface Article {
 
 const ARTICLE_DRAFTS = [
   ...TRAFFIC_GAP_ARTICLES,
+  HYDROGEN_2026_10_MIGRATION_ARTICLE,
   {
     title: "How to Hire a Shopify Hydrogen Developer",
     slug: "how-to-hire-shopify-hydrogen-developer",

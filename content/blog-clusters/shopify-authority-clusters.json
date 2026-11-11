@@ -150,6 +150,13 @@
           "targetKeyword": "hydrogen environment variables",
           "searchIntent": "launch troubleshooting",
           "uniqueAngle": "Environment mistakes as launch risk, not only developer configuration."
+        },
+        {
+          "slug": "hydrogen-2026-10-migration",
+          "implementedRoute": "/articles/hydrogen-2026-10-migration",
+          "targetKeyword": "hydrogen 2026-10 migration",
+          "searchIntent": "technical migration planning",
+          "uniqueAngle": "Legacy Hydrogen (2026.4.x and earlier) to the 2026-10 library model, with version pinning to avoid caret-range build breaks."
         }
       ]
     },

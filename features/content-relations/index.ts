@@ -211,6 +211,19 @@ export const CONTENT_RELATIONS = [
     ],
   },
   {
+    path: "/articles/hydrogen-2026-10-migration",
+    title: "Legacy Hydrogen to Hydrogen 2026-10 migration checklist",
+    cluster: "build",
+    persona: "technical",
+    intent: "scope",
+    related: [
+      { href: "/articles/shopify-hydrogen-analytics-migration", label: "Analytics migration", note: "Rebuild event coverage and consent after the analytics components are removed." },
+      { href: "/articles/hydrogen-deployment-checklist-oxygen-preview-production-qa", label: "Deployment checklist", note: "Preview and production QA once the migrated storefront builds." },
+      { href: "/shopify-hydrogen-maintenance-cost", label: "Maintenance cost", note: "Plan upgrade ownership as ongoing work, not a one-off." },
+      { href: "/shopify-hydrogen-audit", label: "Scope & Risk Review", note: "Map migration steps and silent-failure risks before code changes." },
+    ],
+  },
+  {
     path: "/articles/shopify-storefront-mcp-ucp-ai-readiness",
     title: "Storefront MCP, UCP, and AI-readable Hydrogen stores",
     cluster: "production",
