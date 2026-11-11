@@ -1,0 +1,22 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "hydrogenexpert",
+  "account_id": "fa9f73e26e04ae80f02ac35d16eaa837",
+  // Built by `opennextjs-cloudflare build` (OpenNext adapter for Next.js).
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-10-01",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "workers_dev": true,
+  "preview_urls": true,
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "services": [{ "binding": "WORKER_SELF_REFERENCE", "service": "hydrogenexpert" }],
+  // ISR cache (revalidate on blog and article pages).
+  "kv_namespaces": [{ "binding": "NEXT_INC_CACHE_KV", "id": "b1ca67b7862c4088a29cafe1bc59d3a4" }],
+  // Server secrets (SUPABASE_SERVICE_ROLE_KEY, TURNSTILE_SECRET_KEY, ANTHROPIC_API_KEY,
+  // CRON_SECRET) are Worker secrets, set with `wrangler secret put`.
+  "vars": { "NEXT_PUBLIC_SITE_URL": "https://hydrogenexpert.co" },
+  "observability": { "enabled": true }
+}
