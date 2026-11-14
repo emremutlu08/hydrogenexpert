@@ -5,6 +5,14 @@ import { getLegacyPermanentRedirect } from "./lib/legacy-redirects";
 
 export { getLegacyPermanentRedirect };
 
+// Moves a www request to the apex. Setting only URL.host keeps the internal server port when the app
+// runs behind a reverse proxy, so the port is cleared explicitly.
+export function toCanonicalHost(url: URL) {
+  url.host = "hydrogenexpert.co";
+  url.port = "";
+  return url;
+}
+
 export function proxy(request: NextRequest) {
   const host = request.headers.get("host");
   const url = request.nextUrl.clone();
@@ -15,7 +23,7 @@ export function proxy(request: NextRequest) {
     url.search = "";
 
     if (host === "www.hydrogenexpert.co") {
-      url.host = "hydrogenexpert.co";
+      toCanonicalHost(url);
     }
 
     return NextResponse.redirect(url, 301);
@@ -25,14 +33,14 @@ export function proxy(request: NextRequest) {
     url.pathname = "/services";
 
     if (host === "www.hydrogenexpert.co") {
-      url.host = "hydrogenexpert.co";
+      toCanonicalHost(url);
     }
 
     return NextResponse.redirect(url, 301);
   }
 
   if (host === "www.hydrogenexpert.co") {
-    url.host = "hydrogenexpert.co";
+    toCanonicalHost(url);
     return NextResponse.redirect(url, 308);
   }
 
