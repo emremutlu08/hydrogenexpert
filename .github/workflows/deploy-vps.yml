@@ -1,0 +1,31 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-vps
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    # contabo runner: builds the image from this commit and restarts the hydrogenexpert container behind the tunnel.
+    runs-on: [self-hosted, linux, x64, vps]
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+      - name: Replace the app source
+        run: |
+          rm -rf /opt/apps/hydrogenexpert/src
+          mkdir -p /opt/apps/hydrogenexpert/src
+          git archive HEAD | tar -x -C /opt/apps/hydrogenexpert/src
+      - name: Build and restart
+        run: /opt/apps/deploy.sh hydrogenexpert
+      - name: Check the live site
+        run: |
+          for p in / /hire-me /sitemap.xml; do
+            code=$(curl -s -o /dev/null -m 20 -w '%{http_code}' "https://hydrogenexpert.co$p")
+            echo "$code $p"; [ "$code" = 200 ] || exit 1
+          done
