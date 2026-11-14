@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { getLegacyPermanentRedirect } from "../proxy";
+import { getLegacyPermanentRedirect, toCanonicalHost } from "../proxy";
 
 describe("legacy permanent redirects", () => {
   it("redirects the Google-crawled legacy Hydrogen setup guide URL", () => {
@@ -48,6 +48,14 @@ describe("legacy permanent redirects", () => {
   it("does not redirect current published blog URLs", () => {
     expect(getLegacyPermanentRedirect("/blog/shopify-hydrogen-product-description-ssr-seo")).toBe(
       null,
+    );
+  });
+});
+
+describe("canonical host", () => {
+  it("drops an internal server port when moving www to the apex", () => {
+    expect(toCanonicalHost(new URL("https://www.hydrogenexpert.co:3000/services?x=1")).toString()).toBe(
+      "https://hydrogenexpert.co/services?x=1",
     );
   });
 });
