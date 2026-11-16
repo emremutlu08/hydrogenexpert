@@ -273,7 +273,7 @@ export default function HomePage() {
             </div>
             <p className="mx-auto max-w-3xl text-sm leading-7 text-neutral-600">
               Built by Emre Mutlu - Shopify Hydrogen developer, Upwork Top Rated Plus,
-              100% JSS, 1,900+ Upwork hours, and creator of the first English Shopify
+              100% JSS, 2,800+ Upwork hours, and creator of the first English Shopify
               Hydrogen course on Udemy.{" "}
               <TrackedProofLink
                 href="/case-studies"

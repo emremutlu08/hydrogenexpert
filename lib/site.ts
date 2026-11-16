@@ -23,10 +23,10 @@ export const UPWORK_PROFILE = {
   hourlyRate: "$40/hr",
   jobSuccessScore: "100%",
   badge: "Top Rated Plus",
-  totalHoursLabel: "1,900+",
-  totalHoursExact: "1,956",
+  totalHoursLabel: "2,800+",
+  totalHoursExact: "2,800+",
   totalJobs: "6",
-  lastVerified: "2026-05-11",
+  lastVerified: "2026-11-16",
 } as const;
 
 export const VERIFIED_PROFILE_URLS = [
