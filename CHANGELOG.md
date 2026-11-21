@@ -15,6 +15,22 @@ This changelog tracks meaningful site changes by pull request so future debuggin
 
 ## Unreleased
 
+- Date: 2026-11-21
+- PR: [#205 Update Next.js security and safe dependency patches](https://github.com/emremutlu08/hydrogenexpert/pull/205)
+- Branch: `codex/dependency-next-16-4-6-20261120`
+- Deployment: Not merged or deployed. Vercel Preview deployment is blocked; production follows a validated merge through the existing Git integration.
+- Summary:
+  - Updated Next.js, `@next/third-parties`, and `eslint-config-next` from stable `16.4.3` to `16.4.6`.
+  - Updated `@supabase/supabase-js` and its five aligned client packages from `2.118.0` to `2.119.2`, `@vercel/speed-insights` from `2.0.0` to `2.1.0`, and `sanitize-html` from `2.18.1` to `2.18.2`.
+  - Kept the Node `>=22.12 <25` range, clean peer graph, single runtime, and four existing install-script records unchanged.
+- Files changed: `package.json`, `package-lock.json`, `agent-docs/HYDROGEN.md`, and `CHANGELOG.md`.
+- Verification:
+  - Node `24.22.2`, npm `11.19.1`, clean `npm ci`, peer graph, install-script review, and `git diff --check`: passed.
+  - `npm audit --omit=dev`: passed with 0 runtime vulnerabilities. Full audit retains 9 moderate and 1 high dev/transitive findings in Vite, Vitest, and TypeScript-ESLint.
+  - `npm run lint`, `npm run typecheck`, and `npm run test`: passed, 45 test files and 204 tests.
+  - `npm run build`: passed with Next.js `16.4.6`, 74 static pages generated.
+- Manual follow-up: Vercel deployment remains blocked on PR #205; do not merge or deploy until the required preview gate passes.
+
 - Date: 2026-11-11
 - PR: [#199 Add Hydrogen 2026-10 migration guide article](https://github.com/emremutlu08/hydrogenexpert/pull/199)
 - Branch: `content/hydrogen-2026-10-migration-guide`
