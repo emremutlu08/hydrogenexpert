@@ -5,15 +5,26 @@ on:
     - cron: "0 7 * * *"
   workflow_dispatch:
 
+permissions:
+  contents: read
+
+concurrency:
+  group: scheduled-article-publish
+  cancel-in-progress: false
+
 jobs:
   publish-check:
-    runs-on: ubuntu-latest
+    if: github.repository == 'emremutlu08/hydrogenexpert' && github.ref == 'refs/heads/main'
+    runs-on: [self-hosted, linux, x64, ci-runner, vps]
+    timeout-minutes: 30
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
       VERCEL_DEPLOY_HOOK_URL: ${{ secrets.VERCEL_DEPLOY_HOOK_URL }}
     steps:
       - name: Check out repository
         uses: actions/checkout@v5
+        with:
+          persist-credentials: false
 
       - name: Set up Node
         uses: actions/setup-node@v6
