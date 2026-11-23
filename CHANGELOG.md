@@ -30,6 +30,11 @@ This changelog tracks meaningful site changes by pull request so future debuggin
   - `npm run lint`, `npm run typecheck`, and `npm run test`: passed, 45 test files and 204 tests.
   - `npm run build`: passed with Next.js `16.4.6`, 74 static pages generated.
 - Manual follow-up: Vercel deployment remains blocked on PR #205; do not merge or deploy until the required preview gate passes.
+- Follow-up on 2026-11-23:
+  - Updated `@tailwindcss/postcss` and `tailwindcss` from stable `4.3.3` to `4.3.5`, and Playwright plus `playwright-core` from `1.64.1` to `1.65.1`.
+  - Kept the lockfile delta within the Tailwind and Playwright families. Vitest `4.1.12` was not applied because its resolver also changes Vite, Rolldown, and Lightning CSS.
+  - Node `24.22.2`, npm `11.19.1`, clean `npm ci`, peer graph, lint, typecheck, 45 test files and 204 tests, content validation, Shopify claim audit, and 74-page production build passed. Production-only audit remains at 0 vulnerabilities; full audit remains 9 moderate and 1 high dev/transitive findings.
+  - Vercel deployment remains blocked on PR #205, so merge and production deployment remain pending.
 
 - Date: 2026-11-11
 - PR: [#199 Add Hydrogen 2026-10 migration guide article](https://github.com/emremutlu08/hydrogenexpert/pull/199)
